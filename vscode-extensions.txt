@@ -1,0 +1,23 @@
+formulahendry.auto-close-tag
+HookyQR.beautify
+aaron-bond.better-comments
+streetsidesoftware.code-spell-checker
+naumovs.color-highlight
+dracula-theme.theme-dracula
+dsznajder.es7-react-js-snippets
+dbaeumer.vscode-eslint
+mhutchie.git-graph
+donjayamanne.githistory
+eamodio.gitlens
+ecmel.vscode-html-css
+Zignd.html-css-class-completion
+esbenp.prettier-vscode
+octref.vetur
+vscodevim.vim
+skattyadz.vscode-quick-scope
+VisualStudioExptTeam.vscodeintellicode
+vscode-icons-team.vscode-icons
+jpoissonnier.vscode-styled-components
+
+## Install extension vscode
+while read line; do code --install-extension "$line";done < vscode-extensions.txt
