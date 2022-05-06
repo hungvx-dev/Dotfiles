@@ -7,7 +7,7 @@ sudo apt install curl
 curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.1/install.sh | bash
 # Install nodejs
 sudo apt intsall nodejs && node -v && npm -v
-nvim list
+nvm list
 
 # Install git
 sudo apt install xclip
@@ -38,8 +38,8 @@ sudo apt install tmux
 sudo apt install autojump
 
 # Package node - neovim
-npm i -g yarn typescript
-npm install -g lite-server eslint 
+npm i -g yarn
+npm install -g lite-server eslint
 
 
 
