@@ -30,7 +30,7 @@ pip3 install pynvim
 npm i -g neovim
 ### Lsp
 npm i -g vscode-langservers-extracted dockerfile-language-server-nodejs graphql-language-service-cli
-npm i -g typescript typescript-language-server vls @angular/language-server
+npm i -g typescript typescript-language-server vls @angular/language-server diagnostic-languageserver
 yarn global add yaml-language-server
 
 # Tools
