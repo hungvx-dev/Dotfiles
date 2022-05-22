@@ -29,9 +29,8 @@ pip3 install neovim
 pip3 install pynvim
 npm i -g neovim
 ### Lsp
-npm i -g vscode-langservers-extracted dockerfile-language-server-nodejs graphql-language-service-cli
-npm i -g typescript typescript-language-server vls @angular/language-server diagnostic-languageserver
-yarn global add yaml-language-server
+npm i -g vscode-langservers-extracted vscode-vue-languageservice dockerfile-language-server-nodejs graphql-language-service-cli diagnostic-languageserver
+npm i -g typescript typescript-language-server vls vue-language-server @angular/language-server bash-language-server yaml-language-server
 
 # Tools
 sudo apt install tmux
@@ -39,7 +38,7 @@ sudo apt install autojump
 
 # Package node - neovim
 npm i -g yarn
-npm install -g lite-server eslint
+npm i -g lite-server eslint
 
 
 
