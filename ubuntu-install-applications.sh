@@ -40,6 +40,7 @@ npm i -g typescript typescript-language-server vls vue-language-server @angular/
 sudo apt install tmux
 sudo apt install autojump
 sudo apt install fzf
+sudo apt install lazygit
 
 # Package node - neovim
 npm i -g yarn
