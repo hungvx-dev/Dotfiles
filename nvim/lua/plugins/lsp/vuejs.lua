@@ -6,8 +6,8 @@ local vuels = require('cmp_nvim_lsp').update_capabilities(vim.lsp.protocol.make_
 lspconfig.vuels.setup({
   capabilities = vuels,
   on_attach = function(client, bufnr)
-    client.resolved_capabilities.document_formatting = true
-    if client.resolved_capabilities.document_formatting then
+    client.server_capabilities.document_formatting = true
+    if client.server_capabilities.document_formatting then
       vim.cmd([[
       augroup LspFormatting
       autocmd! * <buffer>
@@ -35,11 +35,31 @@ lspconfig.vuels.setup({
       experimental = {
         templateInterpolationService = true,
       },
+      validation = {
+        templateProps = true,
+        style = true,
+      },
+      format = {
+        options = {
+          useTabs = true,
+        },
+        defaultFormatter = {
+          html = "prettier",
+          ts = "prettier-tslint",
+          js = "prettier-eslint"
+        },
+      },
+      languageFeatures = {
+        updateImportOnFileMove = true
+      },
+      trace = {
+        server ="messages"
+      }
     },
     format = {
-      enable = false, -- delegated to prettier via null_ls
+      enable = true, -- delegated to prettier via null_ls
       options = {
-        useTabs = false,
+        useTabs = true,
         tabSize = 2,
       },
       defaultFormatter = {
@@ -56,4 +76,5 @@ lspconfig.vuels.setup({
       interpolation = true,
     },
   },
+  root_dir = lspconfig.util.root_pattern(".git","package.json", "vue.config.js", vim.fn.getcwd()),
 })

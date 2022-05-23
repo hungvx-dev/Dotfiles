@@ -45,8 +45,8 @@ lspconfig.tsserver.setup({
   on_attach = function(client, bufnr)
     TSPrebuild.on_attach(client, bufnr)
     if client.config.flags then client.config.flags.allow_incremental_sync = true end
-    client.resolved_capabilities.document_formatting = true
-    if client.resolved_capabilities.document_formatting then
+    client.server_capabilities.document_formatting = true
+    if client.server_capabilities.document_formatting then
       vim.cmd([[
       augroup LspFormatting
       autocmd! * <buffer>

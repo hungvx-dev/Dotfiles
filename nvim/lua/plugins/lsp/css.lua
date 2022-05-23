@@ -5,13 +5,15 @@ local capabilities = require('cmp_nvim_lsp').update_capabilities(vim.lsp.protoco
 capabilities.textDocument.completion.completionItem.snippetSupport = true
 
 lspconfig.cssls.setup({
-    capabilities = capabilities,
-    on_attach = function(client, bufnr)
-        client.resolved_capabilities.document_formatting = true
-        default_key(client, bufnr)
-    end
+  capabilities = capabilities,
+  on_attach = function(client, bufnr)
+    client.server_capabilities.document_formatting = true
+    default_key(client, bufnr)
+  end
 })
 
 lspconfig.html.setup {
+  on_attach = on_attach,
   capabilities = capabilities,
+  root_dir = lspconfig.util.root_pattern(".git", vim.fn.getcwd()),
 }

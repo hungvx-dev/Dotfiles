@@ -9,6 +9,7 @@ require 'plugins.telescope'
 -- Config colors
 require 'plugins.colors'
 require 'plugins.autopairs'
+require 'plugins.highlight'
 
 require 'plugins.treesister'
 require 'plugins.lsp'

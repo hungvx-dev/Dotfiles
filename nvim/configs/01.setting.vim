@@ -13,7 +13,7 @@ endif
 " }}}
 
 " GENERAL CONFIG
-set completeopt=menu,menuone,noinsert,noselect
+set completeopt=menu,menuone,noselect
 " COLOR SOLARIZE {{
 set termguicolors " -------------------------------------- True color for neovim
 
@@ -57,7 +57,19 @@ set hidden " ----------------------------- Switch between buffers without saving
 set noshowmode " -------------------------- Hide default mode text (e.g. INSERT)
 set display+=lastline " -------------------- As must as possible of the lastline
 set previewheight=3 " ----------------------------------- Smaller preview height
-set clipboard+=unnamedplus " ------------------------------ Allow copy into clip
+set clipboard+=unnamedplus
+" let g:clipboard = {
+"       \   'name': 'myClipboard',
+"       \   'copy': {
+"         \      '+': ['tmux', 'load-buffer', '-'],
+"         \      '*': ['tmux', 'load-buffer', '-'],
+"         \    },
+"         \   'paste': {
+"           \      '+': ['tmux', 'save-buffer', '-'],
+"           \      '*': ['tmux', 'save-buffer', '-'],
+"           \   },
+"           \   'cache_enabled': 1,
+"           \ }
 set go-=T " ------------------------------------- Hide MacVim toolbar by default
 set conceallevel=0
 set splitbelow
@@ -93,7 +105,7 @@ set backspace=indent,eol,start
 " }}
 
 set list
-set listchars =tab:»\ ,extends:›,precedes:‹,nbsp:·,trail:·"Better line wrapping
+set listchars =tab:»\ ,extends:›,precedes:‹,nbsp:·,trail:·,space:⋅,eol:↴
 
 set wrap
 set textwidth=80
@@ -168,8 +180,6 @@ if isdirectory($HOME . '/.vim/_viminfo') == 0
 endif
 
 set listchars=tab:\·\·,trail:\-,precedes:←,extends:→
-set scroll=10
-" autocmd BufEnter * :set scroll=10
 
 " Spell
 " set spell
@@ -193,3 +203,7 @@ let g:gitgutter_enabled = 1
 highlight GitGutterAdd    guifg=#009900 ctermfg=2
 highlight GitGutterChange guifg=#bbbb00 ctermfg=3
 highlight GitGutterDelete guifg=#ff2222 ctermfg=1
+hi rainbowcol1 guifg=#ff00004d
+
+set scroll=10
+

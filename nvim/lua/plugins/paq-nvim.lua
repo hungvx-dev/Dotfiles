@@ -3,11 +3,13 @@ cmd 'packadd paq-nvim'
 
 require 'paq' {
   { 'savq/paq-nvim', opt = true };
-  { 'dracula/vim', as = 'dracula' };
+  -- { 'dracula/vim', as = 'dracula' };
+  'Mofiqul/dracula.nvim';
 
   -- Tools
   'kyazdani42/nvim-web-devicons'; ------------------------------- For file icons
   'kyazdani42/nvim-tree.lua';
+  'p00f/nvim-ts-rainbow';
   'nvim-lualine/lualine.nvim'; ------------------------------------- Status line
   'akinsho/bufferline.nvim';
   'nvim-lua/plenary.nvim';
@@ -16,7 +18,10 @@ require 'paq' {
   -- 'karb94/neoscroll.nvim';
 
   -- Faster code
-  'mg979/vim-visual-multi';
+  { 'mg979/vim-visual-multi', branch='master' };
+  'unblevable/quick-scope';
+  'kana/vim-textobj-user';
+  'kana/vim-textobj-entire';
   'tpope/vim-surround';
   'tpope/vim-commentary';
   'rhysd/clever-f.vim';

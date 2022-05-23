@@ -38,20 +38,18 @@ g.nvim_tree_icons = {
 require 'nvim-tree' .setup {
   disable_netrw = true,
   hijack_netrw = true,
-  open_on_setup = true,
+  open_on_setup = false,
   ignore_ft_on_setup = {},
-  auto_close = false,
+  -- auto_close = false,
   open_on_tab = false,
-  update_to_buf_dir = {
-    enable = true,
-    auto_open = true
-  },
+  -- update_to_buf_dir = {
+  --   enable = true,
+  --   auto_open = true
+  -- },
   hijack_cursor = true,
   update_cwd = false,
-  update_cwd = false,
-
   diagnostics = {
-    enable = true,
+    enable = false,
     icons = {
       hint = "",
       info = "",
@@ -59,9 +57,10 @@ require 'nvim-tree' .setup {
       error = ""
     }
   },
-  files = {
-    dotfiles = true,
-    custom = { ".git", "node_modules", ".cache", ".DS_Store" }
+  filters = {
+    -- dotfiles = true,
+    custom = { ".git", ".cache", ".DS_Store" },
+    exclude = { "node_modules", ".gitlab-ci.yml" }
   },
   update_focused_file = {
     enable = true,
@@ -87,23 +86,21 @@ require 'nvim-tree' .setup {
     },
   },
   view = {
-    width = 30,
-    height = 30,
+    width = 40,
     side = 'right',
-    auto_resize = true,
-    mappings = {
-      custom_only = false,
-      list = {}
-    }
+    -- mappings = {
+    --   custom_only = false,
+    --   list = {}
+    -- }
   },
-  log = {
-    enable = true,
-    truncate = true,
-    types = {
-      git = true,
-      profile = true,
-    },
-  },
+  -- log = {
+  --   enable = true,
+  --   truncate = true,
+  --   types = {
+  --     git = true,
+  --     profile = true,
+  --   },
+  -- },
 }
 
 require 'nvim-web-devicons'.setup {

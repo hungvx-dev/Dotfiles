@@ -44,6 +44,59 @@ require'nvim-treesitter.configs'.setup {
       },
     },
   },
+  rainbow = {
+    enable = true,
+    -- disable = { "jsx", "cpp" }, list of languages you want to disable the plugin for
+    extended_mode = true, -- Also highlight non-bracket delimiters like html tags, boolean or table: lang -> boolean
+    max_file_lines = nil, -- Do not enable for files with more than n lines, int
+    -- colors = {
+    --   "#ff00004d",
+    --   "#ff7f004d",
+    --   "#ffff004d",
+    --   "#00ff004d",
+    --   "#0000ff4d",
+    --   "#4b00824d",
+    --   "#9400d34d"
+    -- }, -- table of hex strings
+    -- termcolors = {
+    --   "#ff00004d",
+    --   "#ff7f004d",
+    --   "#ffff004d",
+    --   "#00ff004d",
+    --   "#0000ff4d",
+    --   "#4b00824d",
+    --   "#9400d34d"
+    -- } -- table of colour name strings
+  },
+  context_commentstring = {
+    enable = true,
+    config = { javascriptreact = { style_element = "{/*%s*/}" } },
+    typescript = "// %s",
+    css = "/* %s */",
+    scss = "/* %s */",
+    html = "<!-- %s -->",
+    svelte = "<!-- %s -->",
+    vue = "<!-- %s -->",
+    json = "",
+  },
+  playground = {
+    enable = true,
+    disable = {},
+    updatetime = 25, -- Debounced time for highlighting nodes in the playground from source code
+    persist_queries = false, -- Whether the query persists across vim sessions
+    keybindings = {
+      toggle_query_editor = "o",
+      toggle_hl_groups = "i",
+      toggle_injected_languages = "t",
+      toggle_anonymous_nodes = "a",
+      toggle_language_display = "I",
+      focus_language = "f",
+      unfocus_language = "F",
+      update = "R",
+      goto_node = "<cr>",
+      show_help = "?",
+    },
+  },
 }
 
 -- Auto pair tag

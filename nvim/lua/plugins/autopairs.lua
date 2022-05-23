@@ -1,13 +1,30 @@
 -- Auto pair with COQ
 local remap = vim.api.nvim_set_keymap
 local npairs = require('nvim-autopairs')
-npairs.setup({map_bs = false, map_cr = false})
+
+local cmp_autopairs = require('nvim-autopairs.completion.cmp')
+local cmp = require('cmp')
+local Rule = require('nvim-autopairs.rule')
+
+cmp.event:on( 'confirm_done', cmp_autopairs.on_confirm_done({  map_char = { tex = '' } }))
+
+-- Rule("$$", "$$"):with_pair(ts_conds.is_not_ts_node({"import_statement", "import_specifier"}))
+-- Rule("$", "$"):with_pair(ts_conds.is_not_ts_node({"import_statement", "import_specifier"}))
+
+npairs.setup({
+  map_bs = false,
+  map_cr = false,
+  check_ts = true,
+  ts_config = {
+    javascript = {'import_statement'},
+  }
+})
 
 -- these mappings are coq recommended mappings unrelated to nvim-autopairs
--- remap('i', '<esc>', [[pumvisible() ? "<c-e><esc>" : "<esc>"]], {expr = true, noremap = true})
--- remap('i', '<c-c>', [[pumvisible() ? "<c-e><c-c>" : "<c-c>"]], {expr = true, noremap = true})
--- remap('i', '<tab>', [[pumvisible() ? "<c-n>" : "<tab>"]], {expr = true, noremap = true})
--- remap('i', '<s-tab>', [[pumvisible() ? "<c-p>" : "<bs>"]], {expr = true, noremap = true})
+remap('i', '<esc>', [[pumvisible() ? "<c-e><esc>" : "<esc>"]], {expr = true, noremap = true})
+remap('i', '<c-c>', [[pumvisible() ? "<c-e><c-c>" : "<c-c>"]], {expr = true, noremap = true})
+remap('i', '<tab>', [[pumvisible() ? "<c-n>" : "<tab>"]], {expr = true, noremap = true})
+remap('i', '<s-tab>', [[pumvisible() ? "<c-p>" : "<bs>"]], {expr = true, noremap = true})
 
 -- skip it, if you use another global object
 _G.MUtils = {}

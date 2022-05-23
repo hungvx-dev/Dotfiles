@@ -1,13 +1,17 @@
 let mapleader=" "
 
+" mapc <c-p> 
+" unmap <C-p>
+" nnoremap <c-p> <nop>
+
 " Use black hole for delete. Don't want to store in register with dd.
 " For cut, use visual and x instead
 " nnoremap d "_d
 " vnoremap d "_d
 
 "------- Hack paste
-xnoremap p "0p
-nnoremap p "0p
+" xnoremap p "0p
+" nnoremap p "0p
 
 " also for yank
 " replace currently selected text with default register without yanking it
@@ -49,7 +53,7 @@ nnoremap <leader>" :split<CR>
 
 
 " noremap ; :
-inoremap jj <Esc>
+" inoremap jj <Esc>
 nnoremap <silent> <leader><CR> :noh<CR>
 
 nnoremap <A-j> :m .+1<CR>==
@@ -99,7 +103,7 @@ nnoremap <leader>s <cmd>Telescope live_grep<cr>
 nnoremap <leader><leader> <cmd>Telescope buffers<cr>
 " nnoremap <leader>fh <cmd>Telescope help_tags<cr>
 
-nnoremap ! <cmd>lua vim.diagnostic.open_float(nil, {focus = false})<cr>
+" nnoremap ! <cmd>lua vim.diagnostic.open_float(nil, {focus = false})<cr>
 
-let g:multi_cursor_next_key            = '<C-n>'
-let g:multi_cursor_prev_key            = '<C-p>'
+" let g:multi_cursor_next_key            = '<C-n>'
+" let g:multi_cursor_prev_key            = '<C-p>'
