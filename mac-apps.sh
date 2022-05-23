@@ -6,6 +6,7 @@ brew update
 brew install autojump
 brew install tmux
 brew install fzf
+sudo apt install lazygit
 
 ## Install Nvm/node
 curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.1/install.sh | bash
