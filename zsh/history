@@ -10250,3 +10250,7 @@ sudo apt-get -y autoremove
 : 1653205276:0;j dotfile
 : 1653205278:0;nvim
 : 1653205372:0;jo ..
+: 1653281779:0;ln -s $(pwd)/zsh/history ~/.cache/zsh/history\
+
+: 1653281796:0;git status
+: 1653281798:0;git add .

@@ -12,7 +12,7 @@ setopt HIST_IGNORE_ALL_DUPS
 setopt HIST_SAVE_NO_DUPS
 HISTSIZE=40000
 SAVEHIST=40000
-HISTFILE=~/.cache/zsh/.zsh_history
+HISTFILE=~/.cache/zsh/history
 HISTORY_IGNORE="(ls|cd|pwd|la|ll|frepo|faur|fb|cl|cd ..)"
 
 # If you come from bash you might have to change your $PATH.
