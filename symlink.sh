@@ -4,3 +4,4 @@ ln -s ${pwd}/nvim ~/.config/nvim
 ln -s ${pwd}/zsh ~/.config/zsh
 ln -s ${pwd}/zsh/.zsh_history ~/.cache/zsh/.zsh_history
 ln -s $(pwd)/my-alias.zsh ~/.oh-my-zsh/custom/my-alias.zsh
+ln -s $(pwd)/ssh/config ~/.ssh/config
