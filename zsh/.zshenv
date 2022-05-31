@@ -6,3 +6,5 @@ export PATH="$(yarn global bin):$PATH"
 
 # Default program.
 export EDITOR="nvim"
+
+export LAZYGIT_VERSION=$(curl -s "https://api.github.com/repos/jesseduffield/lazygit/releases/latest" | grep -Po '"tag_name": "v\K[0-9.]+')

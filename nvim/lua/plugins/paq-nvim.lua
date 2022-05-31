@@ -19,12 +19,12 @@ require 'paq' {
 
   -- Faster code
   { 'mg979/vim-visual-multi', branch='master' };
-  'unblevable/quick-scope';
+  -- 'unblevable/quick-scope';
+  'rhysd/clever-f.vim';
   'kana/vim-textobj-user';
   'kana/vim-textobj-entire';
   'tpope/vim-surround';
   'tpope/vim-commentary';
-  'rhysd/clever-f.vim';
   'windwp/nvim-ts-autotag';
   'norcalli/nvim-colorizer.lua';
   'windwp/nvim-autopairs';

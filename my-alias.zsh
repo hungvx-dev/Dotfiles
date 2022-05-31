@@ -12,7 +12,11 @@ alias ex='exit'
 alias gs='git status -s'
 alias gS='git status'   
 alias gc='git commit'
-alias gl='git log --graph --pretty='\''%Cred%h%Creset -%C(auto)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset'\'' --stat'
+# alias gl='git log --graph --pretty='\''%Cred%h%Creset -%C(auto)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset'\'' --stat'
+
+alias gl='git log --all --graph -- stat --oneline --decorate --source --pretty=format:'"%Cblue %h -%C(bold red)<%an> -%Cgreen (%ar)%C(auto)%d
+%C(yellow) %s"''
+
 alias gac='git add . && git commit -m'
 alias gcpd='git checkout develop && git pull origin develop'
 alias gcpm='git checkout master && git pull origin master'  

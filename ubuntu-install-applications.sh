@@ -1,8 +1,9 @@
 #!/bin/sh
 
 sudo apt update
-sudo apt install curl
+
 # Tools
+sudo apt install curl
 sudo apt install tmux
 sudo apt install autojump
 sudo apt install fzf
@@ -21,6 +22,7 @@ nvm install v
 sudo apt install git && git --version
 git config --global user.name "hung.vx"
 git config --global user.email "hungvx.dev@gmail.com"
+git config --global user.useConfigOnly true
 
 # IDE
 sudo add-apt-repository ppa:neovim-ppa/unstable
