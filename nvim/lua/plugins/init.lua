@@ -1,5 +1,6 @@
 require 'plugins.paq-nvim'
 require 'plugins.tree'
+require 'plugins.nvim-webdev-icons'
 require 'plugins.lualine'
 require 'plugins.indent-blankline'
 require 'plugins.bufferline'

@@ -27,6 +27,8 @@ local default_key = function(client, bufnr)
   vim.api.nvim_buf_set_keymap(bufnr, 'n', '<space>rn', ':LspRename<CR>', opts_lsp)
   vim.api.nvim_buf_set_keymap(bufnr, 'n', '!', ':LspDiagLine<CR>', opts_lsp)
   vim.api.nvim_buf_set_keymap(bufnr, "n", 'gf', ':LspFormatting<CR>', opts_lsp)
+  -- vim.api.nvim_buf_set_keymap(bufnr, 'n', '<C-0>', ':LspDiagNext<CR>', opts_lsp)
+  -- vim.api.nvim_buf_set_keymap(bufnr, "n", '<C-9>', ':LspDiagPrev<CR>', opts_lsp)
 end
 
 return default_key

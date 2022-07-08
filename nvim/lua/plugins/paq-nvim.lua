@@ -9,25 +9,38 @@ require 'paq' {
   -- Tools
   'kyazdani42/nvim-web-devicons'; ------------------------------- For file icons
   'kyazdani42/nvim-tree.lua';
-  'p00f/nvim-ts-rainbow';
   'nvim-lualine/lualine.nvim'; ------------------------------------- Status line
   'akinsho/bufferline.nvim';
   'nvim-lua/plenary.nvim';
-  'nvim-telescope/telescope.nvim';
   'lukas-reineke/indent-blankline.nvim';
+  -- Telescope
+   "nvim-telescope/telescope.nvim";
+   "tom-anders/telescope-vim-bookmarks.nvim";
+   "nvim-telescope/telescope-media-files.nvim";
+   "nvim-telescope/telescope-ui-select.nvim";
+   "nvim-telescope/telescope-file-browser.nvim";
+  -- Treesitter
+  { 'nvim-treesitter/nvim-treesitter', run = ':TSUpdate' };
+  'nvim-treesitter/nvim-treesitter-textobjects';
+   "JoosepAlviste/nvim-ts-context-commentstring";
+  'p00f/nvim-ts-rainbow';
+   "nvim-treesitter/playground";
+   "windwp/nvim-ts-autotag";
+   "romgrk/nvim-treesitter-context";
+   "mizlan/iswap.nvim";
   -- 'karb94/neoscroll.nvim';
 
   -- Faster code
   { 'mg979/vim-visual-multi', branch='master' };
-  -- 'unblevable/quick-scope';
-  'rhysd/clever-f.vim';
   'kana/vim-textobj-user';
   'kana/vim-textobj-entire';
   'tpope/vim-surround';
   'tpope/vim-commentary';
-  'windwp/nvim-ts-autotag';
   'norcalli/nvim-colorizer.lua';
   'windwp/nvim-autopairs';
+  -- 'simrat39/symbols-outline.nvim';
+  -- 'unblevable/quick-scope';
+  -- 'rhysd/clever-f.vim';
 
   -- CMP autocomplete
   'hrsh7th/cmp-nvim-lsp';
@@ -43,8 +56,6 @@ require 'paq' {
   'neovim/nvim-lspconfig';
   'ray-x/lsp_signature.nvim';
   'folke/lsp-colors.nvim';
-  { 'nvim-treesitter/nvim-treesitter', run = ':TSUpdate' };
-  'nvim-treesitter/nvim-treesitter-textobjects';
   'prettier/vim-prettier';
   'folke/trouble.nvim';
 

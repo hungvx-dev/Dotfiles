@@ -11,14 +11,26 @@ cmp.event:on( 'confirm_done', cmp_autopairs.on_confirm_done({  map_char = { tex 
 -- Rule("$$", "$$"):with_pair(ts_conds.is_not_ts_node({"import_statement", "import_specifier"}))
 -- Rule("$", "$"):with_pair(ts_conds.is_not_ts_node({"import_statement", "import_specifier"}))
 
-npairs.setup({
-  map_bs = false,
-  map_cr = false,
+npairs.setup {
   check_ts = true,
   ts_config = {
-    javascript = {'import_statement'},
-  }
-})
+    lua = { "string", "source" },
+    javascript = { "string", "template_string", "import_statement" },
+    java = false,
+  },
+  disable_filetype = { "TelescopePrompt", "spectre_panel" },
+  fast_wrap = {
+    map = "<M-e>",
+    chars = { "{", "[", "(", '"', "'" },
+    pattern = string.gsub([[ [%'%"%)%>%]%)%}%,] ]], "%s+", ""),
+    offset = 0, -- Offset from pattern match
+    end_key = "$",
+    keys = "qwertyuiopzxcvbnmasdfghjkl",
+    check_comma = true,
+    highlight = "PmenuSel",
+    highlight_grey = "LineNr",
+  },
+}
 
 -- these mappings are coq recommended mappings unrelated to nvim-autopairs
 --remap('i', '<esc>', [[pumvisible() ? "<c-e><esc>" : "<esc>"]], {expr = true, noremap = true})
@@ -51,3 +63,4 @@ MUtils.BS = function()
 end
 
 remap('i', '<bs>', 'v:lua.MUtils.BS()', {expr = true, noremap = true})
+

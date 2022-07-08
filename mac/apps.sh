@@ -45,8 +45,8 @@ brew install rustup-init
 rustup-init
 brew install cmake
 git clone https://github.com/neovide/neovide
-cd neovide
-cargo build --release
-cargo install cargo-bundle
-cargo bundle --release
-cp ./target/release/bundle/osx/neovide.app ~/Applications
+# cd neovide
+# cargo build --release
+# cargo install cargo-bundle
+# cargo bundle --release
+# cp ./target/release/bundle/osx/neovide.app ~/Applications

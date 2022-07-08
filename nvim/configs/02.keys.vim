@@ -15,7 +15,7 @@ let mapleader=" "
 
 " also for yank
 " replace currently selected text with default register without yanking it
-vnoremap <leader>p "_dP
+vnoremap p "_dP
 
 nnoremap <c-s> :w<CR>
 vnoremap <c-s> :w<CR>
@@ -33,8 +33,8 @@ nnoremap <C-k> <C-W>k
 nnoremap <C-l> <C-W>l
 nnoremap <C-h> <C-W>h
 
-nnoremap <expr> k v:count == 0 ? 'gk' : 'k'
-nnoremap <expr> j v:count == 0 ? 'gj' : 'j'
+" nnoremap <expr> k v:count == 0 ? 'gk' : 'k'
+" nnoremap <expr> j v:count == 0 ? 'gj' : 'j'
 
 nnoremap H ^
 nnoremap H ^
@@ -101,9 +101,5 @@ nnoremap <leader>p <cmd>Telescope find_files<cr>
 nnoremap <leader>j <cmd>Telescope grep_string<cr>
 nnoremap <leader>s <cmd>Telescope live_grep<cr>
 nnoremap <leader><leader> <cmd>Telescope buffers<cr>
-" nnoremap <leader>fh <cmd>Telescope help_tags<cr>
+nnoremap <leader>fh <cmd>Telescope help_tags<cr>
 
-" nnoremap ! <cmd>lua vim.diagnostic.open_float(nil, {focus = false})<cr>
-
-" let g:multi_cursor_next_key            = '<C-n>'
-" let g:multi_cursor_prev_key            = '<C-p>'

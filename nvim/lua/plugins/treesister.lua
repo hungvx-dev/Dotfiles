@@ -1,21 +1,21 @@
-require'nvim-treesitter.configs'.setup {
+local status_ok, configs = pcall(require, "nvim-treesitter.configs")
+if not status_ok then
+	return
+end
+
+local ft_to_parser = require"nvim-treesitter.parsers".filetype_to_parsername
+ft_to_parser.motoko = "typescript"
+
+configs.setup({
   -- One of "all", "maintained" (parsers with maintainers), or a list of languages
   ensure_installed = {"typescript", "javascript", "html", "css", "bash", "json", "scss", "tsx", "vue"},
-
-  -- Install languages synchronously (only applied to `ensure_installed`)
   sync_install = true,
   autotag = {enable = true},
+	ignore_install = { "" }, -- List of parsers to ignore installing
+	autopairs = { enable = true, },
   highlight = {
-    -- `false` will disable the whole extension
     enable = true,
-
-    -- list of language that will be disabled
     disable = {"c", "rust"},
-
-    -- Setting this to true will run `:h syntax` and tree-sitter at the same time.
-    -- Set this to `true` if you depend on 'syntax' being enabled (like for indentation).
-    -- Using this option may slow down your editor, and you may see some duplicate highlights.
-    -- Instead of true it can also be a list of languages
     additional_vim_regex_highlighting = false
   },
   textobjects = {
@@ -44,41 +44,37 @@ require'nvim-treesitter.configs'.setup {
       },
     },
   },
+	indent = { enable = true, disable = { "python", "css" } },
   rainbow = {
     enable = true,
     -- disable = { "jsx", "cpp" }, list of languages you want to disable the plugin for
     extended_mode = true, -- Also highlight non-bracket delimiters like html tags, boolean or table: lang -> boolean
     max_file_lines = nil, -- Do not enable for files with more than n lines, int
-    -- colors = {
-    --   "#ff00004d",
-    --   "#ff7f004d",
-    --   "#ffff004d",
-    --   "#00ff004d",
-    --   "#0000ff4d",
-    --   "#4b00824d",
-    --   "#9400d34d"
-    -- }, -- table of hex strings
-    -- termcolors = {
-    --   "#ff00004d",
-    --   "#ff7f004d",
-    --   "#ffff004d",
-    --   "#00ff004d",
-    --   "#0000ff4d",
-    --   "#4b00824d",
-    --   "#9400d34d"
-    -- } -- table of colour name strings
+		colors = {
+			"Gold",
+			"Orchid",
+			"DodgerBlue",
+			-- "Cornsilk",
+			-- "Salmon",
+			-- "LawnGreen",
+		},
+		disable = { "html" },
   },
-  context_commentstring = {
-    enable = true,
-    config = { javascriptreact = { style_element = "{/*%s*/}" } },
-    typescript = "// %s",
-    css = "/* %s */",
-    scss = "/* %s */",
-    html = "<!-- %s -->",
-    svelte = "<!-- %s -->",
-    vue = "<!-- %s -->",
-    json = "",
-  },
+  -- context_commentstring = {
+  --   enable = true,
+  --   config = { javascriptreact = { style_element = "{/*%s*/}" } },
+  --   typescript = "// %s",
+  --   css = "/* %s */",
+  --   scss = "/* %s */",
+  --   html = "<!-- %s -->",
+  --   svelte = "<!-- %s -->",
+  --   vue = "<!-- %s -->",
+  --   json = "",
+  -- },
+	context_commentstring = {
+		enable = true,
+		enable_autocmd = false,
+	},
   playground = {
     enable = true,
     disable = {},
@@ -97,7 +93,7 @@ require'nvim-treesitter.configs'.setup {
       show_help = "?",
     },
   },
-}
+})
 
 -- Auto pair tag
 require('nvim-ts-autotag').setup()

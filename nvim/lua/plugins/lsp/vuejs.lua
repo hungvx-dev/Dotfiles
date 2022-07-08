@@ -14,12 +14,6 @@ lspconfig.vuels.setup({
       autocmd BufWritePre <buffer> EslintFixAll
       augroup END
       ]])
-      -- vim.cmd([[
-      -- augroup LspFormatting
-      -- autocmd! * <buffer>
-      -- autocmd BufWritePre <buffer> PrettierAsync
-      -- augroup END
-      -- ]])
     end
     -- no default maps, so you may want to define some here
     default_key(client, bufnr)
