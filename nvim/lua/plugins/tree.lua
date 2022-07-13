@@ -51,7 +51,7 @@ nvim_tree.setup {
     highlight_opened_files = "none",
     root_folder_modifier = ":t",
     indent_markers = {
-      enable = false,
+      enable = true,
       icons = {
         corner = "└ ",
         edge = "│ ",
@@ -82,12 +82,21 @@ nvim_tree.setup {
           symlink = "",
           symlink_open = "",
         },
+        -- git = {
+        --   unstaged = "",
+        --   staged = "S",
+        --   unmerged = "",
+        --   renamed = "➜",
+        --   untracked = "U",
+        --   deleted = "",
+        --   ignored = "◌",
+        -- },
         git = {
-          unstaged = "",
-          staged = "S",
+          unstaged = "✗",
+          staged = "✓",
           unmerged = "",
           renamed = "➜",
-          untracked = "U",
+          untracked = "★",
           deleted = "",
           ignored = "◌",
         },

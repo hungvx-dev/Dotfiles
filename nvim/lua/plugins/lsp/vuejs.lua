@@ -70,5 +70,6 @@ lspconfig.vuels.setup({
       interpolation = true,
     },
   },
-  root_dir = lspconfig.util.root_pattern(".git","package.json", "vue.config.js", vim.fn.getcwd()),
+  root_dir = lspconfig.util.root_pattern(".git","package.json", "vue.config.js", vim.fn.getcwd(), "vite.config.ts"),
 })
+
