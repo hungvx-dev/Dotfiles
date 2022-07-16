@@ -14,20 +14,20 @@ require 'paq' {
   'nvim-lua/plenary.nvim';
   'lukas-reineke/indent-blankline.nvim';
   -- Telescope
-   "nvim-telescope/telescope.nvim";
-   "tom-anders/telescope-vim-bookmarks.nvim";
-   "nvim-telescope/telescope-media-files.nvim";
-   "nvim-telescope/telescope-ui-select.nvim";
-   "nvim-telescope/telescope-file-browser.nvim";
+  "nvim-telescope/telescope.nvim";
+  "tom-anders/telescope-vim-bookmarks.nvim";
+  "nvim-telescope/telescope-media-files.nvim";
+  "nvim-telescope/telescope-ui-select.nvim";
+  "nvim-telescope/telescope-file-browser.nvim";
   -- Treesitter
   { 'nvim-treesitter/nvim-treesitter', run = ':TSUpdate' };
   'nvim-treesitter/nvim-treesitter-textobjects';
-   "JoosepAlviste/nvim-ts-context-commentstring";
+  "JoosepAlviste/nvim-ts-context-commentstring";
   'p00f/nvim-ts-rainbow';
-   "nvim-treesitter/playground";
-   "windwp/nvim-ts-autotag";
-   "romgrk/nvim-treesitter-context";
-   "mizlan/iswap.nvim";
+  "nvim-treesitter/playground";
+  "windwp/nvim-ts-autotag";
+  "romgrk/nvim-treesitter-context";
+  "mizlan/iswap.nvim";
   -- 'karb94/neoscroll.nvim';
 
   -- Faster code
@@ -51,6 +51,7 @@ require 'paq' {
   'onsails/lspkind-nvim';
   'L3MON4D3/LuaSnip';
   'saadparwaiz1/cmp_luasnip';
+  'f3fora/cmp-spell', -------------------- Spell suggestion
 
   -- LSP Performance
   'neovim/nvim-lspconfig';
@@ -58,6 +59,7 @@ require 'paq' {
   'folke/lsp-colors.nvim';
   'prettier/vim-prettier';
   'folke/trouble.nvim';
+  'b0o/schemastore.nvim';
 
   --'jose-elias-alvarez/nvim-lsp-ts-utils';
   -- Git

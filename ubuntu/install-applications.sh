@@ -35,15 +35,11 @@ sudo apt install python3-pip
 sudo apt install ripgrep
 pip3 install neovim
 pip3 install pynvim
-npm i -g neovim
-
-### Lsp
-npm i -g vscode-langservers-extracted vscode-vue-languageservice dockerfile-language-server-nodejs graphql-language-service-cli diagnostic-languageserver
-npm i -g typescript typescript-language-server vls vue-language-server @angular/language-server bash-language-server yaml-language-server
-
-# Package node - neovim
 npm i -g yarn
-npm i -g lite-server eslint
+yarn global add neovim
 
+## Package node - neovim
+yarn global add lite-server eslint typescript 
 
-
+## Lsp
+yarn global add vscode-langservers-extracted vscode-vue-languageservice dockerfile-language-server-nodejs graphql-language-service-cli typescript-language-server vls yaml-language-server diagnostic-languageserver bash-language-server

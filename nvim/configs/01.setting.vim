@@ -13,7 +13,7 @@ endif
 " }}}
 
 " GENERAL CONFIG
-set completeopt=menu,menuone,noselect
+set completeopt=longest,menu,noselect
 " COLOR SOLARIZE {{
 set termguicolors " -------------------------------------- True color for neovim
 
@@ -99,7 +99,6 @@ set cindent
 set expandtab
 set si "smart indent
 set smarttab
-set smartcase
 set autoindent
 set backspace=indent,eol,start
 " }}
@@ -115,6 +114,7 @@ set incsearch
 set hlsearch
 set ignorecase
 set wildmenu
+set smartcase
 
 set shortmess+=c
 set signcolumn=yes " --------------------------------- Always open gutter column
@@ -129,7 +129,8 @@ set foldenable
 set foldmethod=indent
 set foldnestmax=10
 set nofoldenable
-set foldlevel=1
+set foldlevel=0
+set foldlevelstart=90
 augroup folding_vim
   autocmd!
   autocmd FileType vim        setlocal foldmethod=marker
@@ -181,16 +182,26 @@ endif
 
 set listchars=tab:\·\·,trail:\-,precedes:←,extends:→
 
-" Spell
-" set spell
-" setlocal spelllang=en_us
-" set spellfile=$HOME/Dev/VimSpell/en.utf-8.add
-" set complete+=kspell
-" hi SpellBad cterm=underline "ctermfg=203 guifg=#ff5f5f
-" hi SpellLocal cterm=underline "ctermfg=203 guifg=#ff5f5f
-" hi SpellRare cterm=underline "ctermfg=203 guifg=#ff5f5f
-" hi SpellCap cterm=underline "ctermfg=203 guifg=#ff5f5f
-" nnoremap <leader>sp :normal! mz[s1z=`z<CR> " ------------ Autocomplete fix spell
+
+" Spell"
+set spell " ------------------------------------------- Enable spelling checking
+set spelllang=en,cjk " ----------------------------------------- Default language
+set spelloptions=camel " -------------------------------------- Support JS camel
+set spellsuggest=best,9
+set complete+=spell
+" set spellfile=$HOME/Dev/VimSpell/en.fut-8.add
+hi SpellBad cterm=underline "ctermfg=203 guifg=#ff5f5f
+hi SpellLocal cterm=underline "ctermfg=203 guifg=#ff5f5f
+hi SpellRare cterm=underline "ctermfg=203 guifg=#ff5f5f
+hi SpellCap cterm=underline "ctermfg=203 guifg=#ff5f5f
+nnoremap <silent> <F5> :set spell!<cr>
+inoremap <silent> <F11> <C-O>:set spell!<cr>
+nnoremap <leader>Fs :normal! mz[s1z=`z<CR> " ------------- Autocomplete fix spell
+fun! IgnoreCamelCaseSpell()
+    syn match myExCapitalWords +\<\w*[A-Z]\K*\>+ contains=@NoSpell
+endfun
+autocmd BufRead,BufNewFile * :call IgnoreCamelCaseSpell()
+autocmd BufRead,BufNewFile * :syntax on
 
 highlight IndentBlanklineIndent5 guifg=#61AFEF gui=nocombine
 highlight IndentBlanklineIndent6 guifg=#304866 gui=nocombine

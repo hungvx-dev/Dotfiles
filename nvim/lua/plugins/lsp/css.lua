@@ -12,8 +12,17 @@ lspconfig.cssls.setup({
   end
 })
 
+lspconfig.cssmodules_ls.setup {
+  capabilities = capabilities,
+  on_attach = custom_on_attach,
+  init_options = {
+    camelCase = 'dashes',
+  },
+}
+
 lspconfig.html.setup {
   on_attach = on_attach,
   capabilities = capabilities,
   root_dir = lspconfig.util.root_pattern(".git", vim.fn.getcwd()),
 }
+

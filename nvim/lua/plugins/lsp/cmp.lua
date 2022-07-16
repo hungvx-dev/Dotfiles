@@ -19,22 +19,25 @@ cmp.setup({
       maxwidth = 70, -- prevent the popup from showing more than provided characters (e.g 50 will not show more than 50 characters)
       -- menu = {
       --   luasnip = "(Snippet)",
-      --   nvim_lsp = "ﲳ",
-      --   nvim_lua = "",
-      --   treesitter = "",
-      --   path = "ﱮ",
-      --   buffer = "﬘",
-      --   zsh = "",
       --   spell = "暈",
-      --   cmp_tabnine = "[TabNine]",
-      --   look = "[Look]",
-      --   calc = "[Calc]",
-      --   emoji = "[Emoji]",        gh_issues = "[issues]",
-      --   tn = "[TabNine]",
+      -- nvim_lsp = "ﲳ",
+      -- nvim_lua = "",
+      -- treesitter = "",
+      -- path = "ﱮ",
+      -- buffer = "﬘",
+      -- zsh = "",
+      -- cmp_tabnine = "[TabNine]",
+      -- look = "[Look]",
+      -- calc = "[Calc]",
+      -- emoji = "[Emoji]",        gh_issues = "[issues]",
+      -- tn = "[TabNine]",
       -- },
       -- The function below will be called before any actual modifications from lspkind
       -- so that you can provide more controls on popup customization. (See [#30](https://github.com/onsails/lspkind-nvim/pull/30))
       before = function(entry, vim_item)
+        vim_item.menu = ({
+          spell = "暈",
+        })[entry.source.name]
         return vim_item
       end
     })
@@ -87,19 +90,18 @@ cmp.setup({
     ['<CR>'] = cmp.mapping.confirm({ select = true }),
     -- Accept currently selected item. Set `select` to `false` to only confirm explicitly selected items.
   },
-  sources = {{
-    name = "nvim_lsp"
-  }, {
-    name = "luasnip"
-  }, {
-    name = "buffer"
-  }, {
-    name = "nvim_lua"
-  }},
+  sources = {
+    {name = 'luasnip', priority = 3},
+    {name = 'path', priority = 3},
+    {name = 'nvim_lua', priority = 3},
+    {name = 'buffer', priority = 4},
+    {name = 'nvim_lsp', priority = 6},
+    {name = 'spell', priority = 7},
+    -- {name = 'tmux', priority = 2, option = {all_panes = true}}
+  },
   experimental = {
     -- I like the new menu better! Nice work hrsh7th
     native_menu = false,
-
     -- Let's play with this for a day or two
     ghost_text = false,
   },
@@ -116,7 +118,7 @@ cmp.setup.filetype('gitcommit', {
 -- Use buffer source for `/` (if you enabled `native_menu`, this won't work anymore).
 cmp.setup.cmdline('/', {
   mapping = cmp.mapping.preset.cmdline(),
-  sources = {
+  soures = {
     { name = 'buffer' }
   }
 })

@@ -13,6 +13,7 @@ curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.1/install.sh | bash
 ## Install nodejs
 brew install node && node -v && npm -v
 nvm list
+npm i -g yarn
 
 ## Install git
 brew install git && git --version
@@ -29,22 +30,19 @@ pip3 --version && python3 --version
 python3 -m pip install --upgrade pip
 pip3 install neovim
 pip3 install pynvim
-npm i -g neovim
+yarn global add neovim
 
 ## Package node - neovim
-npm i -g yarn
-npm install -g lite-server eslint
+yarn global add lite-server eslint typescript 
 
 ## Lsp
-npm i -g vscode-langservers-extracted dockerfile-language-server-nodejs graphql-language-service-cli
-npm i -g typescript typescript-language-server vls @angular/language-server
-yarn global add yaml-language-server
+yarn global add vscode-langservers-extracted vscode-vue-languageservice dockerfile-language-server-nodejs graphql-language-service-cli typescript-language-server vls yaml-language-server diagnostic-languageserver bash-language-server cssmodules-language-server
 
 # Neovide
-brew install rustup-init
-rustup-init
-brew install cmake
-git clone https://github.com/neovide/neovide
+# brew install rustup-init
+# rustup-init
+# brew install cmake
+# git clone https://github.com/neovide/neovide
 # cd neovide
 # cargo build --release
 # cargo install cargo-bundle
