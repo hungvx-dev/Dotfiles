@@ -29,14 +29,15 @@ if (empty($TMUX))
 endif
 set t_Co=256
 colorscheme dracula
-highlight NonText guifg=#4A4A59
-highlight Comment cterm=italic gui=italic
-highlight SpecialKey guifg=#4A4A59
-highlight SignColumn guibg=transparent
-highlight! link SignColumn LineNr
-" hi cursorlinenr guifg=white guibg=#006969
-highlight cursorlinenr guibg=#004748 guifg=#EFFF00
+hi NonText guifg=#4A4A59
+hi Comment cterm=italic gui=italic
+hi SpecialKey guifg=#4A4A59
+hi SignColumn guibg=transparent
+hi! link SignColumn LineNr
+hi cursorlinenr guifg=white guibg=#006969
+" hi cursorlinenr guibg=#004748 guifg=#EFFF00
 " }}
+
 
 " SYNTAX {{{
 syntax on " --------------------------------------------- Enable Syntax for Code
@@ -120,9 +121,9 @@ set shortmess+=c
 set signcolumn=yes " --------------------------------- Always open gutter column
 set cmdheight=1
 set pumheight=15 " --------------------------------- limit autocomple candidates
-set updatetime=250 "____________ smaller updatetime for CursorHold & Cursor Hold
-set ttimeoutlen=50
-set timeoutlen=450
+set updatetime=0 " _____________ smaller updatetime for CursorHold & Cursor Hold
+" set ttimeoutlen=1000
+set timeoutlen=1000
 
 " Folding {{
 set foldenable
@@ -182,14 +183,14 @@ endif
 
 set listchars=tab:\·\·,trail:\-,precedes:←,extends:→
 
-
 " Spell"
 set spell " ------------------------------------------- Enable spelling checking
-set spelllang=en,cjk " ----------------------------------------- Default language
+set spelllang=en_us,cjk " ----------------------------------------- Default language
 set spelloptions=camel " -------------------------------------- Support JS camel
 set spellsuggest=best,9
-set complete+=spell
-" set spellfile=$HOME/Dev/VimSpell/en.fut-8.add
+set complete+=kspell
+set spellfile=$HOME/Dev/VimSpell/en.fut-8.add
+set spellfile=$HOME/Dev/Dotfiles/nvim/spell/en.utf-8.add
 hi SpellBad cterm=underline "ctermfg=203 guifg=#ff5f5f
 hi SpellLocal cterm=underline "ctermfg=203 guifg=#ff5f5f
 hi SpellRare cterm=underline "ctermfg=203 guifg=#ff5f5f
@@ -203,24 +204,24 @@ endfun
 autocmd BufRead,BufNewFile * :call IgnoreCamelCaseSpell()
 autocmd BufRead,BufNewFile * :syntax on
 
-highlight IndentBlanklineIndent5 guifg=#61AFEF gui=nocombine
-highlight IndentBlanklineIndent6 guifg=#304866 gui=nocombine
+hi IndentBlanklineIndent5 guifg=#61AFEF gui=nocombine
+hi IndentBlanklineIndent6 guifg=#304866 gui=nocombine
 
 let g:gitblame_date_format = '%r,%x,%X'
 let g:gitblame_message_template = '<author> | <date> | <summary>'
 
 let g:gitgutter_enabled = 1
-highlight GitGutterAdd    guifg=#009900 ctermfg=2
-highlight GitGutterChange guifg=#bbbb00 ctermfg=3
-highlight GitGutterDelete guifg=#ff2222 ctermfg=1
+hi GitGutterAdd    guifg=#009900 ctermfg=2
+hi GitGutterChange guifg=#bbbb00 ctermfg=3
+hi GitGutterDelete guifg=#ff2222 ctermfg=1
 hi rainbowcol1 guifg=#ff00004d
 
-highlight QuickScopePrimary guifg='#afff5f' gui=underline ctermfg=155 cterm=underline
-highlight QuickScopeSecondary guifg='#5fffff' gui=underline ctermfg=81 cterm=underline
+hi QuickScopePrimary guifg='#afff5f' gui=underline ctermfg=155 cterm=underline
+hi QuickScopeSecondary guifg='#5fffff' gui=underline ctermfg=81 cterm=underline
 " augroup qs_colors
 "   autocmd!
-"   autocmd ColorScheme * highlight QuickScopePrimary guifg='#afff5f' gui=underline ctermfg=155 cterm=underline
-"   autocmd ColorScheme * highlight QuickScopeSecondary guifg='#5fffff' gui=underline ctermfg=81 cterm=underline
+"   autocmd ColorScheme * hi QuickScopePrimary guifg='#afff5f' gui=underline ctermfg=155 cterm=underline
+"   autocmd ColorScheme * hi QuickScopeSecondary guifg='#5fffff' gui=underline ctermfg=81 cterm=underline
 " augroup END
 
 set scroll=10

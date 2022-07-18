@@ -6,13 +6,16 @@ require 'plugins.indent-blankline'
 require 'plugins.bufferline'
 -- require 'plugins.neoscroll'
 require 'plugins.telescope'
--- require 'plugins.autocommands'
+require 'plugins.autocommands'
+require 'plugins.illuminate'
 
 -- Config colors
 require 'plugins.colors'
 require 'plugins.autopairs'
 require 'plugins.highlight'
 
+
+-- require 'plugins.tabnine'
 require 'plugins.treesister'
 require 'plugins.lsp'
 require 'plugins.trouble'

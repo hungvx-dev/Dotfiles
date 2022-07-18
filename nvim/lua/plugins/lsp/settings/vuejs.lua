@@ -2,8 +2,6 @@ local lspconfig = require'lspconfig'
 local lspconfig_configs = require'lspconfig.configs'
 local lspconfig_util = require 'lspconfig.util'
 
-local default_key = require 'plugins/lsp/default'
-local volar = require('cmp_nvim_lsp').update_capabilities(vim.lsp.protocol.make_client_capabilities())
 local volar_cmd = {'vue-language-server', '--stdio'}
 local volar_root_dir = lspconfig_util.root_pattern 'package.json'
 
@@ -247,19 +245,3 @@ lspconfig_configs.volar_html = {
     },
   })
 }
-
-function on_attach(client, bufnr)
-  client.server_capabilities.document_formatting = true
-  if client.server_capabilities.document_formatting then
-    vim.cmd([[
-    augroup LspFormatting
-    autocmd! * <buffer>
-    autocmd BufWritePre <buffer> EslintFixAll
-    augroup END
-    ]])
-  end
-  -- no default maps, so you may want to define some here
-  default_key(client, bufnr)
-end
-
-lspconfig.volar.setup{capabilities = volar, on_attach = on_attach}

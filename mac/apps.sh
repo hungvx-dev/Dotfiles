@@ -36,7 +36,10 @@ yarn global add neovim
 yarn global add lite-server eslint typescript 
 
 ## Lsp
-yarn global add vscode-langservers-extracted vscode-vue-languageservice dockerfile-language-server-nodejs graphql-language-service-cli typescript-language-server vls yaml-language-server diagnostic-languageserver bash-language-server cssmodules-language-server
+yarn global add vscode-langservers-extracted vscode-vue-languageservice
+dockerfile-language-server-nodejs graphql-language-service-cli
+typescript-language-server vls yaml-language-server diagnostic-languageserver
+bash-language-server cssmodules-language-server ls-emmet
 
 # Neovide
 # brew install rustup-init

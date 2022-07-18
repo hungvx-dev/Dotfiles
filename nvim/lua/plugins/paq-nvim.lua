@@ -51,17 +51,22 @@ require 'paq' {
   'onsails/lspkind-nvim';
   'L3MON4D3/LuaSnip';
   'saadparwaiz1/cmp_luasnip';
-  'f3fora/cmp-spell', -------------------- Spell suggestion
+  'f3fora/cmp-spell'; -------------------- Spell suggestion
+  "hrsh7th/cmp-emoji";
+  { "tzachar/cmp-tabnine", run= './install.sh'}; 
 
   -- LSP Performance
   'neovim/nvim-lspconfig';
+  "williamboman/nvim-lsp-installer"; -- simple to use language server installer
+  "jose-elias-alvarez/null-ls.nvim"; -- for formatters and linters
   'ray-x/lsp_signature.nvim';
   'folke/lsp-colors.nvim';
   'prettier/vim-prettier';
   'folke/trouble.nvim';
   'b0o/schemastore.nvim';
+  "RRethy/vim-illuminate";
+  "SmiteshP/nvim-navic";
 
-  --'jose-elias-alvarez/nvim-lsp-ts-utils';
   -- Git
   'f-person/git-blame.nvim';
   'airblade/vim-gitgutter';
