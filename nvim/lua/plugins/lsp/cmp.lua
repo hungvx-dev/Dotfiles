@@ -2,16 +2,6 @@
 local lspkind = require 'lspkind'
 
 -- cmp.setup({
---   windown = {
---     documentation = {
---       border = "single",
---       winhighlight = "NormalFloat:CompeDocumentation,FloatBorder:CompeDocumentationBorder",
---       max_width = 70,
---       min_width = 50,
---       max_height = math.floor(vim.o.lines * 0.3),
---       min_height = 3
---     },
---   },
 --   mapping = {
 --     ["<C-b>"] = cmp.mapping.scroll_docs(-4),
 --     ["<C-f>"] = cmp.mapping.scroll_docs(4),
@@ -50,22 +40,6 @@ local lspkind = require 'lspkind'
 --     ['<CR>'] = cmp.mapping.confirm({ select = true }),
 --     -- Accept currently selected item. Set `select` to `false` to only confirm explicitly selected items.
 --   },
---   sources = {
---     {name = 'luasnip', priority = 3},
---     {name = 'path', priority = 3},
---     {name = 'nvim_lua', priority = 3},
---     {name = 'buffer', priority = 4},
---     {name = 'nvim_lsp', priority = 6},
---     {name = 'spell', priority = 7},
---     -- {name = 'tmux', priority = 2, option = {all_panes = true}}
---   },
---   experimental = {
---     -- I like the new menu better! Nice work hrsh7th
---     native_menu = false,
---     -- Let's play with this for a day or two
---     ghost_text = false,
---   },
---   -- sources = cmp.config.sources({{name = 'nvim_lsp'}, {name = 'luasnip'}}, {{name = 'buffer'}})
 -- })
 
 
@@ -127,8 +101,22 @@ cmp.setup {
   },
 
   mapping = cmp.mapping.preset.insert {
-    ["<C-k>"] = cmp.mapping(cmp.mapping.select_prev_item(), { "i", "c" }),
-    ["<C-j>"] = cmp.mapping(cmp.mapping.select_next_item(), { "i", "c" }),
+    ["<C-j>"] = cmp.mapping(function(fallback)
+      if cmp.visible() then
+        cmp.select_next_item()
+      else
+        fallback()
+      end
+    end, {"i", "s"}),
+    ["<C-k>"] = cmp.mapping(function(fallback)
+      if cmp.visible() then
+        cmp.select_prev_item()
+      else
+        fallback()
+      end
+    end, {"i", "s"}),
+    -- ["<C-k>"] = cmp.mapping(cmp.mapping.select_prev_item(), { "i", "c" }),
+    -- ["<C-j>"] = cmp.mapping(cmp.mapping.select_next_item(), { "i", "c" }),
     ["<C-b>"] = cmp.mapping(cmp.mapping.scroll_docs(-1), { "i", "c" }),
     ["<C-f>"] = cmp.mapping(cmp.mapping.scroll_docs(1), { "i", "c" }),
     ["<C-Space>"] = cmp.mapping(cmp.mapping.complete(), { "i", "c" }),
@@ -205,15 +193,13 @@ cmp.setup {
   },
   sources = {
     { name = 'spell',  group_index = 2, priority = 3 },
-    { name = "nvim_lsp", group_index = 2 ,  priority = 6 },
-    { name = "nvim_lua", group_index = 2,  priority = 3  },
-    { name = "luasnip", group_index = 2,  priority = 3 },
-    { name = "buffer", group_index = 2,priority = 4  },
-    { name = "cmp_tabnine", group_index = 2 , priority = 5 },
+    { name = "nvim_lsp", group_index = 2 , priority = 6 },
+    { name = "nvim_lua", group_index = 2, priority = 3  },
+    { name = "luasnip", group_index = 2, priority = 3 },
+    { name = "buffer", group_index = 2, priority = 4 },
+    { name = "cmp_tabnine", group_index = 2, priority = 5 },
     { name = "path", group_index = 2, priority = 3  },
     { name = "emoji", group_index = 2, priority = 3  },
-    -- { name = "copilot", group_index = 2 },
-    -- { name = "crates", group_index = 1 },
   },
   sorting = {
     priority_weight = 2,

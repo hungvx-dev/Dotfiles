@@ -36,8 +36,8 @@ nvim_tree.setup {
       enable = true,
       icons = {
         corner = "└",
-        edge = "│ ",
-        none = " ",
+        edge = "│",
+        none = "",
       },
     },
     icons = {
@@ -100,7 +100,7 @@ nvim_tree.setup {
     height = 30,
     hide_root_folder = false,
     side = "right",
-    auto_resize = true,
+    -- auto_resize = true,
     mappings = {
       custom_only = false,
       list = {
