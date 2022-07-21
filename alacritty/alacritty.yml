@@ -14,9 +14,9 @@ window:
 #     x: 0
 #     y: 0
 
-  title: ""
-  startup_mode: fullscreen 
-  decorations: none
+  title: "hungvx.dev"
+  dynamic_title: false
+  startup_mode: Maximized 
 
 font:
   normal:
