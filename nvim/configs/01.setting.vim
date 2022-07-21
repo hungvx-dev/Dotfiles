@@ -14,20 +14,26 @@ endif
 
 " GENERAL CONFIG
 set completeopt=longest,menu,noselect
-" COLOR SOLARIZE {{
-set termguicolors " -------------------------------------- True color for neovim
 
-if (empty($TMUX))
-  if (has("nvim"))
-    let $NVIM_TUI_ENABLE_TRUE_COLOR=1
-  endif
-  if exists('+termguicolors')
-    let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"
-    let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
-    set termguicolors
-  endif
-endif
-set t_Co=256
+" COLOR SOLARIZE {{
+" set termguicolors " -------------------------------------- True color for neovim
+
+" if (empty($TMUX))
+"   if (has("nvim"))
+"     let $NVIM_TUI_ENABLE_TRUE_COLOR=1
+"   endif
+"   if exists('+termguicolors')
+"     let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"
+"     let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
+"     set termguicolors
+"   endif
+" endif
+" set t_Co=256
+" if !has('gui_running') && &term =~ '^\%(screen\|tmux\)'
+"   let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"
+"   let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
+" endif
+set termguicolors
 colorscheme dracula
 hi NonText guifg=#4A4A59
 hi Comment cterm=italic gui=italic
@@ -82,7 +88,7 @@ set rnu
 " CURSOR {{
 set mouse=a
 set mousehide " ----------------------------------------- Hide mouse when typing
-set cursorline
+" set cursorline
 set ruler " -------------- Display current cursor position in lower right corner
 " }}
 
@@ -209,6 +215,7 @@ hi IndentBlanklineIndent6 guifg=#304866 gui=nocombine
 
 let g:gitblame_date_format = '%r,%x,%X'
 let g:gitblame_message_template = '<author> | <date> | <summary>'
+hi Search cterm=NONE ctermbg=black ctermfg=red
 
 let g:gitgutter_enabled = 1
 hi GitGutterAdd    guifg=#009900 ctermfg=2
@@ -223,6 +230,4 @@ hi QuickScopeSecondary guifg='#5fffff' gui=underline ctermfg=81 cterm=underline
 "   autocmd ColorScheme * hi QuickScopePrimary guifg='#afff5f' gui=underline ctermfg=155 cterm=underline
 "   autocmd ColorScheme * hi QuickScopeSecondary guifg='#5fffff' gui=underline ctermfg=81 cterm=underline
 " augroup END
-
-set scroll=10
 

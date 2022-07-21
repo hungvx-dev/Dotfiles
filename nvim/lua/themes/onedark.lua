@@ -69,16 +69,16 @@ local lightGruvbox = {
 }
 
 
-if O.colorscheme == 'gruvbox'
-then
-    if O.background == 'dark' 
-    then
-        colors = darkGruvbox     
-    else 
-        colors = lightGruvbox
-    end
-else 
-    colors = darkGruvbox     
-end
+-- if O.colorscheme == 'gruvbox'
+-- then
+--     if O.background == 'dark' 
+--     then
+--         colors = darkGruvbox     
+--     else 
+--         colors = lightGruvbox
+--     end
+-- else 
+--     colors = darkGruvbox     
+-- end
 
-return colors
+return darkGruvbox

@@ -17,9 +17,10 @@ let mapleader=" "
 " replace currently selected text with default register without yanking it
 vnoremap p "_dP
 
-nnoremap <c-s> :w<CR>
-vnoremap <c-s> :w<CR>
-nnoremap <c-q> :q<CR>
+nnoremap <C-s> :w<CR>
+inoremap <C-s> <Esc>:w<CR>
+nnoremap <leader>q :q<CR>
+" nnoremap <C-q> :q<CR>
 
 
 " also for yank
@@ -32,7 +33,6 @@ nnoremap <C-j> <C-W>j
 nnoremap <C-k> <C-W>k
 nnoremap <C-l> <C-W>l
 nnoremap <C-h> <C-W>h
-
 " nnoremap <expr> k v:count == 0 ? 'gk' : 'k'
 " nnoremap <expr> j v:count == 0 ? 'gj' : 'j'
 
@@ -56,10 +56,10 @@ nnoremap <leader>" :split<CR>
 " inoremap jj <Esc>
 nnoremap <silent> <leader><CR> :noh<CR>
 
-nnoremap <A-j> :m .+1<CR>==
-nnoremap <A-k> :m .-2<CR>==
-inoremap <C-j> <Esc>:m .+1<CR>==gi
-inoremap <C-k> <Esc>:m .-2<CR>==gi
+nnoremap <M-j> :m .+1<CR>==
+nnoremap <M-k> :m .-2<CR>==
+" inoremap <C-j> <Esc>:m .+1<CR>==gi
+" inoremap <C-k> <Esc>:m .-2<CR>==gi
 vnoremap K :m '<-2<CR>gv=gv
 vnoremap J :m '>+1<CR>gv=gv
 

@@ -12,10 +12,9 @@ require 'plugins.illuminate'
 -- Config colors
 require 'plugins.colors'
 require 'plugins.autopairs'
-require 'plugins.highlight'
-
+-- require 'plugins.highlight'
 
 -- require 'plugins.tabnine'
-require 'plugins.treesister'
-require 'plugins.lsp'
 require 'plugins.trouble'
+require 'plugins.lsp'
+require 'plugins.treesister'

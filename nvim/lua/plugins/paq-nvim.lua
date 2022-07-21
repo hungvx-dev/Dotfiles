@@ -13,12 +13,14 @@ require 'paq' {
   'akinsho/bufferline.nvim';
   'nvim-lua/plenary.nvim';
   'lukas-reineke/indent-blankline.nvim';
+
   -- Telescope
   "nvim-telescope/telescope.nvim";
   "tom-anders/telescope-vim-bookmarks.nvim";
   "nvim-telescope/telescope-media-files.nvim";
   "nvim-telescope/telescope-ui-select.nvim";
   "nvim-telescope/telescope-file-browser.nvim";
+
   -- Treesitter
   { 'nvim-treesitter/nvim-treesitter', run = ':TSUpdate' };
   'nvim-treesitter/nvim-treesitter-textobjects';
@@ -39,8 +41,8 @@ require 'paq' {
   'norcalli/nvim-colorizer.lua';
   'windwp/nvim-autopairs';
   -- 'simrat39/symbols-outline.nvim';
-  -- 'unblevable/quick-scope';
-  -- 'rhysd/clever-f.vim';
+  'unblevable/quick-scope';
+  'rhysd/clever-f.vim';
 
   -- CMP autocomplete
   'hrsh7th/cmp-nvim-lsp';

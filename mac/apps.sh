@@ -41,6 +41,7 @@ dockerfile-language-server-nodejs graphql-language-service-cli
 typescript-language-server vls yaml-language-server diagnostic-languageserver
 bash-language-server cssmodules-language-server ls-emmet
 
+
 # Neovide
 # brew install rustup-init
 # rustup-init
