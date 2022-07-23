@@ -14,7 +14,7 @@ alias gS='git status'
 alias gc='git commit -m'
 alias gac='git add . && git commit -m'
 alias gcpd='git checkout $(git_develop_branch) && git pull origin $(git_develop_branch)'
-alias gcpm='git checkout master && git pull origin master'
+alias gcpm='git checkout $(git_main_branch) && git pull origin $(git_main_branch)'
 alias gl='git log --all --graph --stat --oneline --decorate --source --pretty=format:"%Cblue %h %C(bold red)- <%an> -%C(green) (%ar)%C(auto)%d%n%C(yellow) %s"'
 alias lz="lazygit"
  
