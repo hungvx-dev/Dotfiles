@@ -1,45 +1,3 @@
--- local status, lualine = pcall(require, "lualine")
--- if (not status) then return end
-
--- lualine.setup {
---   options = {
---     icons_enabled = true,
---     section_separators = {left = '', right = ''},
---     component_separators = {left = '', right = ''},
---     disabled_filetypes = {}
---   },
---   sections = {
---     lualine_a = {'mode'},
---     lualine_b = {'branch'},
---     -- lualine_c = {{
---     --   'filename',
---     --   file_status = true, -- displays file status (readonly status, modified status)
---     --   path = 0 -- 0 = just filename, 1 = relative path, 2 = absolute path
---     -- }},
---     lualine_x = {
---       { 'diagnostics', sources = {"nvim_diagnostic"}, symbols = {error = ' ', warn = ' ', info = ' ', hint = ' '} },
---       'encoding',
---       'filetype'
---     },
---     -- lualine_y = {},
---     lualine_z = {'location'}
---   },
---   inactive_sections = {
---     lualine_a = {},
---     lualine_b = {},
---     -- lualine_c = {{
---     --   'filename',
---     --   file_status = true, -- displays file status (readonly status, modified status)
---     --   path = 1 -- 0 = just filename, 1 = relative path, 2 = absolute path
---     -- }},
---     lualine_x = {'location'},
---     -- lualine_y = {},
---     -- lualine_z = {}
---   },
---   tabline = {},
---   extensions = {'nvim-tree', 'symbols-outline'}
--- }
-
 local status_ok, lualine = pcall(require, "lualine")
 if not status_ok then
   return
@@ -49,6 +7,7 @@ local status_theme_ok, theme = pcall(require, "lualine.themes.material")
 if not status_theme_ok then
   return
 end
+local git_blame = require('gitblame')
 
 vim.api.nvim_set_hl(0, "SLGitIcon", { fg = "#E8AB53", bg = "#303030" })
 vim.api.nvim_set_hl(0, "SLBranchName", { fg = "#D4D4D4", bg = "#303030", bold = false })
@@ -81,15 +40,12 @@ local mode_color = {
 }
 
 local mode = {
-  -- mode component
   function()
     return "▊"
   end,
   color = function()
-    -- auto change color according to neovims mode
     return { fg = mode_color[vim.fn.mode()] }
   end,
-  -- padding = { right = 1 },
   padding = 0,
 }
 
@@ -100,8 +56,8 @@ end
 local icons = require "plugins.icons"
 
 local diagnostics = {
-  'diagnostics', 
-  sources = {"nvim_diagnostic"}, 
+  'diagnostics',
+  sources = {"nvim_diagnostic"},
   sections = { "error", "warn" },
   symbols = { error = icons.diagnostics.Error .. " ", warn = icons.diagnostics.Warning .. " " },
   colored = true,
@@ -117,17 +73,10 @@ local diff = {
   separator = "%#SLSeparator#" .. "│ " .. "%*",
 }
 
--- local mode = {
---   "mode",
---   fmt = function(str)
---     return "-- " .. str .. " --"
---   end,
--- }
 
 local filetype = {
   "filetype",
   icons_enabled = true,
-  -- icon = nil,
 }
 
 local branch = {
@@ -141,33 +90,18 @@ local branch = {
 local progress = {
   "progress",
   color = "SLProgress",
-  -- fmt = function(str)
-  --   print(vim.fn.expand(str))
-  --   if str == "1%" then
-  --     return "TOP"
-  --   end
-  --   if str == "100%" then
-  --     return "BOT"
-  --   end
-  --   return str
-  -- end,
-  -- padding = 0,
+  fmt = function(str)
+    print(vim.fn.expand(str))
+    if str == "1%" then
+      return "TOP"
+    end
+    if str == "100%" then
+      return "BOT"
+    end
+    return str
+  end,
+  padding = 0,
 }
-
--- local progress = {
---   "progress",
---   fmt = function(str)
---     print(vim.fn.expand(str))
---     if str == "1%" then
---       return "TOP"
---     end
---     if str == "100%" then
---       return "BOT"
---     end
---     return str
---   end,
---   -- padding = 0,
--- }
 
 local current_signature = function()
   if not pcall(require, "lsp_signature") then
@@ -210,23 +144,19 @@ lualine.setup {
     icons_enabled = true,
     -- theme = "auto",
     theme = theme,
-    -- section_separators = { left = "", right = "" },
     section_separators = {left = '', right = ''},
     component_separators = { left = "", right = "" },
-    -- component_separators = {left = '', right = ''},
     disabled_filetypes = { "alpha", "dashboard" },
     always_divide_middle = true,
   },
   sections = {
-    lualine_a = { "mode", branch },
+    lualine_a = { mode, branch },
     lualine_b = { diagnostics },
-    -- lualine_c = { { current_signature, cond = hide_in_width } },
-    lualine_c = {{
-      'filename',
-      file_status = true, -- displays file status (readonly status, modified status)
-      path = 1 -- 0 = just filename, 1 = relative path, 2 = absolute path
-    }},
-    -- lualine_x = { diff, spaces, "encoding", filetype },
+--       { 'diagnostics', sources = {"nvim_diagnostic"}, symbols = {error = ' ', warn = ' ', info = ' ', hint = ' '} },
+    lualine_c = {
+      { git_blame.get_current_blame_text, cond = git_blame.is_blame_text_available },
+      { current_signature, cond = hide_in_width }
+    },
     lualine_x = { diff, spaces, filetype },
     lualine_y = { progress },
     lualine_z = { location },
@@ -234,7 +164,11 @@ lualine.setup {
   inactive_sections = {
     lualine_a = {},
     lualine_b = {},
-    lualine_c = {},
+    lualine_c = {{
+      'filename',
+      file_status = true, -- displays file status (readonly status, modified status)
+      path = 1 -- 0 = just filename, 1 = relative path, 2 = absolute path
+    }},
     lualine_x = { "location" },
     lualine_y = {},
     lualine_z = {},

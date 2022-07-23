@@ -86,9 +86,12 @@ M.setup = function()
     -- height = 30,
   })
 
+
   vim.lsp.handlers["textDocument/signatureHelp"] = vim.lsp.with(vim.lsp.handlers.signature_help, {
+    virtual_text = false,
     border = "rounded",
     width = 60,
+    update_in_insert = false
     -- height = 30,
   })
 end
@@ -103,12 +106,15 @@ local function lsp_highlight_document(client)
   -- end
 end
 
+
+
 local function attach_navic(client, bufnr)
   vim.g.navic_silence = true
   local status_ok, navic = pcall(require, "nvim-navic")
   if not status_ok then
     return
   end
+  print(navic)
   navic.attach(client, bufnr)
 end
 
@@ -130,24 +136,19 @@ M.on_attach = function(client, bufnr)
   lsp_keymaps(bufnr)
   lsp_highlight_document(client)
   attach_navic(client, bufnr)
-
-  if client.name == "jdt.ls" then
-    -- TODO: instantiate capabilities in java file later
-    M.capabilities.textDocument.completion.completionItem.snippetSupport = false
-    vim.lsp.codelens.refresh()
-    if JAVA_DAP_ACTIVE then
-      require("jdtls").setup_dap { hotcodereplace = "auto" }
-      require("jdtls.dap").setup_dap_main_class_configs()
-    end
-  end
 end
 
 function M.enable_format_on_save()
   vim.cmd [[
     augroup format_on_save
       autocmd! 
-      autocmd BufWritePre * lua vim.lsp.buf.format({ async = true }) 
+      autocmd BufWritePre * lua vim.lsp.buf.format({ async = true })
     augroup end
+
+    -- augroup LspFormatting
+    --   autocmd! * <buffer>
+    --   autocmd BufWritePre <buffer> LspToggleAutoFormat
+    -- augroup end
   ]]
   vim.notify "Enabled format on save"
 end

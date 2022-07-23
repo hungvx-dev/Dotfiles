@@ -11,11 +11,12 @@ ln -s $(pwd)/zsh ~/.config/zsh
 ln -s $(pwd)/zsh/history ~/.cache/zsh/history
 
 # Git config
-rm -rf ~/config/ssh
+rm -rf ~/config/ssh/config
 rm -f ~/config/lazygit
 rm -f ~/.gitconfig
-ln -s $(pwd)/ssh ~/.config/ssh
-ln -s $(pwd)/.gitconfig ~/.gitconfig
+ln -s $(pwd)/ssh/config ~/.config/ssh/config
+ln -s $(pwd)/ssh/.gitconfig ~/.gitconfig
+ln -s $(pwd)/ssh/.gitconfig-hodfords ~/.gitconfig-hodfords
 ln -s $(pwd)/lazygit/config.yml ~/.config/lazygit/config.yml
 
 # Script

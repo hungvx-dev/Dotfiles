@@ -1,4 +1,3 @@
-local lspconfig = require'lspconfig'
 local lspconfig_configs = require'lspconfig.configs'
 local lspconfig_util = require 'lspconfig.util'
 
@@ -13,20 +12,15 @@ local VOLAR_DEBUG = false
 -- Document - port 6010
 -- Html - port 6011
 --
-function volar_debug_cmd_factory(port, executable_path)
+local function volar_debug_cmd_factory(port, executable_path)
   if VOLAR_DEBUG then
     return {'node', '--inspect=:' .. port, executable_path, '--stdio'}
   end
+
   return volar_cmd 
 end
 
-function get_typescript_server_path(root_dir)
-  local project_root = lspconfig_util.find_node_modules_ancestor(root_dir)
-  return project_root and (lspconfig_util.path.join(project_root, 'node_modules', 'typescript', 'lib', 'tsserverlibrary.js'))
-  or ''
-end
-
-function get_smartass_typescript_server_path(root_dir)
+local function get_smartass_typescript_server_path(root_dir)
   local project_root = lspconfig_util.find_node_modules_ancestor(root_dir)
   local local_tsserverlib = project_root ~= nil and lspconfig_util.path.join(project_root, 'node_modules', 'typescript', 'lib', 'tsserverlibrary.js')
   local global_tsserverlib = '/lib/node_modules/typescript/lib/tsserverlibrary.js'
@@ -37,7 +31,7 @@ function get_smartass_typescript_server_path(root_dir)
   end
 end
 
-function smartass_on_new_config(new_config, new_root_dir)
+local function smartass_on_new_config(new_config, new_root_dir)
   new_config.init_options.typescript.serverPath = get_smartass_typescript_server_path(new_root_dir)
 end
 

@@ -1,16 +1,5 @@
 require 'plugins/lsp/init'
--- Border hover lsp info
--- local lsp = vim.lsp
--- lsp.handlers["textDocument/hover"] = lsp.with(vim.lsp.handlers.hover, {border = "single"})
--- lsp.handlers["textDocument/signatureHelp"] = lsp.with(vim.lsp.handlers.signature_help, {border = "single"})
-
--- Allow show function info while typing
--- require"lsp_signature".setup({
---   bind = true, -- This is mandatory, otherwise border config won't get registered.
---   floating_window = true,
---   handler_opts = {border = "rounded"}
--- })
-
+print(123)
 
 -- vim.g.symbols_outline = {
 --   highlight_hovered_item = true,

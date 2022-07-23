@@ -88,7 +88,7 @@ set rnu
 " CURSOR {{
 set mouse=a
 set mousehide " ----------------------------------------- Hide mouse when typing
-" set cursorline
+set cursorline
 set ruler " -------------- Display current cursor position in lower right corner
 " }}
 
@@ -213,9 +213,10 @@ autocmd BufRead,BufNewFile * :syntax on
 hi IndentBlanklineIndent5 guifg=#61AFEF gui=nocombine
 hi IndentBlanklineIndent6 guifg=#304866 gui=nocombine
 
-let g:gitblame_date_format = '%r,%x,%X'
+let g:gitblame_display_virtual_text = 0 
+let g:gitblame_date_format = '%r, %d/%m/%y %H:%M'
 let g:gitblame_message_template = '<author> | <date> | <summary>'
-hi Search cterm=NONE ctermbg=black ctermfg=red
+" hi Search cterm=NONE ctermbg=black ctermfg=red
 
 let g:gitgutter_enabled = 1
 hi GitGutterAdd    guifg=#009900 ctermfg=2
