@@ -21,9 +21,10 @@ null_ls.setup {
     formatting.stylua,
     formatting.google_java_format,
     diagnostics.flake8,
-    null_ls.builtins.formatting.stylua,
-    -- null_ls.builtins.diagnostics.eslint,
     null_ls.builtins.completion.spell,
+    null_ls.builtins.diagnostics.eslint_d, -- eslint or eslint_d
+    null_ls.builtins.code_actions.eslint_d, -- eslint or eslint_d
+    null_ls.builtins.formatting.eslint_d -- prettier, eslint, eslint_d, or prettierd
   },
 }
 

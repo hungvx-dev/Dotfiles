@@ -91,7 +91,6 @@ local progress = {
   "progress",
   color = "SLProgress",
   fmt = function(str)
-    print(vim.fn.expand(str))
     if str == "1%" then
       return "TOP"
     end
@@ -155,7 +154,7 @@ lualine.setup {
 --       { 'diagnostics', sources = {"nvim_diagnostic"}, symbols = {error = ' ', warn = ' ', info = ' ', hint = ' '} },
     lualine_c = {
       { git_blame.get_current_blame_text, cond = git_blame.is_blame_text_available },
-      { current_signature, cond = hide_in_width }
+      -- { current_signature, cond = hide_in_width }
     },
     lualine_x = { diff, spaces, filetype },
     lualine_y = { progress },

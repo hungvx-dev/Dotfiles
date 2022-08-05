@@ -74,6 +74,10 @@ cmp.setup {
     -- Set `select` to `false` to only confirm explicitly selected items.
     ["<CR>"] = cmp.mapping.confirm { select = true },
     ["<Right>"] = cmp.mapping.confirm { select = true },
+    -- ['<C-Space>'] = cmp.mapping.confirm {
+    --   behavior = cmp.ConfirmBehavior.Insert,
+    --   select = true,
+    -- },
     ["<Tab>"] = cmp.mapping(function(fallback)
       if cmp.visible() then
         cmp.select_next_item()
@@ -122,30 +126,40 @@ cmp.setup {
     }),
   },
   sources = {
-    { name = "nvim_lsp", group_index = 2 , priority = 7 },
-    { name = "luasnip", group_index = 2, priority = 6 },
-    { name = "cmp_tabnine", group_index = 2, priority = 5 },
-    { name = "path", group_index = 2, priority = 5  },
-    { name = "nvim_lua", group_index = 2, priority = 4  },
-    { name = "buffer", group_index = 2, priority = 4 },
-    { name = 'spell',  group_index = 2, priority = 3 },
-    { name = "emoji", group_index = 2, priority = 1  },
+    -- { name = 'nvim_lsp_signature_help' },
+    { name = "nvim_lsp"},
+    -- { name = "luasnip" },
+    -- { name = "cmp_tabnine"},
+    { name = "path"},
+    -- { name = "nvim_lua"},
+    { name = "buffer" },
+    -- { name = 'spell'},
+    -- { name = "emoji"  },
+
+    -- { name = 'nvim_lsp_signature_help' },
+    -- { name = "nvim_lsp",  priority = 7 },
+    -- { name = "luasnip",  priority = 6 },
+    -- { name = "cmp_tabnine",  priority = 3 },
+    -- { name = "path",  priority = 6  },
+    -- { name = "nvim_lua", priority = 4  },
+    -- { name = "buffer", priority = 6, keyword_length = 3 },
+    -- { name = 'spell',   priority = 3 },
+    -- { name = "emoji",  priority = 1  },
   },
-  sorting = {
-    priority_weight = 1,
-    comparators = {
-      compare.score, -- based on :  score = score + ((#sources - (source_index - 1)) * sorting.priority_weight)
-  --     compare.offset,
-  --     -- compare.locality,
-  --     -- compare.recently_used,
-  --     -- compare.score, -- based on :  score = score + ((#sources - (source_index - 1)) * sorting.priority_weight)
-  --     -- compare.offset,
-  --     -- compare.order,
-      compareTabnine,
-    },
-  },
+  -- sorting = {
+  --   priority_weight = 1,
+    -- comparators = {
+      -- compare.score,
+      -- compare.offset,
+      -- compare.exact,
+      -- compare.kind,
+      -- compare.length,
+      -- compare.order,
+      -- compareTabnine,
+    -- },
+  -- },
   confirm_opts = {
-    behavior = cmp.ConfirmBehavior.Replace,
+    behavior = cmp.ConfirmBehavior.Insert,
     select = false,
   },
   window = {

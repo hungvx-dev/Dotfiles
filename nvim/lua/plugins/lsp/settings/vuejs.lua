@@ -2,11 +2,10 @@ local lspconfig_configs = require'lspconfig.configs'
 local lspconfig_util = require 'lspconfig.util'
 
 local volar_cmd = {'vue-language-server', '--stdio'}
-local volar_root_dir = lspconfig_util.root_pattern 'package.json'
+local volar_root_dir = lspconfig_util.root_pattern("package.json", ".git/")
 
 local filetypes = { 'typescript', 'javascript', 'javascriptreact', 'typescriptreact', 'vue' }
 local filetypes_with_json = { 'typescript', 'javascript', 'javascriptreact', 'typescriptreact', 'vue', 'json' }
-local debug_executable_path =  vim.fn.expand('~/dev/volar/packages/vue-language-server/out/node.js')
 local VOLAR_DEBUG = false
 -- Api - port 6009
 -- Document - port 6010
@@ -19,6 +18,9 @@ local function volar_debug_cmd_factory(port, executable_path)
 
   return volar_cmd 
 end
+
+local script_path = os.getenv("HOME") .. "/.local/src/volar/node_modules/@volar/server/out/index.js"
+local tslib_path = os.getenv("HOME") .. "/.local/src/volar/node_modules/typescript/lib/tsserverlibrary.js"
 
 local function get_smartass_typescript_server_path(root_dir)
   local project_root = lspconfig_util.find_node_modules_ancestor(root_dir)
@@ -43,8 +45,8 @@ local settings = {
       pugTools = true,
     },
     lowPowerMode = false,
-    formatting = { printWidth = 100 },
-    autoCompleteRefs = true,
+    -- formatting = { printWidth = 100 },
+    -- autoCompleteRefs = true,
     -- what am i smoking this is a vscode client option
     takeOverMode = { enabled = true}, -- default is "auto" which launches only when builtin vscode TS ext is enabled. wonder how that logic behaves in neovim where there's no such builtin TS ext
     completion = {
@@ -56,21 +58,6 @@ local settings = {
       port = 3333,
       backgroundColor = '#fff',
       transparentGrid = true,
-    }
-  },
-  ['volar-api'] = {
-    trace = {
-      server = 'verbose'
-    }
-  },
-  ['volar-document'] = {
-    trace = {
-      server = 'verbose'
-    }
-  },
-  ['volar-html'] = {
-    trace = {
-      server = 'verbose'
     }
   },
 }
@@ -150,16 +137,20 @@ local commands = {
   },
 }
 
-local volar_common = {
-  root_dir = volar_root_dir,
-  on_new_config = smartass_on_new_config,
-  trace = 'verbose',
-  settings = settings,
-}
+-- local volar_common = {
+--   root_dir = volar_root_dir,
+--   on_new_config = smartass_on_new_config,
+--   trace = 'verbose',
+--   settings = settings,
+-- }
 
-lspconfig_configs.volar_api = {
-  default_config = vim.tbl_extend('keep', volar_common, {
-    cmd = volar_debug_cmd_factory('6009', debug_executable_path),
+lspconfig_configs.volar = {
+  default_config = {
+    cmd = volar_cmd,
+    root_dir = volar_root_dir,
+    on_new_config = smartass_on_new_config,
+    trace = 'verbose',
+    settings = settings,
     filetypes = filetypes_with_json,
     commands = commands,
     init_options = {
@@ -181,61 +172,26 @@ lspconfig_configs.volar_api = {
         completion = {
           defaultTagNameCase = 'both',
           defaultAttrNameCase = 'kebabCase',
-          getDocumentNameCasesRequest = true,
-          getDocumentSelectionRequest = true,
+          -- getDocumentNameCasesRequest = true,
+          -- getDocumentSelectionRequest = true,
         },
-        schemaRequestService = {
-          getDocumentContentRequest = true,
-        },
-      }
-    }
-  }),
-}
-
-
-lspconfig_configs.volar_doc = {
-  default_config = vim.tbl_extend('keep', volar_common, {
-    cmd = volar_debug_cmd_factory('6010', debug_executable_path),
-    filetypes = filetypes_with_json,
-    init_options = {
-      typescript = {
-        serverPath = ''
-      },
-      languageFeatures = {
-        implementation = true,
+        schemaRequestService = true,
         documentHighlight = true,
         documentLink = true,
-        codeLens = { showReferencesNotification = true},
-        -- not supported - https://github.com/neovim/neovim/pull/15723
-        semanticTokens = false,
-        diagnostics = { getDocumentVersionRequest = false }, -- if you set this to true it'll crash volar-doc with "MethodNotFound: vue/docVersion"
-        schemaRequestService = { getDocumentContentRequest = false } -- dunno if this crashes the ls but I'm disabling because I'm scared
-      }
-    },
-  }),
-}
-
-lspconfig_configs.volar_html = {
-  default_config = vim.tbl_extend('keep', volar_common, {
-    cmd = volar_debug_cmd_factory('6011', debug_executable_path),
-    filetypes = filetypes,
-    init_options = {
-      typescript = {
-        serverPath = ''
+        codeLens = true,
+        semanticTokens = true,
+        diagnostics = true,
       },
       documentFeatures = {
         selectionRange = true,
         foldingRange = true,
         linkedEditingRange = true,
         documentSymbol = true,
-        documentColor = false,
-        -- if you run <space>f (<cmd>lua vim.lsp.buf.formatting())
-        -- I assume you don't want to - EVERY TIME YOU RUN THAT - see the prompt "which langserver should format this? eslint or volar" because 99% of the time it's going to be eslint
+        documentColor = true,
         documentFormatting = {
           defaultPrintWidth = 100,
-          getDocumentPrintWidthRequest = 100
         },
-      }
-    },
-  })
+      },
+    }
+  }
 }

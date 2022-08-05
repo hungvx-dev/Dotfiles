@@ -64,7 +64,6 @@ vim.g.dracula_lualine_bg_color = "#44475a"
 -- set italic comment
 vim.g.dracula_italic_comment = true
 
--- print(colors)
 --
 local colors = {
   white = "#abb2bf",

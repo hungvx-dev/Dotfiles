@@ -9,12 +9,14 @@ local servers = {
   "emmet_ls",
   "eslint",
   "html",
+  "tailwindcss",
   "jsonls",
   "sumneko_lua",
   "yamlls",
   "bashls",
   "tsserver",
   "volar",
+  -- "vls",
   "graphql",
   "diagnosticls",
   "dockerls",
@@ -75,8 +77,11 @@ for _, server in pairs(servers) do
     opts = vim.tbl_deep_extend("force", emmet_ls_opts, opts)
   end
 
+  if server == "volar" then
+    require "plugins.lsp.settings.vuejs"
+  end
+
   lspconfig[server].setup(opts)
-  -- ::continue::
 end
 
 -- TODO: add something to installer later

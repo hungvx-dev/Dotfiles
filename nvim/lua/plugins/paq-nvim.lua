@@ -55,6 +55,7 @@ require 'paq' {
   'saadparwaiz1/cmp_luasnip';
   'f3fora/cmp-spell'; -------------------- Spell suggestion
   "hrsh7th/cmp-emoji";
+  "hrsh7th/cmp-nvim-lsp-signature-help";
   { "tzachar/cmp-tabnine", run= './install.sh'}; 
 
   -- LSP Performance

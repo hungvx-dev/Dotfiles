@@ -114,7 +114,6 @@ local function attach_navic(client, bufnr)
   if not status_ok then
     return
   end
-  print(navic)
   navic.attach(client, bufnr)
 end
 
@@ -133,6 +132,7 @@ local function lsp_keymaps(bufnr)
 end
 
 M.on_attach = function(client, bufnr)
+  vim.api.nvim_buf_set_option(bufnr, 'omnifunc', 'v:lua.vim.lsp.omnifunc')
   lsp_keymaps(bufnr)
   lsp_highlight_document(client)
   attach_navic(client, bufnr)

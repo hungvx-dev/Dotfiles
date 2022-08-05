@@ -1,5 +1,4 @@
 require 'plugins/lsp/init'
-print(123)
 
 -- vim.g.symbols_outline = {
 --   highlight_hovered_item = true,
