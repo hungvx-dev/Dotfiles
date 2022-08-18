@@ -40,7 +40,7 @@ hi Comment cterm=italic gui=italic
 hi SpecialKey guifg=#4A4A59
 hi SignColumn guibg=transparent
 hi! link SignColumn LineNr
-hi cursorlinenr guifg=white guibg=#006969
+hi cursorlinenr guifg=#EFFF00 guibg=#006969
 " hi cursorlinenr guibg=#004748 guifg=#EFFF00
 " }}
 
@@ -111,7 +111,7 @@ set backspace=indent,eol,start
 " }}
 
 set list
-set listchars =tab:»\ ,extends:›,precedes:‹,nbsp:·,trail:·,space:⋅,eol:↴
+set listchars =tab:»\ ,extends:›,precedes:‹,nbsp:·,trail:·,space:,eol:↴
 
 set wrap
 set textwidth=80
@@ -133,7 +133,8 @@ set timeoutlen=1000
 
 " Folding {{
 set foldenable
-set foldmethod=indent
+set foldmethod=expr
+set foldexpr=nvim_treesitter#foldexpr()
 set foldnestmax=10
 set nofoldenable
 set foldlevel=0
@@ -218,10 +219,13 @@ let g:gitblame_date_format = '%r, %d/%m/%y %H:%M'
 let g:gitblame_message_template = '<author> | <date> | <summary>'
 " hi Search cterm=NONE ctermbg=black ctermfg=red
 
-let g:gitgutter_enabled = 1
-hi GitGutterAdd    guifg=#009900 ctermfg=2
-hi GitGutterChange guifg=#bbbb00 ctermfg=3
-hi GitGutterDelete guifg=#ff2222 ctermfg=1
+" let g:gitgutter_enabled = 1
+" hi GitGutterAdd    guifg=#009900 ctermfg=2
+" hi GitGutterChange guifg=#bbbb00 ctermfg=3
+" hi GitGutterDelete guifg=#ff2222 ctermfg=1
+hi GitSignsAdd    guifg=#009900 ctermfg=2
+hi GitSignsChange guifg=#bbbb00 ctermfg=3
+hi GitSignsDelete guifg=#ff2222 ctermfg=1
 hi rainbowcol1 guifg=#ff00004d
 
 hi QuickScopePrimary guifg='#afff5f' gui=underline ctermfg=155 cterm=underline

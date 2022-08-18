@@ -26,6 +26,7 @@ brew install neovim
 code --version && nvim --version
 
 brew install ripgrep
+brew install fd
 pip3 --version && python3 --version
 python3 -m pip install --upgrade pip
 pip3 install neovim
@@ -39,7 +40,7 @@ yarn global add lite-server eslint typescript
 yarn global add vscode-langservers-extracted vscode-vue-languageservice
 dockerfile-language-server-nodejs graphql-language-service-cli
 typescript-language-server vls yaml-language-server diagnostic-languageserver
-bash-language-server cssmodules-language-server ls-emmet
+bash-language-server cssmodules-language-server ls-emmet prettier eslint_d
 
 
 # Neovide

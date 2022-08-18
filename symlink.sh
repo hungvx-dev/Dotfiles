@@ -1,5 +1,6 @@
 # Terminal & Tmux config
 ln -s $(pwd)/alacritty ~/.config/alacritty
+ln -s $(pwd)/kitty ~/.config/kitty
 ln -s $(pwd)/.tmux/.tmux.conf.local ~/.tmux.conf.local
 ln -s $(pwd)/.tmux/.tmux.conf ~/.tmux.conf
 

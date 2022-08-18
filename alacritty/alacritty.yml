@@ -20,26 +20,28 @@ window:
 
 font:
   normal:
-    family: Hack NF
+    family: MesloLGS NF
     style: Regular
 
-  bold:
-    family: Hack NF
-    style: Bold
+  # bold:
+  #   family: Fira Code
+  #   style: Bold
 
-  italic:
-    family: Hack NF
-    style: Italic
+  # italic:
+  #   family: Fira Code
+  #   style: Italic
 
-  bold_italic:
-    family: Hack NF
-    style: Bold Italic
+  # bold_italic:
+  #   family: Fira Code
+  #   style: Bold Italic
 
-  size: 14
+  size: 13
 
 cursor:
   style:
     shape: Block
+
+alt_send_esc: false
 
 mouse:
   hide_when_typing: true
