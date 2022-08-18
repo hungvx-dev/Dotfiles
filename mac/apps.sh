@@ -5,6 +5,7 @@ brew update
 ## Tools
 brew install autojump
 brew install tmux
+brew install --cask kitty
 brew install fzf
 sudo apt install lazygit
 
@@ -34,10 +35,10 @@ pip3 install pynvim
 yarn global add neovim
 
 ## Package node - neovim
-yarn global add lite-server eslint typescript 
+npm install -g lite-server eslint_d typescript 
 
 ## Lsp
-yarn global add vscode-langservers-extracted vscode-vue-languageservice
+npm install -g vscode-langservers-extracted vscode-vue-languageservice
 dockerfile-language-server-nodejs graphql-language-service-cli
 typescript-language-server vls yaml-language-server diagnostic-languageserver
 bash-language-server cssmodules-language-server ls-emmet prettier eslint_d
