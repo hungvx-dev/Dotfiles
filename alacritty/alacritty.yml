@@ -20,7 +20,7 @@ window:
 
 font:
   normal:
-    family: MesloLGS NF
+    family: Hack
     style: Regular
 
   # bold:

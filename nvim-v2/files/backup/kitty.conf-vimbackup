@@ -1,0 +1,29 @@
+# include ./kitty-themes/themes/Dracula.conf
+include ./kitty-themes/themes/Tokyonight.conf
+
+term                xterm-256color
+# term                xterm-kitty
+
+font_family Fira Code
+font_size 12.0
+italic_font auto
+bold_font auto
+bold_italic_font auto
+dynamic_background_opacity yes
+background_opacity 0.9
+window_padding_width 0
+# adjust_line_height  0
+# adjust_column_width 0
+# adjust_baseline 0
+# box_drawing_scale   0.001, 1, 1.5, 2
+# background_opacity 0.5
+# background_tint 0.0
+
+cursor_stop_blinking_after 15.0
+sync_to_monitor yes
+enable_audio_bell yes
+allow_remote_control yes
+macos_hide_titlebar no
+macos_option_as_alt yes
+macos_hide_from_tasks no
+macos_show_window_title_in none

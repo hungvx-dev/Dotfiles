@@ -1,0 +1,8 @@
+-- Quick-scope
+vim.g.qs_filetype_blacklist = { "dashboard", "startify", "nvim-tree", "NvimTree", "Trouble", "alpha" }
+vim.g.qs_buftype_blacklist = { "terminal", "nofile" }
+vim.g.qs_lazy_highlight = 1
+vim.g.qs_max_char = 80
+
+-- Clever-f
+vim.g.clever_f_across_no_line = 1

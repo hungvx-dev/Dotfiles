@@ -1,0 +1,30 @@
+import 'element-plus/dist/index.css';
+import 'styles/main.scss';
+import 'vue3-carousel/dist/carousel.css';
+
+import { createApp } from 'vue';
+import { createPinia } from 'pinia';
+import { createMetaManager } from 'vue-meta';
+import elementPlus from 'element-plus';
+import masonry from 'vue-next-masonry';
+import draggable from 'vuedraggable';
+
+import i18n from 'config/i18n';
+import TheApplication from 'src/components/Application/TheApplication';
+import FontIcon from 'components/FontIcon';
+import router from './router';
+import DashboardLayout from './components/Layouts/DashboardLayout';
+
+const application = createApp(TheApplication);
+
+application
+  .use(router)
+  .use(i18n)
+  .use(elementPlus)
+  .use(createPinia())
+  .use(masonry)
+  .component('draggable', draggable)
+  .use(createMetaManager())
+  .component('FontIcon', FontIcon)
+  .component('DashboardLayout', DashboardLayout)
+  .mount('#app');

@@ -13,7 +13,7 @@ telescope.setup({
 		selection_caret = " ",
 		path_display = { "smart" },
 		initial_mode = "insert",
-		layout_strategy = "vertical",
+		layout_strategy = "horizontal",
 		entry_prefix = "  ",
 		winblend = 0,
 		-- vimgrep_arguments = {
@@ -29,7 +29,7 @@ telescope.setup({
 		layout_config = {
 			width = 0.8,
 			height = 0.8,
-			-- prompt_position = "bottom",
+			prompt_position = "top",
 			preview_cutoff = 10,
 			horizontal = { mirror = false },
 			vertical = { mirror = false },
