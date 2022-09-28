@@ -1,3 +1,4 @@
+local colors = require("tokyonight.colors").setup()
 local status_ok, lualine = pcall(require, "lualine")
 if not status_ok then
   return
@@ -13,22 +14,17 @@ if not status_icons_ok then
   return
 end
 
--- local git_blame = require("gitblame")
--- local navic = require("nvim-navic")
-
 vim.api.nvim_set_hl(0, "SLGitIcon", { fg = "#E8AB53", bg = "#303030" })
-vim.api.nvim_set_hl(0, "SLBranchName", { fg = "#D4D4D4", bg = "#303030", bold = false })
--- vim.api.nvim_set_hl(0, "SLProgress", { fg = "#D7BA7D", bg = "#252525" })
+vim.api.nvim_set_hl(0, "SLBranchName", { fg = "#D4D4D4", bg = "#303030", bold = true })
 vim.api.nvim_set_hl(0, "SLProgress", { fg = "#D4D4D4", bg = "#303030" })
 vim.api.nvim_set_hl(0, "SLSeparator", { fg = "#808080", bg = "#252525" })
+vim.api.nvim_set_hl(0, "SLProgress", { fg = "#D7BA7D", bg = "#252525" })
 local mode_color = {
   n = "#569cd6",
   i = "#6a9955",
   v = "#c586c0",
   [""] = "#c586c0",
   V = "#c586c0",
-  -- c = '#B5CEA8',
-  -- c = '#D7BA7D',
   c = "#4EC9B0",
   no = "#569cd6",
   s = "#ce9178",
@@ -73,6 +69,12 @@ local diagnostics = {
 local diff = {
   "diff",
   colored = true,
+  diff_color = {
+    added    = { fg = colors.green },
+    modified = { fg = colors.orange },
+    removed  = { fg = colors.red },
+  },
+  color = { bg = colors.violet },
   symbols = { added = icons.gitAdd .. " ", modified = icons.gitChange .. " ", removed = icons.gitRemove .. " " }, -- changes diff symbols
   cond = hide_in_width,
   separator = "%#SLSeparator#" .. "│ " .. "%*",
@@ -81,30 +83,62 @@ local diff = {
 local filetype = {
   "filetype",
   icons_enabled = true,
+  symbols = {
+    unix = '', -- e712
+    dos = '', -- e70f
+    mac = '', -- e711
+  }
+}
+
+local fileformat = {
+  'fileformat',
+  color = { fg = colors.fg },
 }
 
 local branch = {
   "branch",
   icons_enabled = true,
   icon = "%#SLGitIcon#" .. "" .. "%*" .. "%#SLBranchName#",
-  -- color = "Constant",
-  colored = false,
+  colored = true,
+  color = { fg = colors.violet, gui = 'bold' },
 }
 
-local progress = {
-  "progress",
-  color = "SLProgress",
-  fmt = function(str)
-    if str == "1%" then
-      return "TOP"
+local lspServer = {
+  -- Lsp server name .
+  function()
+    local msg = 'No Active Lsp'
+    local buf_ft = vim.api.nvim_buf_get_option(0, 'filetype')
+    local clients = vim.lsp.get_active_clients()
+    if next(clients) == nil then
+      return msg
     end
-    if str == "100%" then
-      return "BOT"
+    for _, client in ipairs(clients) do
+      local filetypes = client.config.filetypes
+      if filetypes and vim.fn.index(filetypes, buf_ft) ~= -1 then
+        return client.name
+      end
     end
-    return str
+    return msg
   end,
-  padding = 1,
+  icon = ' LSP:',
+  color = { fg = colors.fg, gui = 'bold' },
 }
+
+
+-- local progress = {
+--   "progress",
+--   color = "SLProgress",
+--   fmt = function(str)
+--     if str == "1%" then
+--       return "TOP"
+--     end
+--     if str == "100%" then
+--       return "BOT"
+--     end
+--     return str
+--   end,
+--   padding = 1,
+-- }
 
 local current_signature = function()
   if not pcall(require, "lsp_signature") then
@@ -115,16 +149,15 @@ local current_signature = function()
   return "%#SLSeparator#" .. sig.hint .. "%*"
 end
 
--- cool function for progress
--- local progress = function()
---   local current_line = vim.fn.line "."
---   local total_lines = vim.fn.line "$"
---   local chars = { "__", "▁▁", "▂▂", "▃▃", "▄▄", "▅▅", "▆▆", "▇▇", "██" }
---   local line_ratio = current_line / total_lines
---   local index = math.ceil(line_ratio * #chars)
---   -- return chars[index]
---   return "%#SLProgress#" .. chars[index] .. "%*"
--- end
+local progress = function()
+  local current_line = vim.fn.line "."
+  local total_lines = vim.fn.line "$"
+  local chars = { "__", "▁▁", "▂▂", "▃▃", "▄▄", "▅▅", "▆▆", "▇▇", "██" }
+  local line_ratio = current_line / total_lines
+  local index = math.ceil(line_ratio * #chars)
+  -- return chars[index]
+  return "%#SLProgress#" .. chars[index] .. "%*"
+end
 
 local spaces = {
   function()
@@ -152,7 +185,7 @@ lualine.setup({
     globalstatus = true,
     icons_enabled = true,
     -- theme = "auto",
-    theme = theme,
+    theme = 'tokyonight',
     section_separators = { left = "", right = "" },
     component_separators = { left = "", right = "" },
     disabled_filetypes = { "alpha", "dashboard", "Outline", "dashboard", "fugitive", "gitcommit", "NvimTree" },
@@ -161,22 +194,31 @@ lualine.setup({
       statusline = 1000,
       tabline = 1000,
       winbar = 1000,
-    }
+    },
+    ignore_focus = {
+      'NvimTree',
+      'packer',
+      'toggleterm',
+      'dapui_scopes',
+      'dapui_stacks',
+      'dapui_breakpoints',
+      'dapui_watches',
+      'dap-repl',
+    },
   },
   sections = {
     lualine_a = { mode, branch },
     lualine_b = { diagnostics },
     --       { 'diagnostics', sources = {"nvim_diagnostic"}, symbols = {error = ' ', warn = ' ', info = ' ', hint = ' '} },
     lualine_c = {
-      -- { git_blame.get_current_blame_text, cond = git_blame.is_blame_text_available },
-      -- { current_signature, cond = hide_in_width }
+      lspServer
     },
     lualine_x = {
-      -- 	{ navic.get_location, cond = navic.is_available },
-      "diff"
+      progress,
+      diff
     },
-    lualine_y = { filetype, "filesize" },
-    lualine_z = { progress, location },
+    lualine_y = { filetype, fileformat, "filesize" },
+    lualine_z = { location },
   },
   inactive_sections = {
     lualine_a = {},
@@ -199,7 +241,6 @@ lualine.setup({
     "nerdtree",
     "nvim-dap-ui",
     "nvim-tree",
-    "quickfix",
     "symbols-outline",
     "toggleterm",
   },

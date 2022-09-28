@@ -62,8 +62,9 @@ return require('packer').startup({
     use { 'hrsh7th/cmp-buffer', after = 'cmp-nvim-lsp' }
     use { 'hrsh7th/cmp-path', after = 'cmp-buffer' }
     use { 'hrsh7th/cmp-cmdline', after = 'cmp-path' }
-    use { 'hrsh7th/cmp-calc', after = 'cmp-cmdline' }
-    use { 'tzachar/cmp-tabnine', run = './install.sh', requires = 'hrsh7th/nvim-cmp', after = 'cmp-calc' }
+    use { 'f3fora/cmp-spell', after = 'cmp-cmdline' }
+    -- use { 'hrsh7th/cmp-calc', after = 'cmp-cmdline' }
+    use { 'tzachar/cmp-tabnine', run = './install.sh', requires = 'hrsh7th/nvim-cmp', after = 'cmp-spell' }
     use { 'David-Kunz/cmp-npm', after = 'cmp-tabnine', requires = 'nvim-lua/plenary.nvim',
       config = "require('lsp.cmp-npm')" }
     use { 'saadparwaiz1/cmp_luasnip', after = 'cmp-npm' }
@@ -92,6 +93,11 @@ return require('packer').startup({
       config = "require('plugins.lualine')",
       requires = { 'kyazdani42/nvim-web-devicons', opt = true }
     }
+    -- use {
+    --   'kamykn/spelunker.vim',
+    --   config = "require('plugins.spelunker')",
+    -- }
+
     -- use { 'ecosse3/galaxyline.nvim', after = 'nvim-gps', config = "require('plugins.galaxyline')", event = "BufWinEnter" }
 
 
@@ -107,7 +113,8 @@ return require('packer').startup({
     use { 'kylechui/nvim-surround', config = function() require("nvim-surround").setup({}) end }
     use { 'kana/vim-textobj-entire', requires = { 'kana/vim-textobj-user' } }
     use { 'unblevable/quick-scope', config = "require('plugins.quick-scope')" }
-    use { 'rhysd/clever-f.vim' }
+    use { 'mg979/vim-visual-multi', config = function() vim.g.VM_leader = ";" end }
+    -- use { 'rhysd/clever-f.vim' }
 
 
     -- Git

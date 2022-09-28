@@ -8,8 +8,8 @@ local on_attach = function(client, bufnr)
 end
 
 M.on_attach = on_attach;
-M.cmd ={"vscode-eslint-language-server", "--stdio"};
-M.bin = 'eslint_d';
+M.cmd = { "vscode-eslint-language-server", "--stdio" };
+-- M.bin = 'eslint_d';
 M.diagnostics = {
   enable = true,
   report_unused_disable_directives = false,

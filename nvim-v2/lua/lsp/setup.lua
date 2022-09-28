@@ -12,7 +12,7 @@ local servers = {
   "cssls",
   "cssmodules_ls",
   "emmet_ls",
-  -- "eslint",
+  "eslint",
   "html",
   "tailwindcss",
   "jsonls",
@@ -64,7 +64,9 @@ local handlers = {
     virtual_text = EcoVim.lsp.virtual_text,
   }),
   ["textDocument/publishDiagnostics"] = vim.lsp.with(vim.lsp.diagnostic.on_publish_diagnostics,
-    { virtual_text = EcoVim.lsp.virtual_text,
+    {
+      border = EcoVim.ui.float.border,
+      virtual_text = EcoVim.lsp.virtual_text,
       focusable = false,
     }),
 }

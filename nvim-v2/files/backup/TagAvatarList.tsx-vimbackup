@@ -1,8 +1,0 @@
-import { defineComponent } from 'vue';
-
-export default defineComponent({
-  name: 'TagAvatarList',
-  setup(props) {
-    return (): JSX.Element => <>list</>;
-  },
-});

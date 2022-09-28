@@ -76,6 +76,8 @@ nvim_tree.setup {
         default = "",
         symlink = "",
         folder = {
+          -- arrow_open = "",
+          -- arrow_closed = "",
           arrow_open = icons.chevronOpen,
           arrow_closed = icons.chevronRight,
           default = "",
@@ -142,14 +144,14 @@ nvim_tree.setup {
     cmd = "trash",
     require_confirm = true
   },
-  log                                = {
-    enable = false,
-    truncate = true,
-    types = {
-      git = true,
-      profile = true,
-    },
-  },
+  -- log                                = {
+  --   enable = false,
+  --   truncate = true,
+  --   types = {
+  --     git = true,
+  --     profile = true,
+  --   },
+  -- },
 }
 
 vim.api.nvim_set_keymap("n", "<C-t>", "<cmd>lua require'nvim-tree'.toggle()<CR>", { noremap = true, silent = true })

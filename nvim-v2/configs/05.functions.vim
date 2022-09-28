@@ -70,4 +70,4 @@ function! s:Bclose(bang, buffer)
 endfunction
 
 command! -bang -complete=buffer -nargs=? Bclose call <SID>Bclose(<q-bang>, <q-args>)
-nnoremap <silent> bd :Bclose<CR>
+nnoremap <silent> <leader>bd :Bclose<CR>

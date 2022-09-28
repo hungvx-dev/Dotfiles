@@ -24,8 +24,8 @@ nnoremap <C-j> <C-W>j
 nnoremap <C-k> <C-W>k
 nnoremap <C-l> <C-W>l
 nnoremap <C-h> <C-W>h
-nnoremap <expr> k v:count == 0 ? 'gk' : 'k'
-nnoremap <expr> j v:count == 0 ? 'gj' : 'j'
+" nnoremap <expr> k v:count == 0 ? 'gk' : 'k'
+" nnoremap <expr> j v:count == 0 ? 'gj' : 'j'
 
 " nnoremap H ^
 nnoremap H ^
@@ -45,7 +45,7 @@ nnoremap <leader>" :split<CR>
 " nnoremap gm m
 
 " noremap ; :
-inoremap jj <esc>
+" inoremap jj <esc>
 nnoremap <silent> <leader><CR> :noh<CR>
 
 " inoremap <C-j> <Esc>:m .+1<CR>==gi
@@ -61,6 +61,7 @@ nnoremap gT :bprevious <CR>
 " nnoremap <tab> :tabnext<CR>
 " nnoremap <S-tab> :tabprevious<CR>
 " }}
+nnoremap <silent> <F5> :set spell!<cr>
 
 " Disable Ctrl-Z
 nnoremap <c-z> <NOP>

@@ -55,10 +55,19 @@ local on_attach = function(client, bufnr)
 end
 
 local handlers = {
-  ["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, { border = EcoVim.ui.float.border }),
-  ["textDocument/signatureHelp"] = vim.lsp.with(vim.lsp.handlers.signature_help, { border = EcoVim.ui.float.border }),
+  ["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, { border = EcoVim.ui.float.border,
+    focusable = false,
+  }),
+  ["textDocument/signatureHelp"] = vim.lsp.with(vim.lsp.handlers.signature_help, { border = EcoVim.ui.float.border,
+    focusable = false,
+    virtual_text = EcoVim.lsp.virtual_text,
+  }),
   ["textDocument/publishDiagnostics"] = vim.lsp.with(vim.lsp.diagnostic.on_publish_diagnostics,
-    { virtual_text = EcoVim.lsp.virtual_text }),
+    {
+      focusable = false,
+      border = EcoVim.ui.float.border,
+      virtual_text = EcoVim.lsp.virtual_text
+    }),
   ["textDocument/definition"] = function(_, result, params)
     local util = require("vim.lsp.util")
     if result == nil or vim.tbl_isempty(result) then
@@ -84,7 +93,7 @@ local handlers = {
         end
         if not isReactDTs then
           -- this sets the value for the quickfix list
-          util.set_qflist(util.locations_to_items(result))
+          vim.diagnostic.setqflist(util.locations_to_items(result))
           -- this opens the quickfix window
           vim.api.nvim_command("copen")
           vim.api.nvim_command("wincmd p")

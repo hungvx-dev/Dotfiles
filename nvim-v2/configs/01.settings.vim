@@ -3,7 +3,7 @@ let speeddating_no_mappings=1
 let &t_Cs = "\e[4:3m"
 let &t_Ce = "\e[4:0m"
 
-" System {{{ ==================================================================
+" System {{{ ===================================================================
 set mouse=a
 set clipboard+=unnamed,unnamedplus
 set timeout
@@ -27,6 +27,13 @@ set updatecount =100
 set undofile
 set undodir     =$HOME/.config/nvim/files/undo/
 set viminfo     ='1000,n$HOME/.config/nvim/files/info/viminfo
+" Spell"
+set nospell " ------------------------------------------- Enable spelling checking
+set spelllang=en_us " ----------------------------------------- Default language
+set spelloptions=camel " -------------------------------------- Support JS camel
+set spellsuggest=best,9
+set complete+=kspell
+set spellfile=$HOME/.config/nvim/files/spell/en.fut-8.add
 " }}}
 
 
@@ -85,12 +92,12 @@ set t_vb=
 
 
 " Folding {{{ ==================================================================
-set foldenable
-set foldmethod=marker
+" set foldenable
+" set foldmethod=marker
 " set foldcolumn=0
-set foldnestmax=0
-set foldlevel=99
-set foldlevelstart=99
+" set foldnestmax=0
+" set foldlevel=99
+" set foldlevelstart=99
 " }}}
 
 
@@ -125,12 +132,12 @@ set conceallevel=0
 " set virtualedit=all
 set list
 set listchars =tab:»\ ,extends:→,precedes:←,nbsp:·,trail:·,eol:↴
-" set statusline=-
+set statusline=\ 
 set fillchars=stl:-
 set fillchars+=stlnc:-
 set fillchars+=vert:\|
 set fillchars+=fold:\ 
 set fillchars+=foldopen:\ 
 set fillchars+=foldsep:\ 
-set fillchars+=foldclose: 
+set fillchars+=foldclose:
 " }}}
