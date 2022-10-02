@@ -1,6 +1,6 @@
 local function highlight_cursorword()
   if vim.g.cursorword_highlight ~= false then
-    vim.cmd('highlight CursorWord term=underline cterm=underline gui=underline')
+    vim.cmd('highlight CursorWord guibg=#3A3B50')
   end
 end
 

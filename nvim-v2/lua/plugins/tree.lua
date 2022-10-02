@@ -3,8 +3,6 @@ local status_ok, nvim_tree = pcall(require, "nvim-tree")
 if not status_ok then
   return
 end
-local nvim_tree_events = require('nvim-tree.events')
-local bufferline_state = require('bufferline.state')
 local icons = require("icons")
 
 local TREE_WIDTH = 40
@@ -18,7 +16,6 @@ local git_icons = {
   deleted = "",
   ignored = "◌"
 }
-
 
 nvim_tree.setup {
   disable_netrw                      = true, -- disables netrw completely
@@ -156,20 +153,22 @@ nvim_tree.setup {
 
 vim.api.nvim_set_keymap("n", "<C-t>", "<cmd>lua require'nvim-tree'.toggle()<CR>", { noremap = true, silent = true })
 
-
-local function get_tree_size()
-  return require 'nvim-tree.view'.View.width
-end
-
+-- local nvim_tree_events = require('nvim-tree.events')
+-- local bufferline_api = require('bufferline.api')
 --
-nvim_tree_events.subscribe('TreeOpen', function()
-  bufferline_state.set_offset(get_tree_size())
-end)
+-- local function get_tree_size()
+--   return require 'nvim-tree.view'.View.width
+-- end
 
-nvim_tree_events.subscribe('Resize', function()
-  bufferline_state.set_offset(get_tree_size())
-end)
+-- bufferline_api.set_offset(40)
+-- nvim_tree_events.subscribe('TreeOpen', function()
+  -- bufferline_api.set_offset(40)
+-- end)
 
-nvim_tree_events.subscribe('TreeClose', function()
-  bufferline_state.set_offset(0)
-end)
+-- nvim_tree_events.subscribe('Resize', function()
+--   bufferline_api.set_offset(get_tree_size())
+-- end)
+--
+-- nvim_tree_events.subscribe('TreeClose', function()
+--   bufferline_api.set_offset(0)
+-- end)

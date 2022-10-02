@@ -1,29 +1,29 @@
 local status_ok, configs = pcall(require, "nvim-treesitter.configs")
 if not status_ok then
-	return
+  return
 end
 
 configs.setup {
-	ensure_installed = {
-		"typescript",
-		"javascript",
-		"html",
-		"css",
-		"bash",
-		"json",
-		"scss",
-		"tsx",
-		"vue",
-		"comment",
-		"dockerfile",
-		"graphql",
-		"lua",
-		"yaml",
-	},
-  sync_install = true,            -- install languages synchronously (only applied to `ensure_installed`)
+  ensure_installed = {
+    "typescript",
+    "javascript",
+    "html",
+    "css",
+    "bash",
+    "json",
+    "scss",
+    "tsx",
+    "vue",
+    "comment",
+    "dockerfile",
+    "graphql",
+    "lua",
+    "yaml",
+  },
+  sync_install = true, -- install languages synchronously (only applied to `ensure_installed`)
 
-	-- autotag = { enable = true },
-  ignore_install = { "haskell" },  -- list of parsers to ignore installing
+  -- autotag = { enable = true },
+  ignore_install = { "haskell" }, -- list of parsers to ignore installing
   highlight = {
     enable = true,
     -- disable = { "c", "rust" },  -- list of language that will be disabled
@@ -47,7 +47,7 @@ configs.setup {
   rainbow = {
     enable = true,
     extended_mode = true,
- },
+  },
 
   context_commentstring = {
     enable = true,
@@ -55,26 +55,26 @@ configs.setup {
   },
 
   textobjects = {
-   -- move = {
-   --   enable = true,
-   --   set_jumps = true, -- whether to set jumps in the jumplist
-   --   goto_next_start = {
-   --     ["]]"] = "@function.outer",
-   --     ["]m"] = "@class.outer",
-   --   },
-   --   goto_next_end = {
-   --     ["]["] = "@function.outer",
-   --     ["]M"] = "@class.outer",
-   --   },
-   --   goto_previous_start = {
-   --     ["[["] = "@function.outer",
-   --     ["[m"] = "@class.outer",
-   --   },
-   --   goto_previous_end = {
-   --     ["[]"] = "@function.outer",
-   --     ["[M"] = "@class.outer",
-   --   },
-   -- },
+    -- move = {
+    --   enable = true,
+    --   set_jumps = true, -- whether to set jumps in the jumplist
+    --   goto_next_start = {
+    --     ["]]"] = "@function.outer",
+    --     ["]m"] = "@class.outer",
+    --   },
+    --   goto_next_end = {
+    --     ["]["] = "@function.outer",
+    --     ["]M"] = "@class.outer",
+    --   },
+    --   goto_previous_start = {
+    --     ["[["] = "@function.outer",
+    --     ["[m"] = "@class.outer",
+    --   },
+    --   goto_previous_end = {
+    --     ["[]"] = "@function.outer",
+    --     ["[M"] = "@class.outer",
+    --   },
+    -- },
     select = {
       enable = true,
 
@@ -83,31 +83,31 @@ configs.setup {
 
       keymaps = {
         -- You can use the capture groups defined in textobjects.scm
-				["af"] = "@function.outer",
-				["if"] = "@function.inner",
-				["ac"] = "@class.outer",
-				["ic"] = "@class.inner",
-				["ia"] = "@parameter.inner",
-				["aa"] = "@parameter.outer",
-				["as"] = "@statement.outer",
-				["ai"] = "@conditional.outer",
-				["ii"] = "@conditional.inner",
-				["ak"] = "@block.inner",
-				["ik"] = "@block.outer",
+        ["af"] = "@function.outer",
+        ["if"] = "@function.inner",
+        ["ac"] = "@class.outer",
+        ["ic"] = "@class.inner",
+        ["ia"] = "@parameter.inner",
+        ["aa"] = "@parameter.outer",
+        ["ai"] = "@conditional.outer",
+        ["ii"] = "@conditional.inner",
+        ["ak"] = "@block.outer",
+        ["ik"] = "@block.inner",
+        ["as"] = "@statement.outer",
       },
     },
-   -- swap = {
-   --   enable = true,
-   --   swap_next = {
-   --     ["~"] = "@parameter.inner",
-   --   },
-   -- },
+    -- swap = {
+    --   enable = true,
+    --   swap_next = {
+    --     ["~"] = "@parameter.inner",
+    --   },
+    -- },
   },
 
- -- textsubjects = {
- --   enable = true,
- --   keymaps = {
- --     ['<cr>'] = 'textsubjects-smart', -- works in visual mode
- --   }
- -- },
+  -- textsubjects = {
+  --   enable = true,
+  --   keymaps = {
+  --     ['<cr>'] = 'textsubjects-smart', -- works in visual mode
+  --   }
+  -- },
 }

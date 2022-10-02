@@ -132,12 +132,14 @@ set conceallevel=0
 " set virtualedit=all
 set list
 set listchars =tab:»\ ,extends:→,precedes:←,nbsp:·,trail:·,eol:↴
-set statusline=\ 
-set fillchars=stl:-
-set fillchars+=stlnc:-
-set fillchars+=vert:\|
+" set statusline=\ 
+set fillchars=stl:\ 
+set fillchars+=stlnc:\ 
+" set fillchars+=vert:\|
+set fillchars+=eob:\ 
 set fillchars+=fold:\ 
-set fillchars+=foldopen:\ 
-set fillchars+=foldsep:\ 
-set fillchars+=foldclose:
+set fillchars+=foldsep:\│
+set fillchars+=foldopen:
+set fillchars+=foldclose:❯
 " }}}
+"

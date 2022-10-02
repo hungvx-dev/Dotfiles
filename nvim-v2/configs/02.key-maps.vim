@@ -74,16 +74,14 @@ vnoremap > >gv
 " nnoremap <C-t> :NvimTreeToggle<CR>
 nnoremap <leader>n :NvimTreeFindFile<CR>
 
-" nnoremap gf :PrettierAsync<CR>
-" nnoremap <leader>i :EslintFixAll<CR>
-"
 " nnoremap <M-n> <cmd>lua require"illuminate".next_reference{wrap=true}<cr>
 " nnoremap <M-p> <cmd>lua require"illuminate".next_reference{reverse=true,wrap=true}<cr>
 
-" nnoremap <leader>xw <cmd>TroubleToggle workspace_diagnostics<cr>
-" nnoremap <leader>xd <cmd>TroubleToggle document_diagnostics<cr>
-" nnoremap <leader>xq <cmd>TroubleToggle quickfix<cr>
-" nnoremap <leader>xl <cmd>TroubleToggle loclist<cr>
+nnoremap <leader>xx <cmd>TroubleToggle<cr>
+nnoremap <leader>xw <cmd>TroubleToggle workspace_diagnostics<cr>
+nnoremap <leader>xd <cmd>TroubleToggle document_diagnostics<cr>
+nnoremap <leader>xq <cmd>TroubleToggle quickfix<cr>
+nnoremap <leader>xl <cmd>TroubleToggle loclist<cr>
 " nnoremap gr <cmd>TroubleToggle lsp_references<cr>
 
 
@@ -98,5 +96,3 @@ nnoremap <leader>fk <cmd>Telescope keymaps<cr>
 
 
 nnoremap <leader>q <cmd>lua require('utils').toggle_quicklist()<cr>
-
-

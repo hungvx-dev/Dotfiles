@@ -31,3 +31,6 @@ keyof
 lang
 #ction
 middleware
+colorscheme
+tokyonight
+whitespace

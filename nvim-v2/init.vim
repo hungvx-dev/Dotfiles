@@ -15,7 +15,8 @@ lua require('autocmds')
 lua require('functions')
 " lua require('internal.cursorword')
 
-"
-lua require('lsp.config')
-lua require('lsp.setup')
-lua require('lsp.functions')
+" lua require("lsp.handlers").setup()
+lua require("lsp.config")
+lua require("lsp.setup")
+lua require("lsp.functions")
+lua require("lsp.null-ls")
