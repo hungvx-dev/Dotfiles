@@ -69,7 +69,7 @@ set noemoji
 " set laststatus=2
 set scrolloff=8
 set noswapfile
-set scroll=10
+" set scroll=10
 set display+=lastline
 set ruler
 set cursorline

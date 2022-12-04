@@ -1,147 +1,147 @@
-local actions    = require('telescope.actions')
-local previewers = require('telescope.previewers')
-local builtin    = require('telescope.builtin')
-local trouble    = require("trouble.providers.telescope")
-local icons      = EcoVim.icons;
+local actions = require("telescope.actions")
+local previewers = require("telescope.previewers")
+local builtin = require("telescope.builtin")
+local trouble = require("trouble.providers.telescope")
+local icons = EcoVim.icons
 
-require('telescope').load_extension('fzf')
+require("telescope").load_extension("fzf")
 -- require("telescope").load_extension("git_worktree")
 -- require('telescope').load_extension('repo')
 
 local git_icons = {
-  added = icons.gitAdd,
-  changed = icons.gitChange,
-  copied = ">",
-  deleted = icons.gitRemove,
-  renamed = "➡",
-  unmerged = "‡",
-  untracked = "?",
+	added = icons.gitAdd,
+	changed = icons.gitChange,
+	copied = ">",
+	deleted = icons.gitRemove,
+	renamed = "➡",
+	unmerged = "‡",
+	untracked = "?",
 }
 
-require('telescope').setup {
-  defaults = {
-    path_display      = { "smart" },
-    selection_caret   = " ",
-    initial_mode      = "insert",
-    vimgrep_arguments = {
-      'rg',
-      '--color=never',
-      '--no-heading',
-      '--with-filename',
-      '--line-number',
-      '--column',
-      '--smart-case'
-    },
-    layout_config     = {
-      horizontal = {
-        preview_cutoff = 120,
-      },
-      prompt_position = "top",
-    },
-    file_sorter       = require('telescope.sorters').get_fzy_sorter,
-    prompt_prefix     = '  ',
-    color_devicons    = true,
+require("telescope").setup({
+	defaults = {
+		path_display = { "smart" },
+		selection_caret = " ",
+		initial_mode = "insert",
+		vimgrep_arguments = {
+			"rg",
+			"--color=never",
+			"--no-heading",
+			"--with-filename",
+			"--line-number",
+			"--column",
+			"--smart-case",
+		},
+		layout_config = {
+			horizontal = {
+				preview_cutoff = 120,
+			},
+			prompt_position = "top",
+		},
+		file_sorter = require("telescope.sorters").get_fzy_sorter,
+		prompt_prefix = "  ",
+		color_devicons = true,
 
-    git_icons = git_icons,
+		git_icons = git_icons,
 
-    sorting_strategy = "ascending",
+		sorting_strategy = "ascending",
 
-    file_previewer   = require('telescope.previewers').vim_buffer_cat.new,
-    grep_previewer   = require('telescope.previewers').vim_buffer_vimgrep.new,
-    qflist_previewer = require('telescope.previewers').vim_buffer_qflist.new,
+		file_previewer = require("telescope.previewers").vim_buffer_cat.new,
+		grep_previewer = require("telescope.previewers").vim_buffer_vimgrep.new,
+		qflist_previewer = require("telescope.previewers").vim_buffer_qflist.new,
 
-    mappings = {
-      i = {
-        ["<C-x>"] = false,
-        ["<C-n>"] = actions.cycle_history_next,
-        ["<C-p>"] = actions.cycle_history_prev,
-        ["<C-j>"] = actions.move_selection_next,
-        ["<C-k>"] = actions.move_selection_previous,
-        ["<C-q>"] = actions.smart_send_to_qflist + actions.open_qflist,
-        ["<C-s>"] = actions.select_horizontal,
-        ["<C-v>"] = actions.select_vertical,
-        ["<C-b>"] = actions.results_scrolling_up,
-        ["<C-f>"] = actions.results_scrolling_down,
-        ["<C-c>"] = actions.close,
-        -- ["<c-t>"] = trouble.open_with_trouble,
-      },
-      n = {
-        ["<ESC>"] = actions.close,
-        ["<C-s>"] = actions.select_horizontal,
-        ["<C-v>"] = actions.select_vertical,
-        ["<C-u>"] = actions.preview_scrolling_up,
-        ["<C-d>"] = actions.preview_scrolling_down,
-        -- ["<c-t>"] = trouble.open_with_trouble,
-      }
-    }
-  },
-  pickers = {
-    find_files = {
-      hidden = true,
-    },
-  },
-  extensions = {
-    fzf = {
-      fuzzy = true,
-      override_generic_sorter = true,
-      override_file_sorter = true,
-      case_mode = "smart_case",
-    }
-  },
-  file_ignore_patterns = {
-    ".git/",
-    "target/",
-    "docs/",
-    "vendor/*",
-    "%.lock",
-    "__pycache__/*",
-    "%.sqlite3",
-    "%.ipynb",
-    "node_modules/*",
-    -- "%.jpg",
-    -- "%.jpeg",
-    -- "%.png",
-    "%.svg",
-    "%.otf",
-    "%.ttf",
-    "%.webp",
-    ".dart_tool/",
-    ".github/",
-    ".gradle/",
-    ".idea/",
-    ".settings/",
-    ".vscode/",
-    "__pycache__/",
-    "build/",
-    "env/",
-    "gradle/",
-    "node_modules/",
-    "%.pdb",
-    "%.dll",
-    "%.class",
-    "%.exe",
-    "%.cache",
-    "%.ico",
-    "%.pdf",
-    "%.dylib",
-    "%.jar",
-    "%.docx",
-    "%.met",
-    "smalljre_*/*",
-    ".vale/",
-    "%.burp",
-    "%.mp4",
-    "%.mkv",
-    "%.rar",
-    "%.zip",
-    "%.7z",
-    "%.tar",
-    "%.bz2",
-    "%.epub",
-    "%.flac",
-    "%.tar.gz",
-  },
-}
+		mappings = {
+			i = {
+				["<C-x>"] = false,
+				["<C-n>"] = actions.cycle_history_next,
+				["<C-p>"] = actions.cycle_history_prev,
+				["<C-j>"] = actions.move_selection_next,
+				["<C-k>"] = actions.move_selection_previous,
+				["<C-l>"] = actions.smart_send_to_qflist + actions.open_qflist,
+				["<C-s>"] = actions.select_horizontal,
+				["<C-v>"] = actions.select_vertical,
+				["<C-b>"] = actions.results_scrolling_up,
+				["<C-f>"] = actions.results_scrolling_down,
+				["<C-q>"] = actions.close,
+				-- ["<c-t>"] = trouble.open_with_trouble,
+			},
+			n = {
+				["<ESC>"] = actions.close,
+				["<C-s>"] = actions.select_horizontal,
+				["<C-v>"] = actions.select_vertical,
+				["<C-u>"] = actions.preview_scrolling_up,
+				["<C-d>"] = actions.preview_scrolling_down,
+				-- ["<c-t>"] = trouble.open_with_trouble,
+			},
+		},
+	},
+	pickers = {
+		find_files = {
+			hidden = true,
+		},
+	},
+	extensions = {
+		fzf = {
+			fuzzy = true,
+			override_generic_sorter = true,
+			override_file_sorter = true,
+			case_mode = "smart_case",
+		},
+	},
+	file_ignore_patterns = {
+		".git/",
+		"target/",
+		"docs/",
+		"vendor/*",
+		"%.lock",
+		"__pycache__/*",
+		"%.sqlite3",
+		"%.ipynb",
+		"node_modules/*",
+		-- "%.jpg",
+		-- "%.jpeg",
+		-- "%.png",
+		"%.svg",
+		"%.otf",
+		"%.ttf",
+		"%.webp",
+		".dart_tool/",
+		".github/",
+		".gradle/",
+		".idea/",
+		".settings/",
+		".vscode/",
+		"__pycache__/",
+		"build/",
+		"env/",
+		"gradle/",
+		"node_modules/",
+		"%.pdb",
+		"%.dll",
+		"%.class",
+		"%.exe",
+		"%.cache",
+		"%.ico",
+		"%.pdf",
+		"%.dylib",
+		"%.jar",
+		"%.docx",
+		"%.met",
+		"smalljre_*/*",
+		".vale/",
+		"%.burp",
+		"%.mp4",
+		"%.mkv",
+		"%.rar",
+		"%.zip",
+		"%.7z",
+		"%.tar",
+		"%.bz2",
+		"%.epub",
+		"%.flac",
+		"%.tar.gz",
+	},
+})
 
 -- Implement delta as previewer for diffs
 local M = {}
@@ -205,28 +205,27 @@ local M = {}
 -- end
 
 M.project_files = function(opts)
-  opts = opts or {} -- define here if you want to define something
-  -- local ok = pcall(require "telescope.builtin".git_files, opts)
-  -- if not ok then require "telescope.builtin".find_files(opts) end
-  --
-  require "telescope.builtin".find_files(opts)
+	opts = opts or {} -- define here if you want to define something
+	-- local ok = pcall(require "telescope.builtin".git_files, opts)
+	-- if not ok then require "telescope.builtin".find_files(opts) end
+	--
+	require("telescope.builtin").find_files(opts)
 end
 
 M.command_history = function()
-  builtin.command_history(
-    require('telescope.themes').get_dropdown({
-      color_devicons = true,
-      winblend       = 4,
-      layout_config  = {
-        width = function(_, max_columns, _)
-          return math.min(max_columns, 150)
-        end,
+	builtin.command_history(require("telescope.themes").get_dropdown({
+		color_devicons = true,
+		winblend = 4,
+		layout_config = {
+			width = function(_, max_columns, _)
+				return math.min(max_columns, 150)
+			end,
 
-        height = function(_, _, max_lines)
-          return math.min(max_lines, 15)
-        end,
-      },
-    }))
+			height = function(_, _, max_lines)
+				return math.min(max_lines, 15)
+			end,
+		},
+	}))
 end
 
 return M

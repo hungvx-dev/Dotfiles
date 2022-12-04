@@ -25,8 +25,12 @@ local servers = {
 	"bashls",
 	"volar",
 	"tailwindcss",
-	"stylelint_lsp",
 	"dockerls",
+	"vimls",
+	"stylelint_lsp",
+	-- "prettier",
+	-- "eslint_d",
+	-- "codespell",
 }
 
 local settings = {
@@ -70,6 +74,11 @@ if typescript_ok then
 end
 
 local capabilities = require("lsp.handlers").capabilities
+local on_attach = function(client, bufnr)
+	client.server_capabilities.document_formatting = false
+	client.server_capabilities.document_range_formatting = false
+	client.server_capabilities.documentFormattingProvider = false
+end
 
 lspconfig.tailwindcss.setup({
 	capabilities = require("lsp.servers.tailwindcss").capabilities,
@@ -81,7 +90,7 @@ lspconfig.tailwindcss.setup({
 
 lspconfig.cssls.setup({
 	capabilities = capabilities,
-	on_attach = require("lsp.servers.cssls").on_attach,
+	on_attach = on_attach,
 	settings = require("lsp.servers.cssls").settings,
 })
 
@@ -93,19 +102,25 @@ lspconfig.jsonls.setup({
 lspconfig.sumneko_lua.setup({
 	capabilities = capabilities,
 	settings = require("lsp.servers.sumneko_lua").settings,
+	on_attach = on_attach,
 })
 
 lspconfig.volar.setup({
 	capabilities = capabilities,
-	on_attach = function(client, bufnr)
-		-- require("lsp.handlers").on_attach(client, bufnr)
-		require("lsp.servers.tsserver").on_attach(client, bufnr)
-	end,
 	filetypes = {
+		"typescript",
 		"typescriptreact",
 		"vue",
 	},
+	on_attach = require("lsp.servers.tsserver").on_attach,
 })
+
+-- lspconfig.eslint.setup({
+-- 	capabilities = capabilities,
+-- 	handlers = handlers,
+-- 	on_attach = require("lsp.servers.eslint").on_attach,
+-- 	settings = require("lsp.servers.eslint").settings,
+-- })
 
 for _, server in ipairs({ "bashls", "emmet_ls", "html", "cssmodules_ls", "yamlls", "dockerls" }) do
 	lspconfig[server].setup({
@@ -123,7 +138,7 @@ require("ufo").setup({
 			winblend = 0,
 		},
 	},
-	provider_selector = function(bufnr, filetype, buftype)
-		return { "treesitter", "indent" }
-	end,
+	-- provider_selector = function(bufnr, filetype, buftype)
+	-- 	return { "treesitter", "indent" }
+	-- end,
 })

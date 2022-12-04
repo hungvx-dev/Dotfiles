@@ -28,9 +28,10 @@ null_ls.setup({
 		-- formatting.codespell,
 
 		-- Fiagnotics
-		diagnostics.shellcheck,
-		diagnostics.codespell,
+		-- diagnostics.codespell,
+		-- diagnostics.shellcheck,
 		diagnostics.eslint_d, -- eslint or eslint_d
+		-- diagnostics.eslint,
 
 		-- Actions
 		actions.eslint_d,

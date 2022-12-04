@@ -62,8 +62,8 @@ return require("packer").startup({
 		use({ "hrsh7th/cmp-buffer", after = "cmp-nvim-lsp" })
 		use({ "hrsh7th/cmp-path", after = "cmp-buffer" })
 		use({ "hrsh7th/cmp-cmdline", after = "cmp-path" })
-		use({ "tzachar/cmp-tabnine", run = "./install.sh", requires = "hrsh7th/nvim-cmp" })
-		use({ "saadparwaiz1/cmp_luasnip", after = "cmp-tabnine" })
+		use({ "tzachar/cmp-tabnine", run = "./install.sh", requires = "hrsh7th/nvim-cmp", after = "cmp-cmdline" })
+		use({ "saadparwaiz1/cmp_luasnip" })
 		use({ "L3MON4D3/LuaSnip", requires = { "rafamadriz/friendly-snippets" }, after = "cmp_luasnip" })
 		-- use { 'f3fora/cmp-spell', after = 'cmp-cmdline' }
 		-- use { 'hrsh7th/cmp-calc', after = 'cmp-cmdline' }
@@ -90,12 +90,7 @@ return require("packer").startup({
 		})
 		use({ "christianchiarulli/lua-dev.nvim" })
 		use({ "jose-elias-alvarez/null-ls.nvim" }) -- for formatters and linters
-		use({
-			"j-hui/fidget.nvim",
-			config = function()
-				require("fidget").setup()
-			end,
-		})
+		use({ "j-hui/fidget.nvim", config = require("plugins.fidget") })
 
 		-- General
 		use({ "romgrk/barbar.nvim", requires = { "kyazdani42/nvim-web-devicons" } })
@@ -112,7 +107,7 @@ return require("packer").startup({
 			config = "require('plugins.lualine')",
 			requires = { "kyazdani42/nvim-web-devicons", opt = true },
 		})
-		use({ "rcarriga/nvim-notify", config = "require('plugins.notify')" })
+		-- use({ "rcarriga/nvim-notify", config = "require('plugins.notify')" })
 		-- use { 'ggandor/lightspeed.nvim', config = "require('plugins.lightspeed')" }
 		-- use {
 		--   'kamykn/spelunker.vim',

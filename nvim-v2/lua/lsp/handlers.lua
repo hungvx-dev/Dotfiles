@@ -30,7 +30,9 @@ M.capabilities.textDocument.foldingRange = {
 	dynamicRegistration = false,
 	lineFoldingOnly = true,
 }
-M.capabilities = cmp_nvim_lsp.update_capabilities(M.capabilities)
+
+M.capabilities = require("cmp_nvim_lsp").default_capabilities()
+-- M.capabilities = cmp_nvim_lsp.update_capabilities(M.capabilities)
 
 -- local function lsp_keymaps(bufnr)
 -- 	local opts = { noremap = true, silent = true }

@@ -25,7 +25,7 @@ tokyonight.setup({
 		floats = "dark", -- style for floating windows
 	},
 
-	sidebars = { "qf" },
+	sidebars = { "qf", "vista_kind", "terminal", "packer" },
 	-- Set a darker background on sidebar-like windows. For example: `["qf", "vista_kind", "terminal", "packer"]`
 	day_brightness = 0.3, -- Adjusts the brightness of the colors of the **Day** style. Number between 0 and 1, from dull to vibrant colors
 	hide_inactive_statusline = false, -- Enabling this option, will hide inactive statuslines and replace them with a thin border instead. Should work with the standard **StatusLine** and **LuaLine**.
@@ -83,7 +83,7 @@ if vim.fn.has("nvim-0.8") then
 	vim.api.nvim_set_hl(0, "EcovimFooter", { bold = true, fg = "#FFA630" })
 
 	-- Tokyonight Colorscheme Specific Config
-	if EcoVim.colorscheme == "tokyonight" then
+	if EcoVim.colorscheme == "tokyonight-night" then
 		-- Lines
 		vim.api.nvim_set_hl(0, "CursorLineNR", { link = "EcovimSecondary" })
 		vim.api.nvim_set_hl(0, "LineNr", { link = "Comment" })
@@ -109,8 +109,8 @@ if vim.fn.has("nvim-0.8") then
 
 		-- Misc
 		vim.api.nvim_set_hl(0, "GitSignsCurrentLineBlame", { link = "Comment" })
-		vim.api.nvim_set_hl(0, "StatusLine", { bg = "None" })
-		vim.api.nvim_set_hl(0, "StatusLineNC", { bg = "None" })
+		-- vim.api.nvim_set_hl(0, "StatusLine", { bg = "None" })
+		-- vim.api.nvim_set_hl(0, "StatusLineNC", { bg = "None" })
 		vim.api.nvim_set_hl(0, "rainbowcol1", { fg = c.blue, ctermfg = 9 })
 		vim.api.nvim_set_hl(0, "Boolean", { fg = "#F7768E" })
 		vim.api.nvim_set_hl(0, "BufferOffset", { link = "EcovimSecondary" })
@@ -155,7 +155,7 @@ else
 	vim.highlight.create("EcovimFooter", { gui = "bold", guifg = "#FFA630" }, false)
 
 	-- Tokyonight Colorscheme Specific Config
-	if EcoVim.colorscheme == "tokyonight" then
+	if EcoVim.colorscheme == "tokyonight-night" then
 		-- Lines
 		vim.highlight.link("CursorLineNR", "EcovimSecondary", true)
 		vim.highlight.link("LineNr", "Comment", true)

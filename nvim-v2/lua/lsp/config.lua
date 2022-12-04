@@ -60,7 +60,7 @@ local codes = {
 		"init_conversion_failed",
 	},
 	undeclared_variable = {
-		message = " Have you delcared that variable somewhere?",
+		message = " Have you declared that variable somewhere?",
 		"undeclared_var_use",
 	},
 	lowercase_global = {

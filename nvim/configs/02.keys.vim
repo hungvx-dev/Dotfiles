@@ -37,7 +37,7 @@ nnoremap <leader>" :split<CR>
 " nnoremap gm m
 
 " noremap ; :
-" inoremap jj <Esc>
+inoremap jj <Esc>
 nnoremap <silent> <leader><CR> :noh<CR>
 
 " inoremap <C-j> <Esc>:m .+1<CR>==gi

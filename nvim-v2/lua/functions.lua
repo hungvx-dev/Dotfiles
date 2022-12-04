@@ -31,7 +31,7 @@ M.first_ecovim_run = function()
 	end
 end
 
-M.first_ecovim_run()
+-- M.first_ecovim_run()
 
 local present, win = pcall(require, "lspconfig.ui.windows")
 if not present then

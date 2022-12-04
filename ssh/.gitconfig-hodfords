@@ -15,7 +15,7 @@
 	local = green bold
 	remote = cyan bold
 [sequence]
-	editor = interactive-rebase-tool
+	editor = nvim
 [color "diff"]
 	meta = yellow bold
 	frag = magenta bold
