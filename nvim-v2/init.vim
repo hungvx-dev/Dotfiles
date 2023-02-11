@@ -21,3 +21,4 @@ lua require('functions')
 " lua require("lsp.null-ls")
 
 lua require("lsp")
+" autocmd BufEnter .* set scroll=10

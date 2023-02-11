@@ -55,6 +55,11 @@ nnoremap <M-k> :m .-2<CR>==
 vnoremap J :m '>+1<CR>gv=gv
 vnoremap K :m '<-2<CR>gv=gv
 
+" nnoremap <C-d> 10j
+" nnoremap <C-u> 10k
+" vnoremap <C-d> 10j
+" vnoremap <C-u> 10k
+
 " BUFFER MOTIONS {{{
 nnoremap gt :bnext <CR>
 nnoremap gT :bprevious <CR>
@@ -86,10 +91,13 @@ nnoremap <leader>xl <cmd>TroubleToggle loclist<cr>
 
 
 " TELEScope {{{ ================================================================
-nnoremap <leader>fp <cmd>lua require('plugins.telescope').project_files()<cr>
-nnoremap <leader>fs <cmd>lua require('plugins.telescope.pickers.multi-rg')()<cr>
+" nnoremap <leader>fp <cmd>lua require('plugins.telescope').project_files()<cr>
 nnoremap <leader>fj <cmd>lua require('telescope.builtin').grep_string({ initial_mode = 'normal' })<cr>
+" nnoremap <leader>fs <cmd>lua require('plugins.telescope.pickers.multi-rg')()<cr>
+nnoremap <leader>fp <cmd>Telescope find_files<cr>
+nnoremap <leader>fs <cmd>Telescope live_grep<cr>
 nnoremap <leader>fb <cmd>Telescope buffers<cr>
+nnoremap <leader>fo <cmd>Telescope oldfiles<cr>
 nnoremap <leader>fi <cmd>Telescope current_buffer_fuzzy_find<cr>
 nnoremap <leader>fh <cmd>Telescope help_tags<cr>
 nnoremap <leader>fk <cmd>Telescope keymaps<cr>

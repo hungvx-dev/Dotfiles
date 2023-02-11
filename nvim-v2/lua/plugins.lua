@@ -96,7 +96,7 @@ return require("packer").startup({
 		use({ "romgrk/barbar.nvim", requires = { "kyazdani42/nvim-web-devicons" } })
 		use({ "numToStr/Comment.nvim", config = "require('plugins.comment')" })
 		use({ "JoosepAlviste/nvim-ts-context-commentstring", after = "nvim-treesitter" })
-		use({ "Shatur/neovim-session-manager", config = "require('plugins.session-manager')" })
+		-- use({ "Shatur/neovim-session-manager", config = "require('plugins.session-manager')" })
 		use({
 			"kevinhwang91/nvim-ufo",
 			requires = "kevinhwang91/promise-async",

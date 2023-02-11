@@ -117,14 +117,19 @@ local function button(sc, txt, keybind, keybind_opts)
 end
 
 dashboard.section.buttons.val = {
+	button("SPC f o", icons.fileRecent .. " " .. "Recents", "<cmd>Telescope oldfiles hidden=true<CR>", {}),
 	button(
-		"<C-P>",
+		"SPC f p",
 		icons.fileNoBg .. " " .. "Find File",
 		"<cmd>lua require('plugins.telescope').project_files()<CR>",
 		{}
 	),
-	button("<S-P>", icons.t .. " " .. "Find Word", "<cmd>lua require('plugins.telescope.pickers.multi-rg')()<CR>", {}),
-	button("SPC s h", icons.fileRecent .. " " .. "Recents", "<cmd>Telescope oldfiles hidden=true<CR>", {}),
+	button(
+		"SPC f s",
+		icons.t .. " " .. "Find Word",
+		"<cmd>lua require('plugins.telescope.pickers.multi-rg')()<CR>",
+		{}
+	),
 	button(
 		"SPC / s d",
 		icons.timer .. " " .. "Load Current Dir Session",
