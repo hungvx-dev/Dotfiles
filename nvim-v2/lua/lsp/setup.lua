@@ -1,29 +1,26 @@
 local typescript_ok, typescript = pcall(require, "typescript")
-local status_ok, ufo_config = pcall(require, "plugins.nvim-ufo")
-if not status_ok then
-	return
-end
-local status_ok, mason = pcall(require, "mason")
-if not status_ok then
-	return
-end
+local mason_ok, mason = pcall(require, "mason")
+local mason_lsp_ok, mason_lsp = pcall(require, "mason-lspconfig")
+local ufo_config_handler = require("plugins.nvim-ufo").handler
 
-local status_ok_1, mason_lspconfig = pcall(require, "mason-lspconfig")
-if not status_ok_1 then
+if not mason_ok or not mason_lsp_ok then
 	return
 end
 
 local servers = {
+	"bashls",
+	"eslint",
 	"cssls",
 	"cssmodules_ls",
 	"emmet_ls",
 	"html",
 	"jsonls",
-	"sumneko_lua",
+	"luau_lsp",
 	"tsserver",
 	"yamlls",
-	"bashls",
+	"vuels",
 	"volar",
+	"prismals",
 	"tailwindcss",
 	"dockerls",
 	"vimls",
@@ -47,7 +44,7 @@ local settings = {
 }
 
 mason.setup(settings)
-mason_lspconfig.setup({
+mason_lsp.setup({
 	ensure_installed = servers,
 	automatic_installation = true,
 })
@@ -57,6 +54,18 @@ if not lspconfig_status_ok then
 	return
 end
 
+local function on_attach(client, bufnr)
+	-- set up buffer keymaps, etc.
+end
+
+local capabilities = require("cmp_nvim_lsp").default_capabilities()
+capabilities.textDocument.completion.completionItem.snippetSupport = true
+capabilities.textDocument.foldingRange = {
+	dynamicRegistration = false,
+	lineFoldingOnly = true,
+}
+
+-- It enables tsserver automatically so no need to call lspconfig.tsserver.setup
 if typescript_ok then
 	typescript.setup({
 		disable_commands = false, -- prevent the plugin from creating Vim commands
@@ -65,19 +74,10 @@ if typescript_ok then
 		server = {
 			capabilities = require("lsp.servers.tsserver").capabilities,
 			handlers = require("lsp.servers.tsserver").handlers,
-			on_attach = function(client, bufnr)
-				-- require("lsp.handlers").on_attach(client, bufnr)
-				require("lsp.servers.tsserver").on_attach(client, bufnr)
-			end,
+			on_attach = require("lsp.servers.tsserver").on_attach,
+			settings = require("lsp.servers.tsserver").settings,
 		},
 	})
-end
-
-local capabilities = require("lsp.handlers").capabilities
-local on_attach = function(client, bufnr)
-	client.server_capabilities.document_formatting = false
-	client.server_capabilities.document_range_formatting = false
-	client.server_capabilities.documentFormattingProvider = false
 end
 
 lspconfig.tailwindcss.setup({
@@ -90,46 +90,54 @@ lspconfig.tailwindcss.setup({
 
 lspconfig.cssls.setup({
 	capabilities = capabilities,
-	on_attach = on_attach,
+	on_attach = require("lsp.servers.cssls").on_attach,
 	settings = require("lsp.servers.cssls").settings,
+})
+
+lspconfig.eslint.setup({
+	capabilities = capabilities,
+	on_attach = require("lsp.servers.eslint").on_attach,
+	settings = require("lsp.servers.eslint").settings,
 })
 
 lspconfig.jsonls.setup({
 	capabilities = capabilities,
+	on_attach = on_attach,
 	settings = require("lsp.servers.jsonls").settings,
 })
 
-lspconfig.sumneko_lua.setup({
+lspconfig.luau_lsp.setup({
 	capabilities = capabilities,
+	on_attach = on_attach,
 	settings = require("lsp.servers.sumneko_lua").settings,
+})
+
+lspconfig.vuels.setup({
+	filetypes = require("lsp.servers.vuels").filetypes,
+	init_options = require("lsp.servers.vuels").init_options,
 	on_attach = on_attach,
 })
 
 lspconfig.volar.setup({
 	capabilities = capabilities,
-	filetypes = {
-		"typescript",
-		"typescriptreact",
-		"vue",
-	},
+	filetypes = require("lsp.servers.volar").filetypes,
 	on_attach = require("lsp.servers.tsserver").on_attach,
 })
 
--- lspconfig.eslint.setup({
--- 	capabilities = capabilities,
--- 	handlers = handlers,
--- 	on_attach = require("lsp.servers.eslint").on_attach,
--- 	settings = require("lsp.servers.eslint").settings,
--- })
+lspconfig.vuels.setup({
+	filetypes = require("lsp.servers.vuels").filetypes,
+	init_options = require("lsp.servers.vuels").init_options,
+})
 
-for _, server in ipairs({ "bashls", "emmet_ls", "html", "cssmodules_ls", "yamlls", "dockerls" }) do
+for _, server in ipairs({ "bashls", "emmet_ls", "html", "cssmodules_ls", "yamlls", "dockerls", "prismals" }) do
 	lspconfig[server].setup({
 		capabilities = capabilities,
+		on_attach = on_attach,
 	})
 end
 
 require("ufo").setup({
-	fold_virt_text_handler = ufo_config.handler,
+	fold_virt_text_handler = ufo_config_handler,
 	close_fold_kinds = { "imports", "comment" },
 	preview = {
 		win_config = {

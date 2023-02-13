@@ -1,4 +1,4 @@
--- Diagnostic confi-- Diagnostic config
+-- Diagnostic config
 
 local codes = {
 	-- Lua
@@ -60,7 +60,7 @@ local codes = {
 		"init_conversion_failed",
 	},
 	undeclared_variable = {
-		message = " Have you declared that variable somewhere?",
+		message = " Have you delcared that variable somewhere?",
 		"undeclared_var_use",
 	},
 	lowercase_global = {
@@ -82,47 +82,39 @@ local codes = {
 vim.diagnostic.config({
 	float = {
 		source = false,
-		-- format = function(diagnostic)
-		-- 	local code = diagnostic.user_data.lsp.code
-		--
-		-- 	if not diagnostic.source or not code then
-		-- 		return string.format("%s", diagnostic.message)
-		-- 	end
-		--
-		-- 	if diagnostic.source == "eslint" then
-		-- 		for _, table in pairs(codes) do
-		-- 			if vim.tbl_contains(table, code) then
-		-- 				return string.format("%s [%s]", table.icon .. diagnostic.message, code)
-		-- 			end
-		-- 		end
-		--
-		-- 		return string.format("%s [%s]", diagnostic.message, code)
-		-- 	end
-		--
-		-- 	for _, table in pairs(codes) do
-		-- 		if vim.tbl_contains(table, code) then
-		-- 			return table.message
-		-- 		end
-		-- 	end
-		--
-		-- 	return string.format("%s [%s]", diagnostic.message, diagnostic.source)
-		-- end,
-		focusable = false,
-		style = "minimal",
-		border = "rounded",
-		-- border = {"▄","▄","▄","█","▀","▀","▀","█"},
-		-- source = "if_many", -- Or "always"
-		header = "",
-		prefix = "",
-		-- width = 40,
-		-- },
+		format = function(diagnostic)
+			local code = diagnostic.user_data.lsp.code
+
+			if not diagnostic.source or not code then
+				return string.format("%s", diagnostic.message)
+			end
+
+			if diagnostic.source == "eslint" then
+				for _, table in pairs(codes) do
+					if vim.tbl_contains(table, code) then
+						return string.format("%s [%s]", table.icon .. diagnostic.message, code)
+					end
+				end
+
+				return string.format("%s [%s]", diagnostic.message, code)
+			end
+
+			for _, table in pairs(codes) do
+				if vim.tbl_contains(table, code) then
+					return table.message
+				end
+			end
+
+			return string.format("%s [%s]", diagnostic.message, diagnostic.source)
+		end,
 	},
 	severity_sort = true,
 	signs = true,
 	underline = true,
 	update_in_insert = false,
-	virtual_lines = false,
-	virtual_text = false,
+	virtual_text = {
+		prefix = EcoVim.icons.circle,
+	},
 })
 
 -- UI
@@ -131,7 +123,7 @@ local signs = { Error = " ", Warn = " ", Hint = " ", Info = " " }
 
 for type, icon in pairs(signs) do
 	local hl = "DiagnosticSign" .. type
-	vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = hl })
+	vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = "" })
 end
 
 vim.lsp.handlers["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, {

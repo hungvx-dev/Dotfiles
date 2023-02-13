@@ -3,6 +3,8 @@ local status_ok, nvim_tree = pcall(require, "nvim-tree")
 if not status_ok then
 	return
 end
+-- local nvim_tree_events = require("nvim-tree.events")
+-- local bufferline_api = require("bufferline.api")
 local icons = require("icons")
 
 local TREE_WIDTH = 40
@@ -58,9 +60,8 @@ local keymappings = {
 }
 
 nvim_tree.setup({
-	disable_netrw = true, -- disables netrw completely
+	disable_netrw = false, -- disables netrw completely
 	hijack_netrw = true, -- hijack netrw window on startup
-	open_on_setup = false, -- hijack netrw window on startup
 	ignore_ft_on_setup = {
 		"startify",
 		"dashboard",
@@ -201,22 +202,10 @@ nvim_tree.setup({
 
 vim.api.nvim_set_keymap("n", "<C-t>", "<cmd>lua require'nvim-tree'.toggle()<CR>", { noremap = true, silent = true })
 
--- local nvim_tree_events = require('nvim-tree.events')
--- local bufferline_api = require('bufferline.api')
---
--- local function get_tree_size()
---   return require 'nvim-tree.view'.View.width
--- end
-
--- bufferline_api.set_offset(40)
--- nvim_tree_events.subscribe('TreeOpen', function()
--- bufferline_api.set_offset(40)
--- end)
-
--- nvim_tree_events.subscribe('Resize', function()
---   bufferline_api.set_offset(get_tree_size())
+-- nvim_tree_events.on_tree_open(function()
+-- 	bufferline_api.set_offset(TREE_WIDTH + 1, utils.add_whitespaces(13) .. "File Explorer")
 -- end)
 --
--- nvim_tree_events.subscribe('TreeClose', function()
---   bufferline_api.set_offset(0)
+-- nvim_tree_events.on_tree_close(function()
+-- 	bufferline_api.set_offset(0)
 -- end)

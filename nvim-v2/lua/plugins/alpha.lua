@@ -6,8 +6,6 @@ end
 local dashboard = require("alpha.themes.dashboard")
 local icons = require("icons")
 local if_nil = vim.F.if_nil
-local fn = vim.fn
-local config_dir = fn.stdpath("config")
 
 -- ╭──────────────────────────────────────────────────────────╮
 -- │ Header                                                   │
@@ -35,7 +33,7 @@ dashboard.section.header.opts = {
 -- │ Heading Info                                             │
 -- ╰──────────────────────────────────────────────────────────╯
 
-local thingy = io.popen('echo "$(date +%a) $(date +%d) $(date +%b)" | tr -d "\n"')
+local thingy = io.popen('echo "$(LANG=en_us_88591; date +%a) $(date +%d) $(LANG=en_us_88591; date +%b)" | tr -d "\n"')
 if thingy == nil then
 	return
 end
@@ -146,35 +144,34 @@ dashboard.section.buttons.val = {
 -- │ Footer                                                   │
 -- ╰──────────────────────────────────────────────────────────╯
 
-local function file_exists(file)
-	local f = io.open(file, "rb")
-	if f then
-		f:close()
-	end
-	return f ~= nil
-end
-
-local function line_from(file)
-	if not file_exists(file) then
-		return {}
-	end
-	local lines = {}
-	for line in io.lines(file) do
-		lines[#lines + 1] = line
-	end
-	return lines
-end
-
-local function footer()
-	local plugins = #vim.tbl_keys(packer_plugins)
-	local v = vim.version()
-	local ecovim_version = line_from(config_dir .. "/.ecovim.version")
-	return string.format(" v%d.%d.%d   %d   %s ", v.major, v.minor, v.patch, plugins, ecovim_version[1])
-end
-
-dashboard.section.footer.val = {
-	footer(),
-}
+-- local function file_exists(file)
+-- 	local f = io.open(file, "rb")
+-- 	if f then
+-- 		f:close()
+-- 	end
+-- 	return f ~= nil
+-- end
+--
+-- local function line_from(file)
+-- 	if not file_exists(file) then
+-- 		return {}
+-- 	end
+-- 	local lines = {}
+-- 	for line in io.lines(file) do
+-- 		lines[#lines + 1] = line
+-- 	end
+-- 	return lines
+-- end
+--
+-- local function footer()
+-- 	local plugins = #vim.tbl_keys(packer_plugins)
+-- 	local v = vim.version()
+-- 	return string.format(" v%d.%d.%d   %d   %s ", v.major, v.minor, v.patch, plugins)
+-- end
+--
+-- dashboard.section.footer.val = {
+-- 	footer(),
+-- }
 dashboard.section.footer.opts = {
 	position = "center",
 	hl = "EcovimFooter",

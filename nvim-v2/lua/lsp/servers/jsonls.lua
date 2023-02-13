@@ -40,3 +40,4 @@ M.settings = {
 }
 
 return M
+

@@ -17,8 +17,8 @@ augroup END
 "   autocmd CursorHold *.vim,*.js,*.jsx,*.md,*.ts,*.tsx,*.vue call spelunker#check_displayed_words()
 " augroup END
 
-fun! IgnoreCamelCaseSpell()
-    syn match myExCapitalWords +\<\w*[A-Z]\K*\>+ contains=@NoSpell
-endfun
-
-autocmd BufRead,BufNewFile * :call IgnoreCamelCaseSpell()
+" fun! IgnoreCamelCaseSpell()
+"     syn match myExCapitalWords +\<\w*[A-Z]\K*\>+ contains=@NoSpell
+" endfun
+"
+" autocmd BufRead,BufNewFile * :call IgnoreCamelCaseSpell()

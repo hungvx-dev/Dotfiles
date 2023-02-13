@@ -15,7 +15,7 @@ return require("packer").startup({
 
 		-- Needed to load first
 		use({ "lewis6991/impatient.nvim" })
-		use({ "nathom/filetype.nvim" })
+		-- use({ "nathom/filetype.nvim" })
 		use({ "nvim-lua/plenary.nvim" })
 		use({ "kyazdani42/nvim-web-devicons" })
 		use({ "goolord/alpha-nvim", config = "require('plugins.alpha')" })
@@ -88,7 +88,7 @@ return require("packer").startup({
 				require("lsp-inlayhints").setup()
 			end,
 		})
-		use({ "christianchiarulli/lua-dev.nvim" })
+		-- use({ "christianchiarulli/lua-dev.nvim" })
 		use({ "jose-elias-alvarez/null-ls.nvim" }) -- for formatters and linters
 		use({ "j-hui/fidget.nvim", config = require("plugins.fidget") })
 

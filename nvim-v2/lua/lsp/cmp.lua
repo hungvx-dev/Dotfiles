@@ -15,10 +15,16 @@ if not snip_status_ok then
 	return
 end
 
+require("luasnip/loaders/from_vscode").lazy_load()
+
 local has_words_before = function()
 	local line, col = unpack(vim.api.nvim_win_get_cursor(0))
 	return col ~= 0 and vim.api.nvim_buf_get_lines(0, line - 1, line, true)[1]:sub(col, col):match("%s") == nil
 end
+
+-- ╭──────────────────────────────────────────────────────────╮
+-- │ Utils                                                    │
+-- ╰──────────────────────────────────────────────────────────╯
 
 local types = require("cmp.types")
 
@@ -35,17 +41,6 @@ local function deprioritize_snippet(entry1, entry2)
 		return true
 	end
 end
-
-require("luasnip/loaders/from_vscode").lazy_load()
-
--- ╭──────────────────────────────────────────────────────────╮
--- │ Utils                                                    │
--- ╰──────────────────────────────────────────────────────────╯
-local check_backspace = function()
-	local col = vim.fn.col(".") - 1
-	return col == 0 or vim.fn.getline("."):sub(col, col):match("%s")
-end
-
 -- ╭──────────────────────────────────────────────────────────╮
 -- │ Setup                                                    │
 -- ╰──────────────────────────────────────────────────────────╯
@@ -104,7 +99,34 @@ cmp.setup({
 		end, { "i", "s", "c" }),
 		["<C-u>"] = cmp.mapping(cmp.mapping.scroll_docs(-4), { "i", "c" }),
 		["<C-d>"] = cmp.mapping(cmp.mapping.scroll_docs(4), { "i", "c" }),
-		-- ['<Tab>'] = cmp.mapping(cmp.mapping.complete(), { 'i', 'c' }),
+		["<Tab>"] = cmp.mapping(function(fallback)
+			if cmp.visible() then
+				cmp.select_next_item()
+			elseif luasnip.expandable() then
+				luasnip.expand()
+			elseif luasnip.expand_or_jumpable() then
+				luasnip.expand_or_jump()
+			elseif check_backspace() then
+				fallback()
+			else
+				fallback()
+			end
+		end, {
+			"i",
+			"s",
+		}),
+		["<S-Tab>"] = cmp.mapping(function(fallback)
+			if cmp.visible() then
+				cmp.select_prev_item()
+			elseif luasnip.jumpable(-1) then
+				luasnip.jump(-1)
+			else
+				fallback()
+			end
+		end, {
+			"i",
+			"s",
+		}),
 		["<C-y>"] = cmp.config.disable, -- Specify `cmp.config.disable` if you want to remove the default `<C-y>` mapping.
 		["<C-e>"] = cmp.mapping({
 			i = cmp.mapping.abort(),
@@ -136,24 +158,46 @@ cmp.setup({
 	}),
 
 	formatting = {
-		format = function(entry, vim_item)
-			vim_item.kind = lspkind.symbolic(vim_item.kind, { with_text = true })
-			local menu = source_mapping[entry.source.name]
-			local maxwidth = 50
+		format = lspkind.cmp_format({
+			mode = "symbol_text",
+			max_width = 50,
+			symbol_map = source_mapping,
+			before = function(entry, vim_item)
+				vim_item.kind = lspkind.symbolic(vim_item.kind, { with_text = true })
+				local menu = source_mapping[entry.source.name]
+				local maxwidth = 50
 
-			if entry.source.name == "cmp_tabnine" then
-				if entry.completion_item.data ~= nil and entry.completion_item.data.detail ~= nil then
-					menu = menu .. entry.completion_item.data.detail
-				else
-					menu = menu .. "TBN"
+				if entry.source.name == "cmp_tabnine" then
+					if entry.completion_item.data ~= nil and entry.completion_item.data.detail ~= nil then
+						menu = menu .. entry.completion_item.data.detail
+					else
+						menu = menu .. "TBN"
+					end
 				end
-			end
 
-			vim_item.menu = menu
-			vim_item.abbr = string.sub(vim_item.abbr, 1, maxwidth)
-
-			return vim_item
-		end,
+				vim_item.menu = menu
+				vim_item.abbr = string.sub(vim_item.abbr, 1, maxwidth)
+				return vim_item
+			end,
+		}),
+		-- format = function(entry, vim_item)
+		-- 	vim_item.kind = lspkind.symbolic(vim_item.kind, { with_text = true })
+		-- 	local menu = source_mapping[entry.source.name]
+		-- 	local maxwidth = 50
+		--
+		-- 	if entry.source.name == "cmp_tabnine" then
+		-- 		if entry.completion_item.data ~= nil and entry.completion_item.data.detail ~= nil then
+		-- 			menu = menu .. entry.completion_item.data.detail
+		-- 		else
+		-- 			menu = menu .. "TBN"
+		-- 		end
+		-- 	end
+		--
+		-- 	vim_item.menu = menu
+		-- 	vim_item.abbr = string.sub(vim_item.abbr, 1, maxwidth)
+		--
+		-- 	return vim_item
+		-- end,
 	},
 	-- You should specify your *installed* sources.
 	sources = {
@@ -164,7 +208,7 @@ cmp.setup({
 		{ name = "nvim_lua", priority = 5 },
 		{ name = "path", priority = 4 },
 		-- { name = 'spell', priority = 7, keyword_length = 3, max_item_count = 3 },
-		-- { name = 'calc', priority = 3 },
+		{ name = "calc", priority = 3 },
 		-- { name = 'npm', priority = 9 },
 	},
 

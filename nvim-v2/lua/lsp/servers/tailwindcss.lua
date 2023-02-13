@@ -1,11 +1,8 @@
 local M = {}
 
 local capabilities = require("cmp_nvim_lsp").default_capabilities()
-local cmp_nvim_lsp_ok, cmp_nvim_lsp = pcall(require, "cmp_nvim_lsp")
-if cmp_nvim_lsp_ok then
-	capabilities.textDocument.completion.completionItem.snippetSupport = true
-	capabilities.textDocument.colorProvider = { dynamicRegistration = false }
-end
+capabilities.textDocument.completion.completionItem.snippetSupport = true
+capabilities.textDocument.colorProvider = { dynamicRegistration = false }
 capabilities.textDocument.foldingRange = {
 	dynamicRegistration = false,
 	lineFoldingOnly = true,
@@ -16,7 +13,10 @@ capabilities.textDocument.foldingRange = {
 local on_attach = function(client, bufnr)
 	if client.server_capabilities.colorProvider then
 		require("lsp/utils/documentcolors").buf_attach(bufnr)
-		require("colorizer").detach_from_buffer()
+		require("colorizer").attach_to_buffer(
+			bufnr,
+			{ mode = "background", css = true, names = false, tailwind = false }
+		)
 	end
 end
 
@@ -47,6 +47,8 @@ local settings = {
 				'tw={"([^"}]*)',
 				"tw\\.\\w+`([^`]*)",
 				"tw\\(.*?\\)`([^`]*)",
+				{ "clsx\\(([^)]*)\\)", "(?:'|\"|`)([^']*)(?:'|\"|`)" },
+				{ "classnames\\(([^)]*)\\)", "'([^']*)'" },
 			},
 		},
 		validate = true,

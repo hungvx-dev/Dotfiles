@@ -1,45 +1,42 @@
 local M = {}
 
 local capabilities = require("cmp_nvim_lsp").default_capabilities()
-local cmp_nvim_lsp_ok, cmp_nvim_lsp = pcall(require, "cmp_nvim_lsp")
-if cmp_nvim_lsp_ok then
-	-- capabilities = cmp_nvim_lsp.update_capabilities(vim.lsp.protocol.make_client_capabilities())
-	capabilities.textDocument.completion.completionItem.snippetSupport = true
-	capabilities.textDocument.completion.completionItem.preselectSupport = true
-	capabilities.textDocument.completion.completionItem.insertReplaceSupport = true
-	capabilities.textDocument.completion.completionItem.labelDetailsSupport = true
-	capabilities.textDocument.completion.completionItem.deprecatedSupport = true
-	capabilities.textDocument.completion.completionItem.commitCharactersSupport = true
-	capabilities.textDocument.completion.completionItem.tagSupport = { valueSet = { 1 } }
-	capabilities.textDocument.completion.completionItem.resolveSupport = {
-		properties = {
-			"documentation",
-			"detail",
-			"additionalTextEdits",
-		},
-	}
-	capabilities.textDocument.codeAction = {
-		dynamicRegistration = false,
-		codeActionLiteralSupport = {
-			codeActionKind = {
-				valueSet = {
-					"",
-					"quickfix",
-					"refactor",
-					"refactor.extract",
-					"refactor.inline",
-					"refactor.rewrite",
-					"source",
-					"source.organizeImports",
-				},
+
+capabilities.textDocument.completion.completionItem.snippetSupport = true
+capabilities.textDocument.completion.completionItem.preselectSupport = true
+capabilities.textDocument.completion.completionItem.insertReplaceSupport = true
+capabilities.textDocument.completion.completionItem.labelDetailsSupport = true
+capabilities.textDocument.completion.completionItem.deprecatedSupport = true
+capabilities.textDocument.completion.completionItem.commitCharactersSupport = true
+capabilities.textDocument.completion.completionItem.tagSupport = { valueSet = { 1 } }
+capabilities.textDocument.completion.completionItem.resolveSupport = {
+	properties = {
+		"documentation",
+		"detail",
+		"additionalTextEdits",
+	},
+}
+capabilities.textDocument.codeAction = {
+	dynamicRegistration = false,
+	codeActionLiteralSupport = {
+		codeActionKind = {
+			valueSet = {
+				"",
+				"quickfix",
+				"refactor",
+				"refactor.extract",
+				"refactor.inline",
+				"refactor.rewrite",
+				"source",
+				"source.organizeImports",
 			},
 		},
-	}
-	capabilities.textDocument.foldingRange = {
-		dynamicRegistration = false,
-		lineFoldingOnly = true,
-	}
-end
+	},
+}
+capabilities.textDocument.foldingRange = {
+	dynamicRegistration = false,
+	lineFoldingOnly = true,
+}
 
 local on_attach = function(client, bufnr)
 	-- Modifying a server's capabilities is not recommended and is no longer
@@ -52,9 +49,7 @@ local on_attach = function(client, bufnr)
 	local function buf_set_option(...)
 		vim.api.nvim_buf_set_option(bufnr, ...)
 	end
-	client.server_capabilities.document_formatting = false
-	client.server_capabilities.document_range_formatting = false
-	client.server_capabilities.documentFormattingProvider = false
+
 	buf_set_option("omnifunc", "v:lua.vim.lsp.omnifunc")
 
 	require("lsp-inlayhints").on_attach(client, bufnr)

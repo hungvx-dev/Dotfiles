@@ -1,3 +1,10 @@
+local utils = require("utils")
+
+local async_present, async = pcall(require, "plenary.async")
+if not async_present then
+	return
+end
+
 -- Exported functions
 local M = {}
 

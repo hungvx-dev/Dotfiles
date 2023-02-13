@@ -4,33 +4,35 @@ if not status_ok then
 end
 
 configs.setup({
+  on_config_done = nil,
 	ensure_installed = {
-		"typescript",
-		"javascript",
-		"html",
-		"css",
-		"bash",
-		"json",
-		"scss",
-		"tsx",
-		"vue",
-		"vim",
-		"comment",
-		"dockerfile",
-		"graphql",
-		"lua",
-		"yaml",
-		"fish",
-		"gitignore",
+		 "typescript",
+		 "javascript",
+		 "html",
+		 "css",
+		 "bash",
+		 "json",
+		 "scss",
+		 "tsx",
+		 "vue",
+		 "vim",
+		 "comment",
+		 "dockerfile",
+		 "graphql",
+		 "lua",
+		 "yaml",
+		 "fish",
+		 "gitignore",
 	},
-	sync_install = true, -- install languages synchronously (only applied to `ensure_installed`)
+  -- ensure_installed ={},
+	sync_install = false, -- install languages synchronously (only applied to `ensure_installed`)
 
 	autotag = { enable = true },
 	ignore_install = { "haskell" }, -- list of parsers to ignore installing
 	highlight = {
 		enable = true,
-		-- disable = { "c", "rust" },  -- list of language that will be disabled
-		-- additional_vim_regex_highlighting = false,
+		disable = { "c", "rust" },  -- list of language that will be disabled
+		additional_vim_regex_highlighting = false,
 	},
 
 	incremental_selection = {

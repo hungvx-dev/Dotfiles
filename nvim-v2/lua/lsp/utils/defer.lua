@@ -40,3 +40,4 @@ function M.debounce_trailing(fn, ms, first)
 end
 
 return M
+
