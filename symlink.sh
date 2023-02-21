@@ -4,6 +4,10 @@ ln -s $(pwd)/kitty ~/.config/kitty
 ln -s $(pwd)/.tmux/.tmux.conf.local ~/.tmux.conf.local
 ln -s $(pwd)/.tmux/.tmux.conf ~/.tmux.conf
 
+# Window management: Yabai + skhd
+ln -s $(pwd)/yabai ~/.config/yabai
+ln -s $(pwd)/skhd ~/.config/skhd
+
 # Nvim config
 ln -s $(pwd)/nvim ~/.config/nvim
 

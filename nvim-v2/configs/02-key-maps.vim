@@ -50,8 +50,8 @@ nnoremap <silent> <leader><CR> :noh<CR>
 
 " inoremap <C-j> <Esc>:m .+1<CR>==gi
 " inoremap <C-k> <Esc>:m .-2<CR>==gi
-nnoremap <M-j> :m .+1<CR>==
 nnoremap <M-k> :m .-2<CR>==
+nnoremap <M-j> :m .+1<CR>==
 vnoremap J :m '>+1<CR>gv=gv
 vnoremap K :m '<-2<CR>gv=gv
 
@@ -76,7 +76,7 @@ nnoremap Q <Nop>
 vnoremap < <gv
 vnoremap > >gv
 
-" nnoremap ; <Plug>(clever-f-repeat-forward)
+nnoremap ; <Plug>(clever-f-repeat-forward)
 
 " nnoremap <C-t> :NvimTreeToggle<CR>
 nnoremap <leader>n :NvimTreeFindFile<CR>
