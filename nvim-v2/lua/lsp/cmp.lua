@@ -75,7 +75,6 @@ cmp.setup({
 			luasnip.lsp_expand(args.body)
 		end,
 	},
-
 	mapping = cmp.mapping.preset.insert({
 		["<C-k>"] = cmp.mapping(function(fallback)
 			if cmp.visible() then
@@ -156,7 +155,6 @@ cmp.setup({
 			"s",
 		}),
 	}),
-
 	formatting = {
 		format = lspkind.cmp_format({
 			mode = "symbol_text",
@@ -211,7 +209,6 @@ cmp.setup({
 		{ name = "calc", priority = 3 },
 		-- { name = 'npm', priority = 9 },
 	},
-
 	sorting = {
 		comparators = {
 			deprioritize_snippet,
@@ -224,12 +221,10 @@ cmp.setup({
 			cmp.config.compare.order,
 		},
 	},
-
 	confirm_opts = {
 		behavior = cmp.ConfirmBehavior.Replace,
 		select = false,
 	},
-
 	window = {
 		completion = cmp.config.window.bordered({
 			winhighlight = "NormalFloat:NormalFloat,FloatBorder:FloatBorder",
@@ -238,7 +233,6 @@ cmp.setup({
 			winhighlight = "NormalFloat:NormalFloat,FloatBorder:FloatBorder",
 		}),
 	},
-
 	experimental = {
 		ghost_text = true,
 	},

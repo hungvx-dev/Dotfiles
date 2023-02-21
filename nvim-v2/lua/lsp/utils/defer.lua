@@ -18,8 +18,8 @@ function M.debounce_trailing(fn, ms, first)
 
 	if not first then
 		function wrapped_fn(...)
-			local argv = {...}
-			local argc = select('#', ...)
+			local argv = { ... }
+			local argc = select("#", ...)
 
 			timer:start(ms, 0, function()
 				pcall(vim.schedule_wrap(fn), unpack(argv, 1, argc))
@@ -28,8 +28,8 @@ function M.debounce_trailing(fn, ms, first)
 	else
 		local argv, argc
 		function wrapped_fn(...)
-			argv = argv or {...}
-			argc = argc or select('#', ...)
+			argv = argv or { ... }
+			argc = argc or select("#", ...)
 
 			timer:start(ms, 0, function()
 				pcall(vim.schedule_wrap(fn), unpack(argv, 1, argc))
@@ -40,4 +40,3 @@ function M.debounce_trailing(fn, ms, first)
 end
 
 return M
-

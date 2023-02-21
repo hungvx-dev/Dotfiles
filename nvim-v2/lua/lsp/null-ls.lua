@@ -1,55 +1,100 @@
-local null_ls_status_ok, null_ls = pcall(require, "null-ls")
-if not null_ls_status_ok then
-	return
+local null_ls = require("null-ls")
+
+local augroup = vim.api.nvim_create_augroup("LspFormatting", {})
+
+local is_in_current_folder = function()
+  local file = vim.fn.expand("%:p:h")
+  local pwd = vim.fn.getcwd()
+
+  return vim.fn.stridx(file, pwd) >= 0
 end
 
--- local augroup = vim.api.nvim_create_augroup("LspFormatting", {})
+local enable_eslint = function(utils)
+  return utils.root_has_file({ "node_modules/.bin/eslint" }) and is_in_current_folder
+end
 
--- https://github.com/jose-elias-alvarez/null-ls.nvim/tree/main/lua/null-ls/builtins/formatting
-local formatting = null_ls.builtins.formatting
--- https://github.com/jose-elias-alvarez/null-ls.nvim/tree/main/lua/null-ls/builtins/diagnostics
-local diagnostics = null_ls.builtins.diagnostics
--- local actions = null_ls.builtins.code_actions
--- local completions = null_ls.builtins.completion
+local enable_standardjs = function(utils)
+  return utils.root_has_file({ "node_modules/.bin/standard" }) and is_in_current_folder
+end
 
--- https://github.com/prettier-solidity/prettier-plugin-solidity
--- npm install --save-dev prettier
+local enable_prettier = function(utils)
+  return utils.root_has_file({ "node_modules/.bin/prettier" }) and is_in_current_folder
+end
+
 null_ls.setup({
-	debug = false,
-	sources = {
+    sources = {
+        -- Diagnotics
+        null_ls.builtins.diagnostics.eslint_d.with({
+            condition = enable_eslint,
+        }),
+        null_ls.builtins.diagnostics.standardjs.with({
+            condition = enable_standardjs,
+        }),
+        -- null_ls.builtins.diagnostics.cpplint,
+        null_ls.builtins.diagnostics.staticcheck,
 
-		-- Formatting
-		-- formatting.prettier.with({
-		-- extra_filetypes = { "toml", "solidity" },
-		-- extra_args = { "--no-semi", "--single-quote", "--jsx-single-quote" },
-		-- }),
-		-- formatting.eslint_d.with({ extra_args = { "--no-ignore" } }), -- prettier, eslint, eslint_d, or prettierd
-		formatting.stylua,
-		diagnostics.flake8,
-		-- formatting.codespell,
+        -- Code actions
+        null_ls.builtins.code_actions.eslint_d.with({
+            condition = enable_eslint,
+        }),
 
-		-- Fiagnotics
-		-- diagnostics.codespell,
-		-- diagnostics.shellcheck,
-		-- diagnostics.eslint_d, -- eslint or eslint_d
-		-- diagnostics.eslint,
-
-		-- Actions
-		-- actions.eslint_d,
-
-		-- Completions
-		-- completions.spell,
-	},
-	-- on_attach = function(client, bufnr)
-	-- 	if client.supports_method("textDocument/formatting") then
-	-- 		vim.api.nvim_clear_autocmds({ group = augroup, buffer = bufnr })
-	-- 		vim.api.nvim_create_autocmd("BufWritePre", {
-	-- 			group = augroup,
-	-- 			buffer = bufnr,
-	-- 			callback = function()
-	-- 				vim.lsp.buf.format({ async = true })
-	-- 			end,
-	-- 		})
-	-- 	end
-	-- end,
+        -- Formating
+        -- null_ls.builtins.formatting.rustfmt.with({
+        --     condition = is_in_current_folder,
+        -- }),
+        -- null_ls.builtins.formatting.goimports.with({
+        --     condition = is_in_current_folder,
+        -- }),
+        -- null_ls.builtins.formatting.golines.with({
+        --     extra_args = { "-m", "80" },
+        --     condition = is_in_current_folder,
+        -- }),
+        -- null_ls.builtins.formatting.clang_format.with({
+        --     condition = is_in_current_folder,
+        -- }),
+        null_ls.builtins.formatting.stylua,
+        null_ls.builtins.formatting.eslint_d.with({
+            condition = enable_eslint,
+        }),
+        null_ls.builtins.formatting.standardjs.with({
+            condition = enable_standardjs,
+        }),
+        null_ls.builtins.formatting.prettier.with({
+            filetypes = {
+                "javascript",
+                "javascriptreact",
+                "typescript",
+                "typescriptreact",
+                "vue",
+            },
+            condition = enable_prettier,
+        }),
+        null_ls.builtins.formatting.prettier.with({
+            filetypes = {
+                "css",
+                "scss",
+                "less",
+                "html",
+                "json",
+                "jsonc",
+                "yaml",
+                "markdown",
+                "markdown.mdx",
+                "graphql",
+            },
+        }),
+    },
+    debug = false,
+    -- on_attach = function(client, bufnr)
+    -- 	if client.supports_method("textDocument/formatting") then
+    -- 		vim.api.nvim_clear_autocmds({ group = augroup, buffer = bufnr })
+    -- 		vim.api.nvim_create_autocmd("BufWritePre", {
+    -- 			group = augroup,
+    -- 			buffer = bufnr,
+    -- 			callback = function()
+    -- 				vim.lsp.buf.format()
+    -- 			end,
+    -- 		})
+    -- 	end
+    -- end,
 })

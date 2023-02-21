@@ -15,7 +15,7 @@ local servers = {
 	"emmet_ls",
 	"html",
 	"jsonls",
-	"luau_lsp",
+	"lua-language-server",
 	"tsserver",
 	"yamlls",
 	"vuels",
@@ -106,7 +106,7 @@ lspconfig.jsonls.setup({
 	settings = require("lsp.servers.jsonls").settings,
 })
 
-lspconfig.luau_lsp.setup({
+lspconfig.lua_ls.setup({
 	capabilities = capabilities,
 	on_attach = on_attach,
 	settings = require("lsp.servers.sumneko_lua").settings,

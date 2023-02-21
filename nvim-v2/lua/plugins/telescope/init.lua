@@ -1,12 +1,8 @@
 local actions = require("telescope.actions")
--- local previewers = require("telescope.previewers")
--- local builtin = require("telescope.builtin")
--- local trouble = require("trouble.providers.telescope")
+local previewers = require("telescope.previewers")
 local icons = EcoVim.icons
 
 require("telescope").load_extension("fzf")
--- require("telescope").load_extension("git_worktree")
--- require('telescope').load_extension('repo')
 
 local git_icons = {
 	added = icons.gitAdd,
@@ -46,9 +42,9 @@ require("telescope").setup({
 
 		sorting_strategy = "ascending",
 
-		file_previewer = require("telescope.previewers").vim_buffer_cat.new,
-		grep_previewer = require("telescope.previewers").vim_buffer_vimgrep.new,
-		qflist_previewer = require("telescope.previewers").vim_buffer_qflist.new,
+		file_previewer = previewers.vim_buffer_cat.new,
+		grep_previewer = previewers.vim_buffer_vimgrep.new,
+		qflist_previewer = previewers.vim_buffer_qflist.new,
 
 		mappings = {
 			i = {
@@ -142,67 +138,3 @@ require("telescope").setup({
 		"%.tar.gz",
 	},
 })
-
--- Implement delta as previewer for diffs
--- local M = {}
-
--- local delta_bcommits = previewers.new_termopen_previewer({
--- 	get_command = function(entry)
--- 		return {
--- 			"git",
--- 			"-c",
--- 			"core.pager=delta",
--- 			"-c",
--- 			"delta.side-by-side=false",
--- 			"diff",
--- 			entry.value .. "^!",
--- 			"--",
--- 			entry.current_file,
--- 		}
--- 	end,
--- })
---
--- local delta = previewers.new_termopen_previewer({
--- 	get_command = function(entry)
--- 		return { "git", "-c", "core.pager=delta", "-c", "delta.side-by-side=false", "diff", entry.value .. "^!" }
--- 	end,
--- })
---
--- M.my_git_commits = function(opts)
---   opts = opts or {}
---   opts.previewer = {
---     delta,
---     previewers.git_commit_message.new(opts),
---     previewers.git_commit_diff_as_was.new(opts),
---   }
---
---   builtin.git_commits(opts)
--- end
---
--- M.my_git_bcommits = function(opts)
---   opts = opts or {}
---   opts.previewer = {
---     delta_bcommits,
---     previewers.git_commit_message.new(opts),
---     previewers.git_commit_diff_as_was.new(opts),
---   }
---   builtin.git_bcommits(opts)
--- end
-
--- M.command_history = function()
--- 	builtin.command_history(require("telescope.themes").get_dropdown({
--- 		color_devicons = true,
--- 		winblend = 4,
--- 		layout_config = {
--- 			width = function(_, max_columns, _)
--- 				return math.min(max_columns, 150)
--- 			end,
---
--- 			height = function(_, _, max_lines)
--- 				return math.min(max_lines, 15)
--- 			end,
--- 		},
--- 	}))
--- end
-
--- return M

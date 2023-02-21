@@ -6,7 +6,7 @@
 --                                            --
 ------------------------------------------------
 
-local icons = require("icons")
+local icons = require("utils.icons")
 
 EcoVim = {
 	colorscheme = "tokyonight-night",

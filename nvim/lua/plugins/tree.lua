@@ -8,9 +8,7 @@ if not config_status_ok then
 	return
 end
 
-local icons = require("plugins.icons")
-
-local tree_cb = nvim_tree_config.nvim_tree_callback
+local icons = require("utils.icons")
 
 nvim_tree.setup({
 	hijack_directories = {
@@ -109,11 +107,6 @@ nvim_tree.setup({
 		adaptive_size = true,
 		mappings = {
 			custom_only = false,
-			-- list = {
-				-- { key = { "l", "<CR>", "o" }, cb = tree_cb("edit") },
-				-- { key = "h", cb = tree_cb("close_node") },
-				-- { key = "v", cb = tree_cb("vsplit") },
-			-- },
 		},
 		number = false,
 		relativenumber = false,

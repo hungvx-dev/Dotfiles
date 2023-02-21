@@ -4,7 +4,7 @@ if not present then
 end
 
 local dashboard = require("alpha.themes.dashboard")
-local icons = require("icons")
+local icons = require("utils.icons")
 local if_nil = vim.F.if_nil
 
 -- ╭──────────────────────────────────────────────────────────╮

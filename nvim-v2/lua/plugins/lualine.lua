@@ -9,7 +9,7 @@ if not status_theme_ok then
   return
 end
 
-local status_icons_ok, icons = pcall(require, "icons")
+local status_icons_ok, icons = pcall(require, "utils.icons")
 if not status_icons_ok then
   return
 end

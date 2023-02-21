@@ -4,7 +4,8 @@
 " autocmd ColorScheme * highlight StatusLine ctermbg=darkgray cterm=NONE guibg=darkgray gui=NONE
 augroup qs_colors
   autocmd!
-  autocmd ColorScheme * hi QuickScopePrimary guifg='#afff5f' ctermfg=155 guibg='#4A4A59'
+  autocmd ColorScheme * hi QuickScopePrimary ctermfg=155 guibg='#4A4A59'
+  " autocmd ColorScheme * hi QuickScopeSecondary ctermfg=81 guibg='#4A4A59'
 augroup END
 
 " Spell
@@ -22,3 +23,4 @@ augroup END
 " endfun
 "
 " autocmd BufRead,BufNewFile * :call IgnoreCamelCaseSpell()
+" hung hung hung

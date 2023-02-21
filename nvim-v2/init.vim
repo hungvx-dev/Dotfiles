@@ -8,8 +8,8 @@ runtime configs/04-highlight.vim
 runtime configs/05-functions.vim
 
 lua require("utils.globals")
-lua require("utils.functions")
 
+lua require("configs.functions")
 lua require("configs.lazy")
 lua require("configs.autocmds")
 

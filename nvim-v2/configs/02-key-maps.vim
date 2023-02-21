@@ -76,6 +76,8 @@ nnoremap Q <Nop>
 vnoremap < <gv
 vnoremap > >gv
 
+" nnoremap ; <Plug>(clever-f-repeat-forward)
+
 " nnoremap <C-t> :NvimTreeToggle<CR>
 nnoremap <leader>n :NvimTreeFindFile<CR>
 
