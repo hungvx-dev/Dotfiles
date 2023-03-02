@@ -25,7 +25,7 @@ M.settings = {
 		enable = false,
 		mode = "all",
 	},
-	format = true,
+	format = false,
 	nodePath = "",
 	onIgnoredFiles = "off",
 	packageManager = "npm",
