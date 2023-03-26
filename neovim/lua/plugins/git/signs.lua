@@ -1,20 +1,21 @@
 local setup = {
+  signcolumn = true,
   signs = {
     add = { text = "▎" },
     change = { text = "▎" },
-    delete = { text = "" },
-    topdelete = { text = "" },
+    delete = { text = "▎" },
+    topdelete = { text = "▎" },
     changedelete = { text = "▎" },
     untracked = { text = "▎" },
   },
-	current_line_blame = true, -- Toggle with `:Gitsigns toggle_current_line_blame`
-	current_line_blame_opts = {
-		virt_text = true,
-		virt_text_pos = "eol", -- 'eol' | 'overlay' | 'right_align'
-		delay = 1000,
-		ignore_whitespace = false,
-	},
-	current_line_blame_formatter = "<author_mail> | <author_time:%R, %x %h:%M> - <summary>",
+  current_line_blame = true, -- Toggle with `:Gitsigns toggle_current_line_blame`
+  current_line_blame_opts = {
+    virt_text = true,
+    virt_text_pos = "eol", -- 'eol' | 'overlay' | 'right_align'
+    delay = 500,
+    ignore_whitespace = false,
+  },
+  current_line_blame_formatter = "<author_mail> | <author_time:%R, %x %h:%M> - <summary>",
   on_attach = function(buffer)
     local gs = package.loaded.gitsigns
 
@@ -31,7 +32,7 @@ local setup = {
     map("n", "<leader>hu", gs.undo_stage_hunk, "Undo Stage Hunk")
     map("n", "<leader>hR", gs.reset_buffer, "Reset Buffer")
     map("n", "<leader>hp", gs.preview_hunk, "Preview Hunk")
-    map("n", "<leader>hb", function() gs.blame_line({ full = true }) end, "Blame Line")
+    map("n", "<leader>hb", function() gs.blame_line({ full = false }) end, "Blame Line")
     map("n", "<leader>hd", gs.diffthis, "Diff This")
     map("n", "<leader>hD", function() gs.diffthis("~") end, "Diff This ~")
     map({ "o", "x" }, "ih", ":<C-U>Gitsigns select_hunk<CR>", "GitSigns Select Hunk")
@@ -40,7 +41,7 @@ local setup = {
 
 local present, signs = pcall(require, "gitsigns")
 if not present then
-	return
+  return
 end
 
 signs.setup(setup)
