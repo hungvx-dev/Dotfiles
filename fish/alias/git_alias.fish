@@ -1,0 +1,8 @@
+abbr gs 'git status'
+abbr gco 'git checkout'
+abbr gc 'git commit -m'
+abbr gcc 'git checkout (git_current_branch)'
+abbr gpc 'git checkout (git_current_branch) && git push origin (git_current_branch)'
+abbr gplc 'git checkout (git_current_branch) && git pull origin (git_current_branch)'
+abbr gl 'git log --graph --stat --oneline --decorate --source --pretty=format:"%Cblue %h %C(bold red)- <%an> -%C(green) (%ar)%C(auto)%d%n%C(yellow) %s"'
+abbr gla 'git log --all --graph --stat --oneline --decorate --source --pretty=format:"%Cblue %h %C(bold red)- <%an> -%C(green) (%ar)%C(auto)%d%n%C(yellow) %s"'
