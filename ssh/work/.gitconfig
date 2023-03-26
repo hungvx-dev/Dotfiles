@@ -1,16 +1,7 @@
 [user]
-	name = hung.vx
-	email = hungvx.dev@gmail.com
-	useconfigonly = true
-
-# job needs, like workspace/* so all included projects
-[includeIf "gitdir:~/Dev/Hodfords/"]
-  path = .gitconfig-hodfords
-[includeIf "gitdir:~/Work/Hodfords/"]
-  path = ~/Work/Hodfords/.gitconfig
-
-[credential "https://github.com"]
-  username = hungvx-dev
+ 	name = hung.vx
+ 	email = hung.vx@hodfords.com
+ 	useconfigonly = true
 [init]
 	defaultBranch = master
 [core]
@@ -24,7 +15,7 @@
 	local = green bold
 	remote = cyan bold
 [sequence]
-  editor = nvim
+	editor = nvim
 [color "diff"]
 	meta = yellow bold
 	frag = magenta bold

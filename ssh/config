@@ -3,25 +3,26 @@ Host github.com
   User git
   UseKeychain yes
   AddKeysToAgent yes
-  IdentityFile ~/.ssh/id_rsa_hungvx
+  IdentityFile ~/.ssh/hung-vx
+
 
 Host gitlab.com
   HostName gitlab.com
   User git
   UseKeychain yes
   AddKeysToAgent yes
-  IdentityFile ~/.ssh/id_rsa_hungvx
+  IdentityFile ~/.ssh/hung-vx
 
 Host bitbucket.org
-   HostName bitbucket.org
-   User git
-   IdentityFile ~/.ssh/id_rsa_hungvx
-   IdentitiesOnly yes
+  HostName bitbucket.org
+  User git
+  IdentitiesOnly yes
+  IdentityFile ~/.ssh/hung-vx
 
 Host gitlab.com-hf
   HostName gitlab.com
   User git
   UseKeychain yes
   AddKeysToAgent yes
-  IdentityFile ~/.ssh/id_rsa-hf
+  IdentityFile ~/.ssh/hung-vx-hf
 
