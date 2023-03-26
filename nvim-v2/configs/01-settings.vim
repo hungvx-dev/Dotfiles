@@ -16,9 +16,7 @@ set updatetime=100
 
 " Backup files {{{ =============================================================
 if !isdirectory($HOME.'/.config/nvim/files') && exists('*mkdir')
-
   call mkdir($HOME.'/.config/nvim/files')
-
 endif
 set backup
 set backupdir   =$HOME/.config/nvim/files/backup/

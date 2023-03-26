@@ -79,8 +79,8 @@ cmp.setup({
     ["<C-k>"] = cmp.mapping(function(fallback)
       if cmp.visible() then
         cmp.select_prev_item()
-      elseif luasnip.jumpable( -1) then
-        luasnip.jump( -1)
+      elseif luasnip.jumpable(-1) then
+        luasnip.jump(-1)
       else
         fallback()
       end
@@ -96,7 +96,7 @@ cmp.setup({
         fallback()
       end
     end, { "i", "s", "c" }),
-    ["<C-u>"] = cmp.mapping(cmp.mapping.scroll_docs( -4), { "i", "c" }),
+    ["<C-u>"] = cmp.mapping(cmp.mapping.scroll_docs(-4), { "i", "c" }),
     ["<C-d>"] = cmp.mapping(cmp.mapping.scroll_docs(4), { "i", "c" }),
     ["<Tab>"] = cmp.mapping(function(fallback)
       if cmp.visible() then
@@ -117,8 +117,8 @@ cmp.setup({
     ["<S-Tab>"] = cmp.mapping(function(fallback)
       if cmp.visible() then
         cmp.select_prev_item()
-      elseif luasnip.jumpable( -1) then
-        luasnip.jump( -1)
+      elseif luasnip.jumpable(-1) then
+        luasnip.jump(-1)
       else
         fallback()
       end
@@ -145,8 +145,8 @@ cmp.setup({
       "s",
     }),
     ["<C-h>"] = cmp.mapping(function(fallback)
-      if luasnip.jumpable( -1) then
-        luasnip.jump( -1)
+      if luasnip.jumpable(-1) then
+        luasnip.jump(-1)
       else
         fallback()
       end
@@ -199,14 +199,14 @@ cmp.setup({
   },
   -- You should specify your *installed* sources.
   sources = {
-    { name = "nvim_lsp",    priority = 9 },
+    { name = "nvim_lsp", priority = 9 },
     { name = "cmp_tabnine", priority = 8, max_num_results = 3 },
-    { name = "luasnip",     priority = 7, max_item_count = 8 },
-    { name = "buffer",      priority = 7, keyword_length = 5, option = buffer_option, max_item_count = 8 },
-    { name = "nvim_lua",    priority = 5 },
-    { name = "path",        priority = 4 },
+    { name = "luasnip", priority = 7, max_item_count = 8 },
+    { name = "buffer", priority = 7, keyword_length = 5, option = buffer_option, max_item_count = 8 },
+    { name = "nvim_lua", priority = 5 },
+    { name = "path", priority = 4 },
     -- { name = 'spell', priority = 7, keyword_length = 3, max_item_count = 3 },
-    { name = "calc",        priority = 3 },
+    { name = "calc", priority = 3 },
     -- { name = 'npm', priority = 9 },
   },
   sorting = {
