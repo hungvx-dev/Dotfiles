@@ -8,10 +8,10 @@ local opts = {
     "startify",
     "dashboard",
     "lazy",
-    "neogitstatus",
     "NvimTree",
     "Trouble",
-    "text",
+    -- "neogitstatus",
+    -- "text",
   },
   char = hvim.icons.ui.LineLeft,
   context_char = hvim.icons.ui.LineLeft,
@@ -19,6 +19,7 @@ local opts = {
   show_first_indent_level = true,
   use_treesitter = true,
   show_current_context = true,
+  show_current_context_start = true,
   context_patterns = {
     "class",
     "return",
@@ -40,12 +41,11 @@ local opts = {
     "catch_clause",
     "import_statement",
     "operation_type",
-  }
+  },
 }
 
-
 M.setup = function()
-  local status_ok, indent_blankline = pcall(reload, "indent_blankline")
+  local status_ok, indent_blankline = pcall(require, "indent_blankline")
   if not status_ok then
     return
   end

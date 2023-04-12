@@ -404,7 +404,7 @@ return {
         end,
       },
       "jose-elias-alvarez/typescript.nvim",
-      { "b0o/SchemaStore.nvim", version = true, lazy = true },
+      -- { "b0o/SchemaStore.nvim", version = true, lazy = true },
     },
     config = function()
       require("lsp").setup()

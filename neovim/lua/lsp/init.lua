@@ -26,10 +26,6 @@ local opts = {
       },
     },
     jsonls = {
-      on_new_config = function(new_config)
-        new_config.settings.json.schemas = new_config.settings.json.schemas or {}
-        vim.list_extend(new_config.settings.json.schemas, require("schemastore").json.schemas())
-      end,
       settings = {
         json = {
           format = {
@@ -57,22 +53,27 @@ local opts = {
         },
       },
     },
-    -- eslint_d = {
-    --   settings = {
-    --     -- helps eslint find the eslintrc when it's placed in a subfolder instead of the cwd root
-    --     workingDirectory = { mode = "auto" },
-    --   },
-    -- },
+
+    volar = {
+      -- filetypes = { "typescript", "typescriptreact", "vue" },
+      filetypes = { "typescript", "javascript", "javascriptreact", "typescriptreact", "vue" },
+      -- root_dir = require("lspconfig.util").root_pattern("package.json", "tsconfig.json"),
+      -- init_options = {
+      --   typescript = {
+      --     tsdk = "/Users/hungvx.dev/Library/pnpm/global/5/node_modules/typescript/lib",
+      --     -- Alternative location if installed as root:
+      --     -- tsdk = '/usr/local/lib/node_modules/typescript/lib'
+      --   },
+      -- },
+    },
+
     tsserver = {
       settings = {
         completions = {
           completeFunctionCalls = true,
         },
       },
-    },
-
-    volar = {
-      filetypes = { "typescript", "typescriptreact", "vue" },
+      root_dir = require("lspconfig.util").root_pattern("package.json", "tsconfig.json", "jsconfig.json"),
     },
 
     tailwindcss = {

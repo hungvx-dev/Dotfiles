@@ -16,9 +16,9 @@ local enable_eslint = function()
   return is_exist "node_modules/.bin/eslint" and is_in_current_project()
 end
 
-local enable_standardjs = function()
-  return is_exist "node_modules/.bin/standard" and is_in_current_project()
-end
+-- local enable_standardjs = function()
+--   return is_exist "node_modules/.bin/standard" and is_in_current_project()
+-- end
 
 local enable_prettier = function()
   return is_exist "node_modules/.bin/prettier" and is_in_current_project()
@@ -32,10 +32,10 @@ if enable_eslint() then
   table.insert(sources, null_ls.builtins.formatting.eslint_d)
 end
 
-if enable_standardjs() then
-  table.insert(sources, null_ls.builtins.diagnostics.standardjs)
-  table.insert(sources, null_ls.builtins.formatting.standardjs)
-end
+-- if enable_standardjs() then
+--   table.insert(sources, null_ls.builtins.diagnostics.standardjs)
+--   table.insert(sources, null_ls.builtins.formatting.standardjs)
+-- end
 
 if enable_prettier() then
   table.insert(sources, null_ls.builtins.formatting.prettierd)
@@ -46,7 +46,7 @@ local diagnostics_formats = {
   -- null_ls.builtins.diagnostics.staticcheck,
 
   -- Format
-  null_ls.builtins.formatting.stylua,
+  -- null_ls.builtins.formatting.stylua,
   null_ls.builtins.formatting.prettierd.with {
     filetypes = { "yaml" },
   },

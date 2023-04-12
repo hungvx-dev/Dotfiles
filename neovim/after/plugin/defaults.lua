@@ -1,5 +1,3 @@
--- local api = vim.api
---
 local g = vim.g
 local opt = vim.opt -- local cmd = vim.cmd
 -- Remap leader and local leader to <Space>
@@ -47,7 +45,6 @@ opt.cmdheight = 1 -- 0
 -- opt.scroll = 10
 -- opt.scrollback = 100000
 opt.hidden = true
--- opt.formatoptions = "jcroqlnt" -- tcqj
 -- Change to use lualine.nvim
 -- opt.winbar = "%{%v:lua.require'config.winbar'.get_winbar()%}"
 
@@ -72,13 +69,6 @@ opt.foldlevel = 99
 opt.foldlevelstart = 99
 -- opt.foldmethod = "expr"
 -- opt.foldexpr = "nvim_treesitter#foldexpr()"
-
-opt.list = true
-opt.listchars:append "tab:» "
-opt.listchars:append "extends:→"
-opt.listchars:append "nbsp:·"
-opt.listchars:append "eol:↴"
-opt.listchars:append "trail:·"
 
 if g.neovide then
   g.neovide_transparency = 0.9
