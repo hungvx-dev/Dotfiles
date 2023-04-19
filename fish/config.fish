@@ -23,4 +23,7 @@ set -gx PNPM_HOME "/Users/hungvx.dev/Library/pnpm"
 set -gx PATH "$PNPM_HOME" $PATH
 # pnpm end
 
+set -gx PATH /opt/homebrew/opt/gnu-sed/libexec/gnubin:$PATH
+
+
 # chruby ruby-3.2.1
