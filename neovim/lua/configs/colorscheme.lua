@@ -15,9 +15,9 @@ tokyonight.setup {
   styles = {
     -- Style to be applied to different syntax groups
     -- Value is any valid attr-list value `:help attr-list`
-    comments = "italic",
-    keywords = "italic",
-    functions = "italic",
+    comments = { italic = true },
+    keywords = { italic = true },
+    functions = { italic = true, reverse = true },
     variables = "NONE",
     -- Background styles. Can be "dark", "transparent" or "normal"
     sidebars = "transparent", -- style for sidebars, see below
@@ -25,8 +25,8 @@ tokyonight.setup {
   },
   sidebars = { "qf", "vista_kind", "terminal", "packer" },
   -- Set a darker background on sidebar-like windows. For example: `["qf", "vista_kind", "terminal", "packer"]`
-  day_brightness = 0.3, -- Adjusts the brightness of the colors of the **Day** style. Number between 0 and 1, from dull to vibrant colors
-  hide_inactive_statusline = false, -- Enabling this option, will hide inactive statuslines and replace them with a thin border instead. Should work with the standard **StatusLine** and **LuaLine**.
+  day_brightness = 0.8, -- Adjusts the brightness of the colors of the **Day** style. Number between 0 and 1, from dull to vibrant colors
+  hide_inactive_statusline = true, -- Enabling this option, will hide inactive statuslines and replace them with a thin border instead. Should work with the standard **StatusLine** and **LuaLine**.
   dim_inactive = true, -- dims inactive windows
   lualine_bold = false, -- When `true`, section headers in the lualine theme will be bold
 
@@ -34,6 +34,7 @@ tokyonight.setup {
   --- function will be called with a ColorScheme table
   on_colors = function(colors)
     colors.border = "#1A1B26"
+    colors.purple = "#ff50bc"
   end,
 
   --- You can override specific highlights to use other groups or a hex color
@@ -44,23 +45,13 @@ tokyonight.setup {
     local text = "#488dff"
     local none = "NONE"
 
-    hl.TelescopeTitle = {
-      fg = prompt,
-    }
-    hl.TelescopeNormal = {
-      bg = none,
-      fg = none,
-    }
-    hl.TelescopeBorder = {
-      bg = none,
-      fg = text,
-    }
-    hl.TelescopeMatching = {
-      fg = prompt,
-    }
-    hl.MsgArea = {
-      fg = c.fg_dark,
-    }
+    -- hl["@keyword"] = { fg = "#ff50bc", style = { italic = true } }
+
+    hl.TelescopeTitle = { fg = prompt }
+    hl.TelescopeNormal = { bg = none, fg = none }
+    hl.TelescopeBorder = { bg = none, fg = text }
+    hl.TelescopeMatching = { fg = prompt }
+    hl.MsgArea = { fg = c.fg_dark }
   end,
 }
 
@@ -126,7 +117,7 @@ if vim.fn.has "nvim-0.8" then
       CmpItemKindSnippet = { fg = c.dark3 },
       CmpItemKindVariable = { fg = c.cyan, bg = "NONE" },
       CmpItemKindText = { fg = "LightGrey" },
-      CmpItemMenu = { fg = "#C586C0", bg = "NONE" },
+      CmpItemMenu = { fg = "#e77ebf", bg = "NONE" },
       CmpItemAbbrMatch = { fg = "#569CD6", bg = "NONE" },
       CmpItemAbbrMatchFuzzy = { fg = "#569CD6", bg = "NONE" },
     }
@@ -139,3 +130,5 @@ if vim.fn.has "nvim-0.8" then
   end
 end
 -- END
+--
+-- vim.api.nvim_set_hl(0, "@keyword", { fg = "#ff50bc" })

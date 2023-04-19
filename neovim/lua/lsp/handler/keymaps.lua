@@ -8,39 +8,61 @@ function M.get()
   local format = require("lsp.handler.format").format
   local Util = require "utils"
   if not M._keys then
-  ---@class PluginLspKeys
+    ---@class PluginLspKeys
     -- stylua: ignore
-    M._keys =  {
-      { "!", vim.diagnostic.open_float, desc = "Line Diagnostics" },
-      -- { "gd", "<cmd>Telescope lsp_definitions<cr>", desc = "Goto Definition", has = "definition" },
-      { "gd", "<cmd>lua vim.lsp.buf.definition()<cr>", desc = "Goto Definition", has = "definition" },
-      { "gr", "<cmd>Telescope lsp_references<cr>", desc = "References" },
-      { "gi", "<cmd>Telescope lsp_implementations<cr>", desc = "Goto Implementation" },
-      { "gt", "<cmd>Telescope lsp_type_definitions<cr>", desc = "Goto Type Definition" },
-      { "gf", format, desc = "Format Document", has = "documentFormatting" },
-      { "gf", format, desc = "Format Range", mode = "v", has = "documentRangeFormatting" },
-      { "gD", vim.lsp.buf.declaration, desc = "Goto Declaration" },
-      { "ga", vim.lsp.buf.code_action, desc = "Code Action", mode = { "n", "v" }, has = "codeAction" },
-      { "K", vim.lsp.buf.hover, desc = "Hover" },
-      { "gK", vim.lsp.buf.signature_help, desc = "Signature Help", has = "signatureHelp" },
-      { "<c-k>", vim.lsp.buf.signature_help, mode = "i", desc = "Signature Help", has = "signatureHelp" },
-      { "]d", M.diagnostic_goto(true), desc = "Next Diagnostic" },
-      { "[d", M.diagnostic_goto(false), desc = "Prev Diagnostic" },
-      { "]e", M.diagnostic_goto(true, "ERROR"), desc = "Next Error" },
-      { "[e", M.diagnostic_goto(false, "ERROR"), desc = "Prev Error" },
-      { "]w", M.diagnostic_goto(true, "WARN"), desc = "Next Warning" },
-      { "[w", M.diagnostic_goto(false, "WARN"), desc = "Prev Warning" },
-      { "<leader>cl", "<cmd>LspInfo<cr>", desc = "Lsp Info" },
+    M._keys = {
+      { "!",  vim.diagnostic.open_float,                 desc = "Line Diagnostics" },
+      { "gd", "<cmd>Telescope lsp_definitions<cr>", desc = "Goto Definition", has = "definition" },
+      { "gi", "<cmd>Telescope lsp_implementations<cr>",  desc = "Goto Implementation" },
+      { "gr", "<cmd>Telescope lsp_references<cr>",       desc = "References" },
+      -- { "gd", "<cmd>lua vim.lsp.buf.definition()<cr>",   desc = "Goto Definition",     has = "definition" },
+      -- { "gi", "<cmd>lua vim.lsp.buf.implementation()<cr>",  desc = "Goto Implementation" },
+      -- { "gr", "<cmd>lua vim.lsp.buf.references()<cr>",       desc = "References" },
+      { "gD", "<cmd>lua vim.lsp.buf.declaration()<cr>",    desc = "Goto Declaration" },
+      { "<leader>gt", "<cmd>Telescope lsp_type_definitions<cr>", desc = "Goto Type Definition" },
+      { "gf", format,                                    desc = "Format Document",     has = "documentFormatting" },
+      {
+        "gf",
+        format,
+        desc = "Format Range",
+        mode = "v",
+        "documentRangeFormatting"
+      },
+      {
+        "ga",
+        vim.lsp.buf.code_action,
+        desc = "Code Action",
+        mode = { "n", "v" },
+        has =
+        "codeAction"
+      },
+      -- { "K",  vim.lsp.buf.hover,          desc = "Hover" },
+      { "gK", vim.lsp.buf.signature_help, desc = "Signature Help",  has = "signatureHelp" },
+      {
+        "<c-k>",
+        vim.lsp.buf.signature_help,
+        mode = "i",
+        desc = "Signature Help",
+        has =
+        "signatureHelp"
+      },
+      { "]d",         M.diagnostic_goto(true),           desc = "Next Diagnostic" },
+      { "[d",         M.diagnostic_goto(false),          desc = "Prev Diagnostic" },
+      { "]e",         M.diagnostic_goto(true, "ERROR"),  desc = "Next Error" },
+      { "[e",         M.diagnostic_goto(false, "ERROR"), desc = "Prev Error" },
+      { "]w",         M.diagnostic_goto(true, "WARN"),   desc = "Next Warning" },
+      { "[w",         M.diagnostic_goto(false, "WARN"),  desc = "Prev Warning" },
+      { "<leader>cl", "<cmd>LspInfo<cr>",                desc = "Lsp Info" },
 
-      -- { "K",
-      --   function()
-      --     local winid = require("ufo").peekFoldedLinesUnderCursor()
-      --     if not winid then
-      --       vim.lsp.buf.hover()
-      --     end
-      --   end,
-      --   desc = "Hover"
-      -- },
+      { "K",
+        function()
+          local winid = require("ufo").peekFoldedLinesUnderCursor()
+          if not winid then
+            vim.lsp.buf.hover()
+          end
+        end,
+        desc = "Hover"
+      },
     }
     if Util.has "inc-rename.nvim" then
       M._keys[#M._keys + 1] = {

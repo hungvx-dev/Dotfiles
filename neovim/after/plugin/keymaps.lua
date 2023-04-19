@@ -5,10 +5,10 @@ local expr_opts = { noremap = true, expr = true, silent = true }
 -- Better escape using jk in insert and terminal mode
 -- keymap("i", "jk", "<ESC>", default_opts)
 -- keymap("t", "jk", "<C-\\><C-n>", default_opts)
-keymap("n", "<C-h>", "<C-w>h", default_opts)
-keymap("n", "<C-j>", "<C-w>j", default_opts)
-keymap("n", "<C-k>", "<C-w>k", default_opts)
-keymap("n", "<C-l>", "<C-w>l", default_opts)
+-- keymap("n", "<C-h>", "<C-w>h", default_opts)
+-- keymap("n", "<C-j>", "<C-w>j", default_opts)
+-- keymap("n", "<C-k>", "<C-w>k", default_opts)
+-- keymap("n", "<C-l>", "<C-w>l", default_opts)
 
 -- Center search results
 keymap("n", "n", "nzzzv", default_opts)
@@ -40,8 +40,8 @@ keymap("n", "<C-q>", ":q<cr>", default_opts)
 keymap("n", "<C-s>", ":w<cr>", default_opts)
 keymap("i", "<C-s>", "<ESC>:w<cr>", default_opts)
 
-keymap("n", "<leader>gt", ":bnext<cr>", default_opts)
-keymap("n", "<leader>gT", ":bprevious<cr>", default_opts)
+keymap("n", "gt", ":bnext<cr>", default_opts)
+keymap("n", "gT", ":bprevious<cr>", default_opts)
 
 -- Switch buffer
 -- keymap("n", "<S-h>", ":bprevious<CR>", default_opts)

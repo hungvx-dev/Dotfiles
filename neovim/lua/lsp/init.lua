@@ -8,6 +8,7 @@ local opts = {
     bashls = {},
     emmet_ls = {},
     prismals = {},
+    dockerls = {},
     yamlls = {
       schemaStore = {
         enable = true,
@@ -73,7 +74,7 @@ local opts = {
           completeFunctionCalls = true,
         },
       },
-      root_dir = require("lspconfig.util").root_pattern("package.json", "tsconfig.json", "jsconfig.json"),
+      -- root_dir = require("lspconfig.util").root_pattern("package.json", "tsconfig.json", "jsconfig.json"),
     },
 
     tailwindcss = {

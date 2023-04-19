@@ -1,4 +1,4 @@
-local Util = require("lazy.core.util")
+local Util = require "lazy.core.util"
 
 local M = {}
 
@@ -24,7 +24,12 @@ function M.format()
     return
   end
   local ft = vim.bo[buf].filetype
-  local have_nls = #require("null-ls.sources").get_available(ft, "NULL_LS_FORMATTING") > 0
+
+  local nls_ok, nls = pcall(require, "null-ls")
+  local have_nls = false
+  if nls_ok then
+    have_nls = #require("null-ls.sources").get_available(ft, "NULL_LS_FORMATTING") > 0
+  end
 
   vim.lsp.buf.format(vim.tbl_deep_extend("force", {
     bufnr = buf,
@@ -47,7 +52,7 @@ function M.on_attach(client, buf)
     return
   end
 
-  if client.supports_method("textDocument/formatting") then
+  if client.supports_method "textDocument/formatting" then
     vim.api.nvim_create_autocmd("BufWritePre", {
       group = vim.api.nvim_create_augroup("LspFormat." .. buf, {}),
       buffer = buf,

@@ -58,6 +58,7 @@ local style = {
     "man",
     "mundo",
     "neo-tree",
+    "lazy",
     "nerdtree",
     "nvim-dap-ui",
     "nvim-tree",

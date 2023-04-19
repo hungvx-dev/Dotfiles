@@ -1,5 +1,5 @@
 return {
-	colorscheme = "tokyonight-night",
+  colorscheme = "tokyonight-night",
   leader = "space",
   reload_config_on_save = true,
   transparent_window = false,
@@ -23,7 +23,7 @@ return {
       sources = {
         friendly_snippets = true,
       },
-    }
+    },
   },
 
   plugins = {

@@ -9,8 +9,8 @@ local opts = {
     initial_mode = "insert",
     vimgrep_arguments = {
       "rg",
-      "--color=never",
-      "--no-heading",
+      -- "--color=never",
+      -- "--no-heading",
       "--with-filename",
       "--line-number",
       "--column",
@@ -18,14 +18,13 @@ local opts = {
       "--hidden",
       "--glob=!.git/",
     },
+    sorting_strategy = "ascending",
+    layout_strategy = "center",
     layout_config = {
-      -- horizontal = {
-      --   preview_cutoff = 120,
-      -- },
-      -- prompt_position = "top",
+      height = 0.3,
+      width = 0.5,
     },
     prompt_prefix = "  ",
-    -- sorting_strategy = "ascending",
     mappings = {
       i = {
         ["<c-t>"] = function(...)
@@ -51,8 +50,8 @@ local opts = {
           return actions.close(...)
         end,
 
-        ["<C-n>"] = actions.move_selection_next,
-        ["<C-p>"] = actions.move_selection_previous,
+        ["<C-n>"] = actions.cycle_history_next,
+        ["<C-p>"] = actions.cycle_history_prev,
         ["<C-v>"] = actions.select_vertical,
         ["<C-x>"] = actions.select_horizontal,
       },

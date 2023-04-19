@@ -250,7 +250,7 @@ return {
 
   {
     "unblevable/quick-scope",
-    enabled = false,
+    enabled = true,
     config = function()
       require "plugins.quick-scope"
     end,
@@ -423,6 +423,7 @@ return {
     event = { "BufReadPre", "BufNewFile" },
     dependencies = { "mason.nvim" },
     lazy = true,
+    enabled = true,
     config = function()
       require "lsp.null-ls"
     end,
@@ -454,4 +455,17 @@ return {
       require("plugins.breadcrumbs").setup()
     end,
   },
+
+  -- {
+  --   "glepnir/lspsaga.nvim",
+  --   event = "LspAttach",
+  --   lazy = true,
+  --   config = function()
+  --     require("lspsaga").setup {}
+  --   end,
+  --   dependencies = {
+  --     { "nvim-tree/nvim-web-devicons" },
+  --     { "nvim-treesitter/nvim-treesitter" },
+  --   },
+  -- },
 }
