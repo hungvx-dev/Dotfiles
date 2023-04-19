@@ -28,7 +28,6 @@ rm -f ~/.gitconfig
 ln -s $(pwd)/ssh/config ~/.ssh/config
 ln -s $(pwd)/ssh/.gitconfig ~/.gitconfig
 ln -s $(pwd)/ssh/work/.gitconfig ~/Work/Hodfords/.gitconfig
-ln -s $(pwd)/ssh/.gitconfig-hodfords ~/.gitconfig-hodfords
 ln -s $(pwd)/lazygit/config.yml ~/.config/lazygit/config.yml
 
 # Script
@@ -37,4 +36,4 @@ ln -s $(pwd)/.script-bash ~/.script-bash
 # Alias
 ln -s $(pwd)/my-alias.zsh ~/.oh-my-zsh/custom/my-alias.zsh
 
-ln -s $(pwd)/cava/config ~/.config/cava/config
+ln -s $(pwd)/cava ~/.config/cava
