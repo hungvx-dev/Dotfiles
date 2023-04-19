@@ -36,3 +36,5 @@ ln -s $(pwd)/.script-bash ~/.script-bash
 
 # Alias
 ln -s $(pwd)/my-alias.zsh ~/.oh-my-zsh/custom/my-alias.zsh
+
+ln -s $(pwd)/cava/config ~/.config/cava/config
