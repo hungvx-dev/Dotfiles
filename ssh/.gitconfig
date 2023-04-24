@@ -41,8 +41,11 @@
 [diff]
 	tool = vimdiff
 [delta]
+  navigate = true
 	features = line-numbers decorations
 	line-numbers = true
+  side-by-side = true
+  line-numbers = true
 [delta "decorations"]
 	minus-style = red bold normal
 	plus-style = green bold normal
