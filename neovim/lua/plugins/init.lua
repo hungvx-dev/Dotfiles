@@ -5,8 +5,9 @@ return {
     priority = 1000, -- make sure to load this before all the other start plugins
     config = function()
       -- load the colorscheme here
-      vim.cmd [[colorscheme tokyonight-night]]
-      require "configs.colorscheme"
+      require "themes.tokyonight"
+      vim.cmd [[colorscheme tokyonight]]
+      -- require "configs.colorscheme"
     end,
   },
 
