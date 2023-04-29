@@ -1,5 +1,5 @@
 return {
-  colorscheme = "tokyonight-night",
+  colorscheme = "tokyonight",
   leader = "space",
   reload_config_on_save = true,
   transparent_window = false,
