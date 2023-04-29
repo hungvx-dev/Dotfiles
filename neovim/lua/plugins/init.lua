@@ -6,7 +6,7 @@ return {
     config = function()
       -- load the colorscheme here
       require "themes.tokyonight"
-      vim.cmd [[colorscheme tokyonight]]
+      vim.cmd("colorscheme " .. hvim.colorscheme)
       -- require "configs.colorscheme"
     end,
   },
