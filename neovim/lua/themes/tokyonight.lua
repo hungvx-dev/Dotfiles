@@ -62,6 +62,11 @@ tokyonight.setup {
 
     hl.CmpDocumentation.bg           = none
     hl.CmpDocumentationBorder.bg     = none
+    hl.CmpItemAbbr.bg                = none
+    hl.CmpItemMenu.bg                = none
+    hl.CmpItemAbbrMatch.bg           = none
+    hl.CmpItemAbbrMatchFuzzy.bg      = none
+    hl.CmpItemKindVariable.bg        = none
 
     hl.MiniStatuslineInactive.bg     = none
     hl.MiniTablineHidden.bg          = none

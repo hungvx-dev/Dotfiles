@@ -1,12 +1,12 @@
 return {
   {
     "folke/tokyonight.nvim",
-    lazy = false, -- make sure we load this during startup if it is your main colorscheme
+    lazy = false,    -- make sure we load this during startup if it is your main colorscheme
     priority = 1000, -- make sure to load this before all the other start plugins
     config = function()
       -- load the colorscheme here
-      require "themes.tokyonight"
       vim.cmd("colorscheme " .. hvim.colorscheme)
+      require "themes.tokyonight"
       -- require "configs.colorscheme"
     end,
   },
@@ -17,7 +17,7 @@ return {
     lazy = true,
   },
 
-  { "nvim-lua/popup.nvim", lazy = true },
+  { "nvim-lua/popup.nvim",  lazy = true },
 
   {
     "nvim-neo-tree/neo-tree.nvim",
@@ -97,7 +97,7 @@ return {
   { "hrsh7th/cmp-buffer" },
   { "hrsh7th/cmp-path" },
   { "hrsh7th/cmp-cmdline" },
-  { "tzachar/cmp-tabnine", build = "./install.sh" },
+  { "tzachar/cmp-tabnine",     build = "./install.sh" },
   {
     "L3MON4D3/LuaSnip",
     event = "InsertEnter",
@@ -143,7 +143,7 @@ return {
     },
     keys = {
       { "<c-space>", desc = "Increment selection" },
-      { "<bs>", desc = "Decrement selection", mode = "x" },
+      { "<bs>",      desc = "Decrement selection", mode = "x" },
     },
     config = function()
       require("plugins.treesitter").setup()
@@ -372,18 +372,18 @@ return {
       },
     },
     keys = {
-      { "<leader>fs", "<cmd>Telescope live_grep<cr>", desc = "Find in Files (Grep)" },
-      { "<leader>fb", "<cmd>Telescope buffers<cr>", desc = "Buffers" },
-      { "<leader>fp", "<cmd>Telescope find_files<cr>", desc = "Find Files (root dir)" },
-      { "<leader>fo", "<cmd>Telescope oldfiles<cr>", desc = "Recent" }, -- git
+      { "<leader>fs", "<cmd>Telescope live_grep<cr>",                 desc = "Find in Files (Grep)" },
+      { "<leader>fb", "<cmd>Telescope buffers<cr>",                   desc = "Buffers" },
+      { "<leader>fp", "<cmd>Telescope find_files<cr>",                desc = "Find Files (root dir)" },
+      { "<leader>fo", "<cmd>Telescope oldfiles<cr>",                  desc = "Recent" }, -- git
       { "<leader>fi", "<cmd>Telescope current_buffer_fuzzy_find<cr>", desc = "Buffer" },
-      { "<leader>fd", "<cmd>Telescope diagnostics<cr>", desc = "Diagnostics" },
-      { "<leader>fj", "<cmd>Telescope grep_string<cr>", desc = "Word (root dir)" },
-      { "<leader>fk", "<cmd>Telescope keymaps<cr>", desc = "Key Maps" },
-      { "<leader>fh", "<cmd>Telescope help_tags<cr>", desc = "Help Tags" },
-      { "<leader>fH", "<cmd>Telescope highlights<cr>", desc = "Search Highlight Groups" },
-      { "<leader>fm", "<cmd>Telescope marks<cr>", desc = "Jump to Mark" },
-      { "<leader>f:", "<cmd>Telescope command_history<cr>", desc = "Command History" },
+      { "<leader>fd", "<cmd>Telescope diagnostics<cr>",               desc = "Diagnostics" },
+      { "<leader>fj", "<cmd>Telescope grep_string<cr>",               desc = "Word (root dir)" },
+      { "<leader>fk", "<cmd>Telescope keymaps<cr>",                   desc = "Key Maps" },
+      { "<leader>fh", "<cmd>Telescope help_tags<cr>",                 desc = "Help Tags" },
+      { "<leader>fH", "<cmd>Telescope highlights<cr>",                desc = "Search Highlight Groups" },
+      { "<leader>fm", "<cmd>Telescope marks<cr>",                     desc = "Jump to Mark" },
+      { "<leader>f:", "<cmd>Telescope command_history<cr>",           desc = "Command History" },
     },
     config = function()
       require "plugins.telescope"
@@ -405,7 +405,7 @@ return {
         end,
       },
       "jose-elias-alvarez/typescript.nvim",
-      -- { "b0o/SchemaStore.nvim", version = true, lazy = true },
+      { "b0o/SchemaStore.nvim", lazy = true },
     },
     config = function()
       require("lsp").setup()

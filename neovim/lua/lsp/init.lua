@@ -10,8 +10,17 @@ local opts = {
     prismals = {},
     dockerls = {},
     yamlls = {
-      schemaStore = {
-        enable = true,
+      settings = {
+        yaml = {
+          hover = true,
+          completion = true,
+          validate = true,
+          schemaStore = {
+            enable = true,
+            url = "https://www.schemastore.org/api/json/catalog.json",
+          },
+          schemas = require("schemastore").yaml.schemas(),
+        },
       },
     },
     cssls = {
@@ -29,10 +38,9 @@ local opts = {
     jsonls = {
       settings = {
         json = {
-          format = {
-            enable = true,
-          },
+          format = { enable = true, },
           validate = { enable = true },
+          schemas = require("schemastore").json.schemas(),
         },
       },
     },
@@ -40,7 +48,7 @@ local opts = {
       settings = {
         Lua = {
           diagnostics = {
-            globals = { "vim" },
+            globals = { "vim", "lvim", "reload" },
           },
           workspace = {
             library = {
@@ -48,26 +56,22 @@ local opts = {
               [vim.fn.stdpath "config" .. "/lua"] = true,
             },
           },
-          telemetry = {
-            enable = false,
+          telemetry = { enable = false },
+          runtime = {
+            version = "LuaJIT",
+            special = {
+              reload = "require",
+            },
           },
         },
       },
     },
-
     volar = {
       -- filetypes = { "typescript", "typescriptreact", "vue" },
       filetypes = { "typescript", "javascript", "javascriptreact", "typescriptreact", "vue" },
-      -- root_dir = require("lspconfig.util").root_pattern("package.json", "tsconfig.json"),
-      -- init_options = {
-      --   typescript = {
-      --     tsdk = "/Users/hungvx.dev/Library/pnpm/global/5/node_modules/typescript/lib",
-      --     -- Alternative location if installed as root:
-      --     -- tsdk = '/usr/local/lib/node_modules/typescript/lib'
-      --   },
-      -- },
+      root_dir = require("lspconfig.util").root_pattern("package.json", "tsconfig.json", "vue.config.js",
+        "vite.config.ts"),
     },
-
     tsserver = {
       settings = {
         completions = {
@@ -76,9 +80,12 @@ local opts = {
       },
       -- root_dir = require("lspconfig.util").root_pattern("package.json", "tsconfig.json", "jsconfig.json"),
     },
-
     tailwindcss = {
       filetypes = { "html", "typescriptreact", "vue" },
+      root_dir = function(fname)
+        local util = require "lspconfig/util"
+        return util.root_pattern("tailwind.config.js", "tailwind.config.cjs", "tailwind.js", "tailwind.cjs")(fname)
+      end,
       settings = {
         tailwindCSS = {
           lint = {
@@ -97,7 +104,7 @@ local opts = {
               'tw={"([^"}]*)',
               "tw\\.\\w+`([^`]*)",
               "tw\\(.*?\\)`([^`]*)",
-              { "clsx\\(([^)]*)\\)", "(?:'|\"|`)([^']*)(?:'|\"|`)" },
+              { "clsx\\(([^)]*)\\)",       "(?:'|\"|`)([^']*)(?:'|\"|`)" },
               { "classnames\\(([^)]*)\\)", "'([^']*)'" },
             },
           },
@@ -107,15 +114,6 @@ local opts = {
     },
   },
   setup = {
-    -- eslint_d = function()
-    --   -- vim.api.nvim_create_autocmd("BufWritePre", {
-    --   --   callback = function(event)
-    --   --     if require("lspconfig.util").get_active_client_by_name(event.buf, "eslint") then
-    --   --       vim.cmd("EslintFixAll")
-    --   --     end
-    --   --   end,
-    --   -- })
-    -- end,
     tsserver = function(_, opts)
       require("utils").on_attach(function(client, buffer)
         if client.name == "tsserver" then
@@ -136,10 +134,10 @@ function M.setup()
   local servers = opts.servers
 
   local capabilities = vim.lsp.protocol.make_client_capabilities()
-  capabilities.textDocument.foldingRange = {
-    dynamicRegistration = false,
-    lineFoldingOnly = true,
-  }
+  -- capabilities.textDocument.foldingRange = {
+  --   dynamicRegistration = false,
+  --   lineFoldingOnly = true,
+  -- }
   capabilities.textDocument.completion.completionItem.snippetSupport = true
   capabilities.textDocument.completion.completionItem.resolveSupport = {
     properties = {
