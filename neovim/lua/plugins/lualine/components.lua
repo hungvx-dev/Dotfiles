@@ -93,6 +93,7 @@ return {
       modified = { fg = colors.yellow },
       removed = { fg = colors.red },
     },
+    colored = true,
     cond = nil,
   },
   diagnostics = diagnostics,
