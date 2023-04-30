@@ -69,12 +69,65 @@ return {
   },
   { "MunifTanjim/nui.nvim", lazy = true },
   {
+    "echasnovski/mini.bufremove",
+    -- stylua: ignore
+    keys = {
+      { "<leader>bd", function() require("mini.bufremove").delete(0, false) end, desc = "Delete Buffer" },
+      { "<leader>bD", function() require("mini.bufremove").delete(0, true) end,  desc = "Delete Buffer (Force)" },
+    },
+  },
+
+  {
     "akinsho/bufferline.nvim",
-    branch = "main",
-    config = function()
-      require("plugins.bufferline").setup()
+    event = "VeryLazy",
+    keys = {
+      { "<leader>bp", "<Cmd>BufferLineTogglePin<CR>",            desc = "Toggle pin" },
+      { "<leader>bP", "<Cmd>BufferLineGroupClose ungrouped<CR>", desc = "Delete non-pinned buffers" },
+    },
+    opts = {
+      options = {
+        -- stylua: ignore
+        close_command = function(n) require("mini.bufremove").delete(n, false) end,
+        -- stylua: ignore
+        right_mouse_command = function(n) require("mini.bufremove").delete(n, false) end,
+        diagnostics = "nvim_lsp",
+        always_show_bufferline = false,
+        -- diagnostics_indicator = function(_, _, diag)
+        --   local icons = require("lazyvim.config").icons.diagnostics
+        --   local ret = (diag.error and icons.Error .. diag.error .. " " or "")
+        --       .. (diag.warning and icons.Warn .. diag.warning or "")
+        --   return vim.trim(ret)
+        -- end,
+        offsets = {
+          {
+            filetype = "neo-tree",
+            text = "Neo-tree",
+            highlight = "Directory",
+            text_align = "left",
+          },
+        },
+      },
+    },
+  },
+
+  -- better vim.ui
+  {
+    "stevearc/dressing.nvim",
+    lazy = true,
+    init = function()
+      ---@diagnostic disable-next-line: duplicate-set-field
+      vim.ui.select = function(...)
+        require("lazy").load({ plugins = { "dressing.nvim" } })
+        return vim.ui.select(...)
+      end
+      ---@diagnostic disable-next-line: duplicate-set-field
+      vim.ui.input = function(...)
+        require("lazy").load({ plugins = { "dressing.nvim" } })
+        return vim.ui.input(...)
+      end
     end,
   },
+
 
   -- Install nvim-cmp, and buffer source as a dependency
   {
@@ -207,20 +260,12 @@ return {
   },
 
   {
-    "windwp/nvim-spectre",
-    -- stylua: ignore
-    --
-    event = { "BufRead", "BufWinEnter" },
-    lazy = true,
+    "nvim-pack/nvim-spectre",
+    event   = { "BufRead", "BufWinEnter" },
+    lazy    = true,
     enabled = false,
-    keys = {
-      {
-        "<leader>fr",
-        function()
-          require("spectre").open()
-        end,
-        desc = "Replace in files (Spectre)",
-      },
+    keys    = {
+      { "<leader>fr", function() require("spectre").open() end, desc = "Replace in files (Spectre)", },
     },
   },
 
@@ -281,7 +326,6 @@ return {
       vim.keymap.set("n", "zR", require("ufo").openAllFolds)
       vim.keymap.set("n", "zM", require("ufo").closeAllFolds)
       vim.keymap.set("n", "zr", require("ufo").openFoldsExceptKinds)
-
       require "plugins.ufo"
     end,
   },
@@ -455,17 +499,4 @@ return {
       require("plugins.breadcrumbs").setup()
     end,
   },
-
-  -- {
-  --   "glepnir/lspsaga.nvim",
-  --   event = "LspAttach",
-  --   lazy = true,
-  --   config = function()
-  --     require("lspsaga").setup {}
-  --   end,
-  --   dependencies = {
-  --     { "nvim-tree/nvim-web-devicons" },
-  --     { "nvim-treesitter/nvim-treesitter" },
-  --   },
-  -- },
 }

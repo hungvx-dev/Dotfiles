@@ -71,11 +71,11 @@ opt.wildignorecase = true
 opt.wildignore:append "**/node_modules/*"
 opt.wildignore:append "**/.git/*"
 
-opt.foldcolumn = "0"
+opt.foldcolumn = "1"
 opt.foldenable = true
 opt.foldlevel = 99
 opt.foldlevelstart = 99
--- opt.statuscolumn = '%l%s%C'
+-- opt.statuscolumn = '%C%s%r'
 
 -- opt.foldmethod = "expr"
 -- opt.foldexpr = "nvim_treesitter#foldexpr()"
