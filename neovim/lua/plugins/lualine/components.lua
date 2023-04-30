@@ -100,17 +100,6 @@ return {
     cond = nil,
   },
   diagnostics = diagnostics,
-  -- diagnostics = {
-  --   "diagnostics",
-  --   sources = { "nvim_diagnostic" },
-  --   symbols = {
-  --     error = hvim.icons.diagnostics.BoldError .. " ",
-  --     warn = hvim.icons.diagnostics.BoldWarning .. " ",
-  --     info = hvim.icons.diagnostics.BoldInformation .. " ",
-  --     hint = hvim.icons.diagnostics.BoldHint .. " ",
-  --   },
-  --   -- cond = conditions.hide_in_width,
-  -- },
   treesitter = {
     function()
       return hvim.icons.ui.Tree
@@ -158,5 +147,34 @@ return {
     padding = { left = 0, right = 0 },
     color = "SLProgress",
     cond = nil,
+  },
+  lsp = {
+    function(msg)
+      msg = msg or "LS Inactive"
+      local buf_clients = vim.lsp.buf_get_clients()
+      if next(buf_clients) == nil then
+        -- TODO: clean up this if statement
+        if type(msg) == "boolean" or #msg == 0 then
+          return "LS Inactive"
+        end
+        return msg
+      end
+      local buf_client_names = {}
+
+      -- add client
+      for _, client in pairs(buf_clients) do
+        if client.name ~= "null-ls" then
+          table.insert(buf_client_names, client.name)
+        end
+      end
+
+      local unique_client_names = vim.fn.uniq(buf_client_names)
+
+      local language_servers = "[" .. table.concat(unique_client_names, ", ") .. "]"
+
+      return language_servers
+    end,
+    color = { gui = "bold" },
+    cond = conditions.hide_in_width,
   },
 }

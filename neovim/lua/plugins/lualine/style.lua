@@ -7,7 +7,6 @@ local style = {
     icons_enabled = hvim.use_icons,
     section_separators = { left = "", right = "" },
     component_separators = { left = "", right = "" },
-    -- section_separators = { left = "", right = "" },
     disabled_filetypes = { "alpha", "dashboard", "Outline", "dashboard", "fugitive", "gitcommit", "NvimTree" },
     ignore_focus = {
       "NvimTree",
@@ -29,16 +28,15 @@ local style = {
       components.diagnostics,
     },
     lualine_c = {
-      -- components.lsp,
-    },
-    lualine_x = {
-      components.spaces,
       components.diff,
     },
-    lualine_y = { components.filetype, components.location },
-    lualine_z = {
-      components.progress,
+    lualine_x = {
+      components.lsp,
+      components.spaces,
+      components.filetype,
     },
+    lualine_y = { components.location },
+    lualine_z = { components.progress, },
   },
   inactive_sections = {
     lualine_a = {},
