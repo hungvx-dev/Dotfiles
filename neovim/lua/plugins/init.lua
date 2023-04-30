@@ -80,6 +80,7 @@ return {
   {
     "akinsho/bufferline.nvim",
     event = "VeryLazy",
+    lazy = true,
     keys = {
       { "<leader>bp", "<Cmd>BufferLineTogglePin<CR>",            desc = "Toggle pin" },
       { "<leader>bP", "<Cmd>BufferLineGroupClose ungrouped<CR>", desc = "Delete non-pinned buffers" },
@@ -319,9 +320,26 @@ return {
   },
   {
     "kevinhwang91/nvim-ufo",
+    event = "BufReadPost",
     -- enabled = false,
-    -- lazy = true,
-    dependencies = { "kevinhwang91/promise-async" },
+    lazy = true,
+    dependencies = {
+      "kevinhwang91/promise-async",
+      {
+        "luukvbaal/statuscol.nvim",
+        -- enabled = false,
+        config = function()
+          local builtin = require("statuscol.builtin")
+          require("statuscol").setup({
+            segments = {
+              { text = { builtin.foldfunc },      click = "v:lua.ScFa" },
+              { text = { "%s" },                  click = "v:lua.ScSa" },
+              { text = { builtin.lnumfunc, " " }, click = "v:lua.ScLa" },
+            },
+          })
+        end,
+      },
+    },
     config = function()
       vim.keymap.set("n", "zR", require("ufo").openAllFolds)
       vim.keymap.set("n", "zM", require("ufo").closeAllFolds)
