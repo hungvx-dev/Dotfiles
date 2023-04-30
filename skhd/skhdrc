@@ -29,10 +29,10 @@ alt + shift - k : yabai -m window --swap north
 alt + shift - l : yabai -m window --swap east
 
 # Moving windows and split
-alt + ctrl - h : yabai -m window --warp west
-alt + ctrl - j : yabai -m window --warp south
-alt + ctrl - k : yabai -m window --warp north
-alt + ctrl - l : yabai -m window --warp east
+# alt + ctrl - h : yabai -m window --warp west
+# alt + ctrl - j : yabai -m window --warp south
+# alt + ctrl - k : yabai -m window --warp north
+# alt + ctrl - l : yabai -m window --warp east
 
 alt + shift - n : yabai -m window --space next
 alt + shift - p : yabai -m window --space prev
@@ -50,5 +50,5 @@ alt + shift - 9 : yabai -m window --space 9
 # alt + shift - 10 : yabai -m window --space 10
 
 # Start and Stop yabai
-alt + ctrl - q : brew services stop yabai
-alt + ctrl - s : brew services start yabai
+# alt + ctrl - q : brew services stop yabai
+# alt + ctrl - s : brew services start yabai
