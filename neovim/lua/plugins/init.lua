@@ -20,11 +20,15 @@ return {
 
   {
     "nvim-neo-tree/neo-tree.nvim",
+    cmd = "Neotree",
     keys = { {
       "<leader>t",
       "<cmd>Neotree toggle<cr>",
       desc = "NeoTree",
     } },
+    deactivate = function()
+      vim.cmd([[Neotree close]])
+    end,
     dependencies = {
       "nvim-lua/plenary.nvim",
       "nvim-tree/nvim-web-devicons", -- not strictly required, but recommended

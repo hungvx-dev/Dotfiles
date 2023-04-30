@@ -50,7 +50,7 @@ local setup = {
     git_status = {
       symbols = {
         -- Change type
-        added = "✚", -- or "✚", but this is redundant info if you use git_status_colors on the name
+        added = "✚",  -- or "✚", but this is redundant info if you use git_status_colors on the name
         modified = "", -- or "", but this is redundant info if you use git_status_colors on the name
         deleted = "", -- this can only be used in the git_status source
         renamed = "", -- this can only be used in the git_status source
@@ -71,21 +71,23 @@ local setup = {
       nowait = true,
     },
     mappings = {
+      ["<space>"] = "none",
       ["o"] = "open_with_window_picker",
       ["<C-x>"] = "split_with_window_picker",
       ["<C-v>"] = "vsplit_with_window_picker",
     },
   },
   filesystem = {
-    bind_to_cwd = true,
+    bind_to_cwd = false,
     follow_current_file = true, -- This will find and focus the file in the active buffer every
     -- hijack_netrw_behavior = "open_current"
-    hijack_netrw_behavior = "disabled",
+    -- hijack_netrw_behavior = "disabled",
+    use_libuv_file_watcher = true,
   },
   buffers = {
     follow_current_file = true, -- This will find and focus the file in the active buffer every
     -- time the current file is changed while the tree is open.
-    group_empty_dirs = true, -- when true, empty folders will be grouped together
+    group_empty_dirs = true,    -- when true, empty folders will be grouped together
     show_unloaded = true,
   },
 }
@@ -97,8 +99,15 @@ function M.setup()
   end
 
   neo_tree.setup(setup)
+  vim.api.nvim_create_autocmd("TermClose", {
+    pattern = "*lazygit",
+    callback = function()
+      if package.loaded["neo-tree.sources.git_status"] then
+        require("neo-tree.sources.git_status").refresh()
+      end
+    end,
+  })
+  vim.keymap.set("n", "<leader>n", ":NeoTreeFocus<cr>")
 end
-
-vim.keymap.set("n", "<leader>n", ":NeoTreeFocus<cr>")
 
 return M
