@@ -78,11 +78,7 @@ return {
     cond = nil,
   },
   branch = branch,
-  filename = {
-    "filename",
-    color = {},
-    cond = nil,
-  },
+  filename = { "filename", path = 1, symbols = { modified = "  ", readonly = "", unnamed = "" } },
   diff = {
     "diff",
     source = diff_source,
@@ -111,7 +107,7 @@ return {
     end,
     cond = conditions.hide_in_width,
   },
-  location = { "location" },
+  location = { "location", padding = { left = 0, right = 1 } },
   progress = {
     "progress",
     fmt = function()
@@ -177,4 +173,6 @@ return {
     color = { gui = "bold" },
     cond = conditions.hide_in_width,
   },
+  lazy = { require("lazy.status").updates, cond = require("lazy.status").has_updates, color = { fg = "#2ac3de" } },
+
 }

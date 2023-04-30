@@ -29,8 +29,10 @@ local style = {
     },
     lualine_c = {
       components.diff,
+      components.filename,
     },
     lualine_x = {
+      components.lazy,
       components.lsp,
       components.spaces,
       components.filetype,
