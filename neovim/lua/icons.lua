@@ -122,6 +122,7 @@ local icons = {
     TriangleShortArrowLeft = "",
     TriangleShortArrowRight = "",
     TriangleShortArrowUp = "",
+    Tree = "  ",
   },
   diagnostics = {
     Error = "",
