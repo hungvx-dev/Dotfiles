@@ -14,7 +14,6 @@ tokyonight.setup {
     keywords  = { italic = true },
     functions = { italic = true },
     variables = "NONE",
-    -- Background styles. Can be "dark", "transparent" or "normal"
     sidebars  = "transparent",
     floats    = "transparent",
   },
@@ -33,19 +32,20 @@ tokyonight.setup {
     hl.TelescopeBorder   = { bg = none, fg = text }
     hl.TelescopeMatching = { fg = prompt }
 
+    hl.StatusLine        = { bg = none }
+    hl.StatusLineNC.bg   = none
+
     -- hl.MsgArea                       = { fg = c.fg_dark }
 
     -- hl.NormalFloat.bg                = none
     -- hl.NormalSB.bg                   = none
     -- hl.FloatBorder.bg                = none
     -- hl.Pmenu.bg                      = none
-    -- hl.BufferOffset                  = { fg = prompt }
+    -- hl.BufferOffset      = { fg = prompt, bg = none }
+    -- hl.BufferLineTab     = { bg = none }
 
     -- hl.NeoTreeNormal.bg              = none
     -- hl.NeoTreeNormalNC.bg            = none
-
-    hl.StatusLine        = { bg = none }
-    hl.StatusLineNC.bg   = none
 
     -- hl.TabLine.bg                    = none
 
@@ -54,13 +54,13 @@ tokyonight.setup {
     -- hl.LspFloatWinNormal.bg          = none
     -- hl.LspInfoBorder.bg              = none
 
-    -- -- hl.CmpDocumentation.bg           = none
-    -- -- hl.CmpDocumentationBorder.bg     = none
-    -- -- hl.CmpItemAbbr.bg                = none
-    -- -- hl.CmpItemMenu.bg                = none
-    -- -- hl.CmpItemAbbrMatch.bg           = none
-    -- -- hl.CmpItemAbbrMatchFuzzy.bg      = none
-    -- -- hl.CmpItemKindVariable.bg        = none
+    -- hl.CmpDocumentation.bg           = none
+    -- hl.CmpDocumentationBorder.bg     = none
+    -- hl.CmpItemAbbr.bg                = none
+    -- hl.CmpItemMenu.bg                = none
+    -- hl.CmpItemAbbrMatch.bg           = none
+    -- hl.CmpItemAbbrMatchFuzzy.bg      = none
+    -- hl.CmpItemKindVariable.bg        = none
 
     -- hl.CmpItemAbbr                   = { fg = c.dark3, bg = none }
     -- hl.CmpItemKindClass              = { fg = c.orange }
@@ -86,6 +86,3 @@ tokyonight.setup {
     -- hl.MiniTablineVisible.bg         = none
   end,
 }
-
--- vim.api.nvim_set_hl(0, 'BufferTabpageFill', { fg = "None" });
--- vim.api.nvim_set_hl(0, 'BqfPreviewBorder', { link = 'FloatBorder' })
