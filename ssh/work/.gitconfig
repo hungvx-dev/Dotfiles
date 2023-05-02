@@ -4,6 +4,9 @@
  	useconfigonly = true
 [init]
 	defaultBranch = master
+[push]
+  default = current
+  autoSetupRemote = true
 [core]
 	editor = nvim
 [web]
@@ -31,6 +34,8 @@
 	untracked = red bold
 [diff]
 	tool = vimdiff
+  algorithm = patience
+  colorMoved = dimmed-zebra
 [delta]
 	features = line-numbers decorations
 	line-numbers = true

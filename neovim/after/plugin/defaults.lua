@@ -71,11 +71,11 @@ opt.wildignorecase = true
 opt.wildignore:append "**/node_modules/*"
 opt.wildignore:append "**/.git/*"
 
-opt.foldcolumn = "1"
+opt.foldcolumn = "0"
 opt.foldenable = true
 opt.foldlevel = 99
 opt.foldlevelstart = 99
--- opt.statuscolumn = '%C%s%r'
+opt.statuscolumn = '%C%s%r'
 
 -- opt.foldmethod = "expr"
 -- opt.foldexpr = "nvim_treesitter#foldexpr()"
@@ -85,10 +85,10 @@ opt.foldlevelstart = 99
 --   g.neovide_fullscreen = true
 -- end
 
-if vim.fn.has "nvim-0.9.0" == 1 then
-  opt.splitkeep = "screen"
-  opt.shortmess:append { C = true }
-end
+-- if vim.fn.has "nvim-0.9.0" == 1 then
+--   opt.splitkeep = "screen"
+--   opt.shortmess:append { C = true }
+-- end
 
 -- Fix markdown indentation settings
 vim.g.markdown_recommended_style = 0

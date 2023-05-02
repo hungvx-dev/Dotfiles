@@ -9,6 +9,10 @@
 [includeIf "gitdir:~/Work/Hodfords/"]
   path = ~/Work/Hodfords/.gitconfig
 
+[push]
+  default = current
+  autoSetupRemote = true
+
 [credential "https://github.com"]
   username = hungvx-dev
 [init]
