@@ -8,7 +8,7 @@ set fish_cursor_insert line
 set fish_cursor_replace_one underscore
 set fish_cursor_visual block
 
-fish_vi_key_bindings
+# fish_vi_key_bindings
 
 set fish_path $HOME/.config/fish
 . $fish_path/alias/my_alias.fish
@@ -24,6 +24,5 @@ set -gx PATH "$PNPM_HOME" $PATH
 # pnpm end
 
 set -gx PATH /opt/homebrew/opt/gnu-sed/libexec/gnubin:$PATH
-
 
 # chruby ruby-3.2.1
