@@ -8,7 +8,7 @@ abbr ll 'ls -Flha'
 abbr ls 'ls -lag'
 
 # Tmux
-abbr t 'tmux -u'
+abbr t 'tmux'
 abbr ta 'tmux attach'
 
 # node
