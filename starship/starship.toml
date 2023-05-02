@@ -4,8 +4,9 @@
 # Inserts a blank line between shell prompts
 add_newline = true
 
+# [  ](fg:green)\
 format = """
- \
+$os\
 $directory \
 ($git_branch $git_commit ($git_state )$git_metrics$git_status)\
 $fill\
@@ -50,6 +51,14 @@ disabled = true
 [cmd_duration]
 disabled = true
 
+[os]
+format = "[$symbol]($style)"
+style = "bold green"
+disabled = false
+
+[os.symbols]
+Macos = " "
+
 [hostname]
 disabled = false
 ssh_only = false
@@ -74,6 +83,12 @@ read_only = " "
 style = "bold bg:none fg:cyan"
 read_only_style = "fg:red"
 format = '[$path]($style)[$readonly]($read_only_style)'
+
+[directory.substitutions]
+"Documents" = " "
+"Downloads" = " "
+"Music" = " "
+"Pictures" = " "
 
 [env_var]
 disabled = true
