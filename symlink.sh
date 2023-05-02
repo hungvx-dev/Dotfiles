@@ -1,8 +1,12 @@
 # Terminal & Tmux config
 ln -s $(pwd)/alacritty ~/.config/alacritty
 ln -s $(pwd)/kitty ~/.config/kitty
+
+# Tmux config
 ln -s $(pwd)/.tmux/.tmux.conf.local ~/.tmux.conf.local
 ln -s $(pwd)/.tmux/.tmux.conf ~/.tmux.conf
+# or
+ln -s $(pwd)/tmux ~/.config/tmux
 
 # FISh
 rm -rf ~/.config/fish/config.fish
