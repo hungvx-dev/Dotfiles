@@ -19,6 +19,6 @@ yabai -m config mouse_action2 resize # Right click + drag
 yabai -m mouse_drop_action swap
 
 # Disable specific apps
-yabai -m rule --add app="^(System Setting|Preview|Raycast)$" manage=off
+yabai -m rule --add app="^(System Settings|Preview|Raycast)$" manage=off
 yabai -m rule --add app="^Calculator$" manage=off
 yabai -m rule --add app="^Finder$" manage=off
