@@ -25,14 +25,14 @@ local setup = {
       last_indent_marker = "└",
       highlight = "NeoTreeIndentMarker",
       -- expander config, needed for nesting files
-      expander_collapsed = "",
-      expander_expanded = "",
+      expander_collapsed = hvim.icons.ui.ChevronShortRight,
+      expander_expanded = hvim.icons.ui.ChevronShortUp,
       expander_highlight = "NeoTreeExpander",
     },
     icon = {
-      folder_closed = "",
-      folder_open = "",
-      folder_empty = "",
+      folder_closed = hvim.icons.ui.Folder,
+      folder_open = hvim.icons.ui.FolderOpen,
+      folder_empty = hvim.icons.ui.EmptyFolder,
       -- The next two settings are only a fallback, if you use nvim-web-devicons and configure default icons there
       -- then these will never be used.
       default = "*",
