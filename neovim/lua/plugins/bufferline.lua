@@ -91,6 +91,9 @@ local setup = {
     diagnostics = "nvim_lsp",
     diagnostics_update_in_insert = false,
     diagnostics_indicator = diagnostics_indicator,
+    indicator = {
+      style = "underline", --"icon" | "underline" | "none",
+    },
     offsets = {
       {
         filetype = "undotree",

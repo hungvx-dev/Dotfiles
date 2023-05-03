@@ -1,4 +1,4 @@
-require("colorizer").setup({
+require("colorizer").setup {
   filetypes = {
     "html",
     "css",
@@ -15,4 +15,4 @@ require("colorizer").setup({
     mode = "background",
     tailwind = false, -- Enable tailwind colors
   },
-})
+}
