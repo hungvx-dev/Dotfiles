@@ -35,5 +35,8 @@ tokyonight.setup {
     hl.StatusLine        = { bg = none }
     hl.StatusLineNC.bg   = none
     hl.NormalFloat.bg    = none
+
+    hl.Pmenu.bg          = none
+    hl.PmenuSbar.bg      = none
   end,
 }

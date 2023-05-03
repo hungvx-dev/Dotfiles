@@ -10,8 +10,9 @@ local opts = {
     "lazy",
     "NvimTree",
     "Trouble",
-    -- "neogitstatus",
-    -- "text",
+    "neo-tree",
+    "alpha",
+    "mason"
   },
   char = hvim.icons.ui.LineLeft,
   context_char = hvim.icons.ui.LineLeft,

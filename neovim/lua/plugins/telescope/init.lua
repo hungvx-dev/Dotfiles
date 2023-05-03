@@ -20,10 +20,10 @@ local opts = {
     },
     sorting_strategy = "ascending",
     layout_strategy = "center",
-    layout_config = {
-      height = 0.3,
-      width = 0.5,
-    },
+    -- layout_config = {
+    --   height = 0.3,
+    --   width = 0.5,
+    -- },
     prompt_prefix = "  ",
     mappings = {
       i = {
