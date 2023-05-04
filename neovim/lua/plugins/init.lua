@@ -1,7 +1,7 @@
 return {
   {
     "folke/tokyonight.nvim",
-    lazy = false,    -- make sure we load this during startup if it is your main colorscheme
+    lazy = false, -- make sure we load this during startup if it is your main colorscheme
     priority = 1000, -- make sure to load this before all the other start plugins
     config = function()
       -- load the colorscheme here
@@ -16,7 +16,7 @@ return {
     lazy = true,
   },
 
-  { "nvim-lua/popup.nvim",  lazy = true },
+  { "nvim-lua/popup.nvim", lazy = true },
 
   {
     "nvim-neo-tree/neo-tree.nvim",
@@ -27,7 +27,7 @@ return {
       desc = "NeoTree",
     } },
     deactivate = function()
-      vim.cmd([[Neotree close]])
+      vim.cmd [[Neotree close]]
     end,
     dependencies = {
       "nvim-lua/plenary.nvim",
@@ -86,7 +86,7 @@ return {
     event = "VeryLazy",
     lazy = true,
     keys = {
-      { "<leader>bp", "<Cmd>BufferLineTogglePin<CR>",            desc = "Toggle pin" },
+      { "<leader>bp", "<Cmd>BufferLineTogglePin<CR>", desc = "Toggle pin" },
       { "<leader>bP", "<Cmd>BufferLineGroupClose ungrouped<CR>", desc = "Delete non-pinned buffers" },
     },
     config = function()
@@ -101,17 +101,16 @@ return {
     init = function()
       ---@diagnostic disable-next-line: duplicate-set-field
       vim.ui.select = function(...)
-        require("lazy").load({ plugins = { "dressing.nvim" } })
+        require("lazy").load { plugins = { "dressing.nvim" } }
         return vim.ui.select(...)
       end
       ---@diagnostic disable-next-line: duplicate-set-field
       vim.ui.input = function(...)
-        require("lazy").load({ plugins = { "dressing.nvim" } })
+        require("lazy").load { plugins = { "dressing.nvim" } }
         return vim.ui.input(...)
       end
     end,
   },
-
 
   -- Install nvim-cmp, and buffer source as a dependency
   {
@@ -133,7 +132,7 @@ return {
   { "hrsh7th/cmp-buffer" },
   { "hrsh7th/cmp-path" },
   { "hrsh7th/cmp-cmdline" },
-  { "tzachar/cmp-tabnine",     build = "./install.sh" },
+  { "tzachar/cmp-tabnine", build = "./install.sh" },
   {
     "L3MON4D3/LuaSnip",
     event = "InsertEnter",
@@ -179,7 +178,7 @@ return {
     },
     keys = {
       { "<c-space>", desc = "Increment selection" },
-      { "<bs>",      desc = "Decrement selection", mode = "x" },
+      { "<bs>", desc = "Decrement selection", mode = "x" },
     },
     config = function()
       require("plugins.treesitter").setup()
@@ -245,11 +244,17 @@ return {
 
   {
     "nvim-pack/nvim-spectre",
-    event   = { "BufRead", "BufWinEnter" },
-    lazy    = true,
+    event = { "BufRead", "BufWinEnter" },
+    lazy = true,
     enabled = false,
-    keys    = {
-      { "<leader>fr", function() require("spectre").open() end, desc = "Replace in files (Spectre)", },
+    keys = {
+      {
+        "<leader>fr",
+        function()
+          require("spectre").open()
+        end,
+        desc = "Replace in files (Spectre)",
+      },
     },
   },
 
@@ -313,18 +318,18 @@ return {
         lazy = true,
         -- enabled = false,
         config = function()
-          local builtin = require("statuscol.builtin")
-          require("statuscol").setup({
+          local builtin = require "statuscol.builtin"
+          require("statuscol").setup {
             segments = {
               { text = { builtin.foldfunc }, click = "v:lua.ScFa" },
-              { text = { "%s" },             click = "v:lua.ScSa" },
+              { text = { "%s" }, click = "v:lua.ScSa" },
               {
                 text = { builtin.lnumfunc, " " },
                 condition = { true, builtin.not_empty },
-                click = "v:lua.ScLa"
+                click = "v:lua.ScLa",
               },
             },
-          })
+          }
         end,
       },
     },
@@ -422,18 +427,18 @@ return {
       },
     },
     keys = {
-      { "<leader>fs", "<cmd>Telescope live_grep<cr>",                 desc = "Find in Files (Grep)" },
-      { "<leader>fb", "<cmd>Telescope buffers<cr>",                   desc = "Buffers" },
-      { "<leader>fp", "<cmd>Telescope find_files<cr>",                desc = "Find Files (root dir)" },
-      { "<leader>fo", "<cmd>Telescope oldfiles<cr>",                  desc = "Recent" }, -- git
+      { "<leader>fs", "<cmd>Telescope live_grep<cr>", desc = "Find in Files (Grep)" },
+      { "<leader>fb", "<cmd>Telescope buffers<cr>", desc = "Buffers" },
+      { "<leader>fp", "<cmd>Telescope find_files<cr>", desc = "Find Files (root dir)" },
+      { "<leader>fo", "<cmd>Telescope oldfiles<cr>", desc = "Recent" }, -- git
       { "<leader>fi", "<cmd>Telescope current_buffer_fuzzy_find<cr>", desc = "Buffer" },
-      { "<leader>fd", "<cmd>Telescope diagnostics<cr>",               desc = "Diagnostics" },
-      { "<leader>fj", "<cmd>Telescope grep_string<cr>",               desc = "Word (root dir)" },
-      { "<leader>fk", "<cmd>Telescope keymaps<cr>",                   desc = "Key Maps" },
-      { "<leader>fh", "<cmd>Telescope help_tags<cr>",                 desc = "Help Tags" },
-      { "<leader>fH", "<cmd>Telescope highlights<cr>",                desc = "Search Highlight Groups" },
-      { "<leader>fm", "<cmd>Telescope marks<cr>",                     desc = "Jump to Mark" },
-      { "<leader>f:", "<cmd>Telescope command_history<cr>",           desc = "Command History" },
+      { "<leader>fd", "<cmd>Telescope diagnostics<cr>", desc = "Diagnostics" },
+      { "<leader>fj", "<cmd>Telescope grep_string<cr>", desc = "Word (root dir)" },
+      { "<leader>fk", "<cmd>Telescope keymaps<cr>", desc = "Key Maps" },
+      { "<leader>fh", "<cmd>Telescope help_tags<cr>", desc = "Help Tags" },
+      { "<leader>fH", "<cmd>Telescope highlights<cr>", desc = "Search Highlight Groups" },
+      { "<leader>fm", "<cmd>Telescope marks<cr>", desc = "Jump to Mark" },
+      { "<leader>f:", "<cmd>Telescope command_history<cr>", desc = "Command History" },
     },
     config = function()
       require "plugins.telescope"

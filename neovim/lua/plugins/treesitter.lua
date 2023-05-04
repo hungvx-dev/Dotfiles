@@ -1,61 +1,62 @@
 local M = {}
 
--- "lua",
--- "vim",
--- "help",
--- "query",
--- "typescript",
--- "javascript",
--- "html",
--- "css",
--- "scss",
--- "bash",
--- "json",
--- "json5",
--- "jsonc",
--- "tsx",
--- "vue",
--- "regex",
--- "comment",
--- "dockerfile",
--- "graphql",
--- "yaml",
--- "fish",
--- "gitignore",
--- "gitcommit",
--- "git_config",
--- "git_rebase",
--- "markdown",
--- "markdown_inline",
--- "prisma",
--- "toml",
+local package = {
+  "lua",
+  "vim",
+  "query",
+  "typescript",
+  "javascript",
+  "html",
+  "css",
+  "scss",
+  "bash",
+  "json",
+  "json5",
+  "jsonc",
+  "tsx",
+  "vue",
+  "regex",
+  "comment",
+  "dockerfile",
+  "graphql",
+  "yaml",
+  "fish",
+  "gitignore",
+  "gitcommit",
+  "git_config",
+  "git_rebase",
+  "markdown",
+  "markdown_inline",
+  "prisma",
+  "toml",
+}
 
 local opts = {
   -- A list of parser names, or "all" (the five listed parsers should always be installed)
-  ensure_installed      = {},
+  ensure_installed = package,
   -- Install parsers synchronously (only applied to `ensure_installed`)
-  sync_install          = false,
+  sync_install = true,
   -- Automatically install missing parsers when entering buffer
   -- Recommendation: set to false if you don't have `tree-sitter` CLI installed locally
-  auto_install          = true,
+  auto_install = false,
   -- List of parsers to ignore installing (for "all")
-  ignore_install        = {},
+  ignore_install = {},
   ---- If you need to change the installation directory of the parsers (see -> Advanced Setup)
   -- parser_install_dir = "/some/path/to/store/parsers", -- Remember to run vim.opt.runtimepath:append("/some/path/to/store/parsers")!
 
-  highlight             = { enable = true },
-  indent                = { enable = true, disable = { "python", "yaml" } },
-  autotag               = { enable = true },
+  highlight = { enable = true },
+  indent = { enable = true, disable = { "python", "yaml" } },
+  autotag = { enable = true },
   context_commentstring = { enable = true, enable_autocmd = false },
-  rainbow               = {
-    enable         = true,
-    extended_mode  = true,
+  rainbow = {
+    enable = true,
+    extended_mode = true,
     max_file_lines = 1000,
   },
   incremental_selection = {
     enable = false,
   },
-  textobjects           = {
+  textobjects = {
     select = {
       enable = true,
       -- Automatically jump forward to textobj, similar to targets.vim
