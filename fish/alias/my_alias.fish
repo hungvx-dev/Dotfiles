@@ -10,12 +10,17 @@ abbr ls 'ls -lag'
 # Tmux
 abbr t 'tmux'
 abbr ta 'tmux attach'
+abbr tas 'tmux attach-section'
+abbr tk 'tmux kill-server'
 
 # node
 abbr pn 'pnpm'
 abbr npm-list 'npm list -g --depth=0'
 
 abbr lz 'lazygit'
+
+abbr cmus 'TERM=xterm-kitty cmus'
+abbr cava 'TERM=xterm-kitty cava'
 
 # command script shell
 abbr ide '~/.script-bash/ide.sh'
