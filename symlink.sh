@@ -34,6 +34,8 @@ ln -s $(pwd)/ssh/.gitconfig ~/.gitconfig
 ln -s $(pwd)/ssh/work/.gitconfig ~/Work/Hodfords/.gitconfig
 ln -s $(pwd)/lazygit/config.yml ~/.config/lazygit/config.yml
 
+ln -s $(pwd)/exercism ~/.config/exercism
+
 # Script
 ln -s $(pwd)/.script-bash ~/.script-bash
 
