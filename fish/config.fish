@@ -1,7 +1,6 @@
 set -x LANG en_US.UTF-8
 set -gx EDITOR nvim
 set -gx NVM_DIR $HOME/.nvm
-set -gx GEM_HOME $HOME/.gem
 
 set fish_cursor_default block
 set fish_cursor_insert line
@@ -18,11 +17,17 @@ starship init fish | source
 
 [ -f /opt/homebrew/share/autojump/autojump.fish ]; and source /opt/homebrew/share/autojump/autojump.fish
 
-# pnpm
+# # pnpm
 set -gx PNPM_HOME "/Users/hungvx.dev/Library/pnpm"
-set -gx PATH "$PNPM_HOME" $PATH
-# pnpm end
+set fish_user_paths $fish_user_paths $PNPM_HOME
+# # pnpm end
 
-set -gx PATH /opt/homebrew/opt/gnu-sed/libexec/gnubin:$PATH
+# ruby
+set -gx GEM_HOME $HOME/.gem
+set -gx RUBY_PATH /opt/homebrew/opt/ruby/bin
+set fish_user_paths $fish_user_paths $RUBY_PATH
+set fish_user_paths $fish_user_paths $GEM_HOME/bin
+# ruby end
 
-# chruby ruby-3.2.1
+# Sed
+set fish_user_paths $fish_user_paths /opt/homebrew/opt/gnu-sed/libexec/gnubin
