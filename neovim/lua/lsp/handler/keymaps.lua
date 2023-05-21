@@ -12,12 +12,12 @@ function M.get()
     -- stylua: ignore
     M._keys = {
       { "!",  vim.diagnostic.open_float,                 desc = "Line Diagnostics" },
-      { "gd", "<cmd>Telescope lsp_definitions<cr>", desc = "Goto Definition", has = "definition" },
-      { "gi", "<cmd>Telescope lsp_implementations<cr>",  desc = "Goto Implementation" },
-      { "gr", "<cmd>Telescope lsp_references<cr>",       desc = "References" },
-      -- { "gd", "<cmd>lua vim.lsp.buf.definition()<cr>",   desc = "Goto Definition",     has = "definition" },
-      -- { "gi", "<cmd>lua vim.lsp.buf.implementation()<cr>",  desc = "Goto Implementation" },
-      -- { "gr", "<cmd>lua vim.lsp.buf.references()<cr>",       desc = "References" },
+      -- { "gd", "<cmd>Telescope lsp_definitions<cr>", desc = "Goto Definition", has = "definition" },
+      -- { "gi", "<cmd>Telescope lsp_implementations<cr>",  desc = "Goto Implementation" },
+      -- { "gr", "<cmd>Telescope lsp_references<cr>",       desc = "References" },
+      { "gd", "<cmd>lua vim.lsp.buf.definition()<cr>",   desc = "Goto Definition",     has = "definition" },
+      { "gi", "<cmd>lua vim.lsp.buf.implementation()<cr>",  desc = "Goto Implementation" },
+      { "gr", "<cmd>lua vim.lsp.buf.references()<cr>",       desc = "References" },
       { "gD", "<cmd>lua vim.lsp.buf.declaration()<cr>",    desc = "Goto Declaration" },
       { "<leader>gt", "<cmd>Telescope lsp_type_definitions<cr>", desc = "Goto Type Definition" },
       { "gf", format,                                    desc = "Format Document",     has = "documentFormatting" },
