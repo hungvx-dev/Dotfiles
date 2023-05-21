@@ -51,11 +51,11 @@ keymap("n", "gT", ":bprevious<cr>", default_opts)
 keymap("n", "<leader><CR>", ":nohlsearch<Bar>:echo<CR>", default_opts)
 
 -- Move selected line / block of text in visual mode
-keymap("x", "K", ":move '<-2<CR>gv-gv", default_opts)
-keymap("x", "J", ":move '>+1<CR>gv-gv", default_opts)
+-- keymap("x", "K", ":move '<-2<CR>gv-gv", default_opts)
+-- keymap("x", "J", ":move '>+1<CR>gv-gv", default_opts)
 
 -- Resizing panes
 keymap("n", "<leader>=", ":vertical resize +5<CR>", default_opts)
 keymap("n", "<leader>-", ":vertical resize -5<CR>", default_opts)
-keymap("n", "<leader>+", ":resize -1<CR>", default_opts)
-keymap("n", "<leader>_", ":resize +1<CR>", default_opts)
+keymap("n", "<leader>_", ":resize -2<CR>", default_opts)
+keymap("n", "<leader>+", ":resize +2<CR>", default_opts)
