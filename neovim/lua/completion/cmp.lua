@@ -20,14 +20,13 @@ local buffer_option = {
 }
 
 local source_mapping = {
-  cmp_tabnine = hvim.icons.cmp.Tabnine .. "Tabnine",
-  nvim_lsp = hvim.icons.cmp.Lsp .. "LSP",
-  buffer = hvim.icons.cmp.Buffer .. "Buffer",
-  luasnip = hvim.icons.cmp.Snippet .. "Snippet",
-  path = hvim.icons.cmp.Path .. "Path",
-  calc = hvim.icons.cmp.calculator,
-  treesitter = hvim.icons.cmp.Tree,
-  spell = "暈",
+  cmp_tabnine = hvim.icons.Cmp.Tabnine .. "Tabnine",
+  nvim_lsp = hvim.icons.Cmp.Lsp .. "LSP",
+  buffer = hvim.icons.Cmp.Buffer .. "Buffer",
+  luasnip = hvim.icons.Cmp.Snippet .. "Snippet",
+  path = hvim.icons.Cmp.Path .. "Path",
+  treesitter = hvim.icons.Cmp.Tree,
+  spell = hvim.icons.Cmp.Spellcheck,
 }
 
 local function jumpable(dir)
@@ -159,7 +158,7 @@ M.config = function()
     formatting = {
       fields = { "abbr", "kind", "menu" },
       max_width = 0,
-      kind_icons = hvim.icons.kind,
+      kind_icons = hvim.icons.Kind,
       source_names = source_mapping,
       duplicates = {
         buffer = 1,
@@ -171,16 +170,11 @@ M.config = function()
       format = function(entry, vim_item)
         local max_width = hvim.builtin.cmp.formatting.max_width
         if max_width ~= 0 and #vim_item.abbr > max_width then
-          vim_item.abbr = string.sub(vim_item.abbr, 1, max_width - 1) .. hvim.icons.ui.Ellipsis
+          vim_item.abbr = string.sub(vim_item.abbr, 1, max_width - 1) .. hvim.icons.UI.Ellipsis
         end
         if hvim.use_icons then
           vim_item.kind = fmt("%s %s", hvim.builtin.cmp.formatting.kind_icons[vim_item.kind], vim_item.kind)
           -- vim_item.kind = hvim.builtin.cmp.formatting.kind_icons[vim_item.kind]
-
-          if entry.source.name == "cmp_tabnine" then
-            vim_item.kind = hvim.icons.misc.Robot
-            vim_item.kind_hl_group = "CmpItemKindTabnine"
-          end
         end
         vim_item.menu = hvim.builtin.cmp.formatting.source_names[entry.source.name]
         vim_item.dup = hvim.builtin.cmp.formatting.duplicates[entry.source.name]
