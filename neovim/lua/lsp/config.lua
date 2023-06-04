@@ -2,15 +2,15 @@ local M = {}
 
 local opts = {
   diagnostics = {
-    signs = {
-      active = true,
-      values = {
-        { name = "DiagnosticSignError", text = hvim.icons.diagnostics.Error },
-        { name = "DiagnosticSignWarn", text = hvim.icons.diagnostics.Warning },
-        { name = "DiagnosticSignHint", text = hvim.icons.diagnostics.Hint },
-        { name = "DiagnosticSignInfo", text = hvim.icons.diagnostics.Information },
-      },
-    },
+    -- signs = {
+    --   active = true,
+    --   values = {
+    --     { name = "DiagnosticSignError", text = hvim.icons.Diagnostics.Error },
+    --     { name = "DiagnosticSignWarn", text = hvim.icons.Diagnostics.Warning },
+    --     { name = "DiagnosticSignHint", text = hvim.icons.Diagnostics.Hint },
+    --     { name = "DiagnosticSignInfo", text = hvim.icons.Diagnostics.Information },
+    --   },
+    -- },
     underline = true,
     update_in_insert = false,
     -- virtual_text = { spacing = 4, prefix = "●" },
@@ -42,10 +42,10 @@ local opts = {
 -- local signs = { Error = " ", Warn = " ", Hint = " ", Info = " " }
 function M.setup()
   local signs = {
-    Error = hvim.icons.diagnostics.BoldError,
-    Warn = hvim.icons.diagnostics.BoldWarning,
-    Hint = hvim.icons.diagnostics.BoldHint,
-    Info = hvim.icons.diagnostics.BoldInformation,
+    Error = hvim.icons.Diagnostics.BoldError,
+    Warn = hvim.icons.Diagnostics.BoldWarning,
+    Hint = hvim.icons.Diagnostics.BoldHint,
+    Info = hvim.icons.Diagnostics.BoldInformation,
   }
   -- diagnostics
   for name, icon in pairs(signs) do
