@@ -12,10 +12,10 @@ local opts = {
     "Trouble",
     "neo-tree",
     "alpha",
-    "mason"
+    "mason",
   },
-  char = hvim.icons.ui.LineLeft,
-  context_char = hvim.icons.ui.LineLeft,
+  char = hvim.icons.UI.Line.Left,
+  context_char = hvim.icons.UI.Line.Left,
   show_trailing_blankline_indent = true,
   show_first_indent_level = true,
   use_treesitter = true,

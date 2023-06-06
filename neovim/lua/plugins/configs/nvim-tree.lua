@@ -29,7 +29,7 @@ local nvimtree = {
       signcolumn = "yes",
       mappings = {
         custom_only = false,
-        list = {}
+        list = {},
       },
       float = {
         enable = false,
@@ -40,9 +40,9 @@ local nvimtree = {
           width = 30,
           height = 30,
           row = 1,
-          col = 1
-        }
-      }
+          col = 1,
+        },
+      },
     },
     renderer = {
       add_trailing = false,
@@ -59,8 +59,8 @@ local nvimtree = {
           corner = "└",
           edge = "│",
           item = "│",
-          none = " "
-        }
+          none = " ",
+        },
       },
       icons = {
         webdev_colors = hvim.use_icons,
@@ -71,21 +71,21 @@ local nvimtree = {
           file = hvim.use_icons,
           folder = hvim.use_icons,
           folder_arrow = hvim.use_icons,
-          git = hvim.use_icons
+          git = hvim.use_icons,
         },
         glyphs = {
           default = "",
           symlink = "",
 
           folder = {
-            arrow_open = hvim.icons.ui.ChevronRight,
-            arrow_closed = hvim.icons.ui.ChevronShortRight,
+            arrow_open = hvim.icons.UI.Direction.Angle.Right,
+            arrow_closed = hvim.icons.UI.Direction.Angle.Down,
             default = "",
             open = "",
             empty = "",
             empty_open = "",
             symlink = "",
-            symlink_open = ""
+            symlink_open = "",
           },
           git = {
             unstaged = "",
@@ -94,22 +94,22 @@ local nvimtree = {
             renamed = "➜",
             untracked = "",
             deleted = "",
-            ignored = "◌"
-          }
-        }
+            ignored = "◌",
+          },
+        },
       },
       special_files = { "Cargo.toml", "Makefile", "README.md", "readme.md" },
-      symlink_destination = true
+      symlink_destination = true,
     },
     hijack_directories = {
       enable = false,
-      auto_open = true
+      auto_open = true,
     },
     update_focused_file = {
       enable = true,
       debounce_delay = 15,
       update_root = true,
-      ignore_list = {}
+      ignore_list = {},
     },
     diagnostics = {
       enable = hvim.use_icons,
@@ -118,44 +118,44 @@ local nvimtree = {
       debounce_delay = 50,
       severity = {
         min = vim.diagnostic.severity.HINT,
-        max = vim.diagnostic.severity.ERROR
+        max = vim.diagnostic.severity.ERROR,
       },
       icons = {
         hint = "",
         info = "",
         warning = "",
-        error = ""
-      }
+        error = "",
+      },
     },
     filters = {
       dotfiles = false,
       git_clean = false,
       no_buffer = false,
       custom = { "node_modules", "\\.cache" },
-      exclude = {}
+      exclude = {},
     },
     filesystem_watchers = {
       enable = true,
       debounce_delay = 50,
-      ignore_dirs = {}
+      ignore_dirs = {},
     },
     git = {
       enable = true,
       ignore = false,
       show_on_dirs = true,
       show_on_open_dirs = true,
-      timeout = 200
+      timeout = 200,
     },
     actions = {
       use_system_clipboard = true,
       change_dir = {
         enable = true,
         global = false,
-        restrict_above_cwd = false
+        restrict_above_cwd = false,
       },
       expand_all = {
         max_folder_discovery = 300,
-        exclude = {}
+        exclude = {},
       },
       file_popup = {
         open_win_config = {
@@ -163,8 +163,8 @@ local nvimtree = {
           row = 1,
           relative = "cursor",
           border = "shadow",
-          style = "minimal"
-        }
+          style = "minimal",
+        },
       },
       open_file = {
         quit_on_open = false,
@@ -175,28 +175,28 @@ local nvimtree = {
           chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890",
           exclude = {
             filetype = { "notify", "lazy", "qf", "diff", "fugitive", "fugitiveblame" },
-            buftype = { "nofile", "terminal", "help" }
-          }
-        }
+            buftype = { "nofile", "terminal", "help" },
+          },
+        },
       },
       remove_file = {
-        close_window = true
-      }
+        close_window = true,
+      },
     },
     trash = {
       cmd = "trash",
-      require_confirm = true
+      require_confirm = true,
     },
     live_filter = {
       prefix = "[FILTER]: ",
-      always_show_folders = true
+      always_show_folders = true,
     },
     tab = {
       sync = {
         open = false,
         close = false,
-        ignore = {}
-      }
+        ignore = {},
+      },
     },
     log = {
       enable = false,
@@ -209,14 +209,14 @@ local nvimtree = {
         diagnostics = false,
         git = false,
         profile = false,
-        watcher = false
-      }
+        watcher = false,
+      },
     },
     system_open = {
       cmd = nil,
-      args = {}
-    }
-  }
+      args = {},
+    },
+  },
 }
 
 function M.setup()
@@ -226,7 +226,7 @@ function M.setup()
   end
 
   --    nvim_tree.setup(nvimtree.setup)
-  nvim_tree.setup({})
+  nvim_tree.setup {}
 end
 
 return M

@@ -3,10 +3,13 @@ local M = {}
 vim.cmd [[ let g:neo_tree_remove_legacy_commands = 1 ]]
 
 -- If you want icons for diagnostic errors, you'll need to define them somewhere:
-vim.fn.sign_define("DiagnosticSignError", { text = " ", texthl = "DiagnosticSignError" })
-vim.fn.sign_define("DiagnosticSignWarn", { text = " ", texthl = "DiagnosticSignWarn" })
-vim.fn.sign_define("DiagnosticSignInfo", { text = " ", texthl = "DiagnosticSignInfo" })
-vim.fn.sign_define("DiagnosticSignHint", { text = "", texthl = "DiagnosticSignHint" })
+-- vim.fn.sign_define("DiagnosticSignError", { text = hvim.icons.Diagnostics.BoldError, texthl = "DiagnosticSignError" })
+-- vim.fn.sign_define("DiagnosticSignWarn", { text = hvim.icons.Diagnostics.BoldWarning, texthl = "DiagnosticSignWarn" })
+-- vim.fn.sign_define(
+--   "DiagnosticSignInfo",
+--   { text = hvim.icons.Diagnostics.BoldInformation, texthl = "DiagnosticSignInfo" }
+-- )
+-- vim.fn.sign_define("DiagnosticSignHint", { text = hvim.icons.Diagnostics.BoldHint, texthl = "DiagnosticSignHint" })
 
 -- in the form "LspDiagnosticsSignWarning"
 local setup = {
@@ -25,14 +28,15 @@ local setup = {
       last_indent_marker = "└",
       highlight = "NeoTreeIndentMarker",
       -- expander config, needed for nesting files
-      expander_collapsed = hvim.icons.ui.ChevronShortRight,
-      expander_expanded = hvim.icons.ui.ChevronShortUp,
+      expander_collapsed = hvim.icons.UI.Direction.Angle.Right,
+      expander_expanded = hvim.icons.UI.Direction.Angle.Down,
       expander_highlight = "NeoTreeExpander",
     },
     icon = {
-      folder_closed = hvim.icons.ui.Folder,
-      folder_open = hvim.icons.ui.FolderOpen,
-      folder_empty = hvim.icons.ui.EmptyFolder,
+      folder_closed = hvim.icons.UI.Folder.Icon,
+      folder_open = hvim.icons.UI.Folder.Open,
+      folder_empty = hvim.icons.UI.Folder.Empty,
+      folder_empty_open = hvim.icons.UI.Folder.EmptyOpen,
       -- The next two settings are only a fallback, if you use nvim-web-devicons and configure default icons there
       -- then these will never be used.
       default = "*",
@@ -50,16 +54,16 @@ local setup = {
     git_status = {
       symbols = {
         -- Change type
-        added = "✚",  -- or "✚", but this is redundant info if you use git_status_colors on the name
+        added = "✚", -- or "✚", but this is redundant info if you use git_status_colors on the name
         modified = "", -- or "", but this is redundant info if you use git_status_colors on the name
-        deleted = "", -- this can only be used in the git_status source
-        renamed = "", -- this can only be used in the git_status source
+        deleted = hvim.icons.Git.LineRemoved, -- this can only be used in the git_status source
+        renamed = hvim.icons.Git.LineRename, -- this can only be used in the git_status source
         -- Status type
-        untracked = "",
-        ignored = "◌",
-        unstaged = "",
-        staged = "",
-        conflict = "",
+        untracked = hvim.icons.Git.FileUntracked,
+        ignored = hvim.icons.Git.FileIgnored,
+        unstaged = hvim.icons.Git.FileUnstaged,
+        staged = hvim.icons.Git.FileStaged,
+        conflict = hvim.icons.Git.FileUnmerged,
       },
     },
   },
@@ -87,7 +91,7 @@ local setup = {
   buffers = {
     follow_current_file = true, -- This will find and focus the file in the active buffer every
     -- time the current file is changed while the tree is open.
-    group_empty_dirs = true,    -- when true, empty folders will be grouped together
+    group_empty_dirs = true, -- when true, empty folders will be grouped together
     show_unloaded = true,
   },
 }
