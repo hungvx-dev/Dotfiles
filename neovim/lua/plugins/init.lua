@@ -58,7 +58,7 @@ return {
       },
     },
     config = function()
-      require("plugins.neo-tree").setup()
+      require("plugins.configs.neo-tree").setup()
     end,
   },
   {
@@ -90,7 +90,7 @@ return {
       { "<leader>bP", "<Cmd>BufferLineGroupClose ungrouped<CR>", desc = "Delete non-pinned buffers" },
     },
     config = function()
-      require("plugins.bufferline").setup()
+      require("plugins.configs.bufferline").setup()
     end,
   },
 
@@ -181,7 +181,7 @@ return {
       { "<bs>", desc = "Decrement selection", mode = "x" },
     },
     config = function()
-      require("plugins.treesitter").setup()
+      require("plugins.configs.treesitter").setup()
     end,
   },
   {
@@ -192,7 +192,7 @@ return {
   {
     "lukas-reineke/indent-blankline.nvim",
     config = function()
-      require("plugins.indent-lines").setup()
+      require("plugins.configs.indent-lines").setup()
     end,
   },
   {
@@ -230,13 +230,13 @@ return {
       },
     },
     config = function()
-      require "plugins.todo-comments"
+      require "plugins.configs.todo-comments"
     end,
   },
   {
     "numToStr/Comment.nvim",
     config = function()
-      require("plugins.comment").setup()
+      require("plugins.configs.comment").setup()
     end,
     event = "BufEnter",
     lazy = true,
@@ -263,7 +263,7 @@ return {
     "windwp/nvim-autopairs",
     event = "InsertEnter",
     config = function()
-      require("plugins.autopairs").setup()
+      require("plugins.configs.autopairs").setup()
     end,
     opts = { history = true, delete_check_events = "TextChanged" },
     dependencies = { "nvim-treesitter/nvim-treesitter", "hrsh7th/nvim-cmp" },
@@ -286,7 +286,7 @@ return {
     "unblevable/quick-scope",
     enabled = true,
     config = function()
-      require "plugins.quick-scope"
+      require "plugins.configs.quick-scope"
     end,
   },
 
@@ -295,14 +295,14 @@ return {
     event = { "BufRead", "BufWinEnter" },
     lazy = true,
     config = function()
-      require "plugins.colorizer"
+      require "plugins.configs.colorizer"
     end,
   },
   {
     "nvim-lualine/lualine.nvim",
     dependencies = { { "nvim-tree/nvim-web-devicons" } },
     config = function()
-      require("plugins.lualine").setup()
+      require("plugins.configs.lualine").setup()
     end,
     event = "VeryLazy",
   },
@@ -323,8 +323,18 @@ return {
             segments = {
               { text = { builtin.foldfunc }, click = "v:lua.ScFa" },
               { text = { "%s" }, click = "v:lua.ScSa" },
+              -- {
+              --   sign = { name = { "Diagnostic" } },
+              --   click = "v:lua.ScSa",
+              -- },
+              -- {
+              --   sign = { name = { "GitSigns" }, maxwidth = 1 },
+              --   click = "v:lua.ScSa",
+              -- },
               {
-                text = { builtin.lnumfunc, " " },
+                text = { "", builtin.lnumfunc, " " },
+                -- text = { "%l", " " },
+                -- sign = { fillchar = "" },
                 condition = { true, builtin.not_empty },
                 click = "v:lua.ScLa",
               },
@@ -338,7 +348,7 @@ return {
       vim.keymap.set("n", "zM", require("ufo").closeAllFolds)
       vim.keymap.set("n", "zm", require("ufo").closeFoldsWith)
       vim.keymap.set("n", "zr", require("ufo").openFoldsExceptKinds)
-      require "plugins.ufo"
+      require "plugins.configs.ufo"
     end,
   },
 
@@ -347,14 +357,14 @@ return {
     "lewis6991/gitsigns.nvim",
     event = { "BufReadPre", "BufNewFile" },
     config = function()
-      require "plugins.git.signs"
+      require "plugins.configs.git.signs"
     end,
   },
   {
     "akinsho/git-conflict.nvim",
     -- lazy = true,
     config = function()
-      require "plugins.git.conflict"
+      require "plugins.configs.git.conflict"
     end,
   },
 
@@ -441,7 +451,7 @@ return {
       { "<leader>f:", "<cmd>Telescope command_history<cr>", desc = "Command History" },
     },
     config = function()
-      require "plugins.telescope"
+      require "plugins.configs.telescope"
     end,
   },
 
@@ -508,7 +518,7 @@ return {
       end)
     end,
     config = function()
-      require("plugins.breadcrumbs").setup()
+      require("plugins.configs.breadcrumbs").setup()
     end,
   },
 }
