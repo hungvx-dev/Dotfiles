@@ -1,6 +1,6 @@
 local M = {}
 
-local icons = hvim.icons.kind
+local icons = hvim.icons.Kind
 
 M.config = function()
   hvim.builtin.breadcrumbs = {
@@ -34,44 +34,9 @@ M.config = function()
       "",
     },
     options = {
-      icons = {
-        Array = icons.Array .. " ",
-        Boolean = icons.Boolean,
-        Class = icons.Class .. " ",
-        Color = icons.Color .. " ",
-        Constant = icons.Constant .. " ",
-        Constructor = icons.Constructor .. " ",
-        Enum = icons.Enum .. " ",
-        EnumMember = icons.EnumMember .. " ",
-        Event = icons.Event .. " ",
-        Field = icons.Field .. " ",
-        File = icons.File .. " ",
-        Folder = icons.Folder .. " ",
-        Function = icons.Function .. " ",
-        Interface = icons.Interface .. " ",
-        Key = icons.Key .. " ",
-        Keyword = icons.Keyword .. " ",
-        Method = icons.Method .. " ",
-        Module = icons.Module .. " ",
-        Namespace = icons.Namespace .. " ",
-        Null = icons.Null .. " ",
-        Number = icons.Number .. " ",
-        Object = icons.Object .. " ",
-        Operator = icons.Operator .. " ",
-        Package = icons.Package .. " ",
-        Property = icons.Property .. " ",
-        Reference = icons.Reference .. " ",
-        Snippet = icons.Snippet .. " ",
-        String = icons.String .. " ",
-        Struct = icons.Struct .. " ",
-        Text = icons.Text .. " ",
-        TypeParameter = icons.TypeParameter .. " ",
-        Unit = icons.Unit .. " ",
-        Value = icons.Value .. " ",
-        Variable = icons.Variable .. " ",
-      },
+      icons = icons,
       highlight = true,
-      separator = " " .. hvim.icons.ui.ChevronShortRight .. " ",
+      separator = " " .. hvim.icons.UI.Direction.Angle.Right .. " ",
       depth_limit = 0,
       depth_limit_indicator = "..",
     },
@@ -105,7 +70,7 @@ M.get_filename = function()
       file_icon, hl_group = devicons.get_icon(filename, extension, { default = true })
 
       if f.isempty(file_icon) then
-        file_icon = hvim.icons.kind.File
+        file_icon = hvim.icons.Kind.File
       end
     else
       file_icon = ""
@@ -157,7 +122,7 @@ local get_gps = function()
   end
 
   if not require("utils.functions").isempty(gps_location) then
-    return "%#NavicSeparator#" .. hvim.icons.ui.ChevronShortRight .. "%* " .. gps_location
+    return "%#NavicSeparator#" .. hvim.icons.UI.Direction.Angle.Right .. "%* " .. gps_location
   else
     return ""
   end
@@ -185,7 +150,7 @@ M.get_winbar = function()
 
   if not f.isempty(value) and f.get_buf_option "mod" then
     -- TODO: replace with circle
-    local mod = "%#LspCodeLens#" .. hvim.icons.ui.Circle .. "%*"
+    local mod = "%#LspCodeLens#" .. hvim.icons.UI.Circle .. "%*"
     if gps_added then
       value = value .. " " .. mod
     else
@@ -225,7 +190,7 @@ M.create_winbar = function()
           local status_ok, _ = pcall(vim.api.nvim_buf_get_var, 0, "lsp_floating_window")
           if not status_ok then
             -- TODO:
-            require("plugins.breadcrumbs").get_winbar()
+            require("plugins.configs.breadcrumbs").get_winbar()
           end
         end
       end,
