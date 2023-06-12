@@ -3,33 +3,33 @@ local opt = vim.opt -- local cmd = vim.cmd
 -- Remap leader and local leader to <Space>
 -- api.nvim_set_keymap("", "<Space>", "<Nop>", { noremap = true, silent = true })
 vim.keymap.set("", "<Space>", "<Nop>", { noremap = true, silent = true })
-g.vimsyn_embed = "lPr"   -- Syntax embedding for Lua, Python and Ruby
+g.vimsyn_embed = "lPr" -- Syntax embedding for Lua, Python and Ruby
 
 opt.termguicolors = true -- Enable colors in terminal
 opt.completeopt = "menu,menuone,noselect"
-opt.conceallevel = 0     -- so that `` is visible in markdown files
+opt.conceallevel = 0 -- so that `` is visible in markdown files
 opt.fileencoding = "utf-8"
 opt.colorcolumn = "99999"
-opt.cursorline = true         -- Enable highlighting of the current line
-opt.hlsearch = true           --Set highlight on search
-opt.number = true             --Make line numbers default
+opt.cursorline = true -- Enable highlighting of the current line
+opt.hlsearch = true --Set highlight on search
+opt.number = true --Make line numbers default
 -- opt.relativenumber = true     --Make relative number default
-opt.mouse = "a"               --Enable mouse mode
-opt.breakindent = true        --Enable break indent
-opt.undofile = true           --Save undo history
+opt.mouse = "a" --Enable mouse mode
+opt.breakindent = true --Enable break indent
+opt.undofile = true --Save undo history
 opt.undolevels = 10000
-opt.ignorecase = true         --Case insensitive searching unless /C or capital in search
-opt.smartcase = true          -- Smart case
-opt.updatetime = 300          --Decrease update time
-opt.signcolumn = "yes"        -- Always show sign column
+opt.ignorecase = true --Case insensitive searching unless /C or capital in search
+opt.smartcase = true -- Smart case
+opt.updatetime = 300 --Decrease update time
+opt.signcolumn = "yes" -- Always show sign column
 opt.clipboard = "unnamedplus" -- Access system clipboard
-opt.timeoutlen = 500          --	Time in milliseconds to wait for a mapped sequence to complete.
-opt.showmode = false          -- Do not need to show the mode. We use the statusline instead.
+opt.timeoutlen = 500 --	Time in milliseconds to wait for a mapped sequence to complete.
+opt.showmode = false -- Do not need to show the mode. We use the statusline instead.
 opt.numberwidth = 4
-opt.scrolloff = 8             -- Lines of context
+opt.scrolloff = 8 -- Lines of context
 -- opt.scrolloff = 999 -- Lines of context
 -- opt.sidescrolloff = 999
-opt.showtabline = 2    -- always show tabs
+opt.showtabline = 2 -- always show tabs
 opt.joinspaces = false -- No double spaces with join after a dot
 opt.sessionoptions = "buffers,curdir,help,tabpages,winsize,winpos,terminal"
 opt.smartindent = true --Smart indent
@@ -39,7 +39,7 @@ opt.textwidth = 0
 opt.autoindent = true
 opt.shiftwidth = 2
 opt.tabstop = 2
-opt.pumblend = 10  -- Popup blend
+opt.pumblend = 10 -- Popup blend
 opt.pumheight = 10 -- Maximum number of entries in a popup
 -- opt.spelllang = { "en" }
 opt.softtabstop = 2
@@ -75,11 +75,10 @@ opt.foldcolumn = "1"
 opt.foldenable = true
 opt.foldlevel = 99
 opt.foldlevelstart = 99
-opt.statuscolumn = '%C%s%l'
+opt.statuscolumn = "%C%s%l"
 
 -- opt.foldmethod = "expr"
 -- opt.foldexpr = "nvim_treesitter#foldexpr()"
-
 
 if vim.fn.has "nvim-0.9.0" == 1 then
   opt.splitkeep = "screen"
