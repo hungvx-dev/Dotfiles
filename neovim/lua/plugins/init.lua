@@ -1,8 +1,8 @@
 return {
   {
     "folke/tokyonight.nvim",
-    lazy = false, -- make sure we load this during startup if it is your main colorscheme
-    priority = 1000, -- make sure to load this before all the other start plugins
+    lazy = true, -- make sure we load this during startup if it is your main colorscheme
+    -- priority = 1000, -- make sure to load this before all the other start plugins
     config = function()
       -- load the colorscheme here
       require "configs.colorscheme"
@@ -15,8 +15,6 @@ return {
     cmd = { "PlenaryBustedFile", "PlenaryBustedDirectory" },
     lazy = true,
   },
-
-  { "nvim-lua/popup.nvim", lazy = true },
 
   {
     "nvim-neo-tree/neo-tree.nvim",
@@ -124,7 +122,7 @@ return {
       "hrsh7th/cmp-cmdline",
     },
     config = function()
-      require("completion.cmp").setup()
+      require("plugins.configs.completion.cmp").setup()
     end,
   },
   { "hrsh7th/cmp-nvim-lsp" },
@@ -421,7 +419,9 @@ return {
         desc = "Next trouble/quickfix item",
       },
     },
-  }, -- fuzzy finder
+  },
+
+  -- fuzzy finder
   {
     "nvim-telescope/telescope.nvim",
     cmd = "Telescope",
