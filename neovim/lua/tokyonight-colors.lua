@@ -1851,3 +1851,5 @@ local highlights = {
     fg = "#9d7cd8",
   },
 }
+
+return { colors, highlights }
