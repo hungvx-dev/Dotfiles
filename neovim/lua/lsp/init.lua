@@ -9,6 +9,7 @@ local opts = {
     emmet_ls = {},
     prismals = {},
     dockerls = {},
+    -- sqlls = {},
     yamlls = {
       settings = {
         yaml = {
@@ -22,7 +23,6 @@ local opts = {
           schemas = require("schemastore").yaml.schemas(),
         },
       },
-
     },
     cssls = {
       css = {
@@ -39,7 +39,7 @@ local opts = {
     jsonls = {
       settings = {
         json = {
-          format = { enable = true, },
+          format = { enable = true },
           validate = { enable = true },
           schemas = require("schemastore").json.schemas(),
         },
@@ -70,8 +70,12 @@ local opts = {
     volar = {
       -- filetypes = { "typescript", "typescriptreact", "vue" },
       filetypes = { "typescript", "javascript", "javascriptreact", "typescriptreact", "vue" },
-      root_dir = require("lspconfig.util").root_pattern("package.json", "tsconfig.json", "vue.config.js",
-        "vite.config.ts"),
+      root_dir = require("lspconfig.util").root_pattern(
+        "package.json",
+        "tsconfig.json",
+        "vue.config.js",
+        "vite.config.ts"
+      ),
     },
     tsserver = {
       settings = {
@@ -119,7 +123,7 @@ local opts = {
               'tw={"([^"}]*)',
               "tw\\.\\w+`([^`]*)",
               "tw\\(.*?\\)`([^`]*)",
-              { "clsx\\(([^)]*)\\)",       "(?:'|\"|`)([^']*)(?:'|\"|`)" },
+              { "clsx\\(([^)]*)\\)", "(?:'|\"|`)([^']*)(?:'|\"|`)" },
               { "classnames\\(([^)]*)\\)", "'([^']*)'" },
             },
           },

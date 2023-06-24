@@ -18,12 +18,12 @@ ln -s $(pwd)/yabai ~/.config/yabai
 ln -s $(pwd)/skhd ~/.config/skhd
 
 # Nvim config
-ln -s $(pwd)/nvim ~/.config/nvim
+# ln -s $(pwd)/nvim ~/.config/nvim
 ln -s $(pwd)/neovim ~/.config/nvim
 
 # ZSH config
-ln -s $(pwd)/zsh ~/.config/zsh
-ln -s $(pwd)/zsh/history ~/.cache/zsh/history
+# ln -s $(pwd)/zsh ~/.config/zsh
+# ln -s $(pwd)/zsh/history ~/.cache/zsh/history
 
 # Git config
 rm -rf ~/config/ssh/config
@@ -40,6 +40,6 @@ ln -s $(pwd)/exercism ~/.config/exercism
 ln -s $(pwd)/.script-bash ~/.script-bash
 
 # Alias
-ln -s $(pwd)/my-alias.zsh ~/.oh-my-zsh/custom/my-alias.zsh
+# ln -s $(pwd)/my-alias.zsh ~/.oh-my-zsh/custom/my-alias.zsh
 
 ln -s $(pwd)/cava ~/.config/cava

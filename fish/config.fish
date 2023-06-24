@@ -27,6 +27,7 @@ set -gx GEM_HOME $HOME/.gem
 set -gx RUBY_PATH /opt/homebrew/opt/ruby/bin
 set fish_user_paths $fish_user_paths $RUBY_PATH
 set fish_user_paths $fish_user_paths $GEM_HOME/bin
+set fish_user_paths $fish_user_paths /opt/homebrew/sbin
 # ruby end
 
 # Sed
