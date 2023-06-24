@@ -25,6 +25,16 @@ ln -s $(pwd)/neovim ~/.config/nvim
 # ln -s $(pwd)/zsh ~/.config/zsh
 # ln -s $(pwd)/zsh/history ~/.cache/zsh/history
 
+
+# Script
+ln -s $(pwd)/.script-bash ~/.script-bash
+
+ln -s $(pwd)/exercism ~/.config/exercism
+
+# Alias
+# ln -s $(pwd)/my-alias.zsh ~/.oh-my-zsh/custom/my-alias.zsh
+
+ln -s $(pwd)/cava ~/.config/cava
 # Git config
 rm -rf ~/config/ssh/config
 rm -f ~/config/lazygit
@@ -33,13 +43,3 @@ ln -s $(pwd)/ssh/config ~/.ssh/config
 ln -s $(pwd)/ssh/.gitconfig ~/.gitconfig
 ln -s $(pwd)/ssh/work/.gitconfig ~/Work/Hodfords/.gitconfig
 ln -s $(pwd)/lazygit/config.yml ~/.config/lazygit/config.yml
-
-ln -s $(pwd)/exercism ~/.config/exercism
-
-# Script
-ln -s $(pwd)/.script-bash ~/.script-bash
-
-# Alias
-# ln -s $(pwd)/my-alias.zsh ~/.oh-my-zsh/custom/my-alias.zsh
-
-ln -s $(pwd)/cava ~/.config/cava
