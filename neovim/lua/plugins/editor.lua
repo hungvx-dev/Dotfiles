@@ -15,7 +15,7 @@ return {
             autoselect_one = true,
             include_current = false,
             -- selection_chars = 'FJDKSLA;CMRUEIWOQP',
-            selection_chars = "ABCDEFG;CMRUEIWOQP",
+            -- selection_chars = "ABCDEFG;CMRUEIWOQP",
             filter_rules = {
               -- filter using buffer options
               bo = {

@@ -11,7 +11,6 @@ if not vim.loop.fs_stat(lazypath) then
 end
 vim.opt.rtp:prepend(lazypath)
 
-local plugins = require "plugins"
 local opts = {
   spec = {
     { import = "plugins.colorscheme" },
@@ -40,8 +39,6 @@ local opts = {
     version = nil,
   },
 }
-
--- require("lazy").setup(plugins, opts)
 
 require("lazy").setup(opts)
 vim.keymap.set("n", "<Leader>l", "<cmd>Lazy<CR>")
