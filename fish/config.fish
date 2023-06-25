@@ -14,8 +14,8 @@ set fish_path $HOME/.config/fish
 . $fish_path/alias/git_alias.fish
 
 starship init fish | source
-
-[ -f /opt/homebrew/share/autojump/autojump.fish ]; and source /opt/homebrew/share/autojump/autojump.fish
+set -gx AUTO_JUMP_SHARE_PATH /opt/homebrew/share/autojump/autojump.fish
+[ -f $AUTO_JUMP_SHARE_PATH ]; and source $AUTO_JUMP_SHARE_PATH
 
 # # pnpm
 set -gx PNPM_HOME "/Users/hungvx.dev/Library/pnpm"
