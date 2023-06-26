@@ -10,3 +10,17 @@
 - **WindownManagement**: [Yabai](./yabai).
   - **Hotkey**: [skhd](./skhd).
 - **Git commands UI**: [Lazygit](./lazygit)
+- **Font**: [Nerd Font](https://github.com/ryanoasis/nerd-fonts) [CaskaydiaCove](https://github.com/ryanoasis/nerd-fonts/tree/master/patched-fonts/CascadiaCode)
+
+## Install
+
+```
+git clone git@github.com:hungvx-dev/Dotfiles.git
+
+./bootstrap/macos.sh
+
+```
+
+## Show cases
+
+### Neovim
