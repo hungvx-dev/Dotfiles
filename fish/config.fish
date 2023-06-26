@@ -1,4 +1,5 @@
 set -x LANG en_US.UTF-8
+
 set -gx EDITOR nvim
 set -gx NVM_DIR $HOME/.nvm
 
@@ -9,11 +10,13 @@ set fish_cursor_visual block
 
 fish_vi_key_bindings
 
+# Run alias
 set fish_path $HOME/.config/fish
 . $fish_path/alias/my_alias.fish
 . $fish_path/alias/git_alias.fish
 
 starship init fish | source
+
 set -gx AUTO_JUMP_SHARE_PATH /opt/homebrew/share/autojump/autojump.fish
 [ -f $AUTO_JUMP_SHARE_PATH ]; and source $AUTO_JUMP_SHARE_PATH
 
