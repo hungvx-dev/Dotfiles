@@ -1,8 +1,11 @@
-/nvim-v2/files/undo
-/nvim-v2/files/info
-/nvim-v2/files/backup
-/nvim-v2/files/swap
-/nvim-v2/undodir
+/nvim-v1/files/undo
+/nvim-v1/files/info
+/nvim-v1/files/backup
+/nvim-v1/files/swap
+/nvim-v1/undodir
+
+/tmux/plugins
+
 .DS_Store
 
 tmux-*.log
