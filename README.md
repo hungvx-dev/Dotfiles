@@ -1,6 +1,6 @@
 # My dotfiles
 
-**This repository contains my config dot files for applications:**
+**_This repository contains my config dot files for applications:_**
 
 - **Terminal**: [Kitty](./kitty) (or [Alacritty](./alacritty)).
   - **Multiplexer**: [Tmux](./tmux).
@@ -8,5 +8,5 @@
 - **Shell**: [Fish](./fish) (or [Zsh](./zsh)).
 - **IDE**: [Neovim](./neovim).
 - **WindownManagement**: [Yabai](./yabai).
-  - _&Hotkey&_: [skhd](./skhd).
+  - **Hotkey**: [skhd](./skhd).
 - **Git commands UI**: [Lazygit](./lazygit)
