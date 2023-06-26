@@ -1,6 +1,6 @@
 # My dotfiles
 
-This repository contains my config dot files for applications:
+### This repository contains my config dot files for applications:
 
 - Terminal: [Kitty](./kitty) (or [Alacritty](./alacritty)).
   - Multiplexer: [Tmux](./tmux).
