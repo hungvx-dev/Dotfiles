@@ -13,13 +13,19 @@
 - **Font**: [Nerd Font](https://github.com/ryanoasis/nerd-fonts) [CaskaydiaCove](https://github.com/ryanoasis/nerd-fonts/tree/master/patched-fonts/CascadiaCode)
 - **Music**: [cmus](https://github.com/cmus/cmus) [cava](./cava)
 
-## Install
+## Install + setup
+
+Clone this repository:
 
 ```
 git clone git@github.com:hungvx-dev/Dotfiles.git
+```
 
-./bootstrap/macos/init.sh
+Run these commands to install and setup for Mac OS
 
+```
+cd ./bootstrap/macos
+chmode -R +x . && ./init.sh
 ```
 
 ## Show cases
