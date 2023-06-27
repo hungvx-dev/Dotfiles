@@ -12,14 +12,14 @@ success() {
 
 link_config_file() {
   info "Run symlink"
-  # ./symlink.sh
+  ./symlink.sh
   success "Linked"
 }
 
 # Intall Xcode command line tools
 install_xcode_command_line_tools() {
   info "Installing Xcode command line tools"
-  # xcode-select --install
+  xcode-select --install
   success "Installed Xcode command line tools"
 }
 
@@ -31,8 +31,15 @@ install_homebrew() {
 
 install_terminal() {
   info "Installing kitty"
-  # brew install --cask kitty
+  brew install --cask kitty
   success "Installed kitty"
+
+  read -r -p "Do you want to install alacritty? [y|N] " response
+  if [[ $response =~ (y|yes|Y) ]];then
+    info "Installing alacritty"
+    brew install --cask alacritty
+    success "Installed alacritty!"
+  fi
 }
 
 install_fish() {
@@ -49,35 +56,41 @@ install_setup_tmux() {
 
 install_tools() {
   info "Installing tools"
-  # brew install --cask \
-  #   postman \
-  #   google-chrome \
-  #   visual-studio-code \
-  #   notion \
-  #   raycast
+  brew install --cask \
+    postman \
+    google-chrome \
+    visual-studio-code \
+    notion \
+    raycast
 
-  # brew install \
-  #   pnpm \
-  #   fzf \
-  #   autojump \
-  #   lazygit \
-  #   exercism \
-  #   ruby \
-  #   awscli \
-  #   wireguard-tools \
-  #   orbstack
+  brew install \
+    pnpm \
+    fzf \
+    autojump \
+    lazygit \
+    exercism \
+    awscli \
+    wireguard-tools \
+    orbstack
   success "Installed tools"
 }
 
 install_deps_tools() {
   info "Installing deps tools"
-  # brew install \
-  #   fd \
-  #   ripgrep \
-  #   bat \
-  #   gnu-sed \
-  #   ncurses
+  brew install \
+    fd \
+    ripgrep \
+    bat \
+    gnu-sed \
+    ncurses
   success "Installed deps tools"
+}
+
+install_fonts() {
+  info "Installing tools"
+  brew tap homebrew/cask-fonts
+  brew install font-caskaydia-cove-nerd-font
+  success "Installed fonts"
 }
 
 install_neovim() {
@@ -88,18 +101,31 @@ install_neovim() {
 
 install_window_management() {
   info "Installing WM"
-  # brew install \
-  #   koekeishiya/formulae/yabai \
-  #   koekeishiya/formulae/skhd
+  brew install \
+    koekeishiya/formulae/yabai \
+    koekeishiya/formulae/skhd
   success "Installed WM"
 }
 
 install_music() {
   info "Installing music"
-  # brew install cmus
-  # brew install cava
-  # brew install --cask background-music
+  brew install cmus
+  brew install cava
+  brew install --cask background-music
   success "Installed music"
+}
+
+setup_mac_config() {
+  # hide desktop icons
+  killall Finder
+
+  # reduce keyrepeat for faster typing in vim
+  defaults write -g InitialKeyRepeat -int 10 # normal minimum is 15 (225 ms)
+  defaults write -g KeyRepeat -int 1         # normal minimum is 2 (30 ms)
+  defaults write -g ApplePressAndHoldEnabled -bool false
+
+  # change wallpaper
+  # osascript -e 'tell application "Finder" to set desktop picture to POSIX file "path"'
 }
 
 link_config_file
@@ -111,8 +137,10 @@ install_setup_tmux
 install_tools
 install_neovim
 install_deps_tools
+install_fonts
 install_neovim
 install_window_management
 install_music
+setup_mac_config
 
 echo "Finished installing! 🎉 🚀"

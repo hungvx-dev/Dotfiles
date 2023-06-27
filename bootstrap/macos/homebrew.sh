@@ -1,7 +1,6 @@
 #!/bin/sh
 
-# curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh
-# brew doctor
-# brew outdated
-# brew update --force --quiet
-#
+curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh
+brew doctor
+brew outdated
+brew update --force --quiet
