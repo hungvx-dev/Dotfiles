@@ -19,13 +19,13 @@ Clone this repository:
 
 ```
 git clone git@github.com:hungvx-dev/Dotfiles.git
+cd Dotfiles
 ```
 
 Run these commands to install and setup for Mac OS
 
 ```
-cd ./bootstrap/macos
-chmode -R +x . && ./init.sh
+chmode -R +x ./bootstrap/macos && ./bootstrap/macos/init.sh
 ```
 
 ## Show cases
