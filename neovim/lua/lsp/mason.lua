@@ -4,6 +4,7 @@ function M.config()
   hvim.builtin.mason = {
     ensure_installed = {
       "stylua",
+      "shfmt",
       -- "prettier",
       -- "prettier",
       "prettierd",
