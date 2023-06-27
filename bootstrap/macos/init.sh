@@ -71,7 +71,8 @@ install_tools() {
     exercism \
     awscli \
     wireguard-tools \
-    orbstack
+    orbstack \
+    google-chrome
   success "Installed tools"
 }
 
