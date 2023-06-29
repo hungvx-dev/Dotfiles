@@ -3,8 +3,9 @@ local opt = vim.opt -- local cmd = vim.cmd
 -- Remap leader and local leader to <Space>
 -- api.nvim_set_keymap("", "<Space>", "<Nop>", { noremap = true, silent = true })
 vim.keymap.set("", "<Space>", "<Nop>", { noremap = true, silent = true })
-g.vimsyn_embed = "lPr" -- Syntax embedding for Lua, Python and Ruby
+-- g.vimsyn_embed = "lPr" -- Syntax embedding for Lua, Python and Ruby
 
+opt.syntax = "on"
 opt.termguicolors = true -- Enable colors in terminal
 opt.completeopt = "menu,menuone,noselect"
 opt.conceallevel = 0 -- so that `` is visible in markdown files
@@ -40,8 +41,7 @@ opt.autoindent = true
 opt.shiftwidth = 2
 opt.tabstop = 2
 opt.pumblend = 10 -- Popup blend
-opt.pumheight = 10 -- Maximum number of entries in a popup
--- opt.spelllang = { "en" }
+opt.pumheight = 10 -- Maximum number of entries in a Popup
 opt.softtabstop = 2
 opt.splitbelow = true
 opt.splitright = true
@@ -76,6 +76,9 @@ opt.foldenable = true
 opt.foldlevel = 99
 opt.foldlevelstart = 99
 opt.statuscolumn = "%C%s%l"
+opt.spell = true
+opt.spelllang = { "en_us" }
+opt.spelloptions = { "camel" }
 
 -- opt.foldmethod = "expr"
 -- opt.foldexpr = "nvim_treesitter#foldexpr()"

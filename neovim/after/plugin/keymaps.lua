@@ -40,8 +40,8 @@ keymap("n", "<C-q>", ":q<cr>", default_opts)
 keymap("n", "<C-s>", ":w<cr>", default_opts)
 keymap("i", "<C-s>", "<ESC>:w<cr>", default_opts)
 
-keymap("n", "gt", ":bnext<cr>", default_opts)
-keymap("n", "gT", ":bprevious<cr>", default_opts)
+keymap("n", "<leader>bt", ":bnext<cr>", default_opts)
+keymap("n", "<leader>bT", ":bprevious<cr>", default_opts)
 
 -- Switch buffer
 -- keymap("n", "<S-h>", ":bprevious<CR>", default_opts)
