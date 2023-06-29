@@ -20,13 +20,13 @@ local buffer_option = {
 }
 
 local source_mapping = {
-  cmp_tabnine = hvim.icons.Cmp.Tabnine .. "Tabnine",
+  -- cmp_tabnine = hvim.icons.Cmp.Tabnine .. "Tabnine",
   nvim_lsp = hvim.icons.Cmp.Lsp .. "LSP",
   buffer = hvim.icons.Cmp.Buffer .. "Buffer",
   luasnip = hvim.icons.Cmp.Snippet .. "Snippet",
   path = hvim.icons.Cmp.Path .. "Path",
   treesitter = hvim.icons.Cmp.Tree,
-  spell = hvim.icons.Cmp.Spellcheck,
+  spell = hvim.icons.Cmp.Spellcheck .. "Spell",
 }
 
 local function jumpable(dir)
@@ -188,8 +188,12 @@ M.config = function()
       end,
     },
     window = {
-      completion = cmp_window.bordered(),
-      documentation = cmp_window.bordered(),
+      completion = cmp_window.bordered {
+        winhighlight = "FloatBorder:Pmenu",
+      },
+      documentation = cmp_window.bordered {
+        winhighlight = "FloatBorder:Pmenu",
+      },
     },
     sources = {
       {
@@ -197,9 +201,6 @@ M.config = function()
         priority = 9,
         entry_filter = function(entry, ctx)
           local kind = require("cmp.types.lsp").CompletionItemKind[entry:get_kind()]
-          if kind == "Snippet" and ctx.prev_context.filetype == "java" then
-            return false
-          end
           if kind == "Text" then
             return false
           end
@@ -208,8 +209,18 @@ M.config = function()
       },
       { name = "path", priority = 4 },
       { name = "luasnip", priority = 9 },
-      { name = "cmp_tabnine", priority = 8, max_num_results = 3 },
+      -- { name = "cmp_tabnine", priority = 8, max_num_results = 3 },
       -- { name = "nvim_lua", priority = 5 },
+      {
+        name = "spell",
+        priority = 7,
+        max_item_count = 3,
+        option = {
+          enable_in_context = function()
+            return require("cmp.config.context").in_treesitter_capture "spell"
+          end,
+        },
+      },
       { name = "buffer", priority = 7, keyword_length = 5, option = buffer_option, max_item_count = 8 },
     },
     mapping = cmp_mapping.preset.insert {

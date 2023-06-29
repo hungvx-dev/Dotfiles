@@ -42,9 +42,10 @@ return {
       },
       "hrsh7th/cmp-buffer",
       "hrsh7th/cmp-path",
+      "f3fora/cmp-spell",
       "saadparwaiz1/cmp_luasnip",
       "hrsh7th/cmp-cmdline",
-      { "tzachar/cmp-tabnine", build = "./install.sh" },
+      -- { "tzachar/cmp-tabnine", build = "./install.sh" },
     },
     config = function()
       require("plugins.configs.completion.cmp").setup()
@@ -146,8 +147,8 @@ return {
   -- surround
   { "kylechui/nvim-surround", config = true },
 
-  {
-    "kana/vim-textobj-entire",
-    dependencies = { "kana/vim-textobj-user", lazy = true },
-  },
+  -- {
+  --   "kana/vim-textobj-entire",
+  --   dependencies = { "kana/vim-textobj-user", lazy = true },
+  -- },
 }
