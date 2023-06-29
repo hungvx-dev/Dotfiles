@@ -42,10 +42,10 @@ local opts = {
 -- local signs = { Error = " ", Warn = " ", Hint = " ", Info = " " }
 function M.setup()
   local signs = {
-    Error = hvim.icons.Diagnostics.BoldError,
-    Warn = hvim.icons.Diagnostics.BoldWarning,
-    Hint = hvim.icons.Diagnostics.BoldHint,
-    Info = hvim.icons.Diagnostics.BoldInformation,
+    Error = hvim.icons.Diagnostics.Error,
+    Warn = hvim.icons.Diagnostics.Warning,
+    Hint = hvim.icons.Diagnostics.Hint,
+    Info = hvim.icons.Diagnostics.Information,
   }
   -- diagnostics
   for name, icon in pairs(signs) do

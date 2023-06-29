@@ -22,6 +22,8 @@ end
 
 local sources = {
   -- null_ls.builtins.diagnostics.standardjs,
+  -- null_ls.builtins.formatting.codespell,
+  -- null_ls.builtins.diagnostics.codespell,
   null_ls.builtins.formatting.shfmt,
   null_ls.builtins.formatting.stylua,
   null_ls.builtins.formatting.prettierd,

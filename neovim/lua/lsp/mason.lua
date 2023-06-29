@@ -5,6 +5,7 @@ function M.config()
     ensure_installed = {
       "stylua",
       "shfmt",
+      -- "codespell",
       -- "prettier",
       -- "prettier",
       "prettierd",
