@@ -2,9 +2,8 @@ local present, tokyonight = pcall(require, "tokyonight")
 if not present then
   return
 end
-
 -- ╭──────────────────────────────────────────────────────────╮
--- │ Setup Colorscheme                                        │
+-- │ Setup Color scheme                                       │
 -- ╰──────────────────────────────────────────────────────────╯
 tokyonight.setup {
   style = "night",
@@ -22,6 +21,8 @@ tokyonight.setup {
   hide_inactive_statusline = true,
   dim_inactive = false,
   lualine_bold = false,
+  -- on_colors = function(colors)
+  -- end,
   on_highlights = function(hl)
     local prompt = "#FFA630"
     local text = "#488dff"
@@ -30,14 +31,12 @@ tokyonight.setup {
     hl.CursorLineNr = { fg = "#EFFF00" }
     hl.TelescopeTitle = { fg = prompt }
     hl.TelescopeNormal = { bg = none, fg = none }
-    hl.TelescopeBorder = { bg = none, fg = text }
     hl.TelescopeMatching = { fg = prompt }
 
     hl.StatusLine = { bg = none }
     hl.StatusLineNC.bg = none
-    hl.NormalFloat.bg = none
-
     hl.Pmenu.bg = none
+    hl.Pmenu.fg = "#27a1b9"
     hl.PmenuSbar.bg = none
   end,
 }
