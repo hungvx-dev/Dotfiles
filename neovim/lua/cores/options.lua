@@ -2,7 +2,6 @@ local opt = vim.opt -- local cmd = vim.cmd
 local g = vim.g
 
 g.mapleader = (hvim.leader == "space" and " ") or hvim.leader
-print(123)
 opt.fillchars = {
   eob = " ",
   fold = " ",
