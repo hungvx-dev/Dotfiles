@@ -16,7 +16,6 @@ link_config_file() {
   success "Linked"
 }
 
-# Intall Xcode command line tools
 install_xcode_command_line_tools() {
   info "Installing Xcode command line tools"
   xcode-select --install
