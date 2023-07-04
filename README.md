@@ -11,7 +11,7 @@
   - **Hotkey**: [skhd](./skhd)
 - **Git commands UI**: [Lazygit](./lazygit)
 - **Font**: [Nerd Font](https://github.com/ryanoasis/nerd-fonts) [CaskaydiaCove](https://github.com/ryanoasis/nerd-fonts/tree/master/patched-fonts/CascadiaCode)
-- **Music**: [cmus](https://github.com/cmus/cmus) [cava](./cava)
+- **Music**: [cmus](https://github.com/cmus/cmus) [cava](./cava) [Background Music](https://github.com/kyleneideck/BackgroundMusic)
 
 ## Install + setup
 
