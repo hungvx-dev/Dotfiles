@@ -15,7 +15,6 @@ local package = {
   "jsonc",
   "tsx",
   "vue",
-  "sql",
   "regex",
   "comment",
   "dockerfile",
