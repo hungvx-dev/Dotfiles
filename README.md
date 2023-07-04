@@ -30,7 +30,7 @@ chmode -R +x ./bootstrap/macos && ./bootstrap/macos/init.sh
 
 ## Show cases
 
-### Terminal (Kitty + fish + starship)
+### Terminal (Kitty + fish + starship + fzf)
 
 ![Alt text](./images/terminal.png "Title")
 ![Alt text](./images/terminal-1.png "Title")
