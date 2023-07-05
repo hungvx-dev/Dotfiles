@@ -33,5 +33,5 @@ set fish_user_paths $fish_user_paths $GEM_HOME/bin
 set fish_user_paths $fish_user_paths /opt/homebrew/sbin
 # ruby end
 
-# Sed
+# gnu-sed
 set fish_user_paths $fish_user_paths /opt/homebrew/opt/gnu-sed/libexec/gnubin
