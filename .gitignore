@@ -1,11 +1,55 @@
-/nvim-v1/files/undo
-/nvim-v1/files/info
-/nvim-v1/files/backup
-/nvim-v1/files/swap
-/nvim-v1/undodir
+### Neovim ###
+nvim-v1/files/undo
+nvim-v1/files/info
+nvim-v1/files/backup
+nvim-v1/files/swap
+nvim-v1/undodir
 
-/tmux/plugins
+# End of
 
+### Tmux ###
+tmux/plugins
 .DS_Store
-
 tmux-*.log
+
+### Fish ###
+fish/fishd.*
+fish/fish_history
+fish/fish_variables
+fish/config.local.fish
+
+# End of https://www.toptal.com/developers/gitignore/api/fish
+
+### Zsh ###
+# Zsh compiled script + zrecompile backup
+zsh/*.zwc
+zsh/*.zwc.old
+
+# Zsh completion-optimization dumpfile
+zsh/*zcompdump*
+
+# Zsh history
+zsh/.zsh_history
+
+# Zsh sessions
+zsh/.zsh_sessions
+
+# Zsh zcalc history
+zsh/.zcalc_history
+
+# A popular plugin manager's files
+zsh/._zinit
+zsh/.zinit_lstupd
+
+# zdharma/zshelldoc tool's files
+zsh/zsdoc/data
+
+# robbyrussell/oh-my-zsh/plugins/per-directory-history plugin's files
+# (when set-up to store the history in the local directory)
+zsh/.directory_history
+
+# MichaelAquilina/zsh-autoswitch-virtualenv plugin's files
+# (for Zsh plugins using Python)
+zsh/.venv
+
+# End of https://www.toptal.com/developers/gitignore/api/zsh
