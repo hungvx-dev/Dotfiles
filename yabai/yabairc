@@ -28,4 +28,5 @@ yabai -m rule --add app="^Calculator$" manage=off
 yabai -m rule --add app="^Finder$" manage=off
 yabai -m rule --add app="^System Information$" manage=off
 yabai -m rule --add app="^Authy$" manage=off
+yabai -m rule --add app="^Wireless Diagnotics$" manage=off
 # yabai -m rule --add app="^Twitter$" manage=off
