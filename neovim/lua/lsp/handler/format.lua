@@ -1,22 +1,6 @@
-local Util = require "lazy.core.util"
-
 local M = {}
 
 M.autoformat = true
-
-function M.toggle()
-  if vim.b.autoformat == false then
-    vim.b.autoformat = nil
-    M.autoformat = true
-  else
-    M.autoformat = not M.autoformat
-  end
-  if M.autoformat then
-    Util.info("Enabled format on save", { title = "Format" })
-  else
-    Util.warn("Disabled format on save", { title = "Format" })
-  end
-end
 
 function M.format()
   local buf = vim.api.nvim_get_current_buf()
@@ -26,7 +10,7 @@ function M.format()
   local ft = vim.bo[buf].filetype
 
   local have_nls = package.loaded["null-ls"]
-      and (#require("null-ls.sources").get_available(ft, "NULL_LS_FORMATTING") > 0)
+    and (#require("null-ls.sources").get_available(ft, "NULL_LS_FORMATTING") > 0)
 
   vim.lsp.buf.format(vim.tbl_deep_extend("force", {
     bufnr = buf,
@@ -42,9 +26,9 @@ end
 function M.on_attach(client, buf)
   -- dont format if client disabled it
   if
-      client.config
-      and client.config.capabilities
-      and client.config.capabilities.documentFormattingProvider == false
+    client.config
+    and client.config.capabilities
+    and client.config.capabilities.documentFormattingProvider == false
   then
     return
   end

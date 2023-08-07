@@ -3,41 +3,36 @@ return {
   -- file explorer
   {
     "nvim-neo-tree/neo-tree.nvim",
+    branch = "v3.x",
     cmd = "Neotree",
     dependencies = {
       "nvim-lua/plenary.nvim",
       "MunifTanjim/nui.nvim",
       {
         "s1n7ax/nvim-window-picker",
-        version = false, -- last release is way too old and doesn't work on Windows
+        enabled = true,
+        name = "window-picker",
+        event = "VeryLazy",
+        version = "2.*",
         config = function()
-          require("window-picker").setup {
-            autoselect_one = true,
-            include_current = false,
-            -- selection_chars = 'FJDKSLA;CMRUEIWOQP',
-            -- selection_chars = "ABCDEFG;CMRUEIWOQP",
-            filter_rules = {
-              -- filter using buffer options
-              bo = {
-                -- if the file type is one of following, the window will be ignored
-                filetype = { "neo-tree", "neo-tree-popup", "notify" },
-
-                -- if the buffer type is one of following, the window will be ignored
-                buftype = { "terminal", "quickfix" },
-              },
-            },
-            other_win_hl_color = "#e35e4f",
-          }
+          require "plugins.configs.window-picker"
         end,
       },
     },
-    keys = { {
-      "<leader>t",
-      "<cmd>Neotree toggle<cr>",
-      desc = "NeoTree",
-    } },
+    keys = {
+      { "<leader>t", "<cmd>Neotree toggle<cr>", desc = "NeoTree toggle" },
+      { "<leader>n", "<cmd>Neotree focus<cr>", desc = "NeoTree focus" },
+    },
     deactivate = function()
       vim.cmd [[Neotree close]]
+    end,
+    init = function()
+      if vim.fn.argc() == 1 then
+        local stat = vim.loop.fs_stat(vim.fn.argv(0))
+        if stat and stat.type == "directory" then
+          require "neo-tree"
+        end
+      end
     end,
     config = function(_)
       require("plugins.configs.neo-tree").setup()
@@ -71,13 +66,8 @@ return {
     "nvim-telescope/telescope.nvim",
     cmd = "Telescope",
     version = false, -- telescope did only one release, so use HEAD for now
-
     dependencies = {
-      {
-        "nvim-telescope/telescope-fzf-native.nvim",
-        build = "make",
-        lazy = true,
-      },
+      { "nvim-telescope/telescope-fzf-native.nvim", build = "make", lazy = true },
     },
     keys = {
       { "<leader>fs", "<cmd>Telescope live_grep<cr>", desc = "Find in Files (Grep)" },
@@ -258,14 +248,14 @@ return {
   {
     "kevinhwang91/nvim-ufo",
     event = "BufReadPost",
-    -- enabled = false,
+    enabled = true,
     lazy = true,
     dependencies = {
       "kevinhwang91/promise-async",
       {
         "luukvbaal/statuscol.nvim",
         lazy = true,
-        -- enabled = false,
+        enabled = true,
         config = function()
           local builtin = require "statuscol.builtin"
           require("statuscol").setup {

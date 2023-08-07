@@ -1,5 +1,7 @@
 local M = {}
 
+local Util = require "utils"
+
 require("lsp.handler").setup()
 require("lsp.config").setup()
 
@@ -11,16 +13,36 @@ local opts = {
     dockerls = {},
     -- sqlls = {},
     yamlls = {
+      capabilities = {
+        textDocument = {
+          foldingRange = {
+            dynamicRegistration = false,
+            lineFoldingOnly = true,
+          },
+        },
+      },
+      -- lazy-load schemastore when needed
+      on_new_config = function(new_config)
+        new_config.settings.yaml.schemas = new_config.settings.yaml.schemas or {}
+        vim.list_extend(new_config.settings.yaml.schemas, require("schemastore").yaml.schemas())
+      end,
       settings = {
+        redhat = { telemetry = { enabled = false } },
         yaml = {
+          keyOrdering = false,
           hover = true,
           completion = true,
+          format = {
+            enable = true,
+          },
           validate = true,
           schemaStore = {
-            enable = true,
-            url = "https://www.schemastore.org/api/json/catalog.json",
+            -- Must disable built-in schemaStore support to use
+            -- schemas from SchemaStore.nvim plugin
+            enable = false,
+            -- Avoid TypeError: Cannot read properties of undefined (reading 'length')
+            url = "",
           },
-          schemas = require("schemastore").yaml.schemas(),
         },
       },
     },
@@ -69,13 +91,24 @@ local opts = {
     },
     volar = {
       -- filetypes = { "typescript", "typescriptreact", "vue" },
-      filetypes = { "typescript", "javascript", "javascriptreact", "typescriptreact", "vue" },
+      filetypes = { "typescript", "javascript", "javascriptreact", "typescriptreact", "vue", "typescript.tsx" },
       root_dir = require("lspconfig.util").root_pattern(
-        "package.json",
-        "tsconfig.json",
         "vue.config.js",
-        "vite.config.ts"
+        "vue.config.ts",
+        "vite.config.ts",
+        "vite.config.js",
+        "nuxt.config.ts",
+        "nuxt.config.js"
       ),
+      settings = {
+        volar = {
+          codeLens = {
+            references = true,
+            pugTools = true,
+            scriptSetupTools = true,
+          },
+        },
+      },
     },
     tsserver = {
       settings = {
@@ -97,13 +130,19 @@ local opts = {
           completeFunctionCalls = true,
         },
       },
-      -- root_dir = require("lspconfig.util").root_pattern("package.json", "tsconfig.json", "jsconfig.json"),
+      root_dir = require("lspconfig.util").root_pattern("package.json", "tsconfig.json", "jsconfig.json"),
     },
     tailwindcss = {
       filetypes = { "html", "typescriptreact", "vue" },
       root_dir = function(fname)
         local util = require "lspconfig/util"
-        return util.root_pattern("tailwind.config.js", "tailwind.config.cjs", "tailwind.js", "tailwind.cjs")(fname)
+        return util.root_pattern(
+          "tailwind.config.js",
+          "tailwind.config.cjs",
+          "tailwind.config.ts",
+          "tailwind.js",
+          "tailwind.cjs"
+        )(fname)
       end,
       settings = {
         tailwindCSS = {
@@ -134,15 +173,6 @@ local opts = {
   },
   setup = {
     tsserver = function(_, opts)
-      require("utils").on_attach(function(client, buffer)
-        if client.name == "tsserver" then
-          -- stylua: ignore
-          vim.keymap.set("n", "<leader>go", "<cmd>TypescriptOrganizeImports<CR>",
-            { buffer = buffer, desc = "Organize Imports" })
-          -- stylua: ignore
-          vim.keymap.set("n", "<leader>gR", "<cmd>TypescriptRenameFile<CR>", { desc = "Rename File", buffer = buffer })
-        end
-      end)
       require("typescript").setup { server = opts }
       return true
     end,
@@ -216,8 +246,24 @@ function M.setup()
   end
 
   if have_mason then
-    mlsp.setup { ensure_installed = ensure_installed }
-    mlsp.setup_handlers { setup }
+    mlsp.setup { ensure_installed = ensure_installed, handlers = { setup } }
+  end
+
+  if Util.lsp_get_config "volar" and Util.lsp_get_config "tsserver" then
+    local is_volar = require("lspconfig.util").root_pattern(
+      "vite.config.json",
+      "vite.config.jsonc",
+      "vite.config.ts",
+      "vite.config.js",
+      "vue.config.js",
+      "vue.config.ts",
+      "nuxt.config.ts",
+      "nuxt.config.js"
+    )
+    Util.lsp_disable("tsserver", is_volar)
+    Util.lsp_disable("volar", function(root_dir)
+      return not is_volar(root_dir)
+    end)
   end
 end
 

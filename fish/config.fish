@@ -35,3 +35,5 @@ set fish_user_paths $fish_user_paths /opt/homebrew/sbin
 
 # gnu-sed
 set fish_user_paths $fish_user_paths /opt/homebrew/opt/gnu-sed/libexec/gnubin
+
+. $fish_path/variables.private.fish

@@ -1,5 +1,3 @@
-local Util = require "lazy.core.util"
-
 local M = {}
 M.root_patterns = { ".git", "lua" }
 
@@ -33,9 +31,12 @@ function M.get_root()
   if path then
     for _, client in pairs(vim.lsp.get_active_clients { bufnr = 0 }) do
       local workspace = client.config.workspace_folders
-      local paths = workspace and vim.tbl_map(function(ws)
+      local paths = workspace
+          and vim.tbl_map(function(ws)
             return vim.uri_to_fname(ws.uri)
-          end, workspace) or client.config.root_dir and { client.config.root_dir } or {}
+          end, workspace)
+        or client.config.root_dir and { client.config.root_dir }
+        or {}
       for _, p in ipairs(paths) do
         local r = vim.loop.fs_realpath(p)
         if path:find(r, 1, true) then
@@ -85,6 +86,21 @@ function M.opts(name)
   end
   local Plugin = require "lazy.core.plugin"
   return Plugin.values(plugin, "opts", false)
+end
+
+function M.lsp_get_config(server)
+  local configs = require "lspconfig.configs"
+  return rawget(configs, server)
+end
+
+function M.lsp_disable(server, cond)
+  local util = require "lspconfig.util"
+  local def = M.lsp_get_config(server)
+  def.document_config.on_new_config = util.add_hook_before(def.document_config.on_new_config, function(config, root_dir)
+    if cond(root_dir, config) then
+      config.enabled = false
+    end
+  end)
 end
 
 return M

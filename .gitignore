@@ -17,6 +17,7 @@ fish/fishd.*
 fish/fish_history
 fish/fish_variables
 fish/config.local.fish
+fish/variables.private.fish
 
 # End of https://www.toptal.com/developers/gitignore/api/fish
 

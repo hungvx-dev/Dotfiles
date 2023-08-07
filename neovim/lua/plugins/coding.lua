@@ -2,11 +2,11 @@ return {
   -- lspconfig
   {
     "neovim/nvim-lspconfig",
-    lazy = true,
+    lazy = false,
     event = { "BufReadPre", "BufNewFile" },
     dependencies = {
       "jose-elias-alvarez/typescript.nvim",
-      { "b0o/SchemaStore.nvim", lazy = true },
+      { "b0o/SchemaStore.nvim", version = false, lazy = false },
     },
     config = function()
       require("lsp").setup()
@@ -18,12 +18,13 @@ return {
       require("lsp.mason").setup()
     end,
     cmd = { "Mason", "MasonInstall", "MasonUninstall", "MasonUninstallAll", "MasonLog" },
+    build = ":MasonUpdate",
     lazy = true,
   },
   {
     "williamboman/mason-lspconfig.nvim",
     cmd = { "LspInstall", "LspUninstall" },
-    lazy = true,
+    lazy = false,
     dependencies = "mason.nvim",
   },
 
@@ -31,14 +32,15 @@ return {
   {
     "hrsh7th/nvim-cmp",
     version = false, -- last release is way too old
-    event = "InsertEnter",
+    event = { "InsertEnter" },
     lazy = true,
     dependencies = {
       {
         "hrsh7th/cmp-nvim-lsp",
-        cond = function()
-          return require("utils").has "nvim-cmp"
-        end,
+        -- lazy = false,
+        -- cond = function()
+        --   return require("utils").has "nvim-cmp"
+        -- end,
       },
       "hrsh7th/cmp-buffer",
       "hrsh7th/cmp-path",
@@ -68,18 +70,6 @@ return {
     config = function()
       require("luasnip.loaders.from_vscode").lazy_load()
     end,
-    -- stylua: ignore
-    -- keys = {
-    --   {
-    --     "<tab>",
-    --     function()
-    --       return require("luasnip").jumpable(1) and "<Plug>luasnip-jump-next" or "<tab>"
-    --     end,
-    --     expr = true, silent = true, mode = "i",
-    --   },
-    --   { "<tab>", function() require("luasnip").jump(1) end, mode = "s" },
-    --   { "<s-tab>", function() require("luasnip").jump(-1) end, mode = { "i", "s" } },
-    -- },
   },
 
   -- null-ls
@@ -97,14 +87,25 @@ return {
   -- Treesitter
   {
     "nvim-treesitter/nvim-treesitter",
+    enabled = true,
     version = false, -- last release is way too old and doesn't work on Windows
     build = ":TSUpdate",
     event = { "BufReadPost", "BufNewFile" },
+    lazy = false,
     dependencies = {
       {
         { "mrjones2014/nvim-ts-rainbow", lazy = true },
         { "JoosepAlviste/nvim-ts-context-commentstring", lazy = true },
-        { "nvim-treesitter/nvim-treesitter-textobjects", lazy = true },
+        {
+          "nvim-treesitter/nvim-treesitter-textobjects",
+          init = function()
+            -- disable rtp plugin, as we only need its queries for mini.ai
+            -- In case other textobject modules are enabled, we will load them
+            -- once nvim-treesitter is loaded
+            require("lazy.core.loader").disable_rtp_plugin "nvim-treesitter-textobjects"
+            load_textobjects = true
+          end,
+        },
         init = function()
           -- PERF: no need to load the plugin, if we only need its queries for mini.ai
           local plugin = require("lazy.core.config").spec.plugins["nvim-treesitter"]
@@ -128,8 +129,22 @@ return {
       { "<c-space>", desc = "Increment selection" },
       { "<bs>", desc = "Decrement selection", mode = "x" },
     },
-    config = function()
+    config = function(_, opts)
       require("plugins.configs.treesitter").setup()
+      if load_textobjects then
+        -- PERF: no need to load the plugin, if we only need its queries for mini.ai
+        if opts.textobjects then
+          for _, mod in ipairs { "move", "select", "swap", "lsp_interop" } do
+            if opts.textobjects[mod] and opts.textobjects[mod].enable then
+              local Loader = require "lazy.core.loader"
+              Loader.disabled_rtp_plugins["nvim-treesitter-textobjects"] = nil
+              local plugin = require("lazy.core.config").plugins["nvim-treesitter-textobjects"]
+              require("lazy.core.loader").source_runtime(plugin.dir, "plugin")
+              break
+            end
+          end
+        end
+      end
     end,
   },
 

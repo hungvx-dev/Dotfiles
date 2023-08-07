@@ -1,6 +1,6 @@
 local M = {}
 
-local package = {
+local packages = {
   "lua",
   "vim",
   "query",
@@ -33,18 +33,27 @@ local package = {
 
 local opts = {
   -- A list of parser names, or "all" (the five listed parsers should always be installed)
-  ensure_installed = package,
+  ensure_installed = packages,
   -- Install parsers synchronously (only applied to `ensure_installed`)
   sync_install = true,
   -- Automatically install missing parsers when entering buffer
   -- Recommendation: set to false if you don't have `tree-sitter` CLI installed locally
-  auto_install = false,
+  auto_install = true,
   -- List of parsers to ignore installing (for "all")
   ignore_install = {},
   ---- If you need to change the installation directory of the parsers (see -> Advanced Setup)
   -- parser_install_dir = "/some/path/to/store/parsers", -- Remember to run vim.opt.runtimepath:append("/some/path/to/store/parsers")!
 
-  highlight = { enable = true },
+  highlight = {
+    enable = true,
+    disable = function(lang, buf)
+      local max_filesize = 100 * 1024 -- 100 KB
+      local ok, stats = pcall(vim.loop.fs_stat, vim.api.nvim_buf_get_name(buf))
+      if ok and stats and stats.size > max_filesize then
+        return true
+      end
+    end,
+  },
   indent = { enable = true, disable = { "python", "yaml" } },
   autotag = { enable = true },
   context_commentstring = { enable = true, enable_autocmd = false },
@@ -83,6 +92,18 @@ function M.setup()
   local status_ok, treesitter_configs = pcall(require, "nvim-treesitter.configs")
   if not status_ok then
     return
+  end
+
+  if type(packages) == "table" then
+    ---@type table<string, boolean>
+    local added = {}
+    packages = vim.tbl_filter(function(lang)
+      if added[lang] then
+        return false
+      end
+      added[lang] = true
+      return true
+    end, packages)
   end
 
   treesitter_configs.setup(opts)
