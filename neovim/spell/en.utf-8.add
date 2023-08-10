@@ -215,3 +215,12 @@ toml
 lspconfig
 draggable
 load_textobjects
+HostName
+IdentityFile
+AddKeysToAgent
+UseKeychain
+orbstack
+IdentitiesOnly
+bitbucket
+hungvx
+vx
