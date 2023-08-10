@@ -20,11 +20,6 @@ starship init fish | source
 set -gx AUTO_JUMP_SHARE_PATH /opt/homebrew/share/autojump/autojump.fish
 [ -f $AUTO_JUMP_SHARE_PATH ]; and source $AUTO_JUMP_SHARE_PATH
 
-# # pnpm
-set -gx PNPM_HOME "/Users/hungvx.dev/Library/pnpm"
-set fish_user_paths $fish_user_paths $PNPM_HOME
-# # pnpm end
-
 # ruby
 set -gx GEM_HOME $HOME/.gem
 set -gx RUBY_PATH /opt/homebrew/opt/ruby/bin
@@ -37,3 +32,11 @@ set fish_user_paths $fish_user_paths /opt/homebrew/sbin
 set fish_user_paths $fish_user_paths /opt/homebrew/opt/gnu-sed/libexec/gnubin
 
 . $fish_path/variables.private.fish
+
+# pnpm
+set -gx PNPM_HOME "/Users/hungvx.dev/Library/pnpm"
+if not string match -q -- $PNPM_HOME $PATH
+  set -gx PATH "$PNPM_HOME" $PATH
+end
+# pnpm end
+
