@@ -94,7 +94,7 @@ return {
     lazy = false,
     dependencies = {
       {
-        { "mrjones2014/nvim-ts-rainbow", lazy = true },
+        -- { "mrjones2014/nvim-ts-rainbow", lazy = true },
         { "JoosepAlviste/nvim-ts-context-commentstring", lazy = true },
         {
           "nvim-treesitter/nvim-treesitter-textobjects",
