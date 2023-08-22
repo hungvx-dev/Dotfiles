@@ -46,8 +46,8 @@ ln -s $(pwd)/cava ~/.config
 rm -rf ~/config/ssh
 rm -rf ~/config/lazygit
 ln -s $(pwd)/ssh/config ~/.ssh/config
-ln -s $(pwd)/git/.gitconfig ~/.gitconfig
-ln -s $(pwd)/git/work/.gitconfig ~/Work/Hodfords/.gitconfig
+ln -s $(pwd)/git/me/ ~/.config/git
+ln -s $(pwd)/git/work/ ~/Work/Hodfords/git
 ln -s $(pwd)/lazygit ~/.config
 
 # Alias
