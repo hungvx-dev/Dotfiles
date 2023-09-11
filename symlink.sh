@@ -50,5 +50,7 @@ ln -s $(pwd)/git/me/ ~/.config/git
 ln -s $(pwd)/git/work/ ~/Work/Hodfords/git
 ln -s $(pwd)/lazygit ~/.config
 
+# Btop
+ln -s $(pwd)/btop ~/.config
 # Alias
 # ln -s $(pwd)/my-alias.zsh ~/.oh-my-zsh/custom/my-alias.zsh
