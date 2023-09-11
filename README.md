@@ -34,13 +34,13 @@ chmode -R +x ./bootstrap/macos && ./bootstrap/macos/init.sh
 
 ### Terminal (Kitty + fish + starship + fzf)
 
-![Alt text](./images/terminal.png "Title")
-![Alt text](./images/terminal-1.png "Title")
+![Terminal 1](./images/terminal.png "Title")
+![Terminal 2](./images/terminal-1.png "Title")
 
 ### Tmux sessions
 
-![Alt text](./images/tmux.png "Title")
-![Alt text](./images/tmux-2.png "Title")
+![Tmux 1](./images/tmux.png "Title")
+![Tmux 2](./images/tmux-2.png "Title")
 
 ### Btop
 
@@ -48,20 +48,20 @@ chmode -R +x ./bootstrap/macos && ./bootstrap/macos/init.sh
 
 ### Neovim
 
-![Alt text](./images/neovim.png "Title")
-![Alt text](./images/nvim-info.png "Title")
-![Alt text](./images/nvim-diagnotics.png "Title")
-![Alt text](./images/nvim-autocomplete.png "Title")
+![Neovim](./images/neovim.png "Title")
+![Neovim](./images/nvim-info.png "Title")
+![Neovim](./images/nvim-diagnotics.png "Title")
+![Neovim](./images/nvim-autocomplete.png "Title")
 
 ### Lazygit
 
-![Alt text](./images/lazygit.png "Title")
-![Alt text](./images/lazygit-1.png "Title")
-![Alt text](./images/git-log.png "Title")
+![Lazygit](./images/lazygit.png "Title")
+![Lazygit](./images/lazygit-1.png "Title")
+![Lazygit](./images/git-log.png "Title")
 
 ### Music
 
-![Alt text](./images/cmus.png "Title")
+![Music](./images/cmus.png "Title")
 
 ## References
 
