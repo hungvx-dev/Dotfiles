@@ -9,6 +9,7 @@
 - **IDE**: [Neovim](./neovim)
 - **WindowManagement**: [Yabai](./yabai)
   - **Hotkey**: [skhd](./skhd)
+- **Activity Monitor**: [Btop](./btop)
 - **Git commands UI**: [Lazygit](./lazygit)
 - **Font**: [Nerd Font](https://github.com/ryanoasis/nerd-fonts) [CaskaydiaCove](https://github.com/ryanoasis/nerd-fonts/tree/master/patched-fonts/CascadiaCode)
 - **Music**: [cmus](https://github.com/cmus/cmus) [cava](./cava) [Background Music](https://github.com/kyleneideck/BackgroundMusic)
@@ -40,6 +41,10 @@ chmode -R +x ./bootstrap/macos && ./bootstrap/macos/init.sh
 
 ![Alt text](./images/tmux.png "Title")
 ![Alt text](./images/tmux-2.png "Title")
+
+### Btop
+
+![Btop](./images/btop.png "Title")
 
 ### Neovim
 
