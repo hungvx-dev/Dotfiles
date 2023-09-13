@@ -14,6 +14,7 @@ fish_vi_key_bindings
 set fish_path $HOME/.config/fish
 . $fish_path/alias/my_alias.fish
 . $fish_path/alias/git_alias.fish
+. $fish_path/tokyonight_night.fish
 
 starship init fish | source
 
