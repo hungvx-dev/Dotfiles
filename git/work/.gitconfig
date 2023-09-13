@@ -9,6 +9,7 @@
   autoSetupRemote = true
 [core]
 	editor = nvim
+  autocrlf = input
 [web]
 	browser = google-chrome
 [color]
@@ -32,8 +33,12 @@
 	added = green bold
 	changed = yellow bold
 	untracked = red bold
+[difftool]
+    prompt = true
+[difftool "nvimdiff"]
+    cmd = "nvim -d \"$LOCAL\" \"$REMOTE\""
 [diff]
-	tool = vimdiff
+  tool = nvimdiff
   algorithm = patience
   colorMoved = dimmed-zebra
 [delta]
