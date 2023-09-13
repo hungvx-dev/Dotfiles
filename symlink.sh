@@ -9,7 +9,7 @@ ln -s $(pwd)/tmux ~/.config
 # ln -s $(pwd)/.tmux/.tmux.conf.local ~/.tmux.conf.local
 # ln -s $(pwd)/.tmux/.tmux.conf ~/.tmux.conf
 
-# FISh
+# Fish
 rm -rf ~/.config/fish
 rm -f ~/.config/starship.toml
 ln -s $(pwd)/fish ~/.config/fish
@@ -47,6 +47,7 @@ rm -rf ~/config/ssh
 rm -rf ~/config/lazygit
 ln -s $(pwd)/ssh/config ~/.ssh/config
 ln -s $(pwd)/git/me/ ~/.config/git
+ln -s ~/.config/git/.gitconfig ~/.config/git/config
 ln -s $(pwd)/git/work/ ~/Work/Hodfords/git
 ln -s $(pwd)/lazygit ~/.config
 
