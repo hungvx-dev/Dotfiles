@@ -52,5 +52,9 @@ ln -s $(pwd)/lazygit ~/.config
 
 # Btop
 ln -s $(pwd)/btop ~/.config
+
+# Bat
+ln -s $(pwd)/bat ~/.config
+
 # Alias
 # ln -s $(pwd)/my-alias.zsh ~/.oh-my-zsh/custom/my-alias.zsh
