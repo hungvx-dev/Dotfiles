@@ -44,6 +44,12 @@ base = "#1E1E2E"
 mantle = "#181825"
 crust = "#11111B"
 
+# [sudo]
+# disabled = false
+# symbol = "🥷"
+# style = "bold bg:base"
+# format = '[$symbol]($style)'
+
 # One line prompt
 [line_break]
 disabled = true
