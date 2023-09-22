@@ -1,0 +1,65 @@
+" source ~/.config/ideavim/ideavimrc
+""" Map leader to space ---------------------
+let mapleader=" "
+
+" Plugins
+Plug 'tpope/vim-commentary'
+Plug 'machakann/vim-highlightedyank'
+Plug 'tpope/vim-surround'
+Plug 'terryma/vim-multiple-cursors'
+set quickscope
+
+set ideajoin
+"set ideastatusicon=gray
+set idearefactormode=keep
+""" IdeaVim development stuff
+set ideastrictmode
+
+set showmode
+set so=5
+set incsearch
+set nu
+set relativenumber
+set clipboard+=unnamedplus
+set nrformats-=octal
+set ideamarks
+
+set autoindent
+set expandtab
+set smartindent
+set showtabline=2
+set tabstop=2
+set shiftwidth=2
+set softtabstop=2
+set hlsearch
+set incsearch
+set scroll=20
+
+" Keys map
+map gf <Action>(ReformatCode)
+map ! <Action>(ShowErrorDescription)
+
+nmap <C-n> <Plug>NextWholeOccurrence
+xmap <C-n> <Plug>NextWholeOccurrence
+nmap g<C-n> <Plug>NextOccurrence
+xmap g<C-n> <Plug>NextOccurrence
+xmap <C-x> <Plug>SkipOccurrence
+xmap <C-p> <Plug>RemoveOccurrence
+
+nnoremap H ^
+nnoremap L $
+vnoremap H ^
+vnoremap L g_
+vnoremap p "_dP
+
+noremap <C-q> :q<cr>
+noremap <C-u> <C-u>zz
+noremap <C-d> <C-d>zz
+map <leader><cr> :nohl<cr>
+vnoremap < <gv
+vnoremap > >gv
+
+map <up> <nop>
+map <down> <nop>
+map <left> <nop>
+map <right> <nop>

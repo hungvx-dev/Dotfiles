@@ -26,6 +26,9 @@ rm -rf ~/.config/nvim
 # ln -s $(pwd)/nvim ~/.config/nvim
 ln -s $(pwd)/neovim ~/.config/nvim
 
+ln -s $(pwd)/ideavim ~/.config
+ln -s ~/.config/ideavim/.ideavimrc ~/.config/ideavim/ideavimrc
+
 # ZSH config
 # ln -s $(pwd)/zsh ~/.config/zsh
 # ln -s $(pwd)/zsh/history ~/.cache/zsh/history
