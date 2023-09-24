@@ -46,7 +46,7 @@ opt.softtabstop = 2
 opt.splitbelow = true
 opt.splitright = true
 -- opt.laststatus = 3                     -- Global statusline
-opt.cmdheight = 1 -- 0
+opt.cmdheight = 0 -- 0
 -- opt.title = true                       -- set the title of window to the value of the titlestring
 -- opt.titlestring = "%<%F%=%l/%L - nvim" -- what the title of the window will be set to
 opt.swapfile = false
