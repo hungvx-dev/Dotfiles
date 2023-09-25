@@ -51,7 +51,7 @@ require("window-picker").setup {
       filetype = { "NvimTree", "neo-tree", "notify" },
 
       -- if the file type is one of following, the window will be ignored
-      buftype = { "terminal" },
+      buftype = { "terminal", "quickfix" },
     },
 
     -- filter using window options
@@ -69,24 +69,24 @@ require("window-picker").setup {
     statusline = {
       focused = {
         fg = "#ededed",
-        bg = "#e35e4f",
+        bg = "NONE",
         bold = true,
       },
       unfocused = {
-        fg = "#ededed",
-        bg = "#44cc41",
+        fg = "#e35e4f",
+        bg = "NONE",
         bold = true,
       },
     },
     winbar = {
       focused = {
         fg = "#ededed",
-        bg = "#e35e4f",
+        bg = "NONE",
         bold = true,
       },
       unfocused = {
-        fg = "#ededed",
-        bg = "#44cc41",
+        fg = "#e35e4f",
+        bg = "NONE",
         bold = true,
       },
     },

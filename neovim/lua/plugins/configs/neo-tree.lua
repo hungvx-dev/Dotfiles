@@ -10,51 +10,19 @@ local setup = {
   popup_border_style = "rounded",
   enable_git_status = true,
   enable_diagnostics = true,
-  filesystem = {
-    bind_to_cwd = false,
-    follow_current_file = { enabled = true },
-    use_libuv_file_watcher = true,
-  },
-  window = {
-    position = "right",
-    width = 40,
-    mappings = {
-      ["<space>"] = "none",
-      ["o"] = "open_with_window_picker",
-      ["<C-x>"] = "split_with_window_picker",
-      ["<C-v>"] = "vsplit_with_window_picker",
-    },
-  },
   default_component_configs = {
     indent = {
-      indent_size = 2,
-      -- padding = 1, -- extra padding on left hand side
-      -- indent guides
-      indent_marker = "│",
-      last_indent_marker = "└",
       expander_collapsed = hvim.icons.UI.Direction.Angle.Right,
       expander_expanded = hvim.icons.UI.Direction.Angle.Down,
-      expander_highlight = "NeoTreeExpander",
     },
     icon = {
       folder_closed = hvim.icons.UI.Folder.Icon,
       folder_open = hvim.icons.UI.Folder.Open,
-      -- folder_empty = hvim.icons.UI.Folder.Empty,
-      folder_empty = "󰜌",
+      folder_empty = hvim.icons.UI.Folder.Empty,
       folder_empty_open = hvim.icons.UI.Folder.EmptyOpen,
-      -- The next two settings are only a fallback, if you use nvim-web-devicons and configure default icons there
-      -- then these will never be used.
-      default = "*",
-      highlight = "NeoTreeFileIcon",
     },
     modified = {
       symbol = hvim.icons.Git.LineModified,
-      highlight = "NeoTreeModified",
-    },
-    name = {
-      trailing_slash = false,
-      use_git_status_colors = true,
-      highlight = "NeoTreeFileName",
     },
     git_status = {
       symbols = {
@@ -72,19 +40,31 @@ local setup = {
       },
     },
   },
+  filesystem = {
+    follow_current_file = { enabled = true, leave_dirs_open = true },
+    use_libuv_file_watcher = true,
+  },
+  window = {
+    position = "right",
+    width = 40,
+    mappings = {
+      ["<space>"] = "none",
+      ["o"] = "open_with_window_picker",
+      ["<C-x>"] = "split_with_window_picker",
+      ["<C-v>"] = "vsplit_with_window_picker",
+    },
+  },
   buffers = {
     follow_current_file = {
       enabled = true, -- This will find and focus the file in the active buffer every time
       --              -- the current file is changed while the tree is open.
-      leave_dirs_open = false, -- `false` closes auto expanded dirs, such as with `:Neotree reveal`
+      leave_dirs_open = true, -- `false` closes auto expanded dirs, such as with `:Neotree reveal`
     },
     group_empty_dirs = true, -- when true, empty folders will be grouped together
     show_unloaded = true,
     -- window = {
     --   mappings = {
-    --     ["bd"] = "buffer_delete",
-    --     ["<bs>"] = "navigate_up",
-    --     ["."] = "set_root",
+    --     ["<leader>bd"] = "buffer_delete",
     --   },
     -- },
   },
