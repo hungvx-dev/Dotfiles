@@ -39,7 +39,9 @@ tokyonight.setup {
     colors.comment = "#a9b1d6"
   end,
   on_highlights = function(hl)
-    -- hl.CursorLineNr = { fg = "#EFFF00" }
     hl.TelescopeTitle = { fg = "#FFA630" }
+    hl.CursorLineNr = { fg = "#EFFF00" }
+    hl.CursorLine = { bg = "NONE" }
+    -- hl.CursorColumn
   end,
 }
