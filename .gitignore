@@ -4,7 +4,6 @@ nvim-v1/files/info
 nvim-v1/files/backup
 nvim-v1/files/swap
 nvim-v1/undodir
-
 # End of
 
 ### Tmux ###
@@ -54,3 +53,5 @@ zsh/.directory_history
 zsh/.venv
 
 # End of https://www.toptal.com/developers/gitignore/api/zsh
+
+raycast/extensions/node_modules
