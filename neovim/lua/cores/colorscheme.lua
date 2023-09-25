@@ -16,7 +16,6 @@ tokyonight.setup {
     sidebars = "transparent",
     floats = "transparent",
   },
-
   sidebars = {},
   hide_inactive_statusline = true,
   dim_inactive = false,
@@ -37,12 +36,10 @@ tokyonight.setup {
     -- colors.black = colors.none
 
     colors.bg_popup = "#1a1b26"
-    -- colors.comment = "#3d59a1"
+    colors.comment = "#a9b1d6"
   end,
   on_highlights = function(hl)
-    local prompt = "#FFA630"
-
-    hl.CursorLineNr = { fg = "#EFFF00" }
-    hl.TelescopeTitle = { fg = prompt }
+    -- hl.CursorLineNr = { fg = "#EFFF00" }
+    hl.TelescopeTitle = { fg = "#FFA630" }
   end,
 }
