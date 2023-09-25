@@ -60,5 +60,11 @@ ln -s $(pwd)/btop ~/.config
 # Bat
 ln -s $(pwd)/bat ~/.config
 
+# Karabiner-Elements
+ln -s $(pwd)/karabiner ~/.config
+
+# Raycast
+ln -s $(pwd)/raycast ~/.config
+
 # Alias
 # ln -s $(pwd)/my-alias.zsh ~/.oh-my-zsh/custom/my-alias.zsh
