@@ -62,7 +62,7 @@
           "from": {
             "simultaneous": [
               {
-                "key_code": "a"
+                "key_code": "z"
               },
               {
                 "key_code": "j"
@@ -175,7 +175,7 @@
           "from": {
             "simultaneous": [
               {
-                "key_code": "a"
+                "key_code": "z"
               },
               {
                 "key_code": "k"
