@@ -2,23 +2,25 @@ return {
   -- lspconfig
   {
     "neovim/nvim-lspconfig",
-    lazy = true,
     event = { "BufReadPre", "BufNewFile" },
+    lazy = true,
     dependencies = {
       "jose-elias-alvarez/typescript.nvim",
-      { "b0o/SchemaStore.nvim", version = false, lazy = false },
+      { "b0o/SchemaStore.nvim", version = false, lazy = true },
     },
-    config = require("lsp").setup,
+    config = function()
+      require("lsp").setup()
+    end,
   },
-
   {
     "williamboman/mason.nvim",
+    config = function()
+      require("lsp.mason").setup()
+    end,
     cmd = { "Mason", "MasonInstall", "MasonUninstall", "MasonUninstallAll", "MasonLog" },
     build = ":MasonUpdate",
     lazy = true,
-    config = require("lsp.mason").setup,
   },
-
   {
     "williamboman/mason-lspconfig.nvim",
     cmd = { "LspInstall", "LspUninstall" },
@@ -33,15 +35,17 @@ return {
     event = { "InsertEnter" },
     lazy = true,
     dependencies = {
-      "hrsh7th/cmp-nvim-lsp",
-      "hrsh7th/cmp-buffer",
-      "hrsh7th/cmp-path",
-      "f3fora/cmp-spell",
-      "saadparwaiz1/cmp_luasnip",
-      "hrsh7th/cmp-cmdline",
+      { "hrsh7th/cmp-nvim-lsp", lazy = true },
+      { "hrsh7th/cmp-buffer", lazy = true },
+      { "hrsh7th/cmp-path", lazy = true },
+      { "f3fora/cmp-spell", lazy = true },
+      { "saadparwaiz1/cmp_luasnip", lazy = true },
+      { "hrsh7th/cmp-cmdline", lazy = true },
       -- { "tzachar/cmp-tabnine", build = "./install.sh" },
     },
-    config = require("plugins.configs.completion.cmp").setup,
+    config = function()
+      require("plugins.configs.completion.cmp").setup()
+    end,
   },
 
   -- snippets
@@ -151,9 +155,4 @@ return {
 
   -- surround
   { "kylechui/nvim-surround", config = true },
-
-  -- {
-  --   "kana/vim-textobj-entire",
-  --   dependencies = { "kana/vim-textobj-user", lazy = true },
-  -- },
 }

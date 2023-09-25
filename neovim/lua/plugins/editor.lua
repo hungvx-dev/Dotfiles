@@ -100,13 +100,16 @@ return {
   -- easily jump
   {
     "unblevable/quick-scope",
-    enabled = true,
+    event = { "BufReadPre", "BufNewFile" },
+    lazy = true,
     config = function()
       require "plugins.configs.quick-scope"
     end,
   },
   {
     "mg979/vim-visual-multi",
+    event = { "BufReadPre", "BufNewFile" },
+    lazy = true,
     config = function()
       vim.g.VM_leader = "\\"
     end,
@@ -234,7 +237,7 @@ return {
     config = function()
       require("plugins.configs.comment").setup()
     end,
-    event = "BufEnter",
+    event = { "BufReadPre", "BufNewFile" },
     lazy = true,
   },
 
