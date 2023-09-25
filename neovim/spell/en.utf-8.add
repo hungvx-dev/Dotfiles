@@ -262,3 +262,11 @@ stylua
 colorscheme
 cursorline
 vimsyn
+lualine
+pcall
+startuptime
+cwd
+eslintrc
+namespace
+diag
+sqlls

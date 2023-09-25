@@ -105,7 +105,7 @@ local setup = {
       },
       {
         filetype = "neo-tree",
-        text = "Neo-tree",
+        text = "Explorer",
         highlight = "Directory",
         text_align = "left",
       },

@@ -90,6 +90,8 @@ return {
 
   {
     "lukas-reineke/indent-blankline.nvim",
+    event = { "BufReadPost", "BufNewFile" },
+    lazy = true,
     config = function()
       require("plugins.configs.indent-lines").setup()
     end,

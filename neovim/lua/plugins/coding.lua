@@ -2,25 +2,23 @@ return {
   -- lspconfig
   {
     "neovim/nvim-lspconfig",
-    lazy = false,
+    lazy = true,
     event = { "BufReadPre", "BufNewFile" },
     dependencies = {
       "jose-elias-alvarez/typescript.nvim",
       { "b0o/SchemaStore.nvim", version = false, lazy = false },
     },
-    config = function()
-      require("lsp").setup()
-    end,
+    config = require("lsp").setup,
   },
+
   {
     "williamboman/mason.nvim",
-    config = function()
-      require("lsp.mason").setup()
-    end,
     cmd = { "Mason", "MasonInstall", "MasonUninstall", "MasonUninstallAll", "MasonLog" },
     build = ":MasonUpdate",
     lazy = true,
+    config = require("lsp.mason").setup,
   },
+
   {
     "williamboman/mason-lspconfig.nvim",
     cmd = { "LspInstall", "LspUninstall" },
@@ -35,13 +33,7 @@ return {
     event = { "InsertEnter" },
     lazy = true,
     dependencies = {
-      {
-        "hrsh7th/cmp-nvim-lsp",
-        -- lazy = false,
-        -- cond = function()
-        --   return require("utils").has "nvim-cmp"
-        -- end,
-      },
+      "hrsh7th/cmp-nvim-lsp",
       "hrsh7th/cmp-buffer",
       "hrsh7th/cmp-path",
       "f3fora/cmp-spell",
@@ -49,9 +41,7 @@ return {
       "hrsh7th/cmp-cmdline",
       -- { "tzachar/cmp-tabnine", build = "./install.sh" },
     },
-    config = function()
-      require("plugins.configs.completion.cmp").setup()
-    end,
+    config = require("plugins.configs.completion.cmp").setup,
   },
 
   -- snippets

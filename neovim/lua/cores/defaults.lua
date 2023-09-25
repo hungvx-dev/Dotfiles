@@ -1,9 +1,6 @@
 return {
   colorscheme = "tokyonight",
   leader = "space",
-  reload_config_on_save = true,
-  transparent_window = false,
-
   use_icons = true,
   icons = require "icons",
 
