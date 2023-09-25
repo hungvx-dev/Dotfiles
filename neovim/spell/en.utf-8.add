@@ -259,3 +259,6 @@ JetBrains
 tabline
 bufferline
 stylua
+colorscheme
+cursorline
+vimsyn
