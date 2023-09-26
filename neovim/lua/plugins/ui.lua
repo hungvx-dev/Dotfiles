@@ -71,7 +71,7 @@ return {
 
   {
     "rcarriga/nvim-notify",
-    lazy = true,
+    enabled = false,
     keys = {
       {
         "<leader>un",

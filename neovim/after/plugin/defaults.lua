@@ -1,7 +1,6 @@
 local g = vim.g
 local opt = vim.opt -- local cmd = vim.cmd
 -- Remap leader and local leader to <Space>
--- api.nvim_set_keymap("", "<Space>", "<Nop>", { noremap = true, silent = true })
 vim.keymap.set("", "<Space>", "<Nop>", { noremap = true, silent = true })
 -- g.vimsyn_embed = "lPr" -- Syntax embedding for Lua, Python and Ruby
 
@@ -14,7 +13,7 @@ opt.colorcolumn = "99999"
 opt.cursorline = true -- Enable highlighting of the current line
 opt.hlsearch = true --Set highlight on search
 opt.number = true --Make line numbers default
--- opt.relativenumber = true --Make relative number default
+opt.relativenumber = true --Make relative number default
 opt.mouse = "a" --Enable mouse mode
 opt.breakindent = true --Enable break indent
 opt.undofile = true --Save undo history
@@ -54,7 +53,6 @@ opt.swapfile = false
 -- opt.scrollback = 100000
 opt.hidden = true
 -- Change to use lualine.nvim
--- opt.winbar = "%{%v:lua.require'config.winbar'.get_winbar()%}"
 
 -- go to previous/next line with h,l,left arrow and right arrow when cursor reaches end/beginning of line
 -- opt.whichwrap:append "<>[]hl"
@@ -83,10 +81,8 @@ opt.spelloptions = { "camel" }
 -- opt.foldmethod = "expr"
 -- opt.foldexpr = "nvim_treesitter#foldexpr()"
 
-if vim.fn.has "nvim-0.9.0" == 1 then
-  opt.splitkeep = "screen"
-  opt.shortmess:append { C = true }
-end
+opt.splitkeep = "screen"
+opt.shortmess:append { C = true }
 
 -- Fix markdown indentation settings
 vim.g.markdown_recommended_style = 0
