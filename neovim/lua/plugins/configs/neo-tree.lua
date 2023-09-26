@@ -85,7 +85,6 @@ function M.setup()
       end
     end,
   })
-  -- vim.keymap.set("n", "<leader>n", ":Neotree focus<cr>")
 
   vim.cmd [[nnoremap \ :Neotree reveal<cr>]]
 end

@@ -4,8 +4,9 @@ local sorters = require "telescope.sorters"
 
 local opts = {
   defaults = {
-    path_display = { "smart" },
+    prompt_prefix = hvim.icons.UI.Search,
     selection_caret = hvim.icons.UI.SelectionCaret,
+    path_display = { "smart" },
     initial_mode = "insert",
     vimgrep_arguments = {
       "rg",
@@ -20,11 +21,6 @@ local opts = {
     },
     sorting_strategy = "ascending",
     layout_strategy = "center",
-    -- layout_config = {
-    --   height = 0.3,
-    --   width = 0.5,
-    -- },
-    prompt_prefix = hvim.icons.UI.Search,
     mappings = {
       i = {
         ["<c-t>"] = function(...)
@@ -57,6 +53,7 @@ local opts = {
       },
     },
     file_ignore_patterns = {
+      "CHANGELOG.md",
       ".git/",
       "target/",
       "docs/",

@@ -36,14 +36,6 @@ return {
     end,
     config = function(_)
       require("plugins.configs.neo-tree").setup()
-      vim.api.nvim_create_autocmd("TermClose", {
-        pattern = "*lazygit",
-        callback = function()
-          if package.loaded["neo-tree.sources.git_status"] then
-            require("neo-tree.sources.git_status").refresh()
-          end
-        end,
-      })
     end,
   },
 
@@ -97,6 +89,33 @@ return {
     end,
   },
 
+  -- comments
+  {
+    "folke/todo-comments.nvim",
+    cmd = { "TodoTrouble", "TodoTelescope" },
+    event = { "BufReadPost", "BufNewFile" },
+    -- stylua: ignore
+    keys = {
+      { "]t", function() require("todo-comments").jump_next() end, desc = "Next todo comment" },
+      { "[t", function() require("todo-comments").jump_prev() end, desc = "Previous todo comment" },
+      { "<leader>xt", "<cmd>TodoTrouble<cr>", desc = "Todo (Trouble)" },
+      { "<leader>xT", "<cmd>TodoTrouble keywords=TODO,FIX,FIXME<cr>", desc = "Todo/Fix/Fixme (Trouble)" },
+      { "<leader>ft", "<cmd>TodoTelescope<cr>", desc = "Todo" },
+      { "<leader>fT", "<cmd>TodoTelescope keywords=TODO,FIX,FIXME<cr>", desc = "Todo/Fix/Fixme" },
+    },
+    config = function()
+      require "plugins.configs.todo-comments"
+    end,
+  },
+  {
+    "numToStr/Comment.nvim",
+    config = function()
+      require("plugins.configs.comment").setup()
+    end,
+    event = { "BufReadPre", "BufNewFile" },
+    lazy = true,
+  },
+
   -- easily jump
   {
     "unblevable/quick-scope",
@@ -114,38 +133,6 @@ return {
       vim.g.VM_leader = "\\"
     end,
   },
-
-  -- which-key
-  -- {
-  --   "folke/which-key.nvim",
-  --   event = "VeryLazy",
-  --   opts = {
-  --     plugins = { spelling = true },
-  --     defaults = {
-  --       mode = { "n", "v" },
-  --       ["g"] = { name = "+goto" },
-  --       ["gz"] = { name = "+surround" },
-  --       ["]"] = { name = "+next" },
-  --       ["["] = { name = "+prev" },
-  --       ["<leader><tab>"] = { name = "+tabs" },
-  --       ["<leader>b"] = { name = "+buffer" },
-  --       ["<leader>c"] = { name = "+code" },
-  --       ["<leader>f"] = { name = "+file/find" },
-  --       ["<leader>g"] = { name = "+git" },
-  --       ["<leader>gh"] = { name = "+hunks" },
-  --       ["<leader>q"] = { name = "+quit/session" },
-  --       ["<leader>s"] = { name = "+search" },
-  --       ["<leader>u"] = { name = "+ui" },
-  --       ["<leader>w"] = { name = "+windows" },
-  --       ["<leader>x"] = { name = "+diagnostics/quickfix" },
-  --     },
-  --   },
-  --   config = function(_, opts)
-  --     local wk = require("which-key")
-  --     wk.setup(opts)
-  --     wk.register(opts.defaults)
-  --   end,
-  -- },
 
   -- git
   {
@@ -214,33 +201,6 @@ return {
     },
   },
 
-  -- comments
-  {
-    "folke/todo-comments.nvim",
-    cmd = { "TodoTrouble", "TodoTelescope" },
-    event = { "BufReadPost", "BufNewFile" },
-    -- stylua: ignore
-    keys = {
-      { "]t", function() require("todo-comments").jump_next() end, desc = "Next todo comment" },
-      { "[t", function() require("todo-comments").jump_prev() end, desc = "Previous todo comment" },
-      { "<leader>xt", "<cmd>TodoTrouble<cr>", desc = "Todo (Trouble)" },
-      { "<leader>xT", "<cmd>TodoTrouble keywords=TODO,FIX,FIXME<cr>", desc = "Todo/Fix/Fixme (Trouble)" },
-      { "<leader>st", "<cmd>TodoTelescope<cr>", desc = "Todo" },
-      { "<leader>sT", "<cmd>TodoTelescope keywords=TODO,FIX,FIXME<cr>", desc = "Todo/Fix/Fixme" },
-    },
-    config = function()
-      require "plugins.configs.todo-comments"
-    end,
-  },
-  {
-    "numToStr/Comment.nvim",
-    config = function()
-      require("plugins.configs.comment").setup()
-    end,
-    event = { "BufReadPre", "BufNewFile" },
-    lazy = true,
-  },
-
   {
     "NvChad/nvim-colorizer.lua",
     event = { "BufRead", "BufWinEnter" },
@@ -267,18 +227,8 @@ return {
             segments = {
               { text = { builtin.foldfunc }, click = "v:lua.ScFa" },
               { text = { "%s" }, click = "v:lua.ScSa" },
-              -- {
-              --   sign = { name = { "Diagnostic" } },
-              --   click = "v:lua.ScSa",
-              -- },
-              -- {
-              --   sign = { name = { "GitSigns" }, maxwidth = 1 },
-              --   click = "v:lua.ScSa",
-              -- },
               {
                 text = { "", builtin.lnumfunc, " " },
-                -- text = { "%l", " " },
-                -- sign = { fillchar = "" },
                 condition = { true, builtin.not_empty },
                 click = "v:lua.ScLa",
               },
@@ -295,4 +245,36 @@ return {
       require "plugins.configs.ufo"
     end,
   },
+
+  -- which-key
+  -- {
+  --   "folke/which-key.nvim",
+  --   event = "VeryLazy",
+  --   opts = {
+  --     plugins = { spelling = true },
+  --     defaults = {
+  --       mode = { "n", "v" },
+  --       ["g"] = { name = "+goto" },
+  --       ["gz"] = { name = "+surround" },
+  --       ["]"] = { name = "+next" },
+  --       ["["] = { name = "+prev" },
+  --       ["<leader><tab>"] = { name = "+tabs" },
+  --       ["<leader>b"] = { name = "+buffer" },
+  --       ["<leader>c"] = { name = "+code" },
+  --       ["<leader>f"] = { name = "+file/find" },
+  --       ["<leader>g"] = { name = "+git" },
+  --       ["<leader>gh"] = { name = "+hunks" },
+  --       ["<leader>q"] = { name = "+quit/session" },
+  --       ["<leader>s"] = { name = "+search" },
+  --       ["<leader>u"] = { name = "+ui" },
+  --       ["<leader>w"] = { name = "+windows" },
+  --       ["<leader>x"] = { name = "+diagnostics/quickfix" },
+  --     },
+  --   },
+  --   config = function(_, opts)
+  --     local wk = require("which-key")
+  --     wk.setup(opts)
+  --     wk.register(opts.defaults)
+  --   end,
+  -- },
 }

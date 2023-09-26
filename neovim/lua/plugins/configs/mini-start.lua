@@ -22,7 +22,6 @@ local config = {
     new_section("init.lua", "e $MYVIMRC", "Config"),
     new_section("Lazy", "Lazy", "Config"),
     new_section("Quit", "qa", "Built-in"),
-    new_section("Session restore", [[lua require("persistence").load()]], "Session"),
   },
   content_hooks = {
     starter.gen_hook.adding_bullet(pad .. "░ ", false),

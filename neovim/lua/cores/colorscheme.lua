@@ -21,19 +21,12 @@ tokyonight.setup {
   dim_inactive = false,
   lualine_bold = false,
   on_colors = function(colors)
-    -- colors.bg = "#1a1b26"
+    colors.bg = "NONE"
     colors.bg_dark = colors.bg
     colors.bg_float = colors.bg
     colors.bg_sidebar = colors.bg
     colors.bg_statusline = colors.bg
     colors.black = colors.bg
-
-    colors.bg = "NONE"
-    -- colors.bg_dark = colors.none
-    -- colors.bg_float = colors.none
-    -- colors.bg_sidebar = colors.none
-    -- colors.bg_statusline = colors.none
-    -- colors.black = colors.none
 
     colors.bg_popup = "#1a1b26"
     colors.comment = "#a9b1d6"
@@ -47,7 +40,6 @@ tokyonight.setup {
     hl.TelescopeTitle = { fg = "#FFA630" }
     hl.CursorLineNr = { fg = "#EFFF00" }
     hl.CursorLine = { bg = "NONE" }
-    -- hl["@keyword.function"].fg = "#bb4af7"
     -- hl.CursorColumn
   end,
 }

@@ -103,6 +103,7 @@ return {
 
   {
     "folke/noice.nvim",
+    enabled = false,
     event = "VeryLazy",
     lazy = true,
     opts = {
@@ -148,5 +149,5 @@ return {
 
   -- ui components
   { "MunifTanjim/nui.nvim", lazy = true },
-  { "nvim-lua/popup.nvim", lazy = true },
+  { "nvim-lua/popup.nvim", lazy = true, enabled = false },
 }
