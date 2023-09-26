@@ -17,7 +17,6 @@ return {
     level = "info",
     viewer = {
       ---@usage this will fallback on "less +F" if not found
-      -- cmd = "lnav",
       layout_config = {
         ---@usage direction = 'vertical' | 'horizontal' | 'window' | 'float',
         direction = "horizontal",

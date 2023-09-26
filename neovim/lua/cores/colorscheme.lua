@@ -37,11 +37,17 @@ tokyonight.setup {
 
     colors.bg_popup = "#1a1b26"
     colors.comment = "#a9b1d6"
+    colors.fg_gutter = "#394b70"
+    -- colors.megenta = "#bb4af7"
+    -- colors.fg = "#ffffff"
+    -- colors.fg_float = "#ffffff"
+    -- colors.fg_sidebar = "#ffffff"
   end,
   on_highlights = function(hl)
     hl.TelescopeTitle = { fg = "#FFA630" }
     hl.CursorLineNr = { fg = "#EFFF00" }
     hl.CursorLine = { bg = "NONE" }
+    -- hl["@keyword.function"].fg = "#bb4af7"
     -- hl.CursorColumn
   end,
 }

@@ -2,48 +2,21 @@ local M = {}
 
 local packages = {
   "lua",
-  -- "vim",
-  -- "query",
   "typescript",
   "javascript",
   "html",
   "css",
-  -- "scss",
   "bash",
   "json",
-  -- "json5",
-  -- "jsonc",
   "tsx",
   "vue",
-  -- "regex",
-  -- "comment",
-  -- "dockerfile",
-  -- "graphql",
-  "yaml",
-  "fish",
-  -- "gitignore",
-  -- "gitcommit",
-  -- "git_config",
-  -- "git_rebase",
-  -- "markdown",
-  -- "markdown_inline",
-  -- "prisma",
-  -- "toml",
 }
 
 local opts = {
-  -- A list of parser names, or "all" (the five listed parsers should always be installed)
   ensure_installed = packages,
-  -- Install parsers synchronously (only applied to `ensure_installed`)
   sync_install = true,
-  -- Automatically install missing parsers when entering buffer
-  -- Recommendation: set to false if you don't have `tree-sitter` CLI installed locally
   auto_install = true,
-  -- List of parsers to ignore installing (for "all")
   ignore_install = {},
-  ---- If you need to change the installation directory of the parsers (see -> Advanced Setup)
-  -- parser_install_dir = "/some/path/to/store/parsers", -- Remember to run vim.opt.runtimepath:append("/some/path/to/store/parsers")!
-
   highlight = {
     enable = true,
     disable = function(lang, buf)
@@ -71,6 +44,10 @@ local opts = {
       -- Automatically jump forward to textobj, similar to targets.vim
       lookahead = true,
       keymaps = {
+        init_selection = "<C-space>",
+        node_incremental = "<C-space>",
+        scope_incremental = false,
+        node_decremental = "<bs>",
         -- You can use the capture groups defined in textobjects.scm
         ["af"] = "@function.outer",
         ["if"] = "@function.inner",
@@ -107,31 +84,9 @@ function M.setup()
   end
 
   treesitter_configs.setup(opts)
-  -- handle deprecated API, https://github.com/windwp/nvim-autopairs/pull/324
   local ts_utils = require "nvim-treesitter.ts_utils"
   ts_utils.is_in_node_range = vim.treesitter.is_in_node_range
   ts_utils.get_node_range = vim.treesitter.get_node_range
 end
 
 return M
-
--- move = {
---   enable = true,
---   set_jumps = true, -- whether to set jumps in the jumplist
---   goto_next_start = {
---     ["]]"] = "@function.outer",
---     ["]m"] = "@class.outer",
---   },
---   goto_next_end = {
---     ["]["] = "@function.outer",
---     ["]M"] = "@class.outer",
---   },
---   goto_previous_start = {
---     ["[["] = "@function.outer",
---     ["[m"] = "@class.outer",
---   },
---   goto_previous_end = {
---     ["[]"] = "@function.outer",
---     ["[M"] = "@class.outer",
---   },
--- },
