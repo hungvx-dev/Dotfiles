@@ -54,24 +54,36 @@ install_setup_tmux() {
 }
 
 install_tools() {
-  info "Installing tools"
+  info "Installing apps & tools"
   brew install --cask \
+    karabiner-elements \
+    openkey \
+    cloudflare-warp \
+    discord \
+    figma \
+    gitkraken \
+    spotify \
+    xmind \
     postman \
+    microsoft-teams \
+    telegram-desktop \
     google-chrome \
     visual-studio-code \
+    1password-cli \
     notion \
-    raycast
+    raycast \
+    google-chrome \
+    orbstack
+
+  brew install vlc zoom obs
 
   brew install \
-    pnpm \
     fzf \
     autojump \
     lazygit \
     exercism \
-    awscli \
-    wireguard-tools \
-    orbstack \
-    google-chrome
+    btop \
+    awscli
   success "Installed tools"
 }
 
@@ -89,7 +101,12 @@ install_deps_tools() {
 install_fonts() {
   info "Installing tools"
   brew tap homebrew/cask-fonts
-  brew install font-caskaydia-cove-nerd-font
+  brew install \
+    font-jetbrains-mono \
+    font-caskaydia-cove-nerd-font \
+    font-fira-code-nerd-font \
+    font-hack-nerd-font
+
   success "Installed fonts"
 }
 
