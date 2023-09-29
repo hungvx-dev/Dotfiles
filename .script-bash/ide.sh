@@ -38,4 +38,4 @@ tmux split-window -c ~/Work/Hodfords -v -p 8
 tmux split-window -c ~/Work/Hodfords -h -p 50
 
 tmux select-window -t $dotfilesSession:1
-tmux attach-session -t $session
+tmux attach-session -t $dotfilesSession
