@@ -27,15 +27,14 @@ local sources = {
   null_ls.builtins.formatting.shfmt,
   null_ls.builtins.formatting.stylua,
   null_ls.builtins.formatting.prettierd,
-  null_ls.builtins.formatting.eslint_d,
-
-  null_ls.builtins.diagnostics.eslint_d,
-  null_ls.builtins.code_actions.eslint_d,
   require "typescript.extensions.null-ls.code-actions",
 }
 
--- if enable_eslint() then
--- end
+if enable_eslint() then
+  table.insert(sources, null_ls.builtins.diagnostics.eslint_d)
+  table.insert(sources, null_ls.builtins.code_actions.eslint_d)
+  table.insert(sources, null_ls.builtins.formatting.eslint_d)
+end
 
 null_ls.setup {
   root_dir = utils.root_pattern(".null-ls-root", ".neoconf.json", "Makefile", ".git"),

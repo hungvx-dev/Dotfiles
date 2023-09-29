@@ -29,7 +29,6 @@ auth
 vue
 i18n
 noplainbuffer
-#mbedscript
 utils
 builtins
 standardjs
