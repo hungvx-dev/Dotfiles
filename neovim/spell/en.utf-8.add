@@ -288,3 +288,6 @@ whichwrap
 semver
 version
 noice
+expandtab
+breakindent
+smarttab
