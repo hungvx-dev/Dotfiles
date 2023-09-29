@@ -37,5 +37,6 @@ yabai -m rule --add app="^The Unarchiver$" manage=off
 yabai -m rule --add app="^Notes$" manage=off
 yabai -m rule --add app="^VLC$" manage=off
 yabai -m rule --add app="^DataGrip$" manage=off
+yabai -m rule --add app="^Archive Utility$" manage=off
 yabai -m rule --add app="^JetBrains Toolbox$" manage=off
 # yabai -m rule --add app="^Twitter$" manage=off
