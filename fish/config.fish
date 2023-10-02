@@ -19,8 +19,12 @@ set fish_path $HOME/.config/fish
 
 starship init fish | source
 
-set -gx AUTO_JUMP_SHARE_PATH /opt/homebrew/share/autojump/autojump.fish
-[ -f $AUTO_JUMP_SHARE_PATH ]; and source $AUTO_JUMP_SHARE_PATH
+# zoxide
+set -x _ZO_ECHO '1'
+zoxide init fish | source
+
+# set -gx AUTO_JUMP_SHARE_PATH /opt/homebrew/share/autojump/autojump.fish
+# [ -f $AUTO_JUMP_SHARE_PATH ]; and source $AUTO_JUMP_SHARE_PATH
 
 # ruby
 set -gx GEM_HOME $HOME/.gem

@@ -79,7 +79,7 @@ install_tools() {
 
   brew install \
     fzf \
-    autojump \
+    zoxide \
     lazygit \
     exercism \
     btop \
