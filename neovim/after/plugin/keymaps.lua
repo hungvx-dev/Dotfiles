@@ -17,8 +17,13 @@ keymap("n", "g,", "g,zvzz", default_opts)
 keymap("n", "g;", "g;zvzz", default_opts)
 
 -- Scrolling
-keymap("n", "<C-d>", "<C-d>zz", default_opts)
-keymap("n", "<C-u>", "<C-u>zz", default_opts)
+-- keymap("n", "<C-d>", "<C-d>zz", default_opts)
+-- keymap("n", "<C-u>", "<C-u>zz", default_opts)
+
+keymap("n", "<C-d>", "10j", default_opts)
+keymap("n", "<C-u>", "10k", default_opts)
+keymap("v", "<C-d>", "10j", default_opts)
+keymap("v", "<C-u>", "10k", default_opts)
 
 -- -- Visual line wraps
 -- keymap("n", "k", "v:count == 0 ? 'gk' : 'k'", expr_opts)

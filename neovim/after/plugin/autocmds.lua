@@ -11,6 +11,12 @@ vim.api.nvim_create_autocmd("TextYankPost", {
 })
 
 -- Re size splits if window got re sized
+vim.api.nvim_create_autocmd({ "VimResized" }, {
+  group = augroup "resize_splits",
+  callback = function()
+    vim.cmd "tabdo wincmd ="
+  end,
+})
 
 vim.api.nvim_create_user_command("Cppath", function()
   local path = vim.fn.expand "%"

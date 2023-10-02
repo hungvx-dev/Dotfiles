@@ -1,3 +1,4 @@
+-- stylua: ignore
 local opt = vim.opt -- local cmd = vim.cmd
 
 -- Remap leader and local leader to <Space>
@@ -84,7 +85,7 @@ opt.wildignore:append "**/.git/*"
 -- Format Options
 opt.formatoptions:remove "c" -- Remove C format
 opt.formatoptions:remove "a"
-opt.formatoptions:remove "r"
+-- opt.formatoptions:remove "r"
 
 -- Mix
 opt.showtabline = 2 -- always show buffers/tabs
