@@ -11,4 +11,3 @@ opt.fillchars = {
 }
 opt.list = true
 opt.listchars = { tab = "» ", extends = "→", nbsp = "·", eol = "↴", trail = "·" }
-opt.formatoptions = "jqlnt" -- tcqj
