@@ -11,3 +11,4 @@ curl -sL https://raw.githubusercontent.com/jorgebucaran/fisher/main/functions/fi
 fisher install jorgebucaran/nvm.fish
 fisher install patrickf1/fzf.fish
 fisher install patrickf1/colored_man_pages.fish
+fisher install kidonng/zoxide.fish
