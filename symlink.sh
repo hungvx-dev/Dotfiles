@@ -46,8 +46,8 @@ rm -rf ~/.config/cava
 ln -s $(pwd)/cava ~/.config
 
 # Git config
-rm -rf ~/config/ssh
-rm -rf ~/config/lazygit
+rm -rf ~/.config/ssh
+rm -rf ~/.config/lazygit
 ln -s $(pwd)/ssh/config ~/.ssh/config
 ln -s $(pwd)/git/me/ ~/.config/git
 ln -s ~/.config/git/.gitconfig ~/.config/git/config
@@ -55,15 +55,19 @@ ln -s $(pwd)/git/work/ ~/Work/Hodfords/git
 ln -s $(pwd)/lazygit ~/.config
 
 # Btop
+rm -rf ~/.config/btop
 ln -s $(pwd)/btop ~/.config
 
 # Bat
+rm -rf ~/.config/bat
 ln -s $(pwd)/bat ~/.config
 
 # Karabiner-Elements
+rm -rf ~/.config/karabiner
 ln -s $(pwd)/karabiner ~/.config
 
 # Raycast
+rm -rf ~/.config/raycast
 ln -s $(pwd)/raycast ~/.config
 
 # Alias
