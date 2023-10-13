@@ -1,7 +1,6 @@
 [user]
 	name = Võ Xuân Hùng
 	email = hungvx.dev@gmail.com
-	useconfigonly = true
 
 # job needs, like workspace/* so all included projects
 [includeIf "gitdir:~/Work/Hodfords/"]
