@@ -37,8 +37,9 @@ set fish_user_paths $fish_user_paths /opt/homebrew/sbin
 
 # gnu-sed
 set fish_user_paths $fish_user_paths /opt/homebrew/opt/gnu-sed/libexec/gnubin
-
+if test -f $fish_path/variables.private.fish
 . $fish_path/variables.private.fish
+end
 
 # pnpm
 set -gx PNPM_HOME "/Users/hungvx.dev/Library/pnpm"
