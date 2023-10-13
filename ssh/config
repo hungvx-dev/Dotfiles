@@ -7,7 +7,6 @@ Host github.com
   AddKeysToAgent yes
   IdentityFile ~/.ssh/hungvx.dev
 
-
 Host gitlab.com
   HostName gitlab.com
   User git
