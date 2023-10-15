@@ -291,3 +291,8 @@ noice
 expandtab
 breakindent
 smarttab
+filename
+Gitsigns
+nocompatible
+sessionoptions
+textwidth
