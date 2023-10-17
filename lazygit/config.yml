@@ -17,19 +17,20 @@ gui:
     optionsTextColor:
       - "#89b4fa" # Blue
     selectedLineBgColor:
-      - "#313244" # Surface0
+      - "#283457" # Surface0
     selectedRangeBgColor:
-      - "#313244" # Surface0
+      - "#283457" # Surface0
     cherryPickedCommitBgColor:
       - "#94e2d5" # Teal
     cherryPickedCommitFgColor:
       - "#89b4fa" # Blue
     unstagedChangesColor:
       - red # Red
+  nerdFontsVersion: "3"
   commitLength:
     show: true
   mouseEvents: true
-  skipUnstageLineWarning: false
+  skipDiscardChangeWarning: false
   skipStashWarning: false
   showFileTree: true # for rendering changes files in a tree format
   showListFooter: true # for seeing the '5 of 20' message in list panels
@@ -41,8 +42,9 @@ gui:
   splitDiff: "auto" # one of 'auto' | 'always'
 git:
   paging:
+    # externalDiffCommand: difft --color=always --display=inline --syntax-highlight=off
     colorArg: always
-    useConfig: false
+    useConfig: true
   commit:
     signOff: false
     verbose: false
@@ -63,13 +65,14 @@ git:
   skipHookPrefix: WIP
   autoFetch: true
   autoRefresh: true
-  branchLogCmd: "git log --graph --color=always --abbrev-commit --decorate --date=relative --pretty=medium {{branchName}} --"
-  allBranchesLogCmd: "git log --graph --all --color=always --abbrev-commit --decorate --date=relative  --pretty=medium"
+  branchLogCmd: "git log --graph --stat --oneline --color=always --decorate --pretty=format:'%Cblue %h %C(bold red)- <%an> -%C(green) (%ar)%C(auto)%d%n%C(yellow) %s'"
+  allBranchesLogCmd: "git log --graph --all --stat --oneline --color=always --decorate --pretty=format:'%Cblue %h %C(bold red)- <%an> -%C(green) (%ar)%C(auto)%d%n%C(yellow) %s'"
   overrideGpg: false # prevents lazygit from spawning a separate process when using GPG
   disableForcePushing: false
   parseEmoji: false
   diffContextSize: 3 # how many lines of context are shown around a change in diffs
 os:
+  editPreset: "nvim"
   editCommand: "" # see 'Configuring File Editing' section
   editCommandTemplate: ""
   openCommand: ""

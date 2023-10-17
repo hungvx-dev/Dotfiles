@@ -9,6 +9,7 @@
 [core]
 	editor = nvim
   autocrlf = input
+  pager = delta
 
 [commit]
   template = ~/.config/git/.gitmessage
@@ -45,34 +46,32 @@
 	changed = yellow bold
 	untracked = red bold
 [difftool]
-    prompt = true
+  prompt = true
 [diff]
-    tool = nvimdiff
+  tool = nvimdiff
 [difftool "nvimdiff"]
-    cmd = "nvim -d \"$LOCAL\" \"$REMOTE\""
+  cmd = "nvim -d \"$LOCAL\" \"$REMOTE\""
 [delta]
   navigate = true
-	features = line-numbers decorations
-	line-numbers = true
   side-by-side = true
+  features = line-numbers decorations
   line-numbers = true
 [delta "decorations"]
-	minus-style = red bold normal
-	plus-style = green bold normal
-	minus-emph-style = white bold red
-	minus-non-emph-style = red bold normal
-	plus-emph-style = white bold green
-	plus-non-emph-style = green bold normal
-	file-style = yellow bold none
-	file-decoration-style = yellow box
-	hunk-header-style = magenta bold
-	hunk-header-decoration-style = magenta box
-	minus-empty-line-marker-style = normal normal
-	plus-empty-line-marker-style = normal normal
-	line-numbers-right-format = "{np:^4}│ "
+  ; minus-style = normal bold red
+  ; plus-style = normal bold magenta
+  ; minus-emph-style = white bold red
+  ; minus-non-emph-style = red bold normal
+  ; plus-emph-style = white bold green
+  ; plus-non-emph-style = green bold normal
+  file-style = yellow bold none
+  file-decoration-style = yellow box
+  hunk-header-style = magenta bold
+  hunk-header-decoration-style = magenta box
+  minus-empty-line-marker-style = normal normal
+  plus-empty-line-marker-style = normal normal
+  line-numbers-right-format = "{np:^4}│ "
 [filter "lfs"]
-	clean = git-lfs clean -- %f
-	smudge = git-lfs smudge -- %f
-	process = git-lfs filter-process
-	required = true
-
+  clean = git-lfs clean -- %f
+  smudge = git-lfs smudge -- %f
+  process = git-lfs filter-process
+  required = true

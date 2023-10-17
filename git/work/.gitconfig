@@ -9,6 +9,7 @@
 [core]
   ditor = nvim
   autocrlf = input
+  pager = delta
 [web]
   browser = google-chrome
 [color]
@@ -41,11 +42,13 @@
   algorithm = patience
   colorMoved = dimmed-zebra
 [delta]
+  navigate = true
+  side-by-side = true
   features = line-numbers decorations
   line-numbers = true
 [delta "decorations"]
-  minus-style = red bold normal
-  plus-style = green bold normal
+  ; minus-style = red bold normal
+  ; plus-style = green bold normal
   minus-emph-style = white bold red
   minus-non-emph-style = red bold normal
   plus-emph-style = white bold green
