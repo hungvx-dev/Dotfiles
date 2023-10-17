@@ -8,8 +8,9 @@ return {
       "jose-elias-alvarez/typescript.nvim",
       { "b0o/SchemaStore.nvim", version = false, lazy = true },
     },
-    config = function()
-      require("lsp").setup()
+    opts = require "lsp.opts",
+    config = function(_, opts)
+      require("lsp").setup(opts)
     end,
   },
   {
@@ -51,12 +52,14 @@ return {
   -- snippets
   {
     "L3MON4D3/LuaSnip",
+    event = { "InsertEnter" },
     build = (not jit.os:find "Windows")
         and "echo 'NOTE: jsregexp is optional, so not a big deal if it fails to build'; make install_jsregexp"
       or nil,
     dependencies = {
       {
         "rafamadriz/friendly-snippets",
+        event = { "InsertEnter" },
         lazy = true,
         cond = hvim.builtin.luasnip.sources.friendly_snippets,
       },
@@ -81,19 +84,14 @@ return {
   -- Treesitter
   {
     "nvim-treesitter/nvim-treesitter",
-    enabled = true,
     version = false, -- last release is way too old and doesn't work on Windows
     build = ":TSUpdate",
-    event = { "BufReadPost", "BufNewFile" },
-    lazy = false,
+    event = { "BufReadPost" },
+    lazy = true,
     dependencies = {
-      { "JoosepAlviste/nvim-ts-context-commentstring", lazy = true },
-      {
-        "nvim-treesitter/nvim-treesitter-textobjects",
-        init = function()
-          require("lazy.core.loader").disable_rtp_plugin "nvim-treesitter-textobjects"
-        end,
-      },
+      { "JoosepAlviste/nvim-ts-context-commentstring", lazy = true, event = { "BufReadPost" } },
+      { "windwp/nvim-ts-autotag", lazy = true, event = { "BufReadPost" } },
+      { "nvim-treesitter/nvim-treesitter-textobjects", lazy = true, event = { "BufReadPost" } },
     },
     keys = {
       { "<c-space>", desc = "Increment selection" },
