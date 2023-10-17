@@ -29,7 +29,7 @@ tokyonight.setup {
     colors.black = colors.bg
 
     colors.bg_popup = "#1a1b26"
-    colors.comment = "#a9b1d6"
+    colors.comment = "#a9b3d9"
     colors.fg_gutter = "#394b70"
     -- colors.megenta = "#bb4af7"
     -- colors.fg = "#ffffff"
@@ -39,7 +39,7 @@ tokyonight.setup {
   on_highlights = function(hl)
     hl.TelescopeTitle = { fg = "#FFA630" }
     hl.CursorLineNr = { fg = "#EFFF00" }
-    hl.CursorLine = { bg = "NONE" }
     hl.MatchParen.bg = "#292e42"
+    hl.CursorLine = { bg = "NONE" }
   end,
 }
