@@ -37,6 +37,12 @@ local opts = {
   },
   incremental_selection = {
     enable = false,
+    keymaps = {
+      init_selection = "<C-space>",
+      node_incremental = "<C-space>",
+      scope_incremental = false,
+      node_decremental = "<bs>",
+    },
   },
   textobjects = {
     select = {
@@ -44,15 +50,11 @@ local opts = {
       -- Automatically jump forward to textobj, similar to targets.vim
       lookahead = true,
       keymaps = {
-        init_selection = "<C-space>",
-        node_incremental = "<C-space>",
-        scope_incremental = false,
-        node_decremental = "<bs>",
         -- You can use the capture groups defined in textobjects.scm
         ["af"] = "@function.outer",
         ["if"] = "@function.inner",
         ["ac"] = "@class.outer",
-        ["ic"] = "@class.inner",
+        ["ic"] = { query = "@class.inner", desc = "Select inner part of a class region" },
         ["ia"] = "@parameter.inner",
         ["aa"] = "@parameter.outer",
         ["ai"] = "@conditional.outer",
@@ -69,18 +71,6 @@ function M.setup()
   local status_ok, treesitter_configs = pcall(require, "nvim-treesitter.configs")
   if not status_ok then
     return
-  end
-
-  if type(packages) == "table" then
-    ---@type table<string, boolean>
-    local added = {}
-    packages = vim.tbl_filter(function(lang)
-      if added[lang] then
-        return false
-      end
-      added[lang] = true
-      return true
-    end, packages)
   end
 
   treesitter_configs.setup(opts)
