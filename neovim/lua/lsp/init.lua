@@ -2,28 +2,38 @@ local M = {}
 
 local Util = require "utils"
 
-require("lsp.handler").setup()
-require("lsp.config").setup()
-
 function M.setup(opts)
+  -- setup autoformat
+  require("lsp.handler.format").setup(opts)
+  -- setup formatting and keymaps
+  Util.on_attach(function(client, buffer)
+    require("lsp.handler.keymaps").on_attach(client, buffer)
+  end)
+
+  local register_capability = vim.lsp.handlers["client/registerCapability"]
+
+  vim.lsp.handlers["client/registerCapability"] = function(err, res, ctx)
+    local ret = register_capability(err, res, ctx)
+    local client_id = ctx.client_id
+    ---@type lsp.Client
+    local client = vim.lsp.get_client_by_id(client_id)
+    local buffer = vim.api.nvim_get_current_buf()
+    require("lsp.handler.keymaps").on_attach(client, buffer)
+    return ret
+  end
+
+  -- diagnostics
+  require("lsp.config").setup()
+
   local servers = opts.servers
-
-  local capabilities = vim.lsp.protocol.make_client_capabilities()
-  capabilities.textDocument.completion.completionItem.snippetSupport = true
-  capabilities.textDocument.completion.completionItem.resolveSupport = {
-    properties = {
-      "documentation",
-      "detail",
-      "additionalTextEdits",
-    },
-  }
-  capabilities = require("cmp_nvim_lsp").default_capabilities(capabilities)
-  capabilities.textDocument.foldingRange = {
-    dynamicRegistration = false,
-    lineFoldingOnly = true,
-  }
-
-  local lsp = require "lspconfig"
+  local has_cmp, cmp_nvim_lsp = pcall(require, "cmp_nvim_lsp")
+  local capabilities = vim.tbl_deep_extend(
+    "force",
+    {},
+    vim.lsp.protocol.make_client_capabilities(),
+    has_cmp and cmp_nvim_lsp.default_capabilities() or {},
+    opts.capabilities or {}
+  )
 
   local function setup(server)
     local server_opts = vim.tbl_deep_extend("force", {
@@ -39,18 +49,10 @@ function M.setup(opts)
         return
       end
     end
-
-    lsp[server].setup(server_opts)
+    require("lspconfig")[server].setup(server_opts)
   end
 
-  -- temp fix for lspconfig rename
-  -- https://github.com/neovim/nvim-lspconfig/pull/2439
-  local mappings = require "mason-lspconfig.mappings.server"
-  if not mappings.lspconfig_to_package.lua_ls then
-    mappings.lspconfig_to_package.lua_ls = "lua-language-server"
-    mappings.package_to_lspconfig["lua-language-server"] = "lua_ls"
-  end
-
+  -- get all the servers that are available through mason-lspconfig
   local have_mason, mlsp = pcall(require, "mason-lspconfig")
   local all_mslp_servers = {}
   if have_mason then
@@ -61,7 +63,6 @@ function M.setup(opts)
   for server, server_opts in pairs(servers) do
     if server_opts then
       server_opts = server_opts == true and {} or server_opts
-
       -- run manual setup if mason=false or if this is a server that cannot be installed with mason-lspconfig
       if server_opts.mason == false or not vim.tbl_contains(all_mslp_servers, server) then
         setup(server)

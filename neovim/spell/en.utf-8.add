@@ -296,3 +296,9 @@ Gitsigns
 nocompatible
 sessionoptions
 textwidth
+schemastore
+schemas
+buf
+bufnr
+autoformat
+PluginLspOpts

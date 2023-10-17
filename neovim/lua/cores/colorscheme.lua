@@ -40,6 +40,8 @@ tokyonight.setup {
     hl.TelescopeTitle = { fg = "#FFA630" }
     hl.CursorLineNr = { fg = "#EFFF00" }
     hl.MatchParen.bg = "#292e42"
+    hl.PmenuSbar = { bg = "NONE" }
     hl.CursorLine = { bg = "NONE" }
+    hl.PmenuThumb = { bg = "NONE" }
   end,
 }

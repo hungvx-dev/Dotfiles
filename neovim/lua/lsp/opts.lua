@@ -1,4 +1,5 @@
 local opts = {
+  autoformat = true,
   servers = {
     bashls = {},
     emmet_ls = {},
