@@ -35,8 +35,10 @@ local setup = {
     diagnostics_update_in_insert = false,
     diagnostics_indicator = diagnostics_indicator,
     indicator = {
+      icon = hvim.icons.UI.Line.BoldMid, -- this should be omitted if indicator style is not 'icon'
       style = "underline", --"icon" | "underline" | "none",
     },
+    -- separator_style = "thick",
     offsets = {
       {
         filetype = "undotree",
@@ -51,21 +53,10 @@ local setup = {
         text_align = "left",
       },
       {
-        filetype = "NvimTree",
-        text = "Explorer",
-        highlight = "PanelHeading",
-        padding = 1,
-      },
-      {
         filetype = "DiffviewFiles",
         text = "Diff View",
         highlight = "PanelHeading",
         padding = 1,
-      },
-      {
-        filetype = "flutterToolsOutline",
-        text = "Flutter Outline",
-        highlight = "PanelHeading",
       },
       {
         filetype = "lazy",
@@ -82,9 +73,6 @@ M.setup = function()
   if not status_ok then
     return
   end
-
-  -- can't be set in settings.lua because default tabline would flash before bufferline is loaded
-  vim.opt.showtabline = 2
 
   bufferline.setup { options = setup.options }
 end

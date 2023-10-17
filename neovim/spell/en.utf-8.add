@@ -302,3 +302,5 @@ buf
 bufnr
 autoformat
 PluginLspOpts
+macOS
+macos

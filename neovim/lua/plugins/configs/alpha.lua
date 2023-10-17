@@ -10,8 +10,8 @@ local logo = [[
 
 dashboard.section.header.val = vim.split(logo, "\n")
 dashboard.section.buttons.val = {
-  dashboard.button("p", hvim.icons.UI.Search .. " Find file", "<cmd> Telescope find_files <cr>"),
   dashboard.button("o", hvim.icons.UI.OldFile .. " Old files", "<cmd> Telescope oldfiles <cr>"),
+  dashboard.button("p", hvim.icons.UI.Search .. " Find file", "<cmd> Telescope find_files <cr>"),
   dashboard.button("s", hvim.icons.UI.FindText .. " Find text", "<cmd> Telescope live_grep <cr>"),
   dashboard.button("l", hvim.icons.UI.Lazy .. " Lazy", "<cmd> Lazy <cr>"),
   dashboard.button("q", hvim.icons.UI.Quit .. " Quit", "<cmd> qa <cr>"),

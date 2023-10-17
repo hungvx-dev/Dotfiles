@@ -112,7 +112,7 @@ return {
     fmt = function()
       return "%P/%L"
     end,
-    color = {},
+    color = { fg = "#15161e" },
   },
 
   spaces = {
@@ -122,6 +122,7 @@ return {
     end,
     padding = 0,
     separator = "%#SLSeparator#" .. " │" .. "%*",
+    color = { bg = "NONE" },
   },
   encoding = {
     "o:encoding",
