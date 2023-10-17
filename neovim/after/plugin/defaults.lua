@@ -62,9 +62,9 @@ opt.timeoutlen = 500 --	Time in milliseconds to wait for a mapped sequence to co
 -- SignColumn
 opt.signcolumn = "yes" -- Always show sign column
 opt.number = true --Make line numbers default
+opt.relativenumber = true --Make relative number default
 opt.numberwidth = 4 -- Number of characters for view column number
--- opt.relativenumber = true --Make relative number default
--- opt.cursorline = true -- Enable highlighting of the current line
+opt.cursorline = false -- Enable highlighting of the current line
 -- opt.colorcolumn = "80"
 -- opt.ruler = true
 
