@@ -10,6 +10,7 @@ require("colorizer").setup {
     "scss",
     "conf",
     "fish",
+    "yml",
   },
   user_default_options = {
     mode = "background",

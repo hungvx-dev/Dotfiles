@@ -78,6 +78,7 @@ install_tools() {
   brew install vlc zoom obs
 
   brew install \
+    git-delta \
     fzf \
     zoxide \
     lazygit \

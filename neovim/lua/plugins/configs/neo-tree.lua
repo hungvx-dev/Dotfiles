@@ -53,6 +53,8 @@ local setup = {
       local vals = {
         ["1"] = modify(filepath, ":."),
         ["2"] = filename,
+        ["3"] = modify(filepath, ":~"),
+        ["4"] = filepath,
       }
 
       local options = vim.tbl_filter(function(val)
