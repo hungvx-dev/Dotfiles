@@ -15,7 +15,7 @@ local setup = {
     delay = 500,
     ignore_whitespace = false,
   },
-  current_line_blame_formatter = "<author_mail> | <author_time:%R, %x %h:%M> - <summary>",
+  current_line_blame_formatter = " <author_mail> | <author_time:%R, %x> | <summary>",
   on_attach = function(buffer)
     local gs = package.loaded.gitsigns
 
