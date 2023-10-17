@@ -80,8 +80,27 @@ return {
     end,
   },
 
+  -- lsp symbol navigation for lualine
+  {
+    "SmiteshP/nvim-navic",
+    event = { "BufReadPost" },
+    lazy = true,
+    init = function()
+      vim.g.navic_silence = true
+      require("utils").on_attach(function(client, buffer)
+        if client.server_capabilities.documentSymbolProvider then
+          require("nvim-navic").attach(client, buffer)
+        end
+      end)
+    end,
+    config = function()
+      require("plugins.configs.breadcrumbs").setup()
+    end,
+  },
+
   {
     "lukas-reineke/indent-blankline.nvim",
+    main = "ibl",
     event = { "BufReadPost", "BufNewFile" },
     lazy = true,
     config = function()
@@ -137,14 +156,15 @@ return {
   -- git
   {
     "lewis6991/gitsigns.nvim",
-    event = { "BufReadPre", "BufNewFile" },
+    event = { "BufReadPre" },
     config = function()
       require "plugins.configs.git.signs"
     end,
   },
   {
     "akinsho/git-conflict.nvim",
-    -- lazy = true,
+    event = { "BufReadPre" },
+    lazy = true,
     config = function()
       require "plugins.configs.git.conflict"
     end,
@@ -203,7 +223,7 @@ return {
 
   {
     "NvChad/nvim-colorizer.lua",
-    event = { "BufRead", "BufWinEnter" },
+    event = { "BufRead" },
     lazy = true,
     config = function()
       require "plugins.configs.colorizer"

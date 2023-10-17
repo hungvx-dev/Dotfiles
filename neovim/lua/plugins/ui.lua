@@ -20,8 +20,8 @@ return {
   -- bufferline
   {
     "akinsho/bufferline.nvim",
-    event = "VeryLazy",
-    lazy = false,
+    event = { "VeryLazy" },
+    lazy = true,
     keys = {
       { "<leader>bp", "<Cmd>BufferLineTogglePin<CR>", desc = "Toggle pin" },
       { "<leader>bP", "<Cmd>BufferLineGroupClose ungrouped<CR>", desc = "Delete non-pinned buffers" },
@@ -44,28 +44,18 @@ return {
   -- dashboard
   {
     "echasnovski/mini.starter",
+    enabled = false,
     version = false, -- wait till new 0.7.0 release to put it back on semver
     event = "VimEnter",
     config = function()
       require "plugins.configs.mini-start"
     end,
   },
-
-  -- lsp symbol navigation for lualine
   {
-    "SmiteshP/nvim-navic",
-    event = { "BufRead", "BufWinEnter", "BufNewFile" },
-    lazy = true,
-    init = function()
-      vim.g.navic_silence = true
-      require("utils").on_attach(function(client, buffer)
-        if client.server_capabilities.documentSymbolProvider then
-          require("nvim-navic").attach(client, buffer)
-        end
-      end)
-    end,
+    "goolord/alpha-nvim",
+    event = "VimEnter",
     config = function()
-      require("plugins.configs.breadcrumbs").setup()
+      require "plugins.configs.alpha"
     end,
   },
 
@@ -103,7 +93,7 @@ return {
 
   {
     "folke/noice.nvim",
-    enabled = false,
+    enabled = true,
     event = "VeryLazy",
     lazy = true,
     opts = {
@@ -113,6 +103,14 @@ return {
           ["vim.lsp.util.stylize_markdown"] = true,
           ["cmp.entry.get_documentation"] = true,
         },
+      },
+      popupmenu = {
+        enabled = true, -- enables the Noice popupmenu UI
+        ---@type 'nui'|'cmp'
+        backend = "cmp", -- backend to use to show regular cmdline completions
+        ---@type NoicePopupmenuItemKind|false
+        -- Icons for completion item kinds (see defaults at noice.config.icons.kinds)
+        kind_icons = {}, -- set to `false` to disable icons
       },
       routes = {
         {
