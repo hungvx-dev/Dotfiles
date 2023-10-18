@@ -35,10 +35,10 @@ local setup = {
     diagnostics_update_in_insert = false,
     diagnostics_indicator = diagnostics_indicator,
     indicator = {
-      icon = hvim.icons.UI.Line.BoldMid, -- this should be omitted if indicator style is not 'icon'
+      -- icon = hvim.icons.UI.Line.BoldRight, -- this should be omitted if indicator style is not 'icon'
       style = "underline", --"icon" | "underline" | "none",
     },
-    -- separator_style = "thick",
+    separator_style = { hvim.icons.UI.Line.Right, hvim.icons.UI.Line.Right },
     offsets = {
       {
         filetype = "undotree",

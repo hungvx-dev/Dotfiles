@@ -100,6 +100,7 @@ local icons = {
       Right = "▕",
       BoldMid = "┃",
       BoldLeft = "▎",
+      BoldRight = "▐",
     },
     List = {
       Icon = "",
