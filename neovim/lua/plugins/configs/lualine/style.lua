@@ -9,6 +9,7 @@ local style = {
     component_separators = { left = "", right = "" },
     disabled_filetypes = {
       statusline = {
+        "help",
         "dashboard",
         "alpha",
         "neo-tree",

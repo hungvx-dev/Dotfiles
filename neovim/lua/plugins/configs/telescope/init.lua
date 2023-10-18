@@ -161,3 +161,4 @@ local opts = {
 
 require("telescope").setup(opts)
 require("telescope").load_extension "fzf"
+-- require("telescope").load_extension "noice"

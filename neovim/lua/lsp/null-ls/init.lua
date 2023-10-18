@@ -1,4 +1,4 @@
-local null_ls = require "null-ls"
+local nls = require "null-ls"
 local utils = require "null-ls.utils"
 
 local is_in_current_project = function()
@@ -21,22 +21,24 @@ end
 -- end
 
 local sources = {
-  -- null_ls.builtins.diagnostics.standardjs,
-  -- null_ls.builtins.formatting.codespell,
-  -- null_ls.builtins.diagnostics.codespell,
-  null_ls.builtins.formatting.shfmt,
-  null_ls.builtins.formatting.stylua,
-  null_ls.builtins.formatting.prettierd,
+  -- nls.builtins.diagnostics.standardjs,
+  -- nls.builtins.formatting.codespell,
+  -- nls.builtins.diagnostics.codespell,
+  -- nls.builtins.formatting.fish_indent,
+  -- nls.builtins.diagnostics.fish,
+  nls.builtins.formatting.shfmt,
+  nls.builtins.formatting.stylua,
+  nls.builtins.formatting.prettierd,
   require "typescript.extensions.null-ls.code-actions",
 }
 
 if enable_eslint() then
-  table.insert(sources, null_ls.builtins.diagnostics.eslint_d)
-  table.insert(sources, null_ls.builtins.code_actions.eslint_d)
-  table.insert(sources, null_ls.builtins.formatting.eslint_d)
+  table.insert(sources, nls.builtins.diagnostics.eslint_d)
+  table.insert(sources, nls.builtins.code_actions.eslint_d)
+  table.insert(sources, nls.builtins.formatting.eslint_d)
 end
 
-null_ls.setup {
+nls.setup {
   root_dir = utils.root_pattern(".null-ls-root", ".neoconf.json", "Makefile", ".git"),
   sources = sources,
   debug = false,

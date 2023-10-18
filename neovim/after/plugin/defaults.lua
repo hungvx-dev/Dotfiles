@@ -71,7 +71,7 @@ opt.cursorline = false -- Enable highlighting of the current line
 -- Popup
 opt.pumblend = 0 -- Transparent of Popup
 opt.pumheight = 10 -- Maximum number of entries in a Popup
-opt.completeopt = "menu,menuone"
+opt.completeopt = { "menu", "menuone", "noselect" }
 
 -- Split
 opt.splitbelow = true
