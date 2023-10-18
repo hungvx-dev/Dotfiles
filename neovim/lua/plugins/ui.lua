@@ -97,19 +97,29 @@ return {
     event = "VeryLazy",
     lazy = true,
     opts = {
+      views = {
+        cmdline_popup = {
+          position = {
+            row = "25%",
+            col = "50%",
+          },
+        },
+      },
       lsp = {
         override = {
           ["vim.lsp.util.convert_input_to_markdown_lines"] = true,
           ["vim.lsp.util.stylize_markdown"] = true,
           ["cmp.entry.get_documentation"] = true,
         },
+        signature = {
+          auto_open = {
+            enabled = false,
+          },
+        },
       },
       popupmenu = {
-        enabled = true, -- enables the Noice popupmenu UI
-        ---@type 'nui'|'cmp'
-        backend = "cmp", -- backend to use to show regular cmdline completions
-        ---@type NoicePopupmenuItemKind|false
-        -- Icons for completion item kinds (see defaults at noice.config.icons.kinds)
+        enabled = true,
+        backend = "cmp",
         kind_icons = {}, -- set to `false` to disable icons
       },
       routes = {
