@@ -304,3 +304,5 @@ autoformat
 PluginLspOpts
 macOS
 macos
+nls
+codespell
