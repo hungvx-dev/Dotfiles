@@ -1,62 +1,88 @@
 [user]
   name = hung.vx
   email = hung.vx@hodfords.com
+  useConfigOnly = true
+
 [init]
   defaultBranch = master
+
 [push]
   default = current
   autoSetupRemote = true
+
 [core]
   ditor = nvim
   autocrlf = input
   pager = delta
+
+[merge]
+  tool = nvim
+  conflictstyle = diff3
+
 [web]
   browser = google-chrome
+
+[interactive]
+  diffFilter = delta --color-only --features=interactive
+
+[diff]
+  tool = nvimdiff
+  colorMoved = default
+[difftool]
+  prompt = true
+[difftool "nvimdiff"]
+  cmd = "nvim -d \"$LOCAL\" \"$REMOTE\""
+
+[rerere]
+  enabled = 1
+  autoupdate = 1
+
+[filter "lfs"]
+  clean = git-lfs clean -- %f
+  smudge = git-lfs smudge -- %f
+  process = git-lfs filter-process
+  required = true
+
 [color]
   ui = auto
 [color "branch"]
   current = yellow bold
   local = green bold
   remote = cyan bold
-[sequence]
-  editor = nvim
 [color "diff"]
   meta = yellow bold
   frag = magenta bold
   old = red bold
   new = green bold
   whitespace = red reverse
-[rerere]
-  enabled = 1
-  autoupdate = 1
 [color "status"]
   added = green bold
   changed = yellow bold
   untracked = red bold
-[difftool]
-  prompt = true
-[difftool "nvimdiff"]
-  cmd = "nvim -d \"$LOCAL\" \"$REMOTE\""
-[diff]
-  tool = nvimdiff
-  algorithm = patience
-  colorMoved = dimmed-zebra
+
 [delta]
   navigate = true
   side-by-side = true
-  features = line-numbers decorations
   line-numbers = true
-[delta "decorations"]
-  ; minus-style = red bold normal
-  ; plus-style = green bold normal
-  minus-emph-style = white bold red
-  minus-non-emph-style = red bold normal
-  plus-emph-style = white bold green
-  plus-non-emph-style = green bold normal
-  file-style = yellow bold none
-  file-decoration-style = yellow box
-  hunk-header-style = magenta bold
-  hunk-header-decoration-style = magenta box
-  minus-empty-line-marker-style = normal normal
-  plus-empty-line-marker-style = normal normal
-  line-numbers-right-format = "{np:^4}│ "
+  features = tokyonight
+
+[delta "tokyonight"]
+  minus-style                   = syntax "#37222c"
+  minus-non-emph-style          = syntax "#37222c"
+  minus-emph-style              = syntax "#713137"
+  minus-empty-line-marker-style = syntax "#37222c"
+  commit-decoration-style       = "#11ce16" box
+  line-numbers-minus-style      = "#b2555b"
+  file-style                    = omit
+  hunk-header-decoration-style  = "#1688f0" box ul
+  hunk-header-file-style        = "#ffd21a" ul bold
+  hunk-header-line-number-style = "#ffd21a" box bold
+  hunk-header-style             = file line-number syntax bold italic
+  plus-style                    = syntax "#20303b"
+  plus-non-emph-style           = syntax "#20303b"
+  plus-emph-style               = syntax "#2c5a66"
+  plus-empty-line-marker-style  = syntax "#20303b"
+  line-numbers-plus-style       = "#266d6a"
+  line-numbers-zero-style       = "#3b4261"
+  whitespace-error-style        = "#280050"
+
