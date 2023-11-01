@@ -1,4 +1,5 @@
 local M = {}
+
 M.keys = {
   {
     "<tab>",
@@ -24,3 +25,5 @@ M.keys = {
     mode = { "i", "s" },
   },
 }
+
+return M

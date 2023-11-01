@@ -1,5 +1,3 @@
-local fn = vim.fn
-
 local autocmd = vim.api.nvim_create_autocmd
 local augroup = vim.api.nvim_create_augroup
 
@@ -8,7 +6,7 @@ local general = augroup("General Settings", { clear = true })
 
 autocmd("BufEnter", {
   callback = function()
-    vim.opt.formatoptions:remove { "c", "r", "o" }
+    vim.opt.formatoptions:remove({ "c", "r", "o" })
   end,
   group = general,
   desc = "Disable New Line Comment",
@@ -16,7 +14,7 @@ autocmd("BufEnter", {
 
 autocmd("TextYankPost", {
   callback = function()
-    require("vim.highlight").on_yank { higroup = "Visual", timeout = 500 }
+    require("vim.highlight").on_yank({ higroup = "Visual", timeout = 500 })
   end,
   group = general,
   desc = "Highlight when yanking",
@@ -26,7 +24,7 @@ autocmd("TermOpen", {
   callback = function()
     vim.opt_local.relativenumber = false
     vim.opt_local.number = false
-    vim.cmd "startinsert!"
+    vim.cmd("startinsert!")
   end,
   group = general,
   desc = "Terminal Options",
@@ -34,7 +32,7 @@ autocmd("TermOpen", {
 
 autocmd("VimResized", {
   callback = function()
-    vim.cmd "wincmd ="
+    vim.cmd("wincmd =")
   end,
   group = general,
   desc = "Equalize Splits",
