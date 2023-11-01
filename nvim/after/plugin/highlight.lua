@@ -1,2 +1,2 @@
-vim.cmd [[hi ColorColumn guibg=#292e40]]
-vim.cmd([[hi NeoTreeCursorLine guibg=#292e42]])
+vim.cmd([[hi NeoTreeCursorLine gui=NONE guibg=#292e42]])
+vim.cmd([[hi CursorLine gui=underline]])

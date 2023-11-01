@@ -20,7 +20,8 @@ tokyonight.setup({
   sidebars = {},
   hide_inactive_statusline = true,
   on_colors = function(colors)
-    colors.bg = "NONE"
+    colors.none = "NONE"
+    colors.bg = colors.none
     colors.bg_dark = colors.bg
     colors.bg_float = colors.bg
     colors.bg_sidebar = colors.bg
@@ -39,11 +40,9 @@ tokyonight.setup({
   on_highlights = function(hl, colors)
     hl.TelescopeTitle = { fg = "#FFA630" }
     hl.CursorLineNr = { fg = "#EFFF00" }
-    -- hl.MatchParen.bg = "#292e42"
-    hl.CursorLine = { bg = "NONE" }
+    hl.CursorLine = { bg = colors.none }
     hl.Cursor = { bg = colors.blue1 }
-    hl.PmenuSbar = { bg = "NONE" }
-    -- hl.LineNr         = { fg = "NONE" }
-    -- hl.PmenuThumb = { bg = "NONE" }
+    hl.PmenuSbar = { bg = colors.none }
+    -- hl.MatchParen.bg = "#292e42" -- for () {} []
   end,
 })

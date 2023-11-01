@@ -66,6 +66,7 @@ opt.number = true --Make line numbers default
 opt.relativenumber = true --Make relative number default
 opt.numberwidth = 4 -- Number of characters for view column number
 opt.cursorline = true -- Enable highlighting of the current line
+opt.culopt = "number" -- Enable highlighting of the current line
 -- opt.colorcolumn = "80"
 -- opt.ruler = true
 
