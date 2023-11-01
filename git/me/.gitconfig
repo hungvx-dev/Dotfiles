@@ -85,8 +85,8 @@
   hunk-header-file-style        = "#ffd21a" ul bold
   hunk-header-line-number-style = "#ffd21a" box bold
   hunk-header-style             = file line-number syntax bold italic
-  plus-style                    = syntax "#20303b"
-  plus-non-emph-style           = syntax "#20303b"
+  plus-style                    = syntax "#003300"
+  plus-non-emph-style           = syntax "#003300"
   plus-emph-style               = syntax "#2c5a66"
   plus-empty-line-marker-style  = syntax "#20303b"
   line-numbers-plus-style       = "#266d6a"
