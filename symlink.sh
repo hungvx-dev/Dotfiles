@@ -23,8 +23,10 @@ ln -s $(pwd)/skhd ~/.config
 
 # Nvim config
 rm -rf ~/.config/nvim
-# ln -s $(pwd)/nvim ~/.config/nvim
-ln -s $(pwd)/neovim ~/.config/nvim
+rm -rf ~/.local/share/nvim
+rm -rf ~/.local/state/nvim
+rm -rf ~/.cache/nvim
+ln -s $(pwd)/nvim ~/.config/nvim
 
 ln -s $(pwd)/ideavim ~/.config
 ln -s ~/.config/ideavim/.ideavimrc ~/.config/ideavim/ideavimrc
