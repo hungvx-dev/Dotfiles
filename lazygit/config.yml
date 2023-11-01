@@ -19,6 +19,7 @@ gui:
     unstagedChangesColor:
       - red # Red
   nerdFontsVersion: "3"
+  sidePanelWidth: 0.3
 git:
   paging:
     colorArg: always
@@ -31,8 +32,8 @@ git:
   allBranchesLogCmd: "git log --graph --all --stat --oneline --color=always --decorate --pretty=format:'%Cblue %h %C(bold red)- <%an> -%C(green) (%ar)%C(auto)%d%n%C(yellow) %s'"
   diffContextSize: 3 # how many lines of context are shown around a change in diffs
 os:
-  editPreset: "nvim {{filename}}"
-  editCommand: "nvim {{filename}}"
-  editCommandTemplate: "nvim {{filename}}"
+  edit: "nvim {{filename}}"
+  editAtLine: "nvim +{{line}} {{filename}}"
+  editAtLineAndWait: "nvim +{{line}} {{filename}}"
   editInTerminal: true
-  openDirIneditor: "nvim {{dir}}"
+  openDirInEditor: "nvim {{dir}}"
