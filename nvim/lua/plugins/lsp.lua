@@ -29,7 +29,7 @@ return {
   {
     "stevearc/conform.nvim",
     event = { "BufReadPre", "BufNewFile" },
-    config = require("plugins.configs.lsp.formatter").setup,
+    config = require("plugins.configs.lsp.formatting").setup,
   },
 
   -- Lint
