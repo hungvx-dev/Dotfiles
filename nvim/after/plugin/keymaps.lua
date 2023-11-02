@@ -22,6 +22,9 @@ keymap("n", "<leader>-", ":vertical resize -5<CR>", default_opts)
 keymap("n", "<leader>_", ":resize -2<CR>", default_opts)
 keymap("n", "<leader>+", ":resize +2<CR>", default_opts)
 
+keymap("n", "<leader>bp", ":bprevious<cr>", default_opts)
+keymap("n", "<leader>bn", ":bnext<cr>", default_opts)
+
 keymap("n", "<C-q>", ":q<cr>", default_opts)
 keymap("n", "<C-s>", ":silent! w<cr>", default_opts)
 keymap("i", "<C-s>", "<ESC>:silent! w<cr>", default_opts)

@@ -1,46 +1,46 @@
 local M = {}
 M.opts = {
-  sources                         = { "filesystem", "buffers", "git_status", "document_symbols" },
+  sources = { "filesystem", "buffers", "git_status", "document_symbols" },
   open_files_do_not_replace_types = { "terminal", "Trouble", "qf", "Outline" },
-  close_if_last_window            = false, -- Close Neo-tree if it is the last window left in the tab
-  popup_border_style              = "rounded",
-  enable_git_status               = true,
-  enable_diagnostics              = true,
-  default_component_configs       = {
-    indent     = {
+  close_if_last_window = false, -- Close Neo-tree if it is the last window left in the tab
+  popup_border_style = "rounded",
+  enable_git_status = true,
+  enable_diagnostics = true,
+  default_component_configs = {
+    indent = {
       expander_collapsed = HVIM.icons.UI.Direction.Angle.Right,
-      expander_expanded  = HVIM.icons.UI.Direction.Angle.Down,
+      expander_expanded = HVIM.icons.UI.Direction.Angle.Down,
     },
-    icon       = {
-      folder_closed     = HVIM.icons.UI.Folder.Icon,
-      folder_open       = HVIM.icons.UI.Folder.Open,
-      folder_empty      = HVIM.icons.UI.Folder.Empty,
+    icon = {
+      folder_closed = HVIM.icons.UI.Folder.Icon,
+      folder_open = HVIM.icons.UI.Folder.Open,
+      folder_empty = HVIM.icons.UI.Folder.Empty,
       folder_empty_open = HVIM.icons.UI.Folder.EmptyOpen,
     },
-    modified   = {
+    modified = {
       symbol = HVIM.icons.Git.LineModified,
     },
     git_status = {
       symbols = {
         -- Change type
-        added     = HVIM.icons.Git.LineAdded,    -- or "✚", but this is redundant info if you use git_status_colors on the name
-        modified  = HVIM.icons.Git.LineModified, -- or "", but this is redundant info if you use git_status_colors on the name
-        deleted   = HVIM.icons.Git.LineRemoved,  -- this can only be used in the git_status source
-        renamed   = HVIM.icons.Git.LineRename,   -- this can only be used in the git_status source
+        added = HVIM.icons.Git.LineAdded, -- or "✚", but this is redundant info if you use git_status_colors on the name
+        modified = HVIM.icons.Git.LineModified, -- or "", but this is redundant info if you use git_status_colors on the name
+        deleted = HVIM.icons.Git.LineRemoved, -- this can only be used in the git_status source
+        renamed = HVIM.icons.Git.LineRename, -- this can only be used in the git_status source
         -- Status type
         untracked = HVIM.icons.Git.FileUntracked,
-        ignored   = HVIM.icons.Git.FileIgnored,
-        unstaged  = HVIM.icons.Git.FileUnstaged,
-        staged    = HVIM.icons.Git.FileStaged,
-        conflict  = HVIM.icons.Git.FileUnmerged,
+        ignored = HVIM.icons.Git.FileIgnored,
+        unstaged = HVIM.icons.Git.FileUnstaged,
+        staged = HVIM.icons.Git.FileStaged,
+        conflict = HVIM.icons.Git.FileUnmerged,
       },
     },
   },
-  filesystem                      = {
-    follow_current_file    = { enabled = true, leave_dirs_open = true },
+  filesystem = {
+    follow_current_file = { enabled = true, leave_dirs_open = true },
     use_libuv_file_watcher = true,
   },
-  commands                        = {
+  commands = {
     copy_selector_path = function(state)
       local node = state.tree:get_node()
       local filepath = node:get_id()
@@ -76,26 +76,26 @@ M.opts = {
       end)
     end,
   },
-  window                          = {
+  window = {
     position = "right",
     width = 40,
     mappings = {
       ["<space>"] = "none",
-      ["o"]       = "open_with_window_picker",
-      ["<C-x>"]   = "split_with_window_picker",
-      ["<C-v>"]   = "vsplit_with_window_picker",
-      ["Y"]       = "copy_selector_path",
+      ["w"] = "open_with_window_picker",
+      ["<C-x>"] = "split_with_window_picker",
+      ["<C-v>"] = "vsplit_with_window_picker",
+      ["Y"] = "copy_selector_path",
       -- ["o"] = "open",
     },
   },
-  buffers                         = {
+  buffers = {
     follow_current_file = {
-      enabled         = true, -- This will find and focus the file in the active buffer every time
+      enabled = true, -- This will find and focus the file in the active buffer every time
       --              -- the current file is changed while the tree is open.
       leave_dirs_open = true, -- `false` closes auto expanded dirs, such as with `:Neotree reveal`
     },
-    group_empty_dirs    = true, -- when true, empty folders will be grouped together
-    show_unloaded       = true,
+    group_empty_dirs = true, -- when true, empty folders will be grouped together
+    show_unloaded = true,
     -- window = {
     --   mappings = {
     --     ["<leader>bd"] = "buffer_delete",
