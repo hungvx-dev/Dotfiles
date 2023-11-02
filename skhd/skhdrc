@@ -74,5 +74,4 @@ alt + shift - 0 : yabai -m window --space 10
 .blacklist [
     "terminal"
     "kitty"
-    "google chrome"
 ]

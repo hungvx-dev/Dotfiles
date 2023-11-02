@@ -20,8 +20,8 @@ set fish_path $HOME/.config/fish
 starship init fish | source
 
 # zoxide
-set -x _ZO_ECHO '1'
-set -x _ZO_RESOLVE_SYMLINKS '1'
+set -x _ZO_ECHO 1
+set -x _ZO_RESOLVE_SYMLINKS 1
 zoxide init fish | source
 
 # set -gx AUTO_JUMP_SHARE_PATH /opt/homebrew/share/autojump/autojump.fish
@@ -38,13 +38,13 @@ set fish_user_paths $fish_user_paths /opt/homebrew/sbin
 # gnu-sed
 set fish_user_paths $fish_user_paths /opt/homebrew/opt/gnu-sed/libexec/gnubin
 if test -f $fish_path/variables.private.fish
-. $fish_path/variables.private.fish
+    . $fish_path/variables.private.fish
 end
 
 # pnpm
 set -gx PNPM_HOME "/Users/hungvx.dev/Library/pnpm"
 if not string match -q -- $PNPM_HOME $PATH
-  set -gx PATH "$PNPM_HOME" $PATH
+    set -gx PATH "$PNPM_HOME" $PATH
 end
 # pnpm end
 
