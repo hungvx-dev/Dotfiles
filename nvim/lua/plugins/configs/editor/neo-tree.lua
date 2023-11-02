@@ -39,6 +39,9 @@ M.opts = {
   filesystem = {
     follow_current_file = { enabled = true, leave_dirs_open = true },
     use_libuv_file_watcher = true,
+    never_show = {
+      ".DS_Store",
+    },
   },
   commands = {
     copy_selector_path = function(state)
@@ -81,11 +84,10 @@ M.opts = {
     width = 40,
     mappings = {
       ["<space>"] = "none",
-      ["w"] = "open_with_window_picker",
       ["<C-x>"] = "split_with_window_picker",
       ["<C-v>"] = "vsplit_with_window_picker",
       ["Y"] = "copy_selector_path",
-      -- ["o"] = "open",
+      ["o"] = { "open", nowait = true, config = nil },
     },
   },
   buffers = {

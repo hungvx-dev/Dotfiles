@@ -3,13 +3,14 @@ local M = {}
 M.opts = {
   ensure_installed = {
     -- For Formatter
-    "stylua",
-    "shfmt",
+    "stylua", -- For lua
+    "shfmt", -- For sh
     "prettierd",
     "prettier",
 
     -- For Linter
     "eslint_d",
+    "hadolint", -- For docker
   },
   ui = {
     border = "rounded",

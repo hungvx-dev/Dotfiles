@@ -38,4 +38,10 @@ return {
     event = { "BufReadPre", "BufNewFile" },
     config = require("plugins.configs.lsp.linting").setup,
   },
+
+  {
+    "j-hui/fidget.nvim",
+    tag = "legacy",
+    event = "LspAttach",
+  },
 }

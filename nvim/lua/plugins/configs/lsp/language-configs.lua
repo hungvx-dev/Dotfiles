@@ -81,6 +81,14 @@ M.servers = {
     },
   },
   volar = {
+    root_dir = require("lspconfig/util").root_pattern(
+      "vue.config.js",
+      "vue.config.ts",
+      "vite.config.ts",
+      "vite.config.js",
+      "nuxt.config.ts",
+      "nuxt.config.js"
+    ),
     filetypes = { "typescript", "javascript", "javascriptreact", "typescriptreact", "vue", "typescript.tsx" },
     settings = {
       volar = {
@@ -114,6 +122,13 @@ M.servers = {
     },
   },
   tailwindcss = {
+    root_dir = require("lspconfig/util").root_pattern(
+      "tailwind.config.js",
+      "tailwind.config.cjs",
+      "tailwind.config.ts",
+      "tailwind.js",
+      "tailwind.cjs"
+    ),
     filetypes = { "html", "typescriptreact", "vue", "javascriptreact" },
     settings = {
       tailwindCSS = {

@@ -1,8 +1,8 @@
 local M = {}
-local lConfigs = require("plugins.configs.lsp.language-configs")
 
 function M.setup()
-  local status_ok, lspconfig = pcall(require, 'lspconfig')
+  local lConfigs = require("plugins.configs.lsp.language-configs")
+  local status_ok, lspconfig = pcall(require, "lspconfig")
   if not status_ok then
     return
   end
@@ -46,7 +46,6 @@ function M.setup()
   require("plugins.configs.lsp.diagnostic").setup()
   require("plugins.configs.lsp.keymaps")
   require("plugins.configs.lsp.functions").fixConflictTsLanguage()
-
 end
 
 return M
