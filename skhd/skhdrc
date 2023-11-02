@@ -70,3 +70,9 @@ alt + shift - 0 : yabai -m window --space 10
 # alt + ctrl - q : yabai --stop-service
 # alt + ctrl - s : yabai --start-service
 # alt + ctrl - r : yabai --restart-service
+
+.blacklist [
+    "terminal"
+    "kitty"
+    "google chrome"
+]
