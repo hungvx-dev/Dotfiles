@@ -25,7 +25,7 @@ opt.smartindent = true --Smart indent by language
 opt.autoindent = true -- Auto indent by before line
 opt.shiftwidth = 2 -- Indent size
 opt.joinspaces = false -- No double spaces with join after a dot
-opt.wrap = false
+-- opt.wrap = false
 -- opt.breakindent = true --Enable break indent
 
 -- Fold
