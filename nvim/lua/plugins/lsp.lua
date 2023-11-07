@@ -25,9 +25,20 @@ return {
     config = require("plugins.configs.lsp.nvim-lspconfig").setup,
   },
 
+  {
+    "nvimtools/none-ls.nvim",
+    -- enable = false,
+    event = { "BufReadPost", "BufNewFile", "BufWritePre" },
+    dependencies = {
+      "nvim-lua/plenary.nvim",
+    },
+    config = require("plugins.configs.lsp.none-ls").setup,
+  },
+
   -- Format
   {
     "stevearc/conform.nvim",
+    enabled = false,
     event = { "BufReadPre", "BufNewFile" },
     config = require("plugins.configs.lsp.formatting").setup,
   },
@@ -35,12 +46,14 @@ return {
   -- Lint
   {
     "mfussenegger/nvim-lint",
+    enabled = false,
     event = { "BufReadPre", "BufNewFile" },
     config = require("plugins.configs.lsp.linting").setup,
   },
 
   {
     "j-hui/fidget.nvim",
+    enabled = false,
     tag = "legacy",
     event = "LspAttach",
   },
