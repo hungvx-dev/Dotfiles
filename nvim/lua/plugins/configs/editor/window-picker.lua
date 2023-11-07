@@ -8,7 +8,7 @@ M.opts = {
   show_prompt   = false,
   picker_config = {
     statusline_winbar_picker = {
-      selection_display = function(char, windowid)
+      selection_display = function(char)
         return '%=' .. char .. '%='
       end,
       use_winbar        = 'smart', -- "always" | "never" | "smart"

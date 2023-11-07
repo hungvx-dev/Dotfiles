@@ -87,7 +87,6 @@ M.opts = {
       ["<C-x>"] = "split_with_window_picker",
       ["<C-v>"] = "vsplit_with_window_picker",
       ["Y"] = "copy_selector_path",
-      ["o"] = { "open", nowait = true, config = nil },
     },
   },
   buffers = {
