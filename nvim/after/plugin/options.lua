@@ -73,7 +73,6 @@ opt.culopt = "number" -- Enable highlighting of the current line
 -- Popup
 opt.pumblend = 0 -- Transparent of Popup
 opt.pumheight = 10 -- Maximum number of entries in a Popup
--- opt.completeopt    = { "menu", "menuone", "noselect" }
 
 -- Split
 opt.splitbelow = true
@@ -102,7 +101,6 @@ vim.g.markdown_recommended_style = "gfm"
 opt.shortmess:append("I")
 opt.shortmess:append("s")
 opt.shortmess:append("C")
--- opt.sessionoptions = "buffers,curdir,help,tabpages,winsize,winpos,terminal"
 -- opt.textwidth = 0
 
 opt.list = true
