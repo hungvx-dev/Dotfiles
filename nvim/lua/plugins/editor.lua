@@ -114,6 +114,15 @@ return {
     keys = require("plugins.configs.editor.trouble").keys,
   },
 
+  -- easily jump
+  {
+    "unblevable/quick-scope",
+    event = { "BufReadPre", "BufNewFile" },
+    config = function()
+      require("plugins.configs.editor.quick-scope")
+    end,
+  },
+  -- hung hung hung1 hung h4ng hung hung 4ung hun4 hung hung4hung hung 4ung hung hu4g hun3 hunh h2ng hung41
   {
     "szw/vim-maximizer",
     keys = {
