@@ -5,7 +5,7 @@ M.source_mapping = {
   buffer = HVIM.icons.Cmp.Buffer .. "Buffer",
   luasnip = HVIM.icons.Cmp.Snippet .. "Snippet",
   path = HVIM.icons.Cmp.Path .. "Path",
-  -- cmp_tabnine = hvim.icons.Cmp.Tabnine .. "Tabnine",
+  -- cmp_tabnine = HVIM.icons.Cmp.Tabnine .. "Tabnine",
   -- spell = HVIM.icons.Cmp.Spellcheck .. "Spell",
 }
 

@@ -16,6 +16,7 @@ M.setup = function()
   if not status_ok then
     return
   end
+
   autopairs.setup(M.opts)
 
   local cmp_autopairs = require("nvim-autopairs.completion.cmp")

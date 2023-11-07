@@ -1,0 +1,1 @@
+{ "flagWords": [], "version": "0.2", "words": [], "language": "en", "ignorePaths": ["lua/**", "after/**"] }
