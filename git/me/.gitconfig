@@ -74,8 +74,8 @@
   features = tokyonight
 
 [delta "tokyonight"]
-  minus-style                   = syntax "#37222c"
-  minus-non-emph-style          = syntax "#37222c"
+  minus-style                   = syntax "#3e2b2b"
+  minus-non-emph-style          = syntax "#3e2b2b"
   minus-emph-style              = syntax "#713137"
   minus-empty-line-marker-style = syntax "#37222c"
   commit-decoration-style       = "#11ce16" box
@@ -85,8 +85,8 @@
   hunk-header-file-style        = "#ffd21a" ul bold
   hunk-header-line-number-style = "#ffd21a" box bold
   hunk-header-style             = file line-number syntax bold italic
-  plus-style                    = syntax "#003300"
-  plus-non-emph-style           = syntax "#003300"
+  plus-style                    = syntax "#0f3e2a"
+  plus-non-emph-style           = syntax "#0f3e2a"
   plus-emph-style               = syntax "#2c5a66"
   plus-empty-line-marker-style  = syntax "#20303b"
   line-numbers-plus-style       = "#266d6a"
