@@ -6,7 +6,7 @@ function M.setup(ensure_installed, setup)
     return
   end
 
-  mlsp.setup({ ensure_installed = ensure_installed, handlers = { setup } })
+  mlsp.setup({ ensure_installed = ensure_installed, handlers = { setup }, automatic_installation = true })
 end
 
 return M

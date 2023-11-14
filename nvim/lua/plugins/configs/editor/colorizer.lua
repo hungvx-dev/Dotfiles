@@ -8,6 +8,7 @@ M.opts = {
     "typescript",
     "typescriptreact",
     "javascriptreact",
+    "vue",
     "lua",
     "scss",
     "conf",

@@ -7,12 +7,17 @@ keymap.set("n", "<space>q", vim.diagnostic.setloclist)
 vim.api.nvim_create_autocmd("LspAttach", {
   group = vim.api.nvim_create_augroup("UserLspConfig", {}),
   callback = function(ev)
-    -- Enable completion triggered by <c-x><c-o>
-    vim.bo[ev.buf].omnifunc = "v:lua.vim.lsp.omnifunc"
-
-    -- Buffer local mappings.
     -- See `:help vim.lsp.*` for documentation on any of the below functions
     local opts = { noremap = true, silent = true, buffer = ev.buf }
+
+    keymap.set("n", "gf", function()
+      vim.lsp.buf.format({
+        filter = function(client)
+          return client.name == "null-ls"
+        end,
+        bufnr = ev.buf,
+      })
+    end, opts)
 
     keymap.set("n", "gd", "<cmd>Telescope lsp_definitions<CR>", opts)
     keymap.set("n", "gi", "<cmd>Telescope lsp_implementations<CR>", opts)
