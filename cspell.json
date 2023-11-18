@@ -1,1 +1,1 @@
-{ "flagWords": [], "language": "en", "version": "0.2", "words": ["emph", "tokyonight", "autoupdate", "rerere", "difftool", "nvim", "nvimdiff"] }
+{ "flagWords": [], "words": ["emph", "tokyonight", "autoupdate", "rerere", "difftool", "nvim", "nvimdiff", "hjkl", "hungvx", "lazygit", "osascript", "wvous", "recents", "autohide", "mineffect", "Pathbar", "desktopservices", "Dont", "Trackpad"], "version": "0.2", "language": "en", "ignorePaths": ["fish/**"] }

@@ -1,6 +1,7 @@
 # My dotfiles
-
-**_This repository contains my config dot files for applications:_**
+**_These are my dotfiles. Take anything you want, but at your own risk._**
+**_It mainly targets macOS systems_**
+**_This repository contains my configuration for applications:_**
 
 - **Terminal**: [Kitty](./kitty) (or [Alacritty](./alacritty))
   - **Multiplexer**: [Tmux](./tmux)
