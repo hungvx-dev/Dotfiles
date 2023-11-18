@@ -78,12 +78,14 @@ install_tools() {
   brew install vlc zoom obs
 
   brew install \
+    fnm \
     git-delta \
     fzf \
     zoxide \
     lazygit \
     exercism \
     btop \
+    tree \
     awscli
   success "Installed tools"
 }
@@ -138,12 +140,9 @@ setup_mac_config() {
   killall Finder
 
   # reduce keyrepeat for faster typing in vim
-  defaults write -g InitialKeyRepeat -int 10 # normal minimum is 15 (225 ms)
-  defaults write -g KeyRepeat -int 1         # normal minimum is 2 (30 ms)
-  defaults write -g ApplePressAndHoldEnabled -bool false
-
-  # change wallpaper
-  # osascript -e 'tell application "Finder" to set desktop picture to POSIX file "path"'
+  # defaults write -g InitialKeyRepeat -int 10 # normal minimum is 15 (225 ms)
+  # defaults write -g KeyRepeat -int 1         # normal minimum is 2 (30 ms)
+  # defaults write -g ApplePressAndHoldEnabled -bool false
 }
 
 link_config_file
