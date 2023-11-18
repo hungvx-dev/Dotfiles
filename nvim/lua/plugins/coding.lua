@@ -40,7 +40,7 @@ return {
       history = true,
       delete_check_events = "TextChanged",
     },
-    keys = {},
+    keys = require("plugins.configs.coding.lua-snip").keys,
   },
 
   -- auto completion
