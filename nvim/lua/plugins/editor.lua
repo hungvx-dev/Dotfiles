@@ -122,7 +122,14 @@ return {
       require("plugins.configs.editor.quick-scope")
     end,
   },
-  -- hung hung hung1 hung h4ng hung hung 4ung hun4 hung hung4hung hung 4ung hung hu4g hun3 hunh h2ng hung41
+  {
+    "mg979/vim-visual-multi",
+    event = { "BufReadPre", "BufNewFile" },
+    lazy = true,
+    config = function()
+      vim.g.VM_leader = "\\"
+    end,
+  },
   {
     "szw/vim-maximizer",
     keys = {

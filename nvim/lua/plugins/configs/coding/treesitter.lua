@@ -34,7 +34,6 @@ local opts = {
   },
   indent = { enable = true, disable = { "python", "yaml" } },
   autotag = { enable = true },
-  context_commentstring = { enable = true, enable_autocmd = false },
   rainbow = {
     enable = true,
     extended_mode = true,
@@ -77,6 +76,10 @@ function M.setup()
   end
 
   treesitter_configs.setup(opts)
+  vim.g.skip_ts_context_commentstring_module = true
+  require("ts_context_commentstring").setup({
+    enable_autocmd = false,
+  })
   local ts_utils = require("nvim-treesitter.ts_utils")
   ts_utils.is_in_node_range = vim.treesitter.is_in_node_range
   ts_utils.get_node_range = vim.treesitter.get_node_range
