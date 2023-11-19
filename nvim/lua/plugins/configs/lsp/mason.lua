@@ -6,11 +6,12 @@ M.opts = {
     "stylua", -- For lua
     "shfmt", -- For sh
     "prettierd",
-    "prettier",
+    -- "prettier",
 
     -- For Linter
     "eslint_d",
     "hadolint", -- For docker
+    "cspell",
   },
   ui = {
     border = "rounded",

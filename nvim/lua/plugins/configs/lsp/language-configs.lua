@@ -2,7 +2,7 @@ local M = {}
 
 M.servers = {
   bashls = {},
-  zk = {},
+  -- zk = {},
   dockerls = {},
   emmet_ls = {},
   yamlls = {

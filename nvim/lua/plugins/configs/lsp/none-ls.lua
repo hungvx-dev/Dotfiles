@@ -26,6 +26,7 @@ function M.setup()
   local formatting = null_ls.builtins.formatting
   local diagnostics = null_ls.builtins.diagnostics
   local code_actions = null_ls.builtins.code_actions
+  -- local completion = null_ls.builtins.completion
 
   local spell = { config = { config_file_preferred_name = "cSpell.json" } }
 
@@ -40,6 +41,7 @@ function M.setup()
     diagnostics.cspell.with(spell),
 
     code_actions.cspell.with(spell),
+    -- completion.spell,
   }
 
   if M.enable_eslint() then

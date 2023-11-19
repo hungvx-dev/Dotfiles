@@ -39,7 +39,7 @@ autocmd("VimResized", {
 })
 
 autocmd("FileType", {
-  pattern = { "gitcommit", "markdown", "text", "log" },
+  pattern = { "gitcommit", },
   callback = function()
     vim.opt_local.wrap = true
     vim.opt_local.spell = true
