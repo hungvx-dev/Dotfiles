@@ -58,13 +58,13 @@ set -gx LG_CONFIG_FILE "$HOME/.config/lazygit/config.yml"
 # end
 
 ### fnm
-set -gx PATH "/Users/hungvx.dev/Library/Caches/fnm_multishells/48126_1700281069680/bin" $PATH
-set -gx FNM_MULTISHELL_PATH "/Users/hungvx.dev/Library/Caches/fnm_multishells/48126_1700281069680"
-set -gx FNM_VERSION_FILE_STRATEGY local
-set -gx FNM_RESOLVE_ENGINES false
-set -gx FNM_LOGLEVEL info
-set -gx FNM_NODE_DIST_MIRROR "https://nodejs.org/dist"
-set -gx FNM_DIR "/Users/hungvx.dev/Library/Application Support/fnm"
-set -gx FNM_ARCH arm64
-set -gx FNM_COREPACK_ENABLED false
-# end
+# set -gx PATH "/Users/hungvx.dev/Library/Caches/fnm_multishells/48126_1700281069680/bin" $PATH
+# set -gx FNM_MULTISHELL_PATH "/Users/hungvx.dev/Library/Caches/fnm_multishells/48126_1700281069680"
+# set -gx FNM_VERSION_FILE_STRATEGY local
+# set -gx FNM_RESOLVE_ENGINES false
+# set -gx FNM_LOGLEVEL info
+# set -gx FNM_NODE_DIST_MIRROR "https://nodejs.org/dist"
+# set -gx FNM_DIR "/Users/hungvx.dev/Library/Application Support/fnm"
+# set -gx FNM_ARCH arm64
+# set -gx FNM_COREPACK_ENABLED false
+# # end
