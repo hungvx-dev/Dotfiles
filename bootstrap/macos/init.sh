@@ -24,7 +24,7 @@ install_xcode_command_line_tools() {
 
 install_homebrew() {
   info "Installing homebrew"
-  ./homebrew.sh
+  ./bootstrap/macos/homebrew.sh
   success "Installed homebrew"
 }
 
@@ -43,13 +43,13 @@ install_terminal() {
 
 install_fish() {
   info "Installing fish"
-  ./fish.sh
+  ./bootstrap/macos/fish.sh
   success "Installed fish"
 }
 
 install_setup_tmux() {
   info "Installing and setting tmux"
-  ./tmux.sh
+  ./bootstrap/macos/tmux.sh
   success "Installed and setted tmux"
 }
 
@@ -115,7 +115,7 @@ install_fonts() {
 
 install_neovim() {
   info "Installing neovim"
-  ./neovim.sh
+  ./bootstrap/macos/neovim.sh
   success "Installed neovim"
 }
 
