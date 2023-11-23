@@ -24,7 +24,7 @@ install_xcode_command_line_tools() {
 
 install_homebrew() {
   info "Installing homebrew"
-  ./homebrew.sh
+  ./bootstrap/macos/homebrew.sh
   success "Installed homebrew"
 }
 
@@ -43,13 +43,13 @@ install_terminal() {
 
 install_fish() {
   info "Installing fish"
-  ./fish.sh
+  ./bootstrap/macos/fish.sh
   success "Installed fish"
 }
 
 install_setup_tmux() {
   info "Installing and setting tmux"
-  ./tmux.sh
+  ./bootstrap/macos/tmux.sh
   success "Installed and setted tmux"
 }
 
@@ -113,9 +113,9 @@ install_fonts() {
   success "Installed fonts"
 }
 
-install_neovim() {
-  info "Installing neovim"
-  ./neovim.sh
+install_nvim() {
+  info "Installing nvim"
+  ./bootstrap/macos/neovim.sh
   success "Installed neovim"
 }
 
@@ -143,6 +143,7 @@ setup_mac_config() {
   # defaults write -g InitialKeyRepeat -int 10 # normal minimum is 15 (225 ms)
   # defaults write -g KeyRepeat -int 1         # normal minimum is 2 (30 ms)
   # defaults write -g ApplePressAndHoldEnabled -bool false
+  ./defaults.sh
 }
 
 link_config_file
@@ -152,12 +153,11 @@ install_terminal
 install_fish
 install_setup_tmux
 install_tools
-install_neovim
 install_deps_tools
 install_fonts
-install_neovim
+install_nvim
 install_window_management
-install_music
+# install_music
 setup_mac_config
 
 echo "Finished installing! 🎉 🚀"

@@ -50,7 +50,7 @@ function M.opts()
     },
     sources = cmp.config.sources({
       { name = "nvim_lsp", priority = 9 },
-      { name = "luasnip", priority = 8, max_item_count = 5 },
+      { name = "luasnip", priority = 8, max_item_count = 8 },
       { name = "path", priority = 4 },
     }, {
       { name = "buffer", priority = 7, keywork_length = 5, max_item_count = 6 },

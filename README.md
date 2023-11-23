@@ -28,7 +28,7 @@ cd Dotfiles
 Run these commands to install and setup for Mac OS
 
 ```bash
-chmode -R +x ./bootstrap/macos && ./bootstrap/macos/init.sh
+chmod -R +x ./bootstrap/macos && ./bootstrap/macos/init.sh
 ```
 
 ## Show cases

@@ -22,8 +22,5 @@ Host bitbucket.org
 
 Host gitlab.com-hf
   HostName gitlab.com
-  User git
-  UseKeychain yes
-  AddKeysToAgent yes
-  IdentityFile ~/.ssh/hung.vx.hodfords
-
+  PreferredAuthentications publickey
+  IdentityFile ~/.ssh/hungvx.hodfords
