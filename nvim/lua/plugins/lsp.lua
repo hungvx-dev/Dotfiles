@@ -31,6 +31,7 @@ return {
     event = { "BufReadPost", "BufNewFile", "BufWritePre" },
     dependencies = {
       "nvim-lua/plenary.nvim",
+      "davidmh/cspell.nvim",
     },
     config = require("plugins.configs.lsp.none-ls").setup,
   },

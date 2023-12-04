@@ -17,6 +17,7 @@ end
 
 function M.setup()
   local status_ok, null_ls = pcall(require, "null-ls")
+  local cspell = require("cspell")
 
   if not status_ok then
     return
@@ -28,7 +29,11 @@ function M.setup()
   local code_actions = null_ls.builtins.code_actions
   -- local completion = null_ls.builtins.completion
 
-  local spell = { config = { config_file_preferred_name = "cSpell.json" } }
+  local spell_config = {
+    config = {
+      config_file_preferred_name = "cSpell.json",
+    },
+  }
 
   M.sources = {
     formatting.shfmt,
@@ -38,10 +43,8 @@ function M.setup()
 
     diagnostics.hadolint,
     diagnostics.fish,
-    diagnostics.cspell.with(spell),
-
-    code_actions.cspell.with(spell),
-    -- completion.spell,
+    cspell.diagnostics.with({ config = spell_config }),
+    cspell.code_actions.with({ config = spell_config }),
   }
 
   if M.enable_eslint() then
