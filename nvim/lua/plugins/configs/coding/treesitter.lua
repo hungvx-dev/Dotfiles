@@ -13,6 +13,7 @@ M.ensure_installed = {
   "yaml",
   "markdown",
   "markdown_inline",
+  "hurl",
   "gitignore",
   "dockerfile",
 }
@@ -74,6 +75,12 @@ function M.setup()
   if not status_ok then
     return
   end
+
+  vim.filetype.add({
+    extension = {
+      hurl = "hurl",
+    },
+  })
 
   treesitter_configs.setup(opts)
   vim.g.skip_ts_context_commentstring_module = true
