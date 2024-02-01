@@ -2,7 +2,7 @@ local M = {}
 M.opts = {
   sources = { "filesystem", "buffers", "git_status", "document_symbols" },
   open_files_do_not_replace_types = { "terminal", "Trouble", "qf", "Outline" },
-  close_if_last_window = false, -- Close Neo-tree if it is the last window left in the tab
+  close_if_last_window = false,
   popup_border_style = "rounded",
   enable_git_status = true,
   enable_diagnostics = true,
@@ -23,10 +23,10 @@ M.opts = {
     git_status = {
       symbols = {
         -- Change type
-        added = HVIM.icons.Git.LineAdded, -- or "✚", but this is redundant info if you use git_status_colors on the name
-        modified = HVIM.icons.Git.LineModified, -- or "", but this is redundant info if you use git_status_colors on the name
-        deleted = HVIM.icons.Git.LineRemoved, -- this can only be used in the git_status source
-        renamed = HVIM.icons.Git.LineRename, -- this can only be used in the git_status source
+        added = HVIM.icons.Git.LineAdded,
+        modified = HVIM.icons.Git.LineModified,
+        deleted = HVIM.icons.Git.LineRemoved,
+        renamed = HVIM.icons.Git.LineRename,
         -- Status type
         untracked = HVIM.icons.Git.FileUntracked,
         ignored = HVIM.icons.Git.FileIgnored,
@@ -81,7 +81,7 @@ M.opts = {
   },
   window = {
     position = "right",
-    width = 40,
+    width = 38,
     mappings = {
       ["<space>"] = "none",
       ["<C-x>"] = "split_with_window_picker",
@@ -91,17 +91,11 @@ M.opts = {
   },
   buffers = {
     follow_current_file = {
-      enabled = true, -- This will find and focus the file in the active buffer every time
-      --              -- the current file is changed while the tree is open.
-      leave_dirs_open = true, -- `false` closes auto expanded dirs, such as with `:Neotree reveal`
+      enabled = true,
+      leave_dirs_open = true,
     },
-    group_empty_dirs = true, -- when true, empty folders will be grouped together
+    group_empty_dirs = true,
     show_unloaded = true,
-    -- window = {
-    --   mappings = {
-    --     ["<leader>bd"] = "buffer_delete",
-    --   },
-    -- },
   },
 }
 

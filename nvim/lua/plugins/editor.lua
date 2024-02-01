@@ -136,4 +136,33 @@ return {
       { "<C-w>f", "<cmd>MaximizerToggle<CR>", desc = "Maximize/minimize a split" },
     },
   },
+
+  -- Dap
+  {
+    "mfussenegger/nvim-dap",
+    lazy = true,
+    enabled = false,
+    dependencies = {
+      -- fancy UI for the debugger
+      {
+        "rcarriga/nvim-dap-ui",
+        keys = require("plugins.configs.editor.dap.ui").keys,
+        opts = {},
+        config = require("plugins.configs.editor.dap.ui").setup,
+      },
+      -- mason.nvim integration
+      {
+        "jay-babu/mason-nvim-dap.nvim",
+        dependencies = "mason.nvim",
+        cmd = { "DapInstall", "DapUninstall" },
+        opts = {
+          automatic_installation = true,
+          handlers = {},
+          ensure_installed = { "node2", "chrome" },
+        },
+      },
+    },
+    keys = require("plugins.configs.editor.dap.core").keys,
+    config = require("plugins.configs.editor.dap.core").setup,
+  },
 }
