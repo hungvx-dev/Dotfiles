@@ -57,7 +57,6 @@ install_tools() {
   info "Installing apps & tools"
   brew install --cask \
     karabiner-elements \
-    openkey \
     cloudflare-warp \
     discord \
     figma \
@@ -78,6 +77,7 @@ install_tools() {
   brew install vlc zoom obs
 
   brew install \
+    openkey \
     fnm \
     git-delta \
     fzf \
@@ -155,7 +155,7 @@ install_setup_tmux
 install_tools
 install_deps_tools
 install_fonts
-install_nvim
+install_neovim
 install_window_management
 # install_music
 setup_mac_config
