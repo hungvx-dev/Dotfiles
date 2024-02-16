@@ -23,4 +23,11 @@ Host bitbucket.org
 Host gitlab.com-hf
   HostName gitlab.com
   PreferredAuthentications publickey
+  UseKeychain yes
+  AddKeysToAgent yes
   IdentityFile ~/.ssh/hungvx.hodfords
+
+Host digital-ubuntu
+  HostName 157.230.41.226
+  User root
+  IdentityFile ~/.ssh/digitalocean.learndevops.ubuntu
