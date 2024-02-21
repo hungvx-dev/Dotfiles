@@ -1,7 +1,6 @@
 [user]
   name = Vo Xuan Hung
   email = hungvx.dev@gmail.com
-  useConfigOnly = true
 
 # job needs, like workspace/* so all included projects
 [includeIf "gitdir:~/Work/Hodfords/"]

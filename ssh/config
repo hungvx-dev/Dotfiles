@@ -25,9 +25,12 @@ Host gitlab.com-hf
   PreferredAuthentications publickey
   UseKeychain yes
   AddKeysToAgent yes
+  IdentitiesOnly yes
   IdentityFile ~/.ssh/hungvx.hodfords
 
 Host digital-ubuntu
   HostName 157.230.41.226
   User root
+  AddKeysToAgent yes
+  IdentitiesOnly yes
   IdentityFile ~/.ssh/digitalocean.learndevops.ubuntu
