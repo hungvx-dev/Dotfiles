@@ -40,6 +40,9 @@ function M.setup()
     formatting.stylua,
     formatting.fish_indent,
     formatting.prettierd,
+    formatting.gofumpt,
+    formatting.goimports_reviser,
+    formatting.golines,
 
     diagnostics.hadolint,
     diagnostics.fish,

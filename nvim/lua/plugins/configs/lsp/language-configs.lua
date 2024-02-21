@@ -14,6 +14,17 @@ M.servers = {
   --     root_dir = require("lspconfig/util").root_pattern("root-file.txt"),
   --   },
   -- },
+  gopls = {
+    settings = {
+      gopls = {
+        completeUnimported = true,
+        usePlaceholders = true,
+        analyses = {
+          unusedparams = true,
+        },
+      },
+    },
+  },
   yamlls = {
     capabilities = {
       textDocument = {
