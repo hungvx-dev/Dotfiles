@@ -104,7 +104,7 @@ opt.shortmess:append("C")
 -- opt.textwidth = 0
 
 opt.list = true
-opt.listchars = { extends = "→", nbsp = "·", eol = "↴", trail = "·" }
+opt.listchars = { extends = "→", nbsp = "·", eol = "↴", trail = "·", tab = "  " }
 opt.backspace = "indent,eol,start"
 
 opt.fillchars = {
