@@ -40,9 +40,9 @@ function M.setup()
     formatting.stylua,
     formatting.fish_indent,
     formatting.prettierd,
-    formatting.gofumpt,
-    formatting.goimports_reviser,
-    formatting.golines,
+    -- formatting.gofumpt,
+    -- formatting.goimports_reviser,
+    -- formatting.golines,
 
     diagnostics.hadolint,
     diagnostics.fish,
@@ -51,9 +51,9 @@ function M.setup()
   }
 
   if M.enable_eslint() then
-    table.insert(M.sources, formatting.eslint_d)
-    table.insert(M.sources, diagnostics.eslint_d)
-    table.insert(M.sources, code_actions.eslint_d)
+    table.insert(M.sources, require("none-ls.formatting.eslint_d"))
+    table.insert(M.sources, require("none-ls.diagnostics.eslint"))
+    table.insert(M.sources, require("none-ls.code_actions.eslint"))
   end
 
   null_ls.setup({

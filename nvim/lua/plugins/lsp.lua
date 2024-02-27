@@ -32,6 +32,7 @@ return {
     dependencies = {
       "nvim-lua/plenary.nvim",
       "davidmh/cspell.nvim",
+      "nvimtools/none-ls-extras.nvim",
     },
     config = require("plugins.configs.lsp.none-ls").setup,
   },

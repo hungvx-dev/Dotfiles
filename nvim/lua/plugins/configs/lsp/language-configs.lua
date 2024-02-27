@@ -2,7 +2,6 @@ local M = {}
 
 M.servers = {
   bashls = {},
-  -- zk = {},
   dockerls = {},
   emmet_ls = {},
   -- postgres_lsp = {
@@ -14,17 +13,17 @@ M.servers = {
   --     root_dir = require("lspconfig/util").root_pattern("root-file.txt"),
   --   },
   -- },
-  gopls = {
-    settings = {
-      gopls = {
-        completeUnimported = true,
-        usePlaceholders = true,
-        analyses = {
-          unusedparams = true,
-        },
-      },
-    },
-  },
+  -- gopls = {
+  --   settings = {
+  --     gopls = {
+  --       completeUnimported = true,
+  --       usePlaceholders = true,
+  --       analyses = {
+  --         unusedparams = true,
+  --       },
+  --     },
+  --   },
+  -- },
   yamlls = {
     capabilities = {
       textDocument = {
