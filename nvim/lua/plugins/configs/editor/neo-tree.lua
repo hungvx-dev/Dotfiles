@@ -6,8 +6,12 @@ M.opts = {
   popup_border_style = "rounded",
   enable_git_status = true,
   enable_diagnostics = true,
+  nesting_rules = {
+    [""] = { "" },
+  },
   default_component_configs = {
     indent = {
+      with_expanders = nil,
       expander_collapsed = HVIM.icons.UI.Direction.Angle.Right,
       expander_expanded = HVIM.icons.UI.Direction.Angle.Down,
     },
@@ -34,13 +38,6 @@ M.opts = {
         staged = HVIM.icons.Git.FileStaged,
         conflict = HVIM.icons.Git.FileUnmerged,
       },
-    },
-  },
-  filesystem = {
-    follow_current_file = { enabled = true, leave_dirs_open = true },
-    use_libuv_file_watcher = true,
-    never_show = {
-      ".DS_Store",
     },
   },
   commands = {
@@ -79,22 +76,41 @@ M.opts = {
       end)
     end,
   },
+  filesystem = {
+
+    follow_current_file = { enabled = true, leave_dirs_open = true },
+    use_libuv_file_watcher = true,
+    filtered_items = {
+      never_show = {
+        ".DS_Store",
+      },
+    },
+    window = {
+      mapping_options = {
+        noremap = true,
+        nowait = false,
+      },
+      mappings = {
+        ["<space>"] = "none",
+        ["A"] = "command_b",
+        ["Y"] = "copy_selector_path",
+        ["<C-x>"] = "split_with_window_picker",
+        ["<C-v>"] = "vsplit_with_window_picker",
+        ["o"] = { "open", nowait = true },
+      },
+    },
+  },
   window = {
     position = "right",
-    width = 38,
-    mappings = {
-      ["<space>"] = "none",
-      ["<C-x>"] = "split_with_window_picker",
-      ["<C-v>"] = "vsplit_with_window_picker",
-      ["Y"] = "copy_selector_path",
-    },
+    width = 40,
+    mappings = {},
   },
   buffers = {
     follow_current_file = {
       enabled = true,
       leave_dirs_open = true,
     },
-    group_empty_dirs = true,
+    group_empty_dirs = false,
     show_unloaded = true,
   },
 }

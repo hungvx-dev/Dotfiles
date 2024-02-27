@@ -12,7 +12,7 @@
   - **Hotkey**: [skhd](./skhd)
 - **Activity Monitor**: [Btop](./btop)
 - **Git commands UI**: [Lazygit](./lazygit)
-- **Font**: [Nerd Font](https://github.com/ryanoasis/nerd-fonts) [CaskaydiaCove](https://github.com/ryanoasis/nerd-fonts/tree/master/patched-fonts/CascadiaCode)
+- **Font**: [Nerd Font](https://github.com/ryanoasis/nerd-fonts) [JetBrains Mono](https://github.com/JetBrains/JetBrainsMono)
 - **Music**: [cmus](https://github.com/cmus/cmus) [cava](./cava) [Background Music](https://github.com/kyleneideck/BackgroundMusic)
 - **Wallpapers**: [My wallpapers](./wallpapers)
 
