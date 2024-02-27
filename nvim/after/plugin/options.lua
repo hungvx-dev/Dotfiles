@@ -112,9 +112,5 @@ opt.fillchars = {
   fold = " ",
   foldsep = "│",
   foldopen = "",
-  foldclose = "",
+  foldclose = "",
 }
-
--- Better search
--- opt.path:remove "/usr/include"
--- opt.path:append "**"

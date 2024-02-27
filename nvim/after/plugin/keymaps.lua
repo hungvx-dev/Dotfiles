@@ -17,8 +17,8 @@ keymap("v", "p", '"_dP', default_opts)
 keymap("n", "<leader><CR>", ":nohlsearch<Bar>:echo<CR>", default_opts)
 
 -- Scrolling
-keymap("n", "<C-d>", "<C-d>zz", default_opts)
-keymap("n", "<C-u>", "<C-u>zz", default_opts)
+keymap("n", "<C-d>", "10j", default_opts)
+keymap("n", "<C-u>", "10k", default_opts)
 
 -- ReSizing panes
 keymap("n", "<leader>=", ":vertical resize +5<CR>", default_opts)

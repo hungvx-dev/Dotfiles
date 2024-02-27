@@ -4,6 +4,13 @@ local augroup = vim.api.nvim_create_augroup
 -- General Settings
 local general = augroup("General Settings", { clear = true })
 
+-- autocmd("BufRead", {
+--   callback = function()
+--     vim.wo.scroll = 10
+--   end,
+--   group = general,
+-- })
+
 autocmd("BufEnter", {
   callback = function()
     vim.opt.formatoptions:remove({ "c", "r", "o" })
@@ -39,7 +46,7 @@ autocmd("VimResized", {
 })
 
 autocmd("FileType", {
-  pattern = { "gitcommit", },
+  pattern = { "gitcommit" },
   callback = function()
     vim.opt_local.wrap = true
     vim.opt_local.spell = true
