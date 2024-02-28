@@ -16,7 +16,7 @@ M.opts = {
       expander_expanded = HVIM.icons.UI.Direction.Angle.Down,
     },
     icon = {
-      folder_closed = HVIM.icons.UI.Folder.Icon,
+      folder_closed = HVIM.icons.UI.Folder.Close,
       folder_open = HVIM.icons.UI.Folder.Open,
       folder_empty = HVIM.icons.UI.Folder.Empty,
       folder_empty_open = HVIM.icons.UI.Folder.EmptyOpen,
@@ -77,8 +77,11 @@ M.opts = {
     end,
   },
   filesystem = {
-
-    follow_current_file = { enabled = true, leave_dirs_open = true },
+    follow_current_file = {
+      enabled = true,
+      leave_dirs_open = true,
+    },
+    group_empty_dirs = false,
     use_libuv_file_watcher = true,
     filtered_items = {
       never_show = {
@@ -88,10 +91,10 @@ M.opts = {
     window = {
       mapping_options = {
         noremap = true,
-        nowait = false,
+        nowait = true,
       },
       mappings = {
-        ["<space>"] = "none",
+        -- ["<space>"] = "none",
         ["A"] = "command_b",
         ["Y"] = "copy_selector_path",
         ["<C-x>"] = "split_with_window_picker",
@@ -99,11 +102,10 @@ M.opts = {
         ["o"] = { "open", nowait = true },
       },
     },
-  },
-  window = {
-    position = "right",
-    width = 40,
-    mappings = {},
+    fuzzy_finder_mappings = {
+      ["<C-j>"] = "move_cursor_down",
+      ["<C-k>"] = "move_cursor_up",
+    },
   },
   buffers = {
     follow_current_file = {
@@ -112,6 +114,17 @@ M.opts = {
     },
     group_empty_dirs = false,
     show_unloaded = true,
+    window = {
+      mappings = {
+        ["."] = "set_root",
+        ["<bs>"] = "navigate_up",
+      },
+    },
+  },
+  window = {
+    position = "right",
+    width = 40,
+    mappings = {},
   },
 }
 

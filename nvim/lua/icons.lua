@@ -92,7 +92,8 @@ return {
     Folder         = {
       Empty     = "",
       EmptyOpen = "",
-      Icon      = "󰉋",
+      Icon      = "",
+      Close     = "",
       Open      = "",
       Edit      = "󰣞",
       Remove    = "󰉘",
