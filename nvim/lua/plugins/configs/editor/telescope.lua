@@ -36,7 +36,11 @@ function M.opts()
         "--glob=!.git/",
       },
       sorting_strategy = "ascending",
-      layout_strategy = "center",
+      layout_strategy = "vertical",
+      layout_config = {
+        preview_cutoff = 5,
+        prompt_position = "top",
+      },
       mappings = {
         i = {
           -- ["<c-t>"] = function(...)
@@ -124,10 +128,9 @@ function M.opts()
       color_devicons = true,
       set_env = { ["COLORTERM"] = "truecolor" }, -- default = nil,
     },
-
-    file_previewer = previewers.vim_buffer_cat.new,
-    grep_previewer = previewers.vim_buffer_vimgrep.new,
-    qflist_previewer = previewers.vim_buffer_qflist.new,
+    -- file_previewer = previewers.vim_buffer_cat.new,
+    -- grep_previewer = previewers.vim_buffer_vimgrep.new,
+    -- qflist_previewer = previewers.vim_buffer_qflist.new,
     file_sorter = sorters.get_fuzzy_file,
     generic_sorter = sorters.get_generic_fuzzy_sorter,
     extensions = {
