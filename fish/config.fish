@@ -46,13 +46,6 @@ if test -f $fish_path/variables.private.fish
 end
 # end
 
-### pnpm
-# set -gx PNPM_HOME "/Users/hungvx.dev/Library/pnpm"
-# if not string match -q -- $PNPM_HOME $PATH
-#     set -gx PATH "$PNPM_HOME" $PATH
-# end
-# end
-
 ### lazy git
 set -gx LG_CONFIG_FILE "$HOME/.config/lazygit/config.yml"
 # end
@@ -68,3 +61,10 @@ set -gx LG_CONFIG_FILE "$HOME/.config/lazygit/config.yml"
 # set -gx FNM_ARCH arm64
 # set -gx FNM_COREPACK_ENABLED false
 # # end
+
+# pnpm
+set -gx PNPM_HOME "/Users/hungvx.dev/Library/pnpm"
+if not string match -q -- $PNPM_HOME $PATH
+  set -gx PATH "$PNPM_HOME" $PATH
+end
+# pnpm end
