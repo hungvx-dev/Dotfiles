@@ -50,7 +50,7 @@ install_fish() {
 install_setup_tmux() {
   info "Installing and setting tmux"
   ./bootstrap/macos/tmux.sh
-  success "Installed and setted tmux"
+  success "Tmux done"
 }
 
 install_tools() {
@@ -71,22 +71,23 @@ install_tools() {
     1password-cli \
     notion \
     raycast \
+    openkey \
     google-chrome \
     orbstack
 
   brew install vlc zoom obs
 
   brew install \
-    openkey \
     fnm \
     git-delta \
     fzf \
     zoxide \
     lazygit \
-    exercism \
     btop \
-    tree \
+    eza \
+    exercism \
     awscli
+    # tree # replace by eza --tree
   success "Installed tools"
 }
 
@@ -139,7 +140,7 @@ setup_mac_config() {
   # hide desktop icons
   killall Finder
 
-  # reduce keyrepeat for faster typing in vim
+  # reduce key repeat for faster typing in vim
   # defaults write -g InitialKeyRepeat -int 10 # normal minimum is 15 (225 ms)
   # defaults write -g KeyRepeat -int 1         # normal minimum is 2 (30 ms)
   # defaults write -g ApplePressAndHoldEnabled -bool false

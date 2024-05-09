@@ -14,6 +14,7 @@ M.opts = {
     "conf",
     "fish",
     "yml",
+    "toml",
     ".gitconfig",
   },
   user_default_options = {
