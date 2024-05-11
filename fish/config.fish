@@ -2,7 +2,6 @@ set -x LC_ALL en_US.UTF-8
 set -x LANG en_US.UTF-8
 
 set -gx EDITOR nvim
-set -gx NVM_DIR $HOME/.nvm
 
 ### Vi key mode
 set fish_cursor_default block
@@ -13,6 +12,10 @@ fish_vi_key_bindings
 
 ### starship
 starship init fish | source
+
+### fzf
+# fzf --fish | source
+### End fzf
 
 ### Run alias
 set fish_path $HOME/.config/fish

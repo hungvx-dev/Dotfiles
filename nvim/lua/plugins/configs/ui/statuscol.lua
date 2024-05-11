@@ -7,13 +7,15 @@ function M.setup()
   end
   local builtin = require("statuscol.builtin")
   M.opts = {
+    -- ft_ignore = { "neo-tree", 'oil' },
+    bt_ignore = { "terminal" },
     segments = {
       { text = { builtin.foldfunc }, click = "v:lua.ScFa" },
-      { text = { "%s" },             click = "v:lua.ScSa" },
+      { text = { "%s" }, click = "v:lua.ScSa" },
       {
-        text      = { "", builtin.lnumfunc, " " },
+        text = { "", builtin.lnumfunc, " " },
         condition = { true, builtin.not_empty },
-        click     = "v:lua.ScLa",
+        click = "v:lua.ScLa",
       },
     },
   }
