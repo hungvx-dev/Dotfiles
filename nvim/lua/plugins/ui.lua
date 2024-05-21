@@ -33,6 +33,7 @@ return {
       "kevinhwang91/promise-async",
       {
         "luukvbaal/statuscol.nvim",
+        event = "VeryLazy",
         config = require("plugins.configs.ui.statuscol").setup,
       },
     },
