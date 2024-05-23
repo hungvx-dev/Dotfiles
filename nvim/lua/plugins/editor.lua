@@ -54,7 +54,7 @@ return {
   {
     "folke/todo-comments.nvim",
     cmd = { "TodoTrouble", "TodoTelescope" },
-    event = { "BufReadPost", "BufNewFile" },
+    -- event = { "BufReadPost", "BufNewFile" },
     keys = require("plugins.configs.editor.todo-comments").keys,
     config = require("plugins.configs.editor.todo-comments").setup,
   },
@@ -109,7 +109,7 @@ return {
   -- better diagnostics list and others
   {
     "folke/trouble.nvim",
-    cmd = { "TroubleToggle", "Trouble" },
+    -- cmd = { "TroubleToggle", "Trouble" },
     opts = { use_diagnostic_signs = true },
     keys = require("plugins.configs.editor.trouble").keys,
   },
@@ -124,8 +124,7 @@ return {
   },
   {
     "mg979/vim-visual-multi",
-    event = { "BufReadPre", "BufNewFile" },
-    lazy = true,
+    -- event = { "BufReadPre", "BufNewFile" },
     config = function()
       vim.g.VM_leader = "\\"
     end,
@@ -140,7 +139,6 @@ return {
   -- Dap
   {
     "mfussenegger/nvim-dap",
-    lazy = true,
     enabled = false,
     dependencies = {
       -- fancy UI for the debugger
