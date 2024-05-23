@@ -1,34 +1,33 @@
-local keymap = vim.api.nvim_set_keymap
-local default_opts = { noremap = true, silent = true }
+local setKeyMap = vim.keymap.set
 
 -- Better indent
-keymap("v", "<", "<gv", default_opts)
-keymap("v", ">", ">gv", default_opts)
+setKeyMap("v", "<", "<gv")
+setKeyMap("v", ">", ">gv")
 
-keymap("n", "H", "^", default_opts)
-keymap("n", "L", "$", default_opts)
-keymap("v", "H", "^", default_opts)
-keymap("v", "L", "g_", default_opts)
+setKeyMap("n", "H", "^")
+setKeyMap("n", "L", "$")
+setKeyMap("v", "H", "^")
+setKeyMap("v", "L", "g_")
 
 -- Paste over currently selected text without yanking it
-keymap("v", "p", '"_dP', default_opts)
+setKeyMap("v", "p", '"_dP')
 
 -- Cancel search highlighting with ESC
-keymap("n", "<leader><CR>", ":nohlsearch<Bar>:echo<CR>", default_opts)
+setKeyMap("n", "<leader><CR>", ":nohlsearch<Bar>:echo<CR>")
 
 -- Scrolling
-keymap("n", "<C-d>", "10j", default_opts)
-keymap("n", "<C-u>", "10k", default_opts)
+setKeyMap("n", "<C-d>", "10j")
+setKeyMap("n", "<C-u>", "10k")
 
 -- ReSizing panes
-keymap("n", "<leader>=", ":vertical resize +5<CR>", default_opts)
-keymap("n", "<leader>-", ":vertical resize -5<CR>", default_opts)
-keymap("n", "<leader>_", ":resize -2<CR>", default_opts)
-keymap("n", "<leader>+", ":resize +2<CR>", default_opts)
+setKeyMap("n", "<leader>=", ":vertical resize +5<CR>")
+setKeyMap("n", "<leader>-", ":vertical resize -5<CR>")
+setKeyMap("n", "<leader>_", ":resize -2<CR>")
+setKeyMap("n", "<leader>+", ":resize +2<CR>")
 
-keymap("n", "gT", ":bprevious<cr>", default_opts)
-keymap("n", "gt", ":bnext<cr>", default_opts)
+setKeyMap("n", "gT", ":bprevious<cr>")
+setKeyMap("n", "gt", ":bnext<cr>")
 
-keymap("n", "<C-q>", ":q<cr>", default_opts)
-keymap("n", "<C-s>", ":silent! w<cr>", default_opts)
-keymap("i", "<C-s>", "<ESC>:silent! w<cr>", default_opts)
+setKeyMap("n", "<C-q>", ":q<cr>")
+setKeyMap("n", "<C-s>", ":silent! w<cr>")
+setKeyMap("i", "<C-s>", "<ESC>:silent! w<cr>")
