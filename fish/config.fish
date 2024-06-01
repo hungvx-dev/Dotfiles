@@ -53,11 +53,17 @@ end
 set -gx LG_CONFIG_FILE "$HOME/.config/lazygit/config.yml"
 # end
 
+### python
 pyenv init - | source
+# end
 
-# pnpm
+### pnpm
 set -gx PNPM_HOME "/Users/hungvx.dev/Library/pnpm"
 if not string match -q -- $PNPM_HOME $PATH
-  set -gx PATH "$PNPM_HOME" $PATH
+    set -gx PATH "$PNPM_HOME" $PATH
 end
-# pnpm end
+### pnpm end
+
+### gcloud
+source "$(brew --prefix)/share/google-cloud-sdk/path.fish.inc"
+### end
