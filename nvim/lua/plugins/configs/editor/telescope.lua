@@ -73,7 +73,7 @@ function M.opts()
       },
       file_ignore_patterns = {
         "CHANGELOG.md",
-        ".git/",
+        "^.git/",
         "target/",
         "docs/",
         "vendor/*",
