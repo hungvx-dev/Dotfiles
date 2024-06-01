@@ -1,12 +1,7 @@
 local M = {}
 
 M.opts = {
-  signs = {
-    Error = HVIM.icons.Diagnostics.Error,
-    Warn = HVIM.icons.Diagnostics.Warning,
-    Hint = HVIM.icons.Diagnostics.Hint,
-    Info = HVIM.icons.Diagnostics.Information,
-  },
+  signs = HVIM.signs,
   diagnostic = {
     underline = true,
     update_in_insert = false,

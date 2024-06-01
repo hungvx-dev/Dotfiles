@@ -24,6 +24,14 @@ M.opts = {
     modified = {
       symbol = HVIM.icons.Git.LineModified,
     },
+    diagnostics = {
+      symbols = {
+        hint = HVIM.signs.Hint,
+        info = HVIM.signs.Info,
+        warn = HVIM.signs.Warn,
+        error = HVIM.signs.Error,
+      },
+    },
     git_status = {
       symbols = {
         -- Change type

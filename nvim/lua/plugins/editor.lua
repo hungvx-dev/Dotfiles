@@ -130,9 +130,17 @@ return {
     end,
   },
   {
-    "szw/vim-maximizer",
+    "0x00-ketsu/maximizer.nvim",
+    enabled = false,
+    config = function()
+      require("maximizer").setup({
+        -- your configuration comes here
+        -- or leave it empty to use the default settings
+        -- refer to the configuration section below
+      })
+    end,
     keys = {
-      { "<C-w>f", "<cmd>MaximizerToggle<CR>", desc = "Maximize/minimize a split" },
+      { "<C-w>f", "<cmd>lua require('maximizer').toggle()<CR>", desc = "Maximize/minimize a split" },
     },
   },
 
@@ -169,7 +177,7 @@ return {
     dependencies = { "MunifTanjim/nui.nvim", "nvim-lua/plenary.nvim" },
     enabled = false,
     event = "BufEnter",
-    config = function(opts)
+    config = function()
       require("hardtime").setup({
         disabled_filetypes = { "qf", "netrw", "lazy", "mason", "neo-tree" },
       })
