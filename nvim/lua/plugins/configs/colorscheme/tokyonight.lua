@@ -29,7 +29,7 @@ tokyonight.setup({
     colors.black = colors.bg
 
     colors.bg_popup = "#1a1b26"
-    colors.comment = "#a9b3d9"
+    colors.comment = "#b9b9d9"
     colors.fg_gutter = "#394b70"
     -- colors.megenta = "#bb4af7"
     -- colors.fg = "#ffffff"
@@ -43,6 +43,6 @@ tokyonight.setup({
     hl.CursorLine = { bg = colors.none }
     hl.Cursor = { bg = colors.blue1 }
     hl.PmenuSbar = { bg = colors.none }
-    -- hl.MatchParen.bg = "#292e42" -- for () {} []
+    hl.GitSignsCurrentLineBlame = { fg = "#5e647a" }
   end,
 })
