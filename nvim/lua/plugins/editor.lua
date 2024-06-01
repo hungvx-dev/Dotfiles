@@ -1,5 +1,5 @@
 return {
-  -- file explorer
+  -- File explorer
   {
     "nvim-neo-tree/neo-tree.nvim",
     cmd = "Neotree",
@@ -124,7 +124,7 @@ return {
   },
   {
     "mg979/vim-visual-multi",
-    -- event = { "BufReadPre", "BufNewFile" },
+    event = { "BufReadPre", "BufNewFile" },
     config = function()
       vim.g.VM_leader = "\\"
     end,
@@ -162,5 +162,17 @@ return {
     },
     keys = require("plugins.configs.editor.dap.core").keys,
     config = require("plugins.configs.editor.dap.core").setup,
+  },
+
+  {
+    "m4xshen/hardtime.nvim",
+    dependencies = { "MunifTanjim/nui.nvim", "nvim-lua/plenary.nvim" },
+    enabled = false,
+    event = "BufEnter",
+    config = function(opts)
+      require("hardtime").setup({
+        disabled_filetypes = { "qf", "netrw", "lazy", "mason", "neo-tree" },
+      })
+    end,
   },
 }
