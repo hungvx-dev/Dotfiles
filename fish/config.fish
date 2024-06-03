@@ -4,11 +4,13 @@ set -x LANG en_US.UTF-8
 set -gx EDITOR nvim
 
 ### Vi key mode
-set fish_cursor_default block
-set fish_cursor_insert line
-set fish_cursor_replace_one underscore
-set fish_cursor_visual block
 fish_vi_key_bindings
+set fish_cursor_default block blink
+set fish_cursor_insert line blink
+set fish_cursor_replace_one underscore
+set fish_cursor_replace underscore
+set fish_cursor_external line
+set fish_cursor_visual block
 
 ### starship
 starship init fish | source

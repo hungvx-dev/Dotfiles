@@ -114,3 +114,7 @@ opt.fillchars = {
   foldopen = "",
   foldclose = "",
 }
+
+-- cursor blinking
+opt.guicursor:append("a:blinkwait701-blinkoff400-blinkon250-Cursor/lCursor,sm:block-blinkwait176-blinkoff150-blinkon175")
+
