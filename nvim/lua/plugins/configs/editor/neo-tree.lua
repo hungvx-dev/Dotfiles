@@ -44,7 +44,7 @@ M.opts = {
         ignored = HVIM.icons.Git.FileIgnored,
         unstaged = HVIM.icons.Git.FileUnstaged,
         staged = HVIM.icons.Git.FileStaged,
-        conflict = HVIM.icons.Git.FileUnmerged,
+        conflict = HVIM.icons.Git.FileConflict,
       },
     },
   },

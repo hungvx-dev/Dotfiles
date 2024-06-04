@@ -209,7 +209,7 @@ return {
     FileDeleted   = "",
     FileRenamed   = "󰑕",
     FileStaged    = "",
-    FileUnmerged  = "",
+    FileConflict  = "",
     FileUnstaged  = "",
     FileUntracked = "",
     Diff          = "",

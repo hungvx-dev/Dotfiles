@@ -59,8 +59,6 @@ install_tools() {
     karabiner-elements \
     cloudflare-warp \
     discord \
-    figma \
-    gitkraken \
     spotify \
     xmind \
     postman \
@@ -68,14 +66,19 @@ install_tools() {
     telegram-desktop \
     google-chrome \
     visual-studio-code \
-    1password-cli \
     notion \
     raycast \
     openkey \
     google-chrome \
     orbstack
+    # 1password-cli \
+    # figma \
+    # gitkraken \
 
-  brew install vlc zoom obs
+  brew install \
+    vlc \
+    zoom
+    # obs
 
   brew install \
     fnm \
