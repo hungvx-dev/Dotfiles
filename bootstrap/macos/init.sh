@@ -107,12 +107,12 @@ install_deps_tools() {
 
 install_fonts() {
   info "Installing tools"
-  brew tap homebrew/cask-fonts
-  brew install \
-    font-jetbrains-mono \
-    font-caskaydia-cove-nerd-font \
-    font-fira-code-nerd-font \
-    font-hack-nerd-font
+  # brew tap homebrew/cask-fonts
+  brew install --cask \
+    font-jetbrains-mono-nerd-font
+    # font-caskaydia-cove-nerd-font \
+    # font-fira-code-nerd-font \
+    # font-hack-nerd-font
 
   success "Installed fonts"
 }
