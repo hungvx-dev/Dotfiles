@@ -10,9 +10,9 @@ tmux send-keys "nvim" C-m
 # Lazygit window
 lazygitDotfilesWindow="lazygit"
 tmux new-window -c ~/Dev/Dotfiles -t $dotfilesSession:2 -n $lazygitDotfilesWindow
-tmux send-keys "lazygit" C-m
+tmux send-keys "TERM=xterm-kitty lazygit" C-m
 
-tmux split-window -c ~/Dev/Dotfiles -v -p 6
+tmux split-window -c ~/Dev/Dotfiles -v
 tmux send-keys "cl" C-m
 
 
@@ -45,5 +45,6 @@ tmux send-keys "cd ./backend && cl" C-m
 # tmux split-window -c ~/Work/Hodfords -v -p 6
 # tmux split-window -c ~/Work/Hodfords -h -p 50
 #
-# tmux select-window -t $dotfilesSession:1
-# tmux attach-session -t $dotfilesSession
+
+tmux select-window -t $dotfilesSession:1
+tmux attach-session -t $dotfilesSession
