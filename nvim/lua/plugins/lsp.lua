@@ -20,7 +20,11 @@ return {
       "williamboman/mason-lspconfig.nvim",
       "antosha417/nvim-lsp-file-operations",
       "jose-elias-alvarez/typescript.nvim",
-      "b0o/SchemaStore.nvim",
+      {
+        "b0o/SchemaStore.nvim",
+        lazy = true,
+        version = false,
+      },
     },
     config = require("plugins.configs.lsp.nvim-lspconfig").setup,
   },

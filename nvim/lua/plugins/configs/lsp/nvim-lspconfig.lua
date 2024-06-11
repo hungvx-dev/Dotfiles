@@ -45,7 +45,6 @@ function M.setup()
   require("plugins.configs.lsp.mason-lspconfig").setup(ensure_installed, setup)
   require("plugins.configs.lsp.diagnostic").setup()
   require("plugins.configs.lsp.keymaps")
-  require("plugins.configs.lsp.functions").fixConflictTsLanguage()
 end
 
 return M
