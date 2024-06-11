@@ -52,8 +52,8 @@ function M.setup()
 
   if M.enable_eslint() then
     table.insert(M.sources, require("none-ls.formatting.eslint_d"))
-    table.insert(M.sources, require("none-ls.diagnostics.eslint"))
-    table.insert(M.sources, require("none-ls.code_actions.eslint"))
+    table.insert(M.sources, require("none-ls.diagnostics.eslint_d"))
+    table.insert(M.sources, require("none-ls.code_actions.eslint_d"))
   end
 
   null_ls.setup({
