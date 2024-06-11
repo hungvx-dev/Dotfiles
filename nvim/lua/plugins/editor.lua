@@ -46,7 +46,7 @@ return {
   {
     "lukas-reineke/indent-blankline.nvim",
     main = "ibl",
-    event = { "BufReadPost", "BufNewFile" },
+    event = { "BufReadPost", "BufNewFile", "BufWritePre" },
     config = require("plugins.configs.editor.indent-blankline").setup,
   },
 
@@ -54,7 +54,7 @@ return {
   {
     "folke/todo-comments.nvim",
     cmd = { "TodoTrouble", "TodoTelescope" },
-    -- event = { "BufReadPost", "BufNewFile" },
+    event = { "BufReadPost", "BufNewFile", "BufWritePre" },
     keys = require("plugins.configs.editor.todo-comments").keys,
     config = require("plugins.configs.editor.todo-comments").setup,
   },

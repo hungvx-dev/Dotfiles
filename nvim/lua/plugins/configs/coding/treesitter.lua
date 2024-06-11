@@ -8,6 +8,7 @@ M.ensure_installed = {
   "css",
   "bash",
   "json",
+  "json5",
   "tsx",
   "vue",
   "yaml",

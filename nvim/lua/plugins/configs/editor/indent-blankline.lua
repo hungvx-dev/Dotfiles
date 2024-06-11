@@ -1,10 +1,24 @@
 local M = {}
 M.opts = {
-  exclude = { filetypes = { "lazy", "neo-tree", "mason", "alpha", "dashboard" } },
+  exclude = {
+    filetypes = {
+      "lazy",
+      "neo-tree",
+      "mason",
+      "help",
+      "alpha",
+      "dashboard",
+      "Trouble",
+      "trouble",
+      "notify",
+      "toggleterm",
+      "lazyterm",
+    },
+  },
   indent = { char = HVIM.icons.UI.Line.Left },
 }
 
-M.setup = function(opts)
+M.setup = function()
   local status_ok, indent_blankline = pcall(require, "ibl")
   if not status_ok then
     return
