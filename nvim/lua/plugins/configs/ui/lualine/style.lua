@@ -12,7 +12,6 @@ local style = {
         "help",
         "dashboard",
         "alpha",
-        "neo-tree",
         "TelescopePrompt",
       },
     },
