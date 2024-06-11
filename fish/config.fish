@@ -71,4 +71,7 @@ source "$(brew --prefix)/share/google-cloud-sdk/path.fish.inc"
 ### end
 
 ### Tmux
+set -Ux fish_tmux_autostart false
+set -Ux fish_tmux_autostart_once false
 set -Ux fish_tmux_config $HOME/.config/tmux/tmux.conf
+###
