@@ -50,10 +50,10 @@ function M.opts()
     },
     sources = cmp.config.sources({
       { name = "nvim_lsp", priority = 9 },
-      { name = "luasnip", priority = 8, max_item_count = 8 },
+      { name = "luasnip", priority = 6, max_item_count = 10 },
       { name = "path", priority = 4 },
     }, {
-      { name = "buffer", priority = 7, keywork_length = 5, max_item_count = 6 },
+      { name = "buffer", priority = 5, keywork_length = 5, max_item_count = 6 },
     }),
     formatting = {
       fields = { "abbr", "kind", "menu" },
