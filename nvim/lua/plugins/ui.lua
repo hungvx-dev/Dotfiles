@@ -30,10 +30,10 @@ return {
     "kevinhwang91/nvim-ufo",
     event = "BufReadPost",
     dependencies = {
-      "kevinhwang91/promise-async",
+      { "kevinhwang91/promise-async" },
       {
         "luukvbaal/statuscol.nvim",
-        event = { "VeryLazy", "BufReadPre", "BufNewFile" },
+        event = { "VeryLazy" },
         config = require("plugins.configs.ui.statuscol").setup,
       },
     },

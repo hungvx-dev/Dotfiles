@@ -33,6 +33,13 @@ opt.foldcolumn = "1"
 opt.foldenable = true
 opt.foldlevel = 99
 opt.foldlevelstart = 99
+opt.fillchars = {
+  eob = " ",
+  fold = " ",
+  foldsep = "│",
+  foldopen = "",
+  foldclose = "",
+}
 -- opt.foldmethod = "expr"
 -- opt.foldexpr = "nvim_treesitter#foldexpr()"
 
@@ -107,14 +114,7 @@ opt.list = true
 opt.listchars = { extends = "→", nbsp = "·", eol = "↴", trail = "·", tab = "  " }
 opt.backspace = "indent,eol,start"
 
-opt.fillchars = {
-  eob = " ",
-  fold = " ",
-  foldsep = "│",
-  foldopen = "",
-  foldclose = "",
-}
-
 -- cursor blinking
-opt.guicursor:append("a:blinkwait701-blinkoff400-blinkon250-Cursor/lCursor,sm:block-blinkwait176-blinkoff150-blinkon175")
-
+opt.guicursor:append(
+  "a:blinkwait701-blinkoff400-blinkon250-Cursor/lCursor,sm:block-blinkwait176-blinkoff150-blinkon175"
+)

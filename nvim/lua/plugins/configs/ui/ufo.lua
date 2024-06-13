@@ -43,14 +43,21 @@ function M.setup()
     return
   end
 
-  ufo.setup()
-  -- ufo.setup({
-  -- close_fold_kinds = { "imports", "comment" },
-  -- provider_selector = function(bufnr, filetype, buftype)
-  --   return { 'treesitter', 'indent' }
-  -- end,
-  -- fold_virt_text_handler = M.handler,
-  -- })
+  vim.api.nvim_create_autocmd("FileType", {
+    pattern = { "neo-tree" },
+    callback = function()
+      ufo.detach()
+      vim.opt_local.foldenable = false
+    end,
+  })
+
+  ufo.setup({
+    close_fold_kinds = { "imports", "comment" },
+    provider_selector = function()
+      return { "treesitter", "indent" }
+    end,
+    fold_virt_text_handler = M.handler,
+  })
 end
 
 return M

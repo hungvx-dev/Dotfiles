@@ -1,4 +1,5 @@
 local M = {}
+
 M.opts = {
   sources = { "filesystem", "buffers", "git_status", "document_symbols" },
   open_files_do_not_replace_types = { "terminal", "Trouble", "qf", "Outline" },
@@ -143,23 +144,6 @@ function M.setup()
   end
 
   neo_tree.setup(M.opts)
-  vim.api.nvim_create_autocmd("TermClose", {
-    pattern = "*lazygit",
-    callback = function()
-      if package.loaded["neo-tree.sources.git_status"] then
-        require("neo-tree.sources.git_status").refresh()
-      end
-    end,
-  })
-
-  vim.api.nvim_create_autocmd("FileType", {
-    pattern = { "neo-tree" },
-    callback = function()
-      require("ufo").detach()
-      vim.opt_local.foldenable = false
-    end,
-  })
-
   vim.cmd([[nnoremap \ :Neotree reveal<cr>]])
 end
 
