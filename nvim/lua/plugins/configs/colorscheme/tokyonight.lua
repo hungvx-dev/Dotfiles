@@ -13,7 +13,7 @@ tokyonight.setup({
     comments = { italic = true },
     keywords = { italic = true },
     functions = { italic = true },
-    variables = "NONE",
+    variables = {},
     sidebars = "transparent",
     floats = "transparent",
   },
