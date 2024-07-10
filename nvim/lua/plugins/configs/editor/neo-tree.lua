@@ -143,6 +143,15 @@ function M.setup()
     return
   end
 
+  vim.api.nvim_create_autocmd("FileType", {
+    pattern = { "neo-tree" },
+    callback = function()
+      local _, ufo = pcall(require, "ufo")
+      ufo.detach()
+      vim.opt_local.foldenable = false
+    end,
+  })
+
   neo_tree.setup(M.opts)
   vim.cmd([[nnoremap \ :Neotree reveal<cr>]])
 end

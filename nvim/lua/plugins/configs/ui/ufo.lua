@@ -42,17 +42,8 @@ function M.setup()
   if not present then
     return
   end
-
-  vim.api.nvim_create_autocmd("FileType", {
-    pattern = { "neo-tree" },
-    callback = function()
-      ufo.detach()
-      vim.opt_local.foldenable = false
-    end,
-  })
-
   ufo.setup({
-    close_fold_kinds = { "imports", "comment" },
+    close_fold_kinds_for_ft = { "imports", "comment" },
     provider_selector = function()
       return { "treesitter", "indent" }
     end,
