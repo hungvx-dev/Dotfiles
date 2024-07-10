@@ -35,7 +35,6 @@ local opts = {
     end,
   },
   indent = { enable = true, disable = { "python", "yaml" } },
-  autotag = { enable = true },
   rainbow = {
     enable = true,
     extended_mode = true,

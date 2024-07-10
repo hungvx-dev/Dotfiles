@@ -7,7 +7,11 @@ return {
     dependencies = {
       { "JoosepAlviste/nvim-ts-context-commentstring", event = { "BufReadPost" } },
       { "nvim-treesitter/nvim-treesitter-textobjects", event = { "BufReadPost" } },
-      { "windwp/nvim-ts-autotag", event = { "BufReadPost" } },
+      {
+        "windwp/nvim-ts-autotag",
+        event = { "BufReadPost" },
+        config = require("plugins.configs.coding.autotag").setup,
+      },
       {
         "windwp/nvim-autopairs",
         event = "InsertEnter",
