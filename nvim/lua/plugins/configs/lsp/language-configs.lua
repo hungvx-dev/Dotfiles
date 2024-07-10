@@ -191,21 +191,16 @@ M.servers = {
       "postcss.config.ts"
     ),
     filetypes = { "html", "typescriptreact", "vue", "javascriptreact" },
-    -- settings = {
-    --   tailwindCSS = {
-    --     experimental = {
-    --       classRegex = {
-    --         "tw`([^`]*)",
-    --         'tw="([^"]*)',
-    --         'tw={"([^"}]*)',
-    --         "tw\\.\\w+`([^`]*)",
-    --         "tw\\(.*?\\)`([^`]*)",
-    --         { "clsx\\(([^)]*)\\)", "(?:'|\"|`)([^']*)(?:'|\"|`)" },
-    --         { "classnames\\(([^)]*)\\)", "'([^']*)'" },
-    --       },
-    --     },
-    --   },
-    -- },
+    settings = {
+      tailwindCSS = {
+        experimental = {
+          classRegex = {
+            { "cva\\(([^)]*)\\)", "[\"'`]([^\"'`]*).*?[\"'`]" },
+            { "cx\\(([^)]*)\\)", "(?:'|\"|`)([^']*)(?:'|\"|`)" },
+          },
+        },
+      },
+    },
   },
 }
 
