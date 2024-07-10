@@ -4,7 +4,7 @@ local colors = require("tokyonight.colors").setup()
 vim.api.nvim_set_hl(0, "SLGitIcon", { fg = "#E8AB53", bg = "#303030" })
 vim.api.nvim_set_hl(0, "SLBranchName", { fg = "#D4D4D4", bg = "#303030", bold = true })
 vim.api.nvim_set_hl(0, "SLProgress", { fg = "#D4D4D4", bg = "#303030" })
-vim.api.nvim_set_hl(0, "SLSeparator", { fg = "#808080", bg = "#252525" })
+vim.api.nvim_set_hl(0, "SLSeparator", { fg = "#808080", bg = "NONE" })
 vim.api.nvim_set_hl(0, "SLProgress", { fg = "#D7BA7D", bg = "#252525" })
 
 local function diff_source()
@@ -116,7 +116,7 @@ return {
 
   spaces = {
     function()
-      local shiftwidth = vim.api.nvim_buf_get_option(0, "shiftwidth")
+      local shiftwidth = vim.filetype.get_option("vim", "shiftwidth")
       return HVIM.icons.UI.Tab .. " " .. shiftwidth
     end,
     padding = 0,
@@ -129,7 +129,7 @@ return {
     color = {},
     cond = conditions.hide_in_width,
   },
-  filetype = { "filetype", cond = nil, padding = { left = 1, right = 1 } },
+  filetype = { "filetype", cond = nil, padding = { left = 1, right = 1 }, color = {} },
   scrollbar = {
     function()
       local current_line = vim.fn.line(".")
@@ -146,7 +146,7 @@ return {
   lsp = {
     function(msg)
       msg = msg or "LS Inactive"
-      local buf_clients = vim.lsp.buf_get_clients()
+      local buf_clients = vim.lsp.get_clients()
       if next(buf_clients) == nil then
         -- TODO: clean up this if statement
         if type(msg) == "boolean" or #msg == 0 then
