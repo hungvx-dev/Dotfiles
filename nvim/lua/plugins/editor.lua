@@ -109,7 +109,7 @@ return {
   -- better diagnostics list and others
   {
     "folke/trouble.nvim",
-    -- cmd = { "TroubleToggle", "Trouble" },
+    cmd = { "Trouble" },
     opts = { use_diagnostic_signs = true },
     keys = require("plugins.configs.editor.trouble").keys,
   },
