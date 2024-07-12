@@ -6,7 +6,7 @@ local general = augroup("General Settings", { clear = true })
 
 -- autocmd("BufRead", {
 --   callback = function()
---     vim.wo.scroll = 10
+--     vim.opt.scroll = 10
 --   end,
 --   group = general,
 -- })
@@ -64,5 +64,5 @@ autocmd("FileType", {
     vim.opt_local.foldcolumn = "0"
   end,
   group = general,
-  desc = "Enable Wrap in these filetypes",
+  desc = "Disable neo-tree fold",
 })
