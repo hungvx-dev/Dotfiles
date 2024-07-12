@@ -20,7 +20,6 @@ return {
     config = require("plugins.configs.ui.lualine").setup,
   },
 
-  -- statusline
   {
     "stevearc/dressing.nvim",
     event = "VeryLazy",

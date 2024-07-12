@@ -104,7 +104,7 @@ M.opts = {
       },
       mappings = {
         -- ["<space>"] = "none",
-        ["A"] = "command_b",
+        -- ["A"] = "command_b",
         ["Y"] = "copy_selector_path",
         ["<C-x>"] = "split_with_window_picker",
         ["<C-v>"] = "vsplit_with_window_picker",
@@ -142,15 +142,6 @@ function M.setup()
   if not status_ok then
     return
   end
-
-  vim.api.nvim_create_autocmd("FileType", {
-    pattern = { "neo-tree" },
-    callback = function()
-      local _, ufo = pcall(require, "ufo")
-      ufo.detach()
-      vim.opt_local.foldenable = false
-    end,
-  })
 
   neo_tree.setup(M.opts)
   vim.cmd([[nnoremap \ :Neotree reveal<cr>]])

@@ -54,3 +54,15 @@ autocmd("FileType", {
   group = general,
   desc = "Enable Wrap in these filetypes",
 })
+
+autocmd("FileType", {
+  pattern = { "neo-tree" },
+  callback = function()
+    local _, ufo = pcall(require, "ufo")
+    ufo.detach()
+    vim.opt_local.foldenable = false
+    vim.opt_local.foldcolumn = "0"
+  end,
+  group = general,
+  desc = "Enable Wrap in these filetypes",
+})
