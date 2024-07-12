@@ -12,7 +12,7 @@ return {
     config = require("plugins.configs.ui.bufferline").setup,
   },
 
-  -- statusline
+  -- Status line
   {
     "nvim-lualine/lualine.nvim",
     event = "VeryLazy",

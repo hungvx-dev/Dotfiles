@@ -40,8 +40,6 @@ opt.fillchars = {
   foldopen = "",
   foldclose = "",
 }
--- opt.foldmethod = "expr"
--- opt.foldexpr = "nvim_treesitter#foldexpr()"
 
 -- Undo/ReUndo
 opt.undofile = true --Save undo history
@@ -94,7 +92,7 @@ opt.splitright = true
 -- opt.formatoptions:remove("t")
 -- opt.formatoptions:remove("r")
 -- opt.formatoptions:remove("o")
--- opt.formatoptions:remove("r")
+-- opt.formatoptions:remove("c")
 -- opt.formatoptions:remove("j")
 -- opt.formatoptions:remove("q")
 
