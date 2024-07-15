@@ -33,7 +33,6 @@ function M.setup()
   for server, server_opts in pairs(lServers) do
     if server_opts then
       server_opts = server_opts == true and {} or server_opts
-      -- run manual setup if mason=false or if this is a server that cannot be installed with mason-lspconfig
       if server_opts.mason == false then
         setup(server)
       else

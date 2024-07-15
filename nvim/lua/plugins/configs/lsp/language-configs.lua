@@ -82,6 +82,7 @@ M.servers = {
     },
   },
   volar = {
+    enabled = true,
     filetypes = { "vue" },
     init_options = {
       vue = {
@@ -109,7 +110,7 @@ M.servers = {
         },
       },
     },
-    filetypes = { "typescript", "javascript", "javascriptreact", "typescriptreact", "vue" },
+    filetypes = { "typescript", "javascript", "javascriptreact", "typescriptreact" },
     settings = {
       typescript = {
         format = {
@@ -131,7 +132,8 @@ M.servers = {
     },
   },
   vtsls = {
-    root_dir = require("lspconfig/util").root_pattern("tsconfig.json", "package.json", "jsconfig.json"),
+    enabled = true,
+    -- root_dir = require("lspconfig/util").root_pattern("tsconfig.json", "package.json", "jsconfig.json"),
     filetypes = {
       "javascript",
       "javascriptreact",
@@ -142,7 +144,6 @@ M.servers = {
       "vue",
     },
     settings = {
-      complete_function_calls = true,
       vtsls = {
         tsserver = {
           globalPlugins = {
@@ -163,7 +164,22 @@ M.servers = {
           },
         },
       },
+      complete_function_calls = true,
       typescript = {
+        updateImportsOnFileMove = { enabled = "always" },
+        suggest = {
+          completeFunctionCalls = true,
+        },
+        inlayHints = {
+          enumMemberValues = { enabled = true },
+          functionLikeReturnTypes = { enabled = true },
+          parameterNames = { enabled = "literals" },
+          parameterTypes = { enabled = true },
+          propertyDeclarationTypes = { enabled = true },
+          variableTypes = { enabled = false },
+        },
+      },
+      javascript = {
         updateImportsOnFileMove = { enabled = "always" },
         suggest = {
           completeFunctionCalls = true,
@@ -206,7 +222,7 @@ M.servers = {
 
 M.setup = {
   tsserver = function(_, opts)
-    require("typescript").setup({ server = opts })
+    -- require("typescript").setup({ server = opts })
     return true
   end,
 }
