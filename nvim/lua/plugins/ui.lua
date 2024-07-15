@@ -21,11 +21,6 @@ return {
   },
 
   {
-    "stevearc/dressing.nvim",
-    event = "VeryLazy",
-  },
-
-  {
     "kevinhwang91/nvim-ufo",
     event = "BufReadPost",
     dependencies = {
@@ -44,5 +39,10 @@ return {
     event = "VimEnter",
     dependencies = { "nvim-tree/nvim-web-devicons" },
     config = require("plugins.configs.ui.alpha").setup,
+  },
+
+  {
+    "stevearc/dressing.nvim",
+    event = "VeryLazy",
   },
 }
