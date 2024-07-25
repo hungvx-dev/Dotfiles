@@ -134,11 +134,7 @@ return {
     "0x00-ketsu/maximizer.nvim",
     enabled = false,
     config = function()
-      require("maximizer").setup({
-        -- your configuration comes here
-        -- or leave it empty to use the default settings
-        -- refer to the configuration section below
-      })
+      require("maximizer").setup({})
     end,
     keys = {
       { "<C-w>f", "<cmd>lua require('maximizer').toggle()<CR>", desc = "Maximize/minimize a split" },

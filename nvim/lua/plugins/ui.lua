@@ -27,7 +27,7 @@ return {
       { "kevinhwang91/promise-async" },
       {
         "luukvbaal/statuscol.nvim",
-        event = { "VeryLazy" },
+        event = { "VeryLazy", "BufNewFile" },
         config = require("plugins.configs.ui.statuscol").setup,
       },
     },
