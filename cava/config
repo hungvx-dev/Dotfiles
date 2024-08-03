@@ -89,7 +89,7 @@ bar_spacing = 1
 ; source = auto
 
 method = portaudio
-source = "Background Music"
+source = "Loopback Audio"
 
 
 [output]
