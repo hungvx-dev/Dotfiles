@@ -21,8 +21,8 @@ abbr pn pnpm
 abbr npm-list 'npm list -g --depth=0'
 
 
-abbr cmus 'TERM=xterm-kitty cmus'
-abbr cava 'TERM=xterm-kitty cava'
+# abbr cmus 'TERM=xterm-kitty cmus'
+# abbr cava 'TERM=xterm-kitty cava'
 abbr lz 'TERM=xterm-kitty lazygit'
 
 # command script shell
