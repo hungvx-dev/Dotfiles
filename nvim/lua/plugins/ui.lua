@@ -28,6 +28,9 @@ return {
       {
         "luukvbaal/statuscol.nvim",
         event = { "VeryLazy", "BufNewFile" },
+        keys = {
+          { "<leader>rc", "<cmd>Lazy reload statuscol.nvim<CR>", desc = "Reload statuscol" },
+        },
         config = require("plugins.configs.ui.statuscol").setup,
       },
     },
