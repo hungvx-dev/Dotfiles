@@ -8,12 +8,12 @@
   - **Theme**: [Starship](./starship)
 - **Shell**: [Fish](./fish) (or [Zsh](./zsh))
 - **IDE**: [Neovim](./neovim)
-- **WindowManagement**: [Yabai](./yabai)
+- **Window Management**: [Yabai](./yabai)
   - **Hotkey**: [skhd](./skhd)
 - **Activity Monitor**: [Btop](./btop)
 - **Git commands UI**: [Lazygit](./lazygit)
 - **Font**: [Nerd Font](https://github.com/ryanoasis/nerd-fonts) [JetBrains Mono](https://github.com/JetBrains/JetBrainsMono)
-- **Music**: [cmus](https://github.com/cmus/cmus) [cava](./cava) [Background Music](https://github.com/kyleneideck/BackgroundMusic)
+- **Music**: [cmus](https://github.com/cmus/cmus) + [cava](./cava) + [Background Music](https://github.com/kyleneideck/BackgroundMusic)/[Loopback](https://rogueamoeba.com/loopback/)
 - **Wallpapers**: [My wallpapers](./wallpapers)
 
 ## Install + setup

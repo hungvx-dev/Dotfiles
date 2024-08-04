@@ -46,6 +46,7 @@ ln -s $(pwd)/exercism ~/.config
 # Cava
 rm -rf ~/.config/cava
 ln -s $(pwd)/cava ~/.config
+ln -s $(pwd)/cmus/tokyo.theme ~/.config/cmus/tokyo.theme
 
 # Git config
 rm -rf ~/.config/ssh
