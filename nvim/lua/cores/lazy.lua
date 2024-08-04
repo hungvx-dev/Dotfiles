@@ -15,8 +15,7 @@ end
 vim.opt.rtp:prepend(lazypath)
 
 local opts = {
-  colorscheme = { HVIM.colorscheme },
-  install = { missing = true },
+  install = { missing = true, colorscheme = { HVIM.colorscheme } },
   ui = { border = "rounded" },
   git = { timeout = 120 },
   performance = {
@@ -24,13 +23,10 @@ local opts = {
       disabled_plugins = { "gzip", "netrwPlugin", "tarPlugin", "tohtml", "tutor", "zipPlugin" },
     },
   },
-  rocks = {
-    enabled = false,
-    hererocks = false,
-  },
+  rocks = { enabled = false, hererocks = false },
   debug = false,
   defaults = { lazy = true, version = nil },
-  checker = { enabled = true },
+  checker = { enabled = false },
 }
 
 require("lazy").setup("plugins", opts)
