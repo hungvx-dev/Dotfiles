@@ -149,6 +149,7 @@ return {
       -- fancy UI for the debugger
       {
         "rcarriga/nvim-dap-ui",
+        enabled = false,
         keys = require("plugins.configs.editor.dap.ui").keys,
         opts = {},
         config = require("plugins.configs.editor.dap.ui").setup,
@@ -156,6 +157,7 @@ return {
       -- mason.nvim integration
       {
         "jay-babu/mason-nvim-dap.nvim",
+        enabled = false,
         dependencies = "mason.nvim",
         cmd = { "DapInstall", "DapUninstall" },
         opts = {

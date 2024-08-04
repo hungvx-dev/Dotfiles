@@ -12,7 +12,7 @@ local function get_args(config)
   return config
 end
 
-M.otps = {}
+M.opts = {}
 
 -- stylua: ignore
 M.keys = {

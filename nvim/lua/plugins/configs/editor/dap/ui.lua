@@ -1,6 +1,6 @@
 local M = {}
 
-M.otps = {}
+M.opts = {}
 
 -- stylua: ignore
 M.keys = {

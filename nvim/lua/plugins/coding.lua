@@ -59,6 +59,7 @@ return {
       "hrsh7th/cmp-cmdline",
       "L3MON4D3/LuaSnip",
       "saadparwaiz1/cmp_luasnip",
+      { "roobert/tailwindcss-colorizer-cmp.nvim", opts = {}, enabled = false },
     },
     config = require("plugins.configs.coding.cmp").setup,
   },
