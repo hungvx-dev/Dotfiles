@@ -2,19 +2,16 @@
 "$schema" = 'https://starship.rs/config-schema.json'
 
 # Inserts a blank line between shell prompts
-add_newline = false
+add_newline = true
 
 # [  ](fg:green)\
-format = """$cmd_duration\
+format = """
 $os\
 $directory \
-($git_branch $git_commit ($git_state )$git_metrics$git_status)
-$username \
-$character
-"""
-
-right_format = """
+($git_branch $git_commit ($git_state )$git_metrics$git_status)\
+$fill\
 $time
+($sudo$hostname$username )$character
 """
 
 palette = "catppuccin-mocha"
@@ -47,16 +44,22 @@ base = "#1E1E2E"
 mantle = "#181825"
 crust = "#11111B"
 
+# [sudo]
+# disabled = false
+# symbol = "🥷"
+# style = "bold bg:base"
+# format = '[$symbol]($style)'
+
 # One line prompt
 [line_break]
 disabled = true
 
 [cmd_duration]
-format = "[◄ $duration ](italic white)"
+disabled = true
 
 [os]
 format = "[$symbol]($style)"
-style = "peach"
+style = "bold green"
 disabled = false
 
 [os.symbols]
@@ -66,15 +69,15 @@ Macos = " "
 disabled = false
 ssh_only = false
 ssh_symbol = " "
-style = "bold bg:none fg:cyan"
+style = "bold bg:none fg:blue"
 format = '[$ssh_symbol$hostname@]($style)'
 
 [username]
 disabled = false
 show_always = true
-style_user = "cyan bold italic"
-style_root = "purple bold italic"
-format = "[◈ $user]($style)"
+style_root = "bold bg:none fg:red"
+style_user = "bold bg:none fg:blue"
+format = '[$user]($style)'
 
 [directory]
 disabled = false
@@ -83,7 +86,7 @@ truncate_to_repo = false
 truncation_length = 99
 truncation_symbol = ".../"
 read_only = " "
-style = "italic bg:none fg:peach"
+style = "bold bg:none fg:cyan"
 read_only_style = "fg:red"
 format = '[$path]($style)[$readonly]($read_only_style)'
 
@@ -152,13 +155,11 @@ style = "bold bg:none fg:red"
 format = '([\[$all_status$ahead_behind\]]($style) )'
 
 [time]
-disabled = false
+disabled = true
 # time_format = "%b %d, %T"
-# time_format = "%T"
-time_format = "%R"
-format = "[$time]($style)"
-utc_time_offset = "local"
-style = "italic dimmed white"
+time_format = "%T"
+style = "bold fg:yellow"
+format = '[$time]($style)'
 
 [fill]
 disabled = false
@@ -166,9 +167,9 @@ symbol = " "
 
 [character]
 disabled = false
-success_symbol = "[➜](bold fg:cyan)"
+success_symbol = "[➜](bold fg:green)"
 error_symbol = "[x](bold fg:red)"
-vicmd_symbol = "[◎](bold cyan)"
+# vicmd_symbol = "[➜](bold fg:mauve)"
 format = "$symbol "
 
 [package]
@@ -192,4 +193,3 @@ symbol = " "
 [docker_context]
 disabled = false
 symbol = " "
-
