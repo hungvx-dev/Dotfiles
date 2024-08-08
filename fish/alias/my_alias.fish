@@ -10,12 +10,6 @@ abbr tree 'eza -T -L=2 --git-ignore'
 # abbr ll 'ls -Flha'
 # abbr ls 'ls -lag'
 
-# Tmux
-# abbr t tmux
-# abbr ta 'tmux attach'
-# abbr tas 'tmux attach-section'
-# abbr tk 'tmux kill-server'
-
 # node
 abbr pn pnpm
 abbr npm-list 'npm list -g --depth=0'

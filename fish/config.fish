@@ -21,9 +21,7 @@ starship init fish | source
 
 ### Run alias
 set fish_path $HOME/.config/fish
-. $fish_path/alias/my_alias.fish
-. $fish_path/alias/git_alias.fish
-. $fish_path/tokyonight_night.fish
+. $fish_path/alias/init.fish
 . $fish_path/functions.fish
 . $fish_path/tokyonight_night.fish
 
