@@ -1,7 +1,10 @@
 # My dotfiles
+
 **_These are my dotfiles. Take anything you want, but at your own risk._**
 **_It mainly targets macOS systems_**
 **_This repository contains my configuration for applications:_**
+
+## Tools
 
 - **Terminal**: [Kitty](./kitty) (or [Alacritty](./alacritty))
   - **Multiplexer**: [Tmux](./tmux)
@@ -11,9 +14,15 @@
 - **Window Management**: [Yabai](./yabai)
   - **Hotkey**: [skhd](./skhd)
 - **Activity Monitor**: [Btop](./btop)
-- **Git commands UI**: [Lazygit](./lazygit)
+- **Git**:
+  - CLI: [Lazygit](./lazygit)
+  - [delta](https://github.com/dandavison/delta) - a syntax-highlighting pager for git, diff, and grep output
+- **Version Manager**:
+  - [fnm](https://github.com/Schniz/fnm) - 🚀 fast and simple Node.js version manager, built in Rust
 - **Font**: [Nerd Font](https://github.com/ryanoasis/nerd-fonts) [JetBrains Mono](https://github.com/JetBrains/JetBrainsMono)
-- **Music**: [cmus](https://github.com/cmus/cmus) + [cava](./cava) + [Background Music](https://github.com/kyleneideck/BackgroundMusic) / [Loopback](https://rogueamoeba.com/loopback/)
+- **Music**: [cmus](https://github.com/cmus/cmus) + [cava](./cava) + [Loopback](https://rogueamoeba.com/loopback/)
+- **Keyboard Customize**: - [karabiner-elements](https://karabiner-elements.pqrs.org/) a powerful and stable keyboard customize for macOS.
+- **Vietnamese Keyboard**: [OpenKey](https://github.com/tuyenvm/OpenKey)
 - **Wallpapers**: [My wallpapers](./wallpapers)
 
 ## Install + setup
@@ -30,6 +39,11 @@ Run these commands to install and setup for Mac OS
 ```bash
 chmod -R +x ./bootstrap/macos && ./bootstrap/macos/init.sh
 ```
+
+## Node
+
+- Enable pnpm: `corepack enable pnpm`
+- Disable yarn: `corepack disable yarn`
 
 ## Show cases
 
