@@ -1,21 +1,45 @@
 #!/bin/sh
 
-cd
-
-# ------------ Dotfiles Session
-dotfilesSession="Dotfiles"
-dotfilesWindow="dotfiles-nvim"
-# Dotfiles nvim window
-tmux new-session -d -c ~/Dev/Dotfiles -s $dotfilesSession -n $dotfilesWindow
+# ------------------------------ Dotfiles Session ------------------------------
+DotfilesSession="Dotfiles"
+# ------------------- Dotfiles nvim window
+DotfilesWindow="Dotfiles Nvim"
+tmux new-session -d -c ~/Dev/Dotfiles -s $DotfilesSession -n $DotfilesWindow
 tmux send-keys "nvim" C-m
-
-# ---- Lazygit window
-lazygitDotfilesWindow="lazygit"
-tmux new-window -c ~/Dev/Dotfiles -t $dotfilesSession:2 -n $lazygitDotfilesWindow
+# ------------------- Lazygit window
+LazygitDotfilesWindow="Lazygit"
+tmux new-window -c ~/Dev/Dotfiles -t $DotfilesSession:2 -n $LazygitDotfilesWindow
 tmux send-keys "TERM=xterm-kitty lazygit" C-m
-
-tmux split-window -c ~/Dev/Dotfiles -v
+# ------------------- Git Panel
+Git="Git"
+tmux split-window -c ~/Dev/Dotfiles -v -l 20%
 tmux send-keys "cl" C-m
+
+# ----------------------------- Music Session ----------------------------------
+MusicSession="Music"
+# ------------------- Cmus window
+CmusWindow="Cmus"
+tmux new-session -d -s $MusicSession -n $CmusWindow
+tmux send-keys "cmus && cl" C-m
+
+# ---------------------------- Learning Session --------------------------------
+LearningSession="Learning"
+# ------------------- Front-end Window
+tmux new-session -d -c ~/Dev/Learning -s $LearningSession -n Front-end
+tmux send-keys "cd ./front-end && cl" C-m
+# ------------------- Back-end Window
+tmux new-window -c ~/Dev/Learning -t $LearningSession:2 -n Back-end
+tmux send-keys "cd ./back-end && cl" C-m
+# ------------------- Devops Window
+tmux new-window -c ~/Dev/Learning -t $LearningSession:3 -n Devops
+tmux send-keys "cd ./devops && cl" C-m
+# ------------------------------ Works Session ---------------------------------
+WorkSession="Works"
+tmux new-session -d -c ~/Work -s $WorkSession -n Work
+
+# ------------------- Select Session -----------------------
+tmux attach-session -t $DotfilesSession
+tmux select-window -t $DotfilesSession:1
 
 # # AMTB session
 # AMTBSession="AMTB-TTHH"
@@ -23,29 +47,8 @@ tmux send-keys "cl" C-m
 # tmux new-session -d -c ~/Dev/AMTB-TTHH -s $AMTBSession -n $AMTBWindow
 # tmux send-keys "cd ./DieuPhap && cl" C-m
 
-# Learning session
-# learningSession="Learning"
-# learningDir="~/Dev/Learning"
-#
-# tmux new-session -d -c ~/Dev/Learning -s $learningSession -n Vue
-# tmux send-keys "cd ./vue && cl" C-m
-#
-# tmux new-window -c ~/Dev/Learning -t $learningSession:2 -n typescript
-# tmux send-keys "cd ./typescript && cl" C-m
-#
-# tmux new-window -c ~/Dev/Learning -t $learningSession:3 -n backend
-# tmux send-keys "cd ./backend && cl" C-m
-
-# Work Session
-# hodfordsSession="Hodfords"
-# hodfordDir="~/Work/Hodfords"
-# tmux new-session -c ~/Work/Hodfords -s $hodfordsSession -d
 # project1="project1"
 # # . ./tmux/create-win-project.sh $project1 "~/Work/Hodfords"
 # tmux rename-window $project1
 # tmux split-window -c ~/Work/Hodfords -v -p 6
 # tmux split-window -c ~/Work/Hodfords -h -p 50
-#
-
-tmux select-window -t $dotfilesSession:1
-tmux attach-session -t $dotfilesSession

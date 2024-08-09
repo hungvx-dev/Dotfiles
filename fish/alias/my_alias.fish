@@ -14,13 +14,4 @@ abbr tree 'eza -T -L=2 --git-ignore'
 abbr pn pnpm
 abbr npm-list 'npm list -g --depth=0'
 
-
-# abbr cmus 'TERM=xterm-kitty cmus'
-# abbr cava 'TERM=xterm-kitty cava'
 abbr lz 'TERM=xterm-kitty lazygit'
-
-# command script shell
-abbr ide '~/.script-bash/tmux/ide.sh'
-abbr ts '~/.script-bash/tmux/sessionizer.sh'
-abbr tw '~/.script-bash/tmux/windowizer.sh'
-abbr tls '~/.script-bash/tmux/lazy-search-session.sh'
