@@ -4,7 +4,7 @@ M.langs = {
   "cssls",
   "jsonls",
   "tailwindcss",
-  "tsserver",
+  -- "tsserver",
   "volar",
   "vtsls",
   "yamlls",

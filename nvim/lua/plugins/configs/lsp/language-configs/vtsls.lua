@@ -10,9 +10,10 @@ return {
     "typescript",
     "typescriptreact",
     "typescript.tsx",
-    "vue",
+    "vue"
   },
   settings = {
+    complete_function_calls = true,
     vtsls = {
       tsserver = {
         globalPlugins = {
@@ -33,7 +34,6 @@ return {
         },
       },
     },
-    complete_function_calls = true,
     typescript = {
       updateImportsOnFileMove = { enabled = "always" },
       suggest = {
