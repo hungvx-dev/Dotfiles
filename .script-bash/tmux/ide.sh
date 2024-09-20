@@ -3,7 +3,7 @@
 # ------------------------------ Dotfiles Session ------------------------------
 DotfilesSession="Dotfiles"
 # ------------------- Dotfiles nvim window
-DotfilesWindow="Dotfiles Nvim"
+DotfilesWindow="Dotfiles_Nvim"
 tmux new-session -d -c ~/Dev/Dotfiles -s $DotfilesSession -n $DotfilesWindow
 tmux send-keys "nvim" C-m
 # ------------------- Lazygit window
