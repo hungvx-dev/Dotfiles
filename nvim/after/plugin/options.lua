@@ -33,6 +33,11 @@ opt.foldcolumn = "1"
 opt.foldenable = true
 opt.foldlevel = 99
 opt.foldlevelstart = 99
+opt.foldmethod = "expr"
+vim.opt.foldexpr = "v:lua.vim.treesitter.foldexpr()"
+vim.opt.foldtext = 'v:lua.foldtext()'
+vim.opt.viewoptions:remove("options")
+
 opt.fillchars = {
   eob = " ",
   fold = " ",
@@ -95,7 +100,6 @@ opt.splitright = true
 -- opt.formatoptions:remove("c")
 -- opt.formatoptions:remove("j")
 -- opt.formatoptions:remove("q")
-
 -- Mix
 opt.showtabline = 2 -- always show buffers/tabs
 opt.conceallevel = 0 -- so that `` is visible in markdown files
