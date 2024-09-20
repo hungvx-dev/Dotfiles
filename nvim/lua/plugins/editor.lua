@@ -132,7 +132,7 @@ return {
   },
   {
     "0x00-ketsu/maximizer.nvim",
-    enabled = false,
+    enabled = true,
     config = function()
       require("maximizer").setup({})
     end,
