@@ -21,15 +21,6 @@ return {
   },
 
   {
-    "luukvbaal/statuscol.nvim",
-    event = { "VeryLazy", "BufNewFile" },
-    keys = {
-      { "<leader>rc", "<cmd>Lazy reload statuscol.nvim<CR>", desc = "Reload statuscol" },
-    },
-    config = require("plugins.configs.ui.statuscol").setup,
-  },
-
-  {
     "goolord/alpha-nvim",
     event = "VimEnter",
     dependencies = { "nvim-tree/nvim-web-devicons" },
@@ -47,18 +38,18 @@ return {
     event = "BufReadPost",
     dependencies = {
       { "kevinhwang91/promise-async" },
-      {
-        "luukvbaal/statuscol.nvim",
-        event = { "VeryLazy", "BufNewFile" },
-        keys = {
-          { "<leader>rc", "<cmd>Lazy reload statuscol.nvim<CR>", desc = "Reload statuscol" },
-        },
-        config = require("plugins.configs.ui.statuscol").setup,
-      },
     },
     config = require("plugins.configs.ui.ufo").setup,
   },
 
+  {
+    "luukvbaal/statuscol.nvim",
+    event = { "VeryLazy", "BufNewFile" },
+    -- keys = {
+    --   { "<leader>rc", "<cmd>Lazy reload statuscol.nvim<CR>", desc = "Reload statuscol" },
+    -- },
+    config = require("plugins.configs.ui.statuscol").setup,
+  },
 
   {
     "3rd/image.nvim",
