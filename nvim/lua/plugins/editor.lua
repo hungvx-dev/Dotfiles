@@ -27,7 +27,7 @@ return {
         end
       end
     end,
-    config = require("plugins.configs.editor.neo-tree").setup,
+    config = require("plugins.configs.editor.neotree").setup,
   },
 
   -- fuzzy finder
@@ -125,9 +125,10 @@ return {
   },
   {
     "mg979/vim-visual-multi",
-    event = { "BufReadPre", "BufNewFile" },
+    event = { "VeryLazy", "BufNewFile" },
     config = function()
-      vim.g.VM_leader = "\\"
+      vim.g.VM_set_statusline = 0
+      vim.g.VM_silent_exit = 1
     end,
   },
   {

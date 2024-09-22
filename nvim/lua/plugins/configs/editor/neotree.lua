@@ -144,7 +144,6 @@ function M.setup()
   end
 
   neo_tree.setup(M.opts)
-  vim.cmd([[nnoremap \ :Neotree reveal<cr>]])
 end
 
 return M
