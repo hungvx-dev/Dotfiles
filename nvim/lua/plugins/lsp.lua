@@ -18,7 +18,6 @@ return {
     dependencies = {
       "hrsh7th/cmp-nvim-lsp",
       "williamboman/mason-lspconfig.nvim",
-      "antosha417/nvim-lsp-file-operations",
       "jose-elias-alvarez/typescript.nvim",
       {
         "b0o/SchemaStore.nvim",
@@ -27,6 +26,17 @@ return {
       },
     },
     config = require("plugins.configs.lsp.nvim-lspconfig").setup,
+  },
+
+  {
+    "antosha417/nvim-lsp-file-operations",
+    dependencies = {
+      "nvim-lua/plenary.nvim",
+      "nvim-neo-tree/neo-tree.nvim",
+    },
+    config = function()
+      require("lsp-file-operations").setup()
+    end,
   },
 
   {
