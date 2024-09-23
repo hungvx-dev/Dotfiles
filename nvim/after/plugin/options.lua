@@ -1,43 +1,16 @@
--- stylua: ignore
-local opt = vim.opt -- local cmd = vim.cmd
+local opt = vim.opt
 
--- Remap leader and local leader to <Space>
-vim.keymap.set("", "<Space>", "<Nop>", { noremap = true, silent = true })
+-- #================ 2. Moving around, searching and patterns =================#
+opt.ignorecase = true -- Ignore case when using a search pattern
+-- opt.incsearch = true -- *Show match for partly typed search command
+-- opt.smartcase = true -- *Override 'ignorecase' when pattern has upper case characters
 
-opt.syntax = "on"
-opt.mouse = "a" --Enable mouse mode
-opt.encoding = "utf-8"
-opt.fileencoding = "utf-8"
-opt.termguicolors = true -- Enable colors in terminal
-opt.clipboard = "unnamedplus" -- Access system clipboard
-
-opt.showmode = true
-opt.showmatch = true
-
--- Tab
-opt.expandtab = true -- Replace tab with space
-opt.softtabstop = 2 -- Tab size, with expandtab = true
-opt.tabstop = 2 -- Tab size, with expandtab = false
--- opt.smarttab = true -- Other tab of expandtab
-
--- Indent
-opt.smartindent = true --Smart indent by language
-opt.autoindent = true -- Auto indent by before line
-opt.shiftwidth = 2 -- Indent size
-opt.joinspaces = false -- No double spaces with join after a dot
--- opt.wrap = false
--- opt.breakindent = true --Enable break indent
-
--- Fold
-opt.foldcolumn = "1"
-opt.foldenable = true
-opt.foldlevel = 99
-opt.foldlevelstart = 99
-opt.foldmethod = "expr"
-vim.opt.foldexpr = "v:lua.vim.treesitter.foldexpr()"
-vim.opt.foldtext = 'v:lua.foldtext()'
-vim.opt.viewoptions:remove("options")
-
+-- #=========================== 4. Displaying text =============================#
+opt.scrolloff = 999 -- Number of screen lines to show around the cursor
+opt.wrap = false -- Long lines wrap
+opt.number = true -- Show the line number for each line
+opt.relativenumber = true -- Show the relative line number for each line
+opt.numberwidth = 3 -- Number of columns to use for the line number
 opt.fillchars = {
   eob = " ",
   fold = " ",
@@ -45,78 +18,72 @@ opt.fillchars = {
   foldopen = "",
   foldclose = "",
 }
+opt.list = true
+opt.listchars = { extends = "→", nbsp = "·", eol = "↴", trail = "·", tab = "  " }
 
--- Undo/ReUndo
-opt.undofile = true --Save undo history
-opt.undolevels = 10000
-
--- Spell check
+-- #================== 5. Syntax, highlighting and spelling ===================#
+opt.termguicolors = true -- Use GUI colors for the terminal
+opt.cursorline = true -- Highlight the screen line of the cursor
+opt.cursorlineopt = "number" -- Specifies which area 'cursorline' highlights
+opt.cmdheight = 0 -- Number of lines used for the command-line
 opt.spell = false
 opt.spelllang = { "en_us" }
 opt.spelloptions = { "camel" }
+-- opt.hlsearch = true -- *Highlight all matches for the last used search pattern
 
--- Search
-opt.ignorecase = true -- Ignore uppercase when searching
-opt.smartcase = true -- Smart case
-opt.hlsearch = true --Set highlight on search
-opt.incsearch = true
+-- #========================== 6. Multiple windows ============================#
+opt.statuscolumn = "%C%s%l" -- Custom format for the status column
+opt.splitbelow = true -- A new window is put below the current one
+opt.splitright = true -- A new window is put right of the current one
+-- opt.hidden = true -- *Don't unload a buffer when no longer shown in a window
 
--- Scroll
-opt.scrolloff = 5 -- Lines of context
--- opt.scroll = 10 -- C-d / C-u scroll
-
--- Timing
-opt.updatetime = 300 -- Default: 1000 Update neovim screen
-opt.timeoutlen = 500 --	Time in milliseconds to wait for a mapped sequence to complete.
-
--- SignColumn
-opt.signcolumn = "yes" -- Always show sign column
-opt.statuscolumn = "%C%s%l"
-opt.number = true --Make line numbers default
-opt.relativenumber = true --Make relative number default
-opt.numberwidth = 3 -- Number of characters for view column number
-opt.cursorline = true -- Enable highlighting of the current line
-opt.culopt = "number" -- Enable highlighting of the current line
--- opt.colorcolumn = "80"
--- opt.ruler = true
-
--- Popup
-opt.pumblend = 0 -- Transparent of Popup
-opt.pumheight = 10 -- Maximum number of entries in a Popup
-
--- Split
-opt.splitbelow = true
-opt.splitright = true
-
--- Wild
--- opt.wildignorecase = true
--- opt.wildignore:append("**/node_modules/*")
--- opt.wildignore:append("**/.git/*")
-
--- Format Options
--- opt.formatoptions:remove("t")
--- opt.formatoptions:remove("r")
--- opt.formatoptions:remove("o")
--- opt.formatoptions:remove("c")
--- opt.formatoptions:remove("j")
--- opt.formatoptions:remove("q")
--- Mix
+-- #========================= 7. Multiple tab pages ===========================#
 opt.showtabline = 2 -- always show buffers/tabs
-opt.conceallevel = 0 -- so that `` is visible in markdown files
-opt.cmdheight = 0 -- Height of command
-opt.swapfile = false
-opt.hidden = true
-vim.g.markdown_recommended_style = "gfm"
+
+-- #========================= 10. Messages and info ===========================#
 opt.shortmess:append("I")
 opt.shortmess:append("s")
 opt.shortmess:append("C")
--- opt.textwidth = 0
+-- opt.showmode = true -- *Display the current mode in the status line
 
-opt.list = true
-opt.listchars = { extends = "→", nbsp = "·", eol = "↴", trail = "·", tab = "  " }
-opt.backspace = "indent,eol,start"
+-- #=========================== 11. Selecting text ============================#
+opt.clipboard = "unnamedplus" -- Synchronizes the system clipboard with Nvim's clipboard
 
--- cursor blinking
+-- #============================ 12. Editing text =============================#
+opt.pumblend = 0 -- Transparent of Popup
+opt.pumheight = 10 -- Maximum height of the popup menu
+opt.undofile = true -- Automatically save and restore undo history
+-- opt.undolevels = 1000 -- *Maximum number of changes that can be undone
+-- opt.showmatch = true -- *When inserting a bracket, briefly jump to its match
+
+-- #========================= 13. Tabs and indenting ==========================#
+opt.smartindent = true -- -Do clever autoindenting
+opt.softtabstop = 2 -- -If non-zero, number of spaces to insert for a <Tab>
+-- opt.expandtab = true -- *Expand <Tab> to spaces in Insert mode
+-- opt.tabstop = 2 -- *Number of spaces a <Tab> in the text stands for
+-- opt.shiftwidth = 2 -- *Number of spaces used for each step of (auto)indent
+-- opt.autoindent = true -- *Automatically set the indent of a new line
+-- opt.joinspaces = false -- *Use two spaces after '.' when joining a line
+
+-- #============================== 14. Folding ================================#
+-- opt.foldenable = true -- *Unset to display all folds open
+opt.foldcolumn = "1" -- Width of the column used to indicate folds
+opt.foldlevel = 99 -- Folds with a level higher than this number will be closed
+opt.foldlevelstart = 99 -- Value for 'foldlevel' when starting to edit a file
+opt.foldmethod = "expr" -- Folding type: "manual", "indent", "expr", "marker", "syntax" or "diff"
+vim.opt.foldexpr = "v:lua.vim.treesitter.foldexpr()"
+vim.opt.foldtext = "v:lua.Custom_foldtext()"
+
+-- #============================== 16. Mapping ================================#
+opt.updatetime = 300 -- Default: 1000 Update neovim screen
+opt.timeoutlen = 500 --	Time in milliseconds to wait for a mapped sequence to complete.
+
+-- #============================== 24. various ================================#
+opt.signcolumn = "yes" -- Always show sign column
+opt.virtualedit = "block" -- When to use virtual editing: "block", "insert", "all"
+
+--
 opt.guicursor:append(
   "a:blinkwait701-blinkoff400-blinkon250-Cursor/lCursor,sm:block-blinkwait176-blinkoff150-blinkon175"
 )
+opt.inccommand = "split"
