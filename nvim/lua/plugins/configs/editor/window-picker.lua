@@ -16,12 +16,12 @@ M.opts = {
   },
   highlights    = {
     statusline = {
-      focused   = { fg = "#ededed", },
-      unfocused = { fg = "#2ac3de", },
+      focused   = { fg = "#ededed", bg = "NONE" }, -- "#e35e4f"
+      unfocused = { fg = "#2ac3de", bg = "NONE" }, -- #2ac3de
     },
     winbar     = {
-      focused   = { fg = "#ededed", },
-      unfocused = { fg = "#2ac3de", },
+      focused   = { fg = "#ededed", bg = "NONE" },
+      unfocused = { fg = "#2ac3de", bg = "NONE"  },
     },
   },
 }

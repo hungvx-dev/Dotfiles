@@ -2,7 +2,7 @@ local icons = require("icons")
 
 HVIM = {
   colorscheme = "tokyonight",
-  leader = "space",
+  leader = " ",
   use_icons = true,
   icons = icons,
   builtin = {},
@@ -14,5 +14,5 @@ HVIM = {
   },
 }
 
-vim.g.mapleader = (HVIM.leader == "space" and " ") or HVIM.leader
+vim.g.mapleader = HVIM.leader
 vim.g.maplocalleader = "\\"
