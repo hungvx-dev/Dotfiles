@@ -26,27 +26,16 @@ local opts = {
   ignore_install = {},
   highlight = {
     enable = true,
-    disable = function(_, buf)
-      local max_filesize = 100 * 1024 -- 100 KB
-      local ok, stats = pcall(vim.loop.fs_stat, vim.api.nvim_buf_get_name(buf))
-      if ok and stats and stats.size > max_filesize then
-        return true
-      end
-    end,
   },
   indent = { enable = true, disable = { "python", "yaml" } },
-  rainbow = {
-    enable = true,
-    extended_mode = true,
-    max_file_lines = 1000,
-  },
+  -- autotag = { enable = true },
   incremental_selection = {
     enable = true,
     keymaps = {
-      init_selection = "<C-space>",
-      node_incremental = "<C-space>",
-      scope_incremental = false,
-      node_decremental = "<bs>",
+      init_selection = "<leader>ss",
+      node_incremental = "<leader>si",
+      scope_incremental = "<Leader>sc",
+      node_decremental = "<leader>sd",
     },
   },
   textobjects = {
@@ -66,12 +55,17 @@ local opts = {
         ["ik"] = "@block.inner",
         ["as"] = "@statement.outer",
       },
+      selection_modes = {
+        ["@parameter.outer"] = "v",
+        ["@function.outer"] = "v",
+        ["@class.outer"] = "<c-v>",
+      },
     },
   },
 }
 
 function M.setup()
-  local status_ok, treesitter_configs = pcall(require, "nvim-treesitter.configs")
+  local status_ok, treesitter_config = pcall(require, "nvim-treesitter.configs")
   if not status_ok then
     return
   end
@@ -82,11 +76,7 @@ function M.setup()
     },
   })
 
-  treesitter_configs.setup(opts)
-  vim.g.skip_ts_context_commentstring_module = true
-  require("ts_context_commentstring").setup({
-    enable_autocmd = false,
-  })
+  treesitter_config.setup(opts)
   local ts_utils = require("nvim-treesitter.ts_utils")
   ts_utils.is_in_node_range = vim.treesitter.is_in_node_range
   ts_utils.get_node_range = vim.treesitter.get_node_range

@@ -5,7 +5,6 @@ return {
     build = ":TSUpdate",
     event = { "BufReadPre", "BufNewFile" },
     dependencies = {
-      { "JoosepAlviste/nvim-ts-context-commentstring", event = { "BufReadPost" } },
       { "nvim-treesitter/nvim-treesitter-textobjects", event = { "BufReadPost" } },
       {
         "windwp/nvim-ts-autotag",
@@ -20,11 +19,10 @@ return {
         },
         config = require("plugins.configs.coding.autopairs").setup,
       },
+      {
+        "hiphish/rainbow-delimiters.nvim",
+      },
     },
-    -- keys = {
-    -- { "<c-space>", desc = "Increment selection" },
-    -- { "<bs>", desc = "Decrement selection", mode = "x" },
-    -- },
     config = require("plugins.configs.coding.treesitter").setup,
   },
 
