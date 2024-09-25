@@ -12,14 +12,6 @@ return {
         config = require("plugins.configs.coding.autotag").setup,
       },
       {
-        "windwp/nvim-autopairs",
-        event = "InsertEnter",
-        dependencies = {
-          "hrsh7th/nvim-cmp",
-        },
-        config = require("plugins.configs.coding.autopairs").setup,
-      },
-      {
         "hiphish/rainbow-delimiters.nvim",
       },
     },
@@ -49,15 +41,18 @@ return {
   -- auto completion
   {
     "hrsh7th/nvim-cmp",
-    event = "InsertEnter",
+    event = { "InsertEnter" },
     dependencies = {
-      "hrsh7th/cmp-nvim-lsp",
       "hrsh7th/cmp-buffer",
       "hrsh7th/cmp-path",
       "hrsh7th/cmp-cmdline",
       "L3MON4D3/LuaSnip",
       "saadparwaiz1/cmp_luasnip",
       { "roobert/tailwindcss-colorizer-cmp.nvim", opts = {}, enabled = false },
+      {
+        "windwp/nvim-autopairs",
+        config = require("plugins.configs.coding.autopairs").setup,
+      },
     },
     config = require("plugins.configs.coding.cmp").setup,
   },

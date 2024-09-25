@@ -18,17 +18,6 @@ M.setup = function()
   end
 
   autopairs.setup(M.opts)
-
-  local cmp_autopairs = require("nvim-autopairs.completion.cmp")
-
-  -- import nvim-cmp plugin (completions plugin)
-  local status_cmp_ok, cmp = pcall(require, "cmp")
-  if not status_cmp_ok then
-    return
-  end
-
-  -- make autopairs and completion work together
-  cmp.event:on("confirm_done", cmp_autopairs.on_confirm_done())
 end
 
 return M
