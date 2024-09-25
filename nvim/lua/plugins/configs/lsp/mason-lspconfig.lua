@@ -1,12 +1,16 @@
 local M = {}
 
-function M.setup(ensure_installed, setup)
-  local status_ok, m_lsp = pcall(require, "mason-lspconfig")
-  if not status_ok then
-    return
-  end
-
-  m_lsp.setup({ ensure_installed = ensure_installed, handlers = { setup }, automatic_installation = true })
+function M.setup()
+  local servers = require("plugins.configs.lsp.servers.init")
+  local setup = require("plugins.configs.lsp.nvim-lspconfig").setup(servers.opts)
+  require("plugins.configs.lsp.mason").setup()
+  require("mason-lspconfig").setup({
+    ensure_installed = servers.ensure_installed,
+    handlers = { setup },
+    automatic_installation = true,
+  })
+  require("plugins.configs.lsp.diagnostic").setup()
+  require("plugins.configs.lsp.keymaps")
 end
 
 return M

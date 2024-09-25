@@ -24,12 +24,7 @@ M.opts = {
 }
 
 function M.setup()
-  local status_ok, mason = pcall(require, "mason")
-  if not status_ok then
-    return
-  end
-
-  mason.setup(M.opts)
+  require("mason").setup(M.opts)
 
   local mr = require("mason-registry")
   local function ensure_installed()

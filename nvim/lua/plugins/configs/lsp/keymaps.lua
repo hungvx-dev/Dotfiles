@@ -3,7 +3,6 @@ keymap.set("n", "!", vim.diagnostic.open_float)
 keymap.set("n", "[d", vim.diagnostic.goto_prev)
 keymap.set("n", "]d", vim.diagnostic.goto_next)
 keymap.set("n", "<space>q", vim.diagnostic.setloclist)
-
 keymap.set("n", "<space>rs", ":LspRestart<CR>", { noremap = true, silent = true })
 
 vim.api.nvim_create_autocmd("LspAttach", {

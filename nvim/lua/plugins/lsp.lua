@@ -1,31 +1,29 @@
 return {
   {
+    "williamboman/mason-lspconfig.nvim",
+    cmd = { "LspInstall", "LspUninstall" },
+    -- event = { "VeryLazy" },
+    event = { "BufReadPre", "BufNewFile" },
+    dependencies = { "mason.nvim", "nvim-lspconfig" },
+    config = function()
+      require("plugins.configs.lsp.mason-lspconfig").setup()
+    end,
+  },
+  {
     "williamboman/mason.nvim",
     cmd = { "Mason", "MasonInstall", "MasonUninstall", "MasonUninstallAll", "MasonLog" },
     build = ":MasonUpdate",
-    dependencies = {
-      "williamboman/mason-lspconfig.nvim",
-    },
-    config = require("plugins.configs.lsp.mason").setup,
-  },
-  {
-    "williamboman/mason-lspconfig.nvim",
-    cmd = { "LspInstall", "LspUninstall" },
   },
   {
     "neovim/nvim-lspconfig",
-    event = { "BufReadPre", "BufNewFile" },
     dependencies = {
       "hrsh7th/cmp-nvim-lsp",
-      "williamboman/mason-lspconfig.nvim",
-      "jose-elias-alvarez/typescript.nvim",
       {
         "b0o/SchemaStore.nvim",
         lazy = true,
         version = false,
       },
     },
-    config = require("plugins.configs.lsp.nvim-lspconfig").setup,
   },
 
   {
