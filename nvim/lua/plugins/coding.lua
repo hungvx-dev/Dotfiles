@@ -41,7 +41,7 @@ return {
   -- auto completion
   {
     "hrsh7th/nvim-cmp",
-    event = { "InsertEnter" },
+    event = { "InsertEnter", "CmdlineEnter" },
     dependencies = {
       "hrsh7th/cmp-buffer",
       "hrsh7th/cmp-path",
@@ -55,6 +55,11 @@ return {
       },
     },
     config = require("plugins.configs.coding.cmp").setup,
+  },
+
+  {
+    "github/copilot.vim",
+    event = { "BufReadPre", "BufNewFile" },
   },
 
   {

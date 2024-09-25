@@ -1,10 +1,5 @@
 local M = {}
 
-local has_words_before = function()
-  local line, col = unpack(vim.api.nvim_win_get_cursor(0))
-  return col ~= 0 and vim.api.nvim_buf_get_lines(0, line - 1, line, true)[1]:sub(col, col):match("%s") == nil
-end
-
 local function jumpable(dir)
   local luasnip_ok, luasnip = pcall(require, "luasnip")
   if not luasnip_ok then
@@ -109,34 +104,13 @@ M.duplicates = {
   luasnip = 1,
 }
 
-M.keys = {
-  {
-    "<Tab>",
-    function()
-      return vim.snippet.active({ direction = 1 }) and "<cmd>lua vim.snippet.jump(1)<cr>" or "<Tab>"
-    end,
-    expr = true,
-    silent = true,
-    mode = { "i", "s" },
-  },
-  {
-    "<S-Tab>",
-    function()
-      return vim.snippet.active({ direction = -1 }) and "<cmd>lua vim.snippet.jump(-1)<cr>" or "<S-Tab>"
-    end,
-    expr = true,
-    silent = true,
-    mode = { "i", "s" },
-  },
-}
-
 function M.opts()
-  vim.api.nvim_set_hl(0, "CmpGhostText", { link = "Comment", default = true })
   local cmp = require("cmp")
   local cmp_window = require("cmp.config.window")
   local defaults = require("cmp.config.default")()
   local cmp_mapping = require("cmp.config.mapping")
   local luasnip = require("luasnip")
+  -- local tailwind_color = require("tailwindcss-colorizer-cmp")
 
   return {
     completion = {
@@ -154,27 +128,19 @@ function M.opts()
       ["<C-e>"] = cmp.mapping.abort(),
       ["<CR>"] = cmp.mapping.confirm({ select = true }), -- Accept currently selected item. Set `select` to `false` to only confirm explicitly selected items.
       ["<Tab>"] = cmp_mapping(function(fallback)
-        if cmp.visible() then
-          cmp.select_next_item()
-        elseif luasnip.expand_or_locally_jumpable() then
-          luasnip.expand_or_jump()
-        elseif jumpable(1) then
-          luasnip.jump(1)
-        elseif has_words_before() then
-          -- cmp.complete()
-          fallback()
-        else
-          fallback()
+        if luasnip.expand_or_locally_jumpable() then
+          return luasnip.expand_or_jump()
         end
+        if jumpable(1) then
+          return luasnip.jump(1)
+        end
+        fallback()
       end, { "i", "s" }),
       ["<S-Tab>"] = cmp_mapping(function(fallback)
-        if cmp.visible() then
-          cmp.select_prev_item()
-        elseif luasnip.jumpable(-1) then
-          luasnip.jump(-1)
-        else
-          fallback()
+        if luasnip.jumpable(-1) then
+          return luasnip.jump(-1)
         end
+        fallback()
       end, { "i", "s" }),
     }),
     window = {
@@ -199,14 +165,9 @@ function M.opts()
         item.menu = M.source_mapping[entry.source.name]
         item.dup = M.duplicates[entry.source.name]
 
-        -- return require("tailwindcss-colorizer-cmp").formatter(entry, item)
+        -- return tailwind_color.formatter(entry, item)
         return item
       end,
-    },
-    experimental = {
-      ghost_text = {
-        hl_group = "CmpGhostText",
-      },
     },
     sorting = defaults.sorting,
     cmdline = {
@@ -256,7 +217,6 @@ function M.setup()
   -- make autopairs and completion work together
   local cmp_autopairs = require("nvim-autopairs.completion.cmp")
   cmp.event:on("confirm_done", cmp_autopairs.on_confirm_done())
-
 end
 
 return M

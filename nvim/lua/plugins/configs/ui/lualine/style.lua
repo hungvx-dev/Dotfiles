@@ -31,7 +31,7 @@ local style = {
     lualine_x = {
       components.lazy,
       components.lsp,
-      components.spaces,
+      -- components.spaces,
       components.filetype,
     },
     lualine_y = { components.location },
