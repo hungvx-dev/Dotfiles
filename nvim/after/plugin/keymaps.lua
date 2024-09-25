@@ -15,10 +15,6 @@ setKeyMap("v", "p", '"_dP')
 -- Cancel search highlighting with ESC
 setKeyMap("n", "<leader><CR>", ":nohlsearch<Bar>:echo<CR>")
 
--- Scrolling
-setKeyMap("n", "<C-d>", "10j")
-setKeyMap("n", "<C-u>", "10k")
-
 -- ReSizing panes
 setKeyMap("n", "<leader>=", ":vertical resize +5<CR>")
 setKeyMap("n", "<leader>-", ":vertical resize -5<CR>")

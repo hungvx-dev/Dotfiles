@@ -4,9 +4,10 @@ local augroup = vim.api.nvim_create_augroup
 -- General Settings
 local general = augroup("General Settings", { clear = true })
 
--- autocmd("BufRead", {
+-- autocmd("WinNew", {
 --   callback = function()
---     vim.opt.scroll = 10
+--     vim.wo.scroll = 10
+--     vim.wo.smoothscroll = true
 --   end,
 --   group = general,
 -- })

@@ -67,6 +67,9 @@ vim.wo.foldtext = "v:lua.Custom_foldtext()"
 vim.opt.updatetime = 300 -- Default: 1000 Update neovim screen
 vim.opt.timeoutlen = 500 --	Time in milliseconds to wait for a mapped sequence to complete.
 
+-- #============================== 18. The swap file ================================#
+vim.bo.swapfile = false
+
 -- #============================== 24. various ================================#
 vim.wo.signcolumn = "yes" -- Always show sign column
 vim.opt.virtualedit = "block" -- When to use virtual editing: "block", "insert", "all"
