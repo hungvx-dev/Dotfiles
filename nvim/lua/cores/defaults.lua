@@ -12,6 +12,12 @@ HVIM = {
     Hint = icons.Diagnostics.Hint,
     Info = icons.Diagnostics.Information,
   },
+  bold_signs = {
+    error = icons.Diagnostics.BoldError,
+    warning = icons.Diagnostics.BoldWarning,
+    info = icons.Diagnostics.BoldInformation,
+    hint = icons.Diagnostics.BoldHint,
+  },
 }
 
 vim.g.mapleader = HVIM.leader

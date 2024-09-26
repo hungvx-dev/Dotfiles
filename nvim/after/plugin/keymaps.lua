@@ -27,3 +27,6 @@ setKeyMap("n", "gt", ":bnext<cr>")
 setKeyMap("n", "<C-q>", ":q<cr>")
 setKeyMap("n", "<C-s>", ":silent! w<cr>")
 setKeyMap("i", "<C-s>", "<ESC>:silent! w<cr>")
+
+setKeyMap({ "n", "v" }, ";", "<Plug>(clever-f-repeat-forward)", { remap = true })
+setKeyMap({ "n", "v" }, ",", "<Plug>(clever-f-repeat-back)", { remap = true })

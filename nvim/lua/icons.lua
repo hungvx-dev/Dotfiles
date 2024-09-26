@@ -114,6 +114,7 @@ return {
       BoldMid   = "┃",
       BoldLeft  = "▎",
       BoldRight = "▐",
+      Full      = "█"
     },
     List           = {
       Icon      = "",
