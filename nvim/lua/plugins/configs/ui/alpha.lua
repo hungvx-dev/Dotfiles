@@ -21,14 +21,14 @@ function M.opts()
     dashboard.button("l", "░ " .. HVIM.icons.UI.Lazy .. "Lazy", "<cmd> Lazy <cr>"),
     dashboard.button("q", "░ " .. HVIM.icons.UI.Quit .. "Quit", "<cmd> qa <cr>"),
   }
-  dashboard.section.buttons.opts.spacing = 0
+  dashboard.section.buttons.opts.spacing = 1
   for _, button in ipairs(dashboard.section.buttons.val) do
     button.opts.cursor = 1
     button.opts.hl = "AlphaButtons"
     button.opts.hl_shortcut = "AlphaButtons"
   end
 
-  dashboard.opts.layout[1].val = 10
+  dashboard.opts.layout[1].val = 8
 
   return dashboard.config
 end
