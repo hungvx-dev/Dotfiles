@@ -1,3 +1,6 @@
+local telescope = require("plugins.configs.editor.telescope")
+local todo_comments = require("plugins.configs.editor.todo-comments")
+
 return {
   -- File explorer
   {
@@ -5,7 +8,7 @@ return {
     cmd = "Neotree",
     dependencies = {
       "nvim-lua/plenary.nvim",
-      "nvim-tree/nvim-web-devicons",
+      "mini.icons",
       "MunifTanjim/nui.nvim",
       {
         "s1n7ax/nvim-window-picker",
@@ -33,15 +36,14 @@ return {
   -- fuzzy finder
   {
     "nvim-telescope/telescope.nvim",
-    tag = "0.1.8",
     cmd = "Telescope",
     dependencies = {
       "nvim-lua/plenary.nvim",
       { "nvim-telescope/telescope-fzf-native.nvim", build = "make" },
-      "nvim-tree/nvim-web-devicons",
+      "mini.icons",
     },
-    keys = require("plugins.configs.editor.telescope").keys,
-    config = require("plugins.configs.editor.telescope").setup,
+    keys = telescope.keys,
+    config = telescope.setup,
   },
 
   {
@@ -56,8 +58,8 @@ return {
     "folke/todo-comments.nvim",
     cmd = { "TodoTrouble", "TodoTelescope" },
     event = { "BufReadPost", "BufNewFile", "BufWritePre" },
-    keys = require("plugins.configs.editor.todo-comments").keys,
-    config = require("plugins.configs.editor.todo-comments").setup,
+    keys = todo_comments.keys,
+    config = todo_comments.setup,
   },
   {
     "numToStr/Comment.nvim",
@@ -118,7 +120,29 @@ return {
   -- easily jump
   {
     "unblevable/quick-scope",
+    enabled = true,
     event = { "BufReadPre", "BufNewFile" },
+    dependencies = {
+      {
+        "rhysd/clever-f.vim",
+        enabled = true,
+      },
+      {
+        "echasnovski/mini.jump",
+        enabled = false,
+        config = function()
+          require("mini.jump").setup()
+        end,
+      },
+      {
+        "kevinhwang91/nvim-fFHighlight",
+        enabled = false,
+        config = function()
+          require("fFHighlight").setup()
+        end,
+        keys = { { "n", ";" }, { "x", ";" }, { "n", "," }, { "x", "," } },
+      },
+    },
     config = function()
       require("plugins.configs.editor.quick-scope")
     end,
@@ -131,6 +155,7 @@ return {
       vim.g.VM_silent_exit = 1
     end,
   },
+
   {
     "0x00-ketsu/maximizer.nvim",
     enabled = true,
