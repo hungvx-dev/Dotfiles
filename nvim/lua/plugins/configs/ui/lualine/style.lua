@@ -9,6 +9,7 @@ local style = {
     component_separators = { left = "", right = "" },
     disabled_filetypes = {
       statusline = {
+        "ministarter",
         "help",
         "dashboard",
         "alpha",
@@ -26,12 +27,9 @@ local style = {
     },
     lualine_c = {
       components.diff,
-      -- components.filename,
     },
     lualine_x = {
-      components.lazy,
       components.lsp,
-      -- components.spaces,
       components.filetype,
     },
     lualine_y = { components.location },
@@ -41,7 +39,7 @@ local style = {
     lualine_a = {},
     lualine_b = {},
     lualine_c = { components.filename },
-    lualine_x = { "location" },
+    lualine_x = { components.location },
     lualine_y = {},
     lualine_z = {},
   },

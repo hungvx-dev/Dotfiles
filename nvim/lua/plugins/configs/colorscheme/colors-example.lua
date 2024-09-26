@@ -1,5 +1,6 @@
 local colors = {
   _name = "tokyonight_night",
+  _style = "night",
   bg = "#1a1b26",
   bg_dark = "#16161e",
   bg_float = "#16161e",
@@ -23,15 +24,11 @@ local colors = {
   cyan = "#7dcfff",
   dark3 = "#545c7e",
   dark5 = "#737aa2",
-  delta = {
-    add = "#2c5a66",
-    delete = "#713137",
-  },
   diff = {
     add = "#20303b",
     change = "#1f2231",
     delete = "#37222c",
-    text = "#394b70",
+    text = "#394b70"
   },
   error = "#db4b4b",
   fg = "#c0caf5",
@@ -43,12 +40,7 @@ local colors = {
     add = "#449dab",
     change = "#6183bb",
     delete = "#914c54",
-    ignore = "#545c7e",
-  },
-  gitSigns = {
-    add = "#266d6a",
-    change = "#536c9e",
-    delete = "#b2555b",
+    ignore = "#545c7e"
   },
   green = "#9ece6a",
   green1 = "#73daca",
@@ -60,2368 +52,2221 @@ local colors = {
   none = "NONE",
   orange = "#ff9e64",
   purple = "#9d7cd8",
+  rainbow = { "#7aa2f7", "#e0af68", "#9ece6a", "#1abc9c", "#bb9af7", "#9d7cd8" },
   red = "#f7768e",
   red1 = "#db4b4b",
   teal = "#1abc9c",
   terminal_black = "#414868",
+  todo = "#7aa2f7",
   warning = "#e0af68",
-  yellow = "#e0af68",
-}
-
-local colors_15 = {
-  -- colors.blue = "#74a2ff"
-  -- colors.blue0 = "#0057c4"
-  -- colors.blue1 = "#00c4e0"
-  -- colors.blue2 = "#00b9d7"
-  -- colors.blue5 = "#89ddff"
-  -- colors.blue6 = "#8cfffe"
-  -- colors.blue7 = "#284b82"
-  -- colors.border = "#141622"
-  -- colors.border_highlight = "#00a2bb"
-  -- colors.cyan = "#7dcfff"
-  -- colors.dark3 = "#4e5b8d"
-  -- colors.dark5 = "#6d79b4"
-  -- colors.diff = {
-  --   add = "#20303b",
-  --   change = "#1f2231",
-  --   delete = "#37222c",
-  --   text = "#394b70",
-  -- }
-  -- colors.error = "#f81818"
-  -- colors.fg = "#bdcaff"
-  -- colors.fg_dark = "#a3b0e7"
-  -- colors.fg_float = "#bdcaff"
-  -- colors.fg_sidebar = "#a3b0e7"
-  -- colors.git = {
-  --   add = "#449dab",
-  --   change = "#6183bb",
-  --   delete = "#914c54",
-  --   ignore = "#545c7e",
-  -- }
-  -- colors.green = "#8fd300"
-  -- colors.green1 = "#00e1cb"
-  -- colors.green2 = "#00a8ba"
-  -- colors.hint = "#00bd9c"
-  -- colors.info = "#00b9d7"
-  -- colors.magenta = "#bd98ff"
-  -- colors.magenta2 = "#ff007c"
-  -- colors.none = "NONE"
-  -- colors.orange = "#ff9e64"
-  -- colors.purple = "#a76efe"
-  -- colors.red = "#ff708c"
-  -- colors.red1 = "#f81818"
-  -- colors.teal = "#00bd9c"
-  -- colors.terminal_black = "#3b4777"
-  -- colors.todo = "#74a2ff"
-  -- colors.warning = "#eeab00"
-  -- colors.yellow = "#eeab00"
+  yellow = "#e0af68"
 }
 
 local highlights = {
+  ["@annotation"] = "PreProc",
+  ["@attribute"] = "PreProc",
+  ["@boolean"] = "Boolean",
+  ["@character"] = "Character",
+  ["@character.printf"] = "SpecialChar",
+  ["@character.special"] = "SpecialChar",
+  ["@comment"] = "Comment",
+  ["@comment.error"] = {
+    fg = "#db4b4b"
+  },
+  ["@comment.hint"] = {
+    fg = "#1abc9c"
+  },
+  ["@comment.info"] = {
+    fg = "#0db9d7"
+  },
+  ["@comment.note"] = {
+    fg = "#1abc9c"
+  },
+  ["@comment.todo"] = {
+    fg = "#7aa2f7"
+  },
+  ["@comment.warning"] = {
+    fg = "#e0af68"
+  },
+  ["@constant"] = "Constant",
+  ["@constant.builtin"] = "Special",
+  ["@constant.macro"] = "Define",
   ["@constructor"] = {
-    fg = "#bb9af7",
+    fg = "#bb9af7"
   },
   ["@constructor.tsx"] = {
-    fg = "#2ac3de",
+    fg = "#2ac3de"
   },
-  ["@field"] = {
-    fg = "#73daca",
-  },
+  ["@diff.delta"] = "DiffChange",
+  ["@diff.minus"] = "DiffDelete",
+  ["@diff.plus"] = "DiffAdd",
+  ["@function"] = "Function",
+  ["@function.builtin"] = "Special",
+  ["@function.call"] = "@function",
+  ["@function.macro"] = "Macro",
+  ["@function.method"] = "Function",
+  ["@function.method.call"] = "@function.method",
   ["@keyword"] = {
     fg = "#9d7cd8",
-    style = {
-      italic = true,
-    },
+    italic = true
   },
+  ["@keyword.conditional"] = "Conditional",
+  ["@keyword.coroutine"] = "@keyword",
+  ["@keyword.debug"] = "Debug",
+  ["@keyword.directive"] = "PreProc",
+  ["@keyword.directive.define"] = "Define",
+  ["@keyword.exception"] = "Exception",
   ["@keyword.function"] = {
-    fg = "#bb9af7",
-    style = {},
+    fg = "#bb9af7"
   },
+  ["@keyword.import"] = "Include",
+  ["@keyword.operator"] = "@operator",
+  ["@keyword.repeat"] = "Repeat",
+  ["@keyword.return"] = "@keyword",
+  ["@keyword.storage"] = "StorageClass",
   ["@label"] = {
-    fg = "#7aa2f7",
+    fg = "#7aa2f7"
   },
-  ["@lsp.type.boolean"] = {
-    link = "@boolean",
-  },
-  ["@lsp.type.builtinType"] = {
-    link = "@type.builtin",
-  },
-  ["@lsp.type.comment"] = {
-    link = "@comment",
-  },
-  ["@lsp.type.decorator"] = {
-    link = "@attribute",
-  },
-  ["@lsp.type.deriveHelper"] = {
-    link = "@attribute",
-  },
-  ["@lsp.type.enum"] = {
-    link = "@type",
-  },
-  ["@lsp.type.enumMember"] = {
-    link = "@constant",
-  },
-  ["@lsp.type.escapeSequence"] = {
-    link = "@string.escape",
-  },
-  ["@lsp.type.formatSpecifier"] = {
-    link = "@punctuation.special",
-  },
-  ["@lsp.type.generic"] = {
-    link = "@variable",
-  },
+  ["@lsp.type.boolean"] = "@boolean",
+  ["@lsp.type.builtinType"] = "@type.builtin",
+  ["@lsp.type.comment"] = "@comment",
+  ["@lsp.type.decorator"] = "@attribute",
+  ["@lsp.type.deriveHelper"] = "@attribute",
+  ["@lsp.type.enum"] = "@type",
+  ["@lsp.type.enumMember"] = "@constant",
+  ["@lsp.type.escapeSequence"] = "@string.escape",
+  ["@lsp.type.formatSpecifier"] = "@markup.list",
+  ["@lsp.type.generic"] = "@variable",
   ["@lsp.type.interface"] = {
-    fg = "#6ad5e8",
+    fg = "#57c5e5"
   },
-  ["@lsp.type.keyword"] = {
-    link = "@keyword",
-  },
-  ["@lsp.type.lifetime"] = {
-    link = "@storageclass",
-  },
-  ["@lsp.type.namespace"] = {
-    link = "@namespace",
-  },
-  ["@lsp.type.number"] = {
-    link = "@number",
-  },
-  ["@lsp.type.operator"] = {
-    link = "@operator",
-  },
-  ["@lsp.type.parameter"] = {
-    link = "@parameter",
-  },
-  ["@lsp.type.property"] = {
-    link = "@property",
-  },
-  ["@lsp.type.selfKeyword"] = {
-    link = "@variable.builtin",
-  },
-  ["@lsp.type.selfTypeKeyword"] = {
-    link = "@variable.builtin",
-  },
-  ["@lsp.type.string"] = {
-    link = "@string",
-  },
-  ["@lsp.type.typeAlias"] = {
-    link = "@type.definition",
-  },
+  ["@lsp.type.keyword"] = "@keyword",
+  ["@lsp.type.lifetime"] = "@keyword.storage",
+  ["@lsp.type.namespace"] = "@module",
+  ["@lsp.type.namespace.python"] = "@variable",
+  ["@lsp.type.number"] = "@number",
+  ["@lsp.type.operator"] = "@operator",
+  ["@lsp.type.parameter"] = "@variable.parameter",
+  ["@lsp.type.property"] = "@property",
+  ["@lsp.type.selfKeyword"] = "@variable.builtin",
+  ["@lsp.type.selfTypeKeyword"] = "@variable.builtin",
+  ["@lsp.type.string"] = "@string",
+  ["@lsp.type.typeAlias"] = "@type.definition",
   ["@lsp.type.unresolvedReference"] = {
     sp = "#db4b4b",
-    undercurl = true,
+    undercurl = true
   },
   ["@lsp.type.variable"] = {},
-  ["@lsp.typemod.class.defaultLibrary"] = {
-    link = "@type.builtin",
-  },
-  ["@lsp.typemod.enum.defaultLibrary"] = {
-    link = "@type.builtin",
-  },
-  ["@lsp.typemod.enumMember.defaultLibrary"] = {
-    link = "@constant.builtin",
-  },
-  ["@lsp.typemod.function.defaultLibrary"] = {
-    link = "@function.builtin",
-  },
-  ["@lsp.typemod.keyword.async"] = {
-    link = "@keyword.coroutine",
-  },
-  ["@lsp.typemod.keyword.injected"] = {
-    link = "@keyword",
-  },
-  ["@lsp.typemod.macro.defaultLibrary"] = {
-    link = "@function.builtin",
-  },
-  ["@lsp.typemod.method.defaultLibrary"] = {
-    link = "@function.builtin",
-  },
-  ["@lsp.typemod.operator.injected"] = {
-    link = "@operator",
-  },
-  ["@lsp.typemod.string.injected"] = {
-    link = "@string",
-  },
-  ["@lsp.typemod.struct.defaultLibrary"] = {
-    link = "@type.builtin",
-  },
+  ["@lsp.typemod.class.defaultLibrary"] = "@type.builtin",
+  ["@lsp.typemod.enum.defaultLibrary"] = "@type.builtin",
+  ["@lsp.typemod.enumMember.defaultLibrary"] = "@constant.builtin",
+  ["@lsp.typemod.function.defaultLibrary"] = "@function.builtin",
+  ["@lsp.typemod.keyword.async"] = "@keyword.coroutine",
+  ["@lsp.typemod.keyword.injected"] = "@keyword",
+  ["@lsp.typemod.macro.defaultLibrary"] = "@function.builtin",
+  ["@lsp.typemod.method.defaultLibrary"] = "@function.builtin",
+  ["@lsp.typemod.operator.injected"] = "@operator",
+  ["@lsp.typemod.string.injected"] = "@string",
+  ["@lsp.typemod.struct.defaultLibrary"] = "@type.builtin",
   ["@lsp.typemod.type.defaultLibrary"] = {
-    fg = "#27a1b9",
+    fg = "#27a1b9"
   },
   ["@lsp.typemod.typeAlias.defaultLibrary"] = {
-    fg = "#27a1b9",
+    fg = "#27a1b9"
   },
-  ["@lsp.typemod.variable.callable"] = {
-    link = "@function",
+  ["@lsp.typemod.variable.callable"] = "@function",
+  ["@lsp.typemod.variable.defaultLibrary"] = "@variable.builtin",
+  ["@lsp.typemod.variable.injected"] = "@variable",
+  ["@lsp.typemod.variable.static"] = "@constant",
+  ["@markup"] = "@none",
+  ["@markup.emphasis"] = {
+    italic = true
   },
-  ["@lsp.typemod.variable.defaultLibrary"] = {
-    link = "@variable.builtin",
+  ["@markup.environment"] = "Macro",
+  ["@markup.environment.name"] = "Type",
+  ["@markup.heading"] = "Title",
+  ["@markup.heading.1.markdown"] = {
+    bold = true,
+    fg = "#7aa2f7"
   },
-  ["@lsp.typemod.variable.injected"] = {
-    link = "@variable",
+  ["@markup.heading.2.markdown"] = {
+    bold = true,
+    fg = "#e0af68"
   },
-  ["@lsp.typemod.variable.static"] = {
-    link = "@constant",
+  ["@markup.heading.3.markdown"] = {
+    bold = true,
+    fg = "#9ece6a"
   },
-  ["@namespace"] = {
-    link = "Include",
+  ["@markup.heading.4.markdown"] = {
+    bold = true,
+    fg = "#1abc9c"
   },
-  ["@namespace.builtin"] = {
-    fg = "#f7768e",
+  ["@markup.heading.5.markdown"] = {
+    bold = true,
+    fg = "#bb9af7"
   },
+  ["@markup.heading.6.markdown"] = {
+    bold = true,
+    fg = "#9d7cd8"
+  },
+  ["@markup.italic"] = {
+    italic = true
+  },
+  ["@markup.link"] = {
+    fg = "#1abc9c"
+  },
+  ["@markup.link.label"] = "SpecialChar",
+  ["@markup.link.label.symbol"] = "Identifier",
+  ["@markup.link.url"] = "Underlined",
+  ["@markup.list"] = {
+    fg = "#89ddff"
+  },
+  ["@markup.list.checked"] = {
+    fg = "#73daca"
+  },
+  ["@markup.list.markdown"] = {
+    bold = true,
+    fg = "#ff9e64"
+  },
+  ["@markup.list.unchecked"] = {
+    fg = "#7aa2f7"
+  },
+  ["@markup.math"] = "Special",
+  ["@markup.raw"] = "String",
+  ["@markup.raw.markdown_inline"] = {
+    bg = "#414868",
+    fg = "#7aa2f7"
+  },
+  ["@markup.strikethrough"] = {
+    strikethrough = true
+  },
+  ["@markup.strong"] = {
+    bold = true
+  },
+  ["@markup.underline"] = {
+    underline = true
+  },
+  ["@module"] = "Include",
+  ["@module.builtin"] = {
+    fg = "#f7768e"
+  },
+  ["@namespace.builtin"] = "@variable.builtin",
+  ["@none"] = {},
+  ["@number"] = "Number",
+  ["@number.float"] = "Float",
   ["@operator"] = {
-    fg = "#89ddff",
-  },
-  ["@parameter"] = {
-    fg = "#e0af68",
-  },
-  ["@parameter.builtin"] = {
-    fg = "#e6bf86",
+    fg = "#89ddff"
   },
   ["@property"] = {
-    fg = "#73daca",
+    fg = "#73daca"
   },
   ["@punctuation.bracket"] = {
-    fg = "#a9b1d6",
+    fg = "#a9b1d6"
   },
   ["@punctuation.delimiter"] = {
-    fg = "#89ddff",
+    fg = "#89ddff"
   },
   ["@punctuation.special"] = {
-    fg = "#89ddff",
+    fg = "#89ddff"
   },
-  ["@punctuation.special.markdown"] = {
-    bold = true,
-    fg = "#ff9e64",
-  },
+  ["@string"] = "String",
   ["@string.documentation"] = {
-    fg = "#e0af68",
+    fg = "#e0af68"
   },
   ["@string.escape"] = {
-    fg = "#bb9af7",
+    fg = "#bb9af7"
   },
-  ["@string.regex"] = {
-    fg = "#b4f9f8",
+  ["@string.regexp"] = {
+    fg = "#b4f9f8"
   },
+  ["@tag"] = "Label",
+  ["@tag.attribute"] = "@property",
+  ["@tag.delimiter"] = "Delimiter",
   ["@tag.delimiter.tsx"] = {
-    fg = "#5d7ab8",
+    fg = "#5d7ab8"
+  },
+  ["@tag.javascript"] = {
+    fg = "#f7768e"
   },
   ["@tag.tsx"] = {
-    fg = "#f7768e",
+    fg = "#f7768e"
   },
-  ["@text.danger"] = {
-    bg = "#db4b4b",
-    fg = "#1a1b26",
-  },
-  ["@text.diff.add"] = {
-    link = "DiffAdd",
-  },
-  ["@text.diff.delete"] = {
-    link = "DiffDelete",
-  },
-  ["@text.literal.markdown_inline"] = {
-    bg = "#414868",
-    fg = "#7aa2f7",
-  },
-  ["@text.reference"] = {
-    fg = "#1abc9c",
-  },
-  ["@text.title.1.markdown"] = {
-    bold = true,
-    fg = "#7aa2f7",
-  },
-  ["@text.title.2.markdown"] = {
-    bold = true,
-    fg = "#e0af68",
-  },
-  ["@text.title.3.markdown"] = {
-    bold = true,
-    fg = "#9ece6a",
-  },
-  ["@text.title.4.markdown"] = {
-    bold = true,
-    fg = "#1abc9c",
-  },
-  ["@text.title.5.markdown"] = {
-    bold = true,
-    fg = "#bb9af7",
-  },
-  ["@text.title.6.markdown"] = {
-    bold = true,
-    fg = "#9d7cd8",
-  },
-  ["@text.todo.checked"] = {
-    fg = "#73daca",
-  },
-  ["@text.todo.unchecked"] = {
-    fg = "#7aa2f7",
-  },
-  ["@text.warning"] = {
-    bg = "#e0af68",
-    fg = "#1a1b26",
-  },
+  ["@type"] = "Type",
   ["@type.builtin"] = {
-    fg = "#27a1b9",
+    fg = "#27a1b9"
   },
+  ["@type.definition"] = "Typedef",
+  ["@type.qualifier"] = "@keyword",
   ["@variable"] = {
-    fg = "#c0cafd",
-    style = {},
+    fg = "#c0caf5"
   },
   ["@variable.builtin"] = {
-    fg = "#f7768e",
+    fg = "#f7768e"
+  },
+  ["@variable.member"] = {
+    fg = "#73daca"
+  },
+  ["@variable.parameter"] = {
+    fg = "#e0af68"
+  },
+  ["@variable.parameter.builtin"] = {
+    fg = "#dab484"
   },
   ALEErrorSign = {
-    fg = "#db4b4b",
+    fg = "#db4b4b"
   },
   ALEWarningSign = {
-    fg = "#e0af68",
+    fg = "#e0af68"
   },
-  AerialArrayIcon = {
-    link = "LspKindArray",
-  },
-  AerialBooleanIcon = {
-    link = "LspKindBoolean",
-  },
-  AerialClassIcon = {
-    link = "LspKindClass",
-  },
-  AerialColorIcon = {
-    link = "LspKindColor",
-  },
-  AerialConstantIcon = {
-    link = "LspKindConstant",
-  },
-  AerialConstructorIcon = {
-    link = "LspKindConstructor",
-  },
-  AerialEnumIcon = {
-    link = "LspKindEnum",
-  },
-  AerialEnumMemberIcon = {
-    link = "LspKindEnumMember",
-  },
-  AerialEventIcon = {
-    link = "LspKindEvent",
-  },
-  AerialFieldIcon = {
-    link = "LspKindField",
-  },
-  AerialFileIcon = {
-    link = "LspKindFile",
-  },
-  AerialFolderIcon = {
-    link = "LspKindFolder",
-  },
-  AerialFunctionIcon = {
-    link = "LspKindFunction",
-  },
+  AerialArrayIcon = "LspKindArray",
+  AerialBooleanIcon = "LspKindBoolean",
+  AerialClassIcon = "LspKindClass",
+  AerialColorIcon = "LspKindColor",
+  AerialConstantIcon = "LspKindConstant",
+  AerialConstructorIcon = "LspKindConstructor",
+  AerialEnumIcon = "LspKindEnum",
+  AerialEnumMemberIcon = "LspKindEnumMember",
+  AerialEventIcon = "LspKindEvent",
+  AerialFieldIcon = "LspKindField",
+  AerialFileIcon = "LspKindFile",
+  AerialFolderIcon = "LspKindFolder",
+  AerialFunctionIcon = "LspKindFunction",
   AerialGuide = {
-    fg = "#3b4261",
+    fg = "#3b4261"
   },
-  AerialInterfaceIcon = {
-    link = "LspKindInterface",
-  },
-  AerialKeyIcon = {
-    link = "LspKindKey",
-  },
-  AerialKeywordIcon = {
-    link = "LspKindKeyword",
-  },
-  AerialLine = {
-    link = "LspInlayHint",
-  },
-  AerialMethodIcon = {
-    link = "LspKindMethod",
-  },
-  AerialModuleIcon = {
-    link = "LspKindModule",
-  },
-  AerialNamespaceIcon = {
-    link = "LspKindNamespace",
-  },
+  AerialInterfaceIcon = "LspKindInterface",
+  AerialKeyIcon = "LspKindKey",
+  AerialKeywordIcon = "LspKindKeyword",
+  AerialLine = "LspInlayHint",
+  AerialMethodIcon = "LspKindMethod",
+  AerialModuleIcon = "LspKindModule",
+  AerialNamespaceIcon = "LspKindNamespace",
   AerialNormal = {
     bg = "NONE",
-    fg = "#c0caf5",
+    fg = "#c0caf5"
   },
-  AerialNullIcon = {
-    link = "LspKindNull",
-  },
-  AerialNumberIcon = {
-    link = "LspKindNumber",
-  },
-  AerialObjectIcon = {
-    link = "LspKindObject",
-  },
-  AerialOperatorIcon = {
-    link = "LspKindOperator",
-  },
-  AerialPackageIcon = {
-    link = "LspKindPackage",
-  },
-  AerialPropertyIcon = {
-    link = "LspKindProperty",
-  },
-  AerialReferenceIcon = {
-    link = "LspKindReference",
-  },
-  AerialSnippetIcon = {
-    link = "LspKindSnippet",
-  },
-  AerialStringIcon = {
-    link = "LspKindString",
-  },
-  AerialStructIcon = {
-    link = "LspKindStruct",
-  },
-  AerialTextIcon = {
-    link = "LspKindText",
-  },
-  AerialTypeParameterIcon = {
-    link = "LspKindTypeParameter",
-  },
-  AerialUnitIcon = {
-    link = "LspKindUnit",
-  },
-  AerialValueIcon = {
-    link = "LspKindValue",
-  },
-  AerialVariableIcon = {
-    link = "LspKindVariable",
-  },
+  AerialNullIcon = "LspKindNull",
+  AerialNumberIcon = "LspKindNumber",
+  AerialObjectIcon = "LspKindObject",
+  AerialOperatorIcon = "LspKindOperator",
+  AerialPackageIcon = "LspKindPackage",
+  AerialPropertyIcon = "LspKindProperty",
+  AerialReferenceIcon = "LspKindReference",
+  AerialSnippetIcon = "LspKindSnippet",
+  AerialStringIcon = "LspKindString",
+  AerialStructIcon = "LspKindStruct",
+  AerialTextIcon = "LspKindText",
+  AerialTypeParameterIcon = "LspKindTypeParameter",
+  AerialUnitIcon = "LspKindUnit",
+  AerialValueIcon = "LspKindValue",
+  AerialVariableIcon = "LspKindVariable",
   AlphaButtons = {
-    fg = "#7dcfff",
+    fg = "#7dcfff"
   },
   AlphaFooter = {
-    fg = "#2ac3de",
+    fg = "#2ac3de"
   },
   AlphaHeader = {
-    fg = "#7aa2f7",
+    fg = "#7aa2f7"
   },
   AlphaHeaderLabel = {
-    fg = "#ff9e64",
+    fg = "#ff9e64"
   },
   AlphaShortcut = {
-    fg = "#ff9e64",
+    fg = "#ff9e64"
   },
   Bold = {
     bold = true,
+    fg = "#c0caf5"
   },
   BufferAlternate = {
     bg = "#3b4261",
-    fg = "#c0caf5",
+    fg = "#c0caf5"
   },
   BufferAlternateERROR = {
     bg = "#3b4261",
-    fg = "#db4b4b",
+    fg = "#db4b4b"
   },
   BufferAlternateHINT = {
     bg = "#3b4261",
-    fg = "#1abc9c",
+    fg = "#1abc9c"
   },
   BufferAlternateINFO = {
     bg = "#3b4261",
-    fg = "#0db9d7",
+    fg = "#0db9d7"
   },
   BufferAlternateIndex = {
     bg = "#3b4261",
-    fg = "#0db9d7",
+    fg = "#0db9d7"
   },
   BufferAlternateMod = {
     bg = "#3b4261",
-    fg = "#e0af68",
+    fg = "#e0af68"
   },
   BufferAlternateSign = {
     bg = "#3b4261",
-    fg = "#0db9d7",
+    fg = "#0db9d7"
   },
   BufferAlternateTarget = {
     bg = "#3b4261",
-    fg = "#f7768e",
+    fg = "#f7768e"
   },
   BufferAlternateWARN = {
     bg = "#3b4261",
-    fg = "#e0af68",
+    fg = "#e0af68"
   },
   BufferCurrent = {
     bg = "#1a1b26",
-    fg = "#c0caf5",
+    fg = "#c0caf5"
   },
   BufferCurrentERROR = {
     bg = "#1a1b26",
-    fg = "#db4b4b",
+    fg = "#db4b4b"
   },
   BufferCurrentHINT = {
     bg = "#1a1b26",
-    fg = "#1abc9c",
+    fg = "#1abc9c"
   },
   BufferCurrentINFO = {
     bg = "#1a1b26",
-    fg = "#0db9d7",
+    fg = "#0db9d7"
   },
   BufferCurrentIndex = {
     bg = "#1a1b26",
-    fg = "#0db9d7",
+    fg = "#0db9d7"
   },
   BufferCurrentMod = {
     bg = "#1a1b26",
-    fg = "#e0af68",
+    fg = "#e0af68"
   },
   BufferCurrentSign = {
     bg = "#1a1b26",
-    fg = "#1a1b26",
+    fg = "#1a1b26"
   },
   BufferCurrentTarget = {
     bg = "#1a1b26",
-    fg = "#f7768e",
+    fg = "#f7768e"
   },
   BufferCurrentWARN = {
     bg = "#1a1b26",
-    fg = "#e0af68",
+    fg = "#e0af68"
   },
   BufferInactive = {
     bg = "#202331",
-    fg = "#616789",
+    fg = "#616789"
   },
   BufferInactiveERROR = {
     bg = "#202331",
-    fg = "#b44144",
+    fg = "#b44144"
   },
   BufferInactiveHINT = {
     bg = "#202331",
-    fg = "#1a9c84",
+    fg = "#1a9c84"
   },
   BufferInactiveINFO = {
     bg = "#202331",
-    fg = "#1099b4",
+    fg = "#1099b4"
   },
   BufferInactiveIndex = {
     bg = "#202331",
-    fg = "#737aa2",
+    fg = "#737aa2"
   },
   BufferInactiveMod = {
     bg = "#202331",
-    fg = "#b8915b",
+    fg = "#b8915b"
   },
   BufferInactiveSign = {
     bg = "#202331",
-    fg = "#1a1b26",
+    fg = "#1a1b26"
   },
   BufferInactiveTarget = {
     bg = "#202331",
-    fg = "#f7768e",
+    fg = "#f7768e"
   },
   BufferInactiveWARN = {
     bg = "#202331",
-    fg = "#b8915b",
+    fg = "#b8915b"
   },
   BufferLineIndicatorSelected = {
-    fg = "#6183bb",
+    fg = "#6183bb"
   },
   BufferOffset = {
     bg = "#16161e",
-    fg = "#737aa2",
+    fg = "#737aa2"
   },
   BufferTabpageFill = {
     bg = "#262a3c",
-    fg = "#737aa2",
+    fg = "#737aa2"
   },
   BufferTabpages = {
     bg = "#16161e",
-    fg = "NONE",
+    fg = "NONE"
   },
   BufferVisible = {
     bg = "#16161e",
-    fg = "#c0caf5",
+    fg = "#c0caf5"
   },
   BufferVisibleERROR = {
     bg = "#16161e",
-    fg = "#db4b4b",
+    fg = "#db4b4b"
   },
   BufferVisibleHINT = {
     bg = "#16161e",
-    fg = "#1abc9c",
+    fg = "#1abc9c"
   },
   BufferVisibleINFO = {
     bg = "#16161e",
-    fg = "#0db9d7",
+    fg = "#0db9d7"
   },
   BufferVisibleIndex = {
     bg = "#16161e",
-    fg = "#0db9d7",
+    fg = "#0db9d7"
   },
   BufferVisibleMod = {
     bg = "#16161e",
-    fg = "#e0af68",
+    fg = "#e0af68"
   },
   BufferVisibleSign = {
     bg = "#16161e",
-    fg = "#0db9d7",
+    fg = "#0db9d7"
   },
   BufferVisibleTarget = {
     bg = "#16161e",
-    fg = "#f7768e",
+    fg = "#f7768e"
   },
   BufferVisibleWARN = {
     bg = "#16161e",
-    fg = "#e0af68",
+    fg = "#e0af68"
   },
   Character = {
-    fg = "#9ece6a",
+    fg = "#9ece6a"
   },
   CmpDocumentation = {
     bg = "#16161e",
-    fg = "#c0caf5",
+    fg = "#c0caf5"
   },
   CmpDocumentationBorder = {
     bg = "#16161e",
-    fg = "#27a1b9",
+    fg = "#27a1b9"
   },
   CmpGhostText = {
-    fg = "#414868",
+    fg = "#414868"
   },
   CmpItemAbbr = {
     bg = "NONE",
-    fg = "#c0caf5",
+    fg = "#c0caf5"
   },
   CmpItemAbbrDeprecated = {
     bg = "NONE",
     fg = "#3b4261",
-    strikethrough = true,
+    strikethrough = true
   },
   CmpItemAbbrMatch = {
     bg = "NONE",
-    fg = "#2ac3de",
+    fg = "#2ac3de"
   },
   CmpItemAbbrMatchFuzzy = {
     bg = "NONE",
-    fg = "#2ac3de",
+    fg = "#2ac3de"
   },
-  CmpItemKindArray = {
-    link = "LspKindArray",
-  },
-  CmpItemKindBoolean = {
-    link = "LspKindBoolean",
-  },
-  CmpItemKindClass = {
-    link = "LspKindClass",
-  },
+  CmpItemKindArray = "LspKindArray",
+  CmpItemKindBoolean = "LspKindBoolean",
+  CmpItemKindClass = "LspKindClass",
   CmpItemKindCodeium = {
     bg = "NONE",
-    fg = "#1abc9c",
+    fg = "#1abc9c"
   },
-  CmpItemKindColor = {
-    link = "LspKindColor",
-  },
-  CmpItemKindConstant = {
-    link = "LspKindConstant",
-  },
-  CmpItemKindConstructor = {
-    link = "LspKindConstructor",
-  },
+  CmpItemKindColor = "LspKindColor",
+  CmpItemKindConstant = "LspKindConstant",
+  CmpItemKindConstructor = "LspKindConstructor",
   CmpItemKindCopilot = {
     bg = "NONE",
-    fg = "#1abc9c",
+    fg = "#1abc9c"
   },
   CmpItemKindDefault = {
     bg = "NONE",
-    fg = "#a9b1d6",
+    fg = "#a9b1d6"
   },
-  CmpItemKindEnum = {
-    link = "LspKindEnum",
-  },
-  CmpItemKindEnumMember = {
-    link = "LspKindEnumMember",
-  },
-  CmpItemKindEvent = {
-    link = "LspKindEvent",
-  },
-  CmpItemKindField = {
-    link = "LspKindField",
-  },
-  CmpItemKindFile = {
-    link = "LspKindFile",
-  },
-  CmpItemKindFolder = {
-    link = "LspKindFolder",
-  },
-  CmpItemKindFunction = {
-    link = "LspKindFunction",
-  },
-  CmpItemKindInterface = {
-    link = "LspKindInterface",
-  },
-  CmpItemKindKey = {
-    link = "LspKindKey",
-  },
-  CmpItemKindKeyword = {
-    link = "LspKindKeyword",
-  },
-  CmpItemKindMethod = {
-    link = "LspKindMethod",
-  },
-  CmpItemKindModule = {
-    link = "LspKindModule",
-  },
-  CmpItemKindNamespace = {
-    link = "LspKindNamespace",
-  },
-  CmpItemKindNull = {
-    link = "LspKindNull",
-  },
-  CmpItemKindNumber = {
-    link = "LspKindNumber",
-  },
-  CmpItemKindObject = {
-    link = "LspKindObject",
-  },
-  CmpItemKindOperator = {
-    link = "LspKindOperator",
-  },
-  CmpItemKindPackage = {
-    link = "LspKindPackage",
-  },
-  CmpItemKindProperty = {
-    link = "LspKindProperty",
-  },
-  CmpItemKindReference = {
-    link = "LspKindReference",
-  },
-  CmpItemKindSnippet = {
-    link = "LspKindSnippet",
-  },
-  CmpItemKindString = {
-    link = "LspKindString",
-  },
-  CmpItemKindStruct = {
-    link = "LspKindStruct",
+  CmpItemKindEnum = "LspKindEnum",
+  CmpItemKindEnumMember = "LspKindEnumMember",
+  CmpItemKindEvent = "LspKindEvent",
+  CmpItemKindField = "LspKindField",
+  CmpItemKindFile = "LspKindFile",
+  CmpItemKindFolder = "LspKindFolder",
+  CmpItemKindFunction = "LspKindFunction",
+  CmpItemKindInterface = "LspKindInterface",
+  CmpItemKindKey = "LspKindKey",
+  CmpItemKindKeyword = "LspKindKeyword",
+  CmpItemKindMethod = "LspKindMethod",
+  CmpItemKindModule = "LspKindModule",
+  CmpItemKindNamespace = "LspKindNamespace",
+  CmpItemKindNull = "LspKindNull",
+  CmpItemKindNumber = "LspKindNumber",
+  CmpItemKindObject = "LspKindObject",
+  CmpItemKindOperator = "LspKindOperator",
+  CmpItemKindPackage = "LspKindPackage",
+  CmpItemKindProperty = "LspKindProperty",
+  CmpItemKindReference = "LspKindReference",
+  CmpItemKindSnippet = "LspKindSnippet",
+  CmpItemKindString = "LspKindString",
+  CmpItemKindStruct = "LspKindStruct",
+  CmpItemKindSupermaven = {
+    bg = "NONE",
+    fg = "#1abc9c"
   },
   CmpItemKindTabNine = {
     bg = "NONE",
-    fg = "#1abc9c",
+    fg = "#1abc9c"
   },
-  CmpItemKindText = {
-    link = "LspKindText",
-  },
-  CmpItemKindTypeParameter = {
-    link = "LspKindTypeParameter",
-  },
-  CmpItemKindUnit = {
-    link = "LspKindUnit",
-  },
-  CmpItemKindValue = {
-    link = "LspKindValue",
-  },
-  CmpItemKindVariable = {
-    link = "LspKindVariable",
-  },
+  CmpItemKindText = "LspKindText",
+  CmpItemKindTypeParameter = "LspKindTypeParameter",
+  CmpItemKindUnit = "LspKindUnit",
+  CmpItemKindValue = "LspKindValue",
+  CmpItemKindVariable = "LspKindVariable",
   CmpItemMenu = {
     bg = "NONE",
-    fg = "#565f89",
+    fg = "#565f89"
   },
   CodeBlock = {
-    bg = "#16161e",
+    bg = "#16161e"
   },
   ColorColumn = {
-    bg = "#15161e",
+    bg = "#15161e"
   },
   Comment = {
     fg = "#565f89",
-    style = {
-      italic = true,
-    },
+    italic = true
   },
   Conceal = {
-    fg = "#737aa2",
+    fg = "#737aa2"
   },
   Constant = {
-    fg = "#ff9e64",
+    fg = "#ff9e64"
   },
-  CurSearch = {
-    link = "IncSearch",
-  },
+  CurSearch = "IncSearch",
   Cursor = {
     bg = "#c0caf5",
-    fg = "#1a1b26",
+    fg = "#1a1b26"
   },
   CursorColumn = {
-    bg = "#292e42",
+    bg = "#292e42"
   },
   CursorIM = {
     bg = "#c0caf5",
-    fg = "#1a1b26",
+    fg = "#1a1b26"
   },
   CursorLine = {
-    bg = "#292e42",
+    bg = "#292e42"
   },
   CursorLineNr = {
-    fg = "#737aa2",
+    bold = true,
+    fg = "#ff9e64"
   },
   DapStoppedLine = {
-    bg = "#2e2a2d",
-  },
-  DashboardCenter = {
-    fg = "#bb9af7",
+    bg = "#2e2a2d"
   },
   DashboardDesc = {
-    fg = "#7dcfff",
+    fg = "#7dcfff"
+  },
+  DashboardFiles = {
+    fg = "#7aa2f7"
   },
   DashboardFooter = {
-    fg = "#2ac3de",
+    fg = "#2ac3de"
   },
   DashboardHeader = {
-    fg = "#7aa2f7",
+    fg = "#7aa2f7"
   },
   DashboardIcon = {
     bold = true,
-    fg = "#7dcfff",
+    fg = "#7dcfff"
   },
   DashboardKey = {
-    fg = "#ff9e64",
+    fg = "#ff9e64"
+  },
+  DashboardMruIcon = {
+    fg = "#9d7cd8"
+  },
+  DashboardMruTitle = {
+    fg = "#7dcfff"
+  },
+  DashboardProjectIcon = {
+    fg = "#e0af68"
+  },
+  DashboardProjectTitle = {
+    fg = "#7dcfff"
+  },
+  DashboardProjectTitleIcon = {
+    fg = "#ff9e64"
   },
   DashboardShortCut = {
-    fg = "#7dcfff",
+    fg = "#7dcfff"
+  },
+  DashboardShortCutIcon = {
+    fg = "#bb9af7"
   },
   Debug = {
-    fg = "#ff9e64",
+    fg = "#ff9e64"
   },
   DefinitionCount = {
-    fg = "#9d7cd8",
+    fg = "#9d7cd8"
   },
   DefinitionIcon = {
-    fg = "#7aa2f7",
+    fg = "#7aa2f7"
   },
+  Delimiter = "Special",
   DiagnosticError = {
-    fg = "#db4b4b",
+    fg = "#db4b4b"
   },
   DiagnosticHint = {
-    fg = "#1abc9c",
+    fg = "#1abc9c"
   },
   DiagnosticInfo = {
-    fg = "#0db9d7",
+    fg = "#0db9d7"
   },
-  DiagnosticInformation = {
-    link = "DiagnosticInfo",
-  },
+  DiagnosticInformation = "DiagnosticInfo",
   DiagnosticUnderlineError = {
     sp = "#db4b4b",
-    undercurl = true,
+    undercurl = true
   },
   DiagnosticUnderlineHint = {
     sp = "#1abc9c",
-    undercurl = true,
+    undercurl = true
   },
   DiagnosticUnderlineInfo = {
     sp = "#0db9d7",
-    undercurl = true,
+    undercurl = true
   },
   DiagnosticUnderlineWarn = {
     sp = "#e0af68",
-    undercurl = true,
+    undercurl = true
   },
   DiagnosticUnnecessary = {
-    fg = "#414868",
+    fg = "#414868"
   },
   DiagnosticVirtualTextError = {
     bg = "#2d202a",
-    fg = "#db4b4b",
+    fg = "#db4b4b"
   },
   DiagnosticVirtualTextHint = {
     bg = "#1a2b32",
-    fg = "#1abc9c",
+    fg = "#1abc9c"
   },
   DiagnosticVirtualTextInfo = {
     bg = "#192b38",
-    fg = "#0db9d7",
+    fg = "#0db9d7"
   },
   DiagnosticVirtualTextWarn = {
     bg = "#2e2a2d",
-    fg = "#e0af68",
+    fg = "#e0af68"
   },
   DiagnosticWarn = {
-    fg = "#e0af68",
+    fg = "#e0af68"
   },
-  DiagnosticWarning = {
-    link = "DiagnosticWarn",
-  },
+  DiagnosticWarning = "DiagnosticWarn",
   DiffAdd = {
-    bg = "#20303b",
+    bg = "#20303b"
   },
   DiffChange = {
-    bg = "#1f2231",
+    bg = "#1f2231"
   },
   DiffDelete = {
-    bg = "#37222c",
+    bg = "#37222c"
   },
   DiffText = {
-    bg = "#394b70",
+    bg = "#394b70"
   },
   Directory = {
-    fg = "#7aa2f7",
+    fg = "#7aa2f7"
   },
   EndOfBuffer = {
-    fg = "#1a1b26",
+    fg = "#1a1b26"
   },
   Error = {
-    fg = "#db4b4b",
+    fg = "#db4b4b"
   },
   ErrorMsg = {
-    fg = "#db4b4b",
-  },
-  FernBranchText = {
-    fg = "#7aa2f7",
+    fg = "#db4b4b"
   },
   FlashBackdrop = {
-    fg = "#545c7e",
+    fg = "#545c7e"
   },
   FlashLabel = {
     bg = "#ff007c",
     bold = true,
-    fg = "#c0caf5",
+    fg = "#c0caf5"
   },
   FloatBorder = {
     bg = "#16161e",
-    fg = "#27a1b9",
+    fg = "#27a1b9"
   },
   FloatTitle = {
     bg = "#16161e",
-    fg = "#27a1b9",
+    fg = "#27a1b9"
   },
   FoldColumn = {
     bg = "#1a1b26",
-    fg = "#565f89",
+    fg = "#565f89"
   },
   Folded = {
     bg = "#3b4261",
-    fg = "#7aa2f7",
+    fg = "#7aa2f7"
   },
   Foo = {
     bg = "#ff007c",
-    fg = "#c0caf5",
+    fg = "#c0caf5"
   },
   Function = {
-    fg = "#7aa2f7",
-    style = {},
+    fg = "#7aa2f7"
+  },
+  FzfLuaBorder = {
+    bg = "#16161e",
+    fg = "#27a1b9"
+  },
+  FzfLuaCursor = "IncSearch",
+  FzfLuaDirPart = {
+    fg = "#a9b1d6"
+  },
+  FzfLuaFilePart = "FzfLuaFzfNormal",
+  FzfLuaFzfCursorLine = "Visual",
+  FzfLuaFzfNormal = {
+    fg = "#c0caf5"
+  },
+  FzfLuaFzfPointer = {
+    fg = "#ff007c"
+  },
+  FzfLuaFzfSeparator = {
+    bg = "#16161e",
+    fg = "#ff9e64"
+  },
+  FzfLuaHeaderBind = "@punctuation.special",
+  FzfLuaHeaderText = "Title",
+  FzfLuaNormal = {
+    bg = "#16161e",
+    fg = "#c0caf5"
+  },
+  FzfLuaPath = "Directory",
+  FzfLuaPreviewTitle = {
+    bg = "#16161e",
+    fg = "#27a1b9"
+  },
+  FzfLuaTitle = {
+    bg = "#16161e",
+    fg = "#ff9e64"
   },
   GitGutterAdd = {
-    fg = "#266d6a",
+    fg = "#449dab"
   },
   GitGutterAddLineNr = {
-    fg = "#266d6a",
+    fg = "#449dab"
   },
   GitGutterChange = {
-    fg = "#536c9e",
+    fg = "#6183bb"
   },
   GitGutterChangeLineNr = {
-    fg = "#536c9e",
+    fg = "#6183bb"
   },
   GitGutterDelete = {
-    fg = "#b2555b",
+    fg = "#914c54"
   },
   GitGutterDeleteLineNr = {
-    fg = "#b2555b",
+    fg = "#914c54"
   },
   GitSignsAdd = {
-    fg = "#266d6a",
+    fg = "#449dab"
   },
   GitSignsChange = {
-    fg = "#536c9e",
+    fg = "#6183bb"
   },
   GitSignsDelete = {
-    fg = "#b2555b",
+    fg = "#914c54"
   },
   GlyphPalette1 = {
-    fg = "#db4b4b",
+    fg = "#db4b4b"
   },
   GlyphPalette2 = {
-    fg = "#9ece6a",
+    fg = "#9ece6a"
   },
   GlyphPalette3 = {
-    fg = "#e0af68",
+    fg = "#e0af68"
   },
   GlyphPalette4 = {
-    fg = "#7aa2f7",
+    fg = "#7aa2f7"
   },
   GlyphPalette6 = {
-    fg = "#73daca",
+    fg = "#73daca"
   },
   GlyphPalette7 = {
-    fg = "#c0caf5",
+    fg = "#c0caf5"
   },
   GlyphPalette9 = {
-    fg = "#f7768e",
+    fg = "#f7768e"
   },
-  Headline = {
-    link = "Headline1",
+  GrugFarHelpHeader = {
+    fg = "#565f89"
   },
+  GrugFarHelpHeaderKey = {
+    fg = "#7dcfff"
+  },
+  GrugFarInputLabel = {
+    fg = "#2ac3de"
+  },
+  GrugFarInputPlaceholder = {
+    fg = "#545c7e"
+  },
+  GrugFarResultsChangeIndicator = {
+    fg = "#6183bb"
+  },
+  GrugFarResultsHeader = {
+    fg = "#ff9e64"
+  },
+  GrugFarResultsLineColumn = {
+    fg = "#545c7e"
+  },
+  GrugFarResultsLineNo = {
+    fg = "#545c7e"
+  },
+  GrugFarResultsMatch = {
+    bg = "#f7768e",
+    fg = "#15161e"
+  },
+  GrugFarResultsStats = {
+    fg = "#7aa2f7"
+  },
+  Headline = "Headline1",
   Headline1 = {
-    bg = "#1f2230",
+    bg = "#1f2230"
   },
   Headline2 = {
-    bg = "#242229",
+    bg = "#242229"
   },
   Headline3 = {
-    bg = "#212429",
+    bg = "#212429"
   },
   Headline4 = {
-    bg = "#1a232c",
+    bg = "#1a232c"
   },
   Headline5 = {
-    bg = "#222130",
+    bg = "#222130"
   },
   Headline6 = {
-    bg = "#21202f",
-  },
-  Hlargs = {
-    fg = "#e0af68",
+    bg = "#21202f"
   },
   HopNextKey = {
     bold = true,
-    fg = "#ff007c",
+    fg = "#ff007c"
   },
   HopNextKey1 = {
     bold = true,
-    fg = "#0db9d7",
+    fg = "#0db9d7"
   },
   HopNextKey2 = {
-    fg = "#127a90",
+    fg = "#127a90"
   },
   HopUnmatched = {
-    fg = "#545c7e",
+    fg = "#545c7e"
   },
   IblIndent = {
     fg = "#3b4261",
-    nocombine = true,
+    nocombine = true
   },
   IblScope = {
-    fg = "#9d7cd8",
-    nocombine = true,
+    fg = "#2ac3de",
+    nocombine = true
   },
   Identifier = {
-    fg = "#bb9af7",
-    style = {},
+    fg = "#bb9af7"
   },
   IlluminatedWordRead = {
-    bg = "#3b4261",
+    bg = "#3b4261"
   },
   IlluminatedWordText = {
-    bg = "#3b4261",
+    bg = "#3b4261"
   },
   IlluminatedWordWrite = {
-    bg = "#3b4261",
+    bg = "#3b4261"
   },
   IncSearch = {
     bg = "#ff9e64",
-    fg = "#15161e",
+    fg = "#15161e"
   },
   IndentBlanklineChar = {
     fg = "#3b4261",
-    nocombine = true,
+    nocombine = true
   },
   IndentBlanklineContextChar = {
-    fg = "#9d7cd8",
-    nocombine = true,
+    fg = "#2ac3de",
+    nocombine = true
+  },
+  IndentLine = {
+    fg = "#3b4261",
+    nocombine = true
+  },
+  IndentLineCurrent = {
+    fg = "#2ac3de",
+    nocombine = true
   },
   Italic = {
-    italic = true,
+    fg = "#c0caf5",
+    italic = true
   },
   Keyword = {
     fg = "#7dcfff",
-    style = {
-      italic = true,
-    },
+    italic = true
   },
   LazyProgressDone = {
     bold = true,
-    fg = "#ff007c",
+    fg = "#ff007c"
   },
   LazyProgressTodo = {
     bold = true,
-    fg = "#3b4261",
+    fg = "#3b4261"
   },
   LeapBackdrop = {
-    fg = "#545c7e",
+    fg = "#545c7e"
   },
-  LeapLabelPrimary = {
+  LeapLabel = {
     bold = true,
-    fg = "#ff007c",
-  },
-  LeapLabelSecondary = {
-    bold = true,
-    fg = "#73daca",
+    fg = "#ff007c"
   },
   LeapMatch = {
     bg = "#ff007c",
     bold = true,
-    fg = "#c0caf5",
-  },
-  LightspeedGreyWash = {
-    fg = "#545c7e",
-  },
-  LightspeedLabel = {
-    bold = true,
-    fg = "#ff007c",
-    underline = true,
-  },
-  LightspeedLabelDistant = {
-    bold = true,
-    fg = "#73daca",
-    underline = true,
-  },
-  LightspeedLabelDistantOverlapped = {
-    fg = "#41a6b5",
-    underline = true,
-  },
-  LightspeedLabelOverlapped = {
-    fg = "#ff007c",
-    underline = true,
-  },
-  LightspeedMaskedChar = {
-    fg = "#ff9e64",
-  },
-  LightspeedOneCharMatch = {
-    bg = "#ff007c",
-    bold = true,
-    fg = "#c0caf5",
-  },
-  LightspeedPendingOpArea = {
-    bg = "#ff007c",
-    fg = "#c0caf5",
-  },
-  LightspeedShortcut = {
-    bg = "#ff007c",
-    bold = true,
-    fg = "#c0caf5",
-    underline = true,
-  },
-  LightspeedUnlabeledMatch = {
-    bold = true,
-    fg = "#0db9d7",
+    fg = "#c0caf5"
   },
   LineNr = {
-    fg = "#3b4261",
+    fg = "#3b4261"
+  },
+  LineNrAbove = {
+    fg = "#3b4261"
+  },
+  LineNrBelow = {
+    fg = "#3b4261"
   },
   LspCodeLens = {
-    fg = "#565f89",
+    fg = "#565f89"
   },
   LspFloatWinBorder = {
-    fg = "#27a1b9",
+    fg = "#27a1b9"
   },
   LspFloatWinNormal = {
-    bg = "#16161e",
+    bg = "#16161e"
   },
   LspInfoBorder = {
     bg = "#16161e",
-    fg = "#27a1b9",
+    fg = "#27a1b9"
   },
   LspInlayHint = {
     bg = "#1d202d",
-    fg = "#545c7e",
+    fg = "#545c7e"
   },
-  LspKindArray = {
-    link = "@punctuation.bracket",
-  },
-  LspKindBoolean = {
-    link = "@boolean",
-  },
-  LspKindClass = {
-    link = "@type",
-  },
-  LspKindColor = {
-    link = "Special",
-  },
-  LspKindConstant = {
-    link = "@constant",
-  },
-  LspKindConstructor = {
-    link = "@constructor",
-  },
-  LspKindEnum = {
-    link = "@lsp.type.enum",
-  },
-  LspKindEnumMember = {
-    link = "@lsp.type.enumMember",
-  },
-  LspKindEvent = {
-    link = "Special",
-  },
-  LspKindField = {
-    link = "@field",
-  },
-  LspKindFile = {
-    link = "Normal",
-  },
-  LspKindFolder = {
-    link = "Directory",
-  },
-  LspKindFunction = {
-    link = "@function",
-  },
-  LspKindInterface = {
-    link = "@lsp.type.interface",
-  },
-  LspKindKey = {
-    link = "@field",
-  },
-  LspKindKeyword = {
-    link = "@lsp.type.keyword",
-  },
-  LspKindMethod = {
-    link = "@method",
-  },
-  LspKindModule = {
-    link = "@namespace",
-  },
-  LspKindNamespace = {
-    link = "@namespace",
-  },
-  LspKindNull = {
-    link = "@constant.builtin",
-  },
-  LspKindNumber = {
-    link = "@number",
-  },
-  LspKindObject = {
-    link = "@constant",
-  },
-  LspKindOperator = {
-    link = "@operator",
-  },
-  LspKindPackage = {
-    link = "@namespace",
-  },
-  LspKindProperty = {
-    link = "@property",
-  },
-  LspKindReference = {
-    link = "@text.reference",
-  },
-  LspKindSnippet = {
-    link = "Conceal",
-  },
-  LspKindString = {
-    link = "@string",
-  },
-  LspKindStruct = {
-    link = "@lsp.type.struct",
-  },
-  LspKindText = {
-    link = "@text",
-  },
-  LspKindTypeParameter = {
-    link = "@lsp.type.typeParameter",
-  },
-  LspKindUnit = {
-    link = "@lsp.type.struct",
-  },
-  LspKindValue = {
-    link = "@string",
-  },
-  LspKindVariable = {
-    link = "@variable",
-  },
+  LspKindArray = "@punctuation.bracket",
+  LspKindBoolean = "@boolean",
+  LspKindClass = "@type",
+  LspKindColor = "Special",
+  LspKindConstant = "@constant",
+  LspKindConstructor = "@constructor",
+  LspKindEnum = "@lsp.type.enum",
+  LspKindEnumMember = "@lsp.type.enumMember",
+  LspKindEvent = "Special",
+  LspKindField = "@variable.member",
+  LspKindFile = "Normal",
+  LspKindFolder = "Directory",
+  LspKindFunction = "@function",
+  LspKindInterface = "@lsp.type.interface",
+  LspKindKey = "@variable.member",
+  LspKindKeyword = "@lsp.type.keyword",
+  LspKindMethod = "@function.method",
+  LspKindModule = "@module",
+  LspKindNamespace = "@module",
+  LspKindNull = "@constant.builtin",
+  LspKindNumber = "@number",
+  LspKindObject = "@constant",
+  LspKindOperator = "@operator",
+  LspKindPackage = "@module",
+  LspKindProperty = "@property",
+  LspKindReference = "@markup.link",
+  LspKindSnippet = "Conceal",
+  LspKindString = "@string",
+  LspKindStruct = "@lsp.type.struct",
+  LspKindText = "@markup",
+  LspKindTypeParameter = "@lsp.type.typeParameter",
+  LspKindUnit = "@lsp.type.struct",
+  LspKindValue = "@string",
+  LspKindVariable = "@variable",
   LspReferenceRead = {
-    bg = "#3b4261",
+    bg = "#3b4261"
   },
   LspReferenceText = {
-    bg = "#3b4261",
+    bg = "#3b4261"
   },
   LspReferenceWrite = {
-    bg = "#3b4261",
+    bg = "#3b4261"
   },
   LspSagaBorderTitle = {
-    fg = "#7dcfff",
+    fg = "#7dcfff"
   },
   LspSagaCodeActionBorder = {
-    fg = "#7aa2f7",
+    fg = "#7aa2f7"
   },
   LspSagaCodeActionContent = {
-    fg = "#9d7cd8",
+    fg = "#9d7cd8"
   },
   LspSagaCodeActionTitle = {
-    fg = "#2ac3de",
+    fg = "#2ac3de"
   },
   LspSagaDefPreviewBorder = {
-    fg = "#9ece6a",
+    fg = "#9ece6a"
   },
   LspSagaFinderSelection = {
-    fg = "#283457",
+    fg = "#283457"
   },
   LspSagaHoverBorder = {
-    fg = "#7aa2f7",
+    fg = "#7aa2f7"
   },
   LspSagaRenameBorder = {
-    fg = "#9ece6a",
+    fg = "#9ece6a"
   },
   LspSagaSignatureHelpBorder = {
-    fg = "#f7768e",
+    fg = "#f7768e"
   },
   LspSignatureActiveParameter = {
     bg = "#20253a",
-    bold = true,
+    bold = true
   },
   MatchParen = {
     bold = true,
-    fg = "#ff9e64",
+    fg = "#ff9e64"
   },
+  MiniAnimateCursor = {
+    nocombine = true,
+    reverse = true
+  },
+  MiniAnimateNormalFloat = "NormalFloat",
+  MiniClueBorder = "FloatBorder",
+  MiniClueDescGroup = "DiagnosticFloatingWarn",
+  MiniClueDescSingle = "NormalFloat",
+  MiniClueNextKey = "DiagnosticFloatingHint",
+  MiniClueNextKeyWithPostkeys = "DiagnosticFloatingError",
+  MiniClueSeparator = "DiagnosticFloatingInfo",
+  MiniClueTitle = "FloatTitle",
   MiniCompletionActiveParameter = {
-    underline = true,
+    underline = true
   },
   MiniCursorword = {
-    bg = "#3b4261",
+    bg = "#3b4261"
   },
   MiniCursorwordCurrent = {
-    bg = "#3b4261",
+    bg = "#3b4261"
+  },
+  MiniDepsChangeAdded = "diffAdded",
+  MiniDepsChangeRemoved = "diffRemoved",
+  MiniDepsHint = "DiagnosticHint",
+  MiniDepsInfo = "DiagnosticInfo",
+  MiniDepsMsgBreaking = "DiagnosticWarn",
+  MiniDepsPlaceholder = "Comment",
+  MiniDepsTitle = "Title",
+  MiniDepsTitleError = {
+    bg = "#914c54",
+    fg = "#15161e"
+  },
+  MiniDepsTitleSame = "Comment",
+  MiniDepsTitleUpdate = {
+    bg = "#449dab",
+    fg = "#15161e"
+  },
+  MiniDiffOverAdd = "DiffAdd",
+  MiniDiffOverChange = "DiffText",
+  MiniDiffOverContext = "DiffChange",
+  MiniDiffOverDelete = "DiffDelete",
+  MiniDiffSignAdd = {
+    fg = "#449dab"
+  },
+  MiniDiffSignChange = {
+    fg = "#6183bb"
+  },
+  MiniDiffSignDelete = {
+    fg = "#914c54"
+  },
+  MiniFilesBorder = "FloatBorder",
+  MiniFilesBorderModified = "DiagnosticFloatingWarn",
+  MiniFilesCursorLine = "CursorLine",
+  MiniFilesDirectory = "Directory",
+  MiniFilesFile = {
+    fg = "#c0caf5"
+  },
+  MiniFilesNormal = "NormalFloat",
+  MiniFilesTitle = "FloatTitle",
+  MiniFilesTitleFocused = {
+    bg = "#16161e",
+    bold = true,
+    fg = "#27a1b9"
+  },
+  MiniHipatternsFixme = {
+    bg = "#db4b4b",
+    bold = true,
+    fg = "#15161e"
+  },
+  MiniHipatternsHack = {
+    bg = "#e0af68",
+    bold = true,
+    fg = "#15161e"
+  },
+  MiniHipatternsNote = {
+    bg = "#1abc9c",
+    bold = true,
+    fg = "#15161e"
+  },
+  MiniHipatternsTodo = {
+    bg = "#0db9d7",
+    bold = true,
+    fg = "#15161e"
+  },
+  MiniIconsAzure = {
+    fg = "#0db9d7"
+  },
+  MiniIconsBlue = {
+    fg = "#7aa2f7"
+  },
+  MiniIconsCyan = {
+    fg = "#1abc9c"
+  },
+  MiniIconsGreen = {
+    fg = "#9ece6a"
+  },
+  MiniIconsGrey = {
+    fg = "#c0caf5"
+  },
+  MiniIconsOrange = {
+    fg = "#ff9e64"
+  },
+  MiniIconsPurple = {
+    fg = "#9d7cd8"
+  },
+  MiniIconsRed = {
+    fg = "#f7768e"
+  },
+  MiniIconsYellow = {
+    fg = "#e0af68"
   },
   MiniIndentscopePrefix = {
-    nocombine = true,
+    nocombine = true
   },
   MiniIndentscopeSymbol = {
     fg = "#2ac3de",
-    nocombine = true,
+    nocombine = true
   },
   MiniJump = {
     bg = "#ff007c",
-    fg = "#ffffff",
+    fg = "#ffffff"
   },
+  MiniJump2dDim = "Comment",
   MiniJump2dSpot = {
     bold = true,
     fg = "#ff007c",
-    nocombine = true,
+    nocombine = true
+  },
+  MiniJump2dSpotAhead = {
+    bg = "#16161e",
+    fg = "#1abc9c",
+    nocombine = true
+  },
+  MiniJump2dSpotUnique = {
+    bold = true,
+    fg = "#ff9e64",
+    nocombine = true
+  },
+  MiniMapNormal = "NormalFloat",
+  MiniMapSymbolCount = "Special",
+  MiniMapSymbolLine = "Title",
+  MiniMapSymbolView = "Delimiter",
+  MiniNotifyBorder = "FloatBorder",
+  MiniNotifyNormal = "NormalFloat",
+  MiniNotifyTitle = "FloatTitle",
+  MiniOperatorsExchangeFrom = "IncSearch",
+  MiniPickBorder = "FloatBorder",
+  MiniPickBorderBusy = "DiagnosticFloatingWarn",
+  MiniPickBorderText = {
+    bg = "#16161e",
+    fg = "#1abc9c"
+  },
+  MiniPickHeader = "DiagnosticFloatingHint",
+  MiniPickIconDirectory = "Directory",
+  MiniPickIconFile = "MiniPickNormal",
+  MiniPickMatchCurrent = "CursorLine",
+  MiniPickMatchMarked = "Visual",
+  MiniPickMatchRanges = "DiagnosticFloatingHint",
+  MiniPickNormal = "NormalFloat",
+  MiniPickPreviewLine = "CursorLine",
+  MiniPickPreviewRegion = "IncSearch",
+  MiniPickPrompt = {
+    bg = "#16161e",
+    fg = "#0db9d7"
   },
   MiniStarterCurrent = {
-    nocombine = true,
+    nocombine = true
   },
   MiniStarterFooter = {
     fg = "#e0af68",
-    italic = true,
+    italic = true
   },
   MiniStarterHeader = {
-    fg = "#7aa2f7",
+    fg = "#7aa2f7"
   },
   MiniStarterInactive = {
     fg = "#565f89",
-    style = {
-      italic = true,
-    },
+    italic = true
   },
   MiniStarterItem = {
     bg = "#1a1b26",
-    fg = "#c0caf5",
+    fg = "#c0caf5"
   },
   MiniStarterItemBullet = {
-    fg = "#27a1b9",
+    fg = "#27a1b9"
   },
   MiniStarterItemPrefix = {
-    fg = "#e0af68",
+    fg = "#e0af68"
   },
   MiniStarterQuery = {
-    fg = "#0db9d7",
+    fg = "#0db9d7"
   },
   MiniStarterSection = {
-    fg = "#2ac3de",
+    fg = "#2ac3de"
   },
   MiniStatuslineDevinfo = {
-    bg = "#292e42",
-    fg = "#a9b1d6",
+    bg = "#3b4261",
+    fg = "#a9b1d6"
   },
   MiniStatuslineFileinfo = {
-    bg = "#292e42",
-    fg = "#a9b1d6",
+    bg = "#3b4261",
+    fg = "#a9b1d6"
   },
   MiniStatuslineFilename = {
-    bg = "#3b4261",
-    fg = "#a9b1d6",
+    bg = "#292e42",
+    fg = "#a9b1d6"
   },
   MiniStatuslineInactive = {
     bg = "#16161e",
-    fg = "#7aa2f7",
+    fg = "#7aa2f7"
   },
   MiniStatuslineModeCommand = {
     bg = "#e0af68",
     bold = true,
-    fg = "#15161e",
+    fg = "#15161e"
   },
   MiniStatuslineModeInsert = {
     bg = "#9ece6a",
     bold = true,
-    fg = "#15161e",
+    fg = "#15161e"
   },
   MiniStatuslineModeNormal = {
     bg = "#7aa2f7",
     bold = true,
-    fg = "#15161e",
+    fg = "#15161e"
   },
   MiniStatuslineModeOther = {
     bg = "#1abc9c",
     bold = true,
-    fg = "#15161e",
+    fg = "#15161e"
   },
   MiniStatuslineModeReplace = {
     bg = "#f7768e",
     bold = true,
-    fg = "#15161e",
+    fg = "#15161e"
   },
   MiniStatuslineModeVisual = {
     bg = "#bb9af7",
     bold = true,
-    fg = "#15161e",
+    fg = "#15161e"
   },
   MiniSurround = {
     bg = "#ff9e64",
-    fg = "#15161e",
+    fg = "#15161e"
   },
   MiniTablineCurrent = {
     bg = "#3b4261",
-    fg = "#c0caf5",
+    fg = "#c0caf5"
   },
   MiniTablineFill = {
-    bg = "#15161e",
+    bg = "#15161e"
   },
   MiniTablineHidden = {
     bg = "#16161e",
-    fg = "#737aa2",
+    fg = "#737aa2"
   },
   MiniTablineModifiedCurrent = {
     bg = "#3b4261",
-    fg = "#e0af68",
+    fg = "#e0af68"
   },
   MiniTablineModifiedHidden = {
     bg = "#16161e",
-    fg = "#a58354",
+    fg = "#a58354"
   },
   MiniTablineModifiedVisible = {
     bg = "#16161e",
-    fg = "#e0af68",
+    fg = "#e0af68"
   },
   MiniTablineTabpagesection = {
-    bg = "#16161e",
-    fg = "NONE",
+    bg = "#3b4261",
+    fg = "NONE"
   },
   MiniTablineVisible = {
     bg = "#16161e",
-    fg = "#c0caf5",
+    fg = "#c0caf5"
   },
   MiniTestEmphasis = {
-    bold = true,
+    bold = true
   },
   MiniTestFail = {
     bold = true,
-    fg = "#f7768e",
+    fg = "#f7768e"
   },
   MiniTestPass = {
     bold = true,
-    fg = "#9ece6a",
+    fg = "#9ece6a"
   },
   MiniTrailspace = {
-    bg = "#f7768e",
+    bg = "#f7768e"
   },
   ModeMsg = {
     bold = true,
-    fg = "#a9b1d6",
+    fg = "#a9b1d6"
   },
   MoreMsg = {
-    fg = "#7aa2f7",
+    fg = "#7aa2f7"
   },
   MsgArea = {
-    fg = "#a9b1d6",
+    fg = "#a9b1d6"
   },
-  NavicIconsArray = {
-    link = "LspKindArray",
-  },
-  NavicIconsBoolean = {
-    link = "LspKindBoolean",
-  },
-  NavicIconsClass = {
-    link = "LspKindClass",
-  },
-  NavicIconsColor = {
-    link = "LspKindColor",
-  },
-  NavicIconsConstant = {
-    link = "LspKindConstant",
-  },
-  NavicIconsConstructor = {
-    link = "LspKindConstructor",
-  },
-  NavicIconsEnum = {
-    link = "LspKindEnum",
-  },
-  NavicIconsEnumMember = {
-    link = "LspKindEnumMember",
-  },
-  NavicIconsEvent = {
-    link = "LspKindEvent",
-  },
-  NavicIconsField = {
-    link = "LspKindField",
-  },
-  NavicIconsFile = {
-    link = "LspKindFile",
-  },
-  NavicIconsFolder = {
-    link = "LspKindFolder",
-  },
-  NavicIconsFunction = {
-    link = "LspKindFunction",
-  },
-  NavicIconsInterface = {
-    link = "LspKindInterface",
-  },
-  NavicIconsKey = {
-    link = "LspKindKey",
-  },
-  NavicIconsKeyword = {
-    link = "LspKindKeyword",
-  },
-  NavicIconsMethod = {
-    link = "LspKindMethod",
-  },
-  NavicIconsModule = {
-    link = "LspKindModule",
-  },
-  NavicIconsNamespace = {
-    link = "LspKindNamespace",
-  },
-  NavicIconsNull = {
-    link = "LspKindNull",
-  },
-  NavicIconsNumber = {
-    link = "LspKindNumber",
-  },
-  NavicIconsObject = {
-    link = "LspKindObject",
-  },
-  NavicIconsOperator = {
-    link = "LspKindOperator",
-  },
-  NavicIconsPackage = {
-    link = "LspKindPackage",
-  },
-  NavicIconsProperty = {
-    link = "LspKindProperty",
-  },
-  NavicIconsReference = {
-    link = "LspKindReference",
-  },
-  NavicIconsSnippet = {
-    link = "LspKindSnippet",
-  },
-  NavicIconsString = {
-    link = "LspKindString",
-  },
-  NavicIconsStruct = {
-    link = "LspKindStruct",
-  },
-  NavicIconsText = {
-    link = "LspKindText",
-  },
-  NavicIconsTypeParameter = {
-    link = "LspKindTypeParameter",
-  },
-  NavicIconsUnit = {
-    link = "LspKindUnit",
-  },
-  NavicIconsValue = {
-    link = "LspKindValue",
-  },
-  NavicIconsVariable = {
-    link = "LspKindVariable",
-  },
+  NavicIconsArray = "LspKindArray",
+  NavicIconsBoolean = "LspKindBoolean",
+  NavicIconsClass = "LspKindClass",
+  NavicIconsColor = "LspKindColor",
+  NavicIconsConstant = "LspKindConstant",
+  NavicIconsConstructor = "LspKindConstructor",
+  NavicIconsEnum = "LspKindEnum",
+  NavicIconsEnumMember = "LspKindEnumMember",
+  NavicIconsEvent = "LspKindEvent",
+  NavicIconsField = "LspKindField",
+  NavicIconsFile = "LspKindFile",
+  NavicIconsFolder = "LspKindFolder",
+  NavicIconsFunction = "LspKindFunction",
+  NavicIconsInterface = "LspKindInterface",
+  NavicIconsKey = "LspKindKey",
+  NavicIconsKeyword = "LspKindKeyword",
+  NavicIconsMethod = "LspKindMethod",
+  NavicIconsModule = "LspKindModule",
+  NavicIconsNamespace = "LspKindNamespace",
+  NavicIconsNull = "LspKindNull",
+  NavicIconsNumber = "LspKindNumber",
+  NavicIconsObject = "LspKindObject",
+  NavicIconsOperator = "LspKindOperator",
+  NavicIconsPackage = "LspKindPackage",
+  NavicIconsProperty = "LspKindProperty",
+  NavicIconsReference = "LspKindReference",
+  NavicIconsSnippet = "LspKindSnippet",
+  NavicIconsString = "LspKindString",
+  NavicIconsStruct = "LspKindStruct",
+  NavicIconsText = "LspKindText",
+  NavicIconsTypeParameter = "LspKindTypeParameter",
+  NavicIconsUnit = "LspKindUnit",
+  NavicIconsValue = "LspKindValue",
+  NavicIconsVariable = "LspKindVariable",
   NavicSeparator = {
     bg = "NONE",
-    fg = "#c0caf5",
+    fg = "#c0caf5"
   },
   NavicText = {
     bg = "NONE",
-    fg = "#c0caf5",
+    fg = "#c0caf5"
   },
   NeoTreeDimText = {
-    fg = "#3b4261",
+    fg = "#3b4261"
+  },
+  NeoTreeFileName = {
+    fg = "#a9b1d6"
+  },
+  NeoTreeGitModified = {
+    fg = "#ff9e64"
+  },
+  NeoTreeGitStaged = {
+    fg = "#73daca"
+  },
+  NeoTreeGitUntracked = {
+    fg = "#bb9af7"
   },
   NeoTreeNormal = {
     bg = "#16161e",
-    fg = "#a9b1d6",
+    fg = "#a9b1d6"
   },
   NeoTreeNormalNC = {
     bg = "#16161e",
-    fg = "#a9b1d6",
+    fg = "#a9b1d6"
+  },
+  NeoTreeTabActive = {
+    bg = "#16161e",
+    bold = true,
+    fg = "#7aa2f7"
+  },
+  NeoTreeTabInactive = {
+    bg = "#121218",
+    fg = "#545c7e"
+  },
+  NeoTreeTabSeparatorActive = {
+    bg = "#16161e",
+    fg = "#7aa2f7"
+  },
+  NeoTreeTabSeparatorInactive = {
+    bg = "#121218",
+    fg = "#1a1b26"
   },
   NeogitBranch = {
-    fg = "#bb9af7",
+    fg = "#bb9af7"
   },
   NeogitDiffAddHighlight = {
     bg = "#20303b",
-    fg = "#449dab",
+    fg = "#449dab"
   },
   NeogitDiffContextHighlight = {
     bg = "#2b2f44",
-    fg = "#a9b1d6",
+    fg = "#a9b1d6"
   },
   NeogitDiffDeleteHighlight = {
     bg = "#37222c",
-    fg = "#914c54",
+    fg = "#914c54"
   },
   NeogitHunkHeader = {
     bg = "#292e42",
-    fg = "#c0caf5",
+    fg = "#c0caf5"
   },
   NeogitHunkHeaderHighlight = {
     bg = "#3b4261",
-    fg = "#7aa2f7",
+    fg = "#7aa2f7"
   },
   NeogitRemote = {
-    fg = "#9d7cd8",
+    fg = "#9d7cd8"
   },
   NeotestAdapterName = {
     bold = true,
-    fg = "#9d7cd8",
+    fg = "#9d7cd8"
   },
   NeotestBorder = {
-    fg = "#7aa2f7",
+    fg = "#7aa2f7"
   },
   NeotestDir = {
-    fg = "#7aa2f7",
+    fg = "#7aa2f7"
   },
   NeotestExpandMarker = {
-    fg = "#a9b1d6",
+    fg = "#a9b1d6"
   },
   NeotestFailed = {
-    fg = "#f7768e",
+    fg = "#f7768e"
   },
   NeotestFile = {
-    fg = "#1abc9c",
+    fg = "#1abc9c"
   },
   NeotestFocused = {
-    fg = "#e0af68",
+    fg = "#e0af68"
   },
   NeotestIndent = {
-    fg = "#a9b1d6",
+    fg = "#a9b1d6"
   },
   NeotestMarked = {
-    fg = "#7aa2f7",
+    fg = "#7aa2f7"
   },
   NeotestNamespace = {
-    fg = "#41a6b5",
+    fg = "#41a6b5"
   },
   NeotestPassed = {
-    fg = "#9ece6a",
+    fg = "#9ece6a"
   },
   NeotestRunning = {
-    fg = "#e0af68",
+    fg = "#e0af68"
   },
   NeotestSkipped = {
-    fg = "#7aa2f7",
+    fg = "#7aa2f7"
   },
   NeotestTarget = {
-    fg = "#7aa2f7",
+    fg = "#7aa2f7"
   },
   NeotestTest = {
-    fg = "#a9b1d6",
+    fg = "#a9b1d6"
   },
   NeotestWinSelect = {
-    fg = "#7aa2f7",
+    fg = "#7aa2f7"
   },
-  NoiceCompletionItemKindArray = {
-    link = "LspKindArray",
+  NoiceCmdlineIconInput = {
+    fg = "#e0af68"
   },
-  NoiceCompletionItemKindBoolean = {
-    link = "LspKindBoolean",
+  NoiceCmdlineIconLua = {
+    fg = "#2ac3de"
   },
-  NoiceCompletionItemKindClass = {
-    link = "LspKindClass",
+  NoiceCmdlinePopupBorderInput = {
+    fg = "#e0af68"
   },
-  NoiceCompletionItemKindColor = {
-    link = "LspKindColor",
+  NoiceCmdlinePopupBorderLua = {
+    fg = "#2ac3de"
   },
-  NoiceCompletionItemKindConstant = {
-    link = "LspKindConstant",
+  NoiceCmdlinePopupTitleInput = {
+    fg = "#e0af68"
   },
-  NoiceCompletionItemKindConstructor = {
-    link = "LspKindConstructor",
+  NoiceCmdlinePopupTitleLua = {
+    fg = "#2ac3de"
   },
+  NoiceCompletionItemKindArray = "LspKindArray",
+  NoiceCompletionItemKindBoolean = "LspKindBoolean",
+  NoiceCompletionItemKindClass = "LspKindClass",
+  NoiceCompletionItemKindColor = "LspKindColor",
+  NoiceCompletionItemKindConstant = "LspKindConstant",
+  NoiceCompletionItemKindConstructor = "LspKindConstructor",
   NoiceCompletionItemKindDefault = {
     bg = "NONE",
-    fg = "#a9b1d6",
+    fg = "#a9b1d6"
   },
-  NoiceCompletionItemKindEnum = {
-    link = "LspKindEnum",
-  },
-  NoiceCompletionItemKindEnumMember = {
-    link = "LspKindEnumMember",
-  },
-  NoiceCompletionItemKindEvent = {
-    link = "LspKindEvent",
-  },
-  NoiceCompletionItemKindField = {
-    link = "LspKindField",
-  },
-  NoiceCompletionItemKindFile = {
-    link = "LspKindFile",
-  },
-  NoiceCompletionItemKindFolder = {
-    link = "LspKindFolder",
-  },
-  NoiceCompletionItemKindFunction = {
-    link = "LspKindFunction",
-  },
-  NoiceCompletionItemKindInterface = {
-    link = "LspKindInterface",
-  },
-  NoiceCompletionItemKindKey = {
-    link = "LspKindKey",
-  },
-  NoiceCompletionItemKindKeyword = {
-    link = "LspKindKeyword",
-  },
-  NoiceCompletionItemKindMethod = {
-    link = "LspKindMethod",
-  },
-  NoiceCompletionItemKindModule = {
-    link = "LspKindModule",
-  },
-  NoiceCompletionItemKindNamespace = {
-    link = "LspKindNamespace",
-  },
-  NoiceCompletionItemKindNull = {
-    link = "LspKindNull",
-  },
-  NoiceCompletionItemKindNumber = {
-    link = "LspKindNumber",
-  },
-  NoiceCompletionItemKindObject = {
-    link = "LspKindObject",
-  },
-  NoiceCompletionItemKindOperator = {
-    link = "LspKindOperator",
-  },
-  NoiceCompletionItemKindPackage = {
-    link = "LspKindPackage",
-  },
-  NoiceCompletionItemKindProperty = {
-    link = "LspKindProperty",
-  },
-  NoiceCompletionItemKindReference = {
-    link = "LspKindReference",
-  },
-  NoiceCompletionItemKindSnippet = {
-    link = "LspKindSnippet",
-  },
-  NoiceCompletionItemKindString = {
-    link = "LspKindString",
-  },
-  NoiceCompletionItemKindStruct = {
-    link = "LspKindStruct",
-  },
-  NoiceCompletionItemKindText = {
-    link = "LspKindText",
-  },
-  NoiceCompletionItemKindTypeParameter = {
-    link = "LspKindTypeParameter",
-  },
-  NoiceCompletionItemKindUnit = {
-    link = "LspKindUnit",
-  },
-  NoiceCompletionItemKindValue = {
-    link = "LspKindValue",
-  },
-  NoiceCompletionItemKindVariable = {
-    link = "LspKindVariable",
-  },
+  NoiceCompletionItemKindEnum = "LspKindEnum",
+  NoiceCompletionItemKindEnumMember = "LspKindEnumMember",
+  NoiceCompletionItemKindEvent = "LspKindEvent",
+  NoiceCompletionItemKindField = "LspKindField",
+  NoiceCompletionItemKindFile = "LspKindFile",
+  NoiceCompletionItemKindFolder = "LspKindFolder",
+  NoiceCompletionItemKindFunction = "LspKindFunction",
+  NoiceCompletionItemKindInterface = "LspKindInterface",
+  NoiceCompletionItemKindKey = "LspKindKey",
+  NoiceCompletionItemKindKeyword = "LspKindKeyword",
+  NoiceCompletionItemKindMethod = "LspKindMethod",
+  NoiceCompletionItemKindModule = "LspKindModule",
+  NoiceCompletionItemKindNamespace = "LspKindNamespace",
+  NoiceCompletionItemKindNull = "LspKindNull",
+  NoiceCompletionItemKindNumber = "LspKindNumber",
+  NoiceCompletionItemKindObject = "LspKindObject",
+  NoiceCompletionItemKindOperator = "LspKindOperator",
+  NoiceCompletionItemKindPackage = "LspKindPackage",
+  NoiceCompletionItemKindProperty = "LspKindProperty",
+  NoiceCompletionItemKindReference = "LspKindReference",
+  NoiceCompletionItemKindSnippet = "LspKindSnippet",
+  NoiceCompletionItemKindString = "LspKindString",
+  NoiceCompletionItemKindStruct = "LspKindStruct",
+  NoiceCompletionItemKindText = "LspKindText",
+  NoiceCompletionItemKindTypeParameter = "LspKindTypeParameter",
+  NoiceCompletionItemKindUnit = "LspKindUnit",
+  NoiceCompletionItemKindValue = "LspKindValue",
+  NoiceCompletionItemKindVariable = "LspKindVariable",
   NonText = {
-    fg = "#545c7e",
+    fg = "#545c7e"
   },
   Normal = {
     bg = "#1a1b26",
-    fg = "#c0caf5",
+    fg = "#c0caf5"
   },
   NormalFloat = {
     bg = "#16161e",
-    fg = "#c0caf5",
+    fg = "#c0caf5"
   },
   NormalNC = {
     bg = "#1a1b26",
-    fg = "#c0caf5",
+    fg = "#c0caf5"
   },
   NormalSB = {
     bg = "#16161e",
-    fg = "#a9b1d6",
+    fg = "#a9b1d6"
   },
   NotifyBackground = {
     bg = "#1a1b26",
-    fg = "#c0caf5",
+    fg = "#c0caf5"
   },
   NotifyDEBUGBody = {
     bg = "#1a1b26",
-    fg = "#c0caf5",
+    fg = "#c0caf5"
   },
   NotifyDEBUGBorder = {
     bg = "#1a1b26",
-    fg = "#2c2f44",
+    fg = "#2c2f44"
   },
   NotifyDEBUGIcon = {
-    fg = "#565f89",
+    fg = "#565f89"
   },
   NotifyDEBUGTitle = {
-    fg = "#565f89",
+    fg = "#565f89"
   },
   NotifyERRORBody = {
     bg = "#1a1b26",
-    fg = "#c0caf5",
+    fg = "#c0caf5"
   },
   NotifyERRORBorder = {
     bg = "#1a1b26",
-    fg = "#542931",
+    fg = "#542931"
   },
   NotifyERRORIcon = {
-    fg = "#db4b4b",
+    fg = "#db4b4b"
   },
   NotifyERRORTitle = {
-    fg = "#db4b4b",
+    fg = "#db4b4b"
   },
   NotifyINFOBody = {
     bg = "#1a1b26",
-    fg = "#c0caf5",
+    fg = "#c0caf5"
   },
   NotifyINFOBorder = {
     bg = "#1a1b26",
-    fg = "#164a5b",
+    fg = "#164a5b"
   },
   NotifyINFOIcon = {
-    fg = "#0db9d7",
+    fg = "#0db9d7"
   },
   NotifyINFOTitle = {
-    fg = "#0db9d7",
+    fg = "#0db9d7"
   },
   NotifyTRACEBody = {
     bg = "#1a1b26",
-    fg = "#c0caf5",
+    fg = "#c0caf5"
   },
   NotifyTRACEBorder = {
     bg = "#1a1b26",
-    fg = "#41385b",
+    fg = "#41385b"
   },
   NotifyTRACEIcon = {
-    fg = "#9d7cd8",
+    fg = "#9d7cd8"
   },
   NotifyTRACETitle = {
-    fg = "#9d7cd8",
+    fg = "#9d7cd8"
   },
   NotifyWARNBody = {
     bg = "#1a1b26",
-    fg = "#c0caf5",
+    fg = "#c0caf5"
   },
   NotifyWARNBorder = {
     bg = "#1a1b26",
-    fg = "#55473a",
+    fg = "#55473a"
   },
   NotifyWARNIcon = {
-    fg = "#e0af68",
+    fg = "#e0af68"
   },
   NotifyWARNTitle = {
-    fg = "#e0af68",
+    fg = "#e0af68"
   },
   NvimTreeFolderIcon = {
     bg = "NONE",
-    fg = "#7aa2f7",
+    fg = "#7aa2f7"
   },
   NvimTreeGitDeleted = {
-    fg = "#914c54",
+    fg = "#914c54"
   },
   NvimTreeGitDirty = {
-    fg = "#6183bb",
+    fg = "#6183bb"
   },
   NvimTreeGitNew = {
-    fg = "#449dab",
+    fg = "#449dab"
   },
   NvimTreeImageFile = {
-    fg = "#a9b1d6",
+    fg = "#a9b1d6"
   },
   NvimTreeIndentMarker = {
-    fg = "#3b4261",
+    fg = "#3b4261"
   },
   NvimTreeNormal = {
     bg = "#16161e",
-    fg = "#a9b1d6",
+    fg = "#a9b1d6"
   },
   NvimTreeNormalNC = {
     bg = "#16161e",
-    fg = "#a9b1d6",
+    fg = "#a9b1d6"
   },
   NvimTreeOpenedFile = {
-    bg = "#292e42",
+    bg = "#292e42"
   },
   NvimTreeRootFolder = {
     bold = true,
-    fg = "#7aa2f7",
+    fg = "#7aa2f7"
   },
   NvimTreeSpecialFile = {
     fg = "#9d7cd8",
-    underline = true,
+    underline = true
   },
   NvimTreeSymlink = {
-    fg = "#7aa2f7",
+    fg = "#7aa2f7"
   },
   NvimTreeWinSeparator = {
     bg = "#16161e",
-    fg = "#16161e",
+    fg = "#16161e"
+  },
+  OctoDetailsLabel = {
+    bold = true,
+    fg = "#2ac3de"
+  },
+  OctoDetailsValue = "@variable.member",
+  OctoDirty = {
+    bold = true,
+    fg = "#ff9e64"
+  },
+  OctoIssueTitle = {
+    bold = true,
+    fg = "#9d7cd8"
+  },
+  OctoStateChangesRequested = "DiagnosticVirtualTextWarn",
+  OctoStateClosed = "DiagnosticVirtualTextError",
+  OctoStateMerged = {
+    bg = "#2a283b",
+    fg = "#bb9af7"
+  },
+  OctoStateOpen = "DiagnosticVirtualTextHint",
+  OctoStatePending = "DiagnosticVirtualTextWarn",
+  OctoStatusColumn = {
+    fg = "#2ac3de"
   },
   Operator = {
-    fg = "#89ddff",
+    fg = "#89ddff"
   },
   Pmenu = {
     bg = "#16161e",
-    fg = "#c0caf5",
+    fg = "#c0caf5"
   },
   PmenuSbar = {
-    bg = "#222229",
+    bg = "#1f1f29"
   },
   PmenuSel = {
-    bg = "#343a55",
+    bg = "#343a55"
   },
   PmenuThumb = {
-    bg = "#3b4261",
+    bg = "#3b4261"
   },
   PreProc = {
-    fg = "#7dcfff",
+    fg = "#7dcfff"
   },
   Question = {
-    fg = "#7aa2f7",
+    fg = "#7aa2f7"
   },
   QuickFixLine = {
     bg = "#283457",
-    bold = true,
+    bold = true
   },
   RainbowDelimiterBlue = {
-    fg = "#7aa2f7",
+    fg = "#7aa2f7"
   },
   RainbowDelimiterCyan = {
-    fg = "#7dcfff",
+    fg = "#7dcfff"
   },
   RainbowDelimiterGreen = {
-    fg = "#9ece6a",
+    fg = "#9ece6a"
   },
   RainbowDelimiterOrange = {
-    fg = "#ff9e64",
+    fg = "#ff9e64"
   },
   RainbowDelimiterRed = {
-    fg = "#f7768e",
+    fg = "#f7768e"
   },
   RainbowDelimiterViolet = {
-    fg = "#9d7cd8",
+    fg = "#9d7cd8"
   },
   RainbowDelimiterYellow = {
-    fg = "#e0af68",
+    fg = "#e0af68"
   },
   ReferencesCount = {
-    fg = "#9d7cd8",
+    fg = "#9d7cd8"
   },
   ReferencesIcon = {
-    fg = "#7aa2f7",
+    fg = "#7aa2f7"
+  },
+  RenderMarkdownBullet = {
+    fg = "#ff9e64"
+  },
+  RenderMarkdownCode = {
+    bg = "#16161e"
+  },
+  RenderMarkdownCodeInline = "@markup.raw.markdown_inline",
+  RenderMarkdownDash = {
+    fg = "#ff9e64"
+  },
+  RenderMarkdownH1Bg = {
+    bg = "#24293b"
+  },
+  RenderMarkdownH1Fg = {
+    bold = true,
+    fg = "#7aa2f7"
+  },
+  RenderMarkdownH2Bg = {
+    bg = "#2e2a2d"
+  },
+  RenderMarkdownH2Fg = {
+    bold = true,
+    fg = "#e0af68"
+  },
+  RenderMarkdownH3Bg = {
+    bg = "#272d2d"
+  },
+  RenderMarkdownH3Fg = {
+    bold = true,
+    fg = "#9ece6a"
+  },
+  RenderMarkdownH4Bg = {
+    bg = "#1a2b32"
+  },
+  RenderMarkdownH4Fg = {
+    bold = true,
+    fg = "#1abc9c"
+  },
+  RenderMarkdownH5Bg = {
+    bg = "#2a283b"
+  },
+  RenderMarkdownH5Fg = {
+    bold = true,
+    fg = "#bb9af7"
+  },
+  RenderMarkdownH6Bg = {
+    bg = "#272538"
+  },
+  RenderMarkdownH6Fg = {
+    bold = true,
+    fg = "#9d7cd8"
+  },
+  RenderMarkdownTableHead = {
+    fg = "#f7768e"
+  },
+  RenderMarkdownTableRow = {
+    fg = "#ff9e64"
   },
   ScrollbarError = {
     bg = "NONE",
-    fg = "#db4b4b",
+    fg = "#db4b4b"
   },
   ScrollbarErrorHandle = {
     bg = "#292e42",
-    fg = "#db4b4b",
+    fg = "#db4b4b"
   },
   ScrollbarHandle = {
     bg = "#292e42",
-    fg = "NONE",
+    fg = "NONE"
   },
   ScrollbarHint = {
     bg = "NONE",
-    fg = "#1abc9c",
+    fg = "#1abc9c"
   },
   ScrollbarHintHandle = {
     bg = "#292e42",
-    fg = "#1abc9c",
+    fg = "#1abc9c"
   },
   ScrollbarInfo = {
     bg = "NONE",
-    fg = "#0db9d7",
+    fg = "#0db9d7"
   },
   ScrollbarInfoHandle = {
     bg = "#292e42",
-    fg = "#0db9d7",
+    fg = "#0db9d7"
   },
   ScrollbarMisc = {
     bg = "NONE",
-    fg = "#9d7cd8",
+    fg = "#9d7cd8"
   },
   ScrollbarMiscHandle = {
     bg = "#292e42",
-    fg = "#9d7cd8",
+    fg = "#9d7cd8"
   },
   ScrollbarSearch = {
     bg = "NONE",
-    fg = "#ff9e64",
+    fg = "#ff9e64"
   },
   ScrollbarSearchHandle = {
     bg = "#292e42",
-    fg = "#ff9e64",
+    fg = "#ff9e64"
   },
   ScrollbarWarn = {
     bg = "NONE",
-    fg = "#e0af68",
+    fg = "#e0af68"
   },
   ScrollbarWarnHandle = {
     bg = "#292e42",
-    fg = "#e0af68",
+    fg = "#e0af68"
   },
   Search = {
     bg = "#3d59a1",
-    fg = "#c0caf5",
+    fg = "#c0caf5"
   },
   SignColumn = {
     bg = "#1a1b26",
-    fg = "#3b4261",
+    fg = "#3b4261"
   },
   SignColumnSB = {
     bg = "#16161e",
-    fg = "#3b4261",
+    fg = "#3b4261"
   },
   Sneak = {
     bg = "#bb9af7",
-    fg = "#292e42",
+    fg = "#292e42"
   },
   SneakScope = {
-    bg = "#283457",
+    bg = "#283457"
   },
   Special = {
-    fg = "#2ac3de",
+    fg = "#2ac3de"
   },
   SpecialKey = {
-    fg = "#545c7e",
+    fg = "#545c7e"
   },
   SpellBad = {
     sp = "#db4b4b",
-    undercurl = true,
+    undercurl = true
   },
   SpellCap = {
     sp = "#e0af68",
-    undercurl = true,
+    undercurl = true
   },
   SpellLocal = {
     sp = "#0db9d7",
-    undercurl = true,
+    undercurl = true
   },
   SpellRare = {
     sp = "#1abc9c",
-    undercurl = true,
+    undercurl = true
   },
   Statement = {
-    fg = "#bb9af7",
+    fg = "#bb9af7"
   },
   StatusLine = {
     bg = "#16161e",
-    fg = "#a9b1d6",
+    fg = "#a9b1d6"
   },
   StatusLineNC = {
     bg = "#16161e",
-    fg = "#3b4261",
+    fg = "#3b4261"
   },
   String = {
-    fg = "#9ece6a",
+    fg = "#9ece6a"
   },
   Substitute = {
     bg = "#f7768e",
-    fg = "#15161e",
-  },
-  TSNodeKey = {
-    bold = true,
-    fg = "#ff007c",
-  },
-  TSNodeUnmatched = {
-    fg = "#545c7e",
-  },
-  TSRainbowBlue = {
-    fg = "#7aa2f7",
-  },
-  TSRainbowCyan = {
-    fg = "#7dcfff",
-  },
-  TSRainbowGreen = {
-    fg = "#9ece6a",
-  },
-  TSRainbowOrange = {
-    fg = "#ff9e64",
-  },
-  TSRainbowRed = {
-    fg = "#f7768e",
-  },
-  TSRainbowViolet = {
-    fg = "#9d7cd8",
-  },
-  TSRainbowYellow = {
-    fg = "#e0af68",
+    fg = "#15161e"
   },
   TabLine = {
     bg = "#16161e",
-    fg = "#3b4261",
+    fg = "#3b4261"
   },
   TabLineFill = {
-    bg = "#15161e",
+    bg = "#15161e"
   },
   TabLineSel = {
     bg = "#7aa2f7",
-    fg = "#15161e",
+    fg = "#15161e"
   },
   TargetWord = {
-    fg = "#7dcfff",
+    fg = "#7dcfff"
   },
   TelescopeBorder = {
     bg = "#16161e",
-    fg = "#27a1b9",
+    fg = "#27a1b9"
   },
   TelescopeNormal = {
     bg = "#16161e",
-    fg = "#c0caf5",
+    fg = "#c0caf5"
+  },
+  TelescopePromptBorder = {
+    bg = "#16161e",
+    fg = "#ff9e64"
+  },
+  TelescopePromptTitle = {
+    bg = "#16161e",
+    fg = "#ff9e64"
+  },
+  TelescopeResultsComment = {
+    fg = "#545c7e"
   },
   Title = {
     bold = true,
-    fg = "#7aa2f7",
+    fg = "#7aa2f7"
   },
   Todo = {
     bg = "#e0af68",
-    fg = "#1a1b26",
+    fg = "#1a1b26"
   },
   TreesitterContext = {
-    bg = "#343a55",
+    bg = "#343a55"
   },
   TroubleCount = {
     bg = "#3b4261",
-    fg = "#bb9af7",
+    fg = "#bb9af7"
   },
   TroubleNormal = {
     bg = "#16161e",
-    fg = "#a9b1d6",
+    fg = "#c0caf5"
   },
   TroubleText = {
-    fg = "#a9b1d6",
+    fg = "#a9b1d6"
   },
   Type = {
-    fg = "#2ac3de",
+    fg = "#2ac3de"
   },
   Underlined = {
-    underline = true,
+    underline = true
   },
   VertSplit = {
-    fg = "#15161e",
+    fg = "#15161e"
+  },
+  VimwikiHR = {
+    bg = "NONE",
+    fg = "#e0af68"
+  },
+  VimwikiHeader1 = {
+    bg = "NONE",
+    bold = true,
+    fg = "#7aa2f7"
+  },
+  VimwikiHeader2 = {
+    bg = "NONE",
+    bold = true,
+    fg = "#e0af68"
+  },
+  VimwikiHeader3 = {
+    bg = "NONE",
+    bold = true,
+    fg = "#9ece6a"
+  },
+  VimwikiHeader4 = {
+    bg = "NONE",
+    bold = true,
+    fg = "#1abc9c"
+  },
+  VimwikiHeader5 = {
+    bg = "NONE",
+    bold = true,
+    fg = "#bb9af7"
+  },
+  VimwikiHeader6 = {
+    bg = "NONE",
+    bold = true,
+    fg = "#9d7cd8"
+  },
+  VimwikiHeaderChar = {
+    bg = "NONE",
+    fg = "#e0af68"
+  },
+  VimwikiLink = {
+    bg = "NONE",
+    fg = "#7aa2f7"
+  },
+  VimwikiList = {
+    bg = "NONE",
+    fg = "#ff9e64"
+  },
+  VimwikiMarkers = {
+    bg = "NONE",
+    fg = "#7aa2f7"
+  },
+  VimwikiTag = {
+    bg = "NONE",
+    fg = "#9ece6a"
   },
   Visual = {
-    bg = "#283457",
+    bg = "#283457"
   },
   VisualNOS = {
-    bg = "#283457",
+    bg = "#283457"
   },
   WarningMsg = {
-    fg = "#e0af68",
+    fg = "#e0af68"
   },
   WhichKey = {
-    fg = "#7dcfff",
+    fg = "#7dcfff"
   },
   WhichKeyDesc = {
-    fg = "#bb9af7",
-  },
-  WhichKeyFloat = {
-    bg = "#16161e",
+    fg = "#bb9af7"
   },
   WhichKeyGroup = {
-    fg = "#7aa2f7",
+    fg = "#7aa2f7"
+  },
+  WhichKeyNormal = {
+    bg = "#16161e"
   },
   WhichKeySeparator = {
-    fg = "#565f89",
+    fg = "#565f89"
   },
   WhichKeySeperator = {
-    fg = "#565f89",
+    fg = "#565f89"
   },
   WhichKeyValue = {
-    fg = "#737aa2",
+    fg = "#737aa2"
   },
   Whitespace = {
-    fg = "#3b4261",
+    fg = "#3b4261"
   },
   WildMenu = {
-    bg = "#283457",
+    bg = "#283457"
   },
+  WinBar = "StatusLine",
+  WinBarNC = "StatusLineNC",
   WinSeparator = {
     bold = true,
-    fg = "#15161e",
+    fg = "#15161e"
   },
-  YankyPut = {
-    link = "IncSearch",
-  },
-  YankyYanked = {
-    link = "IncSearch",
-  },
+  YankyPut = "Search",
+  YankyYanked = "IncSearch",
   debugBreakpoint = {
     bg = "#192b38",
-    fg = "#0db9d7",
+    fg = "#0db9d7"
   },
   debugPC = {
-    bg = "#16161e",
+    bg = "#16161e"
   },
   diffAdded = {
-    fg = "#449dab",
+    fg = "#449dab"
   },
   diffChanged = {
-    fg = "#6183bb",
+    fg = "#6183bb"
   },
   diffFile = {
-    fg = "#7aa2f7",
+    fg = "#7aa2f7"
   },
   diffIndexLine = {
-    fg = "#bb9af7",
+    fg = "#bb9af7"
   },
   diffLine = {
-    fg = "#565f89",
+    fg = "#565f89"
   },
   diffNewFile = {
-    fg = "#ff9e64",
+    fg = "#ff9e64"
   },
   diffOldFile = {
-    fg = "#e0af68",
+    fg = "#e0af68"
   },
   diffRemoved = {
-    fg = "#914c54",
+    fg = "#914c54"
   },
-  dosIniLabel = {
-    link = "@property",
-  },
+  dosIniLabel = "@property",
   healthError = {
-    fg = "#db4b4b",
+    fg = "#db4b4b"
   },
   healthSuccess = {
-    fg = "#73daca",
+    fg = "#73daca"
   },
   healthWarning = {
-    fg = "#e0af68",
+    fg = "#e0af68"
   },
   helpCommand = {
     bg = "#414868",
-    fg = "#7aa2f7",
+    fg = "#7aa2f7"
+  },
+  helpExample = {
+    fg = "#565f89"
   },
   htmlH1 = {
     bold = true,
-    fg = "#bb9af7",
+    fg = "#bb9af7"
   },
   htmlH2 = {
     bold = true,
-    fg = "#7aa2f7",
+    fg = "#7aa2f7"
   },
   illuminatedCurWord = {
-    bg = "#3b4261",
+    bg = "#3b4261"
   },
   illuminatedWord = {
-    bg = "#3b4261",
+    bg = "#3b4261"
   },
   lCursor = {
     bg = "#c0caf5",
-    fg = "#1a1b26",
-  },
-  markdownCode = {
-    fg = "#1abc9c",
-  },
-  markdownCodeBlock = {
-    fg = "#1abc9c",
-  },
-  markdownH1 = {
-    bold = true,
-    fg = "#bb9af7",
-  },
-  markdownH2 = {
-    bold = true,
-    fg = "#7aa2f7",
-  },
-  markdownHeadingDelimiter = {
-    bold = true,
-    fg = "#ff9e64",
-  },
-  markdownLinkText = {
-    fg = "#7aa2f7",
-    underline = true,
-  },
-  mkdCodeDelimiter = {
-    bg = "#414868",
-    fg = "#c0caf5",
-  },
-  mkdCodeEnd = {
-    bold = true,
-    fg = "#1abc9c",
-  },
-  mkdCodeStart = {
-    bold = true,
-    fg = "#1abc9c",
+    fg = "#1a1b26"
   },
   qfFileName = {
-    fg = "#7aa2f7",
+    fg = "#7aa2f7"
   },
   qfLineNr = {
-    fg = "#737aa2",
-  },
-  rainbowcol1 = {
-    fg = "#f7768e",
-  },
-  rainbowcol2 = {
-    fg = "#e0af68",
-  },
-  rainbowcol3 = {
-    fg = "#9ece6a",
-  },
-  rainbowcol4 = {
-    fg = "#1abc9c",
-  },
-  rainbowcol5 = {
-    fg = "#7aa2f7",
-  },
-  rainbowcol6 = {
-    fg = "#bb9af7",
-  },
-  rainbowcol7 = {
-    fg = "#9d7cd8",
-  },
+    fg = "#737aa2"
+  }
 }
-
--- local function onColors(colors)
---   local hsluv = require("tokyonight.hsluv")
---   local multiplier = 2.0
---
---   local function adjust_color(color)
---     if color ~= "NONE" then
---       local hsv = hsluv.hex_to_hsluv(color)
---       hsv[2] = math.min(hsv[2] * multiplier, 100)
---       return hsluv.hsluv_to_hex(hsv)
---     end
---     return color
---   end
---
---   for k, v in pairs(colors) do
---     if type(v) == "string" then
---       colors[k] = adjust_color(v)
---     elseif type(v) == "table" then
---       for kk, vv in ipairs(v) do
---         if type(vv) == "string" then
---           colors[k][kk] = adjust_color(vv)
---         end
---       end
---     end
---   end
---
---   colors.none = "NONE"
---   colors.bg = "NONE"
---   colors.bg_dark = colors.none
---   colors.bg_float = colors.none
---   colors.bg_sidebar = colors.none
---   colors.bg_statusline = colors.none
---   colors.black = colors.none
---   colors.bg_popup = "#1a1b26"
---   colors.comment = "#b9b9d9"
---   colors.fg_gutter = "#394b70"
---
---   local colors_string = vim.inspect(colors)
---
---   vim.fn.setreg("+", colors_string)
--- end
-
-return { colors, highlights }

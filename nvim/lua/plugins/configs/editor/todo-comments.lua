@@ -3,7 +3,6 @@ local M = {}
 -- ╭──────────────────────────────────────────────────────────╮
 -- │  Key mappings                                             │
 -- ╰──────────────────────────────────────────────────────────╯
--- stylua: ignore
 M.keys = {
   { "]t", function() require("todo-comments").jump_next() end, desc = "Next todo comment" },
   { "[t", function() require("todo-comments").jump_prev() end, desc = "Previous todo comment" },
@@ -18,10 +17,10 @@ M.opts = {
   sign_priority = 8,
   keywords = {
     FIX = {
-      alt = { "FIXME", "BUG", "FIXIT", "ISSUE" },
+      alt = { "FIXME", "BUG", "ISSUE" },
     },
     WARN = { alt = { "WARNING" } },
-    PERF = { alt = { "OPTIM", "PERFORMANCE", "OPTIMIZE" } },
+    PERF = { alt = { "PERFORMANCE", "OPTIMIZE" } },
   },
   highlight = {
     before = "",
@@ -38,12 +37,7 @@ M.opts = {
 -- │ Setup                                                    │
 -- ╰──────────────────────────────────────────────────────────╯
 function M.setup()
-  local status_ok, todo_comments = pcall(require, "todo-comments")
-  if not status_ok then
-    return
-  end
-
-  todo_comments.setup(M.opts)
+  require("todo-comments").setup(M.opts)
 end
 
 return M

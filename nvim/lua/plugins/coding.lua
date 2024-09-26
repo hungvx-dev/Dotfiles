@@ -59,11 +59,13 @@ return {
 
   {
     "github/copilot.vim",
+    enabled = false,
     event = { "BufReadPre", "BufNewFile" },
   },
 
   {
     "kylechui/nvim-surround",
+    enabled = true,
     event = { "BufReadPre", "BufNewFile" },
     version = "*",
     config = true,
