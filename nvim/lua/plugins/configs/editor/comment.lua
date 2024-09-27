@@ -25,7 +25,6 @@ function M.setup()
       or get_option(filetype, option)
   end
 
-
   nvim_comment.setup(M.opts)
 end
 

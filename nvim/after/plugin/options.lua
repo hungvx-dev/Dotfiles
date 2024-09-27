@@ -72,7 +72,7 @@ vim.opt.updatetime = 300 -- Default: 1000 Update neovim screen
 vim.opt.timeoutlen = 500 --	Time in milliseconds to wait for a mapped sequence to complete.
 
 -- #============================== 18. The swap file ================================#
-vim.bo.swapfile = false
+vim.opt.swapfile = false
 
 -- #============================== 24. various ================================#
 vim.wo.signcolumn = "yes" -- Always show sign column

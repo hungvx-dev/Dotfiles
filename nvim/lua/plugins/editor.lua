@@ -12,6 +12,7 @@ return {
       "MunifTanjim/nui.nvim",
       {
         "s1n7ax/nvim-window-picker",
+        version = "2.*",
         config = require("plugins.configs.editor.window-picker").setup,
       },
     },
@@ -119,32 +120,18 @@ return {
 
   -- easily jump
   {
-    "unblevable/quick-scope",
-    enabled = true,
+    "jinh0/eyeliner.nvim",
+    config = require("plugins.configs.editor.eyeliner").setup,
+  },
+  {
+    "rhysd/clever-f.vim",
     event = { "BufReadPre", "BufNewFile" },
-    dependencies = {
-      {
-        "rhysd/clever-f.vim",
-        enabled = true,
-      },
-      {
-        "echasnovski/mini.jump",
-        enabled = false,
-        config = function()
-          require("mini.jump").setup()
-        end,
-      },
-      {
-        "kevinhwang91/nvim-fFHighlight",
-        enabled = false,
-        config = function()
-          require("fFHighlight").setup()
-        end,
-        keys = { { "n", ";" }, { "x", ";" }, { "n", "," }, { "x", "," } },
-      },
-    },
+    dependencies = { "eyeliner.nvim" },
+    init = function()
+      vim.g.clever_f_not_overwrites_standard_mappings = 1
+    end,
     config = function()
-      require("plugins.configs.editor.quick-scope")
+      require("plugins.configs.editor.clever-f")
     end,
   },
   {
