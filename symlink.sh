@@ -21,6 +21,8 @@ rm -rf ~/.config/skhd
 ln -s $(pwd)/yabai ~/.config
 ln -s $(pwd)/skhd ~/.config
 
+ln -s $(pwd)/aerospace ~/.config
+
 # Nvim config
 rm -rf ~/.config/nvim
 rm -rf ~/.local/share/nvim
