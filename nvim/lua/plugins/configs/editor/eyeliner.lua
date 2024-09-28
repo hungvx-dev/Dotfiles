@@ -1,9 +1,9 @@
 local M = {}
 
-M.setup = function()
+function M.setup()
   require("eyeliner").setup({
     highlight_on_key = true,
-    default_keymaps = false,
+    default_keymaps = true,
     dim = true,
     max_length = 120,
     disabled_filetypes = { "neo-tree", "Trouble", "alpha", "notify" },

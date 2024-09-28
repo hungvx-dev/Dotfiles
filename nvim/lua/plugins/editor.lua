@@ -1,5 +1,6 @@
 local telescope = require("plugins.configs.editor.telescope")
 local todo_comments = require("plugins.configs.editor.todo-comments")
+local neotree = require("plugins.configs.editor.neotree")
 
 return {
   -- File explorer
@@ -16,22 +17,10 @@ return {
         config = require("plugins.configs.editor.window-picker").setup,
       },
     },
-    keys = {
-      { "<leader>e", "<cmd>Neotree toggle<cr>", desc = "NeoTree toggle" },
-      { "<leader>n", "<cmd>Neotree focus<cr>", desc = "NeoTree focus" },
-    },
-    deactivate = function()
-      vim.cmd([[Neotree close]])
-    end,
-    init = function()
-      if vim.fn.argc() == 1 then
-        local stat = vim.loop.fs_stat(vim.fn.argv(0))
-        if stat and stat.type == "directory" then
-          require("neo-tree")
-        end
-      end
-    end,
-    config = require("plugins.configs.editor.neotree").setup,
+    keys = neotree.keys,
+    deactivate = neotree.deactivate,
+    init = neotree.init,
+    config = neotree.setup,
   },
 
   -- fuzzy finder
@@ -121,10 +110,12 @@ return {
   -- easily jump
   {
     "jinh0/eyeliner.nvim",
+    event = { "BufReadPre", "BufNewFile" },
     config = require("plugins.configs.editor.eyeliner").setup,
   },
   {
     "rhysd/clever-f.vim",
+    enabled = false,
     event = { "BufReadPre", "BufNewFile" },
     dependencies = { "eyeliner.nvim" },
     init = function()
