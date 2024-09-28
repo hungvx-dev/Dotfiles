@@ -3,6 +3,7 @@ M.opts = {
   hint = "statusline-winbar",
   filter_rules = {
     autoselect_one = true,
+    include_current = false,
   },
   show_prompt = false,
   picker_config = {

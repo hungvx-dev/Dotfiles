@@ -24,6 +24,9 @@ return {
         dotenv = { glyph = "", hl = "MiniIconsYellow" },
       },
     },
+    specs = {
+      { "nvim-tree/nvim-web-devicons", enabled = false, optional = true },
+    },
     init = function()
       package.preload["nvim-web-devicons"] = function()
         require("mini.icons").mock_nvim_web_devicons()
@@ -87,9 +90,9 @@ return {
   {
     "luukvbaal/statuscol.nvim",
     event = { "VeryLazy", "BufNewFile" },
-    -- keys = {
-    --   { "<leader>rc", "<cmd>Lazy reload statuscol.nvim<CR>", desc = "Reload statuscol" },
-    -- },
+    keys = {
+      { "<leader>rc", "<cmd>Lazy reload statuscol.nvim<CR>", desc = "Reload statuscol" },
+    },
     config = require("plugins.configs.ui.statuscol").setup,
   },
 
