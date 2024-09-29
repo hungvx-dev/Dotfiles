@@ -28,6 +28,7 @@ return {
       { "nvim-tree/nvim-web-devicons", enabled = false, optional = true },
     },
     init = function()
+      ---@diagnostic disable-next-line: duplicate-set-field
       package.preload["nvim-web-devicons"] = function()
         require("mini.icons").mock_nvim_web_devicons()
         return package.loaded["nvim-web-devicons"]
@@ -66,6 +67,7 @@ return {
   {
     "stevearc/dressing.nvim",
     event = "VeryLazy",
+    -- enabled = false
   },
 
   {

@@ -3,5 +3,5 @@ function Custom_foldtext()
 
   local line_count = vim.v.foldend - vim.v.foldstart + 1
 
-  return line .. "  󰁂  " .. line_count .. " lines"
+  return line .. HVIM.icons.UI.FoldText .. line_count .. " lines"
 end

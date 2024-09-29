@@ -14,7 +14,7 @@ function M.opts()
     return { name = name, action = action, section = pad .. section }
   end
   local items = {
-    new_section(HVIM.icons.UI.Search .. "Find file", "Telescope find_files", "Telescope"),
+    new_section(HVIM.icons.UI.FindFile .. "Find file", "Telescope find_files", "Telescope"),
     new_section(HVIM.icons.UI.OldFile .. "Recent files", "Telescope oldfiles", "Telescope"),
     new_section(HVIM.icons.UI.FindText .. "Find text", "Telescope live_grep", "Telescope"),
     new_section(HVIM.icons.UI.Lazy .. "Lazy", "Lazy", "Config"),
