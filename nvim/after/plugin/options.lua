@@ -16,7 +16,7 @@ vim.opt.fillchars = {
 vim.wo.conceallevel = 2 -- Controls whether concealable text is hidden
 vim.wo.scroll = 10
 vim.wo.smoothscroll = true
-vim.opt.scrolloff = 5 -- Number of screen lines to show around the cursor
+vim.opt.scrolloff = 999 -- Number of screen lines to show around the cursor
 vim.wo.list = true
 vim.opt.listchars = { extends = "→", nbsp = "·", eol = "↴", trail = "·", tab = "  " }
 

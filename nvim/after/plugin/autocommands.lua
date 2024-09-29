@@ -4,12 +4,12 @@ local augroup = vim.api.nvim_create_augroup
 -- General Settings
 local general = augroup("General Settings", { clear = true })
 
--- autocmd("WinNew", {
+-- autocmd("WinEnter", {
 --   callback = function()
 --     vim.wo.scroll = 10
---     vim.wo.smoothscroll = true
 --   end,
 --   group = general,
+--   desc = "number of lines to scroll for CTRL-U and CTRL-D",
 -- })
 
 autocmd("BufEnter", {
