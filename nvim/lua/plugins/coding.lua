@@ -5,17 +5,37 @@ return {
     build = ":TSUpdate",
     event = { "BufReadPre", "BufNewFile" },
     dependencies = {
-      { "nvim-treesitter/nvim-treesitter-textobjects", event = { "BufReadPost" } },
-      {
-        "windwp/nvim-ts-autotag",
-        event = { "BufReadPost" },
-        config = require("plugins.configs.coding.autotag").setup,
-      },
-      {
-        "hiphish/rainbow-delimiters.nvim",
-      },
+      "nvim-ts-autotag",
+      "nvim-autopairs",
+      "hiphish/rainbow-delimiters.nvim",
+      { "nvim-treesitter/nvim-treesitter-textobjects" },
     },
     config = require("plugins.configs.coding.treesitter").setup,
+  },
+
+  {
+    "windwp/nvim-ts-autotag",
+    config = require("plugins.configs.coding.autotag").setup,
+  },
+  {
+    "windwp/nvim-autopairs",
+    config = require("plugins.configs.coding.autopairs").setup,
+  },
+
+  -- auto completion
+  {
+    "hrsh7th/nvim-cmp",
+    event = { "InsertEnter", "CmdlineEnter" },
+    dependencies = {
+      "hrsh7th/cmp-buffer",
+      "hrsh7th/cmp-path",
+      "hrsh7th/cmp-cmdline",
+      "L3MON4D3/LuaSnip",
+      "saadparwaiz1/cmp_luasnip",
+      "nvim-autopairs",
+      { "roobert/tailwindcss-colorizer-cmp.nvim", enabled = false },
+    },
+    config = require("plugins.configs.coding.cmp").setup,
   },
 
   -- snippets
@@ -36,25 +56,6 @@ return {
       delete_check_events = "TextChanged",
     },
     keys = require("plugins.configs.coding.lua-snip").keys,
-  },
-
-  -- auto completion
-  {
-    "hrsh7th/nvim-cmp",
-    event = { "InsertEnter", "CmdlineEnter" },
-    dependencies = {
-      "hrsh7th/cmp-buffer",
-      "hrsh7th/cmp-path",
-      "hrsh7th/cmp-cmdline",
-      "L3MON4D3/LuaSnip",
-      "saadparwaiz1/cmp_luasnip",
-      { "roobert/tailwindcss-colorizer-cmp.nvim", opts = {}, enabled = false },
-      {
-        "windwp/nvim-autopairs",
-        config = require("plugins.configs.coding.autopairs").setup,
-      },
-    },
-    config = require("plugins.configs.coding.cmp").setup,
   },
 
   {

@@ -28,7 +28,6 @@ local opts = {
     enable = true,
   },
   indent = { enable = true, disable = { "python", "yaml" } },
-  -- autotag = { enable = true },
   incremental_selection = {
     enable = true,
     keymaps = {
@@ -65,10 +64,7 @@ local opts = {
 }
 
 function M.setup()
-  local status_ok, treesitter_config = pcall(require, "nvim-treesitter.configs")
-  if not status_ok then
-    return
-  end
+  local treesitter_config = require("nvim-treesitter.configs")
 
   vim.filetype.add({
     extension = {

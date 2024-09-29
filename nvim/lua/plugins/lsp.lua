@@ -2,7 +2,6 @@ return {
   {
     "williamboman/mason-lspconfig.nvim",
     cmd = { "LspInstall", "LspUninstall" },
-    -- event = { "VeryLazy" },
     event = { "BufReadPre", "BufNewFile" },
     dependencies = { "mason.nvim", "nvim-lspconfig" },
     config = function()
@@ -18,19 +17,15 @@ return {
     "neovim/nvim-lspconfig",
     dependencies = {
       "hrsh7th/cmp-nvim-lsp",
-      {
-        "b0o/SchemaStore.nvim",
-        lazy = true,
-        version = false,
-      },
+      "b0o/SchemaStore.nvim",
     },
   },
 
   {
     "antosha417/nvim-lsp-file-operations",
     dependencies = {
+      "neo-tree.nvim",
       "nvim-lua/plenary.nvim",
-      "nvim-neo-tree/neo-tree.nvim",
     },
     config = function()
       require("lsp-file-operations").setup()

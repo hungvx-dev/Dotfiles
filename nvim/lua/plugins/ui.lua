@@ -64,17 +64,26 @@ return {
   },
 
   {
+    "stevearc/dressing.nvim",
+    event = "VeryLazy",
+  },
+
+  {
+    "luukvbaal/statuscol.nvim",
+    event = { "VeryLazy", "BufNewFile" },
+    keys = {
+      { "<leader>rc", "<cmd>Lazy reload statuscol.nvim<CR>", desc = "Reload statuscol" },
+    },
+    config = require("plugins.configs.ui.statuscol").setup,
+  },
+
+  {
     "echasnovski/mini.starter",
     enabled = false,
     -- version = false, -- wait till new 0.7.0 release to put it back on semver
     event = "VimEnter",
     opts = mini_starter.opts,
     config = mini_starter.setup,
-  },
-
-  {
-    "stevearc/dressing.nvim",
-    event = "VeryLazy",
   },
 
   {
@@ -85,15 +94,6 @@ return {
       { "kevinhwang91/promise-async" },
     },
     config = require("plugins.configs.ui.ufo").setup,
-  },
-
-  {
-    "luukvbaal/statuscol.nvim",
-    event = { "VeryLazy", "BufNewFile" },
-    keys = {
-      { "<leader>rc", "<cmd>Lazy reload statuscol.nvim<CR>", desc = "Reload statuscol" },
-    },
-    config = require("plugins.configs.ui.statuscol").setup,
   },
 
   {

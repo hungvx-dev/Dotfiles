@@ -29,8 +29,8 @@ return {
     cmd = "Telescope",
     dependencies = {
       "nvim-lua/plenary.nvim",
-      { "nvim-telescope/telescope-fzf-native.nvim", build = "make" },
       "mini.icons",
+      { "nvim-telescope/telescope-fzf-native.nvim", build = "make" },
     },
     keys = telescope.keys,
     config = telescope.setup,
@@ -55,7 +55,7 @@ return {
     "numToStr/Comment.nvim",
     event = { "BufReadPre", "BufNewFile" },
     dependencies = {
-      { "JoosepAlviste/nvim-ts-context-commentstring", event = { "BufReadPost" } },
+      "JoosepAlviste/nvim-ts-context-commentstring",
     },
     config = require("plugins.configs.editor.comment").setup,
   },
