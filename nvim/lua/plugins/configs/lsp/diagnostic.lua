@@ -10,16 +10,11 @@ M.opts = {
     severity_sort = true,
     float = {
       focusable = false,
-      style = "minimal",
       border = "rounded",
-      source = "always",
-      header = "",
-      prefix = "",
     },
   },
   float = {
     focusable = false,
-    style = "minimal",
     border = "rounded",
   },
 }
