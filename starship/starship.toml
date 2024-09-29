@@ -60,7 +60,7 @@ style = "peach"
 disabled = false
 
 [os.symbols]
-Macos = " "
+Macos = "󰀵 "
 
 [hostname]
 disabled = false
