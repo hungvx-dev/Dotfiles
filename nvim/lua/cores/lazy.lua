@@ -26,6 +26,7 @@ local opts = {
   rocks = { enabled = false, hererocks = false },
   debug = false,
   defaults = { lazy = true, version = nil },
+  change_detection = { notify = false },
   checker = { enabled = true, notify = true },
 }
 

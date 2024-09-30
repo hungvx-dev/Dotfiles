@@ -19,6 +19,9 @@ return {
   },
   {
     "windwp/nvim-autopairs",
+    dependencies = {
+      'nvim-cmp',
+    },
     config = require("plugins.configs.coding.autopairs").setup,
   },
 
@@ -32,7 +35,7 @@ return {
       "hrsh7th/cmp-cmdline",
       "L3MON4D3/LuaSnip",
       "saadparwaiz1/cmp_luasnip",
-      "nvim-autopairs",
+      "rafamadriz/friendly-snippets",
       { "roobert/tailwindcss-colorizer-cmp.nvim", enabled = false },
     },
     config = require("plugins.configs.coding.cmp").setup,
@@ -41,16 +44,7 @@ return {
   -- snippets
   {
     "L3MON4D3/LuaSnip",
-    event = { "InsertEnter" },
     build = "make install_jsregexp",
-    dependencies = {
-      {
-        "rafamadriz/friendly-snippets",
-        config = function()
-          require("luasnip.loaders.from_vscode").lazy_load()
-        end,
-      },
-    },
     opts = {
       history = true,
       delete_check_events = "TextChanged",

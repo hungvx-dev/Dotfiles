@@ -110,6 +110,8 @@ function M.opts()
   local defaults = require("cmp.config.default")()
   local cmp_mapping = require("cmp.config.mapping")
   local luasnip = require("luasnip")
+
+  require("luasnip.loaders.from_vscode").lazy_load()
   -- local tailwind_color = require("tailwindcss-colorizer-cmp")
 
   return {
@@ -213,10 +215,6 @@ function M.setup()
       })
     end
   end
-
-  -- make autopairs and completion work together
-  local cmp_autopairs = require("nvim-autopairs.completion.cmp")
-  cmp.event:on("confirm_done", cmp_autopairs.on_confirm_done())
 end
 
 return M

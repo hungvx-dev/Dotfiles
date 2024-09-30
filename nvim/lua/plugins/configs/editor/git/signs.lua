@@ -50,23 +50,17 @@ M.opts = {
   },
   current_line_blame_formatter = " <author_mail> | <author_time:%R, %x> | <summary>",
   preview_config = {
-    -- Options passed to nvim_open_win
     border = "single",
     style = "minimal",
     relative = "cursor",
     row = 0,
     col = 1,
   },
-  on_attach = M.on_attach
+  on_attach = M.on_attach,
 }
 
 function M.setup()
-  local status_ok, gitsigns = pcall(require, "gitsigns")
-  if not status_ok then
-    return
-  end
-
-  gitsigns.setup(M.opts)
+  require("gitsigns").setup(M.opts)
 end
 
 return M

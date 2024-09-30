@@ -10,7 +10,7 @@ return {
     "typescript",
     "typescriptreact",
     "typescript.tsx",
-    "vue"
+    "vue",
   },
   settings = {
     complete_function_calls = true,
@@ -63,4 +63,9 @@ return {
       },
     },
   },
+  on_attach = function(client)
+    client.server_capabilities.documentFormattingProvider = false
+    client.server_capabilities.documentRangeFormattingProvider = false
+    -- vim.lsp.inlay_hint.enable(true, { bufnr = buffer })
+  end,
 }

@@ -1,4 +1,10 @@
 return {
+  -- root_dir = require("lspconfig").util.root_pattern(
+  --   "vue.config.js",
+  --   "vue.config.ts",
+  --   "nuxt.config.js",
+  --   "nuxt.config.ts"
+  -- ),
   enabled = true,
   filetypes = { "vue" },
   init_options = {
@@ -15,4 +21,8 @@ return {
       },
     },
   },
+  on_attach = function(client)
+    client.server_capabilities.documentFormattingProvider = false
+    client.server_capabilities.documentRangeFormattingProvider = false
+  end,
 }

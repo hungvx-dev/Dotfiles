@@ -18,9 +18,10 @@ vim.wo.scroll = 10
 vim.wo.smoothscroll = true
 vim.opt.scrolloff = 10 -- Number of screen lines to show around the cursor
 vim.wo.list = true
-vim.opt.listchars = { extends = "→", nbsp = "·", eol = "↴", trail = "·", tab = "  " }
+vim.opt.listchars = { extends = "→", nbsp = " ", eol = "↴", trail = "·", tab = "  ", space = " " }
 
 -- #================== 5. Syntax, highlighting and spelling ===================#
+vim.opt.syntax = "on"
 vim.opt.termguicolors = true -- Use GUI colors for the terminal
 vim.opt.cmdheight = 0 -- Number of lines used for the command-line
 vim.opt.spell = false

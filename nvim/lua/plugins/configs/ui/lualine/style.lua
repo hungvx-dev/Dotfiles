@@ -29,6 +29,8 @@ local style = {
       components.diff,
     },
     lualine_x = {
+      components.maximized,
+      components.searchcount,
       components.lsp,
       components.filetype,
     },

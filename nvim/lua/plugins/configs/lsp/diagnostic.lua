@@ -16,6 +16,7 @@ M.opts = {
   float = {
     focusable = false,
     border = "rounded",
+    silent = true,
   },
 }
 

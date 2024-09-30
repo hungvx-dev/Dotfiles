@@ -11,6 +11,10 @@ return {
   ),
   filetypes = { "html", "typescriptreact", "vue", "javascriptreact", "typescript" },
   settings = {
+    includeLanguages = {
+      typescript = "javascript",
+      typescriptreact = "javascript",
+    },
     tailwindCSS = {
       experimental = {
         classRegex = {
@@ -18,6 +22,22 @@ return {
           { "cx\\(([^)]*)\\)", "(?:'|\"|`)([^']*)(?:'|\"|`)" },
         },
       },
+      validate = true,
+      lint = {
+        cssConflict = "error",
+        invalidApply = "error",
+        invalidConfigPath = "error",
+        invalidScreen = "error",
+        invalidTailwindDirective = "error",
+        invalidVariant = "error",
+        recommendedVariantOrder = "error",
+      },
     },
+  },
+
+  handlers = {
+    ["tailwindcss/getConfiguration"] = function(_, _, params, _, bufnr, _)
+      vim.lsp.buf_notify(bufnr, "tailwindcss/getConfigurationResponse", { _id = params._id })
+    end,
   },
 }

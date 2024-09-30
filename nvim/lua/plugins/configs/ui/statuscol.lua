@@ -6,6 +6,7 @@ function M.setup()
     return
   end
   local builtin = require("statuscol.builtin")
+
   M.opts = {
     setopt = true,
     ft_ignore = { "neo-tree" },

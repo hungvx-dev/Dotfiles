@@ -3,7 +3,11 @@ M.opts = {
   hint = "statusline-winbar",
   filter_rules = {
     autoselect_one = true,
-    include_current = false,
+    include_current_win = false,
+    bo = {
+      filetype = { "NvimTree", "neo-tree", "notify", 'noice' },
+      buftype = { "terminal" },
+    },
   },
   show_prompt = false,
   picker_config = {

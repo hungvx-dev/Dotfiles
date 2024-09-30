@@ -1,31 +1,17 @@
 local conditions = require("plugins.configs.ui.lualine.conditions")
 local colors = require("tokyonight.colors").setup()
-local mode_color = {
-  n = "#569cd6",
-  i = "#6a9955",
-  v = "#c586c0",
-  [""] = "#c586c0",
-  V = "#c586c0",
-  c = "#4EC9B0",
-  no = "#569cd6",
-  s = "#ce9178",
-  S = "#ce9178",
-  [""] = "#ce9178",
-  ic = "#dcdcaa",
-  R = "#d16969",
-  Rv = "#d16969",
-  cv = "#569cd6",
-  ce = "#569cd6",
-  r = "#d16969",
-  rm = "#4EC9B0",
-  ["r?"] = "#4EC9B0",
-  ["!"] = "#4EC9B0",
-  t = "#D7BA7D",
-}
 
 vim.api.nvim_set_hl(0, "SLGitIcon", { fg = "#E8AB53", bg = "#303030" })
 vim.api.nvim_set_hl(0, "SLBranchName", { fg = "#D4D4D4", bg = "#303030", bold = true })
-vim.api.nvim_set_hl(0, "SLSeparator", { fg = "#808080", bg = "NONE" })
+-- vim.api.nvim_set_hl(0, "SLSeparator", { fg = "#808080", bg = "NONE" })
+
+local mode = {
+  "mode",
+  padding = { padding_left = 1, padding_right = 0 },
+  fmt = function()
+    return " "
+  end,
+}
 
 local branch = {
   "branch",
@@ -33,7 +19,12 @@ local branch = {
   icon = "%#SLGitIcon#" .. HVIM.icons.Git.Branch .. "%*" .. "%#SLBranchName#",
 }
 
-local filetype = { "filetype", cond = nil, padding = { left = 0, right = 1 }, color = {} }
+local diagnostics = {
+  "diagnostics",
+  sources = { "nvim_diagnostic", "nvim_lsp" },
+  symbols = HVIM.bold_signs,
+  always_visible = true,
+}
 
 local diff = {
   "diff",
@@ -47,52 +38,13 @@ local diff = {
       }
     end
   end,
-  symbols = {
-    added = HVIM.icons.Git.LineAdded .. " ",
-    modified = HVIM.icons.Git.LineModified .. " ",
-    removed = HVIM.icons.Git.LineRemoved .. " ",
-  },
-  padding = { left = 2 },
+  symbols = HVIM.git_line,
+  padding = 2,
   diff_color = {
     added = { fg = colors.green },
     modified = { fg = colors.yellow },
     removed = { fg = colors.red },
   },
-}
-
-local mode = {
-  function()
-    return HVIM.icons.UI.Line.Full
-  end,
-  padding = { left = 0, right = 0 },
-  color = function()
-    return { fg = mode_color[vim.fn.mode()] }
-  end,
-  cond = nil,
-}
-
-local location = { "location", padding = { left = 0, right = 1 } }
-
-local diagnostics = {
-  "diagnostics",
-  sources = { "nvim_diagnostic" },
-  symbols = {
-    error = HVIM.icons.Diagnostics.BoldError .. " ",
-    warn = HVIM.icons.Diagnostics.BoldWarning .. " ",
-    info = HVIM.icons.Diagnostics.BoldInformation .. " ",
-    hint = HVIM.icons.Diagnostics.BoldHint .. " ",
-  },
-  colored = true,
-  update_in_insert = false,
-  always_visible = true,
-}
-
-local progress = {
-  "progress",
-  fmt = function()
-    return "%P/%L"
-  end,
-  color = { fg = "#15161e" },
 }
 
 local lsp = {
@@ -112,6 +64,25 @@ local lsp = {
   cond = conditions.hide_in_width,
 }
 
+local location = { "location", padding = 1 }
+local filetype = { "filetype", padding = 1 }
+
+local progress = {
+  "progress",
+  fmt = function()
+    return "%P/%L"
+  end,
+  color = { fg = "#15161e" },
+}
+
+local maximized = {
+  function()
+    return vim.t.is_maximized and HVIM.icons.UI.WindowMaximized or ""
+  end,
+}
+
+local searchcount = { "searchcount", always_visible = false }
+
 return {
   mode = mode,
   branch = branch,
@@ -121,4 +92,6 @@ return {
   location = location,
   progress = progress,
   lsp = lsp,
+  maximized = maximized,
+  searchcount = searchcount,
 }

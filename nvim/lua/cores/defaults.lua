@@ -15,8 +15,14 @@ HVIM = {
   bold_signs = {
     error = icons.Diagnostics.BoldError,
     warning = icons.Diagnostics.BoldWarning,
+    warn = icons.Diagnostics.BoldWarning,
     info = icons.Diagnostics.BoldInformation,
     hint = icons.Diagnostics.BoldHint,
+  },
+  git_line = {
+    added = icons.Git.LineAdded .. " ",
+    modified = icons.Git.LineModified .. " ",
+    removed = icons.Git.LineRemoved .. " ",
   },
 }
 

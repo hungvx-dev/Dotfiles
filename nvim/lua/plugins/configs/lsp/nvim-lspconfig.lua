@@ -17,9 +17,14 @@ function M.setup(opts)
   local capabilities = M.setup_capabilities()
 
   local function setup(server)
+    local s_opt =  opts[server]
     local opt = vim.tbl_deep_extend("force", {
-      capabilities = vim.deepcopy(capabilities),
-    }, opts[server] or {})
+      capabilities = capabilities,
+    }, s_opt or {})
+
+    if s_opt.enabled == false then
+      return
+    end
 
     lspconfig[server].setup(opt)
   end
