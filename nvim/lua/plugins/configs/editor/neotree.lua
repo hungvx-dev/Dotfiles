@@ -95,31 +95,29 @@ function M.opts()
         local filename = node.name
         local modify = vim.fn.fnamemodify
 
-        local vals = {
-          ["1"] = modify(filepath, ":."),
-          ["2"] = filename,
-          ["3"] = modify(filepath, ":~"),
-          ["4"] = filepath,
+        local results = {
+          { val = modify(filename, ":r"), msg = "Filename no extension:" },
+          { val = modify(filepath, ":."), msg = "Relative To CWD:" },
+          { val = modify(filepath, ":~"), msg = "Relative To Home:" },
+          { val = modify(filename, ":e"), msg = "Extension:" },
+          { val = filepath, msg = "Absolute path:" },
+          { val = filename, msg = "Filename:" },
         }
 
-        local options = vim.tbl_filter(function(val)
-          return vals[val] ~= ""
-        end, vim.tbl_keys(vals))
-        if vim.tbl_isempty(options) then
-          vim.notify("No values to copy", vim.log.levels.WARN)
-          return
+        local options = {}
+        for i, item in ipairs(results) do
+          table.insert(options, ("%d: %s"):format(i, item.val))
         end
-        table.sort(options)
         vim.ui.select(options, {
           prompt = "Choose to copy to clipboard:",
           format_item = function(item)
-            return ("%s: %s"):format(item, vals[item])
+            return item
           end,
-        }, function(choice)
-          local result = vals[choice]
-          if result then
-            vim.notify(("Copied: `%s`"):format(result))
-            vim.fn.setreg("+", result)
+        }, function(_, idx)
+          if idx then
+            local item = results[idx]
+            vim.notify(("Copied: %s"):format(item.val))
+            vim.fn.setreg("+", item.val)
           end
         end)
       end,
@@ -176,6 +174,7 @@ function M.opts()
     },
   }
 end
+
 function M.setup()
   local neo_tree = require("neo-tree")
 
