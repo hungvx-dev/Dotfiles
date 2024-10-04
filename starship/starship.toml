@@ -56,7 +56,7 @@ format = "[◄ $duration ](italic white)"
 
 [os]
 format = "[$symbol]($style)"
-style = "peach"
+style = "mauve"
 disabled = false
 
 [os.symbols]
@@ -85,7 +85,7 @@ truncation_symbol = ".../"
 read_only = " "
 style = "italic bg:none fg:peach"
 read_only_style = "fg:red"
-format = '[$path]($style)[$readonly]($read_only_style)'
+format = '[󰝰 $path]($style)[$readonly]($read_only_style)'
 
 [aws]
 format = 'on [$symbol($profile )(\($region\) )]($style)'
@@ -168,7 +168,7 @@ symbol = " "
 disabled = false
 success_symbol = "[➜](bold fg:cyan)"
 error_symbol = "[x](bold fg:red)"
-vicmd_symbol = "[◎](bold cyan)"
+vicmd_symbol = "[◎](bold fg:mauve)"
 format = "$symbol "
 
 [package]
