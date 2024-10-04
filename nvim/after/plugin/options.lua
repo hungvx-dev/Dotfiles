@@ -1,8 +1,13 @@
+vim.g.loaded_netrw = 1
+vim.g.loaded_netrwPlugin = 1
 -- #================ 2. Moving around, searching and patterns =================#
 vim.opt.ignorecase = true -- Ignore case when using a search pattern
+vim.opt.whichwrap:append("hl")
 
 -- #=========================== 4. Displaying text =============================#
-vim.wo.wrap = false -- Long lines wrap
+vim.wo.wrap = true -- Long lines wrap
+vim.wo.breakindent = true -- Preserve indentation in wrapped text
+vim.wo.linebreak = true
 vim.wo.number = true -- Show the line number for each line
 vim.wo.relativenumber = true -- Show the relative line number for each line
 vim.wo.numberwidth = 3 -- Number of columns to use for the line number

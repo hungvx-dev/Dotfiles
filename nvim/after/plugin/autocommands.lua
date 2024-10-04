@@ -12,9 +12,10 @@ local general = augroup("General Settings", { clear = true })
 --   desc = "number of lines to scroll for CTRL-U and CTRL-D",
 -- })
 
-autocmd("BufEnter", {
+autocmd("FileType", {
+  pattern = { "lua", "javascript", "typescript" },
   callback = function()
-    vim.opt.formatoptions:remove({ "c", "r", "o" })
+    vim.opt.formatoptions:remove({ "o" })
   end,
   group = general,
   desc = "Disable New Line Comment",
