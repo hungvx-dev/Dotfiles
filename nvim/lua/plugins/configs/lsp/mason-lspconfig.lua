@@ -11,6 +11,7 @@ function M.setup()
   })
   require("plugins.configs.lsp.diagnostic").setup()
   require("plugins.configs.lsp.keymaps")
+  require("lspconfig.ui.windows").default_options.border = "rounded"
 end
 
 return M

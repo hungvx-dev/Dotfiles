@@ -16,10 +16,11 @@ return {
       typescriptreact = "javascript",
     },
     tailwindCSS = {
+      emmetCompletions = true,
       experimental = {
         classRegex = {
           { "cva\\(([^)]*)\\)", "[\"'`]([^\"'`]*).*?[\"'`]" },
-          { "cx\\(([^)]*)\\)", "(?:'|\"|`)([^']*)(?:'|\"|`)" },
+          { "cx\\(([^)]*)\\)",  "(?:'|\"|`)([^']*)(?:'|\"|`)" },
         },
       },
       validate = true,

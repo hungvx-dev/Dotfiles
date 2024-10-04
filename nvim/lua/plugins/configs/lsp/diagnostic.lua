@@ -9,12 +9,15 @@ M.opts = {
     virtual_text = false,
     severity_sort = true,
     float = {
-      focusable = false,
+      focusable = true,
+      focus = false,
       border = "rounded",
+      source = true,
     },
   },
   float = {
-    focusable = false,
+    focusable = true,
+    focus = false,
     border = "rounded",
     silent = true,
   },
