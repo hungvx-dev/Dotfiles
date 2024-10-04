@@ -1,1 +1,1 @@
-fnm env --corepack-enabled --use-on-cd --version-file-strategy recursive --shell fish | source
+fnm env --corepack-enabled --use-on-cd --shell fish | source

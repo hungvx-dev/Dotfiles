@@ -54,15 +54,8 @@ set -gx LG_CONFIG_FILE "$HOME/.config/lazygit/config.yml"
 # end
 
 ### python
-pyenv init - | source
+# pyenv init - | source
 # end
-
-### pnpm
-set -gx PNPM_HOME "/Users/hungvx.dev/Library/pnpm"
-if not string match -q -- $PNPM_HOME $PATH
-    set -gx PATH "$PNPM_HOME" $PATH
-end
-### pnpm end
 
 ### gcloud
 source "$(brew --prefix)/share/google-cloud-sdk/path.fish.inc"
@@ -73,3 +66,12 @@ set -Ux fish_tmux_autostart false
 set -Ux fish_tmux_autostart_once false
 set -Ux fish_tmux_config $HOME/.config/tmux/tmux.conf
 ###
+
+# pnpm
+set -gx PNPM_HOME "/Users/hungvx.dev/Library/pnpm"
+if not string match -q -- $PNPM_HOME $PATH
+  set -gx PATH "$PNPM_HOME" $PATH
+end
+# pnpm end
+
+set -x RIPGREP_CONFIG_PATH "$HOME/.config/ripgrep/.ripgreprc"
