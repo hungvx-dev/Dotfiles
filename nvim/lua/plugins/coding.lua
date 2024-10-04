@@ -20,7 +20,7 @@ return {
   {
     "windwp/nvim-autopairs",
     dependencies = {
-      'nvim-cmp',
+      "nvim-cmp",
     },
     config = require("plugins.configs.coding.autopairs").setup,
   },
@@ -64,5 +64,13 @@ return {
     event = { "BufReadPre", "BufNewFile" },
     version = "*",
     config = true,
+  },
+
+  {
+    "nvim-neorg/neorg",
+    enabled = false,
+    lazy = false,
+    version = "*",
+    config = require("plugins.configs.coding.neorg").setup,
   },
 }
