@@ -1,3 +1,4 @@
+---@diagnostic disable: deprecated
 local M = {}
 
 M.keys = {
@@ -14,10 +15,29 @@ M.keys = {
   { "<leader>fm", "<cmd>Telescope marks<cr>", desc = "Jump to Mark" },
   { "<leader>f:", "<cmd>Telescope command_history<cr>", desc = "Command History" },
 }
+
+M.find_command = function()
+  if 1 == vim.fn.executable("rg") then
+    return { "rg", "--files", "--color", "never", "-g", "!.git" }
+  elseif 1 == vim.fn.executable("fd") then
+    return { "fd", "--type", "f", "--color", "never", "-E", ".git" }
+  elseif 1 == vim.fn.executable("fdfind") then
+    return { "fdfind", "--type", "f", "--color", "never", "-E", ".git" }
+  elseif 1 == vim.fn.executable("find") and vim.fn.has("win32") == 0 then
+    return { "find", ".", "-type", "f" }
+  elseif 1 == vim.fn.executable("where") then
+    return { "where", "/r", ".", "*" }
+  end
+end
+
 function M.opts()
   local actions = require("telescope.actions")
-  -- local previewers = require("telescope.previewers")
-  local sorters = require("telescope.sorters")
+  local telescopeConfig = require("telescope.config")
+  local vimgrep_arguments = { unpack(telescopeConfig.values.vimgrep_arguments) }
+
+  table.insert(vimgrep_arguments, "--hidden")
+  table.insert(vimgrep_arguments, "--glob")
+  table.insert(vimgrep_arguments, "!**/.git/*")
 
   return {
     defaults = {
@@ -25,17 +45,18 @@ function M.opts()
       selection_caret = HVIM.icons.UI.SelectionCaret,
       path_display = { "smart" },
       initial_mode = "insert",
-      vimgrep_arguments = {
-        "rg",
-        -- "--color=never",
-        -- "--no-heading",
-        "--with-filename",
-        "--line-number",
-        "--column",
-        "--smart-case",
-        "--hidden",
-        "--glob=!.git/",
-      },
+      vimgrep_arguments = vimgrep_arguments,
+      get_selection_window = function()
+        local wins = vim.api.nvim_list_wins()
+        table.insert(wins, 1, vim.api.nvim_get_current_win())
+        for _, win in ipairs(wins) do
+          local buf = vim.api.nvim_win_get_buf(win)
+          if vim.bo[buf].buftype == "" then
+            return win
+          end
+        end
+        return 0
+      end,
       sorting_strategy = "ascending",
       layout_strategy = "vertical",
       layout_config = {
@@ -72,18 +93,9 @@ function M.opts()
           ["<C-x>"] = actions.select_horizontal,
         },
       },
-      file_ignore_patterns = M.file_ignore_patterns,
+      -- file_ignore_patterns = M.file_ignore_patterns,
       winblend = 0,
-      border = {},
-      borderchars = nil,
-      color_devicons = true,
-      set_env = { ["COLORTERM"] = "truecolor" }, -- default = nil,
     },
-    -- file_previewer = previewers.vim_buffer_cat.new,
-    -- grep_previewer = previewers.vim_buffer_vimgrep.new,
-    -- qflist_previewer = previewers.vim_buffer_qflist.new,
-    file_sorter = sorters.get_fuzzy_file,
-    generic_sorter = sorters.get_generic_fuzzy_sorter,
     extensions = {
       fzf = {
         fuzzy = true,
@@ -94,14 +106,8 @@ function M.opts()
     },
     pickers = {
       find_files = {
+        find_command = M.find_command,
         hidden = true,
-      },
-      live_grep = {
-        --@usage don't include the filename in the search results
-        only_sort_text = true,
-      },
-      grep_string = {
-        only_sort_text = true,
       },
       buffers = {
         mappings = {
@@ -112,14 +118,6 @@ function M.opts()
             ["dd"] = actions.delete_buffer,
           },
         },
-      },
-      planets = {
-        show_pluto = true,
-        show_moon = true,
-      },
-      git_files = {
-        hidden = true,
-        show_untracked = true,
       },
       colorscheme = {
         enable_preview = true,
@@ -138,42 +136,5 @@ function M.setup()
   telescope.setup(opts)
   telescope.load_extension("fzf")
 end
-
-M.file_ignore_patterns = {
-  "CHANGELOG.md",
-  "^.git/",
-  "%.lock",
-  "%.sqlite3",
-  "node_modules/*",
-  "%.svg",
-  "%.otf",
-  "%.ttf",
-  "%.webp",
-  ".github/",
-  ".idea/",
-  ".settings/",
-  ".vscode/",
-  "build/",
-  "node_modules/",
-  "%.class",
-  "%.cache",
-  "%.ico",
-  "%.pdf",
-  "%.dylib",
-  "%.jar",
-  "%.docx",
-  "%.met",
-  "%.burp",
-  "%.mp4",
-  "%.mkv",
-  "%.rar",
-  "%.zip",
-  "%.7z",
-  "%.tar",
-  "%.bz2",
-  "%.epub",
-  "%.flac",
-  "%.tar.gz",
-}
 
 return M
