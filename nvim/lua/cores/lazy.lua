@@ -23,7 +23,7 @@ local opts = {
       disabled_plugins = { "gzip", "netrwPlugin", "tarPlugin", "tohtml", "tutor", "zipPlugin" },
     },
   },
-  rocks = { enabled = false, hererocks = false },
+  rocks = { enabled = true, hererocks = false },
   debug = false,
   defaults = { lazy = true, version = nil },
   change_detection = { notify = false },
