@@ -7,9 +7,9 @@ add_newline = false
 # [  ](fg:green)\
 format = """$cmd_duration\
 $os\
-$username \
 $directory \
 ($git_branch $git_commit ($git_state )$git_metrics$git_status)
+$username \
 $character
 """
 
@@ -168,7 +168,7 @@ symbol = " "
 disabled = false
 success_symbol = "[➜](bold fg:cyan)"
 error_symbol = "[x](bold fg:red)"
-vicmd_symbol = "[◎](bold fg:mauve)"
+vicmd_symbol = "[◎](bold fg:cyan)"
 format = "$symbol "
 
 [package]
@@ -192,4 +192,3 @@ symbol = " "
 [docker_context]
 disabled = false
 symbol = " "
-
