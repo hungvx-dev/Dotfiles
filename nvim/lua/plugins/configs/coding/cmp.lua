@@ -1,93 +1,5 @@
 local M = {}
 
-local function jumpable(dir)
-  local luasnip_ok, luasnip = pcall(require, "luasnip")
-  if not luasnip_ok then
-    return false
-  end
-
-  local win_get_cursor = vim.api.nvim_win_get_cursor
-  local get_current_buf = vim.api.nvim_get_current_buf
-
-  ---sets the current buffer's luasnip to the one nearest the cursor
-  ---@return boolean true if a node is found, false otherwise
-  local function seek_luasnip_cursor_node()
-    if not luasnip.session.current_nodes then
-      return false
-    end
-
-    local node = luasnip.session.current_nodes[get_current_buf()]
-    if not node then
-      return false
-    end
-
-    local snippet = node.parent.snippet
-    local exit_node = snippet.insert_nodes[0]
-
-    local pos = win_get_cursor(0)
-    pos[1] = pos[1] - 1
-
-    -- exit early if we're past the exit node
-    if exit_node then
-      local exit_pos_end = exit_node.mark:pos_end()
-      if (pos[1] > exit_pos_end[1]) or (pos[1] == exit_pos_end[1] and pos[2] > exit_pos_end[2]) then
-        snippet:remove_from_jumplist()
-        luasnip.session.current_nodes[get_current_buf()] = nil
-
-        return false
-      end
-    end
-
-    node = snippet.inner_first:jump_into(1, true)
-    while node ~= nil and node.next ~= nil and node ~= snippet do
-      local n_next = node.next
-      local next_pos = n_next and n_next.mark:pos_begin()
-      local candidate = n_next ~= snippet and next_pos and (pos[1] < next_pos[1])
-        or (pos[1] == next_pos[1] and pos[2] < next_pos[2])
-
-      -- Past unmarked exit node, exit early
-      if n_next == nil or n_next == snippet.next then
-        snippet:remove_from_jumplist()
-        luasnip.session.current_nodes[get_current_buf()] = nil
-
-        return false
-      end
-
-      if candidate then
-        luasnip.session.current_nodes[get_current_buf()] = node
-        return true
-      end
-
-      local ok
-      ok, node = pcall(node.jump_from, node, 1, true) -- no_move until last stop
-      if not ok then
-        snippet:remove_from_jumplist()
-        luasnip.session.current_nodes[get_current_buf()] = nil
-
-        return false
-      end
-    end
-
-    -- No candidate, but have an exit node
-    if exit_node then
-      -- to jump to the exit node, seek to snippet
-      luasnip.session.current_nodes[get_current_buf()] = snippet
-      return true
-    end
-
-    -- No exit node, exit from snippet
-    snippet:remove_from_jumplist()
-    luasnip.session.current_nodes[get_current_buf()] = nil
-    return false
-  end
-
-  if dir == -1 then
-    return luasnip.in_snippet() and luasnip.jumpable(-1)
-  else
-    return luasnip.in_snippet() and seek_luasnip_cursor_node() and luasnip.jumpable(1)
-  end
-end
-
 M.source_mapping = {
   nvim_lsp = HVIM.icons.Cmp.Lsp .. "LSP",
   buffer = HVIM.icons.Cmp.Buffer .. "Buffer",
@@ -108,42 +20,28 @@ function M.opts()
   local cmp = require("cmp")
   local cmp_window = require("cmp.config.window")
   local defaults = require("cmp.config.default")()
-  local cmp_mapping = require("cmp.config.mapping")
   local luasnip = require("luasnip")
 
   require("luasnip.loaders.from_vscode").lazy_load()
-  -- local tailwind_color = require("tailwindcss-colorizer-cmp")
 
   return {
     completion = {
-      completeopt = "menu,menuone,preview,noselect",
+      completeopt = "menu,menuone,preview",
     },
+    preselect = cmp.PreselectMode.Item,
     snippet = {
       expand = function(args)
         luasnip.lsp_expand(args.body)
       end,
     },
     mapping = cmp.mapping.preset.insert({
-      ["<C-k>"] = cmp_mapping(cmp_mapping.select_prev_item(), { "i", "c" }),
-      ["<C-j>"] = cmp_mapping(cmp_mapping.select_next_item(), { "i", "c" }),
+      ["<C-b>"] = cmp.mapping.scroll_docs(-4),
+      ["<C-f>"] = cmp.mapping.scroll_docs(4),
+      ["<C-j>"] = cmp.mapping.select_next_item({ behavior = cmp.SelectBehavior.Insert }),
+      ["<C-k>"] = cmp.mapping.select_prev_item({ behavior = cmp.SelectBehavior.Insert }),
       ["<C-Space>"] = cmp.mapping.complete(),
-      ["<C-e>"] = cmp.mapping.abort(),
-      ["<CR>"] = cmp.mapping.confirm({ select = true }), -- Accept currently selected item. Set `select` to `false` to only confirm explicitly selected items.
-      ["<Tab>"] = cmp_mapping(function(fallback)
-        if luasnip.expand_or_locally_jumpable() then
-          return luasnip.expand_or_jump()
-        end
-        if jumpable(1) then
-          return luasnip.jump(1)
-        end
-        fallback()
-      end, { "i", "s" }),
-      ["<S-Tab>"] = cmp_mapping(function(fallback)
-        if luasnip.jumpable(-1) then
-          return luasnip.jump(-1)
-        end
-        fallback()
-      end, { "i", "s" }),
+      ["<CR>"] = cmp.mapping.confirm({ select = true }),
+      ["<C-CR>"] = cmp.mapping.abort(),
     }),
     window = {
       completion = cmp_window.bordered({
@@ -165,9 +63,6 @@ function M.opts()
       format = function(entry, item)
         item.kind = HVIM.icons.Kind[item.kind] .. item.kind
         item.menu = M.source_mapping[entry.source.name]
-        item.dup = M.duplicates[entry.source.name]
-
-        -- return tailwind_color.formatter(entry, item)
         return item
       end,
     },

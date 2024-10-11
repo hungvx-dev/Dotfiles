@@ -13,21 +13,11 @@ return {
     config = require("plugins.configs.coding.treesitter").setup,
   },
 
-  {
-    "windwp/nvim-ts-autotag",
-    config = require("plugins.configs.coding.autotag").setup,
-  },
-  {
-    "windwp/nvim-autopairs",
-    dependencies = {
-      "nvim-cmp",
-    },
-    config = require("plugins.configs.coding.autopairs").setup,
-  },
-
   -- auto completion
   {
-    "hrsh7th/nvim-cmp",
+    -- "hrsh7th/nvim-cmp",
+    "iguanacucumber/magazine.nvim",
+    name = "nvim-cmp",
     event = { "InsertEnter", "CmdlineEnter" },
     dependencies = {
       "hrsh7th/cmp-buffer",
@@ -50,6 +40,18 @@ return {
       delete_check_events = "TextChanged",
     },
     keys = require("plugins.configs.coding.lua-snip").keys,
+  },
+
+  {
+    "windwp/nvim-ts-autotag",
+    config = require("plugins.configs.coding.autotag").setup,
+  },
+  {
+    "windwp/nvim-autopairs",
+    dependencies = {
+      "nvim-cmp",
+    },
+    config = require("plugins.configs.coding.autopairs").setup,
   },
 
   {
