@@ -41,7 +41,7 @@ local style = {
     lualine_a = {},
     lualine_b = {},
     lualine_c = { components.filename },
-    lualine_x = { components.location },
+    lualine_x = { components.filetype },
     lualine_y = {},
     lualine_z = {},
   },

@@ -21,8 +21,8 @@ setKeyMap("n", "<leader>-", ":vertical resize -5<CR>")
 setKeyMap("n", "<leader>+", ":resize +2<CR>")
 setKeyMap("n", "<leader>_", ":resize -2<CR>")
 
-setKeyMap("n", "<leader>bp", ":bprevious<cr>")
-setKeyMap("n", "<leader>bn", ":bnext<cr>")
+setKeyMap("n", "<leader>gt", ":bnext<cr>")
+setKeyMap("n", "<leader>gT", ":bprevious<cr>")
 
 setKeyMap("n", "<C-q>", ":q<cr>")
 setKeyMap("n", "<C-s>", ":silent! w<cr>")
