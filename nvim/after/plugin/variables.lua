@@ -1,7 +1,7 @@
 vim.g.loaded_perl_provider = 0
 vim.g.loaded_ruby_provider = 0
 vim.g.loaded_python_provider = 0
-vim.g.python3_host_prog = vim.fn.expand("~/.pyenv/versions/neovim5/bin/python")
+-- vim.g.python3_host_prog = vim.fn.expand("~/.pyenv/versions/neovim5/bin/python")
 if os.getenv("FNM_MULTISHELL_PATH") ~= nil then
   -- vim.g.loaded_node_provider = 1
   -- vim.g.node_host_prog = vim.fn.expand(vim.fn.getenv("PNPM_HOME") .. "/neovim-node-host")

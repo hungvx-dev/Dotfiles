@@ -57,10 +57,10 @@ vim.opt.pumheight = 10 -- Maximum height of the popup menu
 vim.opt.undofile = true -- Automatically save and restore undo history
 
 -- #========================= 13. Tabs and indenting ==========================#
-vim.opt.smartindent = true -- -Do clever autoindenting
-vim.opt.expandtab = true -- *Expand <Tab> to spaces in Insert mode
 vim.opt.tabstop = 2 -- *Number of spaces a <Tab> in the text stands for
 vim.opt.shiftwidth = 2 -- *Number of spaces used for each step of (auto)indent
+vim.opt.expandtab = true -- *Expand <Tab> to spaces in Insert mode
+vim.opt.smartindent = true -- -Do clever autoindenting
 vim.opt.autoindent = true -- *Automatically set the indent of a new line
 -- vim.bo.softtabstop = 2 -- -If non-zero, number of spaces to insert for a <Tab>
 
