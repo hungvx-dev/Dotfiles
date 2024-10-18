@@ -19,6 +19,7 @@ M.duplicates = {
 function M.opts()
   local cmp = require("cmp")
   local cmp_window = require("cmp.config.window")
+  local cmp_mapping = require("cmp.config.mapping")
   local defaults = require("cmp.config.default")()
   local luasnip = require("luasnip")
 
@@ -37,8 +38,8 @@ function M.opts()
     mapping = cmp.mapping.preset.insert({
       ["<C-b>"] = cmp.mapping.scroll_docs(-4),
       ["<C-f>"] = cmp.mapping.scroll_docs(4),
-      ["<C-j>"] = cmp.mapping.select_next_item({ behavior = cmp.SelectBehavior.Insert }),
-      ["<C-k>"] = cmp.mapping.select_prev_item({ behavior = cmp.SelectBehavior.Insert }),
+      ["<C-k>"] = cmp_mapping(cmp.mapping.select_prev_item(), { "i", "c" }),
+      ["<C-j>"] = cmp_mapping(cmp.mapping.select_next_item(), { "i", "c" }),
       ["<C-Space>"] = cmp.mapping.complete(),
       ["<CR>"] = cmp.mapping.confirm({ select = true }),
       ["<C-CR>"] = cmp.mapping.abort(),
