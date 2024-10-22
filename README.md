@@ -11,7 +11,7 @@
   - **Theme**: [Starship](./starship)
 - **Shell**: [Fish](./fish) (or [Zsh](./zsh))
 - **IDE**: [Neovim](./neovim)
-- **Window Management**: [Yabai](./yabai)
+- **Window Management**: [Yabai](./yabai) / [Aerospace](./aerospace)
   - **Hotkey**: [skhd](./skhd)
 - **Activity Monitor**: [Btop](./btop)
 - **Git**:
