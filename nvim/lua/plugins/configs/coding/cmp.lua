@@ -89,13 +89,8 @@ function M.opts()
   }
 end
 
-function M.setup()
-  local status_ok, cmp = pcall(require, "cmp")
-  if not status_ok then
-    return
-  end
-
-  local opts = M.opts()
+function M.setup(_, opts)
+  local cmp = require("cmp")
 
   for _, source in ipairs(opts.sources) do
     source.group_index = source.group_index or 1

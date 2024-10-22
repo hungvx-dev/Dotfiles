@@ -21,7 +21,8 @@ vim.opt.fillchars = {
 vim.wo.conceallevel = 2 -- Controls whether concealable text is hidden
 vim.wo.scroll = 10
 vim.wo.smoothscroll = true
-vim.opt.scrolloff = 10 -- Number of screen lines to show around the cursor
+vim.opt.scrolloff = 4 -- Number of screen lines to show around the cursor
+vim.opt.sidescrolloff = 8
 vim.wo.list = true
 vim.opt.listchars = { extends = "→", nbsp = " ", eol = "↴", trail = "·", tab = "  ", space = " " }
 
@@ -38,15 +39,18 @@ vim.wo.cursorlineopt = "number" -- Specifies which area 'cursorline' highlights
 -- #========================== 6. Multiple windows ============================#
 vim.opt.splitbelow = true -- A new window is put below the current one
 vim.opt.splitright = true -- A new window is put right of the current one
+vim.opt.splitkeep = "screen"
 vim.wo.statuscolumn = "%C%s%l" -- Custom format for the status column
 
 -- #========================= 7. Multiple tab pages ===========================#
 vim.opt.showtabline = 2 -- always show buffers/tabs
 
 -- #========================= 10. Messages and info ===========================#
-vim.opt.shortmess:append("I")
-vim.opt.shortmess:append("s")
-vim.opt.shortmess:append("C")
+vim.opt.showmode = false
+vim.opt.shortmess:append({ W = true, I = true, c = true, C = true })
+-- vim.opt.shortmess:append("I")
+-- vim.opt.shortmess:append("s")
+-- vim.opt.shortmess:append("C")
 
 -- #=========================== 11. Selecting text ============================#
 vim.opt.clipboard = "unnamedplus" -- Synchronizes the system clipboard with Nvim's clipboard
@@ -77,8 +81,11 @@ vim.wo.foldtext = "v:lua.Custom_foldtext()"
 vim.opt.updatetime = 300 -- Default: 1000 Update neovim screen
 vim.opt.timeoutlen = 500 --	Time in milliseconds to wait for a mapped sequence to complete.
 
--- #============================== 18. The swap file ================================#
+-- #=========================== 18. The swap file =============================#
 vim.opt.swapfile = false
+
+-- #======================== 19. Command line editing =========================#
+vim.opt.wildmode = "longest:full,full"
 
 -- #============================== 24. various ================================#
 vim.wo.signcolumn = "yes" -- Always show sign column

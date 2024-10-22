@@ -59,8 +59,4 @@ M.opts = {
   on_attach = M.on_attach,
 }
 
-function M.setup()
-  require("gitsigns").setup(M.opts)
-end
-
 return M

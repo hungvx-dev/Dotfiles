@@ -6,12 +6,21 @@ M.keys = {
 }
 
 function M.init()
-  if vim.fn.argc() == 1 then
-    local stat = vim.loop.fs_stat(vim.fn.argv(0))
-    if stat and stat.type == "directory" then
-      require("neo-tree")
-    end
-  end
+  vim.api.nvim_create_autocmd("BufEnter", {
+    group = vim.api.nvim_create_augroup("Neotree_start_directory", { clear = true }),
+    desc = "Start Neo-tree with directory",
+    once = true,
+    callback = function()
+      if package.loaded["neo-tree"] then
+        return
+      else
+        local stats = vim.uv.fs_stat(vim.fn.argv(0))
+        if stats and stats.type == "directory" then
+          require("neo-tree")
+        end
+      end
+    end,
+  })
 end
 
 function M.deactivate()
@@ -22,8 +31,8 @@ function M.opts()
   local mini_icons = require("mini.icons")
 
   return {
-    sources = { "filesystem", "buffers", "git_status", "document_symbols" },
-    open_files_do_not_replace_types = { "terminal", "Trouble", "qf", "Outline" },
+    sources = { "filesystem", "buffers", "git_status" },
+    open_files_do_not_replace_types = { "terminal", "Trouble", "trouble", "qf", "Outline" },
     close_if_last_window = false,
     popup_border_style = "rounded",
     enable_git_status = true,
@@ -123,35 +132,12 @@ function M.opts()
       end,
     },
     filesystem = {
+      bind_to_cwd = false,
       follow_current_file = {
         enabled = true,
         leave_dirs_open = true,
       },
-      group_empty_dirs = false,
       use_libuv_file_watcher = true,
-      filtered_items = {
-        never_show = {
-          ".DS_Store",
-        },
-      },
-      window = {
-        mapping_options = {
-          noremap = true,
-          nowait = true,
-        },
-        mappings = {
-          -- ["<space>"] = "none",
-          -- ["A"] = "command_b",
-          ["Y"] = "copy_selector_path",
-          ["<C-x>"] = "split_with_window_picker",
-          ["<C-v>"] = "vsplit_with_window_picker",
-          ["o"] = { "open", nowait = true },
-        },
-      },
-      fuzzy_finder_mappings = {
-        ["<C-j>"] = "move_cursor_down",
-        ["<C-k>"] = "move_cursor_up",
-      },
     },
     buffers = {
       follow_current_file = {
@@ -170,15 +156,16 @@ function M.opts()
     window = {
       position = "right",
       width = 40,
-      mappings = {},
+      mappings = {
+        -- ["<space>"] = "none",
+        -- ["A"] = "command_b",
+        ["Y"] = "copy_selector_path",
+        ["<C-x>"] = "split_with_window_picker",
+        ["<C-v>"] = "vsplit_with_window_picker",
+        ["o"] = { "open", nowait = true },
+      },
     },
   }
-end
-
-function M.setup()
-  local neo_tree = require("neo-tree")
-
-  neo_tree.setup(M.opts())
 end
 
 return M

@@ -19,7 +19,7 @@ M.ensure_installed = {
   "dockerfile",
 }
 
-local opts = {
+M.opts = {
   ensure_installed = M.ensure_installed,
   sync_install = true,
   auto_install = true,
@@ -63,17 +63,20 @@ local opts = {
   },
 }
 
-function M.setup()
+M.init = function()
   vim.filetype.add({
     extension = {
       hurl = "hurl",
     },
   })
+end
 
-  require("nvim-treesitter.configs").setup(opts)
-  local ts_utils = require("nvim-treesitter.ts_utils")
-  ts_utils.is_in_node_range = vim.treesitter.is_in_node_range
-  ts_utils.get_node_range = vim.treesitter.get_node_range
+
+function M.setup()
+  -- require("nvim-treesitter.configs").setup(opts)
+  -- local ts_utils = require("nvim-treesitter.ts_utils")
+  -- ts_utils.is_in_node_range = vim.treesitter.is_in_node_range
+  -- ts_utils.get_node_range = vim.treesitter.get_node_range
 end
 
 return M

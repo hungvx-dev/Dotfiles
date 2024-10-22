@@ -9,6 +9,9 @@ setKeyMap("n", "L", "g_")
 setKeyMap("v", "H", "^")
 setKeyMap("v", "L", "g_")
 
+-- setKeyMap("n", "j", "v:count == 0 ? 'gj' : 'j'")
+-- setKeyMap("n", "k", "v:count == 0 ? 'gk' : 'k'")
+
 -- Paste over currently selected text without yanking it
 setKeyMap("v", "p", '"_dP')
 
@@ -21,8 +24,9 @@ setKeyMap("n", "<leader>-", ":vertical resize -5<CR>")
 setKeyMap("n", "<leader>+", ":resize +2<CR>")
 setKeyMap("n", "<leader>_", ":resize -2<CR>")
 
-setKeyMap("n", "<leader>gt", ":bnext<cr>")
-setKeyMap("n", "<leader>gT", ":bprevious<cr>")
+-- buffers
+setKeyMap("n", "[b", ":bprevious<cr>")
+setKeyMap("n", "]b", ":bnext<cr>")
 
 setKeyMap("n", "<C-q>", ":q<cr>")
 setKeyMap("n", "<C-s>", ":silent! w<cr>")

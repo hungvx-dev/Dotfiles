@@ -1,6 +1,12 @@
 local telescope = require("plugins.configs.editor.telescope")
 local todo_comments = require("plugins.configs.editor.todo-comments")
 local neotree = require("plugins.configs.editor.neotree")
+local window_picker = require("plugins.configs.editor.window-picker")
+local indent = require("plugins.configs.editor.indent-blankline")
+local colorizer = require("plugins.configs.editor.colorizer")
+local git_signs = require("plugins.configs.editor.git.signs")
+local eyeliner = require("plugins.configs.editor.eyeliner")
+local trouble = require("plugins.configs.editor.trouble")
 
 return {
   -- File explorer
@@ -14,13 +20,13 @@ return {
       {
         "s1n7ax/nvim-window-picker",
         version = "2.*",
-        config = require("plugins.configs.editor.window-picker").setup,
+        opts = window_picker.opts,
       },
     },
-    keys = neotree.keys,
-    deactivate = neotree.deactivate,
     init = neotree.init,
-    config = neotree.setup,
+    deactivate = neotree.deactivate,
+    keys = neotree.keys,
+    opts = neotree.opts,
   },
 
   -- fuzzy finder
@@ -36,6 +42,7 @@ return {
       },
     },
     keys = telescope.keys,
+    opts = telescope.opts,
     config = telescope.setup,
   },
 
@@ -43,7 +50,7 @@ return {
     "lukas-reineke/indent-blankline.nvim",
     main = "ibl",
     event = { "BufReadPost", "BufNewFile", "BufWritePre" },
-    config = require("plugins.configs.editor.indent-blankline").setup,
+    opts = indent.opts,
   },
 
   -- Comment
@@ -52,7 +59,7 @@ return {
     cmd = { "TodoTrouble", "TodoTelescope" },
     event = { "BufReadPost", "BufNewFile", "BufWritePre" },
     keys = todo_comments.keys,
-    config = todo_comments.setup,
+    opts = todo_comments.opts,
   },
   {
     "numToStr/Comment.nvim",
@@ -66,14 +73,14 @@ return {
   {
     "NvChad/nvim-colorizer.lua",
     event = { "BufReadPre", "BufNewFile" },
-    config = require("plugins.configs.editor.colorizer").setup,
+    opts = colorizer.opts,
   },
 
   -- Git
   {
     "lewis6991/gitsigns.nvim",
     event = { "BufReadPre", "BufNewFile" },
-    config = require("plugins.configs.editor.git.signs").setup,
+    opts = git_signs.opts,
   },
   {
     "akinsho/git-conflict.nvim",
@@ -106,15 +113,15 @@ return {
   {
     "folke/trouble.nvim",
     cmd = { "Trouble" },
-    opts = { use_diagnostic_signs = true },
-    keys = require("plugins.configs.editor.trouble").keys,
+    opts = trouble.opts,
+    keys = trouble.keys,
   },
 
   -- easily jump
   {
     "jinh0/eyeliner.nvim",
     event = { "BufReadPre", "BufNewFile" },
-    config = require("plugins.configs.editor.eyeliner").setup,
+    opts = eyeliner.opts,
   },
   {
     "rhysd/clever-f.vim",
@@ -131,7 +138,7 @@ return {
   {
     "mg979/vim-visual-multi",
     event = { "BufReadPre", "BufNewFile" },
-    config = function()
+    init = function()
       vim.g.VM_set_statusline = 0
       vim.g.VM_silent_exit = 1
     end,
@@ -140,12 +147,10 @@ return {
   {
     "0x00-ketsu/maximizer.nvim",
     enabled = true,
-    config = function()
-      require("maximizer").setup({})
-    end,
     keys = {
       { "<C-w>f", "<cmd>lua require('maximizer').toggle()<CR>", desc = "Maximize/minimize a split" },
     },
+    opts = {},
   },
 
   -- Dap
@@ -183,10 +188,8 @@ return {
     dependencies = { "MunifTanjim/nui.nvim", "nvim-lua/plenary.nvim" },
     enabled = false,
     event = "BufEnter",
-    config = function()
-      require("hardtime").setup({
-        disabled_filetypes = { "qf", "netrw", "lazy", "mason", "neo-tree" },
-      })
-    end,
+    opts = {
+      disabled_filetypes = { "qf", "netrw", "lazy", "mason", "neo-tree" },
+    },
   },
 }

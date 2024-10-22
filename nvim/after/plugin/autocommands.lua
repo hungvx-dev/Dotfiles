@@ -4,13 +4,14 @@ local augroup = vim.api.nvim_create_augroup
 -- General Settings
 local general = augroup("General Settings", { clear = true })
 
--- autocmd("WinEnter", {
---   callback = function()
---     vim.wo.scroll = 10
---   end,
---   group = general,
---   desc = "number of lines to scroll for CTRL-U and CTRL-D",
--- })
+-- Highlight on yank
+autocmd("TextYankPost", {
+  group = general,
+  callback = function()
+    vim.highlight.on_yank({ timeout = 300 })
+  end,
+  desc = "Highlight when yanking",
+})
 
 autocmd("FileType", {
   pattern = { "lua", "javascript", "typescript" },
@@ -19,14 +20,6 @@ autocmd("FileType", {
   end,
   group = general,
   desc = "Disable New Line Comment",
-})
-
-autocmd("TextYankPost", {
-  callback = function()
-    require("vim.highlight").on_yank({ higroup = "Visual", timeout = 300 })
-  end,
-  group = general,
-  desc = "Highlight when yanking",
 })
 
 autocmd("TermOpen", {
@@ -41,7 +34,9 @@ autocmd("TermOpen", {
 
 autocmd("VimResized", {
   callback = function()
+    local current_tab = vim.fn.tabpagenr()
     vim.cmd("wincmd =")
+    vim.cmd("tabnext " .. current_tab)
   end,
   group = general,
   desc = "Equalize Splits",
@@ -56,19 +51,3 @@ autocmd("FileType", {
   group = general,
   desc = "Enable Wrap in these filetypes",
 })
-
--- autocmd("FileType", {
---   pattern = { "neo-tree" },
---   callback = function()
---     local ok, ufo = pcall(require, "ufo")
---     if not ok then
---       return
---     end
---
---     ufo.detach()
---     vim.opt_local.foldenable = false
---     vim.opt_local.foldcolumn = "0"
---   end,
---   group = general,
---   desc = "Disable neo-tree fold",
--- })

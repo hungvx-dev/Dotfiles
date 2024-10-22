@@ -1,8 +1,8 @@
-local style = require("plugins.configs.ui.lualine.style")
+local components = require("plugins.configs.ui.lualine.components")
+
 local M = {}
 
 M.init = function()
-  vim.g.lualine_laststatus = vim.o.laststatus
   if vim.fn.argc(-1) > 0 then
     vim.o.statusline = " "
   else
@@ -10,12 +10,57 @@ M.init = function()
   end
 end
 
-M.setup = function()
-  if #vim.api.nvim_list_uis() == 0 then
-    return
-  end
-
-  require("lualine").setup(style)
-end
+M.opts = {
+  options = {
+    theme = "auto",
+    globalstatus = true,
+    icons_enabled = HVIM.use_icons,
+    section_separators = { left = "", right = "" },
+    component_separators = { left = "", right = "" },
+    disabled_filetypes = {
+      statusline = {
+        "ministarter",
+        "help",
+        "dashboard",
+        "alpha",
+        "TelescopePrompt",
+      },
+    },
+  },
+  sections = {
+    lualine_a = {
+      components.mode,
+      components.branch,
+    },
+    lualine_b = {
+      components.diagnostics,
+    },
+    lualine_c = {
+      components.diff,
+    },
+    lualine_x = {
+      components.maximized,
+      components.searchcount,
+      components.lsp,
+      components.filetype,
+    },
+    lualine_y = { components.location },
+    lualine_z = { components.progress },
+  },
+  inactive_sections = {
+    lualine_a = {},
+    lualine_b = {},
+    lualine_c = { components.filename },
+    lualine_x = { components.filetype },
+    lualine_y = {},
+    lualine_z = {},
+  },
+  tabline = {},
+  extensions = {
+    "fzf",
+    "neo-tree",
+    "lazy",
+  },
+}
 
 return M

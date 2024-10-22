@@ -66,8 +66,4 @@ function M.opts()
   }
 end
 
-M.setup = function()
-  require("bufferline").setup(M.opts())
-end
-
 return M

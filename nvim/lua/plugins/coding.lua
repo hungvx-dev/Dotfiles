@@ -1,3 +1,7 @@
+local treesitter = require("plugins.configs.coding.treesitter")
+local cmp = require("plugins.configs.coding.cmp")
+local autotag = require("plugins.configs.coding.autotag")
+
 return {
   -- Treesitter
   {
@@ -10,7 +14,8 @@ return {
       "hiphish/rainbow-delimiters.nvim",
       { "nvim-treesitter/nvim-treesitter-textobjects" },
     },
-    config = require("plugins.configs.coding.treesitter").setup,
+    init = treesitter.init,
+    opts = treesitter.opts,
   },
 
   -- auto completion
@@ -28,7 +33,8 @@ return {
       "rafamadriz/friendly-snippets",
       { "roobert/tailwindcss-colorizer-cmp.nvim", enabled = false },
     },
-    config = require("plugins.configs.coding.cmp").setup,
+    opts = cmp.opts,
+    config = cmp.setup,
   },
 
   -- snippets
@@ -44,13 +50,11 @@ return {
 
   {
     "windwp/nvim-ts-autotag",
-    config = require("plugins.configs.coding.autotag").setup,
+    opts = autotag.opts,
   },
   {
     "windwp/nvim-autopairs",
-    dependencies = {
-      "nvim-cmp",
-    },
+    dependencies = { "nvim-cmp" },
     config = require("plugins.configs.coding.autopairs").setup,
   },
 

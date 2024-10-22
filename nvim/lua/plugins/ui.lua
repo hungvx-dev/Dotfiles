@@ -2,6 +2,8 @@ local mini_starter = require("plugins.configs.ui.mini-starter")
 local alpha = require("plugins.configs.ui.alpha")
 local bufferline = require("plugins.configs.ui.bufferline")
 local lualine = require("plugins.configs.ui.lualine")
+local dressing = require("plugins.configs.ui.dressing")
+local statuscol = require("plugins.configs.ui.statuscol")
 
 return {
   {
@@ -43,16 +45,30 @@ return {
     version = "*",
     dependencies = { "mini.icons" },
     keys = bufferline.keys,
-    config = bufferline.setup,
+    opts = bufferline.opts,
+    -- config = bufferline.setup,
   },
 
   -- Status line
   {
     "nvim-lualine/lualine.nvim",
     event = "VeryLazy",
-    init = lualine.init,
     dependencies = { "mini.icons" },
-    config = lualine.setup,
+    init = lualine.init,
+    opts = lualine.opts,
+  },
+
+  {
+    "stevearc/dressing.nvim",
+    init = dressing.init,
+    opts = dressing.opts,
+  },
+
+  {
+    "luukvbaal/statuscol.nvim",
+    event = { "BufReadPre", "BufNewFile" },
+    keys = statuscol.keys,
+    opts = statuscol.opts,
   },
 
   {
@@ -63,37 +79,6 @@ return {
     opts = alpha.opts,
     config = alpha.setup,
   },
-
-  {
-    "stevearc/dressing.nvim",
-    init = function()
-      ---@diagnostic disable-next-line: duplicate-set-field
-      vim.ui.select = function(...)
-        require("lazy").load({ plugins = { "dressing.nvim" } })
-        return vim.ui.select(...)
-      end
-      ---@diagnostic disable-next-line: duplicate-set-field
-      vim.ui.input = function(...)
-        require("lazy").load({ plugins = { "dressing.nvim" } })
-        return vim.ui.input(...)
-      end
-    end,
-    opts = {
-      select = {
-        backend = { "telescope", "builtin", "nui" },
-      },
-    },
-  },
-
-  {
-    "luukvbaal/statuscol.nvim",
-    event = { "BufReadPre", "BufNewFile" },
-    keys = {
-      { "<leader>rc", "<cmd>Lazy reload statuscol.nvim<CR>", desc = "Reload statuscol" },
-    },
-    config = require("plugins.configs.ui.statuscol").setup,
-  },
-
   {
     "echasnovski/mini.starter",
     enabled = false,
@@ -110,15 +95,12 @@ return {
     dependencies = {
       { "kevinhwang91/promise-async" },
     },
-    config = require("plugins.configs.ui.ufo").setup,
   },
 
   {
     "3rd/image.nvim",
     lazy = false,
     enabled = false,
-    config = function()
-      require("plugins.configs.ui.image")
-    end,
+    opts = {}
   },
 }

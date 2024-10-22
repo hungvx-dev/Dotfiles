@@ -126,13 +126,8 @@ function M.opts()
   }
 end
 
-function M.setup()
-  local status_ok, telescope = pcall(require, "telescope")
-  if not status_ok then
-    return
-  end
-  local opts = M.opts()
-
+function M.setup(_, opts)
+  local telescope = require("telescope")
   telescope.setup(opts)
   telescope.load_extension("fzf")
 end

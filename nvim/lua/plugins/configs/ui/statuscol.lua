@@ -1,13 +1,13 @@
 local M = {}
 
-function M.setup()
-  local present, statuscol = pcall(require, "statuscol")
-  if not present then
-    return
-  end
+M.keys = {
+  { "<leader>rc", "<cmd>Lazy reload statuscol.nvim<CR>", desc = "Reload statuscol" },
+}
+
+M.opts = function()
   local builtin = require("statuscol.builtin")
 
-  M.opts = {
+  return {
     setopt = true,
     ft_ignore = { "neo-tree" },
     bt_ignore = { "terminal" },
@@ -15,13 +15,11 @@ function M.setup()
       { text = { builtin.foldfunc } },
       { text = { "%s", colwidth = 1 }, sign = { auto = true } },
       {
-        text = { builtin.lnumfunc, " " },
+        text = { "%l", " " },
         condition = { true, builtin.not_empty },
       },
     },
   }
-
-  statuscol.setup(M.opts)
 end
 
 return M

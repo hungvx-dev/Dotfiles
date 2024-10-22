@@ -1,5 +1,14 @@
 local M = {}
 
+M.opts = {
+  use_diagnostic_signs = true,
+  modes = {
+    lsp = {
+      win = { position = "right" },
+    },
+  },
+}
+
 M.keys = {
   { "<leader>xx", "<cmd>Trouble diagnostics toggle<cr>", desc = "Document Diagnostics (Trouble)" },
   { "<leader>xX", "<cmd>Trouble diagnostics toggle filter.buf=0<cr>", desc = "Workspace Diagnostics (Trouble)" },

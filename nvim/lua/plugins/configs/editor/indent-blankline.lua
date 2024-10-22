@@ -1,4 +1,5 @@
 local M = {}
+
 M.opts = {
   exclude = {
     filetypes = {
@@ -17,14 +18,5 @@ M.opts = {
   },
   indent = { char = HVIM.icons.UI.Line.Left },
 }
-
-M.setup = function()
-  local status_ok, indent_blankline = pcall(require, "ibl")
-  if not status_ok then
-    return
-  end
-
-  indent_blankline.setup(M.opts)
-end
 
 return M

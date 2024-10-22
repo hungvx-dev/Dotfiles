@@ -1,7 +1,7 @@
 local M = {}
 
 -- ╭──────────────────────────────────────────────────────────╮
--- │ Key-mappings                                              │
+-- │ Key-mappings                                             │
 -- ╰──────────────────────────────────────────────────────────╯
 M.keys = {}
 -- vim.keymap.set("n", "zR", require("ufo").openAllFolds)
@@ -37,18 +37,12 @@ function M.handler(virtText, lnum, endLnum, width, truncate)
   return newVirtText
 end
 
-function M.setup()
-  local present, ufo = pcall(require, "ufo")
-  if not present then
-    return
-  end
-  ufo.setup({
-    close_fold_kinds_for_ft = { "imports", "comment" },
-    provider_selector = function()
-      return { "treesitter", "indent" }
-    end,
-    fold_virt_text_handler = M.handler,
-  })
-end
+M.opts = {
+  close_fold_kinds_for_ft = { "imports", "comment" },
+  provider_selector = function()
+    return { "treesitter", "indent" }
+  end,
+  fold_virt_text_handler = M.handler,
+}
 
 return M
