@@ -11,15 +11,16 @@
   - **Theme**: [Starship](./starship)
 - **Shell**: [Fish](./fish) (or [Zsh](./zsh))
 - **IDE**: [Neovim](./neovim)
-- **Window Management**: [Yabai](./yabai) / [Aerospace](./aerospace)
-  - **Hotkey**: [skhd](./skhd)
+- **Window Management**: [Yabai](./yabai) + [skhd](./skhd) / [Aerospace](./aerospace)
 - **Activity Monitor**: [Btop](./btop)
 - **Git**:
   - CLI: [Lazygit](./lazygit)
   - [delta](https://github.com/dandavison/delta) - a syntax-highlighting pager for git, diff, and grep output
 - **Version Manager**:
   - [fnm](https://github.com/Schniz/fnm) - 🚀 fast and simple Node.js version manager, built in Rust
-- **Font**: [Nerd Font](https://github.com/ryanoasis/nerd-fonts) [JetBrains Mono](https://github.com/JetBrains/JetBrainsMono)
+- **Font**: [Nerd Font](https://github.com/ryanoasis/nerd-fonts)
+  - [JetBrainsMono Nerd Font](https://github.com/JetBrains/JetBrainsMono)
+  - [Iosevka Nerd Font](https://github.com/be5invis/Iosevka)
 - **Music**: [cmus](https://github.com/cmus/cmus) + [cava](./cava) + [Loopback](https://rogueamoeba.com/loopback/)
 - **Keyboard Customize**: - [karabiner-elements](https://karabiner-elements.pqrs.org/) a powerful and stable keyboard customize for macOS.
 - **Vietnamese Keyboard**: [OpenKey](https://github.com/tuyenvm/OpenKey)
@@ -47,10 +48,12 @@ chmod -R +x ./bootstrap/macos && ./bootstrap/macos/init.sh
 
 ## Show cases
 
-### Terminal (Kitty + fish + starship + fzf)
+### Terminal (Kitty + fish + starship)
 
 ![Terminal 1](./images/terminal.png "Title")
 ![Terminal 2](./images/terminal-1.png "Title")
+
+### Search (fzf + ripgrep + fd + bat)
 
 ### Tmux sessions
 

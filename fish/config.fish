@@ -1,8 +1,6 @@
 set -x LC_ALL en_US.UTF-8
 set -x LANG en_US.UTF-8
 
-set -gx EDITOR nvim
-
 ### Vi key mode
 fish_vi_key_bindings
 set fish_cursor_default block blink
