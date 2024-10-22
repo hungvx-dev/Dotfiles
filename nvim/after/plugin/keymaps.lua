@@ -1,8 +1,8 @@
 local setKeyMap = vim.keymap.set
 
 -- Better indent
--- setKeyMap("v", "<", "<gv")
--- setKeyMap("v", ">", ">gv")
+setKeyMap("v", "<", "<gv")
+setKeyMap("v", ">", ">gv")
 
 setKeyMap("n", "H", "^")
 setKeyMap("n", "L", "g_")

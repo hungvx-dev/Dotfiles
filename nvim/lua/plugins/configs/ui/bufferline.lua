@@ -1,7 +1,7 @@
 local M = {}
 
 M.keys = {
-  { "<leader>bp", "<Cmd>BufferLineTogglePin<CR>", desc = "Toggle pin" },
+  { "<leader>bp", "<Cmd>BufferLineTogglePin<CR>",            desc = "Toggle pin" },
   { "<leader>bP", "<Cmd>BufferLineGroupClose ungrouped<CR>", desc = "Delete non-pinned buffers" },
 }
 
@@ -9,7 +9,7 @@ function M.diagnostics_indicator(_, _, diagnostics, _)
   local result = {}
   for name, count in pairs(diagnostics) do
     if count > 0 then
-      table.insert(result, HVIM.bold_signs[name] .. " " .. count)
+      table.insert(result, HVIM.bold_signs[name] .. count)
     end
   end
   return #result > 0 and table.concat(result, " ") or ""
@@ -31,7 +31,7 @@ function M.opts()
       close_icon = HVIM.icons.UI.Close,
       diagnostics = "nvim_lsp",
       diagnostics_update_in_insert = false,
-      diagnostics_indicator = M.diagnostics_indicator,
+      -- diagnostics_indicator = M.diagnostics_indicator,
       indicator = {
         style = "underline", --"icon" | "underline" | "none",
       },

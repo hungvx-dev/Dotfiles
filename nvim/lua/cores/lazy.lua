@@ -23,7 +23,12 @@ local opts = {
       disabled_plugins = { "gzip", "netrwPlugin", "tarPlugin", "tohtml", "tutor", "zipPlugin" },
     },
   },
-  rocks = { enabled = true, hererocks = false },
+  rocks = {
+    enabled = true,
+    root = vim.fn.stdpath("data") .. "/lazy-rocks",
+    server = "https://nvim-neorocks.github.io/rocks-binaries/",
+    hererocks = false,
+  },
   debug = false,
   defaults = { lazy = true, version = nil },
   change_detection = { notify = false },

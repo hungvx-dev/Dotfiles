@@ -26,13 +26,13 @@ tokyonight.setup({
     colors.bg_sidebar = colors.none
     colors.bg_statusline = colors.none
     colors.black = colors.none
-    colors.bg_popup = "#1a1b26"
+    colors.bg_popup = "#000000"
     colors.comment = "#b9b9d9"
     -- colors.fg_gutter = "#737aa2"
 
-    colors.bg_search = "#0057c4"
+    colors.bg_search = "#3d59a1"
     colors.blue = "#74a2ff"
-    colors.blue0 = "#0057c4"
+    colors.blue0 = "#3d59a1"
     colors.blue1 = "#00c4e0"
     colors.blue6 = "#8cfffe"
     colors.blue7 = "#004b92"
@@ -60,7 +60,7 @@ tokyonight.setup({
     hl.Cursor = { bg = colors.blue1 }
     hl.PmenuSbar = { bg = colors.none }
     hl.GitSignsCurrentLineBlame = { fg = "#5e6777" }
-    hl.IncSearch.fg = "#1a1b26"
+    hl.IncSearch.fg = "#000000"
     hl.NeoTreeDimText.fg = "#b9b9d9"
     -- hl.StatusLineNc.fg = "#EFFF00"
   end,

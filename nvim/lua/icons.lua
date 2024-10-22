@@ -59,7 +59,7 @@ return {
     Lazy            = "󰒲 ",
     OldFile         = "󰛔 ",
     FoldText        = " 󰁂 󰇘 ",
-    Search          = " ",
+    Search          = "  ",
     SelectionCaret  = " ",
     WindowMaximized = "",
     Terminal       = {

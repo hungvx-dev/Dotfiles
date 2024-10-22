@@ -21,7 +21,7 @@ local branch = {
 
 local diagnostics = {
   "diagnostics",
-  sources = { "nvim_diagnostic", "nvim_lsp" },
+  sources = { "nvim_lsp" },
   symbols = HVIM.bold_signs,
   always_visible = true,
 }
