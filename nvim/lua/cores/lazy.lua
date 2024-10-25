@@ -15,7 +15,7 @@ end
 vim.opt.rtp:prepend(lazypath)
 
 local opts = {
-  install = { missing = true, colorscheme = { HVIM.colorscheme } },
+  install = { missing = true },
   ui = { border = "rounded" },
   git = { timeout = 120 },
   performance = {
@@ -37,3 +37,5 @@ local opts = {
 
 require("lazy").setup("plugins", opts)
 vim.keymap.set("n", "<Leader>l", "<cmd>Lazy<CR>")
+
+vim.cmd.colorscheme(HVIM.colorscheme)

@@ -1,9 +1,6 @@
-local tokyonight = require("tokyonight")
+local M = {}
 
--- ╭──────────────────────────────────────────────────────────╮
--- │ Setup Color scheme                                       │
--- ╰──────────────────────────────────────────────────────────╯
-tokyonight.setup({
+M.opts = {
   style = "night",
   terminal_colors = true,
   styles = {
@@ -14,9 +11,9 @@ tokyonight.setup({
     sidebars = "transparent",
     floats = "transparent",
   },
+  cache = true,
   sidebars = {},
   hide_inactive_statusline = true,
-  day_brightness = 0.15,
   on_colors = function(colors)
     -- Support transparent
     colors.none = "NONE"
@@ -62,6 +59,9 @@ tokyonight.setup({
     hl.GitSignsCurrentLineBlame = { fg = "#5e6777" }
     hl.IncSearch.fg = "#000000"
     hl.NeoTreeDimText.fg = "#b9b9d9"
+    -- hl.LspInlayHint.bg = "#000000"
     -- hl.StatusLineNc.fg = "#EFFF00"
   end,
-})
+}
+
+return M
