@@ -17,10 +17,10 @@ function M.setup(opts)
   local capabilities = M.setup_capabilities()
 
   local function setup(server)
-    local s_opt = opts[server]
+    local s_opt = opts[server] or {}
     local opt = vim.tbl_deep_extend("force", {
       capabilities = capabilities,
-    }, s_opt or {})
+    }, s_opt)
 
     if s_opt.enabled == false then
       return

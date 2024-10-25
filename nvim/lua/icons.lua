@@ -13,8 +13,8 @@ return {
     Function      = "󰊕 ", --
     Key           = " ",
     Keyword       = " ",
-    Method        = " ",
-    Module        = "󰕳 ", --
+    Method        = "󰊕 ", -- 
+    Module        = " ", -- 󰕳
     Namespace     = " ",
     Null          = "󰟢 ", --
     Number        = " ",
@@ -42,12 +42,13 @@ return {
     Uninstall = "✗",
   },
   Cmp         = {
-    Path       = "  ",
-    Snippet    = "  ",
-    Lsp        = "  ",
-    NvimLua    = "  ",
-    Buffer     = "  ",
-    Spellcheck = "  ",
+    Path       = " ",
+    Snippet    = " ",
+    Lsp        = "󰿘 ",
+    NvimLua    = " ",
+    Buffer     = " ",
+    Spellcheck = " ",
+    CmpLine    = " "
   },
   UI          = {
     Apple           = "󰀵",

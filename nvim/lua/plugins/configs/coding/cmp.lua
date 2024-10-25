@@ -1,10 +1,34 @@
 local M = {}
 
+M.keys = {
+  {
+    "<Tab>",
+    function()
+      return vim.snippet.active({ direction = 1 }) and "<cmd>lua vim.snippet.jump(1)<cr>" or "<Tab>"
+    end,
+    expr = true,
+    silent = true,
+    mode = { "i", "s" },
+  },
+  {
+    "<S-Tab>",
+    function()
+      return vim.snippet.active({ direction = -1 }) and "<cmd>lua vim.snippet.jump(-1)<cr>" or "<S-Tab>"
+    end,
+    expr = true,
+    silent = true,
+    mode = { "i", "s" },
+  },
+}
+
 M.source_mapping = {
-  nvim_lsp = HVIM.icons.Cmp.Lsp .. "LSP",
-  buffer = HVIM.icons.Cmp.Buffer .. "Buffer",
-  luasnip = HVIM.icons.Cmp.Snippet .. "Snippet",
-  path = HVIM.icons.Cmp.Path .. "Path",
+  nvim_lsp = HVIM.icons.Cmp.Lsp,
+  buffer = HVIM.icons.Cmp.Buffer,
+  luasnip = HVIM.icons.Cmp.Snippet,
+  path = HVIM.icons.Cmp.Path,
+  async_path = HVIM.icons.Cmp.Path,
+  snippets = HVIM.icons.Cmp.Snippet,
+  cmdline  = HVIM.icons.Cmp.CmpLine
   -- cmp_tabnine = HVIM.icons.Cmp.Tabnine .. "Tabnine",
   -- spell = HVIM.icons.Cmp.Spellcheck .. "Spell",
 }
@@ -12,29 +36,18 @@ M.source_mapping = {
 M.duplicates = {
   buffer = 1,
   path = 1,
+  async_path = 1,
   nvim_lsp = 1,
   luasnip = 1,
+  snippets = 1,
 }
 
 function M.opts()
   local cmp = require("cmp")
   local cmp_window = require("cmp.config.window")
   local cmp_mapping = require("cmp.config.mapping")
-  local defaults = require("cmp.config.default")()
-  local luasnip = require("luasnip")
-
-  require("luasnip.loaders.from_vscode").lazy_load()
 
   return {
-    completion = {
-      completeopt = "menu,menuone,preview",
-    },
-    preselect = cmp.PreselectMode.Item,
-    snippet = {
-      expand = function(args)
-        luasnip.lsp_expand(args.body)
-      end,
-    },
     mapping = cmp.mapping.preset.insert({
       ["<C-b>"] = cmp.mapping.scroll_docs(-4),
       ["<C-f>"] = cmp.mapping.scroll_docs(4),
@@ -46,66 +59,60 @@ function M.opts()
     }),
     window = {
       completion = cmp_window.bordered({
-        winhighlight = "FloatBorder:Pmenu",
+        winhighlight = "FloatBorder:Pmenu,Search:None",
       }),
       documentation = cmp_window.bordered({
-        winhighlight = "FloatBorder:Pmenu",
+        winhighlight = "FloatBorder:Pmenu,Search:None",
       }),
     },
     sources = cmp.config.sources({
-      { name = "nvim_lsp", priority = 9 },
-      { name = "luasnip", priority = 6, max_item_count = 10 },
-      { name = "path", priority = 4 },
-    }, {
-      { name = "buffer", priority = 5, keywork_length = 5, max_item_count = 6 },
+      { name = "nvim_lsp", priority = 9, group_index = 1 },
+      { name = "async_path", priority = 4, group_index = 1 },
+      { name = "buffer", priority = 5, keywork_length = 5, max_item_count = 6, group_index = 2 },
     }),
     formatting = {
-      fields = { "abbr", "kind", "menu" },
+      fields = { "menu", "abbr", "kind" },
       format = function(entry, item)
+        local entryItem = entry:get_completion_item()
+        local color = entryItem.documentation
+        if color and type(color) == "string" and color:match("^#%x%x%x%x%x%x$") then
+          local hl = "hex-" .. color:sub(2)
+
+          if #vim.api.nvim_get_hl(0, { name = hl }) == 0 then
+            vim.api.nvim_set_hl(0, hl, { fg = color })
+          end
+
+          item.menu = "  "
+          item.menu_hl_group = hl
+        else
+          item.menu = M.source_mapping[entry.source.name]
+        end
+
         item.kind = HVIM.icons.Kind[item.kind] .. item.kind
-        item.menu = M.source_mapping[entry.source.name]
+        item.dup = M.duplicates[entry.source.name] or 0
         return item
       end,
-    },
-    sorting = defaults.sorting,
-    cmdline = {
-      enable = true,
-      options = {
-        {
-          type = ":",
-          sources = {
-            { name = "path" },
-            { name = "cmdline" },
-          },
-        },
-        {
-          type = { "/", "?" },
-          sources = {
-            { name = "buffer" },
-          },
-        },
-      },
     },
   }
 end
 
-function M.setup(_, opts)
+M.cmdline = function()
   local cmp = require("cmp")
-
-  for _, source in ipairs(opts.sources) do
-    source.group_index = source.group_index or 1
-  end
-
-  cmp.setup(opts)
-
-  if opts.cmdline.enable then
-    for _, option in ipairs(opts.cmdline.options) do
-      cmp.setup.cmdline(option.type, {
-        mapping = cmp.mapping.preset.cmdline(),
-        sources = option.sources,
-      })
-    end
-  end
+  cmp.setup.cmdline({ "/", "?" }, {
+    mapping = cmp.mapping.preset.cmdline(),
+    sources = {
+      { name = "buffer" },
+    },
+  })
+  cmp.setup.cmdline(":", {
+    mapping = cmp.mapping.preset.cmdline(),
+    sources = cmp.config.sources({
+      { name = "async_path" },
+    }, {
+      { name = "cmdline" },
+    }),
+    matching = { disallow_symbol_nonprefix_matching = false },
+  })
 end
 
 return M

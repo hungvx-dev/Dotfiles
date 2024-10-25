@@ -11,14 +11,16 @@ M.opts = {
   disable_in_macro = false,
 }
 
-M.setup = function()
+M.setup = function(_, opts)
   local autopairs = require("nvim-autopairs")
-  autopairs.setup(M.opts)
+  autopairs.setup(opts)
 
   -- make autopairs and completion work together
-  local cmp_autopairs = require("nvim-autopairs.completion.cmp")
-  local cmp = require("cmp")
-  cmp.event:on("confirm_done", cmp_autopairs.on_confirm_done())
+  local ok, cmp = pcall(require, "cmp")
+  if ok then
+    local cmp_autopairs = require("nvim-autopairs.completion.cmp")
+    cmp.event:on("confirm_done", cmp_autopairs.on_confirm_done())
+  end
 end
 
 return M

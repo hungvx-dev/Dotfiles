@@ -12,6 +12,7 @@ return {
   -- File explorer
   {
     "nvim-neo-tree/neo-tree.nvim",
+    branch = "v3.x",
     cmd = "Neotree",
     dependencies = {
       "nvim-lua/plenary.nvim",
@@ -61,14 +62,6 @@ return {
     keys = todo_comments.keys,
     opts = todo_comments.opts,
   },
-  {
-    "numToStr/Comment.nvim",
-    event = { "BufReadPre", "BufNewFile" },
-    dependencies = {
-      "JoosepAlviste/nvim-ts-context-commentstring",
-    },
-    config = require("plugins.configs.editor.comment").setup,
-  },
 
   {
     "NvChad/nvim-colorizer.lua",
@@ -89,26 +82,6 @@ return {
     config = true,
   },
 
-  {
-    "echasnovski/mini.bufremove",
-    keys = {
-      {
-        "<leader>bd",
-        function()
-          require("mini.bufremove").delete(0, false)
-        end,
-        desc = "Delete Buffer",
-      },
-      {
-        "<leader>bD",
-        function()
-          require("mini.bufremove").delete(0, true)
-        end,
-        desc = "Delete Buffer (Force)",
-      },
-    },
-  },
-
   -- better diagnostics list and others
   {
     "folke/trouble.nvim",
@@ -122,18 +95,6 @@ return {
     "jinh0/eyeliner.nvim",
     event = { "BufReadPre", "BufNewFile" },
     opts = eyeliner.opts,
-  },
-  {
-    "rhysd/clever-f.vim",
-    enabled = false,
-    event = { "BufReadPre", "BufNewFile" },
-    dependencies = { "eyeliner.nvim" },
-    init = function()
-      vim.g.clever_f_not_overwrites_standard_mappings = 1
-    end,
-    config = function()
-      require("plugins.configs.editor.clever-f")
-    end,
   },
   {
     "mg979/vim-visual-multi",
@@ -152,44 +113,57 @@ return {
     },
     opts = {},
   },
-
-  -- Dap
-  {
-    "mfussenegger/nvim-dap",
-    enabled = false,
-    dependencies = {
-      -- fancy UI for the debugger
-      {
-        "rcarriga/nvim-dap-ui",
-        enabled = false,
-        keys = require("plugins.configs.editor.dap.ui").keys,
-        opts = {},
-        config = require("plugins.configs.editor.dap.ui").setup,
-      },
-      -- mason.nvim integration
-      {
-        "jay-babu/mason-nvim-dap.nvim",
-        enabled = false,
-        dependencies = "mason.nvim",
-        cmd = { "DapInstall", "DapUninstall" },
-        opts = {
-          automatic_installation = true,
-          handlers = {},
-          ensure_installed = { "node2", "chrome" },
-        },
-      },
-    },
-    keys = require("plugins.configs.editor.dap.core").keys,
-    config = require("plugins.configs.editor.dap.core").setup,
-  },
-
-  {
-    "m4xshen/hardtime.nvim",
-    dependencies = { "MunifTanjim/nui.nvim", "nvim-lua/plenary.nvim" },
-    enabled = false,
-    event = "BufEnter",
-    opts = {
-      disabled_filetypes = { "qf", "netrw", "lazy", "mason", "neo-tree" },
-    },
-  },
 }
+
+-- local disabled = {
+--   {
+--     "rhysd/clever-f.vim",
+--     enabled = false,
+--     event = { "BufReadPre", "BufNewFile" },
+--     dependencies = { "eyeliner.nvim" },
+--     init = function()
+--       vim.g.clever_f_not_overwrites_standard_mappings = 1
+--     end,
+--     config = function()
+--       require("plugins.configs.editor.clever-f")
+--     end,
+--   },
+--   {
+--     "m4xshen/hardtime.nvim",
+--     dependencies = { "MunifTanjim/nui.nvim", "nvim-lua/plenary.nvim" },
+--     enabled = false,
+--     event = "BufEnter",
+--     opts = {
+--       disabled_filetypes = { "qf", "netrw", "lazy", "mason", "neo-tree" },
+--     },
+--   },
+--   -- Dap
+--   {
+--     "mfussenegger/nvim-dap",
+--     enabled = false,
+--     dependencies = {
+--       -- fancy UI for the debugger
+--       {
+--         "rcarriga/nvim-dap-ui",
+--         enabled = false,
+--         keys = require("plugins.configs.editor.dap.ui").keys,
+--         opts = {},
+--         config = require("plugins.configs.editor.dap.ui").setup,
+--       },
+--       -- mason.nvim integration
+--       {
+--         "jay-babu/mason-nvim-dap.nvim",
+--         enabled = false,
+--         dependencies = "mason.nvim",
+--         cmd = { "DapInstall", "DapUninstall" },
+--         opts = {
+--           automatic_installation = true,
+--           handlers = {},
+--           ensure_installed = { "node2", "chrome" },
+--         },
+--       },
+--     },
+--     keys = require("plugins.configs.editor.dap.core").keys,
+--     config = require("plugins.configs.editor.dap.core").setup,
+--   },
+-- }

@@ -71,12 +71,20 @@ M.init = function()
   })
 end
 
+M.autotag = {
+  opts = {
+    enable_close = true, -- Auto close tags
+    enable_rename = true, -- Auto rename pairs of tags
+    enable_close_on_slash = false, -- Auto close on trailing </
+  },
+}
 
-function M.setup()
-  -- require("nvim-treesitter.configs").setup(opts)
-  -- local ts_utils = require("nvim-treesitter.ts_utils")
-  -- ts_utils.is_in_node_range = vim.treesitter.is_in_node_range
-  -- ts_utils.get_node_range = vim.treesitter.get_node_range
+function M.setup(_, opts)
+  local treesitter_config = require("nvim-treesitter.configs")
+  treesitter_config.setup(opts)
+  local ts_utils = require("nvim-treesitter.ts_utils")
+  ts_utils.is_in_node_range = vim.treesitter.is_in_node_range
+  ts_utils.get_node_range = vim.treesitter.get_node_range
 end
 
 return M

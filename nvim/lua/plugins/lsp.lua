@@ -16,7 +16,6 @@ return {
   {
     "neovim/nvim-lspconfig",
     dependencies = {
-      "hrsh7th/cmp-nvim-lsp",
       "b0o/SchemaStore.nvim",
     },
   },
@@ -37,27 +36,29 @@ return {
     },
     config = require("plugins.configs.lsp.none-ls").setup,
   },
-
-  -- Format
-  {
-    "stevearc/conform.nvim",
-    enabled = false,
-    event = { "BufReadPre", "BufNewFile" },
-    config = require("plugins.configs.lsp.formatting").setup,
-  },
-
-  -- Lint
-  {
-    "mfussenegger/nvim-lint",
-    enabled = false,
-    event = { "BufReadPre", "BufNewFile" },
-    config = require("plugins.configs.lsp.linting").setup,
-  },
-
-  {
-    "j-hui/fidget.nvim",
-    enabled = false,
-    tag = "legacy",
-    event = "LspAttach",
-  },
 }
+
+-- local disabled = {
+--   -- Format
+--   {
+--     "stevearc/conform.nvim",
+--     enabled = false,
+--     event = { "BufReadPre", "BufNewFile" },
+--     config = require("plugins.configs.lsp.formatting").setup,
+--   },
+--
+--   -- Lint
+--   {
+--     "mfussenegger/nvim-lint",
+--     enabled = false,
+--     event = { "BufReadPre", "BufNewFile" },
+--     config = require("plugins.configs.lsp.linting").setup,
+--   },
+--
+--   {
+--     "j-hui/fidget.nvim",
+--     enabled = false,
+--     tag = "legacy",
+--     event = "LspAttach",
+--   },
+-- }

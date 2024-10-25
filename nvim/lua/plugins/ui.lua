@@ -1,4 +1,4 @@
-local mini_starter = require("plugins.configs.ui.mini-starter")
+-- local mini_starter = require("plugins.configs.ui.mini-starter")
 local alpha = require("plugins.configs.ui.alpha")
 local bufferline = require("plugins.configs.ui.bufferline")
 local lualine = require("plugins.configs.ui.lualine")
@@ -79,28 +79,31 @@ return {
     opts = alpha.opts,
     config = alpha.setup,
   },
-  {
-    "echasnovski/mini.starter",
-    enabled = false,
-    -- version = false, -- wait till new 0.7.0 release to put it back on semver
-    event = "VimEnter",
-    opts = mini_starter.opts,
-    config = mini_starter.setup,
-  },
-
-  {
-    "kevinhwang91/nvim-ufo",
-    enabled = false,
-    event = "BufReadPost",
-    dependencies = {
-      { "kevinhwang91/promise-async" },
-    },
-  },
-
-  {
-    "3rd/image.nvim",
-    lazy = false,
-    enabled = false,
-    opts = {}
-  },
 }
+
+-- local disabled = {
+--   {
+--     "echasnovski/mini.starter",
+--     enabled = false,
+--     -- version = false, -- wait till new 0.7.0 release to put it back on semver
+--     event = "VimEnter",
+--     opts = mini_starter.opts,
+--     config = mini_starter.setup,
+--   },
+--
+--   {
+--     "kevinhwang91/nvim-ufo",
+--     enabled = false,
+--     event = "BufReadPost",
+--     dependencies = {
+--       { "kevinhwang91/promise-async" },
+--     },
+--   },
+--
+--   {
+--     "3rd/image.nvim",
+--     lazy = false,
+--     enabled = false,
+--     opts = {}
+--   },
+-- }

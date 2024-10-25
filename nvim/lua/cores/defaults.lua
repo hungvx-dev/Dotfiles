@@ -24,6 +24,7 @@ HVIM = {
     modified = icons.Git.LineModified .. " ",
     removed = icons.Git.LineRemoved .. " ",
   },
+  ui = {}
 }
 
 vim.g.mapleader = HVIM.leader
