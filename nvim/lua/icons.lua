@@ -3,7 +3,7 @@ return {
     Array         = " ",
     Boolean       = " ",
     Class         = " ",
-    Color         = " ",
+    Color         = " ", -- 
     Constant      = " ",
     Copilot       = " ",
     Event         = " ",

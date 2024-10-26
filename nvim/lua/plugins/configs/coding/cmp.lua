@@ -22,13 +22,13 @@ M.keys = {
 }
 
 M.source_mapping = {
-  nvim_lsp = HVIM.icons.Cmp.Lsp,
-  buffer = HVIM.icons.Cmp.Buffer,
-  luasnip = HVIM.icons.Cmp.Snippet,
-  path = HVIM.icons.Cmp.Path,
-  async_path = HVIM.icons.Cmp.Path,
-  snippets = HVIM.icons.Cmp.Snippet,
-  cmdline  = HVIM.icons.Cmp.CmpLine
+  nvim_lsp = HVIM.icons.Cmp.Lsp .. "(LSP)",
+  buffer = HVIM.icons.Cmp.Buffer .. "(Buf)",
+  luasnip = HVIM.icons.Cmp.Snippet .. "(Snippet)",
+  path = HVIM.icons.Cmp.Path .. "(Path)",
+  async_path = HVIM.icons.Cmp.Path .. "(Path)",
+  snippets = HVIM.icons.Cmp.Snippet .. "(Snippet)",
+  cmdline = HVIM.icons.Cmp.CmpLine .. "(Cmp)",
   -- cmp_tabnine = HVIM.icons.Cmp.Tabnine .. "Tabnine",
   -- spell = HVIM.icons.Cmp.Spellcheck .. "Spell",
 }
@@ -46,6 +46,8 @@ function M.opts()
   local cmp = require("cmp")
   local cmp_window = require("cmp.config.window")
   local cmp_mapping = require("cmp.config.mapping")
+  local defaults = require("cmp.config.default")()
+  local color_cache = {}
 
   return {
     mapping = cmp.mapping.preset.insert({
@@ -71,28 +73,38 @@ function M.opts()
       { name = "buffer", priority = 5, keywork_length = 5, max_item_count = 6, group_index = 2 },
     }),
     formatting = {
-      fields = { "menu", "abbr", "kind" },
+      fields = { "kind", "abbr", "menu" },
       format = function(entry, item)
-        local entryItem = entry:get_completion_item()
-        local color = entryItem.documentation
-        if color and type(color) == "string" and color:match("^#%x%x%x%x%x%x$") then
-          local hl = "hex-" .. color:sub(2)
-
-          if #vim.api.nvim_get_hl(0, { name = hl }) == 0 then
-            vim.api.nvim_set_hl(0, hl, { fg = color })
+        item.menu = M.source_mapping[entry.source.name]
+        if item.kind == "Color" then
+          local entryItem = entry:get_completion_item()
+          local color = entryItem.documentation
+          local hl = ""
+          if color_cache[color] then
+            hl = color_cache[color]
+          elseif color and type(color) == "string" and color:match("^#%x%x%x%x%x%x$") then
+            hl = "hex-" .. color:sub(2)
+            if #vim.api.nvim_get_hl(0, { name = hl }) == 0 then
+              vim.api.nvim_set_hl(0, hl, { fg = color })
+              color_cache[color] = hl
+            end
           end
 
-          item.menu = "  "
-          item.menu_hl_group = hl
-        else
-          item.menu = M.source_mapping[entry.source.name]
+          item.kind_hl_group = hl
+          item.kind = " "
+          return item
         end
 
-        item.kind = HVIM.icons.Kind[item.kind] .. item.kind
-        item.dup = M.duplicates[entry.source.name] or 0
+        item.kind = HVIM.icons.Kind[item.kind]
+        -- item.dup = M.duplicates[entry.source.name] or 0
+
         return item
       end,
     },
+    experimental = {
+      ghost_text = true,
+    },
+    sorting = defaults.sorting,
   }
 end
 

@@ -18,8 +18,8 @@ M.opts = {
     ".gitconfig",
   },
   user_default_options = {
-    mode = "background",
-    tailwind = false, -- Enable tailwind colors
+    mode = "inline",
+    tailwind = true, -- Enable tailwind colors
   },
 }
 

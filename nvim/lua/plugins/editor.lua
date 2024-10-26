@@ -3,7 +3,7 @@ local todo_comments = require("plugins.configs.editor.todo-comments")
 local neotree = require("plugins.configs.editor.neotree")
 local window_picker = require("plugins.configs.editor.window-picker")
 local indent = require("plugins.configs.editor.indent-blankline")
-local colorizer = require("plugins.configs.editor.colorizer")
+local colorizer = require("plugins.configs.editor.highlight-colors")
 local git_signs = require("plugins.configs.editor.git.signs")
 local eyeliner = require("plugins.configs.editor.eyeliner")
 local trouble = require("plugins.configs.editor.trouble")
@@ -64,7 +64,7 @@ return {
   },
 
   {
-    "NvChad/nvim-colorizer.lua",
+    "brenoprata10/nvim-highlight-colors",
     event = { "BufReadPre", "BufNewFile" },
     opts = colorizer.opts,
   },
@@ -166,4 +166,9 @@ return {
 --     keys = require("plugins.configs.editor.dap.core").keys,
 --     config = require("plugins.configs.editor.dap.core").setup,
 --   },
+-- {
+--   "NvChad/nvim-colorizer.lua",
+--   event = { "BufReadPre", "BufNewFile" },
+--   opts = colorizer.opts,
+-- },
 -- }
