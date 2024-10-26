@@ -76,5 +76,8 @@ ln -s $(pwd)/karabiner ~/.config
 rm -rf ~/.config/raycast
 ln -s $(pwd)/raycast ~/.config
 
+# Ripgrep
+ln -s $(pwd)/ripgrep ~/.config
+
 # Alias
 # ln -s $(pwd)/my-alias.zsh ~/.oh-my-zsh/custom/my-alias.zsh
