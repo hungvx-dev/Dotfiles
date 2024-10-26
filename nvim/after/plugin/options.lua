@@ -5,7 +5,7 @@ vim.opt.ignorecase = true -- Ignore case when using a search pattern
 vim.opt.whichwrap:append("hl")
 
 -- #=========================== 4. Displaying text =============================#
-vim.wo.wrap = true -- Long lines wrap
+vim.wo.wrap = false -- Long lines wrap
 vim.wo.breakindent = true -- Preserve indentation in wrapped text
 vim.wo.linebreak = true
 vim.wo.number = true -- Show the line number for each line
