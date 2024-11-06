@@ -3,6 +3,7 @@ include ./kitty-themes/themes/tokyonight-night.conf
 # term xterm-kitty
 #
 env EDITOR=nvim
+env VISUAL=nvim
 
 ##################################################
 #                                                #
@@ -14,19 +15,26 @@ env EDITOR=nvim
 #  ╚═╝      ╚═════╝ ╚═╝  ╚═══╝   ╚═╝   ╚══════╝  #
 #                                                #
 ##################################################
-# font_family       JetBrainsMono Nerd Font
-font_family       Iosevka Nerd Font
-italic_font       auto
+# BEGIN_KITTY_FONTS
+# == , =>
+# font_family      family='FiraCode Nerd Font'
+# font_family      family='JetBrainsMono Nerd Font Mono'
+# font_family      family='JetBrains Mono'
+# font_family      family='Iosevka Nerd Font Mono'
+font_family      family='CaskaydiaCove Nerd Font'
+# font_features     none
 bold_font         auto
+italic_font       auto
 bold_italic_font  auto
-font_size         15.0
+font_size         16.0
+# END_KITTY_FONTS
 
 modify_font cell_height 22px
 modify_font cell_width 100%
 modify_font underline_position 3
 modify_font underline_thickness 150%
 # modify_font baseline 0
-# modify_font strikethrough_position 3px
+# modify_font strikethrough_position 2px
 
 ########################################################
 #                                                      #
@@ -53,14 +61,21 @@ cursor_trail 3
 #     ╚═╝   ╚═╝  ╚═╝╚═════╝ ╚══════╝  #
 #                                     #
 #######################################
+hide_window_decorations titlebar-only
 tab_bar_edge top
-# fade \ slant \ separator \ powerline \ hidden
-# angled, slanted, round
-# tab_powerline_style round
 tab_bar_style hidden
 tab_bar_align center
 tab_title_template none
-# tab_title_template "{fmt.fg.tab}{index}: {title}"
+
+# fade \ slant \ separator \ powerline \ hidden
+# angled, slanted, round
+# tab_bar_min_tabs 1
+# tab_title_max_length 20
+# tab_powerline_style round
+# tab_bar_style powerline
+# tab_powerline_style angled
+# tab_bar_align left
+# tab_title_template "{index}:{tab.active_wd.split('/')[-2]}/{tab.active_wd.split('/')[-1]}"
 
 ################################################################
 #                                                              #
@@ -72,18 +87,10 @@ tab_title_template none
 #   ╚══╝╚══╝ ╚═╝╚═╝  ╚═══╝╚═════╝  ╚═════╝  ╚══╝╚══╝ ╚══════╝  #
 #                                                              #
 ################################################################
+enabled_layouts splits:split_axis=horizontal,stack
 confirm_os_window_close 0
-enabled_layouts splits
-
-hide_window_decorations yes
-
-map ctrl+a>% launch --cwd=current --location=vsplit
-map ctrl+a>" launch --cwd=current --location=hsplit
-
-map ctrl+a>j neighboring_window down
-map ctrl+a>k neighboring_window up
-map ctrl+a>l neighboring_window right
-map ctrl+a>h neighboring_window left
+placement_strategy top
+# copy_on_select yes
 
 ##############################################################################################
 #
@@ -95,9 +102,8 @@ map ctrl+a>h neighboring_window left
 # ╚═════╝ ╚═════╝ ╚══════╝ ╚═════╝ ╚═╝  ╚═╝╚══════╝ ╚═════╝╚═╝  ╚═╝╚══════╝╚═╝     ╚═╝╚══════╝
 #
 ##############################################################################################
-background_opacity 0.72
+background_opacity 0.65
 background_blur 35
-
 ####################################
 #                                  #
 #  ███╗   ███╗██╗███████╗ ██████╗  #
@@ -111,9 +117,10 @@ background_blur 35
 enable_audio_bell no
 window_alert_on_bell no
 allow_remote_control yes
+shell_integration enabled
 
 # macOS
 macos_option_as_alt yes
 macos_traditional_fullscreen no
 
-shell_integration yes
+include ./macos.conf
