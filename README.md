@@ -19,6 +19,7 @@
 - **Version Manager**:
   - [fnm](https://github.com/Schniz/fnm) - 🚀 fast and simple Node.js version manager, built in Rust
 - **Font**: [Nerd Font](https://github.com/ryanoasis/nerd-fonts)
+  - _**JetBrainsMono**_
   - [JetBrainsMono Nerd Font](https://github.com/JetBrains/JetBrainsMono)
   - [Iosevka Nerd Font](https://github.com/be5invis/Iosevka)
 - **Music**: [cmus](https://github.com/cmus/cmus) + [cava](./cava) + [Loopback](https://rogueamoeba.com/loopback/)
@@ -55,10 +56,9 @@ chmod -R +x ./bootstrap/macos && ./bootstrap/macos/init.sh
 
 ### Search (fzf + ripgrep + fd + bat)
 
-### Tmux sessions
+### Multiplexer window
 
-![Tmux 1](./images/tmux.png "Title")
-![Tmux 2](./images/tmux-2.png "Title")
+![Tmux 1](./images/multiplex-window.png.png "Title")
 
 ### Btop
 
@@ -70,6 +70,7 @@ chmod -R +x ./bootstrap/macos && ./bootstrap/macos/init.sh
 ![Neovim](./images/nvim-info.png "Title")
 ![Neovim](./images/nvim-diagnotics.png "Title")
 ![Neovim](./images/nvim-autocomplete.png "Title")
+![Neovim](./images/nvim-autocomplete-1.png "Title")
 
 ### Lazygit
 
@@ -80,6 +81,7 @@ chmod -R +x ./bootstrap/macos && ./bootstrap/macos/init.sh
 ### Music
 
 ![Music](./images/cmus.png "Title")
+![Music](./images/cmus-cava.png "Title")
 
 ## References
 
