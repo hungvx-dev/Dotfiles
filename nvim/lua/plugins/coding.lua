@@ -10,17 +10,42 @@ return {
     build = ":TSUpdate",
     event = { "BufReadPre", "BufNewFile" },
     dependencies = {
-      {
-        "windwp/nvim-ts-autotag",
-        opts = autotag.opts,
-      },
-      "nvim-autopairs",
-      "hiphish/rainbow-delimiters.nvim",
       { "nvim-treesitter/nvim-treesitter-textobjects" },
     },
     init = treesitter.init,
     opts = treesitter.opts,
     config = treesitter.setup,
+  },
+  {
+    "windwp/nvim-ts-autotag",
+    event = { "BufReadPre", "BufNewFile" },
+    opts = autotag.opts,
+  },
+  {
+    "hiphish/rainbow-delimiters.nvim",
+    event = { "BufReadPre", "BufNewFile" },
+    dependencies = { "nvim-treesitter" },
+    opts = function()
+      return {
+        query = {
+          javascript = "rainbow-parens",
+          vue = "rainbow-script",
+          tsx = "rainbow-parens",
+          html = "rainbow-parens",
+        },
+      }
+    end,
+    config = function(_, opts)
+      require("rainbow-delimiters.setup").setup(opts)
+    end,
+  },
+  {
+    "windwp/nvim-autopairs",
+    enabled = true,
+    event = { "BufReadPre", "BufNewFile" },
+    dependencies = { "nvim-treesitter" },
+    opts = autopairs.opts,
+    config = autopairs.setup,
   },
 
   -- auto completion
@@ -54,30 +79,12 @@ return {
       },
     },
     opts = function(_, opts)
-      table.insert(opts.sources, { name = "snippets", priority = 6, max_item_count = 10, group_index = 1 })
+      table.insert(
+        opts.sources,
+        { name = "snippets", priority = 6, max_item_count = 7, keywork_length = 2, group_index = 1 }
+      )
     end,
     keys = cmp.keys,
-  },
-  -- tailwind-tools.lua
-  {
-    "luckasRanarison/tailwind-tools.nvim",
-    enabled = false,
-    name = "tailwind-tools",
-    event = { "BufReadPre", "BufNewFile" },
-    build = ":UpdateRemotePlugins",
-    dependencies = {
-      "nvim-treesitter/nvim-treesitter",
-      "nvim-telescope/telescope.nvim", -- optional
-      "neovim/nvim-lspconfig", -- optional
-    },
-    opts = {
-      document_color = {
-        enabled = true, -- can be toggled by commands
-        kind = "inline", -- "inline" | "foreground" | "background"
-        inline_symbol = "󰝤", -- only used in inline mode
-        debounce = 200, -- in milliseconds, only applied in insert mode
-      },
-    }, -- your configuration
   },
 
   -- Comment
@@ -95,12 +102,6 @@ return {
   {
     "JoosepAlviste/nvim-ts-context-commentstring",
     opts = { enable_autocmd = false },
-  },
-
-  {
-    "windwp/nvim-autopairs",
-    opts = autopairs.opts,
-    config = autopairs.setup,
   },
 
   {
@@ -222,5 +223,26 @@ return {
 --     },
 --     nerd_font_variant = "normal",
 --   },
+-- },
+-- tailwind-tools.lua
+-- {
+--   "luckasRanarison/tailwind-tools.nvim",
+--   enabled = false,
+--   name = "tailwind-tools",
+--   event = { "BufReadPre", "BufNewFile" },
+--   build = ":UpdateRemotePlugins",
+--   dependencies = {
+--     "nvim-treesitter/nvim-treesitter",
+--     "nvim-telescope/telescope.nvim", -- optional
+--     "neovim/nvim-lspconfig", -- optional
+--   },
+--   opts = {
+--     document_color = {
+--       enabled = true, -- can be toggled by commands
+--       kind = "inline", -- "inline" | "foreground" | "background"
+--       inline_symbol = "󰝤", -- only used in inline mode
+--       debounce = 200, -- in milliseconds, only applied in insert mode
+--     },
+--   }, -- your configuration
 -- },
 -- }
