@@ -19,8 +19,8 @@ setKeyMap("v", "p", '"_dP')
 setKeyMap("n", "<leader><CR>", ":nohlsearch<Bar>:echo<CR>")
 
 -- ReSizing panes
-setKeyMap("n", "<leader>=", ":vertical resize +5<CR>")
-setKeyMap("n", "<leader>-", ":vertical resize -5<CR>")
+setKeyMap("n", "<leader>=", ":vertical resize +2<CR>")
+setKeyMap("n", "<leader>-", ":vertical resize -2<CR>")
 setKeyMap("n", "<leader>+", ":resize +2<CR>")
 setKeyMap("n", "<leader>_", ":resize -2<CR>")
 

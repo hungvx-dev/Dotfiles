@@ -4,9 +4,7 @@ return {
     cmd = { "LspInstall", "LspUninstall" },
     event = { "BufReadPre", "BufNewFile" },
     dependencies = { "mason.nvim", "nvim-lspconfig" },
-    config = function()
-      require("plugins.configs.lsp.mason-lspconfig").setup()
-    end,
+    config = require("plugins.configs.lsp.mason-lspconfig").setup,
   },
   {
     "williamboman/mason.nvim",

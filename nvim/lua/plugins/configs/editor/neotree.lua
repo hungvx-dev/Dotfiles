@@ -62,12 +62,8 @@ function M.opts()
             end
           end
 
-          if text then
-            icon.text = text
-          end
-          if hl then
-            icon.highlight = hl
-          end
+          icon.text = text or icon.text
+          icon.highlight = hl or icon.highlight
         end,
       },
       modified = {
@@ -95,6 +91,9 @@ function M.opts()
           staged = HVIM.icons.Git.FileStaged,
           conflict = HVIM.icons.Git.FileConflict,
         },
+      },
+      file_size = {
+        enabled = false,
       },
     },
     commands = {
@@ -155,7 +154,8 @@ function M.opts()
     },
     window = {
       position = "right",
-      width = 40,
+      width = 35,
+      max_width = 50,
       mappings = {
         -- ["<space>"] = "none",
         -- ["A"] = "command_b",

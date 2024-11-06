@@ -24,7 +24,7 @@ HVIM = {
     modified = icons.Git.LineModified .. " ",
     removed = icons.Git.LineRemoved .. " ",
   },
-  competitive_programming = true,
+  competitive_programming = false,
   ui = {}
 }
 
