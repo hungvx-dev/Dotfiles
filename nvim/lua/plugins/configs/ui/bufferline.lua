@@ -3,6 +3,7 @@ local M = {}
 M.keys = {
   { "[b", "<cmd>BufferLineCyclePrev<cr>", desc = "Prev Buffer" },
   { "]b", "<cmd>BufferLineCycleNext<cr>", desc = "Next Buffer" },
+  { "<leader>bf", "<cmd>BufferLinePick<cr>", desc = "Next Buffer" },
   { "<leader>bd", HVIM.ui.bufremove, desc = "Delete Buffer" },
 }
 
@@ -31,32 +32,22 @@ M.opts = {
     diagnostics_indicator = M.diagnostics_indicator,
     indicator = {
       style = "underline", --"icon" | "underline" | "none", },
-      separator_style = { HVIM.icons.UI.Line.Right, HVIM.icons.UI.Line.Right },
-      offsets = {
-        {
-          filetype = "undotree",
-          text = "Undotree",
-          highlight = "PanelHeading",
-          padding = 1,
-        },
-        {
-          filetype = "neo-tree",
-          text = "Explorer",
-          highlight = "Directory",
-          text_align = "left",
-        },
-        {
-          filetype = "DiffviewFiles",
-          text = "Diff View",
-          highlight = "PanelHeading",
-          padding = 1,
-        },
-        {
-          filetype = "lazy",
-          text = "Lazy",
-          highlight = "PanelHeading",
-          padding = 1,
-        },
+    },
+    separator_style = { "|", "|" },
+    -- separator_style = { "", "" },
+    offsets = {
+      {
+        filetype = "neo-tree",
+        text = " " .. HVIM.icons.UI.Explorer .. "Explorer",
+        highlight = "Directory",
+        text_align = "left",
+        separator = true,
+      },
+      {
+        filetype = "lazy",
+        text = "Lazy",
+        highlight = "PanelHeading",
+        padding = 1,
       },
     },
   },
