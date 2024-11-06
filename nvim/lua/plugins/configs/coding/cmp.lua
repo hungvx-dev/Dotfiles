@@ -22,13 +22,14 @@ M.keys = {
 }
 
 M.source_mapping = {
-  nvim_lsp = HVIM.icons.Cmp.Lsp .. "(LSP)",
-  buffer = HVIM.icons.Cmp.Buffer .. "(Buf)",
-  luasnip = HVIM.icons.Cmp.Snippet .. "(Snippet)",
-  path = HVIM.icons.Cmp.Path .. "(Path)",
-  async_path = HVIM.icons.Cmp.Path .. "(Path)",
-  snippets = HVIM.icons.Cmp.Snippet .. "(Snippet)",
-  cmdline = HVIM.icons.Cmp.CmpLine .. "(Cmp)",
+  nvim_lsp = HVIM.icons.Cmp.Lsp,
+  buffer = HVIM.icons.Cmp.Buffer,
+  luasnip = HVIM.icons.Cmp.Snippet,
+  path = HVIM.icons.Cmp.Path,
+  async_path = HVIM.icons.Cmp.Path,
+  snippets = HVIM.icons.Cmp.Snippet,
+  cmdline = HVIM.icons.Cmp.CmpLine,
+  color = HVIM.icons.Cmp.Color,
   -- cmp_tabnine = HVIM.icons.Cmp.Tabnine .. "Tabnine",
   -- spell = HVIM.icons.Cmp.Spellcheck .. "Spell",
 }
@@ -70,19 +71,16 @@ function M.opts()
     sources = cmp.config.sources({
       { name = "nvim_lsp", priority = 9, group_index = 1 },
       { name = "async_path", priority = 4, group_index = 1 },
-      { name = "buffer", priority = 5, keywork_length = 5, max_item_count = 6, group_index = 2 },
+      { name = "buffer", priority = 6, keywork_length = 5, max_item_count = 6, group_index = 1 },
     }),
     formatting = {
-      fields = { "kind", "abbr", "menu" },
+      fields = { "menu", "abbr", "kind" },
       format = function(entry, item)
-        item.menu = M.source_mapping[entry.source.name]
         if item.kind == "Color" then
-          local entryItem = entry:get_completion_item()
-          local color = entryItem.documentation
-          local hl = ""
-          if color_cache[color] then
-            hl = color_cache[color]
-          elseif color and type(color) == "string" and color:match("^#%x%x%x%x%x%x$") then
+          local color = entry:get_completion_item().documentation
+          local hl = color_cache[color]
+
+          if not hl and color and type(color) == "string" and color:match("^#%x%x%x%x%x%x$") then
             hl = "hex-" .. color:sub(2)
             if #vim.api.nvim_get_hl(0, { name = hl }) == 0 then
               vim.api.nvim_set_hl(0, hl, { fg = color })
@@ -90,20 +88,20 @@ function M.opts()
             end
           end
 
-          item.kind_hl_group = hl
-          item.kind = " "
-          return item
+          item.menu_hl_group = hl
+          item.menu = M.source_mapping.color
+        else
+          item.menu = M.source_mapping[entry.source.name]
         end
-
-        item.kind = HVIM.icons.Kind[item.kind]
-        -- item.dup = M.duplicates[entry.source.name] or 0
+        item.kind = HVIM.icons.Kind[item.kind] .. item.kind
+        item.dup = M.duplicates[entry.source.name] or 0
 
         return item
       end,
     },
-    experimental = {
-      ghost_text = true,
-    },
+    -- experimental = {
+    --   ghost_text = true,
+    -- },
     sorting = defaults.sorting,
   }
 end
