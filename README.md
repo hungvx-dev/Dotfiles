@@ -58,7 +58,7 @@ chmod -R +x ./bootstrap/macos && ./bootstrap/macos/init.sh
 
 ### Multiplexer window
 
-![Tmux 1](./images/multiplex-window.png.png "Title")
+![Tmux 1](./images/multiplex-window.png "Title")
 
 ### Btop
 
