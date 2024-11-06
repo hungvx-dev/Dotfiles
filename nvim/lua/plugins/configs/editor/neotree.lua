@@ -132,7 +132,7 @@ function M.opts()
       end,
     },
     filesystem = {
-      bind_to_cwd = false,
+      bind_to_cwd = true,
       follow_current_file = {
         enabled = true,
         leave_dirs_open = true,

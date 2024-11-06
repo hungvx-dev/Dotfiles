@@ -13,6 +13,7 @@ M.list = {
   docker_compose_language_service = "docker-compose",
   emmet_ls = "html",
   ts_ls = "ts_ls",
+  clangd = "c"
   -- textlsp = "org",
 }
 

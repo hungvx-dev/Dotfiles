@@ -38,17 +38,18 @@ return {
   },
   Mason       = {
     Installed = "✓",
-    Pending = "➜",
+    Pending   = "➜",
     Uninstall = "✗",
   },
   Cmp         = {
     Path       = " ",
     Snippet    = " ",
-    Lsp        = "󰿘 ",
+    Lsp        = " ",
     NvimLua    = " ",
     Buffer     = " ",
     Spellcheck = " ",
-    CmpLine    = " "
+    CmpLine    = " ",
+    Color      = " "
   },
   UI          = {
     Apple           = "󰀵",
@@ -63,7 +64,8 @@ return {
     Search          = "  ",
     SelectionCaret  = " ",
     WindowMaximized = "",
-    Terminal       = {
+    Explorer        = " ",
+    Terminal        = {
       Icon       = "",
       Icon2      = "",
       Bash       = "",
@@ -72,13 +74,13 @@ return {
       PowerShell = "",
       Cmd        = "",
     },
-    Folder         = {
+    Folder          = {
       Empty     = "󰉖",
       EmptyOpen = "󰷏",
       Close     = "󰉋",
       Open      = "󰝰",
     },
-    Line           = {
+    Line            = {
       Left      = "▏",
       Mid       = "│",
       Right     = "▕",
@@ -87,7 +89,7 @@ return {
       BoldRight = "▐",
       Full      = "█"
     },
-    Direction      = {
+    Direction       = {
       MD = {
         Left  = "󰅁",
         Right = "󰅂",
@@ -121,6 +123,13 @@ return {
         },
       },
     },
+    Dap = {
+      Stopped             = { "󰁕 ", "DiagnosticWarn", "DapStoppedLine" },
+      Breakpoint          = "󰻃 ",
+      BreakpointCondition = "󰋗 ",
+      BreakpointRejected  = { "󰋼 ", "DiagnosticError" },
+      LogPoint            = " ",
+    },
   },
   Diagnostics = {
     Error               = "󰅚",
@@ -132,9 +141,6 @@ return {
     BoldWarning         = "󰀨 ",
     BoldInformation     = "󰋼 ",
     BoldHint            = "󰰁 ",
-
-    Question            = "󰘥",
-    BoldQuestion        = "󰋗",
 
     TriangleWarning     = "󰀪",
     BoldTriangleWarning = "󰀦",

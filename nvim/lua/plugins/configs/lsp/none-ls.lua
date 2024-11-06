@@ -29,7 +29,7 @@ function M.setup()
 
   local spell_config = {
     config = {
-      config_file_preferred_name = "cSpell.json",
+      config_file_preferred_name = "cspell.json",
     },
   }
 
@@ -38,14 +38,16 @@ function M.setup()
     formatting.stylua,
     formatting.fish_indent,
     formatting.prettierd,
-    -- formatting.gofumpt,
+    formatting.clang_format,
+    -- formatting.gout,
     -- formatting.goimports_reviser,
     -- formatting.golines,
 
     diagnostics.hadolint,
     diagnostics.fish,
-    cspell.diagnostics.with({ config = spell_config }),
-    cspell.code_actions.with({ config = spell_config }),
+
+    cspell.diagnostics.with(spell_config),
+    cspell.code_actions.with(spell_config),
   }
 
   if M.enable_eslint() then
@@ -56,7 +58,7 @@ function M.setup()
 
   null_ls.setup({
     debug = false,
-    root_dir = utils.root_pattern(".null-ls-root", ".neoconf.json", "Makefile", ".git"),
+    root_dir = utils.root_pattern(".null-ls-root", ".neoconf.json", "Makefile", ".git", "cspell.json"),
     sources = M.sources,
   })
 end

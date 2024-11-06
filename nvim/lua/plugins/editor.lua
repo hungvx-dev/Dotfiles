@@ -9,7 +9,6 @@ local eyeliner = require("plugins.configs.editor.eyeliner")
 local trouble = require("plugins.configs.editor.trouble")
 
 return {
-  -- File explorer
   {
     "nvim-neo-tree/neo-tree.nvim",
     branch = "v3.x",
@@ -30,7 +29,6 @@ return {
     opts = neotree.opts,
   },
 
-  -- fuzzy finder
   {
     "nvim-telescope/telescope.nvim",
     cmd = "Telescope",
@@ -138,34 +136,6 @@ return {
 --     },
 --   },
 --   -- Dap
---   {
---     "mfussenegger/nvim-dap",
---     enabled = false,
---     dependencies = {
---       -- fancy UI for the debugger
---       {
---         "rcarriga/nvim-dap-ui",
---         enabled = false,
---         keys = require("plugins.configs.editor.dap.ui").keys,
---         opts = {},
---         config = require("plugins.configs.editor.dap.ui").setup,
---       },
---       -- mason.nvim integration
---       {
---         "jay-babu/mason-nvim-dap.nvim",
---         enabled = false,
---         dependencies = "mason.nvim",
---         cmd = { "DapInstall", "DapUninstall" },
---         opts = {
---           automatic_installation = true,
---           handlers = {},
---           ensure_installed = { "node2", "chrome" },
---         },
---       },
---     },
---     keys = require("plugins.configs.editor.dap.core").keys,
---     config = require("plugins.configs.editor.dap.core").setup,
---   },
 -- {
 --   "NvChad/nvim-colorizer.lua",
 --   event = { "BufReadPre", "BufNewFile" },

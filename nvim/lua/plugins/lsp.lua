@@ -22,7 +22,7 @@ return {
 
   {
     "antosha417/nvim-lsp-file-operations",
-    dependencies = { "neo-tree.nvim", "nvim-lua/plenary.nvim" },
+    dependencies = { "nvim-lua/plenary.nvim" },
     opts = {},
   },
 

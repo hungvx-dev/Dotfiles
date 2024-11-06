@@ -10,6 +10,7 @@ M.init = function()
   end
 end
 
+
 M.opts = {
   options = {
     theme = "auto",
@@ -55,7 +56,6 @@ M.opts = {
     lualine_y = {},
     lualine_z = {},
   },
-  tabline = {},
   extensions = {
     "fzf",
     "neo-tree",

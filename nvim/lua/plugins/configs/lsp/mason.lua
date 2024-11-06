@@ -6,6 +6,7 @@ M.opts = {
     "stylua", -- For lua
     "shfmt", -- For sh
     "prettierd",
+    "clang-format",
     -- "prettier",
 
     -- For Linter
