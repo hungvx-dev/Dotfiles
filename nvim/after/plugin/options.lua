@@ -40,7 +40,8 @@ vim.wo.cursorlineopt = "number"   -- Specifies which area 'cursorline' highlight
 vim.opt.splitbelow = true         -- A new window is put below the current one
 vim.opt.splitright = true         -- A new window is put right of the current one
 vim.opt.splitkeep = "screen"
-vim.wo.statuscolumn = "%C%s%l"    -- Custom format for the status column
+vim.opt.laststatus = 3
+-- vim.wo.statuscolumn = "%l%s%C"    -- Custom format for the status column
 
 -- #========================= 7. Multiple tab pages ===========================#
 vim.opt.showtabline = 2           -- always show buffers/tabs
