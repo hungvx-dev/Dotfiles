@@ -89,7 +89,8 @@ bar_spacing = 1
 ; source = auto
 
 method = portaudio
-source = "Loopback Audio"
+# source = "Loopback Audio"
+source = "BlackHole 2ch"
 
 
 [output]
