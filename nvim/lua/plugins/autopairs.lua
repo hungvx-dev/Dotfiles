@@ -13,7 +13,7 @@ return {
     disable_filetype = { "TelescopePrompt", "spectre_panel" },
     disable_in_macro = false,
   },
-  config = function()
+  config = function(_, opts)
     local autopairs = require("nvim-autopairs")
     autopairs.setup(opts)
 
