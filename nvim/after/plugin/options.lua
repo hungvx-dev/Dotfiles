@@ -14,9 +14,6 @@ vim.wo.numberwidth = 3            -- Number of columns to use for the line numbe
 vim.opt.fillchars = {
   eob = " ",
   fold = " ",
-  foldsep = "│",
-  foldopen = "󰅀",
-  foldclose = "󰅂",
 }
 vim.wo.conceallevel = 2           -- Controls whether concealable text is hidden
 vim.wo.scroll = 10
@@ -41,7 +38,6 @@ vim.opt.splitbelow = true         -- A new window is put below the current one
 vim.opt.splitright = true         -- A new window is put right of the current one
 vim.opt.splitkeep = "screen"
 vim.opt.laststatus = 3
--- vim.wo.statuscolumn = "%l%s%C"    -- Custom format for the status column
 
 -- #========================= 7. Multiple tab pages ===========================#
 vim.opt.showtabline = 2           -- always show buffers/tabs
@@ -70,7 +66,7 @@ vim.opt.autoindent = true         -- *Automatically set the indent of a new line
 -- vim.bo.softtabstop = 2         -- -If non-zero, number of spaces to insert for a <Tab>
 
 -- #============================== 14. Folding ================================#
--- opt.foldenable = true          -- *Unset to display all folds open
+-- vim.wo.foldenable = true          -- *Unset to display all folds open
 vim.wo.foldcolumn = "1"           -- Width of the column used to indicate folds
 vim.wo.foldlevel = 99             -- Folds with a level higher than this number will be closed
 vim.opt.foldlevelstart = 99       -- Value for 'foldlevel' when starting to edit a file

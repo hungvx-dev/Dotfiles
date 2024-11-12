@@ -1,4 +1,4 @@
-function diagnostics_indicator(_, _, diagnostics, _)
+local function diagnostics_indicator(_, _, diagnostics, _)
   local result = {}
   for name, count in pairs(diagnostics) do
     if count > 0 then
@@ -40,7 +40,7 @@ return {
       offsets = {
         {
           filetype = "neo-tree",
-          text = " " .. HVIM.icons.UI.Explorer .. "Explorer",
+          text = HVIM.icons.UI.Explorer .. "Explorer",
           highlight = "Directory",
           text_align = "left",
           separator = true,

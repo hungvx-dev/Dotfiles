@@ -28,7 +28,7 @@ return {
       colors.black = colors.none
       colors.bg_popup = "#000000"
       colors.comment = "#b9b9d9"
-      -- colors.fg_gutter = "#737aa2"
+      -- colors.fg_gutter = "#A9A9A9"
 
       colors.bg_search = "#3d59a1"
       colors.blue = "#74a2ff"
@@ -55,15 +55,16 @@ return {
     end,
     on_highlights = function(hl, colors)
       hl.TelescopeTitle = { fg = "#FFA630" }
-      hl.CursorLineNr = { fg = "#EFFF00" }
       hl.CursorLine = { bg = colors.none, underline = true }
       hl.Cursor = { bg = colors.blue1 }
       hl.PmenuSbar = { bg = colors.none }
       hl.GitSignsCurrentLineBlame = { fg = "#5e6777" }
       hl.IncSearch.fg = "#000000"
       hl.NeoTreeDimText.fg = "#b9b9d9"
+      hl.LineNrAbove.fg = "#3d59a1"
+      hl.LineNrBelow.fg = "#3d59a1"
+      hl.CursorLineNr = { fg = "#EFFF00" }
       -- hl.LspInlayHint.bg = "#000000"
-      -- hl.StatusLineNc.fg = "#EFFF00"
     end,
   },
 }
