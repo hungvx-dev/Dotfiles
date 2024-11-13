@@ -4,78 +4,89 @@ local error = ffi.new("Error")
 
 local statuscolumn = {}
 
--- statuscolumn.number = function()
---   local uncolored_text = "%#LineNr#"
---   local colored_text = "%#CursorLineNr#"
---   return vim.v.relnum == 0 and colored_text .. vim.v.lnum or uncolored_text .. vim.v.relnum
--- end
+statuscolumn.number = function()
+  -- local uncolored_text = "%#LineNr#"
+  -- local colored_text = "%#CursorLineNr#"
+  -- return vim.v.relnum == 0 and colored_text .. vim.v.lnum or uncolored_text .. vim.v.relnum
+  return vim.v.relnum == 0 and vim.v.lnum or vim.v.relnum
+end
 
 statuscolumn.myStatusColumn = function()
   return table.concat({
     statuscolumn.folds(),
     "%s",
-    "%l ",
+    "%r "
     -- statuscolumn.number(),
+    -- "%=",
   })
 end
 
+local fold = {
+  close = "󰅂",
+  close1 = "",
+
+  open = "󰅀",
+  open1 = "",
+  open2 = "",
+  -- open1 = "",
+  -- open2 = "",
+
+  eob = " ",
+  end_fold = "╰",
+  sep = "│",
+  branch = "",
+}
+
 statuscolumn.folds = function()
   local wp = C.find_window_by_handle(vim.g.statusline_winid, error)
-  local width = C.compute_foldcolumn(wp, 0)
-  if width == 0 then
+  if C.compute_foldcolumn(wp, 0) == 0 then
     return ""
   end
 
-  local args = {
-    lnum = vim.v.lnum,
-    fold = {
-      eofold = "╰",
-      eob = " ",
-      fold = " ",
-      sep = "│",
-      open = "󰅀",
-      close = "󰅂",
-      branch = "",
-    },
-  }
+  local foldinfo = C.fold_info(wp, vim.v.lnum)
+  local lv = foldinfo.level
 
-  local fold_info = C.fold_info(wp, args.lnum)
-  local level = fold_info.level
-
-  if level == 0 then
-    return args.fold.fold
+  if lv == 0 then
+    return fold.eob
   end
 
-  local text = "%#FoldLevel_" .. level .. "#"
-  local foldclosed = fold_info.lines > 0
+  local before_foldinfo = C.fold_info(wp, vim.v.lnum - 1)
+  local before_lv = before_foldinfo.level
 
-  if foldclosed then
-    return text .. args.fold.close
-  end
-
-  if fold_info.start == args.lnum then
-    return text .. args.fold.open
-  end
-
-  local after_fold_info = C.fold_info(wp, args.lnum + 1)
-  local after_level = after_fold_info.level
-  local after_foldclosed = after_fold_info.lines > 0
-
-  local after_first_level = after_level - width - (after_foldclosed and 1 or 0) + 1
-  after_first_level = math.max(after_first_level, 1)
-
-  local is_after_open = (after_fold_info.start == args.lnum + 1) and (after_first_level + 1 > after_fold_info.llevel)
-  local should_be_sep = after_level > level
-
-  if (level > after_level or is_after_open or after_foldclosed) and not should_be_sep then
-    if after_fold_info.start == after_level then
-      return text .. args.fold.eofold
+  if foldinfo.lines > 0 then
+    if lv == 1 and (before_lv == 0 or before_lv == 1) then
+      return fold.close
     end
-
-    return text .. args.fold.branch
+    return fold.close1
   end
 
-  return text .. args.fold.sep
+  if foldinfo.start == vim.v.lnum then
+    if lv == 1 and (before_lv == 0 or before_lv == 1) then
+      return fold.open1
+    end
+    return fold.open2
+  end
+
+  local after_foldinfo = C.fold_info(wp, vim.v.lnum + 1)
+  local after_lv = after_foldinfo.level
+
+  if lv > after_lv then
+    if lv == 1 and (after_lv == 0 or after_lv == 1) then
+      return fold.end_fold
+    end
+    return fold.branch
+  end
+
+  if after_foldinfo.start > foldinfo.start then
+    if lv == after_lv then
+      if lv == 1 then
+        return fold.end_fold
+      end
+      return fold.branch
+    end
+  end
+
+  return fold.sep
 end
 
 return statuscolumn
