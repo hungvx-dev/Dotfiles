@@ -25,7 +25,21 @@ HVIM = {
     removed = icons.Git.LineRemoved .. " ",
   },
   competitive_programming = false,
-  ui = {}
+  highlight = false,
+  ui = {
+    colors = {
+      "#fc5f66",
+      "#fde64d",
+      "#24aeee",
+      "#ff9f49",
+      "#86ef84",
+      "#b67cff",
+      "#4fd1c5",
+      "#f984d4",
+      "#E8E2D9",
+      "#a0aacc",
+    },
+  },
 }
 
 vim.g.mapleader = HVIM.leader

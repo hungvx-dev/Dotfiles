@@ -85,8 +85,11 @@ vim.opt.swapfile = false
 vim.opt.wildmode = "longest:full,full"
 
 -- #============================== 24. various ================================#
-vim.wo.signcolumn = "yes"         -- Always show sign column
+vim.wo.signcolumn = "yes:1"       -- Always show sign column
+-- vim.wo.signcolumn = "no"       -- Always show sign column
 vim.opt.virtualedit = "block"     -- When to use virtual editing: "block", "insert", "all"
+vim.bo.buftype = "nofile"         -- Empty, "nofile", "nowrite", "quickfix", etc.: type of buffer
+vim.bo.bufhidden = "wipe"       -- What happens with a buffer when it's no longer in a window
 
 --
 vim.opt.guicursor:append(

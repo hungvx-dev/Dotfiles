@@ -27,7 +27,7 @@ return {
       colors.bg_statusline = colors.none
       colors.black = colors.none
       colors.bg_popup = "#000000"
-      colors.comment = "#b9b9d9"
+      colors.comment = "#a0aacc"
       -- colors.fg_gutter = "#A9A9A9"
 
       colors.bg_search = "#3d59a1"
@@ -47,11 +47,11 @@ return {
       colors.green1 = "#00e1cb"
       colors.green2 = "#00a8ba"
       colors.purple = "#a86dff"
-      colors.red = "#ff708c"
+      colors.red = "#fc5f66"
       colors.red1 = "#fb0000"
       colors.terminal_black = "#334685"
       colors.warning = "#eeab00"
-      colors.yellow = "#eeab00"
+      colors.yellow = "#fde64d"
     end,
     on_highlights = function(hl, colors)
       hl.TelescopeTitle = { fg = "#FFA630" }
@@ -60,7 +60,8 @@ return {
       hl.PmenuSbar = { bg = colors.none }
       hl.GitSignsCurrentLineBlame = { fg = "#5e6777" }
       hl.IncSearch.fg = "#000000"
-      hl.NeoTreeDimText.fg = "#b9b9d9"
+      hl.NeoTreeDimText.fg = "#ffffff"
+      hl.FoldColumn.fg = "#3d59a1"
       hl.LineNrAbove.fg = "#3d59a1"
       hl.LineNrBelow.fg = "#3d59a1"
       hl.CursorLineNr = { fg = "#EFFF00" }
