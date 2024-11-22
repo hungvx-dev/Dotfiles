@@ -14,6 +14,9 @@ vim.wo.numberwidth = 3            -- Number of columns to use for the line numbe
 vim.opt.fillchars = {
   eob = " ",
   fold = " ",
+  -- foldopen = "",
+  -- foldclose = "╰",
+  -- foldsep = "│",
 }
 vim.wo.conceallevel = 2           -- Controls whether concealable text is hidden
 vim.wo.scroll = 10
