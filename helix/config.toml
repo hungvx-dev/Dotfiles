@@ -1,0 +1,65 @@
+theme = "base16_transparent"
+
+[editor]
+mouse = true
+auto-save = true
+cursorline = false
+cursorcolumn = false
+bufferline = "always"
+true-color = true
+
+[editor.cursor-shape]
+insert = "bar"
+normal = "block"
+select = "underline"
+
+# https://docs.helix-editor.com/master/configuration.html#editorsoft-wrap-section
+[editor.soft-wrap]
+enable = true
+# wrap-at-text-width = true
+wrap-indicator = "↩ "
+
+### https://docs.helix-editor.com/master/configuration.html#editorwhitespace-section
+[editor.whitespace.render]
+space = "all"
+tab = "all"
+newline = "none"
+
+[editor.whitespace.characters]
+space = " "
+nbsp = " "    # Non Breaking SPace
+tab = "→"
+newline = "↴" #⏎
+tabpad = "·"  # Tabs will look like "→···" (depending on tab width)
+###
+
+[editor.statusline]
+left = [ "mode", "spinner", "diagnostics" ]
+center = [ "file-name", "separator", "version-control", "separator" ]
+right = [ "position", "position-percentage", "total-line-numbers" ]
+separator = "│"
+mode.normal = "NORMAL"
+mode.insert = "INSERT"
+mode.select = "SELECT"
+
+[editor.lsp]
+display-inlay-hints = true
+auto-signature-help = false
+display-messages = true
+
+[editor.indent-guides]
+render = true
+character = "▏" # Some characters that work well: "▏", "┆", "┊", "⸽"
+skip-levels = 1
+
+[editor.file-picker]
+hidden = false
+
+
+[keys.normal]
+# https://www.root.cz/clanky/textovy-editor-helix-ve-funkci-vyvojoveho-prostredi-2-cast/#k11
+ins = "insert_mode"
+esc = ["collapse_selection", "keep_primary_selection"]
+C-o = ":open ~/.config/helix/config.toml" # Maps Ctrl-o to opening of the helix config file
+C-r = ":config-reload"
+

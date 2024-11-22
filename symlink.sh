@@ -79,5 +79,8 @@ ln -s $(pwd)/raycast ~/.config
 # Ripgrep
 ln -s $(pwd)/ripgrep ~/.config
 
+# Helix
+ln -s $(pwd)/helix ~/.config
+
 # Alias
 # ln -s $(pwd)/my-alias.zsh ~/.oh-my-zsh/custom/my-alias.zsh
