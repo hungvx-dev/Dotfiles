@@ -24,7 +24,7 @@ return {
       },
     },
     config = function(_, opts)
-      if HVIM.highlight then
+      if HVIM.highlight.indent then
         opts.indent.highlight = {
           "RainbowRed",
           "RainbowYellow",

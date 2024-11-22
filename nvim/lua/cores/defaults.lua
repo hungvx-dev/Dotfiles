@@ -6,6 +6,7 @@ HVIM = {
   use_icons = true,
   icons = icons,
   builtin = {},
+  competitive_programming = false,
   signs = {
     Error = icons.Diagnostics.Error,
     Warn = icons.Diagnostics.Warning,
@@ -24,8 +25,10 @@ HVIM = {
     modified = icons.Git.LineModified .. " ",
     removed = icons.Git.LineRemoved .. " ",
   },
-  competitive_programming = false,
-  highlight = false,
+  highlight = {
+    fold = true,
+    indent = false,
+  },
   ui = {
     colors = {
       "#fc5f66",
