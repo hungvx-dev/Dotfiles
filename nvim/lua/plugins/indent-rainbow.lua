@@ -59,7 +59,6 @@ return {
           javascript = "rainbow-parens",
           vue = "rainbow-script",
           tsx = "rainbow-parens",
-          html = "rainbow-parens",
         },
       }
     end,
