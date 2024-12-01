@@ -22,7 +22,7 @@ return {
       },
       current_line_blame_formatter = " <author_mail> | <author_time:%R, %x> | <summary>",
       preview_config = {
-        border = "round",
+        border = "single",
         style = "minimal",
         relative = "cursor",
         row = 0,
