@@ -30,7 +30,7 @@ return {
       colors.comment = "#a0aacc"
       -- colors.fg_gutter = "#A9A9A9"
 
-      colors.bg_search = "#3d59a1"
+      colors.bg_search = "#4A68A0"
       colors.blue = "#74a2ff"
       colors.blue0 = "#3d59a1"
       colors.blue1 = "#00c4e0"
@@ -51,20 +51,22 @@ return {
       colors.red1 = "#fb0000"
       colors.terminal_black = "#334685"
       colors.warning = "#eeab00"
-      colors.yellow = "#fde64d"
+      colors.yellow = "#EFFF00"
     end,
     on_highlights = function(hl, colors)
-      hl.TelescopeTitle = { fg = "#FFA630" }
-      hl.CursorLine = { bg = colors.none, underline = true }
+      hl.WinSeparator = { fg = colors.fg_dark }
       hl.Cursor = { bg = colors.blue1 }
+      hl.CursorLine = { bg = colors.none, underline = true, sp = colors.blue1 }
       hl.PmenuSbar = { bg = colors.none }
-      hl.GitSignsCurrentLineBlame = { fg = "#5e6777" }
-      hl.IncSearch.fg = "#000000"
-      hl.NeoTreeDimText.fg = "#ffffff"
-      hl.FoldColumn.fg = "#3d59a1"
-      hl.LineNrAbove.fg = "#3d59a1"
-      hl.LineNrBelow.fg = "#3d59a1"
-      hl.CursorLineNr = { fg = "#EFFF00" }
+      hl.CursorLineNr = { fg = colors.yellow }
+      hl.FoldColumn.fg = colors.dark5
+      hl.LineNrAbove.fg = colors.dark5
+      hl.LineNrBelow.fg = colors.dark5
+      hl.IncSearch.fg = colors.bg_popup
+
+      hl.TelescopeTitle = { fg = colors.yellow }
+      hl.NeoTreeDimText = { fg = colors.blue1 }
+      hl.GitSignsCurrentLineBlame = { fg = colors.blue0 }
       -- hl.LspInlayHint.bg = "#000000"
     end,
   },
