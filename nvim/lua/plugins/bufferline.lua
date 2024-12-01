@@ -10,6 +10,7 @@ end
 
 return {
   "akinsho/bufferline.nvim",
+  enabled = false,
   event = { "VeryLazy" },
   version = "*",
   dependencies = { "mini.icons" },
@@ -24,9 +25,9 @@ return {
       mode = "buffers",
       numbers = "none",
       -- stylua: ignore
-      close_command = function(n) HVIM.ui.bufremove(n) end,
+      close_command = HVIM.ui.bufremove,
       -- stylua: ignore
-      right_mouse_command = function(n) HVIM.ui.bufremove(n) end,
+      right_mouse_command = HVIM.ui.bufremove,
       buffer_close_icon = HVIM.icons.UI.Close,
       close_icon = HVIM.icons.UI.Close,
       diagnostics = "nvim_lsp",
