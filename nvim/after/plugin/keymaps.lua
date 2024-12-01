@@ -5,9 +5,9 @@ setKeyMap("v", "<", "<gv")
 setKeyMap("v", ">", ">gv")
 
 setKeyMap("n", "H", "^")
-setKeyMap("n", "L", "g_")
+setKeyMap("n", "L", "$")
 setKeyMap("v", "H", "^")
-setKeyMap("v", "L", "g_")
+setKeyMap("v", "L", "$")
 
 -- setKeyMap("n", "j", "v:count == 0 ? 'gj' : 'j'")
 -- setKeyMap("n", "k", "v:count == 0 ? 'gk' : 'k'")
