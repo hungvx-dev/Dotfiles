@@ -53,15 +53,13 @@ return {
     "hiphish/rainbow-delimiters.nvim",
     event = { "BufReadPre", "BufNewFile" },
     dependencies = { "nvim-treesitter" },
-    opts = function()
-      return {
-        query = {
-          javascript = "rainbow-parens",
-          vue = "rainbow-script",
-          tsx = "rainbow-parens",
-        },
-      }
-    end,
+    opts = {
+      query = {
+        javascript = "rainbow-parens",
+        vue = "rainbow-script",
+        tsx = "rainbow-parens",
+      },
+    },
     config = function(_, opts)
       require("rainbow-delimiters.setup").setup(opts)
     end,
