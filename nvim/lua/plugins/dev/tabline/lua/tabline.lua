@@ -183,7 +183,7 @@ end
 
 function M.tabline()
   local buf_nums = Utils.get_valid_buffers()
-  local components = {}
+  local length = #buf_nums
   local line = ""
 
   local all_diagnostics = Diagnostic.get()
@@ -194,29 +194,27 @@ function M.tabline()
       ordinal = i,
       diagnostics = all_diagnostics[buf_id],
     })
-    components[i] = buf
 
-    -- line = line .. M.format(buf)
-    -- if #buf_nums ~= i and #buf_nums > 1 then
-    --   line = line .. "│"
-    -- end
+    line = line .. M.format(buf)
+    if length ~= i and length > 1 then
+      line = line .. "│"
+    end
   end
-  -- return line
-  return components
+  return line .. "%="
 end
 
--- function Tabline()
---   local bufs = M.tabline()
---
---   local line = ""
---   for i, buf in pairs(bufs) do
---     line = line .. M.format(buf)
---     if #bufs ~= i and #bufs > 1 then
---       line = line .. "│"
---     end
---   end
---   return line .. "%="
--- end
---
+function M.setup(_)
+  vim.api.nvim_set_hl(0, "TabLineSel", { underline = true, bold = true, italic = true })
+  vim.api.nvim_set_hl(0, "TabLine", { underline = false, bold = false, italic = false })
+  vim.api.nvim_set_hl(0, "TabLineFill", { bg = "NONE" })
+
+  vim.api.nvim_set_hl(0, "BufSel", { fg = "#ffffff", sp = "#74a2ff", underline = true, bold = true, italic = true })
+  vim.api.nvim_set_hl(0, "BufUpdateSel", { fg = "#fde64d", sp = "#74a2ff", underline = true })
+  vim.api.nvim_set_hl(0, "BufUpdate", { fg = "#fde64d" })
+  vim.api.nvim_set_hl(0, "Buf", { fg = "#a0aacc", underline = false, bold = false, italic = false })
+  vim.api.nvim_set_hl(0, "BufFill", { bg = "NONE" })
+
+  vim.o.tabline = "%!v:lua.require('tabline').tabline()"
+end
 
 return M

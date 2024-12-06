@@ -29,6 +29,9 @@ local opts = {
     server = "https://nvim-neorocks.github.io/rocks-binaries/",
     hererocks = false,
   },
+  dev = {
+    path = "~/.config/nvim/lua/plugins/dev",
+  },
   debug = false,
   defaults = { lazy = true, version = nil },
   change_detection = { notify = false },
