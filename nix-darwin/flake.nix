@@ -9,45 +9,115 @@
       url = "github:LnL7/nix-darwin";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    home-manager = {
+      url = "github:nix-community/home-manager";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+    nix-homebrew = {
+      url = "github:zhaofengli-wip/nix-homebrew";
+    };
   };
 
-  outputs = inputs@{ self, nix-darwin, nixpkgs }:
-  let
-    configuration = { pkgs, ... }: {
-      # List packages installed in system profile. To search by name, run:
-      # $ nix-env -qaP | grep wget
-      environment.systemPackages =
-        [ pkgs.vim
+  outputs = inputs@{ self, nix-darwin, nixpkgs, nix-homebrew, home-manager }:
+    let
+      configuration = { pkgs, ... }: {
+        # List packages installed in system profile. To search by name, run:
+        # $ nix-env -qaP | grep wget
+        nix.settings.experimental-features = "nix-command flakes";
+        nixpkgs = {
+          config = { allowUnfree = true; };
+          hostPlatform = "aarch64-darwin";
+        };
+        environment.systemPackages = [
+          pkgs.neovim
+          pkgs.kitty
+          # pkgs.zellij
+          pkgs.nushell
+          pkgs.starship
+          pkgs.eza
+          pkgs.fzf
+          pkgs.ripgrep
+          pkgs.fd
+          pkgs.bat
+          pkgs.btop
+          pkgs.delta
+          pkgs.lazygit
+          pkgs.zoxide
+          pkgs.fnm
+          pkgs.cmus
+          pkgs.cava
+          pkgs.raycast
+          pkgs.brave
+          pkgs.discord
+          pkgs.google-chrome
+          # pkgs.xmind
+          pkgs.zoom-us
         ];
 
-      # Auto upgrade nix package and the daemon service.
-      services.nix-daemon.enable = true;
+        homebrew = {
+          enable = true;
+          casks = [
+            "openkey"
+            "figma"
+            "pearcleaner"
+            "karabiner-elements"
+            "vlc"
+            "xmind"
+            "ghostty"
+          ];
+          onActivation.cleanup = "zap";
+        };
 
-      # Necessary for using flakes on this system.
-      nix.settings.experimental-features = "nix-command flakes";
+        fonts.packages = [
+          pkgs.jetbrains-mono
+          pkgs.nerd-fonts.jetbrains-mono
+        ];
 
-      # Enable alternative shell support in nix-darwin.
-      programs.fish.enable = true;
+        services = {
+          nix-daemon = { enable = true; };
+          yabai = { enable = true; };
+          skhd = { enable = true; };
+          # karabiner-elements = { enable = true; };
+        };
 
-      # Set Git commit hash for darwin-version.
-      system.configurationRevision = self.rev or self.dirtyRev or null;
+        programs = {
+          # kitty = { enable = true; };
+          fish = { enable = true; };
+          tmux = { enable = true; };
+        };
 
-      # Used for backwards compatibility, please read the changelog before changing.
-      # $ darwin-rebuild changelog
-      system.stateVersion = 5;
+        system.configurationRevision = self.rev or self.dirtyRev or null;
+        system.stateVersion = 5;
+      };
+    in
+    {
+      # Build darwin flake using:
+      # $ darwin-rebuild build --flake .#FeiYu
+      darwinConfigurations."FeiYu" = nix-darwin.lib.darwinSystem {
+        modules = [
+          configuration
+          nix-homebrew.darwinModules.nix-homebrew
+          {
+            nix-homebrew = {
+              enable = true;
+              enableRosetta = true;
+              user = "hungvx.dev";
+              autoMigrate = true;
+            };
+          }
+          home-manager.darwinModules.home-manager
+          {
+            users.users."hungvx.dev".home = "/Users/hungvx.dev";
+            home-manager = {
+              useGlobalPkgs = true;
+              useUserPackages = true;
+              users."hungvx.dev" = import ./home.nix;
+            };
+          }
+        ];
+      };
 
-      # The platform the configuration will be used on.
-      nixpkgs.hostPlatform = "aarch64-darwin";
+      # Expose the package set, including overlays, for convenience.
+      darwinPackages = self.darwinConfigurations."FeiYu".pkgs;
     };
-  in
-  {
-    # Build darwin flake using:
-    # $ darwin-rebuild build --flake .#simple
-    darwinConfigurations."FeiYu" = nix-darwin.lib.darwinSystem {
-      modules = [ configuration ];
-    };
-
-    # Expose the package set, including overlays, for convenience.
-    darwinPackages = self.darwinConfigurations."FeiYu".pkgs;
-  };
 }
