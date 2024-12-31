@@ -1,5 +1,5 @@
-local conditions = require("plugins.configs.lualine.conditions")
 local colors = require("tokyonight.colors").setup()
+local conditions = require("plugins.configs.lualine.conditions")
 
 vim.api.nvim_set_hl(0, "SLGitIcon", { fg = "#E8AB53", bg = "#303030" })
 vim.api.nvim_set_hl(0, "SLBranchName", { fg = "#D4D4D4", bg = "#303030", bold = true })
@@ -41,9 +41,9 @@ local diff = {
   symbols = HVIM.git_line,
   padding = 2,
   diff_color = {
-    added = { fg = colors.green },
-    modified = { fg = colors.yellow },
-    removed = { fg = colors.red },
+    added = { fg = colors.git.add },
+    modified = { fg = colors.git.change },
+    removed = { fg = colors.git.delete },
   },
 }
 
