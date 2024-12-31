@@ -101,7 +101,7 @@
             nix-homebrew = {
               enable = true;
               enableRosetta = true;
-              user = "hungvx.dev";
+              user = "feiyu";
               autoMigrate = true;
             };
           }
