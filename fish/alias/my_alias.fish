@@ -14,4 +14,4 @@ abbr tree 'eza -T -L=2 --git-ignore'
 abbr pn pnpm
 abbr npm-list 'npm list -g --depth=0'
 
-abbr lz 'TERM=xterm-kitty lazygit'
+abbr lz 'lazygit'
