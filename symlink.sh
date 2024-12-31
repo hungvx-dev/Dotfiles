@@ -82,5 +82,11 @@ ln -s $(pwd)/ripgrep ~/.config
 # Helix
 ln -s $(pwd)/helix ~/.config
 
+# Nushell
+ln -s $(pwd)/nushell ~/.config
+
+# Zellij
+ln -s $(pwd)/zellij ~/.config
+
 # Alias
 # ln -s $(pwd)/my-alias.zsh ~/.oh-my-zsh/custom/my-alias.zsh
