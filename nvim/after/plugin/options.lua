@@ -94,8 +94,7 @@ vim.opt.virtualedit = "block"     -- When to use virtual editing: "block", "inse
 vim.bo.buftype = "nofile"         -- Empty, "nofile", "nowrite", "quickfix", etc.: type of buffer
 vim.bo.bufhidden = "wipe"       -- What happens with a buffer when it's no longer in a window
 
---
-vim.opt.guicursor:append(
-  "a:blinkwait701-blinkoff400-blinkon250-Cursor/lCursor,sm:block-blinkwait176-blinkoff150-blinkon175"
-)
+-- vim.opt.guicursor:append(
+--   "a:blinkwait701-blinkoff400-blinkon250-Cursor/lCursor,sm:block-blinkwait176-blinkoff150-blinkon175"
+-- )
 vim.opt.inccommand = "split"

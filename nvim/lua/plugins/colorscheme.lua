@@ -54,7 +54,9 @@ return {
       colors.yellow = "#EFFF00"
     end,
     on_highlights = function(hl, colors)
-      hl.WinSeparator = { fg = colors.fg_dark }
+      -- hl.WinSeparator = { fg = colors.fg_dark }
+      -- hl.NeoTreeTabSeparatorActive = { fg = colors.blue7 }
+      -- hl.NeoTreeWinSeparator = { fg = colors.blue7 }
       hl.Cursor = { bg = colors.blue1 }
       hl.CursorLine = { bg = colors.none, underline = true, sp = colors.blue1 }
       hl.PmenuSbar = { bg = colors.none }

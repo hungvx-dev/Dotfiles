@@ -36,6 +36,15 @@ return {
     Enum          = " ",
     EnumMember    = " ",
   },
+  Comment = {
+    Fix  =  "",
+    Todo =  "󰄬",
+    Hack =  "",
+    Warn =  "󰀪",
+    Perf =  "󰅐",
+    Note =  "󱞀",
+    Test =  "󱏛",
+  },
   Mason       = {
     Installed = "✓",
     Pending   = "➜",

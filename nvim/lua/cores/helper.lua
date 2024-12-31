@@ -1,3 +1,5 @@
+---@diagnostic disable: param-type-mismatch
+---@diagnostic disable-next-line: duplicate-set-field
 HVIM.ui.bufremove = function (buf)
   buf = buf or 0
   buf = buf == 0 and vim.api.nvim_get_current_buf() or buf
