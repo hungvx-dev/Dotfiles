@@ -7,7 +7,7 @@
   home.file = {
     ".config/nvim".source = ~/Dev/Dotfiles/nvim;
     ".config/kitty".source = ~/Dev/Dotfiles/kitty;
-    ".config/fish".source = ~/Dev/Dotfiles/fish;
+    # ".config/fish".source = ~/Dev/Dotfiles/fish;
     ".config/starship".source = ~/Dev/Dotfiles/starship;
     ".config/tmux".source = ~/Dev/Dotfiles/tmux;
     ".config/lazygit".source = ~/Dev/Dotfiles/lazygit;
