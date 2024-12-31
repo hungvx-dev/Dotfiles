@@ -155,7 +155,7 @@ function M.format(buf)
     local hl = vim.api.nvim_get_hl(0, { name = buf.icon_highlight, link = false })
     vim.api.nvim_set_hl(0, icon_hi, {
       fg = hl.fg,
-      sp = "#74a2ff",
+      sp = "#00c4e0",
       underline = true,
     })
     M.icon_cache[icon_hi] = "%#" .. icon_hi .. "# " .. buf.icon
@@ -186,13 +186,13 @@ function M.tabline()
   local length = #buf_nums
   local line = ""
 
-  local all_diagnostics = Diagnostic.get()
+  -- local all_diagnostics = Diagnostic.get()
   for i, buf_id in ipairs(buf_nums) do
     local buf = Buffer:new({
       path = api.nvim_buf_get_name(buf_id),
       id = buf_id,
       ordinal = i,
-      diagnostics = all_diagnostics[buf_id],
+      -- diagnostics = all_diagnostics[buf_id],
     })
 
     line = line .. M.format(buf)
@@ -204,12 +204,12 @@ function M.tabline()
 end
 
 function M.setup(_)
-  vim.api.nvim_set_hl(0, "TabLineSel", { underline = true, bold = true, italic = true })
-  vim.api.nvim_set_hl(0, "TabLine", { underline = false, bold = false, italic = false })
-  vim.api.nvim_set_hl(0, "TabLineFill", { bg = "NONE" })
+  -- vim.api.nvim_set_hl(0, "TabLineSel", { underline = true, bold = true, italic = true })
+  -- vim.api.nvim_set_hl(0, "TabLine", { underline = false, bold = false, italic = false })
+  -- vim.api.nvim_set_hl(0, "TabLineFill", { bg = "NONE" })
 
-  vim.api.nvim_set_hl(0, "BufSel", { fg = "#ffffff", sp = "#74a2ff", underline = true, bold = true, italic = true })
-  vim.api.nvim_set_hl(0, "BufUpdateSel", { fg = "#fde64d", sp = "#74a2ff", underline = true })
+  vim.api.nvim_set_hl(0, "BufSel", { fg = "#ffffff", sp = "#00c4e0", underline = true, bold = true, italic = true })
+  vim.api.nvim_set_hl(0, "BufUpdateSel", { fg = "#fde64d", sp = "#00c4e0", underline = true })
   vim.api.nvim_set_hl(0, "BufUpdate", { fg = "#fde64d" })
   vim.api.nvim_set_hl(0, "Buf", { fg = "#a0aacc", underline = false, bold = false, italic = false })
   vim.api.nvim_set_hl(0, "BufFill", { bg = "NONE" })
