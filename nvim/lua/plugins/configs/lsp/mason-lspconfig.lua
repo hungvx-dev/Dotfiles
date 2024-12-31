@@ -1,7 +1,6 @@
 local M = {}
 
 function M.setup()
-  require("plugins.configs.lsp.mason").setup()
   local servers = require("plugins.configs.lsp.servers")
   local setup = require("plugins.configs.lsp.nvim-lspconfig").setup(servers.opts)
   require("mason-lspconfig").setup({

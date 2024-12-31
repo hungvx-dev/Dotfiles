@@ -18,7 +18,9 @@ vim.api.nvim_create_autocmd("LspAttach", {
     --   })
     -- end, opts)
 
-    keymap.set("n", "gf", vim.lsp.buf.format, opts)
+    keymap.set("n", "gf", function()
+      vim.lsp.buf.format({ async = true })
+    end, opts)
     -- keymap.set("n", "gd", "<cmd>Telescope lsp_definitions<CR>", opts)
     -- keymap.set("n", "gd", vim.lsp.buf.definition, opts)
     keymap.set("n", "gd", function()
