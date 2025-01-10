@@ -4,7 +4,7 @@ return {
     dependencies = {
       "b0o/SchemaStore.nvim",
       "mason.nvim",
-      "mason-lspconfig.nvim",
+      "williamboman/mason-lspconfig.nvim",
     },
     event = { "BufReadPre", "BufNewFile" },
     config = require("plugins.configs.lsp.mason-lspconfig").setup,

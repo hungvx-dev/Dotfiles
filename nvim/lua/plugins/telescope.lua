@@ -14,15 +14,13 @@ end
 
 return {
   {
+    enabled = true,
     "nvim-telescope/telescope.nvim",
     cmd = "Telescope",
     dependencies = {
       "nvim-lua/plenary.nvim",
       "mini.icons",
-      {
-        "nvim-telescope/telescope-fzf-native.nvim",
-        build = "cmake -S. -Bbuild -DCMAKE_BUILD_TYPE=Release && cmake --build build --config Release",
-      },
+      { 'nvim-telescope/telescope-fzf-native.nvim', build = 'make' }
     },
     keys = {
       { "<leader>fs", "<cmd>Telescope live_grep<cr>",                 desc = "Find in Files (Grep)" },
