@@ -9,50 +9,68 @@
       url = "github:LnL7/nix-darwin";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    home-manager = {
-      url = "github:nix-community/home-manager";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
     nix-homebrew = {
       url = "github:zhaofengli-wip/nix-homebrew";
     };
   };
 
-  outputs = inputs@{ self, nix-darwin, nixpkgs, nix-homebrew, home-manager }:
+  outputs = inputs@{ self, nix-darwin, nixpkgs, nix-homebrew }:
     let
+      username = "feiyu";
       configuration = { pkgs, ... }: {
         # List packages installed in system profile. To search by name, run:
         # $ nix-env -qaP | grep wget
-        nix.settings.experimental-features = "nix-command flakes";
+        nix = {
+          settings.experimental-features = "nix-command flakes";
+          configureBuildUsers = true;
+        };
         nixpkgs = {
           config = { allowUnfree = true; };
           hostPlatform = "aarch64-darwin";
+          overlays = [
+            (self: super: {
+              karabiner-elements = super.karabiner-elements.overrideAttrs (old: {
+                version = "14.13.0";
+                src = super.fetchurl {
+                  inherit (old.src) url;
+                  hash = "sha256-gmJwoht/Tfm5qMecmq1N6PSAIfWOqsvuHU8VDJY8bLw=";
+                };
+              });
+            })
+          ];
         };
+
         environment.systemPackages = [
           pkgs.neovim
           pkgs.kitty
-          # pkgs.zellij
-          pkgs.nushell
-          pkgs.starship
-          pkgs.eza
-          pkgs.fzf
+          pkgs.tmux
           pkgs.ripgrep
           pkgs.fd
           pkgs.bat
-          pkgs.btop
+          pkgs.fzf
+          pkgs.eza
+          pkgs.starship
+          pkgs.zoxide
           pkgs.delta
           pkgs.lazygit
-          pkgs.zoxide
-          pkgs.fnm
+          pkgs.stow
+          pkgs.btop
           pkgs.cmus
           pkgs.cava
+          pkgs.monitorcontrol
           pkgs.raycast
-          pkgs.brave
+          # pkgs.brave
           pkgs.discord
           pkgs.google-chrome
           # pkgs.xmind
           pkgs.zoom-us
         ];
+
+        users.users.feiyu = {
+          name = username;
+          home = "/Users/feiyu";
+          shell = pkgs.fish;
+        };
 
         homebrew = {
           enable = true;
@@ -60,12 +78,20 @@
             "openkey"
             "figma"
             "pearcleaner"
-            "karabiner-elements"
+            "pearcleaner"
+            "brave-browser"
+            # "karabiner-elements"
             "vlc"
             "xmind"
             "ghostty"
           ];
           onActivation.cleanup = "zap";
+        };
+
+        programs = {
+          fish = {
+            enable = true;
+          };
         };
 
         fonts.packages = [
@@ -77,17 +103,47 @@
           nix-daemon = { enable = true; };
           yabai = { enable = true; };
           skhd = { enable = true; };
-          # karabiner-elements = { enable = true; };
+          karabiner-elements = { enable = true; };
         };
 
-        programs = {
-          # kitty = { enable = true; };
-          fish = { enable = true; };
-          tmux = { enable = true; };
+        system = {
+          configurationRevision = self.rev or self.dirtyRev or null;
+          stateVersion = 5;
+          defaults = {
+            NSGlobalDomain = {
+              AppleICUForce24HourTime = true;
+              ApplePressAndHoldEnabled = false;
+              KeyRepeat = 1;
+              InitialKeyRepeat = 10;
+              "com.apple.swipescrolldirection" = false;
+            };
+            finder = {
+              ShowPathbar = true;
+              ShowStatusBar = true;
+              QuitMenuItem = true;
+              AppleShowAllExtensions = true;
+              FXPreferredViewStyle = "clmv";
+            };
+            dock = {
+              tilesize = 17;
+              magnification = true;
+              largesize = 128;
+              orientation = "right";
+              show-recents = false;
+              mru-spaces = false;
+            };
+            controlcenter = {
+              AirDrop = false;
+              BatteryShowPercentage = true;
+              Bluetooth = true;
+              Display = true;
+              Sound = true;
+            };
+            # universalaccess = {
+            #   reduceMotion = true;
+            # };
+          };
         };
-
-        system.configurationRevision = self.rev or self.dirtyRev or null;
-        system.stateVersion = 5;
       };
     in
     {
@@ -101,17 +157,8 @@
             nix-homebrew = {
               enable = true;
               enableRosetta = true;
-              user = "feiyu";
+              user = username;
               autoMigrate = true;
-            };
-          }
-          home-manager.darwinModules.home-manager
-          {
-            users.users."feiyu".home = "/Users/feiyu";
-            home-manager = {
-              useGlobalPkgs = true;
-              useUserPackages = true;
-              users."feiyu" = import ./home.nix;
             };
           }
         ];

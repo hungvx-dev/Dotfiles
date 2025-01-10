@@ -20,32 +20,47 @@
 
   outputs = inputs@{ self, nix-darwin, nixpkgs, nix-homebrew, home-manager }:
     let
+      username = "hungvx.dev";
       configuration = { pkgs, ... }: {
         # List packages installed in system profile. To search by name, run:
         # $ nix-env -qaP | grep wget
-        nix.settings.experimental-features = "nix-command flakes";
+        nix = {
+          settings.experimental-features = "nix-command flakes";
+          configureBuildUsers = true;
+        };
         nixpkgs = {
           config = { allowUnfree = true; };
           hostPlatform = "aarch64-darwin";
+          overlays = [
+            (self: super: {
+              karabiner-elements = super.karabiner-elements.overrideAttrs (old: {
+                version = "14.13.0";
+                src = super.fetchurl {
+                  inherit (old.src) url;
+                  hash = "sha256-gmJwoht/Tfm5qMecmq1N6PSAIfWOqsvuHU8VDJY8bLw=";
+                };
+              });
+            })
+          ];
         };
+
         environment.systemPackages = [
           pkgs.neovim
           pkgs.kitty
-          # pkgs.zellij
-          pkgs.nushell
-          pkgs.starship
-          pkgs.eza
-          pkgs.fzf
+          pkgs.tmux
           pkgs.ripgrep
           pkgs.fd
           pkgs.bat
-          pkgs.btop
+          pkgs.fzf
+          pkgs.eza
+          pkgs.starship
+          pkgs.zoxide
           pkgs.delta
           pkgs.lazygit
-          pkgs.zoxide
-          pkgs.fnm
+          pkgs.btop
           pkgs.cmus
           pkgs.cava
+          pkgs.monitorcontrol
           pkgs.raycast
           pkgs.brave
           pkgs.discord
@@ -54,18 +69,30 @@
           pkgs.zoom-us
         ];
 
+        users.users."hungvx.dev" = {
+          name = username;
+          home = "/Users/hungvx.dev";
+          shell = pkgs.fish;
+        };
+
         homebrew = {
           enable = true;
           casks = [
             "openkey"
             "figma"
             "pearcleaner"
-            "karabiner-elements"
+            # "karabiner-elements"
             "vlc"
             "xmind"
             "ghostty"
           ];
           onActivation.cleanup = "zap";
+        };
+
+        programs = {
+          fish = {
+            enable = true;
+          };
         };
 
         fonts.packages = [
@@ -77,17 +104,47 @@
           nix-daemon = { enable = true; };
           yabai = { enable = true; };
           skhd = { enable = true; };
-          # karabiner-elements = { enable = true; };
+          karabiner-elements = { enable = true; };
         };
 
-        programs = {
-          # kitty = { enable = true; };
-          fish = { enable = true; };
-          tmux = { enable = true; };
+        system = {
+          configurationRevision = self.rev or self.dirtyRev or null;
+          stateVersion = 5;
+          # defaults = {
+          #   NSGlobalDomain = {
+          #     AppleICUForce24HourTime = true;
+          #     ApplePressAndHoldEnabled = false;
+          #     KeyRepeat = 1;
+          #     InitialKeyRepeat = 10;
+          #     "com.apple.swipescrolldirection" = false;
+          #   };
+          #   finder = {
+          #     ShowPathbar = true;
+          #     ShowStatusBar = true;
+          #     QuitMenuItem = true;
+          #     AppleShowAllExtensions = true;
+          #     FXPreferredViewStyle = "clmv";
+          #   };
+          #   dock = {
+          #     tilesize = 17;
+          #     magnification = true;
+          #     largesize = 128;
+          #     orientation = "right";
+          #     show-recents = false;
+          #     mru-spaces = false;
+          #   };
+          #   controlcenter = {
+          #     AirDrop = false;
+          #     BatteryShowPercentage = true;
+          #     Bluetooth = true;
+          #     Display = true;
+          #     Sound = true;
+          #   };
+          #   universalaccess = {
+          #     reduceMotion = true;
+          #   };
+          # };
         };
-
-        system.configurationRevision = self.rev or self.dirtyRev or null;
-        system.stateVersion = 5;
       };
     in
     {
@@ -101,14 +158,14 @@
             nix-homebrew = {
               enable = true;
               enableRosetta = true;
-              user = "hungvx.dev";
+              user = username;
               autoMigrate = true;
             };
           }
           home-manager.darwinModules.home-manager
           {
-            users.users."hungvx.dev".home = "/Users/hungvx.dev";
             home-manager = {
+              backupFileExtension = "backup";
               useGlobalPkgs = true;
               useUserPackages = true;
               users."hungvx.dev" = import ./home.nix;
@@ -121,3 +178,4 @@
       darwinPackages = self.darwinConfigurations."FeiYu".pkgs;
     };
 }
+
