@@ -1,0 +1,54 @@
+# This file contains fish universal variable definitions.
+# VERSION: 3.0
+SETUVAR --export PYENV_ROOT:/Users/hungvx\x2edev/\x2epyenv
+SETUVAR __fish_initialized:3400
+SETUVAR _fisher_budimanjojo_2F_tmux_2E_fish_files:\x7e/\x2econfig/fish/conf\x2ed/tmux\x2eextra\x2econf\x1e\x7e/\x2econfig/fish/conf\x2ed/tmux\x2efish\x1e\x7e/\x2econfig/fish/conf\x2ed/tmux\x2eonly\x2econf
+SETUVAR _fisher_jorgebucaran_2F_fisher_files:\x7e/\x2econfig/fish/functions/fisher\x2efish\x1e\x7e/\x2econfig/fish/completions/fisher\x2efish
+SETUVAR _fisher_kidonng_2F_zoxide_2E_fish_files:\x7e/\x2econfig/fish/functions/__zoxide_cd\x2efish\x1e\x7e/\x2econfig/fish/functions/__zoxide_pwd\x2efish\x1e\x7e/\x2econfig/fish/functions/__zoxide_z\x2efish\x1e\x7e/\x2econfig/fish/functions/__zoxide_z_complete\x2efish\x1e\x7e/\x2econfig/fish/functions/__zoxide_zi\x2efish\x1e\x7e/\x2econfig/fish/conf\x2ed/zoxide\x2efish
+SETUVAR _fisher_patrickf1_2F_colored__man__pages_2E_fish_files:\x7e/\x2econfig/fish/functions/cless\x2efish\x1e\x7e/\x2econfig/fish/functions/man\x2efish
+SETUVAR _fisher_patrickf1_2F_fzf_2E_fish_files:\x7e/\x2econfig/fish/functions/_fzf_configure_bindings_help\x2efish\x1e\x7e/\x2econfig/fish/functions/_fzf_extract_var_info\x2efish\x1e\x7e/\x2econfig/fish/functions/_fzf_preview_changed_file\x2efish\x1e\x7e/\x2econfig/fish/functions/_fzf_preview_file\x2efish\x1e\x7e/\x2econfig/fish/functions/_fzf_report_diff_type\x2efish\x1e\x7e/\x2econfig/fish/functions/_fzf_report_file_type\x2efish\x1e\x7e/\x2econfig/fish/functions/_fzf_search_directory\x2efish\x1e\x7e/\x2econfig/fish/functions/_fzf_search_git_log\x2efish\x1e\x7e/\x2econfig/fish/functions/_fzf_search_git_status\x2efish\x1e\x7e/\x2econfig/fish/functions/_fzf_search_history\x2efish\x1e\x7e/\x2econfig/fish/functions/_fzf_search_processes\x2efish\x1e\x7e/\x2econfig/fish/functions/_fzf_search_variables\x2efish\x1e\x7e/\x2econfig/fish/functions/_fzf_wrapper\x2efish\x1e\x7e/\x2econfig/fish/functions/fzf_configure_bindings\x2efish\x1e\x7e/\x2econfig/fish/conf\x2ed/fzf\x2efish\x1e\x7e/\x2econfig/fish/completions/fzf_configure_bindings\x2efish
+SETUVAR _fisher_plugins:jorgebucaran/fisher\x1epatrickf1/colored_man_pages\x2efish\x1ekidonng/zoxide\x2efish\x1epatrickf1/fzf\x2efish\x1ebudimanjojo/tmux\x2efish
+SETUVAR _fisher_upgraded_to_4_4:\x1d
+SETUVAR fish_color_autosuggestion:565f89
+SETUVAR fish_color_cancel:\x1d
+SETUVAR fish_color_command:7dcfff
+SETUVAR fish_color_comment:565f89
+SETUVAR fish_color_cwd:\x1d
+SETUVAR fish_color_cwd_root:red
+SETUVAR fish_color_end:ff9e64
+SETUVAR fish_color_error:f7768e
+SETUVAR fish_color_escape:bb9af7
+SETUVAR fish_color_history_current:\x2d\x2dbold
+SETUVAR fish_color_host:\x1d
+SETUVAR fish_color_host_remote:\x1d
+SETUVAR fish_color_keyword:bb9af7
+SETUVAR fish_color_normal:c0caf5
+SETUVAR fish_color_operator:9ece6a
+SETUVAR fish_color_option:\x1d
+SETUVAR fish_color_param:9d7cd8
+SETUVAR fish_color_quote:e0af68
+SETUVAR fish_color_redirection:c0caf5
+SETUVAR fish_color_search_match:\x2d\x2dbackground\x3d283457
+SETUVAR fish_color_selection:\x2d\x2dbackground\x3d283457
+SETUVAR fish_color_status:red
+SETUVAR fish_color_user:\x1d
+SETUVAR fish_color_valid_path:\x2d\x2dunderline
+SETUVAR fish_key_bindings:fish_vi_key_bindings
+SETUVAR fish_pager_color_background:\x1d
+SETUVAR fish_pager_color_completion:c0caf5
+SETUVAR fish_pager_color_description:565f89
+SETUVAR fish_pager_color_prefix:7dcfff
+SETUVAR fish_pager_color_progress:565f89
+SETUVAR fish_pager_color_secondary_background:\x1d
+SETUVAR fish_pager_color_secondary_completion:\x1d
+SETUVAR fish_pager_color_secondary_description:\x1d
+SETUVAR fish_pager_color_secondary_prefix:\x1d
+SETUVAR fish_pager_color_selected_background:\x2d\x2dbackground\x3d283457
+SETUVAR fish_pager_color_selected_completion:\x1d
+SETUVAR fish_pager_color_selected_description:\x1d
+SETUVAR fish_pager_color_selected_prefix:\x1d
+SETUVAR --export fish_tmux_autostart:true
+SETUVAR --export fish_tmux_autostart_once:false
+SETUVAR --export fish_tmux_config:/Users/hungvx\x2edev/\x2econfig/tmux/tmux\x2econf
+SETUVAR fish_user_paths:/run/current\x2dsystem/sw/bin\x1e/nix/var/nix/profiles/default/bin\x1e/opt/homebrew/bin\x1e/opt/homebrew/opt/gnu\x2dsed/libexec/gnubin\x1e/opt/homebrew/opt/ruby/bin\x1e/Users/hungvx\x2edev/\x2egem/bin\x1e/opt/homebrew/sbin\x1e/Users/hungvx\x2edev/Library/pnpm
+SETUVAR zoxide_cmd:j
