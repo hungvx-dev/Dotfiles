@@ -74,6 +74,9 @@
 
         homebrew = {
           enable = true;
+          global = {
+            autoUpdate = true;
+          };
           casks = [
             "openkey"
             "figma"
@@ -84,6 +87,8 @@
             "vlc"
             "xmind"
             "ghostty"
+            "blackhole-2ch"
+            "mp3tag"
           ];
           onActivation.cleanup = "zap";
         };

@@ -9,16 +9,12 @@
       url = "github:LnL7/nix-darwin";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    home-manager = {
-      url = "github:nix-community/home-manager";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
     nix-homebrew = {
       url = "github:zhaofengli-wip/nix-homebrew";
     };
   };
 
-  outputs = inputs@{ self, nix-darwin, nixpkgs, nix-homebrew, home-manager }:
+  outputs = inputs@{ self, nix-darwin, nixpkgs, nix-homebrew }:
     let
       username = "hungvx.dev";
       configuration = { pkgs, ... }: {
@@ -57,12 +53,13 @@
           pkgs.zoxide
           pkgs.delta
           pkgs.lazygit
+          pkgs.stow
           pkgs.btop
           pkgs.cmus
           pkgs.cava
           pkgs.monitorcontrol
           pkgs.raycast
-          pkgs.brave
+          # pkgs.brave
           pkgs.discord
           pkgs.google-chrome
           # pkgs.xmind
@@ -77,6 +74,9 @@
 
         homebrew = {
           enable = true;
+          global = {
+            autoUpdate = true;
+          };
           casks = [
             "openkey"
             "figma"
@@ -85,6 +85,7 @@
             "vlc"
             "xmind"
             "ghostty"
+            "blackhole-2ch"
           ];
           onActivation.cleanup = "zap";
         };
@@ -110,40 +111,40 @@
         system = {
           configurationRevision = self.rev or self.dirtyRev or null;
           stateVersion = 5;
-          # defaults = {
-          #   NSGlobalDomain = {
-          #     AppleICUForce24HourTime = true;
-          #     ApplePressAndHoldEnabled = false;
-          #     KeyRepeat = 1;
-          #     InitialKeyRepeat = 10;
-          #     "com.apple.swipescrolldirection" = false;
-          #   };
-          #   finder = {
-          #     ShowPathbar = true;
-          #     ShowStatusBar = true;
-          #     QuitMenuItem = true;
-          #     AppleShowAllExtensions = true;
-          #     FXPreferredViewStyle = "clmv";
-          #   };
-          #   dock = {
-          #     tilesize = 17;
-          #     magnification = true;
-          #     largesize = 128;
-          #     orientation = "right";
-          #     show-recents = false;
-          #     mru-spaces = false;
-          #   };
-          #   controlcenter = {
-          #     AirDrop = false;
-          #     BatteryShowPercentage = true;
-          #     Bluetooth = true;
-          #     Display = true;
-          #     Sound = true;
-          #   };
-          #   universalaccess = {
-          #     reduceMotion = true;
-          #   };
-          # };
+          defaults = {
+            NSGlobalDomain = {
+              AppleICUForce24HourTime = true;
+              ApplePressAndHoldEnabled = false;
+              KeyRepeat = 1;
+              InitialKeyRepeat = 8.5;
+              "com.apple.swipescrolldirection" = false;
+            };
+            finder = {
+              ShowPathbar = true;
+              ShowStatusBar = true;
+              QuitMenuItem = true;
+              AppleShowAllExtensions = true;
+              FXPreferredViewStyle = "clmv";
+            };
+            dock = {
+              tilesize = 17;
+              magnification = true;
+              largesize = 128;
+              orientation = "right";
+              show-recents = false;
+              mru-spaces = false;
+            };
+            controlcenter = {
+              AirDrop = false;
+              BatteryShowPercentage = true;
+              Bluetooth = true;
+              Display = true;
+              Sound = true;
+            };
+            # universalaccess = {
+            #   reduceMotion = true;
+            # };
+          };
         };
       };
     in
@@ -160,15 +161,6 @@
               enableRosetta = true;
               user = username;
               autoMigrate = true;
-            };
-          }
-          home-manager.darwinModules.home-manager
-          {
-            home-manager = {
-              backupFileExtension = "backup";
-              useGlobalPkgs = true;
-              useUserPackages = true;
-              users."hungvx.dev" = import ./home.nix;
             };
           }
         ];
