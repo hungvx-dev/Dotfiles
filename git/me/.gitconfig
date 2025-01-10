@@ -2,9 +2,9 @@
   name = Vo Xuan Hung
   email = hungvx.dev@gmail.com
 
-# job needs, like workspace/* so all included projects
-[includeIf "gitdir:~/Work/Hodfords/"]
-  path = ~/Work/Hodfords/git/.gitconfig
+;  job needs, like workspace/* so all included projects
+; [includeIf "gitdir:~/Work/Hodfords/"]
+;   path = ~/Work/Hodfords/git/.gitconfig
 
 [init]
   defaultBranch = main
