@@ -177,15 +177,15 @@ format = '\[[$symbol$account(@$domain)(\($region\))]($style)\]'
 [lua]
 disabled = false
 symbol = " "
-format = "[${symbol}${version}]($style)"
+format = "[ ${symbol}${version}]($style)"
 version_format = "${raw}"
 style = "bold bright-yellow"
 [nodejs]
 disabled = false
 symbol = " "
-format = '[$symbol($version)]($style)(bold bright-green)'
+format = '[ $symbol($version)]($style)(bold bright-green)'
 version_format = "${raw}"
-detect_files = ["package-lock.json", "yarn.lock", "pnpm-lock.yaml"]
+detect_files = ["package.json"]
 detect_folders = ["node_modules"]
 detect_extensions = []
 [docker_context]
