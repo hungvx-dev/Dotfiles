@@ -27,21 +27,22 @@
         nixpkgs = {
           config = { allowUnfree = true; };
           hostPlatform = "aarch64-darwin";
-          overlays = [
-            (self: super: {
-              karabiner-elements = super.karabiner-elements.overrideAttrs (old: {
-                version = "14.13.0";
-                src = super.fetchurl {
-                  inherit (old.src) url;
-                  hash = "sha256-gmJwoht/Tfm5qMecmq1N6PSAIfWOqsvuHU8VDJY8bLw=";
-                };
-              });
-            })
-          ];
+          # overlays = [
+          #   (self: super: {
+          #     karabiner-elements = super.karabiner-elements.overrideAttrs (old: {
+          #       version = "14.13.0";
+          #       src = super.fetchurl {
+          #         inherit (old.src) url;
+          #         hash = "sha256-gmJwoht/Tfm5qMecmq1N6PSAIfWOqsvuHU8VDJY8bLw=";
+          #       };
+          #     });
+          #   })
+          # ];
         };
 
         environment.systemPackages = [
           pkgs.neovim
+          pkgs.ghostty
           pkgs.kitty
           pkgs.tmux
           pkgs.ripgrep
@@ -84,7 +85,6 @@
             # "karabiner-elements"
             "vlc"
             "xmind"
-            "ghostty"
             "blackhole-2ch"
           ];
           onActivation.cleanup = "zap";
@@ -105,7 +105,7 @@
           nix-daemon = { enable = true; };
           yabai = { enable = true; };
           skhd = { enable = true; };
-          karabiner-elements = { enable = true; };
+          # karabiner-elements = { enable = true; };
         };
 
         system = {
@@ -116,7 +116,7 @@
               AppleICUForce24HourTime = true;
               ApplePressAndHoldEnabled = false;
               KeyRepeat = 1;
-              InitialKeyRepeat = 8.5;
+              InitialKeyRepeat = 9;
               "com.apple.swipescrolldirection" = false;
             };
             finder = {

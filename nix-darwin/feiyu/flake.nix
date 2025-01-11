@@ -27,22 +27,23 @@
         nixpkgs = {
           config = { allowUnfree = true; };
           hostPlatform = "aarch64-darwin";
-          overlays = [
-            (self: super: {
-              karabiner-elements = super.karabiner-elements.overrideAttrs (old: {
-                version = "14.13.0";
-                src = super.fetchurl {
-                  inherit (old.src) url;
-                  hash = "sha256-gmJwoht/Tfm5qMecmq1N6PSAIfWOqsvuHU8VDJY8bLw=";
-                };
-              });
-            })
-          ];
+          # overlays = [
+          #   (self: super: {
+          #     karabiner-elements = super.karabiner-elements.overrideAttrs (old: {
+          #       version = "14.13.0";
+          #       src = super.fetchurl {
+          #         inherit (old.src) url;
+          #         hash = "sha256-gmJwoht/Tfm5qMecmq1N6PSAIfWOqsvuHU8VDJY8bLw=";
+          #       };
+          #     });
+          #   })
+          # ];
         };
 
         environment.systemPackages = [
           pkgs.neovim
           pkgs.kitty
+          pkgs.ghostty
           pkgs.tmux
           pkgs.ripgrep
           pkgs.fd
@@ -86,9 +87,7 @@
             # "karabiner-elements"
             "vlc"
             "xmind"
-            "ghostty"
             "blackhole-2ch"
-            "mp3tag"
           ];
           onActivation.cleanup = "zap";
         };
@@ -106,9 +105,9 @@
 
         services = {
           nix-daemon = { enable = true; };
-          yabai = { enable = true; };
-          skhd = { enable = true; };
-          karabiner-elements = { enable = true; };
+          # yabai = { enable = true; };
+          # skhd = { enable = true; };
+          # karabiner-elements = { enable = true; };
         };
 
         system = {
