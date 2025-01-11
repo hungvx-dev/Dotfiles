@@ -1,20 +1,21 @@
 # My dotfiles
 
-**_These are my dotfiles. Take anything you want, but at your own risk._**
-**_It mainly targets macOS systems_**
+**_This is my dotfiles. Take anything you want, but at your own risk._**
+**_It mainly targets MacOS systems_**
 **_This repository contains my configuration for applications:_**
 
 ## Tools
 
-- **Terminal**: [Kitty](./kitty) (or [Alacritty](./alacritty))
+- **Package Manager**: [Nix](./nix-darwin)
+- **Terminal**: [Kitty](./kitty) / [Ghostty](./ghostty)
   - **Multiplexer**: [Tmux](./tmux)
+- **Shell**: [Fish](./fish)
   - **Theme**: [Starship](./starship)
-- **Shell**: [Fish](./fish) (or [Zsh](./zsh))
 - **IDE**: [Neovim](./neovim)
-- **Window Management**: [Yabai](./yabai) + [skhd](./skhd) / [Aerospace](./aerospace)
+- **Window Management**: [Yabai](./yabai) + [skhd](./skhd)
 - **Activity Monitor**: [Btop](./btop)
 - **Git**:
-  - CLI: [Lazygit](./lazygit)
+  - [Lazygit](./lazygit)
   - [delta](https://github.com/dandavison/delta) - a syntax-highlighting pager for git, diff, and grep output
 - **Version Manager**:
   - [fnm](https://github.com/Schniz/fnm) - 🚀 fast and simple Node.js version manager, built in Rust
@@ -22,27 +23,77 @@
   - _**JetBrainsMono**_
   - [JetBrainsMono Nerd Font](https://github.com/JetBrains/JetBrainsMono)
   - [Iosevka Nerd Font](https://github.com/be5invis/Iosevka)
-- **Music**: [cmus](https://github.com/cmus/cmus) + [cava](./cava) + [Loopback](https://rogueamoeba.com/loopback/)
-- **Keyboard Customize**: - [karabiner-elements](https://karabiner-elements.pqrs.org/) a powerful and stable keyboard customize for macOS.
+- **Music**: [cmus](./cmus) + [cava](./cava) + [blackhole](https://github.com/ExistentialAudio/BlackHole)
+- **Keyboard Customize**: - [karabiner-elements](./karabiner) a powerful and stable keyboard customize for macOS.
 - **Vietnamese Keyboard**: [OpenKey](https://github.com/tuyenvm/OpenKey)
-- **Wallpapers**: [My wallpapers](./wallpapers)
+- **Wallpapers**: [Wallpapers](./wallpapers)
+- **Music**: [Music](./Music)
 
-## Install + setup
+## CLI: improved
+- [bat > cat ](https://github.com/sharkdp/bat)
+- [fd > find](https://github.com/sharkdp/fd)
+- [sd > sed](https://github.com/chmln/sd)
+- [rg(ripgrep) > grep](https://github.com/BurntSushi/ripgrep)
+- [eza > ls](https://github.com/eza-community/eza)
+- [btop > top](https://github.com/aristocratos/btop)
+- [tldr > man](https://github.com/tldr-pages/tldr)
+- [prettyping > ping](https://github.com/denilsonsa/prettyping)
 
-Clone this repository:
+## Installing
 
-```bash
-git clone git@github.com:hungvx-dev/Dotfiles.git
-cd Dotfiles
+1. To download the package manager
+```sh
+sh <(curl -L https://nixos.org/nix/install)
 ```
 
-Run these commands to install and setup for Mac OS
+2. To download my configuration
+```sh
+nix-shell -p git --run "git clone git@github.com:hungvx-dev/Dotfiles.git ~/Dev/Dotfiles"
+```
+3. To install it
 
-```bash
-chmod -R +x ./bootstrap/macos && ./bootstrap/macos/init.sh
+```sh
+nix run nix-darwin --extra-experimental-features "nix-command flakes" -- switch --flake ~/Dev/Dotfile/nix-darwin/feiyu
 ```
 
-## Node
+### Add configuation
+
+```sh
+cd ~/Dev/Dotfiles
+stow .
+```
+
+### Configuation git + ssh
+
+- Git
+```sh
+ln -s $(pwd)/git/me/ ~/.config/git
+ln -s ~/.config/git/.gitconfig ~/.config/git/config
+```
+
+- [SSH] (./ssh/guide.md)
+
+### Configuation fish
+
+- Install fisher
+```sh
+curl -sL https://raw.githubusercontent.com/jorgebucaran/fisher/main/functions/fisher.fish | source && fisher install jorgebucaran/fisher
+
+fisher install kidonng/zoxide.fish
+```
+
+
+### Configuation neovim
+
+```sh
+nix-shell -p nodejs_22 cargo
+neovim
+```
+
+In neovim Run `:Mason` command and install LSPs
+
+
+### Nodejs
 
 - Enable pnpm: `corepack enable pnpm`
 - Disable yarn: `corepack disable yarn`
@@ -85,7 +136,7 @@ chmod -R +x ./bootstrap/macos && ./bootstrap/macos/init.sh
 
 ## References
 
-- [Installing Fish shell on MacOS (Intel and M2) using brew](https://gist.github.com/gagarine/cf3f65f9be6aa0e105b184376f765262)
+- [Installing Fish shell on MacOS (Intel and Apple Silicon) using brew](https://gist.github.com/gagarine/cf3f65f9be6aa0e105b184376f765262)
 - [Installing tmux-256color for macOS](https://gist.github.com/bbqtd/a4ac060d6f6b9ea6fe3aabe735aa9d95)
 
 ## Bugs
