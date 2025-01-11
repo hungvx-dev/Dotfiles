@@ -63,6 +63,22 @@ cd ~/Dev/Dotfiles
 stow .
 ```
 
+### Configuation fish
+
+- Set default shell
+
+```sh
+echo $(which fish) | sudo tee -a /etc/shells
+chsh -s $(which fish)
+
+```
+- Install fisher
+```sh
+curl -sL https://raw.githubusercontent.com/jorgebucaran/fisher/main/functions/fisher.fish | source && fisher install jorgebucaran/fisher
+
+fisher install kidonng/zoxide.fish
+```
+
 ### Configuation git + ssh
 
 - Git
@@ -72,15 +88,6 @@ ln -s ~/.config/git/.gitconfig ~/.config/git/config
 ```
 
 - [SSH] (./ssh/guide.md)
-
-### Configuation fish
-
-- Install fisher
-```sh
-curl -sL https://raw.githubusercontent.com/jorgebucaran/fisher/main/functions/fisher.fish | source && fisher install jorgebucaran/fisher
-
-fisher install kidonng/zoxide.fish
-```
 
 
 ### Configuation neovim
