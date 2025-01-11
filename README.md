@@ -87,7 +87,7 @@ ln -s $(pwd)/git/me/ ~/.config/git
 ln -s ~/.config/git/.gitconfig ~/.config/git/config
 ```
 
-- [SSH] (./ssh/guide.md)
+- [SSH](./ssh/guide.md)
 
 
 ### Configuation neovim
