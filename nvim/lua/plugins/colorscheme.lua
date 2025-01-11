@@ -65,6 +65,7 @@ return {
       hl.LineNrAbove.fg = colors.dark5
       hl.LineNrBelow.fg = colors.dark5
       hl.IncSearch.fg = colors.bg_popup
+      hl.Pmenu.bg = colors.none
 
       hl.TelescopeTitle = { fg = colors.yellow }
       hl.NeoTreeDimText = { fg = colors.blue1 }
