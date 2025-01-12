@@ -162,18 +162,18 @@ format = '\[[as $symbol]($style)\]'
 disabled = false
 style = 'bold blue'
 symbol = '🅰 '
-format = '\[[$symbol($profile)(\($region\))(\[$duration\])]($style)\]'
-[aws.region_aliases]
-ap-southeast-2 = 'au'
-us-east-1 = 'va'
-[aws.profile_aliases]
-CompanyGroupFrobozzOnCallAccess = 'Frobozz'
+format = '[$symbol($profile)(\($region\))(\[$duration\])]($style)'
+# [aws.region_aliases]
+# ap-southeast-2 = 'au'
+# us-east-1 = 'va'
+# [aws.profile_aliases]
+# CompanyGroupFrobozzOnCallAccess = 'Frobozz'
 [kubernetes]
 disabled = false
-format = '\[[$symbol$context( \($namespace\))]($style)\]'
+format = '[$symbol$context( \($namespace\))]($style)'
 [gcloud]
 disabled = false
-format = '\[[$symbol$account(@$domain)(\($region\))]($style)\]'
+format = '[$symbol$account(@$domain)(\($region\))]($style)'
 [lua]
 disabled = false
 symbol = " "
