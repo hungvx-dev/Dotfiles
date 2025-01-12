@@ -1,9 +1,15 @@
 if status is-interactive
     # Commands to run in interactive sessions can go here
+    set fish_cursor_default block blink
+    set fish_cursor_insert line blink
+    set fish_cursor_replace_one underscore blink
+    set fish_cursor_replace underscore blink
+    set fish_cursor_external line blink
+    set fish_cursor_visual block blink
+    set -g fish_vi_force_cursor 1
 end
 
 set fish_path $HOME/.config/fish
-. $fish_path/kitty.sh
 . $fish_path/alias/init.fish
 
 set -gx _ZO_DATA_DIR "$HOME/Dev/Dotfiles/zoxide"
@@ -19,7 +25,7 @@ set -x RIPGREP_CONFIG_PATH "$HOME/.config/ripgrep/.ripgreprc"
 
 set -g FZF_DEFAULT_COMMAND "fd --type=f --hidden --color=never --exclude .git"
 set -g FZF_DEFAULT_OPTS $FZF_DEFAULT_OPTS \
-  '
+    '
   --border="rounded"
   --color=fg:#d0d0d0,fg+:#5fd7ff,bg:-1,bg+:-1
   --color=hl:#d7005f,hl+:#d7005f,info:#afaf87,marker:#87ff00
