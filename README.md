@@ -84,12 +84,17 @@ fisher install kidonng/zoxide.fish
 
 - Git
 ```sh
+cd ~/Dev/Dotfiles
 ln -s $(pwd)/git/me/ ~/.config/git
 ln -s $(pwd)/git/me/.gitconfig ~/.config/git/config
 ```
 
-- [SSH](./ssh/guide.md)
+- SSH
+```sh
+ln -s $(pwd)/ssh/config ~/.ssh/config
+```
 
+--  [Setup ssh](./ssh/guide.md)
 
 ### Configuation neovim
 
