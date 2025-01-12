@@ -55,7 +55,7 @@ rm -rf ~/.config/ssh
 rm -rf ~/.config/lazygit
 ln -s $(pwd)/ssh/config ~/.ssh/config
 ln -s $(pwd)/git/me/ ~/.config/git
-ln -s ~/.config/git/.gitconfig ~/.config/git/config
+ln -s $(pwd)/git/me/.gitconfig ~/.config/git/config
 ln -s $(pwd)/git/work/ ~/Work/Hodfords/git
 ln -s $(pwd)/lazygit ~/.config
 ln -s $(pwd)/gitui ~/.config

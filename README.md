@@ -35,6 +35,7 @@
 - [sd > sed](https://github.com/chmln/sd)
 - [rg(ripgrep) > grep](https://github.com/BurntSushi/ripgrep)
 - [eza > ls](https://github.com/eza-community/eza)
+- [delta > diff](https://github.com/dandavison/delta)
 - [btop > top](https://github.com/aristocratos/btop)
 - [tldr > man](https://github.com/tldr-pages/tldr)
 - [prettyping > ping](https://github.com/denilsonsa/prettyping)
@@ -84,7 +85,7 @@ fisher install kidonng/zoxide.fish
 - Git
 ```sh
 ln -s $(pwd)/git/me/ ~/.config/git
-ln -s ~/.config/git/.gitconfig ~/.config/git/config
+ln -s $(pwd)/git/me/.gitconfig ~/.config/git/config
 ```
 
 - [SSH](./ssh/guide.md)
@@ -140,6 +141,11 @@ In neovim Run `:Mason` command and install LSPs
 
 ![Music](./images/cmus.png "Title")
 ![Music](./images/cmus-cava.png "Title")
+
+## Blogs
+
+- [CLI: Improved](https://remysharp.com/2018/08/23/cli-improved)
+- [Fuzzy Finding in Vim with fzf](https://bluz71.github.io/2018/12/04/fuzzy-finding-in-vim-with-fzf.html)
 
 ## References
 
