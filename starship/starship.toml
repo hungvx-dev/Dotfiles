@@ -6,20 +6,22 @@ add_newline = false
 
 # [  ](fg:green)\
 format = """
-$os$nix_shell$container\
+$os$container\
 $directory \
-($git_branch $git_commit ($git_state )$git_metrics$git_status)\
+($git_branch $git_commit ($git_state )$git_metrics)\
 $package\
 $c\
 $nodejs\
 $python\
 $ruby\
 $lua\
+$fill \
 $aws\
 $gcloud\
-$fill \
+$kubernetes\
 $time
 $username \
+$nix_shell \
 $character
 """
 
@@ -162,7 +164,7 @@ format = '\[[as $symbol]($style)\]'
 disabled = false
 style = 'bold blue'
 symbol = '🅰 '
-format = '[$symbol($profile)(\($region\))(\[$duration\])]($style)'
+format = '[$symbol($profile)(\($region\))(\[$duration\]) ]($style)'
 # [aws.region_aliases]
 # ap-southeast-2 = 'au'
 # us-east-1 = 'va'
@@ -170,10 +172,10 @@ format = '[$symbol($profile)(\($region\))(\[$duration\])]($style)'
 # CompanyGroupFrobozzOnCallAccess = 'Frobozz'
 [kubernetes]
 disabled = false
-format = '[$symbol$context( \($namespace\))]($style)'
+format = '[$symbol$context( \($namespace\)) ]($style)'
 [gcloud]
 disabled = false
-format = '[$symbol$account(@$domain)(\($region\))]($style)'
+format = '[$symbol$account(@$domain)(\($region\)) ]($style)'
 [lua]
 disabled = false
 symbol = " "
