@@ -111,6 +111,12 @@ In neovim Run `:Mason` command and install LSPs
 - Enable pnpm: `corepack enable pnpm`
 - Disable yarn: `corepack disable yarn`
 
+### Cmus
+
+- Add a Music Folder `:add /path/to/your/music`
+- Rescan the Library `:update-cache`
+- Remove Missing Files `:clear`
+
 ## Show cases
 
 ### Terminal (Kitty + fish + starship)
@@ -156,6 +162,10 @@ In neovim Run `:Mason` command and install LSPs
 
 - [Installing Fish shell on MacOS (Intel and Apple Silicon) using brew](https://gist.github.com/gagarine/cf3f65f9be6aa0e105b184376f765262)
 - [Installing tmux-256color for macOS](https://gist.github.com/bbqtd/a4ac060d6f6b9ea6fe3aabe735aa9d95)
+- [TIL: How to Fix ”Cannot Read Termcap Database” With Tmux and Kitty on MacOs](https://www.rockyourcode.com/til-how-to-fix-cannot-read-termcap-database-with-tmux-and-kitty-on-macos/)
+- [256 colors cheat sheet](https://www.ditig.com/publications/256-colors-cheat-sheet)
+- [Department of Information Technology](https://www.ditig.com/)
+
 
 ## Bugs
 
