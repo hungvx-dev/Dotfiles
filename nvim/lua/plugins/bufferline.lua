@@ -10,7 +10,7 @@ end
 
 return {
   "akinsho/bufferline.nvim",
-  enabled = false,
+  enabled = true,
   event = { "VeryLazy" },
   version = "*",
   dependencies = { "mini.icons" },
@@ -37,7 +37,6 @@ return {
         style = "underline",   --"icon" | "underline" | "none", },
       },
       separator_style = { "|", "|" },
-      -- separator_style = { "", "" },
       offsets = {
         {
           filetype = "neo-tree",

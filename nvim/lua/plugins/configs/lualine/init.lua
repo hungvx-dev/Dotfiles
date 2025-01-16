@@ -33,9 +33,9 @@ M.opts = {
       components.mode,
       components.branch,
     },
-    lualine_b = {
-      components.diagnostics,
-    },
+    -- lualine_b = {
+    --   components.diagnostics,
+    -- },
     lualine_c = {
       components.diff,
     },
@@ -59,6 +59,7 @@ M.opts = {
   extensions = {
     "fzf",
     "neo-tree",
+    "mason",
     "lazy",
   },
 }

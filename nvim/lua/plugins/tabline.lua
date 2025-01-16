@@ -2,7 +2,7 @@ return {
   "tabline",
   dev = true,
   -- lazy = false,
-  enabled = true,
+  enabled = false,
   event = "VimEnter",
   -- event = { "VeryLazy" },
   dependencies = { "mini.icons" },

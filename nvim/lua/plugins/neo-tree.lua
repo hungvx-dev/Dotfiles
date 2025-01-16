@@ -34,11 +34,14 @@ return {
       { "<leader>n", "<cmd>Neotree focus<cr>", desc = "NeoTree focus" },
     },
     opts = {
+      sources = { "filesystem", "buffers", "git_status" },
       open_files_do_not_replace_types = { "terminal", "Trouble", "trouble", "qf", "Outline" },
-      close_if_last_window = false,
+      filesystem = {
+        bind_to_cwd = true,
+        follow_current_file = { enabled = true },
+        use_libuv_file_watcher = true,
+      },
       popup_border_style = "rounded",
-      enable_git_status = true,
-      enable_diagnostics = true,
       nesting_rules = {
         [""] = { "" },
       },
@@ -132,29 +135,6 @@ return {
             end
           end)
         end,
-      },
-      filesystem = {
-        bind_to_cwd = true,
-
-        follow_current_file = {
-          enabled = true,
-          leave_dirs_open = true,
-        },
-        use_libuv_file_watcher = true,
-      },
-      buffers = {
-        follow_current_file = {
-          enabled = true,
-          leave_dirs_open = true,
-        },
-        group_empty_dirs = false,
-        show_unloaded = true,
-        window = {
-          mappings = {
-            ["."] = "set_root",
-            ["<bs>"] = "navigate_up",
-          },
-        },
       },
       window = {
         position = "right",
