@@ -25,6 +25,7 @@ M.duplicates = {
 return {
   {
     "iguanacucumber/magazine.nvim",
+    enabled = not HVIM.blink,
     name = "nvim-cmp",
     event = { "InsertEnter", "CmdlineEnter" },
     dependencies = {
@@ -34,9 +35,8 @@ return {
       { url = "https://codeberg.org/FelipeLema/cmp-async-path" },
       -- { "roobert/tailwindcss-colorizer-cmp.nvim", enabled = false },
     },
-    opts = function ()
+    opts = function()
       local cmp = require("cmp")
-      local cmp_window = require("cmp.config.window")
       local cmp_mapping = require("cmp.config.mapping")
       local defaults = require("cmp.config.default")()
       local color_cache = {}
@@ -52,11 +52,11 @@ return {
           ["<C-CR>"] = cmp.mapping.abort(),
         }),
         window = {
-          completion = cmp_window.bordered({
-            winhighlight = "FloatBorder:Pmenu,Search:None",
+          completion = cmp.config.window.bordered({
+            winhighlight = "Normal:Pmenu",
           }),
-          documentation = cmp_window.bordered({
-            winhighlight = "FloatBorder:Pmenu,Search:None",
+          documentation = cmp.config.window.bordered({
+            winhighlight = "Normal:Pmenu",
           }),
         },
         sources = cmp.config.sources({
@@ -90,13 +90,15 @@ return {
             return item
           end,
         },
-        -- experimental = {
-        --   ghost_text = true,
-        -- },
+        experimental = {
+          ghost_text = true,
+        },
         sorting = defaults.sorting,
+        matching = {
+          disallow_fuzzy_matching = true,
+        },
       }
-    end
-    ,
+    end,
   },
   {
     "nvim-cmp",
@@ -116,9 +118,11 @@ return {
         sources = cmp.config.sources({
           { name = "async_path" },
         }, {
-            { name = "cmdline" },
-          }),
-        matching = { disallow_symbol_nonprefix_matching = false },
+          { name = "cmdline" },
+        }),
+        matching = {
+          disallow_symbol_nonprefix_matching = false,
+        },
       })
     end,
   },

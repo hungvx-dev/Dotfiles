@@ -29,6 +29,7 @@ HVIM = {
     fold = true,
     indent = false,
   },
+  blink = true,
   ui = {
     colors = {
       "#fc5f66",
