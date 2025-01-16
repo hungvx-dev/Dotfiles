@@ -27,43 +27,39 @@
         nixpkgs = {
           config = { allowUnfree = true; };
           hostPlatform = "aarch64-darwin";
-          # overlays = [
-          #   (self: super: {
-          #     karabiner-elements = super.karabiner-elements.overrideAttrs (old: {
-          #       version = "14.13.0";
-          #       src = super.fetchurl {
-          #         inherit (old.src) url;
-          #         hash = "sha256-gmJwoht/Tfm5qMecmq1N6PSAIfWOqsvuHU8VDJY8bLw=";
-          #       };
-          #     });
-          #   })
-          # ];
         };
 
         environment.systemPackages = [
+          pkgs.git
           pkgs.neovim
-          pkgs.ghostty
           pkgs.kitty
+          pkgs.ghostty
           pkgs.tmux
+          pkgs.starship
+
           pkgs.ripgrep
           pkgs.fd
           pkgs.bat
           pkgs.fzf
-          pkgs.eza
-          pkgs.starship
+
           pkgs.zoxide
+          pkgs.eza
+          pkgs.dust
+
+          pkgs.yazi
+
           pkgs.delta
           pkgs.lazygit
+
           pkgs.stow
           pkgs.btop
           pkgs.cmus
           pkgs.cava
+
           pkgs.monitorcontrol
           pkgs.raycast
-          # pkgs.brave
           pkgs.discord
           pkgs.google-chrome
-          # pkgs.xmind
           pkgs.zoom-us
         ];
 
@@ -82,7 +78,7 @@
             "openkey"
             "figma"
             "pearcleaner"
-            # "karabiner-elements"
+            "karabiner-elements"
             "vlc"
             "xmind"
             "blackhole-2ch"
