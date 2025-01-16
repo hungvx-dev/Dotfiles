@@ -116,6 +116,7 @@ In neovim Run `:Mason` command and install LSPs
 - Add a Music Folder `:add /path/to/your/music`
 - Rescan the Library `:update-cache`
 - Remove Missing Files `:clear`
+- Changing the volume in cmus `:set softvol=true`
 
 ## Show cases
 
@@ -157,6 +158,8 @@ In neovim Run `:Mason` command and install LSPs
 
 - [CLI: Improved](https://remysharp.com/2018/08/23/cli-improved)
 - [Fuzzy Finding in Vim with fzf](https://bluz71.github.io/2018/12/04/fuzzy-finding-in-vim-with-fzf.html)
+- [Mike Griffin](https://mikegriffin.ie/blog/)
+- [Department of Information Technology](https://www.ditig.com/)
 
 ## References
 
@@ -164,7 +167,6 @@ In neovim Run `:Mason` command and install LSPs
 - [Installing tmux-256color for macOS](https://gist.github.com/bbqtd/a4ac060d6f6b9ea6fe3aabe735aa9d95)
 - [TIL: How to Fix ”Cannot Read Termcap Database” With Tmux and Kitty on MacOs](https://www.rockyourcode.com/til-how-to-fix-cannot-read-termcap-database-with-tmux-and-kitty-on-macos/)
 - [256 colors cheat sheet](https://www.ditig.com/publications/256-colors-cheat-sheet)
-- [Department of Information Technology](https://www.ditig.com/)
 
 
 ## Bugs

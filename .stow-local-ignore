@@ -11,7 +11,6 @@ gitui
 helix
 ideavim
 images
-karabiner
 languages
 nix-darwin
 nvim-config
@@ -22,6 +21,7 @@ ssh
 git
 zellij
 zsh
+zoxide
 \.DS_Store
 \.editorconfig
 \.gitignore
