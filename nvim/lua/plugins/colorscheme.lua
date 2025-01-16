@@ -33,7 +33,7 @@ return {
       colors.bg_search = "#4A68A0"
       colors.blue = "#74a2ff"
       colors.blue0 = "#3d59a1"
-      colors.blue1 = "#00c4e0"
+      colors.blue1 = "#00ffff"
       colors.blue6 = "#8cfffe"
       colors.blue7 = "#004b92"
       colors.dark3 = "#455a9d"
@@ -54,18 +54,21 @@ return {
       colors.yellow = "#EFFF00"
     end,
     on_highlights = function(hl, colors)
-      -- hl.WinSeparator = { fg = colors.fg_dark }
+      hl.WinSeparator = { fg = colors.blue1 }
       -- hl.NeoTreeTabSeparatorActive = { fg = colors.blue7 }
-      -- hl.NeoTreeWinSeparator = { fg = colors.blue7 }
+      hl.NeoTreeWinSeparator = { fg = colors.blue1 }
       hl.Cursor = { bg = colors.blue1 }
       hl.CursorLine = { bg = colors.none, underline = true, sp = colors.blue1 }
-      hl.PmenuSbar = { bg = colors.none }
       hl.CursorLineNr = { fg = colors.yellow }
       hl.FoldColumn.fg = colors.dark5
       hl.LineNrAbove.fg = colors.dark5
       hl.LineNrBelow.fg = colors.dark5
       hl.IncSearch.fg = colors.bg_popup
+      hl.FloatBorder = { fg = colors.blue1 }
       hl.Pmenu.bg = colors.none
+      hl.PmenuSel = { bg = colors.none, underline = true, sp = colors.blue1 }
+      hl.PmenuSbar = { bg = colors.none }
+      hl.PmenuThumb = { bg = colors.blue1 }
 
       hl.TelescopeTitle = { fg = colors.yellow }
       hl.NeoTreeDimText = { fg = colors.blue1 }
