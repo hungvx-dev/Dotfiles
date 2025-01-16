@@ -14,7 +14,9 @@ M.list = {
   emmet_ls = "html",
   ts_ls = "ts_ls",
   clangd = "c",
-  nil_ls = "nix"
+  nil_ls = "nix",
+  taplo = "toml",
+  jdtls = "java"
   -- textlsp = "org",
 }
 

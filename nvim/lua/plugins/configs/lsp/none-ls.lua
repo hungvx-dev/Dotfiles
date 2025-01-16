@@ -39,6 +39,7 @@ function M.setup()
     formatting.fish_indent,
     formatting.prettierd,
     formatting.clang_format,
+    formatting.google_java_format,
     -- formatting.nixpkgs_fmt,
     -- formatting.gout,
     -- formatting.goimports_reviser,

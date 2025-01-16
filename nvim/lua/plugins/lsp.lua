@@ -23,6 +23,7 @@ return {
         "prettierd",
         "clang-format",
         "nixpkgs-fmt",
+        "google-java-format",
         -- "prettier",
 
         -- For Linter
@@ -77,6 +78,11 @@ return {
       "nvimtools/none-ls-extras.nvim",
     },
     config = require("plugins.configs.lsp.none-ls").setup,
+  },
+
+  {
+    "mfussenegger/nvim-jdtls",
+    ft = "java",
   },
 }
 --   {
