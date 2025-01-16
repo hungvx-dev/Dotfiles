@@ -14,7 +14,7 @@ end
 
 return {
   {
-    enabled = true,
+    enabled = false,
     "nvim-telescope/telescope.nvim",
     cmd = "Telescope",
     dependencies = {
