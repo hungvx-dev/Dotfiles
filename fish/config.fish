@@ -10,6 +10,7 @@ if status is-interactive
 end
 
 set fish_path $HOME/.config/fish
+# . $fish_path/kitty.sh
 . $fish_path/alias/init.fish
 
 set -gx _ZO_DATA_DIR "$HOME/Dev/Dotfiles/zoxide"
@@ -27,7 +28,7 @@ set -g FZF_DEFAULT_COMMAND "fd --type=f --hidden --color=never --exclude .git"
 set -g FZF_DEFAULT_OPTS $FZF_DEFAULT_OPTS \
     '
   --border="rounded"
-  --color=fg:#d0d0d0,fg+:#5fd7ff,bg:-1,bg+:-1
+  --color=fg+:#5fd7ff,bg:-1,bg+:-1
   --color=hl:#d7005f,hl+:#d7005f,info:#afaf87,marker:#87ff00
   --bind ctrl-f:page-down,ctrl-b:page-up
   --bind ctrl-d:preview-page-down,ctrl-u:preview-page-up
@@ -47,3 +48,5 @@ set -g FZF_CTRL_R_OPTS "
   --header 'Press CTRL-Y to copy command into clipboard'"
 
 fzf --fish | source
+
+set -g EDITOR nvim
