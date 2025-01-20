@@ -30,7 +30,6 @@
         };
 
         environment.systemPackages = [
-          pkgs.git
           pkgs.neovim
           pkgs.kitty
           pkgs.ghostty
@@ -45,14 +44,16 @@
           pkgs.zoxide
           pkgs.eza
           pkgs.dust
-
+          pkgs.duf
+          pkgs.tldr
           pkgs.yazi
+          pkgs.btop
 
+          pkgs.git
           pkgs.delta
           pkgs.lazygit
 
           pkgs.stow
-          pkgs.btop
           pkgs.cmus
           pkgs.cava
 
@@ -61,6 +62,9 @@
           pkgs.discord
           pkgs.google-chrome
           pkgs.zoom-us
+
+          # Dev
+          pkgs.nodejs_22 # For cspell
         ];
 
         users.users."hungvx.dev" = {
@@ -78,6 +82,7 @@
             "openkey"
             "figma"
             "pearcleaner"
+            "brave-browser"
             "karabiner-elements"
             "vlc"
             "xmind"
