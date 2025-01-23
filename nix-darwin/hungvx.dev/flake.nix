@@ -117,7 +117,7 @@
               AppleICUForce24HourTime = true;
               ApplePressAndHoldEnabled = false;
               KeyRepeat = 1;
-              InitialKeyRepeat = 9;
+              InitialKeyRepeat = 10;
               "com.apple.swipescrolldirection" = false;
             };
             finder = {

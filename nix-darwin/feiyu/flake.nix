@@ -34,26 +34,37 @@
           pkgs.kitty
           pkgs.ghostty
           pkgs.tmux
+          pkgs.starship
+
           pkgs.ripgrep
           pkgs.fd
           pkgs.bat
           pkgs.fzf
-          pkgs.eza
-          pkgs.starship
+
           pkgs.zoxide
+          pkgs.eza
+          pkgs.dust
+          pkgs.duf
+          pkgs.tldr
+          pkgs.yazi
+          pkgs.btop
+
+          pkgs.git
           pkgs.delta
           pkgs.lazygit
+
           pkgs.stow
-          pkgs.btop
           pkgs.cmus
           pkgs.cava
+
           pkgs.monitorcontrol
           pkgs.raycast
-          # pkgs.brave
           pkgs.discord
           pkgs.google-chrome
-          # pkgs.xmind
           pkgs.zoom-us
+
+          # Dev
+          pkgs.nodejs_22 # For cspell
         ];
 
         users.users.feiyu = {
@@ -70,7 +81,6 @@
           casks = [
             "openkey"
             "figma"
-            "pearcleaner"
             "pearcleaner"
             "brave-browser"
             "karabiner-elements"
