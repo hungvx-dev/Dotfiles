@@ -1,6 +1,7 @@
 return {
   {
     "neovim/nvim-lspconfig",
+    enabled = HVIM.plugins.lsp,
     dependencies = {
       "b0o/SchemaStore.nvim",
       "mason.nvim",
@@ -12,6 +13,7 @@ return {
 
   {
     "williamboman/mason.nvim",
+    enabled = HVIM.plugins.lsp,
     cmd = { "Mason", "MasonInstall", "MasonUninstall", "MasonUninstallAll", "MasonLog" },
     build = ":MasonUpdate",
     opts = {
@@ -20,16 +22,21 @@ return {
         -- For Formatter
         "stylua", -- For lua
         "shfmt", -- For sh
-        "prettierd",
-        "clang-format",
-        "nixpkgs-fmt",
-        "google-java-format",
-        -- "prettier",
+        "prettierd", -- For js
+        "clang-format", -- For c/c++
+        "nixpkgs-fmt", -- For nix
+        "google-java-format", -- For java
+        "goimports", -- For go
+        "gofumpt", -- For go
 
         -- For Linter
-        "eslint_d",
+        "eslint_d", -- For js
         "hadolint", -- For docker
-        -- "cspell",
+        "cspell",
+
+        -- For Code action
+        "gomodifytags", -- For go
+        "impl" -- For go
       },
       ui = {
         border = "rounded",
@@ -65,12 +72,14 @@ return {
   },
   {
     "antosha417/nvim-lsp-file-operations",
+    enabled = HVIM.plugins.lsp,
     dependencies = { "nvim-lua/plenary.nvim" },
     opts = {},
   },
 
   {
     "nvimtools/none-ls.nvim",
+    enabled = HVIM.plugins.lsp and HVIM.plugins.none_ls,
     event = { "BufReadPost", "BufNewFile", "BufWritePre" },
     dependencies = {
       "nvim-lua/plenary.nvim",
@@ -82,6 +91,7 @@ return {
 
   {
     "mfussenegger/nvim-jdtls",
+    enabled = HVIM.plugins.lsp,
     ft = "java",
   },
 }

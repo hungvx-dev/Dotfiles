@@ -1,7 +1,7 @@
 local icons = require("icons")
 
 HVIM = {
-  colorscheme = "tokyonight",
+  colorscheme = "feiyu",
   leader = " ",
   use_icons = true,
   icons = icons,
@@ -29,16 +29,24 @@ HVIM = {
     fold = true,
     indent = false,
   },
-  blink = true,
+  plugins = {
+    blink = true,
+    lualine = true,
+    statuscol = true,
+    buffer = false,
+    treesitter = true,
+    lsp = true,
+    none_ls = true,
+  },
   ui = {
     colors = {
       "#fc5f66",
-      "#fde64d",
-      "#24aeee",
-      "#ff9f49",
-      "#86ef84",
+      "#FFEB0A",
+      "#3B93F7",
+      "#fb8500",
+      "#ccff33",
       "#b67cff",
-      "#4fd1c5",
+      "#00FFFF",
       "#f984d4",
       "#E8E2D9",
       "#a0aacc",

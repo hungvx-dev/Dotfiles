@@ -16,7 +16,8 @@ M.list = {
   clangd = "c",
   nil_ls = "nix",
   taplo = "toml",
-  jdtls = "java"
+  jdtls = "java",
+  gopls = "go"
   -- textlsp = "org",
 }
 

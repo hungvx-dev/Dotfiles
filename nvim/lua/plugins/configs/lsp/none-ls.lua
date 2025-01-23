@@ -25,6 +25,7 @@ function M.setup()
 
   local utils = require("null-ls.utils")
   local formatting = null_ls.builtins.formatting
+  local code_actions = null_ls.builtins.code_actions
   local diagnostics = null_ls.builtins.diagnostics
 
   local spell_config = {
@@ -40,13 +41,14 @@ function M.setup()
     formatting.prettierd,
     formatting.clang_format,
     formatting.google_java_format,
-    -- formatting.nixpkgs_fmt,
-    -- formatting.gout,
-    -- formatting.goimports_reviser,
-    -- formatting.golines,
+    formatting.goimports,
+    formatting.gofumpt,
 
     diagnostics.hadolint,
     diagnostics.fish,
+
+    code_actions.gomodifytags,
+    code_actions.impl,
 
     cspell.diagnostics.with(spell_config),
     cspell.code_actions.with(spell_config),
