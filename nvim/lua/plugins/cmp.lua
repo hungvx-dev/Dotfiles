@@ -25,7 +25,7 @@ M.duplicates = {
 return {
   {
     "iguanacucumber/magazine.nvim",
-    enabled = not HVIM.blink,
+    enabled = not HVIM.plugins.blink,
     name = "nvim-cmp",
     event = { "InsertEnter", "CmdlineEnter" },
     dependencies = {

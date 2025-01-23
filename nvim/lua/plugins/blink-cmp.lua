@@ -14,6 +14,13 @@ return {
       ["<C-k>"] = { "select_prev", "fallback" },
       ["<Tab>"] = { "select_next", "snippet_forward", "fallback" },
       ["<S-Tab>"] = { "select_prev", "snippet_backward", "fallback" },
+      cmdline = {
+        preset = "default",
+        ["<C-j>"] = { "select_next", "fallback" },
+        ["<C-k>"] = { "select_prev", "fallback" },
+        ["<Tab>"] = { "select_next", "snippet_forward", "fallback" },
+        ["<S-Tab>"] = { "select_prev", "snippet_backward", "fallback" },
+      },
     },
     appearance = {
       use_nvim_cmp_as_default = true,

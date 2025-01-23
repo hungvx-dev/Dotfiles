@@ -24,9 +24,12 @@ return {
           ["bg"] = "-1",
           ["bg+"] = "-1",
           ["hl"] = "#d7005f",
-          ["hl+"] = "#d7005f",
+          ["hl+"] = "#d7005f:underline:bold",
           ["gutter"] = "-1",
         },
+        -- fzf_opts = {
+        --   ["--no-reverse"] = "",
+        -- },
         defaults = {
           prompt = HVIM.icons.UI.Search,
           formatter = "path.dirname_first",
@@ -46,7 +49,6 @@ return {
         winopts = {
           title_pos = "center",
           preview = {
-            scrollchars = { "┃", "" },
             layout = "vertical",
             title_pos = "center",
           },

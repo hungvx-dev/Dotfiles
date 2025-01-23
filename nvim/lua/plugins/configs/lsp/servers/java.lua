@@ -6,7 +6,7 @@ return {
     "build.xml",           -- Ant
     "pom.xml",             -- Maven
     "settings.gradle",     -- Gradle
-    "settings.gradle.kts", -- Gradle
+    "settings.gradle.kts" -- Gradle
   ),
   filetypes = { "java" },
 }

@@ -143,7 +143,7 @@ return {
           -- ["<space>"] = "none",
           -- ["A"] = "command_b",
           ["Y"] = "copy_selector_path",
-          ["<C-x>"] = "split_with_window_picker",
+          ["<C-s>"] = "split_with_window_picker",
           ["<C-v>"] = "vsplit_with_window_picker",
         },
       },
