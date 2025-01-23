@@ -1,8 +1,8 @@
 return {
-  "tabline",
+  "buffer",
   dev = true,
   -- lazy = false,
-  enabled = false,
+  enabled = HVIM.plugins.buffer,
   event = "VimEnter",
   -- event = { "VeryLazy" },
   dependencies = { "mini.icons" },

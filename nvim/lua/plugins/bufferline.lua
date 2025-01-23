@@ -10,23 +10,23 @@ end
 
 return {
   "akinsho/bufferline.nvim",
-  enabled = true,
+  enabled = not HVIM.plugins.buffer,
   event = { "VeryLazy" },
+  -- event = { "BufEnter" },
   version = "*",
   dependencies = { "mini.icons" },
   keys = {
-    { "[b",         "<cmd>BufferLineCyclePrev<cr>", desc = "Prev Buffer" },
-    { "]b",         "<cmd>BufferLineCycleNext<cr>", desc = "Next Buffer" },
-    { "<leader>bf", "<cmd>BufferLinePick<cr>",      desc = "Next Buffer" },
-    { "<leader>bd", HVIM.ui.bufremove,              desc = "Delete Buffer" },
+    { "[b", "<cmd>BufferLineCyclePrev<cr>", desc = "Prev Buffer" },
+    { "]b", "<cmd>BufferLineCycleNext<cr>", desc = "Next Buffer" },
+    { "<leader>bf", "<cmd>BufferLinePick<cr>", desc = "Next Buffer" },
+    { "<leader>bd", HVIM.ui.bufremove, desc = "Delete Buffer" },
   },
   opts = {
     options = {
       mode = "buffers",
       numbers = "none",
-      -- stylua: ignore
+      -- themable = true,
       close_command = HVIM.ui.bufremove,
-      -- stylua: ignore
       right_mouse_command = HVIM.ui.bufremove,
       buffer_close_icon = HVIM.icons.UI.Close,
       close_icon = HVIM.icons.UI.Close,
@@ -34,7 +34,7 @@ return {
       diagnostics_update_in_insert = false,
       diagnostics_indicator = diagnostics_indicator,
       indicator = {
-        style = "underline",   --"icon" | "underline" | "none", },
+        style = "underline", --"icon" | "underline" | "none", },
       },
       separator_style = { "|", "|" },
       offsets = {
