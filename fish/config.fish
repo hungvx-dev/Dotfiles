@@ -28,7 +28,7 @@ set -g FZF_DEFAULT_COMMAND "fd --type=f --hidden --color=never --exclude .git"
 set -g FZF_DEFAULT_OPTS $FZF_DEFAULT_OPTS \
     '
   --border="rounded"
-  --color=fg+:#5fd7ff,bg:-1,bg+:-1
+  --color=fg:#545c7e,fg+:#5fd7ff,bg:-1,bg+:-1
   --color=hl:#d7005f,hl+:#d7005f,info:#afaf87,marker:#87ff00
   --bind ctrl-f:page-down,ctrl-b:page-up
   --bind ctrl-d:preview-page-down,ctrl-u:preview-page-up
