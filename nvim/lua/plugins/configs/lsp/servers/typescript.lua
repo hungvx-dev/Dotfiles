@@ -2,7 +2,7 @@ local lsp_fns = require("plugins.configs.lsp.functions")
 
 return {
   enabled = true,
-  -- root_dir = require("lspconfig/util").root_pattern("tsconfig.json", "package.json", "jsconfig.json"),
+  root_dir = require("lspconfig/util").root_pattern("tsconfig.json", "package.json", "jsconfig.json"),
   filetypes = {
     "javascript",
     "javascriptreact",

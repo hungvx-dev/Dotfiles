@@ -48,8 +48,8 @@ return {
         range = true,
       }
     end
-    -- client.server_capabilities.documentFormattingProvider = false
-    -- client.server_capabilities.documentRangeFormattingProvider = false
+    client.server_capabilities.documentFormattingProvider = false
+    client.server_capabilities.documentRangeFormattingProvider = false
     -- vim.lsp.inlay_hint.enable(true, { bufnr = buffer })
   end,
 }
