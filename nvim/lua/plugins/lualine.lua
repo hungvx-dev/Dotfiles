@@ -14,8 +14,8 @@ return {
     local feiyu = require("themes.feiyu")
     local theme = feiyu.lualine()
     local colors = feiyu.colors
-    vim.api.nvim_set_hl(0, "SLGitIcon", { fg = "#E8AB53", bg = "#303030" })
-    vim.api.nvim_set_hl(0, "SLBranchName", { fg = "#D4D4D4", bg = "#303030", bold = true })
+    vim.api.nvim_set_hl(0, "SLGitIcon", { fg = colors.orange, bg = colors.fg_gutter })
+    vim.api.nvim_set_hl(0, "SLBranchName", { fg = colors.fg, bg = colors.fg_gutter, bold = true })
 
     local M = {}
     M.has_fzf = function()
@@ -47,7 +47,7 @@ return {
       function()
         return "FZF"
       end,
-      color = { fg = "#15161e" },
+      color = { fg = colors.black },
     }
 
     return {
@@ -146,7 +146,7 @@ return {
             fmt = function()
               return "%P/%L"
             end,
-            color = { fg = "#15161e" },
+            color = { fg = colors.black },
           },
         },
       },

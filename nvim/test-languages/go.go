@@ -2,8 +2,8 @@
 package main
 
 import (
-	"fmt"
 	"errors"
+	"fmt"
 )
 
 // Struct declaration
@@ -20,8 +20,8 @@ type Greeter interface {
 
 // Enum-like constants
 const (
-	StatusActive   = "ACTIVE"
-	StatusInactive = "INACTIVE"
+	StatusActive    = "ACTIVE"
+	StatusInactive  = "INACTIVE"
 	StatusSuspended = "SUSPENDED"
 )
 
@@ -42,8 +42,8 @@ func wrapInSlice(value interface{}) []interface{} {
 
 func main() {
 	// Variable declaration
-	var name string = "John Doe"
-	var age int = 30
+	name := "John Doe"
+	age := 30
 
 	// Slice and map
 	numbers := []int{1, 2, 3, 4, 5}

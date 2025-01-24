@@ -11,7 +11,7 @@ end
 return {
   "akinsho/bufferline.nvim",
   enabled = not HVIM.plugins.buffer,
-  event = { "VeryLazy" },
+  event = "VimEnter",
   -- event = { "BufEnter" },
   version = "*",
   dependencies = { "mini.icons" },

@@ -23,7 +23,6 @@ M.colors = {
   blue2 = "#0db9d7",
   blue5 = "#9be3ff",
   blue6 = "#8cfffe",
-  blue7 = "#004b92",
 
   yellow = "#FFEB0A",
   cyan = "#00FFFF",
@@ -561,9 +560,9 @@ M.highlights = {
     fg = M.colors.dark5,
   },
 
-  FoldColumn = {
-    bg = M.colors.none,
-    fg = M.colors.cyan,
+  Folded = {
+    bg = M.colors.bg_search,
+    fg = M.colors.cyan
   },
 
   AlphaButtons = {
