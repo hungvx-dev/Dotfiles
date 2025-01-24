@@ -24,8 +24,8 @@ set -x LG_CONFIG_FILE "$HOME/.config/lazygit/config.yml"
 set -x STARSHIP_CONFIG "$HOME/.config/starship/starship.toml"
 set -x RIPGREP_CONFIG_PATH "$HOME/.config/ripgrep/.ripgreprc"
 
-set -g FZF_DEFAULT_COMMAND "fd --type=f --hidden --color=never --exclude .git"
-set -g FZF_DEFAULT_OPTS $FZF_DEFAULT_OPTS \
+set -xg FZF_DEFAULT_COMMAND "fd --type=f --hidden --color=never --exclude .git"
+set -xg FZF_DEFAULT_OPTS $FZF_DEFAULT_OPTS \
     '
   --border="rounded"
   --color=fg:#545c7e,fg+:#5fd7ff,bg:-1,bg+:-1
@@ -34,13 +34,13 @@ set -g FZF_DEFAULT_OPTS $FZF_DEFAULT_OPTS \
   --bind ctrl-d:preview-page-down,ctrl-u:preview-page-up
   '
 
-set -g FZF_CTRL_T_COMMAND $FZF_DEFAULT_COMMAND
-set -g FZF_CTRL_T_OPTS "
+set -xg FZF_CTRL_T_COMMAND $FZF_DEFAULT_COMMAND
+set -xg FZF_CTRL_T_OPTS "
   --preview 'bat -n --color=always --line-range :500 {}'
   --bind 'ctrl-/:change-preview-window(down|hidden|)'"
 
-set -g FZF_ALT_C_COMMAND "fd --type=d --hidden --color=never --exclude .git"
-set -g FZF_ALT_C_OPTS "--preview 'eza --tree --color=always --level=2 {}'"
+set -xg FZF_ALT_C_COMMAND "fd --type=d --hidden --color=never --exclude .git"
+set -xg FZF_ALT_C_OPTS "--preview 'eza --tree --color=always --level=2 {}'"
 
 set -g FZF_CTRL_R_OPTS "
   --bind 'ctrl-y:execute-silent(echo -n {2..} | pbcopy)+abort'
