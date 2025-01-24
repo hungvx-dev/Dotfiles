@@ -32,14 +32,17 @@
         environment.systemPackages = [
           pkgs.neovim
           pkgs.kitty
-          pkgs.ghostty
+          # pkgs.ghostty
           pkgs.tmux
           pkgs.starship
 
+          pkgs.fzf
           pkgs.ripgrep
           pkgs.fd
           pkgs.bat
-          pkgs.fzf
+          # pkgs.ueberzugpp
+          # pkgs.chafa
+          # pkgs.viu
 
           pkgs.zoxide
           pkgs.eza
