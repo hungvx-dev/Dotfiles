@@ -22,7 +22,6 @@
         # $ nix-env -qaP | grep wget
         nix = {
           settings.experimental-features = "nix-command flakes";
-          configureBuildUsers = true;
         };
         nixpkgs = {
           config = { allowUnfree = true; };
@@ -90,8 +89,13 @@
             "vlc"
             "xmind"
             "blackhole-2ch"
+            # "transmission"
           ];
-          onActivation.cleanup = "zap";
+          onActivation = {
+            cleanup = "zap";
+            autoUpdate = true;
+            upgrade = true;
+          };
         };
 
         programs = {
@@ -106,7 +110,6 @@
         ];
 
         services = {
-          nix-daemon = { enable = true; };
           yabai = { enable = true; };
           skhd = { enable = true; };
           # karabiner-elements = { enable = true; };
