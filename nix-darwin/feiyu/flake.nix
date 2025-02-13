@@ -22,7 +22,6 @@
         # $ nix-env -qaP | grep wget
         nix = {
           settings.experimental-features = "nix-command flakes";
-          configureBuildUsers = true;
         };
         nixpkgs = {
           config = { allowUnfree = true; };
@@ -32,14 +31,17 @@
         environment.systemPackages = [
           pkgs.neovim
           pkgs.kitty
-          pkgs.ghostty
+          # pkgs.ghostty
           pkgs.tmux
           pkgs.starship
 
+          pkgs.fzf
           pkgs.ripgrep
           pkgs.fd
           pkgs.bat
-          pkgs.fzf
+          # pkgs.ueberzugpp
+          # pkgs.chafa
+          # pkgs.viu
 
           pkgs.zoxide
           pkgs.eza
@@ -87,8 +89,13 @@
             "vlc"
             "xmind"
             "blackhole-2ch"
+            # "transmission"
           ];
-          onActivation.cleanup = "zap";
+          onActivation = {
+            cleanup = "zap";
+            autoUpdate = true;
+            upgrade = true;
+          };
         };
 
         programs = {
@@ -103,7 +110,6 @@
         ];
 
         services = {
-          nix-daemon = { enable = true; };
           # yabai = { enable = true; };
           # skhd = { enable = true; };
         };
