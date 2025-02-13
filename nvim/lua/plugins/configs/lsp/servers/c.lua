@@ -27,6 +27,8 @@ return {
     "--completion-style=detailed",
     "--function-arg-placeholders",
     "--fallback-style=llvm",
+    "--pch-storage=memory",
+    "--limit-results=50",
   },
   init_options = {
     usePlaceholders = true,
