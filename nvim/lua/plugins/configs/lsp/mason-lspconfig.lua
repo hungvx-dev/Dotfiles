@@ -6,7 +6,7 @@ function M.setup()
   require("mason-lspconfig").setup({
     ensure_installed = servers.ensure_installed,
     handlers = { setup },
-    -- automatic_installation = true,
+    automatic_installation = true,
   })
   require("plugins.configs.lsp.diagnostic").setup()
   require("plugins.configs.lsp.keymaps")
