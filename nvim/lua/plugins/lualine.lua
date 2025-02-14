@@ -16,15 +16,11 @@ return {
     local colors = feiyu.colors
 
     local M = {
-      fzf = {
-        lualine_a = {},
-        lualine_y = {},
-        lualine_z = {},
-      },
+      has_fzf = function()
+        return pcall(require, "fzf-lua")
+      end,
+      fzf = {},
     }
-    M.fzf.has_fzf = function()
-      return pcall(require, "fzf-lua")
-    end
 
     M.fzf.lualine_a = {
       {
@@ -34,10 +30,9 @@ return {
         color = { fg = colors.black },
       },
     }
-
     M.fzf.lualine_y = {
       function()
-        if not M.fzf.has_fzf() then
+        if not M.has_fzf() then
           return ""
         end
 
@@ -46,11 +41,10 @@ return {
         return fzf.path.entry_to_file(selected).path
       end,
     }
-
     M.fzf.lualine_z = {
       {
         function()
-          if not M.fzf.has_fzf() then
+          if not M.has_fzf() then
             return ""
           end
 
