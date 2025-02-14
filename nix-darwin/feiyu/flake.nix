@@ -110,8 +110,8 @@
         ];
 
         services = {
-          # yabai = { enable = true; };
-          # skhd = { enable = true; };
+          yabai = { enable = true; };
+          skhd = { enable = true; };
         };
 
         system = {
