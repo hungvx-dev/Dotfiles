@@ -38,6 +38,8 @@
 - [delta > diff](https://github.com/dandavison/delta)
 - [btop > top](https://github.com/aristocratos/btop)
 - [tldr > man](https://github.com/tldr-pages/tldr)
+- [duf > df](https://github.com/muesli/duf)
+- [dust > du](https://github.com/bootandy/dust)
 - [prettyping > ping](https://github.com/denilsonsa/prettyping)
 
 ## Installing
