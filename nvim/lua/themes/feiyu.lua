@@ -562,7 +562,7 @@ M.highlights = {
 
   Folded = {
     bg = M.colors.bg_search,
-    fg = M.colors.cyan
+    fg = M.colors.cyan,
   },
 
   AlphaButtons = {
@@ -830,6 +830,15 @@ M.highlights = {
   EyelinerSecondary = {
     fg = "#afff5f",
     underline = false,
+  },
+
+  SLGitIcon = {
+    fg = M.colors.orange,
+    bg = M.colors.fg_gutter,
+  },
+  SLBranchName = {
+    fg = M.colors.orange,
+    bg = M.colors.fg_gutter,
   },
 }
 

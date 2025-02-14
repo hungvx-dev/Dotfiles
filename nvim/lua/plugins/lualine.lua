@@ -14,40 +14,51 @@ return {
     local feiyu = require("themes.feiyu")
     local theme = feiyu.lualine()
     local colors = feiyu.colors
-    vim.api.nvim_set_hl(0, "SLGitIcon", { fg = colors.orange, bg = colors.fg_gutter })
-    vim.api.nvim_set_hl(0, "SLBranchName", { fg = colors.fg, bg = colors.fg_gutter, bold = true })
 
-    local M = {}
-    M.has_fzf = function()
+    local M = {
+      fzf = {
+        lualine_a = {},
+        lualine_y = {},
+        lualine_z = {},
+      },
+    }
+    M.fzf.has_fzf = function()
       return pcall(require, "fzf-lua")
     end
-    M.fzf_picker = {
+
+    M.fzf.lualine_a = {
+      {
+        function()
+          return "FZF"
+        end,
+        color = { fg = colors.black },
+      },
+    }
+
+    M.fzf.lualine_y = {
       function()
-        if not M.has_fzf() then
+        if not M.fzf.has_fzf() then
           return ""
         end
 
-        local info_string = vim.inspect(require("fzf-lua").get_info()["fnc"])
-        return info_string:gsub('"', "")
+        local fzf = require("fzf-lua")
+        local selected = fzf.get_info().selected
+        return fzf.path.entry_to_file(selected).path
       end,
-      color = { fg = "#15161e" },
     }
 
-    M.fzf_element = function()
-      if not M.has_fzf() then
-        return ""
-      end
+    M.fzf.lualine_z = {
+      {
+        function()
+          if not M.fzf.has_fzf() then
+            return ""
+          end
 
-      local fzf = require("fzf-lua")
-      local selected = fzf.get_info().selected
-      return fzf.path.entry_to_file(selected).path
-    end
-
-    M.fzf_statusline = {
-      function()
-        return "FZF"
-      end,
-      color = { fg = colors.black },
+          local info_string = vim.inspect(require("fzf-lua").get_info()["fnc"])
+          return info_string:gsub('"', "")
+        end,
+        color = { fg = "#15161e" },
+      },
     }
 
     return {
@@ -152,11 +163,7 @@ return {
       },
       extensions = {
         {
-          sections = {
-            lualine_a = { M.fzf_statusline },
-            lualine_y = { M.fzf_element },
-            lualine_z = { M.fzf_picker },
-          },
+          sections = M.fzf,
           filetypes = { "fzf" },
         },
         "neo-tree",
