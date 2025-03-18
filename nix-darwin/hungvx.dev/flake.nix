@@ -56,10 +56,11 @@
           pkgs.lazygit
 
           pkgs.stow
+
           pkgs.cmus
           pkgs.cava
 
-          pkgs.monitorcontrol
+          # pkgs.monitorcontrol
           pkgs.raycast
           pkgs.discord
           pkgs.google-chrome
@@ -87,8 +88,9 @@
             "brave-browser"
             "karabiner-elements"
             "vlc"
-            "xmind"
             "blackhole-2ch"
+            "clop"
+            # "xmind"
             # "transmission"
           ];
           onActivation = {
