@@ -1,8 +1,19 @@
+local highlight = {
+  "RainbowRed",
+  "RainbowYellow",
+  "RainbowBlue",
+  "RainbowOrange",
+  "RainbowGreen",
+  "RainbowViolet",
+  "RainbowCyan",
+}
+
 return {
   {
     "lukas-reineke/indent-blankline.nvim",
     main = "ibl",
-    event = { "BufReadPost", "BufNewFile", "BufWritePre" },
+    event = { "BufReadPost" },
+    dependencies = { "nvim-treesitter" },
     opts = {
       exclude = {
         filetypes = {
@@ -25,27 +36,18 @@ return {
     },
     config = function(_, opts)
       if HVIM.highlight.indent then
-        opts.indent.highlight = {
-          "RainbowRed",
-          "RainbowYellow",
-          "RainbowBlue",
-          "RainbowOrange",
-          "RainbowGreen",
-          "RainbowViolet",
-          "RainbowCyan",
-        }
-
+        opts.scope = { highlight = highlight }
         local hooks = require("ibl.hooks")
-        -- create the highlight groups in the highlight setup hook, so they are reset
-        -- every time the colorscheme changes
         hooks.register(hooks.type.HIGHLIGHT_SETUP, function()
-          for i, hi in ipairs(opts.indent.highlight) do
+          for i, hi in ipairs(highlight) do
             vim.api.nvim_set_hl(0, hi, { fg = HVIM.ui.colors[i] })
           end
         end)
-        vim.g.rainbow_delimiters = { highlight = opts.indent.highlight }
+
+        vim.g.rainbow_delimiters = { highlight = highlight }
         hooks.register(hooks.type.SCOPE_HIGHLIGHT, hooks.builtin.scope_highlight_from_extmark)
       end
+
       require("ibl").setup(opts)
     end,
   },
@@ -56,8 +58,8 @@ return {
     opts = {
       query = {
         javascript = "rainbow-parens",
-        vue = "rainbow-script",
         tsx = "rainbow-parens",
+        -- vue = "rainbow-script",
       },
     },
     config = function(_, opts)

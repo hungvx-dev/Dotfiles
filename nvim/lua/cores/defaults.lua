@@ -26,8 +26,8 @@ HVIM = {
     removed = icons.Git.LineRemoved .. " ",
   },
   highlight = {
-    fold = true,
-    indent = false,
+    fold = false,
+    indent = true,
   },
   plugins = {
     blink = true,
