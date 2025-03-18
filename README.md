@@ -17,6 +17,8 @@
 - **Git**:
   - [Lazygit](./lazygit)
   - [delta](https://github.com/dandavison/delta) - a syntax-highlighting pager for git, diff, and grep output
+- File Manager:
+  - [Yazi](./yazi/)
 - **Version Manager**:
   - [fnm](https://github.com/Schniz/fnm) - 🚀 fast and simple Node.js version manager, built in Rust
 - **Font**: [Nerd Font](https://github.com/ryanoasis/nerd-fonts)
@@ -30,6 +32,7 @@
 - **Music**: [Music](./Music)
 
 ## CLI: improved
+
 - [bat > cat ](https://github.com/sharkdp/bat)
 - [fd > find](https://github.com/sharkdp/fd)
 - [sd > sed](https://github.com/chmln/sd)
@@ -45,14 +48,17 @@
 ## Installing
 
 1. To download the package manager
+
 ```sh
 sh <(curl -L https://nixos.org/nix/install)
 ```
 
 2. To download my configuration
+
 ```sh
 nix-shell -p git --run "git clone git@github.com:hungvx-dev/Dotfiles.git ~/Dev/Dotfiles"
 ```
+
 3. To install it
 
 ```sh
@@ -75,7 +81,9 @@ echo $(which fish) | sudo tee -a /etc/shells
 chsh -s $(which fish)
 
 ```
+
 - Install fisher
+
 ```sh
 curl -sL https://raw.githubusercontent.com/jorgebucaran/fisher/main/functions/fisher.fish | source && fisher install jorgebucaran/fisher
 
@@ -85,6 +93,7 @@ fisher install kidonng/zoxide.fish
 ### Configuation git + ssh
 
 - Git
+
 ```sh
 cd ~/Dev/Dotfiles
 ln -s $(pwd)/git/me/ ~/.config/git
@@ -92,11 +101,12 @@ ln -s $(pwd)/git/me/.gitconfig ~/.config/git/config
 ```
 
 - SSH
+
 ```sh
 ln -s $(pwd)/ssh/config ~/.ssh/config
 ```
 
---  [Setup ssh](./ssh/guide.md)
+- [Setup ssh](./ssh/guide.md)
 
 ### Configuation neovim
 
@@ -106,7 +116,6 @@ neovim
 ```
 
 In neovim Run `:Mason` command and install LSPs
-
 
 ### Nodejs
 
@@ -169,7 +178,6 @@ In neovim Run `:Mason` command and install LSPs
 - [Installing tmux-256color for macOS](https://gist.github.com/bbqtd/a4ac060d6f6b9ea6fe3aabe735aa9d95)
 - [TIL: How to Fix ”Cannot Read Termcap Database” With Tmux and Kitty on MacOs](https://www.rockyourcode.com/til-how-to-fix-cannot-read-termcap-database-with-tmux-and-kitty-on-macos/)
 - [256 colors cheat sheet](https://www.ditig.com/publications/256-colors-cheat-sheet)
-
 
 ## Bugs
 
