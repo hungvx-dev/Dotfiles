@@ -16,17 +16,11 @@ function M.enable_eslint()
 end
 
 function M.setup()
-  local status_ok, null_ls = pcall(require, "null-ls")
-  local cspell = require("cspell")
-
-  if not status_ok then
-    return
-  end
-
+  local null_ls = require("null-ls")
   local utils = require("null-ls.utils")
-  local formatting = null_ls.builtins.formatting
+
+  local cspell = require("cspell")
   local code_actions = null_ls.builtins.code_actions
-  local diagnostics = null_ls.builtins.diagnostics
 
   local spell_config = {
     config = {
@@ -35,18 +29,6 @@ function M.setup()
   }
 
   M.sources = {
-    formatting.shfmt,
-    formatting.stylua,
-    formatting.fish_indent,
-    formatting.prettierd,
-    formatting.clang_format,
-    formatting.google_java_format,
-    formatting.goimports,
-    formatting.gofumpt,
-
-    diagnostics.hadolint,
-    diagnostics.fish,
-
     code_actions.gomodifytags,
     code_actions.impl,
 
@@ -55,8 +37,6 @@ function M.setup()
   }
 
   if M.enable_eslint() then
-    table.insert(M.sources, require("none-ls.formatting.eslint_d"))
-    table.insert(M.sources, require("none-ls.diagnostics.eslint_d"))
     table.insert(M.sources, require("none-ls.code_actions.eslint_d"))
   end
 

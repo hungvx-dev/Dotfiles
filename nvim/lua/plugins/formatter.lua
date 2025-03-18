@@ -1,7 +1,7 @@
 return {
   {
     "stevearc/conform.nvim",
-    enabled = false,
+    enabled = true,
     dependencies = { "mason.nvim" },
     cmd = "ConformInfo",
     keys = {
@@ -16,30 +16,38 @@ return {
     },
     opts = {
       default_format_opts = {
-        timeout_ms = 3000,
+        timeout_ms = 1000,
         async = false, -- not recommended to change
         quiet = false, -- not recommended to change
         lsp_format = "fallback", -- not recommended to change
       },
       formatters_by_ft = {
-        lua = { "stylua" },
         sh = { "shfmt" },
-        css = { "prettierd" },
+        fish = { "fish_indent" },
+
+        cpp = { "clang_format" },
+        c = { "clang_format" },
+        go = { "goimports", "gofumpt" },
+        lua = { "stylua" },
+        java = { "google_java_format" },
+
         graphql = { "prettierd" },
-        handlebars = { "prettierd" },
-        html = { "prettierd" },
-        javascript = { "prettierd" },
-        javascriptreact = { "prettierd" },
-        json = { "prettierd" },
-        jsonc = { "prettierd" },
-        less = { "prettierd" },
+
         markdown = { "prettierd" },
         ["markdown.mdx"] = { "prettierd" },
-        scss = { "prettierd" },
-        typescript = { "prettierd" },
-        typescriptreact = { "prettierd" },
-        vue = {  "eslint_d", "prettierd"},
         yaml = { "prettierd" },
+
+        javascript = { "prettier", "eslint_d" }, -- Chạy prettier trước, sau đó eslint_d để fix
+        typescript = { "prettier", "eslint_d" },
+        javascriptreact = { "prettier", "eslint_d" },
+        typescriptreact = { "prettier", "eslint_d" },
+        vue = { "prettierd", "eslint_d" },
+        html = { "prettier" },
+        css = { "prettier" },
+        scss = { "prettierd" },
+        less = { "prettierd" },
+        json = { "prettier" },
+        jsonc = { "prettierd" },
       },
     },
   },
