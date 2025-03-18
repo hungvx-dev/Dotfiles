@@ -41,20 +41,13 @@ func wrapInSlice(value interface{}) []interface{} {
 }
 
 func main() {
-	// Variable declaration
-	name := "John Doe"
-	age := 30
-
-	// Slice and map
 	numbers := []int{1, 2, 3, 4, 5}
 	doubledNumbers := make([]int, len(numbers))
 
-	// For loop
 	for i, num := range numbers {
 		doubledNumbers[i] = num * 2
 	}
 
-	// While-like loop (Go uses "for")
 	count := 0
 	for count < 3 {
 		fmt.Println("Count is:", count)
