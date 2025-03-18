@@ -33,10 +33,11 @@ return {
         "eslint_d", -- For js
         "hadolint", -- For docker
         "cspell",
+        "oxlint",
 
         -- For Code action
         "gomodifytags", -- For go
-        "impl" -- For go
+        "impl", -- For go
       },
       ui = {
         border = "rounded",
@@ -94,11 +95,23 @@ return {
     enabled = HVIM.plugins.lsp,
     ft = "java",
   },
+
+  {
+    "j-hui/fidget.nvim",
+    enabled = true,
+    event = "LspAttach",
+    opts = {
+      notification = {
+        window = {
+          border = "rounded",
+          winblend = 0,
+        },
+      },
+      integration = {
+        ["neo-tree"] = {
+          enable = true,
+        },
+      },
+    },
+  },
 }
---   {
---     "j-hui/fidget.nvim",
---     enabled = false,
---     tag = "legacy",
---     event = "LspAttach",
---   },
--- }

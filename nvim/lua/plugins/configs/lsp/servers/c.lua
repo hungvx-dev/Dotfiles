@@ -13,9 +13,9 @@ return {
     ).find_git_ancestor(fname)
   end,
   filetypes = { "c", "cpp", "proto" },
-  keys = {
-    { "<leader>ch", "<cmd>ClangdSwitchSourceHeader<cr>", desc = "Switch Source/Header (C/C++)" },
-  },
+  -- keys = {
+  --   { "<leader>ch", "<cmd>ClangdSwitchSourceHeader<cr>", desc = "Switch Source/Header (C/C++)" },
+  -- },
   capabilities = {
     offsetEncoding = { "utf-16" },
   },

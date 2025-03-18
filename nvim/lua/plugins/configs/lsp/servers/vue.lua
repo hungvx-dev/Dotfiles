@@ -1,10 +1,12 @@
 return {
   enabled = true,
-  root_dir = require("lspconfig").util.root_pattern(
+  root_dir = require("lspconfig.util").root_pattern(
     "vue.config.js",
     "vue.config.ts",
     "nuxt.config.js",
-    "nuxt.config.ts"
+    "nuxt.config.ts",
+    "vite.config.ts",
+    "vite.config.js"
   ),
   filetypes = { "vue" },
   init_options = {
