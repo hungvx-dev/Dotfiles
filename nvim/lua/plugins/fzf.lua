@@ -4,33 +4,35 @@ return {
     cmd = "FzfLua",
     opts = function(_, opts)
       return {
-        fzf_colors = false,
-        -- fzf_colors = {
-        --   true,
-        --   ["fg+"] = "#5fd7ff:underline:bold",
-        --   ["bg"] = "-1",
-        --   ["bg+"] = "-1",
-        --   ["hl"] = "#d7005f",
-        --   ["hl+"] = "#d7005f:underline:bold",
-        --   ["gutter"] = "-1",
-        -- },
+        -- fzf_colors = false,
+        fzf_colors = {
+          true,
+          ["fg"] = "#ffffff",
+          ["fg+"] = "#5fd7ff:underline:bold",
+          ["bg"] = "-1",
+          ["bg+"] = "-1",
+          ["hl"] = "#d7005f",
+          ["hl+"] = "#d7005f:underline:bold",
+          ["info"] = "#ffffff",
+          ["gutter"] = "-1",
+        },
         -- fzf_opts = {
         --   ["--no-reverse"] = "",
         -- },
         defaults = {
+          file_icons = "mini",
           prompt = HVIM.icons.UI.Search,
           formatter = "path.dirname_first",
         },
         winopts = {
-          title_pos = "center",
           preview = {
             layout = "vertical",
-            title_pos = "center",
           },
         },
         files = {
           cwd_prompt = false,
           actions = false,
+          -- fd_opts = [[--color=never --hidden --type f --type l --exclude .git]],
         },
         grep = {
           actions = false,
@@ -65,7 +67,7 @@ return {
     end,
     keys = {
       -- Files and buffers
-      { "<leader>fb", "<cmd>FzfLua buffers<cr>", desc = "Buffers" },
+      { "<leader>fb", "<cmd>FzfLua buffers sort_mru=true sort_lastused=true<cr>", desc = "Buffers" },
       { "<leader>fp", "<cmd>FzfLua files<cr>", desc = "Find Files (root dir)" },
       { "<leader>fo", "<cmd>FzfLua oldfiles<cr>", desc = "Recent" }, -- git
 
