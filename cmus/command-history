@@ -1,3 +1,5 @@
+update-cache 
+add ~/Dev/Dotfiles/Music/
+load ~/Dev/Dotfiles/Music/
 colorscheme tokyo
 set softvol=true
-add ~/Dev/Dotfiles/Music/
