@@ -30,13 +30,22 @@ HVIM = {
     indent = true,
   },
   plugins = {
+    alpha = true,
     blink = true,
+    blink_nvim = true,
+    blink_pairs = true,
+    mini_icon = true,
+    eyeliner = true,
     lualine = true,
     statuscol = true,
     buffer = false,
+    bufferline = true,
     treesitter = true,
     lsp = true,
-    none_ls = true,
+    git = true,
+    fzf = true,
+    none_ls = false,
+    blink_cmp = true,
   },
   ui = {
     colors = {
