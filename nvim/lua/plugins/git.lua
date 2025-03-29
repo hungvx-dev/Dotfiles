@@ -1,7 +1,8 @@
 return {
   {
     "lewis6991/gitsigns.nvim",
-    event = { "BufReadPre", "BufNewFile" },
+    enabled = HVIM.plugins.git,
+    event = { "BufReadPost" },
     opts = {
       signs = {
         add = { text = HVIM.icons.UI.Line.BoldMid },
@@ -10,6 +11,13 @@ return {
         topdelete = { text = HVIM.icons.UI.Line.BoldMid },
         changedelete = { text = HVIM.icons.UI.Line.BoldMid },
         untracked = { text = HVIM.icons.UI.Line.BoldMid },
+      },
+      signs_staged = {
+        add = { text = HVIM.icons.UI.Line.BoldMid },
+        change = { text = HVIM.icons.UI.Line.BoldMid },
+        delete = { text = HVIM.icons.UI.Line.BoldMid },
+        topdelete = { text = HVIM.icons.UI.Line.BoldMid },
+        changedelete = { text = HVIM.icons.UI.Line.BoldMid },
       },
       signcolumn = true, -- Toggle with `:Gitsigns toggle_signs`
       current_line_blame = true, -- Toggle with `:Gitsigns toggle_current_line_blame`
@@ -28,28 +36,27 @@ return {
         row = 0,
         col = 1,
       },
-      on_attach = function(bufnr)
-        local gitsigns = require("gitsigns")
-        local function map(mode, l, r, opts)
-          opts = opts or {}
-          opts.buffer = bufnr
-          vim.keymap.set(mode, l, r, opts)
+      on_attach = function(buffer)
+        local gs = package.loaded.gitsigns
+
+        local function map(mode, l, r, desc)
+          vim.keymap.set(mode, l, r, { buffer = buffer, desc = desc })
         end
 
         -- Navigation
-        map("n", "]c", function()
+        map("n", "]h", function()
           if vim.wo.diff then
             vim.cmd.normal({ "]c", bang = true })
           else
-            gitsigns.nav_hunk("next")
+            gs.nav_hunk("next")
           end
         end)
 
-        map("n", "[c", function()
+        map("n", "[h", function()
           if vim.wo.diff then
             vim.cmd.normal({ "[c", bang = true })
           else
-            gitsigns.nav_hunk("prev")
+            gs.nav_hunk("prev")
           end
         end)
 
