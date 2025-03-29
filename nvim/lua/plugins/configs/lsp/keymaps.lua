@@ -1,7 +1,12 @@
 local keymap = vim.keymap
 keymap.set("n", "!", vim.diagnostic.open_float)
-keymap.set("n", "[d", vim.diagnostic.goto_prev)
-keymap.set("n", "]d", vim.diagnostic.goto_next)
+keymap.set("n", "[d", function()
+  vim.diagnostic.jump({ count = -1, float = true })
+end)
+
+keymap.set("n", "]d", function()
+  vim.diagnostic.jump({ count = 1, float = true })
+end)
 keymap.set("n", "<space>q", vim.diagnostic.setloclist)
 keymap.set("n", "<space>rs", ":LspRestart<CR>", { noremap = true, silent = true })
 
@@ -30,7 +35,11 @@ vim.api.nvim_create_autocmd("LspAttach", {
     keymap.set("n", "gR", vim.lsp.buf.rename, opts)
     keymap.set("n", "gD", vim.lsp.buf.declaration, opts)
     keymap.set({ "n", "v" }, "ga", vim.lsp.buf.code_action, opts)
-    keymap.set("n", "K", vim.lsp.buf.hover, opts)
-    keymap.set("n", "gK", vim.lsp.buf.signature_help, opts)
+    keymap.set("n", "K", function()
+      vim.lsp.buf.hover({ border = "rounded" })
+    end, opts)
+    keymap.set("n", "gK", function()
+      vim.lsp.buf.signature_help()
+    end, opts)
   end,
 })

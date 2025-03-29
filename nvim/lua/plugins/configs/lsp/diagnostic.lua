@@ -6,7 +6,7 @@ M.opts = {
     underline = true,
     update_in_insert = false,
     -- virtual_text = { spacing = 4, prefix = "●" },
-    virtual_text = false,
+    -- virtual_text = false,
     severity_sort = true,
     float = {
       focusable = true,
@@ -14,12 +14,6 @@ M.opts = {
       border = "rounded",
       source = true,
     },
-  },
-  float = {
-    focusable = true,
-    focus = false,
-    border = "rounded",
-    silent = true,
   },
 }
 
@@ -30,9 +24,6 @@ function M.setup()
   end
 
   vim.diagnostic.config(M.opts.diagnostic)
-
-  vim.lsp.handlers["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, M.opts.float)
-  vim.lsp.handlers["textDocument/signatureHelp"] = vim.lsp.with(vim.lsp.handlers.signature_help, M.opts.float)
 end
 
 return M

@@ -17,7 +17,8 @@ M.list = {
   nil_ls = "nix",
   taplo = "toml",
   jdtls = "java",
-  gopls = "go"
+  gopls = "go",
+  rust_analyzer = "rust",
   -- textlsp = "org",
 }
 

@@ -20,7 +20,7 @@ function M.setup()
   local utils = require("null-ls.utils")
 
   local cspell = require("cspell")
-  local code_actions = null_ls.builtins.code_actions
+  -- local code_actions = null_ls.builtins.code_actions
 
   local spell_config = {
     config = {
@@ -29,8 +29,8 @@ function M.setup()
   }
 
   M.sources = {
-    code_actions.gomodifytags,
-    code_actions.impl,
+    -- code_actions.gomodifytags,
+    -- code_actions.impl,
 
     cspell.diagnostics.with(spell_config),
     cspell.code_actions.with(spell_config),
