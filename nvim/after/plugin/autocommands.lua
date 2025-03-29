@@ -14,7 +14,7 @@ autocmd("TextYankPost", {
 })
 
 autocmd("FileType", {
-  pattern = { "lua", "javascript", "typescript", "cpp" },
+  pattern = { "lua", "javascript", "typescript", "cpp", "rust" },
   callback = function()
     vim.opt.formatoptions:remove({ "o" })
   end,

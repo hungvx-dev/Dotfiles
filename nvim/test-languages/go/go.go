@@ -55,6 +55,8 @@ func main() {
 	}
 
 	// If statement
+	age := 0
+
 	if age > 18 {
 		fmt.Println("You are an adult.")
 	} else {
@@ -80,6 +82,7 @@ func main() {
 	}
 
 	// Struct usage
+	name := ""
 	user := User{
 		ID:    1,
 		Name:  name,

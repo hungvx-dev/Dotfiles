@@ -1,5 +1,6 @@
 return {
   "jinh0/eyeliner.nvim",
+  enabled = HVIM.plugins.eyeliner,
   event = { "BufReadPre", "BufNewFile" },
   opts = {
     highlight_on_key = true,

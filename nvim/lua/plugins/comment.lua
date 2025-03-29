@@ -54,14 +54,15 @@ return {
         -- TEST: Test
         FIX = { icon = HVIM.icons.Comment.Fix },
         TODO = { icon = HVIM.icons.Comment.Todo },
-        HACK = { icon = HVIM.icons.Comment.Hack },
+        HACK = { icon = HVIM.icons.Comment.Hack, color = "hack" },
         WARN = { icon = HVIM.icons.Comment.Warn },
         PERF = { icon = HVIM.icons.Comment.Perf },
         NOTE = { icon = HVIM.icons.Comment.Note },
         TEST = { icon = HVIM.icons.Comment.Test },
       },
       colors = {
-        test = { "#FF00FF" },
+        test = { "@comment.test" },
+        hack = { "@comment.hack" },
       },
       highlight = {
         before = "",

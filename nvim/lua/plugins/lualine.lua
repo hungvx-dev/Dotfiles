@@ -1,9 +1,10 @@
 return {
   "nvim-lualine/lualine.nvim",
-  event = "VimEnter",
   enabled = HVIM.plugins.lualine,
+  event = "VeryLazy",
   dependencies = { "mini.icons" },
   init = function()
+    vim.g.lualine_laststatus = 3
     if vim.fn.argc(-1) > 0 then
       vim.o.statusline = " "
     else
@@ -11,55 +12,17 @@ return {
     end
   end,
   opts = function()
-    local feiyu = require("themes.feiyu")
-    local theme = feiyu.lualine()
-    local colors = feiyu.colors
+    local lualine_require = require("lualine_require")
+    lualine_require.require = require
 
-    local M = {
-      has_fzf = function()
-        return pcall(require, "fzf-lua")
-      end,
-      fzf = {},
-    }
-
-    M.fzf.lualine_a = {
-      {
-        function()
-          return "FZF"
-        end,
-        color = { fg = colors.black },
-      },
-    }
-    M.fzf.lualine_y = {
-      function()
-        if not M.has_fzf() then
-          return ""
-        end
-
-        local fzf = require("fzf-lua")
-        local selected = fzf.get_info().selected
-        return fzf.path.entry_to_file(selected).path
-      end,
-    }
-    M.fzf.lualine_z = {
-      {
-        function()
-          if not M.has_fzf() then
-            return ""
-          end
-
-          local info_string = vim.inspect(require("fzf-lua").get_info()["fnc"])
-          return info_string:gsub('"', "")
-        end,
-        color = { fg = "#15161e" },
-      },
-    }
+    vim.o.laststatus = vim.g.lualine_laststatus
+    local theme = require("themes.feiyu.plugins.lualine")
 
     return {
       options = {
         icons_enabled = HVIM.use_icons,
-        theme = theme,
-        globalstatus = true,
+        theme = theme.theme,
+        globalstatus = vim.o.laststatus == 3,
         section_separators = { left = "", right = "" },
         component_separators = { left = "", right = "" },
         disabled_filetypes = {
@@ -68,7 +31,6 @@ return {
             "help",
             "dashboard",
             "alpha",
-            "TelescopePrompt",
           },
         },
       },
@@ -86,14 +48,7 @@ return {
             icon = "%#SLGitIcon#" .. HVIM.icons.Git.Branch .. "%*" .. "%#SLBranchName#",
           },
         },
-        lualine_b = {
-          -- {
-          --   "diagnostics",
-          --   sources = { "nvim_lsp" },
-          --   symbols = HVIM.bold_signs,
-          --   always_visible = true,
-          -- }
-        },
+        lualine_b = {},
         lualine_c = {
           {
             "diff",
@@ -108,11 +63,7 @@ return {
               end
             end,
             symbols = HVIM.git_line,
-            diff_color = {
-              added = { fg = colors.git.add },
-              modified = { fg = colors.git.change },
-              removed = { fg = colors.git.delete },
-            },
+            diff_color = theme.diff_color,
           },
           {
             function()
@@ -151,15 +102,11 @@ return {
             fmt = function()
               return "%P/%L"
             end,
-            color = { fg = colors.black },
           },
         },
       },
       extensions = {
-        {
-          sections = M.fzf,
-          filetypes = { "fzf" },
-        },
+        "fzf",
         "neo-tree",
         "mason",
         "lazy",

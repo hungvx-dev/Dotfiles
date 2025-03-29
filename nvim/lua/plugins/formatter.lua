@@ -30,6 +30,7 @@ return {
         go = { "goimports", "gofumpt" },
         lua = { "stylua" },
         java = { "google_java_format" },
+        -- rust = { "cargo-fmt" },
 
         graphql = { "prettierd" },
 
@@ -37,17 +38,24 @@ return {
         ["markdown.mdx"] = { "prettierd" },
         yaml = { "prettierd" },
 
-        javascript = { "prettier", "eslint_d" }, -- Chạy prettier trước, sau đó eslint_d để fix
-        typescript = { "prettier", "eslint_d" },
-        javascriptreact = { "prettier", "eslint_d" },
-        typescriptreact = { "prettier", "eslint_d" },
-        vue = { "prettierd", "eslint_d" },
+        javascript = { "eslint_d", "prettier" },
+        typescript = { "eslint_d", "prettier" },
+        javascriptreact = { "eslint_d", "prettier" },
+        typescriptreact = { "eslint_d", "prettier" },
+        vue = { "eslint_d", "prettierd" },
         html = { "prettier" },
         css = { "prettier" },
         scss = { "prettierd" },
         less = { "prettierd" },
         json = { "prettier" },
         jsonc = { "prettierd" },
+      },
+      formatters = {
+        -- ["cargo-fmt"] = {
+        --   command = "cargo",
+        --   args = { "fmt", "--", "$FILENAME" },
+        --   stdin = false,
+        -- },
       },
     },
   },

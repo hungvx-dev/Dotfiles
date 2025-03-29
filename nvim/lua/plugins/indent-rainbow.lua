@@ -11,6 +11,7 @@ local highlight = {
 return {
   {
     "lukas-reineke/indent-blankline.nvim",
+    enabled = not HVIM.plugins.blink_nvim,
     main = "ibl",
     event = { "BufReadPost" },
     dependencies = { "nvim-treesitter" },
@@ -38,11 +39,11 @@ return {
       if HVIM.highlight.indent then
         opts.scope = { highlight = highlight }
         local hooks = require("ibl.hooks")
-        hooks.register(hooks.type.HIGHLIGHT_SETUP, function()
-          for i, hi in ipairs(highlight) do
-            vim.api.nvim_set_hl(0, hi, { fg = HVIM.ui.colors[i] })
-          end
-        end)
+        -- hooks.register(hooks.type.HIGHLIGHT_SETUP, function()
+          -- for i, hi in ipairs(highlight) do
+          --   vim.api.nvim_set_hl(0, hi, { fg = HVIM.ui.colors[i] })
+          -- end
+        -- end)
 
         vim.g.rainbow_delimiters = { highlight = highlight }
         hooks.register(hooks.type.SCOPE_HIGHLIGHT, hooks.builtin.scope_highlight_from_extmark)
@@ -53,7 +54,8 @@ return {
   },
   {
     "hiphish/rainbow-delimiters.nvim",
-    event = { "BufReadPre", "BufNewFile" },
+    enabled = not HVIM.plugins.blink_nvim,
+    event = { "BufReadPost" },
     dependencies = { "nvim-treesitter" },
     opts = {
       query = {

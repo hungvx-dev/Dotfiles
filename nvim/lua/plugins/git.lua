@@ -60,15 +60,18 @@ return {
           end
         end)
 
-        map("n", "<leader>hb", function()
-          gitsigns.blame_line({ full = false })
+        map({ "n", "v" }, "<leader>ghs", ":Gitsigns stage_hunk<CR>", "Stage Hunk")
+        map("n", "<leader>ghd", gs.diffthis, "Diff This")
+        map("n", "<leader>gb", function()
+          gs.blame_line({ full = false })
         end)
       end,
     },
   },
   {
     "akinsho/git-conflict.nvim",
-    event = { "BufReadPre" },
+    enabled = HVIM.plugins.git,
+    event = { "BufReadPost" },
     version = "*",
     config = true,
   },

@@ -1,5 +1,6 @@
 return {
   "echasnovski/mini.icons",
+  enabled = HVIM.plugins.mini_icon,
   opts = {
     file = {
       [".keep"] = { glyph = "󰊢", hl = "MiniIconsGrey" },

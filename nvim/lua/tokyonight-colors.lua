@@ -1,10 +1,3 @@
--- hi Pmenu guibg=#16161e guifg=#c0caf5
--- hi PmenuMatch guibg=#16161e guifg=#2ac3de
--- hi PmenuMatchSel guibg=#343a55 guifg=#2ac3de
--- hi PmenuSbar guibg=#1f1f29
--- hi PmenuSel guibg=#343a55
--- hi PmenuThumb guibg=#3b4261
--- hi Search guibg=#3d59a1 guifg=#c0caf5
 local colors = {
   _name = "tokyonight_night",
   _style = "night",

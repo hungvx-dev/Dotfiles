@@ -1,10 +1,3 @@
-if HVIM.highlight.fold then
-  for i, color in ipairs(HVIM.ui.colors) do
-    vim.api.nvim_set_hl(0, "FoldLevel_" .. i, { fg = color })
-  end
-  vim.wo.foldnestmax = #HVIM.ui.colors
-end
-
 local ffi = require("ffi")
 ffi.cdef([[
         typedef struct {} Error;
@@ -43,13 +36,13 @@ end
 function M.folds()
   local wp = C.find_window_by_handle(vim.g.statusline_winid, error)
   if C.compute_foldcolumn(wp, 0) == 0 then
-    return ""
+    return "  "
   end
 
   local foldinfo = C.fold_info(wp, vim.v.lnum)
   local lv = foldinfo.level
   if lv == 0 then
-    return ""
+    return "  "
   end
 
   local before_foldinfo = C.fold_info(wp, vim.v.lnum - 1)
@@ -82,7 +75,7 @@ end
 function M.statuscol()
   return table.concat({
     "%s",
-    "%{v:relnum == 0?v:lnum:v:relnum}%=",
+    "%l%=",
     M.folds(),
   })
 end
@@ -103,10 +96,7 @@ function M.setup(opts)
     })
   end
   if opts.wrap then
-    vim.api.nvim_create_autocmd(
-      "FileType",
-      { group = id, pattern = opts.wrap, command = "setlocal stc=%s%{v:relnum==0?v:lnum:v:relnum}%=" }
-    )
+    vim.api.nvim_create_autocmd("FileType", { group = id, pattern = opts.wrap, command = "setlocal stc=%s%l" })
     vim.api.nvim_set_option_value("foldcolumn", "0", { scope = "local" })
   end
 end

@@ -1,7 +1,7 @@
 return {
   "windwp/nvim-autopairs",
-  enabled = true,
-  event = { "BufReadPre", "BufNewFile" },
+  enabled = not HVIM.plugins.blink_pairs,
+  event = { "BufReadPost" },
   dependencies = { "nvim-treesitter" },
   opts = {
     check_ts = true,

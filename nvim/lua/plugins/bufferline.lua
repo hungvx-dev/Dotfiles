@@ -10,9 +10,9 @@ end
 
 return {
   "akinsho/bufferline.nvim",
-  enabled = not HVIM.plugins.buffer,
-  event = "VimEnter",
-  -- event = { "BufEnter" },
+  enabled = not HVIM.plugins.buffer and HVIM.plugins.bufferline,
+  -- event = "BufWinEnter",
+  event = "VeryLazy",
   version = "*",
   dependencies = { "mini.icons" },
   keys = {
@@ -21,10 +21,13 @@ return {
     { "<leader>bf", "<cmd>BufferLinePick<cr>", desc = "Next Buffer" },
     { "<leader>bd", HVIM.ui.bufremove, desc = "Delete Buffer" },
   },
+  init = function()
+    vim.o.showtabline = 0
+  end,
   opts = {
     options = {
-      mode = "buffers",
-      numbers = "none",
+      -- mode = "buffers",
+      -- numbers = "none",
       -- themable = true,
       close_command = HVIM.ui.bufremove,
       right_mouse_command = HVIM.ui.bufremove,
@@ -54,4 +57,16 @@ return {
       },
     },
   },
+  config = function(_, opts)
+    vim.o.showtabline = 2           -- always show buffers/tabs
+    require("bufferline").setup(opts)
+    -- Fix bufferline when restoring a session
+    vim.api.nvim_create_autocmd({ "BufAdd", "BufDelete" }, {
+      callback = function()
+        vim.schedule(function()
+          pcall(nvim_bufferline)
+        end)
+      end,
+    })
+  end,
 }

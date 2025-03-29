@@ -10,10 +10,10 @@ local source_mapping = {
 return {
   {
     "saghen/blink.cmp",
-    enabled = HVIM.plugins.blink,
-    event = "InsertEnter",
-    -- version = "*",
-    build = "nix run .#build-plugin",
+    enabled = HVIM.plugins.blink_cmp,
+    event = { "InsertEnter", "CmdlineChanged", "CmdlineEnter" },
+    version = "*",
+    -- build = "cargo build --release",
     dependencies = {
       "rafamadriz/friendly-snippets",
       {
@@ -30,14 +30,32 @@ return {
         ["<C-Space>"] = { "show", "fallback" },
         ["<C-j>"] = { "select_next", "fallback" },
         ["<C-k>"] = { "select_prev", "fallback" },
-        ["<Tab>"] = { "select_next", "snippet_forward", "fallback" },
-        ["<S-Tab>"] = { "select_prev", "snippet_backward", "fallback" },
+        ["<Tab>"] = { "snippet_forward", "fallback" },
+        ["<S-Tab>"] = { "snippet_backward", "fallback" },
         ["<CR>"] = { "accept", "fallback" },
         ["<C-u>"] = { "scroll_documentation_up", "fallback" },
         ["<C-d>"] = { "scroll_documentation_down", "fallback" },
         -- ["<S-k>"] = { "show_signature", "fallback" },
       },
       completion = {
+        documentation = {
+          window = { border = "rounded" },
+          auto_show = true,
+          auto_show_delay_ms = 200,
+        },
+        keyword = { range = "full" },
+        trigger = {
+          show_on_accept_on_trigger_character = false,
+          show_on_insert_on_trigger_character = true,
+        },
+        accept = {
+          auto_brackets = { enabled = true },
+        },
+        list = {
+          selection = { preselect = false, auto_insert = true },
+          cycle = { from_top = true },
+        },
+        ghost_text = { enabled = false },
         menu = {
           border = "rounded",
           draw = {
@@ -59,11 +77,7 @@ return {
                 width = { fill = true, max = 60 },
                 text = function(ctx)
                   local highlights_info = require("colorful-menu").blink_highlights(ctx)
-                  if highlights_info ~= nil then
-                    return highlights_info.label
-                  else
-                    return ctx.label
-                  end
+                  return highlights_info and highlights_info.label or ctx.label
                 end,
                 highlight = function(ctx)
                   local highlights = {}
@@ -89,30 +103,6 @@ return {
             },
           },
         },
-        documentation = {
-          window = { border = "rounded" },
-          auto_show = true,
-          auto_show_delay_ms = 200,
-        },
-        keyword = {
-          range = "full",
-        },
-        trigger = {
-          show_on_accept_on_trigger_character = false,
-          show_on_insert_on_trigger_character = true,
-        },
-        accept = {
-          auto_brackets = {
-            enabled = true,
-          },
-        },
-        list = {
-          selection = {
-            preselect = false,
-            auto_insert = false,
-          },
-        },
-        ghost_text = { enabled = true },
       },
       cmdline = {
         enabled = true,
@@ -120,7 +110,7 @@ return {
           preset = "default",
           ["<C-j>"] = { "select_next", "fallback" },
           ["<C-k>"] = { "select_prev", "fallback" },
-          ["<Tab>"] = { "select_next", "snippet_forward", "fallback" },
+          ["<Tab>"] = { "select_next", "snippet_forward", "show", "fallback" },
           ["<S-Tab>"] = { "select_prev", "snippet_backward", "fallback" },
         },
         completion = {
@@ -141,7 +131,7 @@ return {
       },
       fuzzy = { implementation = "rust" },
       signature = {
-        enabled = false,
+        enabled = true,
         window = { border = "rounded" },
       },
     },

@@ -37,6 +37,10 @@ return {
       "gomod",
       "gowork",
       "gosum",
+
+      -- rust
+      "rust",
+      "ron",
     },
     sync_install = true,
     auto_install = true,

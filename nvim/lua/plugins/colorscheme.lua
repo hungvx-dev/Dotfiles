@@ -73,7 +73,6 @@ return {
       hl.TelescopeTitle = { fg = colors.yellow }
       hl.NeoTreeDimText = { fg = colors.blue1 }
       hl.GitSignsCurrentLineBlame = { fg = colors.blue0 }
-      -- hl.LspInlayHint.bg = "#000000"
     end,
   },
 }

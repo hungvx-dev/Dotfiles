@@ -21,6 +21,8 @@ function add(a: number, b: number): number {
 // Context for theme
 const ThemeContext = createContext<Theme>("light");
 
+console.log()
+
 // Functional component
 const Greeting: React.FC<GreetingProps> = ({ name, age }) => {
   const theme = useContext(ThemeContext);

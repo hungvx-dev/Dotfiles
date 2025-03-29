@@ -39,7 +39,7 @@ return {
     opts = function()
       local actions = require("telescope.actions")
       local telescopeConfig = require("telescope.config")
-      local vimgrep_arguments = { unpack(telescopeConfig.values.vimgrep_arguments) }
+      local vimgrep_arguments = { table.unpack(telescopeConfig.values.vimgrep_arguments) }
 
       table.insert(vimgrep_arguments, "--hidden")
       table.insert(vimgrep_arguments, "--glob")
