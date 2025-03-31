@@ -2,8 +2,8 @@ return {
   {
     "catgoose/nvim-colorizer.lua",
     enabled = true,
-    event = "BufReadPre",
-    opts = { -- set to setup table
+    event = "VeryLazy",
+    opts = {
       filetypes = {
         "html",
         "css",
@@ -29,7 +29,7 @@ return {
         hsl_fn = true,
         tailwind = "both",
         tailwind_opts = {
-          update_names = true, -- When using tailwind = 'both', update tailwind names from LSP results.  See tailwind section
+          update_names = true,
         },
         mode = "virtualtext",
         virtualtext = "",

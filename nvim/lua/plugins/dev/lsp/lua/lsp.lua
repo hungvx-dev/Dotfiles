@@ -1,15 +1,55 @@
 local M = {}
 local keymap = vim.keymap
 
-function M.diagnostic_config(diagnostic)
+---@param diagnostic vim.diagnostic.Opts
+function M.config_diagnostic(diagnostic)
   vim.diagnostic.config(diagnostic)
-  keymap.set("n", "!", vim.diagnostic.open_float)
+  local diagnostics_virtual_lines = false
+  local augroup_id = vim.api.nvim_create_augroup("diagnostics", { clear = true })
+
+  local function set_virtual_lines(enabled)
+    vim.diagnostic.config({ virtual_lines = enabled and { current_line = true } or false })
+    diagnostics_virtual_lines = enabled
+  end
+
+  local function enable_diagnostics()
+    set_virtual_lines(true)
+    vim.api.nvim_clear_autocmds({ group = augroup_id, event = "CursorMoved" }) -- Xóa autocmd cũ nếu có
+    vim.api.nvim_create_autocmd("CursorMoved", {
+      group = augroup_id,
+      once = true,
+      callback = function()
+        set_virtual_lines(false)
+      end,
+    })
+  end
+
+  local function disable_diagnostics()
+    set_virtual_lines(false)
+    vim.api.nvim_clear_autocmds({ group = augroup_id, event = "CursorMoved" })
+  end
+
+  local function toggle_diagnostics()
+    if diagnostics_virtual_lines then
+      disable_diagnostics()
+    else
+      enable_diagnostics()
+    end
+  end
+
+  local function jump_with_diagnostics(jumpCount)
+    vim.diagnostic.jump({ count = jumpCount })
+    vim.defer_fn(enable_diagnostics, 1)
+  end
+
+  keymap.set("n", "!", toggle_diagnostics)
   keymap.set("n", "[d", function()
-    vim.diagnostic.jump({ count = -1, float = true })
+    jump_with_diagnostics(-1)
   end)
   keymap.set("n", "]d", function()
-    vim.diagnostic.jump({ count = 1, float = true })
+    jump_with_diagnostics(1)
   end)
+  -- keymap.set("n", "!", vim.diagnostic.open_float)
   keymap.set("n", "<space>q", vim.diagnostic.setloclist)
 end
 
@@ -20,7 +60,8 @@ function M.capabilities()
 end
 
 function M.setup(opts)
-  M.diagnostic_config(opts.diagnostic)
+  M.opts = opts
+  M.config_diagnostic(opts.diagnostic)
 
   vim.lsp.config(
     "*",

@@ -2,7 +2,7 @@ vim.g.loaded_netrw = 1
 vim.g.loaded_netrwPlugin = 1
 
 -- #=========================== 4. Displaying text =============================#
-vim.wo.wrap = false               -- Long lines wrap
+vim.wo.wrap = true               -- Long lines wrap
 vim.wo.breakindent = vim.wo.wrap         -- Preserve indentation in wrapped text
 vim.wo.linebreak = vim.wo.wrap
 vim.wo.number = true              -- Show the line number for each line

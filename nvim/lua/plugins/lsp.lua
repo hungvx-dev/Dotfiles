@@ -25,9 +25,9 @@ return {
       },
       ---@type vim.diagnostic.Opts
       diagnostic = {
-        underline = true,
-        virtual_text = false,
-        virtual_lines = { current_line = true },
+        -- underline = true,
+        -- virtual_text = false,
+        -- virtual_lines = { current_line = true },
         -- float = {
         --   focusable = true,
         --   focus = false,
