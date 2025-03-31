@@ -2,6 +2,8 @@ return {
   "nvim-treesitter/nvim-treesitter",
   build = ":TSUpdate",
   enabled = HVIM.plugins.treesitter,
+  main = "nvim-treesitter.configs",
+  event = { "VeryLazy" },
   dependencies = {
     { "nvim-treesitter/nvim-treesitter-textobjects" },
   },
@@ -17,20 +19,21 @@ return {
       "lua",
       "typescript",
       "javascript",
-      "jsdoc",
       "html",
       "css",
+      "tsx",
       "bash",
       "json",
-      "json5",
-      "tsx",
       "vue",
       "yaml",
-      "markdown",
-      "markdown_inline",
+      -- "markdown",
+      -- "markdown_inline",
       "hurl",
       "gitignore",
       "dockerfile",
+
+      "jsdoc",
+      "luadoc",
 
       -- "go",
       "go",
@@ -40,7 +43,7 @@ return {
 
       -- rust
       "rust",
-      "ron",
+      -- "ron",
     },
     sync_install = true,
     auto_install = true,
@@ -82,9 +85,6 @@ return {
         },
       },
     },
+    additional_vim_regex_highlighting = false,
   },
-  config = function(_, opts)
-    local treesitter_config = require("nvim-treesitter.configs")
-    treesitter_config.setup(opts)
-  end,
 }

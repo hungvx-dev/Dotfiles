@@ -1,20 +1,46 @@
 return {
-  "brenoprata10/nvim-highlight-colors",
-  enabled = true,
-  event = { "BufReadPost" },
-  opts = {
-    render = "virtual",
-    virtual_symbol = "",
-    -- virtual_symbol_suffix = " ",
-    -- virtual_symbol_position = "inline",
-    -- enable_hex = true,
-    -- enable_short_hex = true,
-    -- enable_rgb = true,
-    -- enable_hsl = true,
-    -- enable_var_usage = true,
-    -- enable_named_colors = true,
-    -- enable_tailwind = true,
-    -- exclude_filetypes = {},
-    -- exclude_buftypes = {},
+  {
+    "catgoose/nvim-colorizer.lua",
+    enabled = true,
+    event = "BufReadPre",
+    opts = { -- set to setup table
+      filetypes = {
+        "html",
+        "css",
+        "javascript",
+        "typescript",
+        "typescriptreact",
+        "javascriptreact",
+        "lua",
+        "scss",
+        "conf",
+        "fish",
+        "yml",
+        "vue",
+      },
+      -- buftypes = {}, -- Buftype options.  Accepts table like `user_default_options`
+      -- Boolean | List of usercommands to enable.  See User commands section.
+      -- user_commands = true, -- Enable all or some usercommands
+      lazy_load = true, -- Lazily schedule buffer highlighting setup function
+      user_default_options = {
+        names = false,
+        RRGGBB = true,
+        rgb_fn = true,
+        hsl_fn = true,
+        tailwind = "both",
+        tailwind_opts = {
+          update_names = true, -- When using tailwind = 'both', update tailwind names from LSP results.  See tailwind section
+        },
+        mode = "virtualtext",
+        virtualtext = "",
+        virtualtext_inline = "before",
+        virtualtext_mode = "foreground",
+        always_update = false,
+        -- hooks to invert control of colorizer
+        hooks = {
+          disable_line_highlight = false,
+        },
+      },
+    },
   },
 }

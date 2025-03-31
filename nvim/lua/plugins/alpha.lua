@@ -2,7 +2,6 @@ return {
   "goolord/alpha-nvim",
   enabled = HVIM.plugins.alpha,
   event = "VimEnter",
-  dependencies = { "mini.icons" },
   opts = function()
     local dashboard = require("alpha.themes.dashboard")
     local logo = {

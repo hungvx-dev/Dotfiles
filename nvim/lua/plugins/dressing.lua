@@ -14,7 +14,7 @@ return {
   end,
   opts = {
     select = {
-      backend = { "telescope", "builtin", "nui" },
+      backend = { "builtin", "nui" },
     },
   },
 }

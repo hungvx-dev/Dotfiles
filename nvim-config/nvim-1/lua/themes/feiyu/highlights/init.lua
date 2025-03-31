@@ -1,0 +1,13 @@
+return {
+  base = require("themes.feiyu.highlights.base"),
+  diagnostic = require("themes.feiyu.highlights.diagnostic"),
+  mini_icon = require("themes.feiyu.highlights.mini-icon"),
+  alpha = require("themes.feiyu.highlights.alpha"),
+  lsp = require("themes.feiyu.highlights.lsp"),
+  blink_cmp = require("themes.feiyu.highlights.blink_cmp"),
+  neotree = require("themes.feiyu.highlights.neotree"),
+  fzf = require("themes.feiyu.highlights.fzf"),
+  git = require("themes.feiyu.highlights.git"),
+  rainbow = require("themes.feiyu.highlights.rainbow"),
+  mix = require("themes.feiyu.highlights.mix"),
+}

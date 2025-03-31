@@ -1,31 +1,83 @@
 return {
   {
-    "neovim/nvim-lspconfig",
-    enabled = HVIM.plugins.lsp,
-    dependencies = {
-      "b0o/SchemaStore.nvim",
-      "mason.nvim",
-      "williamboman/mason-lspconfig.nvim",
-    },
+    "lsp",
+    dev = true,
     event = { "BufReadPre", "BufNewFile" },
-    config = require("plugins.configs.lsp.mason-lspconfig").setup,
+    dependencies = { "mason.nvim" },
+    opts = {
+      lsp = {
+        "c",
+        "css",
+        "cssmodules",
+        "docker-compose",
+        "docker",
+        "emmet",
+        "go",
+        "html",
+        "json",
+        "lua",
+        "nix",
+        "rust",
+        "tailwindcss",
+        "vtsls",
+        "vue",
+        "yaml",
+      },
+      ---@type vim.diagnostic.Opts
+      diagnostic = {
+        underline = true,
+        virtual_text = false,
+        virtual_lines = { current_line = true },
+        -- float = {
+        --   focusable = true,
+        --   focus = false,
+        --   border = "rounded",
+        --   source = true,
+        -- },
+        signs = {
+          text = {
+            [vim.diagnostic.severity.ERROR] = HVIM.signs.Error,
+            [vim.diagnostic.severity.WARN] = HVIM.signs.Warn,
+            [vim.diagnostic.severity.INFO] = HVIM.signs.Info,
+            [vim.diagnostic.severity.HINT] = HVIM.signs.Hint,
+          },
+        },
+      },
+    },
   },
-
   {
     "williamboman/mason.nvim",
-    enabled = HVIM.plugins.lsp,
     cmd = { "Mason", "MasonInstall", "MasonUninstall", "MasonUninstallAll", "MasonLog" },
     build = ":MasonUpdate",
+    event = "VeryLazy",
     opts = {
       opts_extend = { "ensure_installed" },
       ensure_installed = {
+        -- LSP
+        "vtsls",
+        "vue-language-server",
+        "json-lsp",
+        "html-lsp",
+        "emmet-ls",
+        "css-lsp",
+        "cssmodules-language-server",
+        "tailwindcss-language-server",
+        "lua-language-server",
+        "yaml-language-server",
+        "clangd",
+        "gopls",
+        "rust-analyzer",
+        "nil",
+        "dockerfile-language-server",
+        "docker-compose-language-service",
+
         -- For Formatter
         "stylua", -- For lua
         "shfmt", -- For sh
         "prettierd", -- For js
         "clang-format", -- For c/c++
         "nixpkgs-fmt", -- For nix
-        "google-java-format", -- For java
+        -- "google-java-format", -- For java
         "goimports", -- For go
         "gofumpt", -- For go
 
@@ -34,6 +86,7 @@ return {
         "hadolint", -- For docker
         "cspell",
         "oxlint",
+        -- "stylelint",
 
         -- For Code action
         "gomodifytags", -- For go
@@ -73,29 +126,10 @@ return {
   },
   {
     "antosha417/nvim-lsp-file-operations",
-    enabled = HVIM.plugins.lsp,
+    -- enabled = HVIM.plugins.lsp,
     dependencies = { "nvim-lua/plenary.nvim" },
     opts = {},
   },
-
-  {
-    "nvimtools/none-ls.nvim",
-    enabled = HVIM.plugins.lsp and HVIM.plugins.none_ls,
-    event = { "BufReadPost", "BufNewFile", "BufWritePre" },
-    dependencies = {
-      "nvim-lua/plenary.nvim",
-      "davidmh/cspell.nvim",
-      "nvimtools/none-ls-extras.nvim",
-    },
-    config = require("plugins.configs.lsp.none-ls").setup,
-  },
-
-  {
-    "mfussenegger/nvim-jdtls",
-    enabled = HVIM.plugins.lsp,
-    ft = "java",
-  },
-
   {
     "j-hui/fidget.nvim",
     enabled = true,

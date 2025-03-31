@@ -2,7 +2,7 @@ return {
   "nvim-lualine/lualine.nvim",
   enabled = HVIM.plugins.lualine,
   event = "VeryLazy",
-  dependencies = { "mini.icons" },
+  -- dependencies = { "mini.icons" },
   init = function()
     vim.g.lualine_laststatus = 3
     if vim.fn.argc(-1) > 0 then

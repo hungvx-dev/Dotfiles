@@ -5,4 +5,3 @@ vim.bo.softtabstop = 2
 vim.bo.smartindent = true
 vim.bo.autoindent = true
 vim.wo.wrap = true
--- vim.bo.textwidth = 100

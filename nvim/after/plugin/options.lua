@@ -1,13 +1,10 @@
 vim.g.loaded_netrw = 1
 vim.g.loaded_netrwPlugin = 1
--- #================ 2. Moving around, searching and patterns =================#
-vim.opt.ignorecase = true         -- Ignore case when using a search pattern
-vim.opt.whichwrap:append("hl")
 
 -- #=========================== 4. Displaying text =============================#
 vim.wo.wrap = false               -- Long lines wrap
-vim.wo.breakindent = true         -- Preserve indentation in wrapped text
-vim.wo.linebreak = true
+vim.wo.breakindent = vim.wo.wrap         -- Preserve indentation in wrapped text
+vim.wo.linebreak = vim.wo.wrap
 vim.wo.number = true              -- Show the line number for each line
 vim.wo.relativenumber = true      -- Show the relative line number for each line
 vim.wo.numberwidth = 3            -- Number of columns to use for the line number
@@ -27,7 +24,7 @@ vim.wo.list = true
 vim.opt.listchars = { extends = "→", nbsp = " ", eol = "↴", trail = "·", tab = "  ", space = " " }
 
 -- #================== 5. Syntax, highlighting and spelling ===================#
-vim.opt.syntax = "on"
+-- vim.opt.syntax = "on"
 vim.opt.termguicolors = true      -- Use GUI colors for the terminal
 vim.opt.cmdheight = 0             -- Number of lines used for the command-line
 vim.opt.spell = false
@@ -52,12 +49,9 @@ vim.opt.shortmess:append({ W = true, I = true, c = true, C = true })
 -- vim.opt.shortmess:append("s")
 -- vim.opt.shortmess:append("C")
 
--- #=========================== 11. Selecting text ============================#
-vim.opt.clipboard = "unnamedplus" -- Synchronizes the system clipboard with Nvim's clipboard
-
 -- #============================ 12. Editing text =============================#
-vim.opt.pumblend = 0              -- Transparent of Popup
-vim.opt.pumheight = 10            -- Maximum height of the popup menu
+-- vim.opt.pumblend = 0              -- Transparent of Popup
+vim.opt.pumheight = 15            -- Maximum height of the popup menu
 vim.opt.undofile = true           -- Automatically save and restore undo history
 
 -- #========================= 13. Tabs and indenting ==========================#
@@ -65,24 +59,17 @@ vim.opt.tabstop = 2               -- *Number of spaces a <Tab> in the text stand
 vim.opt.shiftwidth = 2            -- *Number of spaces used for each step of (auto)indent
 vim.opt.expandtab = true          -- *Expand <Tab> to spaces in Insert mode
 vim.opt.smartindent = true        -- -Do clever autoindenting
-vim.opt.autoindent = true         -- *Automatically set the indent of a new line
+-- vim.opt.autoindent = true         -- *Automatically set the indent of a new line
 -- vim.bo.softtabstop = 2         -- -If non-zero, number of spaces to insert for a <Tab>
 
 -- #============================== 14. Folding ================================#
--- vim.wo.foldenable = true          -- *Unset to display all folds open
+vim.wo.foldenable = true          -- *Unset to display all folds open
 vim.wo.foldcolumn = "1"           -- Width of the column used to indicate folds
 vim.wo.foldlevel = 99             -- Folds with a level higher than this number will be closed
 vim.opt.foldlevelstart = 99       -- Value for 'foldlevel' when starting to edit a file
-vim.wo.foldmethod = "expr"        -- Folding type: "manual", "indent", "expr", "marker", "syntax" or "diff"
-vim.wo.foldexpr = "v:lua.vim.treesitter.foldexpr()"
-vim.wo.foldtext = "v:lua.Custom_foldtext()"
-
--- #============================== 16. Mapping ================================#
-vim.opt.updatetime = 300          -- Default: 1000 Update neovim screen
-vim.opt.timeoutlen = 500          --	Time in milliseconds to wait for a mapped sequence to complete.
-
--- #=========================== 18. The swap file =============================#
-vim.opt.swapfile = false
+vim.o.foldmethod = "expr"        -- Folding type: "manual", "indent", "expr", "marker", "syntax" or "diff"
+vim.o.foldexpr = "v:lua.vim.treesitter.foldexpr()"
+vim.o.foldtext = "v:lua.Custom_foldtext()"
 
 -- #======================== 19. Command line editing =========================#
 vim.opt.wildmode = "longest:full,full"

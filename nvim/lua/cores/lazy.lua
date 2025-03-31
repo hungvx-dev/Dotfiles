@@ -40,5 +40,3 @@ local opts = {
 
 require("lazy").setup("plugins", opts)
 vim.keymap.set("n", "<Leader>l", "<cmd>Lazy<CR>")
-
-vim.cmd.colorscheme(HVIM.colorscheme)

@@ -25,6 +25,9 @@ return {
   FloatBorder = base.cursor,
   FloatTitle = base.cursor,
 
+  NonText = {
+    fg = colors.dark3,
+  },
   Visual = {
     bg = colors.bg_search,
   },
@@ -71,8 +74,8 @@ return {
   },
 
   WinSeparator = {
-    bold = true,
-    fg = colors.cyan,
+    -- bold = true,
+    fg = colors.black,
   },
 
   MatchParen = {
@@ -88,5 +91,20 @@ return {
 
   Directory = {
     fg = "#74a2ff",
+  },
+
+  Folded = {
+    bg = colors.none,
+    -- underline = true,
+    -- sp = colors.cyan
+  },
+
+  FoldClose = {
+    fg = colors.cyan
+  },
+
+  FoldText = {
+    bg = colors.fg_gutter,
+    fg = colors.cyan,
   },
 }
