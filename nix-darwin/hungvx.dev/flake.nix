@@ -14,19 +14,15 @@
     };
   };
 
-  outputs = inputs@{ self, nix-darwin, nixpkgs, nix-homebrew }:
+  outputs = { self, nix-darwin, nix-homebrew, ... }:
     let
       username = "hungvx.dev";
       configuration = { pkgs, ... }: {
         # List packages installed in system profile. To search by name, run:
         # $ nix-env -qaP | grep wget
-        nix = {
-          settings.experimental-features = "nix-command flakes";
-        };
-        nixpkgs = {
-          config = { allowUnfree = true; };
-          hostPlatform = "aarch64-darwin";
-        };
+        nix.settings.experimental-features = "nix-command flakes";
+        nixpkgs.config.allowUnfree = true;
+        nixpkgs.hostPlatform = "aarch64-darwin";
 
         environment.systemPackages = [
           pkgs.neovim
@@ -39,9 +35,6 @@
           pkgs.ripgrep
           pkgs.fd
           pkgs.bat
-          # pkgs.ueberzugpp
-          # pkgs.chafa
-          # pkgs.viu
 
           pkgs.zoxide
           pkgs.eza
@@ -60,14 +53,15 @@
           pkgs.cmus
           pkgs.cava
 
-          # pkgs.monitorcontrol
+          pkgs.monitorcontrol
           pkgs.raycast
           pkgs.discord
           pkgs.google-chrome
           pkgs.zoom-us
+          pkgs.obsidian
 
           # Dev
-          pkgs.nodejs_22 # For cspell
+          pkgs.nodejs # For cspell
         ];
 
         users.users."hungvx.dev" = {
@@ -86,12 +80,13 @@
             "figma"
             "pearcleaner"
             "brave-browser"
+            # "zen-browser"
             "karabiner-elements"
             "vlc"
             "blackhole-2ch"
             "clop"
+            "notion"
             # "xmind"
-            # "transmission"
           ];
           onActivation = {
             cleanup = "zap";
