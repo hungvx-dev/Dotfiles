@@ -11,14 +11,20 @@ return {
     "--pch-storage=memory",
     "--limit-results=50",
   },
+  single_file_support = true,
   filetypes = { "c", "cpp", "proto" },
-  root_markers = { "compile_commands.json", "compile_flags.txt", ".clang", "Makefile", "configure.ac", "configure.in", "config.h.in", "meson.build", "meson_options.txt", "build.ninja" },
+  root_markers = { ".clangd", ".clang-tidy", ".clang-format", "compile_commands.json", "compile_flags.txt", "configure.ac" },
   init_options = {
     usePlaceholders = true,
     completeUnimported = true,
     clangdFileStatus = true,
   },
   capabilities = {
-    offsetEncoding = { "utf-16" },
+    textDocument = {
+      completion = {
+        editsNearCursor = true,
+      },
+    },
+    offsetEncoding = { "utf-8", "utf-16" },
   },
 }

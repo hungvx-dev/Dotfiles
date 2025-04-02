@@ -26,6 +26,7 @@ M.fold = {
   end_fold = "╰ ",
   sep = "│ ",
   branch = " ",
+  virtual = " "
 }
 
 function M.is_level_one(lv, other_lv)
@@ -87,9 +88,9 @@ function M.folds()
   end
   if vim.v.virtnum ~= 0 then
     if HVIM.highlight.fold then
-      return "%#FoldLevel_" .. lv .. "#" .. M.fold.sep .. "%*"
+      return "%#FoldLevel_" .. lv .. "#" .. M.fold.virtual .. "%*"
     end
-    return "%#FoldColumn#" .. M.fold.sep .. "%*"
+    return "%#FoldVirtual#" .. M.fold.virtual .. "%*"
   end
 
   local before_foldinfo = M.get_fold_info(win_id, lnum - 1)

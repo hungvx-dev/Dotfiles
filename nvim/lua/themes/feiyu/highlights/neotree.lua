@@ -2,7 +2,7 @@ local colors = require("themes.feiyu.colors")
 
 return {
   NeoTreeDimText = {
-    fg = colors.cyan,
+    fg = colors.blue5,
   },
   NeoTreeFileName = {
     fg = colors.fg,

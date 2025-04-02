@@ -93,6 +93,10 @@ return {
     fg = "#74a2ff",
   },
 
+  FoldColumn = {
+    -- fg = colors.dark5
+    fg = colors.blue5,
+  },
   Folded = {
     bg = colors.none,
     -- underline = true,
@@ -100,7 +104,12 @@ return {
   },
 
   FoldClose = {
-    fg = colors.cyan
+    fg = colors.cyan,
+  },
+
+  FoldVirtual = {
+    -- fg = colors.blue5,
+    fg = colors.blue6
   },
 
   FoldText = {
