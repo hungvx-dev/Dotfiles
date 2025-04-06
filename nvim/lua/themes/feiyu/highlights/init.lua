@@ -9,5 +9,6 @@ return {
   fzf = require("themes.feiyu.highlights.fzf"),
   git = require("themes.feiyu.highlights.git"),
   rainbow = require("themes.feiyu.highlights.rainbow"),
+  fold = require("themes.feiyu.highlights.fold"),
   mix = require("themes.feiyu.highlights.mix"),
 }

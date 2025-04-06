@@ -78,6 +78,14 @@ return {
     fg = colors.black,
   },
 
+  StatusLine = {
+    bg = colors.none,
+  },
+
+  StatusLineNC = {
+    bg = colors.none,
+  },
+
   MatchParen = {
     bold = true,
     fg = colors.none,
@@ -91,29 +99,5 @@ return {
 
   Directory = {
     fg = "#74a2ff",
-  },
-
-  FoldColumn = {
-    -- fg = colors.dark5
-    fg = colors.blue5,
-  },
-  Folded = {
-    bg = colors.none,
-    -- underline = true,
-    -- sp = colors.cyan
-  },
-
-  FoldClose = {
-    fg = colors.cyan,
-  },
-
-  FoldVirtual = {
-    -- fg = colors.blue5,
-    fg = colors.blue6
-  },
-
-  FoldText = {
-    bg = colors.fg_gutter,
-    fg = colors.cyan,
   },
 }

@@ -44,13 +44,19 @@ M.setup = function(plugins, highlight)
     M.set_hl(highlights.alpha)
   end
 
-  -- if plugins.lsp then
-  M.set_mix_hl(highlights.lsp)
-
-  if plugins.blink_cmp then
-    M.set_mix_hl(highlights.blink_cmp)
+  if plugins.treesitter then
+    for _, tree_hl in pairs(highlights.lsp.treesitter) do
+      M.set_mix_hl(tree_hl)
+    end
   end
-  -- end
+
+  if plugins.lsp then
+    M.set_mix_hl(highlights.lsp.lsp)
+
+    if plugins.blink_cmp then
+      M.set_mix_hl(highlights.blink_cmp)
+    end
+  end
 
   if plugins.neotree then
     M.set_hl(highlights.neotree)
@@ -70,6 +76,8 @@ M.setup = function(plugins, highlight)
 
   if highlight.fold then
     M.set_hl(highlights.rainbow.fold)
+  else
+    M.set_hl(highlights.fold)
   end
 
   M.set_hl(highlights.rainbow.indent)

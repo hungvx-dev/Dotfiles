@@ -17,4 +17,5 @@ return {
       },
     },
   },
+  on_attach = function(_) end,
 }

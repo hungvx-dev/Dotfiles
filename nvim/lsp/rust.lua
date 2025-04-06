@@ -5,33 +5,24 @@ return {
   filetypes = { "rust", "toml.Cargo" },
   settings = {
     ["rust-analyzer"] = {
-      check = {
-        command = "clippy",
-        features = "all",
-        allTargets = true,
-      },
       cargo = {
-        features = "all",
+        allFeatures = true,
         loadOutDirsFromCheck = true,
         buildScripts = {
           enable = true,
         },
       },
+      check = {
+        command = "clippy",
+      },
+      -- checkOnSave = true,
+      -- checkOnSave = {
+      --   command = "clippy",
+      -- },
       diagnostics = {
         enable = true,
-        styleLints = {
-          enable = true,
-        },
         experimental = {
           enable = true,
-        },
-      },
-      procMacro = {
-        enable = true,
-        ignored = {
-          ["async-trait"] = { "async_trait" },
-          ["napi-derive"] = { "napi" },
-          ["async-recursion"] = { "async_recursion" },
         },
       },
       inlayHints = {
@@ -41,22 +32,13 @@ return {
         chainingHints = { enable = true },
         closingBraceHints = { enable = true },
       },
-      imports = {
-        group = {
-          enable = false,
+      procMacro = {
+        enable = true,
+        ignored = {
+          ["async-trait"] = { "async_trait" },
+          ["napi-derive"] = { "napi" },
+          ["async-recursion"] = { "async_recursion" },
         },
-        granularity = {
-          group = "module",
-        },
-        prefix = "self",
-      },
-      completion = {
-        postfix = {
-          enable = true,
-        },
-        -- snippets = {
-        -- 	custom = "None",
-        -- },
       },
       files = {
         excludeDirs = {
@@ -73,9 +55,5 @@ return {
       },
     },
   },
-  capabilities = {
-    experimental = {
-      serverStatusNotification = true,
-    },
-  },
+  on_attach = function(_) end,
 }

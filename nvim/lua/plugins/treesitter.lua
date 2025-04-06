@@ -7,6 +7,9 @@ return {
   dependencies = {
     { "nvim-treesitter/nvim-treesitter-textobjects" },
   },
+  keys = {
+    { "@", "<cmd>Inspect<cr>", desc = "Treesitter Inspect" },
+  },
   init = function()
     vim.filetype.add({
       extension = {
