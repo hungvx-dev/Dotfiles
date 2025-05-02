@@ -59,9 +59,14 @@
           pkgs.google-chrome
           pkgs.zoom-us
           pkgs.obsidian
+          pkgs.telegram-desktop
 
           # Dev
-          pkgs.nodejs # For cspell
+          pkgs.docker
+          pkgs.colima
+          pkgs.lazydocker
+          pkgs.rainfrog
+          pkgs.nodejs
         ];
 
         users.users."hungvx.dev" = {
@@ -75,6 +80,9 @@
           global = {
             autoUpdate = true;
           };
+          brews = [
+            # "git-graph"
+          ];
           casks = [
             "openkey"
             "figma"
@@ -84,8 +92,9 @@
             "karabiner-elements"
             "vlc"
             "blackhole-2ch"
-            "clop"
-            "notion"
+            # "clop"
+            # "notion"
+            # "stremio"
             # "xmind"
           ];
           onActivation = {
@@ -101,10 +110,13 @@
           };
         };
 
-        fonts.packages = [
-          pkgs.jetbrains-mono
-          pkgs.nerd-fonts.jetbrains-mono
-        ];
+        fonts = {
+          packages = with pkgs; [
+            jetbrains-mono
+            nerd-fonts.iosevka
+            # nerd-fonts.jetbrains-mono
+          ];
+        };
 
         services = {
           yabai = { enable = true; };
