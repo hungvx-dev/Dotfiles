@@ -1,0 +1,111 @@
+###############################################
+# GitUI Full Config by ChatGPT
+# Dùng Unicode Graph, Theme đẹp, Tối ưu cho TUI
+###############################################
+
+# UI settings
+[ui]
+# Chọn theme:
+# Available: "Default", "Default-Gray", "Solarized", "Gruvbox", "Monokai"
+theme = "Solarized"
+
+# Font (chỉ có tác dụng nếu terminal hỗ trợ)
+# font = "FiraCode Nerd Font"
+
+# Sử dụng Unicode cho đồ thị commit
+graph_style = "unicode"
+
+# Hiển thị đồ thị commit khi vào gitui
+show_graph_on_start = true
+
+# Hiển thị tên remote branch
+show_remote_branches = true
+
+# Hiển thị các file ẩn
+show_hidden_files = false
+
+# Tự động refresh mỗi 5 giây
+refresh_rate_in_ms = 5000
+
+# Wrap text ở các commit message dài
+wrap_commit_message = true
+
+# Mở rộng commit details mặc định
+open_commit_details_on_enter = true
+
+# Thay đổi độ dài log history buffer
+history_size = 512
+
+# Cố định chiều rộng của sidebar (list branch)
+sidebar_width = 25
+
+# Luôn highlight HEAD trong branch list
+highlight_head = true
+
+# Hiển thị line number ở diff view
+show_line_numbers = true
+
+# Kích hoạt highlight staging area
+highlight_staged_files = true
+
+# Đổi phím di chuyển trong commit list
+move_head_selects_branches = true
+
+###############################################
+# Key mappings
+###############################################
+
+[key_bindings]
+# Custom phím bấm nếu muốn
+# Ví dụ: đổi 'q' thành thoát ngay lập tức
+quit = ["q", "Ctrl+c"]
+
+# Reload git status
+refresh = ["R"]
+
+# Commit changes
+commit_open = ["c"]
+
+# Stage/unstage file
+toggle_stage_item = ["Enter", "Space"]
+
+# Search
+search = ["/"]
+
+# Mở diff view
+diff = ["d"]
+
+# Checkout branch
+checkout = ["b"]
+
+###############################################
+# Git settings
+###############################################
+
+[git]
+# Tự động fetch remote mỗi khi vào gitui
+auto_fetch = true
+
+# Đổi màu commit
+commit_color = "green"
+
+# Màu branch name
+branch_color = "yellow"
+
+# Màu tag
+tag_color = "magenta"
+
+# Format ngày tháng commit
+date_time_format = "%Y-%m-%d %H:%M"
+
+###############################################
+# Theme override (optional)
+###############################################
+
+[theme]
+# Bạn có thể tự override màu nếu muốn
+
+# primary = { fg = "White", bg = "Black", modifier = "bold" }
+# secondary = { fg = "Cyan", bg = "Black" }
+# diff_add = { fg = "Green", bg = "Black" }
+# diff_remove = { fg = "Red", bg = "Black" }

@@ -21,6 +21,9 @@ gui:
   nerdFontsVersion: "3"
   sidePanelWidth: 0.3
 git:
+  log:
+    showGraph: always
+    showWholeGraph: true
   paging:
     colorArg: always
     pager: delta --dark --paging=never
