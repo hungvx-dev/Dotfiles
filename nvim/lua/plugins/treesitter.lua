@@ -5,7 +5,7 @@ return {
   main = "nvim-treesitter.configs",
   event = { "VeryLazy" },
   dependencies = {
-    { "nvim-treesitter/nvim-treesitter-textobjects" },
+    { "nvim-treesitter/nvim-treesitter-textobjects", event = { "VeryLazy" } },
   },
   keys = {
     { "@", "<cmd>Inspect<cr>", desc = "Treesitter Inspect" },
@@ -29,6 +29,7 @@ return {
       "json",
       "vue",
       "yaml",
+      "sql",
       -- "markdown",
       -- "markdown_inline",
       "hurl",

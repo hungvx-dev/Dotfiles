@@ -30,19 +30,14 @@ return {
         RRGGBB = true,
         -- rgb_fn = true,
         -- hsl_fn = true,
-        tailwind = "both",
-        tailwind_opts = {
-          update_names = true,
-        },
+        tailwind = "lsp",
+        -- tailwind_opts = {
+        --   update_names = true,
+        -- },
         mode = "virtualtext",
         virtualtext = "",
         virtualtext_inline = "before",
         virtualtext_mode = "foreground",
-        always_update = false,
-        -- hooks to invert control of colorizer
-        hooks = {
-          disable_line_highlight = false,
-        },
       },
     },
   },

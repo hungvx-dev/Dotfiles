@@ -20,8 +20,102 @@ return {
         yaml = { "yamllint" },
         docker = { "hadolint" },
       },
+      linters = {
+        eslint_d = {
+          cmd = function()
+            local local_binary = vim.fn.fnamemodify("./node_modules/.bin/" .. "eslint_d", ":p")
+            return vim.loop.fs_stat(local_binary) and local_binary or "eslint_d"
+          end,
+          args = {
+            "--format",
+            "json",
+            "--stdin",
+            "--stdin-filename",
+            function()
+              return vim.api.nvim_buf_get_name(0)
+            end,
+          },
+          stdin = true,
+          stream = "stdout",
+          ignore_exitcode = true,
+          parser = function(output, bufnr)
+            local result = require("lint.linters.eslint").parser(output, bufnr)
+            for _, d in ipairs(result) do
+              d.source = "eslint_d"
+            end
+            return result
+          end,
+          condition = function()
+            local config_files = { ".eslintrc", ".eslintrc.json", ".eslintrc.js", ".eslintrc.yaml", ".eslintrc.yml", "eslint.config.mts", "eslint.config.mjs" }
+            for _, config_file in ipairs(config_files) do
+              if vim.fn.filereadable(vim.fn.findfile(config_file, vim.fn.getcwd() .. ";")) == 1 then
+                return true
+              end
+            end
+            return false
+          end,
+        },
+        -- biome = {
+        --   cmd = function()
+        --     local local_binary = vim.fn.fnamemodify("./node_modules/.bin/" .. "biome", ":p")
+        --     return vim.loop.fs_stat(local_binary) and local_binary or "biome"
+        --   end,
+        --   args = { "lint" },
+        --   stdin = false,
+        --   ignore_exitcode = true,
+        --   stream = "both",
+        --   parser = function(output)
+        --     local diagnostics = {}
+        --     local fetch_message = false
+        --     local lnum, col, code, message
+        --     for _, line in ipairs(vim.fn.split(output, "\n")) do
+        --       if fetch_message then
+        --         _, _, message = string.find(line, "%s×(.+)")
+        --
+        --         if message then
+        --           message = (message):gsub("^%s+×%s*", "")
+        --
+        --           table.insert(diagnostics, {
+        --             source = "biomejs",
+        --             lnum = tonumber(lnum) - 1,
+        --             col = tonumber(col),
+        --             message = message,
+        --             code = code,
+        --           })
+        --
+        --           fetch_message = false
+        --         end
+        --       else
+        --         _, _, lnum, col, code = string.find(line, "[^:]+:(%d+):(%d+)%s([%a%/]+)")
+        --
+        --         if lnum then
+        --           fetch_message = true
+        --         end
+        --       end
+        --     end
+        --
+        --     return diagnostics
+        --   end,
+        --   condition = function(ctx)
+        --     local config_files = { "biome.json", "biome.jsonc" }
+        --     for _, config_file in ipairs(config_files) do
+        --       local path = vim.fn.findfile(config_file, vim.fn.getcwd() .. ";")
+        --       if path ~= "" and vim.fn.filereadable(path) == 1 then
+        --         vim.notify("Found Biome config: " .. path, vim.log.levels.INFO) -- Debug
+        --         return true
+        --       end
+        --     end
+        --     vim.notify("No Biome config found, skipping biome", vim.log.levels.INFO) -- Debug
+        --     return false
+        --   end,
+        -- },
+      },
     },
     config = function(_, opts)
+      -- vim.env.ESLINT_D_PPID = vim.fn.getpid()
+      local lint = require("lint")
+      lint.linters_by_ft = opts.linters_by_ft
+      lint.linters = opts.linters
       local M = {}
       function M.debounce(ms, fn)
         local timer = vim.uv.new_timer()
@@ -33,9 +127,6 @@ return {
           end)
         end
       end
-
-      local lint = require("lint")
-      lint.linters_by_ft = opts.linters_by_ft
 
       function M.lint()
         local names = lint._resolve_linter_by_ft(vim.bo.filetype)

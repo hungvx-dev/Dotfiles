@@ -2,6 +2,7 @@ return {
   {
     "lewis6991/gitsigns.nvim",
     enabled = HVIM.plugins.git,
+    version = "*",
     event = { "BufReadPost" },
     opts = {
       signs = {
@@ -19,25 +20,25 @@ return {
         topdelete = { text = HVIM.icons.UI.Line.BoldMid },
         changedelete = { text = HVIM.icons.UI.Line.BoldMid },
       },
-      signcolumn = true, -- Toggle with `:Gitsigns toggle_signs`
-      current_line_blame = true, -- Toggle with `:Gitsigns toggle_current_line_blame`
+      signcolumn = true,
+      current_line_blame = true,
       current_line_blame_opts = {
         virt_text = true,
-        virt_text_pos = "eol", -- 'eol' | 'overlay' | 'right_align'
+        virt_text_pos = "eol",
         delay = 200,
         ignore_whitespace = false,
         virt_text_priority = 100,
       },
       current_line_blame_formatter = " <author_mail> | <author_time:%R, %x> | <summary>",
       preview_config = {
-        border = "single",
+        -- border = "single",
         style = "minimal",
         relative = "cursor",
         row = 0,
         col = 1,
       },
       on_attach = function(buffer)
-        local gs = package.loaded.gitsigns
+        local gs = require("gitsigns")
 
         local function map(mode, l, r, desc)
           vim.keymap.set(mode, l, r, { buffer = buffer, desc = desc })
@@ -74,5 +75,60 @@ return {
     event = { "BufReadPost" },
     version = "*",
     config = true,
+  },
+  {
+    "isakbm/gitgraph.nvim",
+    enabled = false,
+    opts = {
+      symbols = {
+        merge_commit = "",
+        commit = " ",
+        merge_commit_end = "",
+        commit_end = "",
+
+        -- Advanced symbols
+        GVER = "",
+        GHOR = "",
+        GCLD = "",
+        GCRD = "╭",
+        GCLU = "",
+        GCRU = "",
+        GLRU = "",
+        GLRD = "",
+        GLUD = "",
+        GRUD = "",
+        GFORKU = "",
+        GFORKD = "",
+        GRUDCD = "",
+        GRUDCU = "",
+        GLUDCD = "",
+        GLUDCU = "",
+        GLRDCL = "",
+        GLRDCR = "",
+        GLRUCL = "",
+        GLRUCR = "",
+      },
+      format = {
+        timestamp = "%H:%M:%S %d-%m-%Y",
+        fields = { "hash", "author", "timestamp", "branch_name", "tag" },
+      },
+      hooks = {
+        on_select_commit = function(commit)
+          print("selected commit:", commit.hash)
+        end,
+        on_select_range_commit = function(from, to)
+          print("selected range:", from.hash, to.hash)
+        end,
+      },
+    },
+    keys = {
+      {
+        "<leader>gl",
+        function()
+          require("gitgraph").draw({}, { all = true, max_count = 5000 })
+        end,
+        desc = "GitGraph - Draw",
+      },
+    },
   },
 }

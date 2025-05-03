@@ -26,7 +26,7 @@ M.fold = {
   end_fold = "╰ ",
   sep = "│ ",
   branch = " ",
-  virtual = " "
+  virtual = " ",
 }
 
 function M.is_level_one(lv, other_lv)
@@ -111,7 +111,7 @@ function M.folds()
     local after_foldinfo = M.get_fold_info(win_id, lnum + 1)
     local after_lv = after_foldinfo.level
     if lv > after_lv then
-      fold = M.is_level_one(lv, after_lv) and M.fold.end_fold or M.fold.branch
+      fold = after_lv == 0 and M.fold.end_fold or M.fold.branch
     elseif after_foldinfo.start > foldinfo.start and lv == after_lv then
       fold = M.is_level_one(lv, 0) and M.fold.end_fold or M.fold.branch
     else

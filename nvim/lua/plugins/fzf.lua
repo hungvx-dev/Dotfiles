@@ -84,6 +84,7 @@ return {
 
       -- Git
       { "<leader>fgs", "<cmd>FzfLua git_status<cr>", desc = "Git status" },
+      { "<leader>fgb", "<cmd>FzfLua git_branches<cr>", desc = "Git branches" },
     },
   },
 }

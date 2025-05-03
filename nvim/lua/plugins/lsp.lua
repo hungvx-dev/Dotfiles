@@ -17,6 +17,7 @@ return {
         "json",
         "lua",
         "nix",
+        "postgresql",
         "rust",
         "tailwindcss",
         "vtsls",
@@ -60,7 +61,7 @@ return {
         "vue-language-server",
         "json-lsp",
         "html-lsp",
-        "emmet-ls",
+        "emmet-language-server",
         "css-lsp",
         "cssmodules-language-server",
         "tailwindcss-language-server",
@@ -72,6 +73,7 @@ return {
         "nil",
         "dockerfile-language-server",
         "docker-compose-language-service",
+        "postgrestools",
 
         -- For Formatter
         "stylua", -- For lua
@@ -82,12 +84,14 @@ return {
         -- "google-java-format", -- For java
         "goimports", -- For go
         "gofumpt", -- For go
+        "yamllint",
 
         -- For Linter
         "eslint_d", -- For js
         "hadolint", -- For docker
         "cspell",
         "oxlint",
+        "biome",
         -- "stylelint",
 
         -- For Code action

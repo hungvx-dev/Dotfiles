@@ -71,6 +71,10 @@ function M.setup(opts)
       on_attach = function(client, buf)
         local opt = { buffer = buf }
 
+        -- if client:supports_method("textDocument/documentColor") then
+        --   vim.lsp.document_color.enable(true, buf)
+        -- end
+
         -- vim.keymap.set("n", "gd", vim.lsp.buf.definition, opt)
         -- vim.keymap.set("n", "K", function()
         --   vim.lsp.buf.hover({ border = "rounded" })

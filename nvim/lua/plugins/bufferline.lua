@@ -102,13 +102,5 @@ return {
   config = function(_, opts)
     vim.o.showtabline = 2 -- always show buffers/tabs
     require("bufferline").setup(opts)
-    -- Fix bufferline when restoring a session
-    -- vim.api.nvim_create_autocmd({ "BufAdd", "BufDelete" }, {
-    --   callback = function()
-    --     vim.schedule(function()
-    --       pcall(nvim_bufferline)
-    --     end)
-    --   end,
-    -- })
   end,
 }
