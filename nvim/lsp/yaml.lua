@@ -1,8 +1,7 @@
 ---@type vim.lsp.Config
 return {
-	cmd = { "yaml-language-server", "--stdio" },
-	single_file_support = true,
-	filetypes = { "yaml", "yaml.docker-compose", "yaml.gitlab" },
+  cmd = { "yaml-language-server", "--stdio" },
+  filetypes = { "yaml", "yaml.docker-compose", "yaml.gitlab" },
   capabilities = {
     textDocument = {
       foldingRange = {
@@ -11,13 +10,13 @@ return {
       },
     },
   },
+  single_file_support = true,
   settings = {
     redhat = { telemetry = { enabled = false } },
     yaml = {
-			schemas = {
-				kubernetes = "k8s/**/*.{yaml}",
-			},
-			redhat = { telemetry = { enabled = false } },
+      schemas = {
+        kubernetes = "k8s/**/*.{yaml}",
+      },
       keyOrdering = false,
       hover = true,
       completion = true,
@@ -26,10 +25,7 @@ return {
       },
       validate = true,
       schemaStore = {
-        -- Must disable built-in schemaStore support to use
-        -- schemas from SchemaStore.nvim plugin
         enable = false,
-        -- Avoid TypeError: Cannot read properties of undefined (reading 'length')
         url = "",
       },
     },

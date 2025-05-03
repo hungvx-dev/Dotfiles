@@ -2,11 +2,15 @@
 return {
   cmd = { "tailwindcss-language-server", "--stdio" },
   root_markers = {
-    "tsconfig.json",
-    "jsconfig.json",
     "package.json",
-    "vite.config.ts",
-    "vite.config.js",
+    "tailwind.config.js",
+    "tailwind.config.cjs",
+    "tailwind.config.mjs",
+    "tailwind.config.ts",
+    "postcss.config.js",
+    "postcss.config.cjs",
+    "postcss.config.mjs",
+    "postcss.config.ts",
   },
   filetypes = {
     -- html
@@ -28,14 +32,6 @@ return {
   },
   settings = {
     tailwindCSS = {
-      emmetCompletions = true,
-      classFunctions = { "tw", "clsx", "cva", "cx" },
-      -- experimental = {
-      --   classRegex = {
-      --     { "cva\\(([^)]*)\\)", "[\"'`]([^\"'`]*).*?[\"'`]" },
-      --     { "cx\\(([^)]*)\\)", "(?:'|\"|`)([^']*)(?:'|\"|`)" },
-      --   },
-      -- },
       validate = true,
       lint = {
         cssConflict = "error",
@@ -50,6 +46,20 @@ return {
         "class",
         "className",
       },
+      includeLanguages = {
+        eelixir = "html-eex",
+        eruby = "erb",
+        templ = "html",
+        htmlangular = "html",
+      },
+      emmetCompletions = true,
+      classFunctions = { "tw", "clsx", "cva", "cx" },
+      -- experimental = {
+      --   classRegex = {
+      --     { "cva\\(([^)]*)\\)", "[\"'`]([^\"'`]*).*?[\"'`]" },
+      --     { "cx\\(([^)]*)\\)", "(?:'|\"|`)([^']*)(?:'|\"|`)" },
+      --   },
+      -- },
     },
   },
 }

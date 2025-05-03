@@ -2,7 +2,7 @@
 return {
   cmd = { "lua-language-server", "--stdio" },
   filetypes = { "lua" },
-  root_markers = { ".luarc.json", ".luarc.jsonc" },
+  root_markers = { ".luarc.json", ".luarc.jsonc", ".luacheckrc", ".stylua.toml", "stylua.toml", "selene.toml", "selene.yml" },
   settings = {
     Lua = {
       diagnostics = {

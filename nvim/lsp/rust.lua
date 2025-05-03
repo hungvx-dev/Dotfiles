@@ -12,19 +12,25 @@ return {
           enable = true,
         },
       },
+      diagnostics = {
+        enable = true,
+        styleLints = {
+          enable = true,
+        },
+        experimental = {
+          enable = true,
+        },
+      },
+      checkOnSave = true,
       check = {
         command = "clippy",
+        features = "all",
+        allTargets = true,
       },
       -- checkOnSave = true,
       -- checkOnSave = {
       --   command = "clippy",
       -- },
-      diagnostics = {
-        enable = true,
-        experimental = {
-          enable = true,
-        },
-      },
       inlayHints = {
         enable = true,
         parameterHints = { enable = true },

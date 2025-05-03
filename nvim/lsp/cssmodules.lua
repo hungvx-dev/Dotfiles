@@ -2,5 +2,5 @@
 return {
   cmd = { "cssmodules-language-server", "--stdio" },
   filetypes = { "javascript", "javascriptreact", "typescript", "typescriptreact", "vue" },
-  root_markers = { "tailwind.config.js", "tailwind.config.ts", "postcss.config.js", "postcss.config.ts" },
+  root_markers = { "package.json" },
 }

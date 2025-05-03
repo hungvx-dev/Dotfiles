@@ -1,6 +1,7 @@
 ---@type vim.lsp.Config
 return {
   cmd = { "vtsls", "--stdio" },
+  root_markers = { "tsconfig.json", "jsconfig.json", "package.json" },
   filetypes = {
     "javascript",
     "javascriptreact",
@@ -10,16 +11,7 @@ return {
     "typescript.tsx",
     "vue",
   },
-  root_markers = { "tsconfig.json", "jsconfig.json", "package.json" },
-  -- init_options = {
-  --   plugins = {
-  --     {
-  --       name = "@vue/typescript-plugin",
-  --       location = require('mason-registry').get_package('vue-language-server'):get_install_path() .. '/node_modules/@vue/language-server',
-  --       languages = { "vue" },
-  --     },
-  --   },
-  -- },
+  single_file_support = true,
   settings = {
     complete_function_calls = true,
     vtsls = {

@@ -2,7 +2,7 @@
 return {
   cmd = { "vscode-css-language-server", "--stdio" },
   filetypes = { "css", "scss", "less" },
-  root_markers = { "package.json", ".git" },
+  root_markers = { "package.json" },
   settings = {
     css = { validate = true, lint = {
       unknownAtRules = "ignore",
@@ -11,6 +11,15 @@ return {
       unknownAtRules = "ignore",
     } },
     less = { validate = true },
+  },
+  capabilities = {
+    textDocument = {
+      completion = {
+        completionItem = {
+          snippetSupport = true,
+        },
+      },
+    },
   },
   on_attach = function(client)
     if vim.bo.filetype == "scss" then
