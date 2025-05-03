@@ -8,7 +8,7 @@ local general = augroup("General Settings", { clear = true })
 autocmd("TextYankPost", {
   group = general,
   callback = function()
-    vim.highlight.on_yank({ timeout = 300 })
+    vim.hl.on_yank({ timeout = 300 })
   end,
   desc = "Highlight when yanking",
 })

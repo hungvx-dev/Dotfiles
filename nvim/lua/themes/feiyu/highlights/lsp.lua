@@ -31,10 +31,12 @@ M.treesitter = {
     Keyword = "KwPurple",
     Include = "KwMagenta",
     ["@keyword.import"] = "Include",
-    ["@keyword.type"] = "KwMagenta",
+    ["@keyword.type"] = "KwPurple",
     ["@keyword.exception"] = "KwMagenta",
     ["@keyword.coroutine"] = "KwMagenta",
     ["@keyword.operator"] = "KwMagenta",
+    ["@keyword.modifier"] = "KwMagenta",
+    ["@keyword.return"] = "KwMagenta",
   },
 
   types = {
@@ -48,11 +50,13 @@ M.treesitter = {
       fg = colors.blue,
       italic = config.functions.italic,
     },
-    ["@constructor"] = { fg = colors.blue1 },
+    -- ["@constructor"] = { fg = colors. },
+    -- ["@lsp.typemod.macro.defaultLibrary"] = "@function.builtin",
+    -- ["@lsp.typemod.method.defaultLibrary"] = "@function.builtin",
   },
 
   variables = {
-    ["@variable"] = { fg = colors.fg },
+    ["@variable"] = { fg = colors.fg, bold = false },
     ["@property"] = { fg = colors.green1 },
     ["@variable.member"] = "@property",
     ["@variable.parameter"] = { fg = colors.yellow },
@@ -77,6 +81,7 @@ M.treesitter = {
   tags = {
     ["@label"] = { fg = colors.blue },
     ["@tag.attribute"] = "@variable.member",
+    ["@tag.tsx"] = "@type",
   },
 
   comments = {

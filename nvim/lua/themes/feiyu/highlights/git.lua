@@ -39,4 +39,20 @@ return {
     bg = colors.fg_gutter,
     fg = colors.orange,
   },
+
+  -- GitGraphBranchName = {
+  --   fg = colors.orange
+  -- },
+  -- GitGraphBranchMsg = {
+  --   fg = colors.green
+  -- },
+  -- GitGraphTimestamp = {
+  --   fg = colors.yellow
+  -- },
+  -- GitGraphHash = {
+  --   fg = colors.violet
+  -- },
+  -- GitGraphAuthor = {
+  --   fg = colors.blue
+  -- },
 }
