@@ -11,4 +11,6 @@ return {
   rainbow = require("themes.feiyu.highlights.rainbow"),
   fold = require("themes.feiyu.highlights.fold"),
   mix = require("themes.feiyu.highlights.mix"),
+  statusline = require("themes.feiyu.highlights.statusline"),
+  navic = require("themes.feiyu.highlights.navic"),
 }

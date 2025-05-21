@@ -31,14 +31,6 @@ return {
   GitSignsDelete = {
     fg = colors.git.delete,
   },
-  SLGitIcon = {
-    bg = colors.fg_gutter,
-    fg = colors.orange,
-  },
-  SLBranchName = {
-    bg = colors.fg_gutter,
-    fg = colors.orange,
-  },
 
   -- GitGraphBranchName = {
   --   fg = colors.orange

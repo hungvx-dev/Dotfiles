@@ -46,7 +46,10 @@ return {
     sp = colors.cyan,
     underline = true,
   },
-  NeoTreeWinSeparator = {
-    fg = colors.cyan,
-  },
+  -- NeoTreeWinSeparator = {
+  --   fg = colors.cyan,
+  -- },
+  -- NeoTreeVertSplit = {
+  --   fg = colors.red,
+  -- },
 }

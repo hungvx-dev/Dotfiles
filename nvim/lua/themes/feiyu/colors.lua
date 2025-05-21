@@ -32,6 +32,7 @@ return {
   red2 = "#a4133c",
   teal = "#02c39a",
   dark3 = "#545c7e",
+  dark4 = "#d4d6e7",
   dark5 = "#6677c6",
   comment = "#878787",
 

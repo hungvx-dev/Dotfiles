@@ -28,7 +28,7 @@ return {
     undercurl = true,
   },
   DiagnosticUnnecessary = {
-    fg = "#414868",
+    fg = "#8990b3",
   },
   DiagnosticWarn = {
     fg = colors.warning,

@@ -161,6 +161,7 @@ M.lsp = {
   LspKindValue = "@string",
   LspKindVariable = "@variable",
 }
+NavicIconsModule = "LspKindModule"
 
 return M
 

@@ -33,7 +33,7 @@ end
 --- @param plugins table<string, boolean>
 --- @param highlight table<string, boolean>
 M.setup = function(plugins, highlight)
-  M.set_hl(highlights.base)
+  M.set_mix_hl(highlights.base)
   M.set_mix_hl(highlights.diagnostic)
 
   if plugins.mini_icon then
@@ -70,19 +70,28 @@ M.setup = function(plugins, highlight)
     M.set_mix_hl(highlights.git)
   end
 
-  if plugins.git then
-    M.set_mix_hl(highlights.git)
-  end
-
   if highlight.fold then
     M.set_hl(highlights.rainbow.fold)
   else
     M.set_hl(highlights.fold)
   end
 
+  if plugins.statusline then
+    M.set_mix_hl(highlights.statusline)
+  end
+
+  if plugins.navic then
+    M.set_link_hl(highlights.navic)
+  end
+
+
   M.set_hl(highlights.rainbow.indent)
   if plugins.blink_nvim and highlight.indent then
-    M.set_link_hl(highlights.rainbow.blink.pairs)
+    if plugins.blink_pairs then
+      M.set_link_hl(highlights.rainbow.blink.pairs)
+    else
+      M.set_link_hl(highlights.rainbow.pairs)
+    end
     M.set_link_hl(highlights.rainbow.blink.indent)
     M.set_hl(highlights.rainbow.blink.underline)
   end

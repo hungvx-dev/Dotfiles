@@ -24,6 +24,15 @@ return {
       fg = colors.cyan,
     },
   },
+  pairs = {
+    RainbowDelimiterRed = "RainbowRed",
+    RainbowDelimiterBlue = "RainbowBlue",
+    RainbowDelimiterCyan = "RainbowCyan",
+    RainbowDelimiterGreen = "RainbowGreen",
+    RainbowDelimiterOrange = "RainbowOrange",
+    RainbowDelimiterViolet = "RainbowViolet",
+    RainbowDelimiterYellow = "RainbowYellow",
+  },
   blink = {
     indent = {
       BlinkIndentRed = "RainbowRed",

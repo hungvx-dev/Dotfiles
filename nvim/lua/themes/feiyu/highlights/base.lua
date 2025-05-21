@@ -28,34 +28,29 @@ return {
   NonText = {
     fg = colors.dark3,
   },
+  Conceal = "NonText",
   Visual = {
     bg = colors.bg_search,
   },
 
   IncSearch = {
-    bg = colors.orange,
     fg = colors.black,
+    bg = colors.orange,
   },
   Search = {
-    bg = colors.bg_search,
     fg = colors.fg,
+    bg = colors.bg_search,
   },
 
-  CurSearch = {
-    bg = colors.orange,
-    fg = colors.black,
-  },
+  CurSearch = "IncSearch",
   Cursor = {
-    bg = colors.fb,
     fg = colors.bg,
+    bg = colors.fb,
   },
   CursorColumn = {
     bg = "#292e42",
   },
-  CursorIM = {
-    bg = colors.fb,
-    fg = colors.bg,
-  },
+  CursorIM = "Cursor",
   CursorLine = {
     bg = colors.bg,
     sp = colors.cyan,
@@ -78,13 +73,17 @@ return {
     fg = colors.black,
   },
 
-  StatusLine = {
-    bg = colors.none,
-  },
+  StatusLine = base.transparent,
+  StatusLineNC = base.transparent,
 
-  StatusLineNC = {
-    bg = colors.none,
+  -- WinBar = "Normal",
+  WinBar = {
+    bg = colors.bg,
+    fg = colors.dark4,
+    -- sp = colors.black,
+    -- underline = true,
   },
+  WinBarNC = "WinBar",
 
   MatchParen = {
     bold = true,
