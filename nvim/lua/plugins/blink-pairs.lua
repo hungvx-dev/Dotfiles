@@ -5,10 +5,13 @@ return {
   dependencies = "saghen/blink.download",
   event = { "BufReadPost", "BufNewFile" },
   -- build = "cargo build --release",
+  --- @module 'blink.pairs'
+  --- @type blink.pairs.Config
   opts = {
-    -- mappings = {
-    --   enabled = true,
-    -- },
+    mappings = {
+      enabled = true,
+      pairs = {},
+    },
     highlights = {
       enabled = true,
       groups = {

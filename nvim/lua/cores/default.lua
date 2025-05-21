@@ -1,4 +1,4 @@
-local icons = require('icons')
+local icons = require("icons")
 HVIM = {
   colorscheme = "feiyu",
   leader = " ",
@@ -21,7 +21,7 @@ HVIM = {
   },
   git_line = {
     added = icons.Git.LineAdded .. " ",
-    modified = icons.Git.LineModified .. " ",
+    changed = icons.Git.LineModified .. " ",
     removed = icons.Git.LineRemoved .. " ",
   },
   highlight = {
@@ -32,11 +32,14 @@ HVIM = {
     alpha = true,
     blink = true,
     blink_nvim = true,
-    blink_pairs = true,
+    blink_pairs = false,
     mini_icon = true,
     eyeliner = true,
-    lualine = true,
+    lualine = false,
     statuscol = true,
+    statusline = true,
+    winbar = true,
+    navic = false,
     buffer = false,
     neotree = true,
     bufferline = true,
