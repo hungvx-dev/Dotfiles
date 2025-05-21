@@ -73,8 +73,10 @@ return {
     Ellipsis        = " 󰇘 ",
     Search          = "  ",
     SelectionCaret  = " ",
-    WindowMaximized = "",
+    WindowMaximized = " ",
     Explorer        = " ",
+    Sd              = "󰉉 ",
+    WinBar          = " ⟩ ",
     Terminal        = {
       Icon       = "",
       Icon2      = "",
@@ -97,7 +99,8 @@ return {
       BoldMid   = "┃",
       BoldLeft  = "▎",
       BoldRight = "▐",
-      Full      = "█"
+      Full      = "█",
+      WinBar    = "▌",
     },
     Direction       = {
       MD = {
@@ -140,6 +143,10 @@ return {
       BreakpointRejected  = { "󰋼 ", "DiagnosticError" },
       LogPoint            = " ",
     },
+    Statusline      = {
+      Left = "",
+      Right = ""
+    }
   },
   Diagnostics = {
     Error               = "󰅚",

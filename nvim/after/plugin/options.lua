@@ -1,6 +1,3 @@
-vim.g.loaded_netrw = 1
-vim.g.loaded_netrwPlugin = 1
-
 -- #=========================== 4. Displaying text =============================#
 vim.wo.wrap = true               -- Long lines wrap
 vim.wo.breakindent = vim.wo.wrap         -- Preserve indentation in wrapped text
@@ -26,7 +23,7 @@ vim.opt.listchars = { extends = "→", nbsp = " ", eol = "↴", trail = "·", t
 -- #================== 5. Syntax, highlighting and spelling ===================#
 -- vim.opt.syntax = "on"
 vim.opt.termguicolors = true      -- Use GUI colors for the terminal
-vim.opt.cmdheight = 0             -- Number of lines used for the command-line
+vim.opt.cmdheight = 1             -- Number of lines used for the command-line
 vim.opt.spell = false
 vim.opt.spelllang = { "en_us" }
 vim.opt.spelloptions = { "camel" }

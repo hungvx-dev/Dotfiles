@@ -76,6 +76,7 @@ return {
         ghost_text = { enabled = false },
         menu = {
           border = "rounded",
+          max_height = 15,
           draw = {
             columns = { { "source_name" }, { "label", gap = 1 }, { "kind__icons" } },
             components = {

@@ -56,12 +56,12 @@ return {
           folder_empty = HVIM.icons.UI.Folder.Empty,
           folder_empty_open = HVIM.icons.UI.Folder.EmptyOpen,
           provider = function(icon, node)
-            local mini_icons = require("mini.icons")
+            local MiniIcons = require("mini.icons")
             local text, hl
             if node.type == "file" then
-              text, hl = mini_icons.get("file", node.name)
+              text, hl = MiniIcons.get("file", node.name)
             elseif node.type == "directory" then
-              text, hl = mini_icons.get("directory", node.name)
+              text, hl = MiniIcons.get("directory", node.name)
               if node:is_expanded() then
                 text = nil
               end
@@ -167,7 +167,7 @@ return {
           selection_display = function(char)
             return "%=" .. char .. "%="
           end,
-          use_winbar = "smart", -- "always" | "never" | "smart"
+          use_winbar = "always", -- "always" | "never" | "smart"
         },
       },
       highlights = {

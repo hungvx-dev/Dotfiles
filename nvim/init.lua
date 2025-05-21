@@ -1,3 +1,3 @@
-vim.loader.enable(true)
+vim.loader.enable()
 require("configs")
 require("cores")
