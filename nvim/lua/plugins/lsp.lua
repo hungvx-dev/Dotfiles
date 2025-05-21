@@ -20,23 +20,25 @@ return {
         "postgresql",
         "rust",
         "tailwindcss",
-        "vtsls",
+        -- "vtsls",
+        -- "typescript",
         "vue",
         "yaml",
+        -- "biome",
       },
       ---@type vim.diagnostic.Opts
       diagnostic = {
+        update_in_insert = false,
+        severity_sort = true,
         -- underline = true,
         -- virtual_text = false,
         -- virtual_lines = { current_line = true },
-        update_in_insert = false,
-        severity_sort = true,
-        -- float = {
-        --   focusable = true,
-        --   focus = false,
-        --   border = "rounded",
-        --   source = true,
-        -- },
+        float = {
+          focusable = true,
+          focus = false,
+          border = "rounded",
+          source = "if_many",
+        },
         signs = {
           text = {
             [vim.diagnostic.severity.ERROR] = HVIM.signs.Error,
@@ -49,7 +51,8 @@ return {
     },
   },
   {
-    "williamboman/mason.nvim",
+    "mason-org/mason.nvim",
+    -- version = "1.*",
     cmd = { "Mason", "MasonInstall", "MasonUninstall", "MasonUninstallAll", "MasonLog" },
     build = ":MasonUpdate",
     event = "VeryLazy",
@@ -66,6 +69,7 @@ return {
         "cssmodules-language-server",
         "tailwindcss-language-server",
         "lua-language-server",
+        "typescript-language-server",
         "yaml-language-server",
         "clangd",
         "gopls",

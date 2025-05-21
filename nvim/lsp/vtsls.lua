@@ -15,11 +15,12 @@ return {
   settings = {
     complete_function_calls = true,
     vtsls = {
+      autoUseWorkspaceTsdk = true,
       tsserver = {
         globalPlugins = {
           {
             name = "@vue/typescript-plugin",
-            location = require("mason-registry").get_package("vue-language-server"):get_install_path() .. "/node_modules/@vue/language-server",
+            location = vim.fn.expand("$MASON/packages/vue-language-server/node_modules/@vue/language-server"),
             languages = { "vue" },
             configNamespace = "typescript",
             enableForWorkspaceTypeScriptVersions = true,
@@ -27,7 +28,6 @@ return {
         },
       },
       enableMoveToFileCodeAction = true,
-      autoUseWorkspaceTsdk = true,
       experimental = {
         completion = {
           enableServerSideFuzzyMatch = true,
@@ -35,6 +35,7 @@ return {
       },
     },
     typescript = {
+      -- tsdk = vim.fn.expand("$MASON/packages/vue-language-server/node_modules/typescript/lib"),
       updateImportsOnFileMove = { enabled = "always" },
       suggest = {
         completeFunctionCalls = true,
