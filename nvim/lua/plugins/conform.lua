@@ -8,55 +8,65 @@ return {
       {
         "gf",
         function()
-          require("conform").format({ async = true })
+          require("conform").format()
         end,
         mode = { "n", "v" },
         desc = "Format Injected Langs",
       },
     },
-    opts = {
-      default_format_opts = {
-        timeout_ms = 1000,
-        async = false, -- not recommended to change
-        quiet = false, -- not recommended to change
-        lsp_format = "fallback", -- not recommended to change
-      },
-      formatters_by_ft = {
-        sh = { "shfmt" },
-        fish = { "fish_indent" },
+    opts = function()
+      local function formater_frontend(bufnr)
+        if require("conform").get_formatter_info("biome", bufnr).available then
+          return { "biome" }
+        else
+          return { "eslint_d", "prettierd" }
+        end
+      end
 
-        cpp = { "clang_format" },
-        c = { "clang_format" },
-        go = { "goimports", "gofumpt" },
-        lua = { "stylua" },
-        java = { "google_java_format" },
-        -- rust = { "cargo-fmt" },
+      return {
+        default_format_opts = {
+          timeout_ms = 1000,
+          async = false, -- not recommended to change
+          quiet = false, -- not recommended to change
+          lsp_format = "fallback", -- not recommended to change
+        },
+        formatters_by_ft = {
+          sh = { "shfmt" },
+          fish = { "fish_indent" },
 
-        graphql = { "prettierd" },
+          cpp = { "clang_format" },
+          c = { "clang_format" },
+          go = { "goimports", "gofumpt" },
+          lua = { "stylua" },
+          java = { "google_java_format" },
+          -- rust = { "cargo-fmt" },
 
-        markdown = { "prettierd" },
-        ["markdown.mdx"] = { "prettierd" },
-        yaml = { "prettierd" },
+          graphql = formater_frontend,
 
-        javascript = { "biome", "eslint_d", "prettier" },
-        typescript = { "biome", "eslint_d", "prettier" },
-        javascriptreact = { "biome", "eslint_d", "prettier" },
-        typescriptreact = { "biome", "eslint_d", "prettier" },
-        vue = { "biome", "eslint_d", "prettierd" },
-        html = { "prettier" },
-        css = { "prettier" },
-        scss = { "prettierd" },
-        less = { "prettierd" },
-        json = { "prettier" },
-        jsonc = { "prettierd" },
-      },
-      formatters = {
-        -- ["cargo-fmt"] = {
-        --   command = "cargo",
-        --   args = { "fmt", "--", "$FILENAME" },
-        --   stdin = false,
-        -- },
-      },
-    },
+          markdown = { "prettierd" },
+          ["markdown.mdx"] = { "prettierd" },
+          yaml = { "prettierd" },
+
+          javascript = formater_frontend,
+          typescript = formater_frontend,
+          javascriptreact = formater_frontend,
+          typescriptreact = formater_frontend,
+          vue = formater_frontend,
+          html = { "biome", "prettierd", stop_after_first = true },
+          css = { "biome", "prettierd", stop_after_first = true },
+          scss = { "biome", "prettierd", stop_after_first = true },
+          less = { "biome", "prettierd", stop_after_first = true },
+          json = { "biome", "prettierd", stop_after_first = true },
+          jsonc = { "biome", "prettierd", stop_after_first = true },
+        },
+        formatters = {
+          -- ["cargo-fmt"] = {
+          --   command = "cargo",
+          --   args = { "fmt", "--", "$FILENAME" },
+          --   stdin = false,
+          -- },
+        },
+      }
+    end,
   },
 }
