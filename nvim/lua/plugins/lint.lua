@@ -3,20 +3,20 @@ return {
     "mfussenegger/nvim-lint",
     event = { "BufReadPost", "BufNewFile" },
     opts = {
-      events = { "BufWritePost", "BufReadPost", "InsertLeave" },
+      events = { "BufWritePost", "BufReadPost", "TextChanged" },
       linters_by_ft = {
-        css = { "eslint_d" },
-        less = { "eslint_d" },
-        scss = { "eslint_d" },
-        graphql = { "eslint_d" },
-        html = { "eslint_d" },
-        javascript = { "eslint_d" },
-        javascriptreact = { "eslint_d" },
-        json = { "eslint_d" },
-        jsonc = { "eslint_d" },
-        typescript = { "eslint_d" },
-        typescriptreact = { "eslint_d" },
-        vue = { "eslint_d" },
+        css = { "biome", "eslint_d" },
+        less = { "biome", "eslint_d" },
+        scss = { "biome", "eslint_d" },
+        graphql = { "biome", "eslint_d" },
+        html = { "biome", "eslint_d" },
+        javascript = { "biome", "eslint_d" },
+        javascriptreact = { "biome", "eslint_d" },
+        json = { "biome", "eslint_d" },
+        jsonc = { "biome", "eslint_d" },
+        typescript = { "biome", "eslint_d" },
+        typescriptreact = { "biome", "eslint_d" },
+        vue = { "biome", "eslint_d" },
         yaml = { "yamllint" },
         docker = { "hadolint" },
       },
@@ -55,60 +55,60 @@ return {
             return false
           end,
         },
-        -- biome = {
-        --   cmd = function()
-        --     local local_binary = vim.fn.fnamemodify("./node_modules/.bin/" .. "biome", ":p")
-        --     return vim.loop.fs_stat(local_binary) and local_binary or "biome"
-        --   end,
-        --   args = { "lint" },
-        --   stdin = false,
-        --   ignore_exitcode = true,
-        --   stream = "both",
-        --   parser = function(output)
-        --     local diagnostics = {}
-        --     local fetch_message = false
-        --     local lnum, col, code, message
-        --     for _, line in ipairs(vim.fn.split(output, "\n")) do
-        --       if fetch_message then
-        --         _, _, message = string.find(line, "%s×(.+)")
-        --
-        --         if message then
-        --           message = (message):gsub("^%s+×%s*", "")
-        --
-        --           table.insert(diagnostics, {
-        --             source = "biomejs",
-        --             lnum = tonumber(lnum) - 1,
-        --             col = tonumber(col),
-        --             message = message,
-        --             code = code,
-        --           })
-        --
-        --           fetch_message = false
-        --         end
-        --       else
-        --         _, _, lnum, col, code = string.find(line, "[^:]+:(%d+):(%d+)%s([%a%/]+)")
-        --
-        --         if lnum then
-        --           fetch_message = true
-        --         end
-        --       end
-        --     end
-        --
-        --     return diagnostics
-        --   end,
-        --   condition = function(ctx)
-        --     local config_files = { "biome.json", "biome.jsonc" }
-        --     for _, config_file in ipairs(config_files) do
-        --       local path = vim.fn.findfile(config_file, vim.fn.getcwd() .. ";")
-        --       if path ~= "" and vim.fn.filereadable(path) == 1 then
-        --         vim.notify("Found Biome config: " .. path, vim.log.levels.INFO) -- Debug
-        --         return true
-        --       end
-        --     end
-        --     vim.notify("No Biome config found, skipping biome", vim.log.levels.INFO) -- Debug
-        --     return false
-        --   end,
-        -- },
+        biome = {
+          cmd = function()
+            local local_binary = vim.fn.fnamemodify("./node_modules/.bin/" .. "biome", ":p")
+            return vim.loop.fs_stat(local_binary) and local_binary or "biome"
+          end,
+          args = { "lint" },
+          stdin = false,
+          ignore_exitcode = true,
+          stream = "both",
+          parser = function(output)
+            local diagnostics = {}
+            local fetch_message = false
+            local lnum, col, code, message
+            for _, line in ipairs(vim.fn.split(output, "\n")) do
+              if fetch_message then
+                _, _, message = string.find(line, "%s×(.+)")
+
+                if message then
+                  message = (message):gsub("^%s+×%s*", "")
+
+                  table.insert(diagnostics, {
+                    source = "biomejs",
+                    lnum = tonumber(lnum) - 1,
+                    col = tonumber(col),
+                    message = message,
+                    code = code,
+                  })
+
+                  fetch_message = false
+                end
+              else
+                _, _, lnum, col, code = string.find(line, "[^:]+:(%d+):(%d+)%s([%a%/]+)")
+
+                if lnum then
+                  fetch_message = true
+                end
+              end
+            end
+
+            return diagnostics
+          end,
+          condition = function(ctx)
+            local config_files = { "biome.json", "biome.jsonc" }
+            for _, config_file in ipairs(config_files) do
+              local path = vim.fn.findfile(config_file, vim.fn.getcwd() .. ";")
+              if path ~= "" and vim.fn.filereadable(path) == 1 then
+                vim.notify("Found Biome config: " .. path, vim.log.levels.INFO) -- Debug
+                return true
+              end
+            end
+            vim.notify("No Biome config found, skipping biome", vim.log.levels.INFO) -- Debug
+            return false
+          end,
+        },
       },
     },
     config = function(_, opts)
@@ -153,7 +153,7 @@ return {
 
       vim.api.nvim_create_autocmd(opts.events, {
         group = vim.api.nvim_create_augroup("nvim-lint", { clear = true }),
-        callback = M.debounce(100, M.lint),
+        callback = M.debounce(200, M.lint),
       })
     end,
   },
