@@ -130,33 +130,45 @@ function M.statuscol()
 end
 
 function M.setup(opts)
-  local contains = vim.tbl_contains
+  opts = opts or {}
+  local ft_ignore = opts.ft_ignore or {}
+  local bt_ignore = opts.bt_ignore or {}
   local id = vim.api.nvim_create_augroup("StatusCol", {})
+
   local stc = "%!v:lua.require('statuscol').statuscol()"
-  a.nvim_set_option_value("stc", stc, { scope = "global" })
-  for _, tab in ipairs(a.nvim_list_tabpages()) do
-    for _, win in ipairs(a.nvim_tabpage_list_wins(tab)) do
-      local buf = a.nvim_win_get_buf(win)
-      if not contains(opts.ft_ignore or {}, a.nvim_get_option_value("ft", { buf = buf })) then
-        a.nvim_set_option_value("stc", stc, { win = win })
+  vim.api.nvim_set_option_value("statuscolumn", stc, { scope = "global" })
+
+  -- Apply statuscolumn to existing windows, excluding ignored filetypes and buftypes
+  for _, tab in ipairs(vim.api.nvim_list_tabpages()) do
+    for _, win in ipairs(vim.api.nvim_tabpage_list_wins(tab)) do
+      local buf = vim.api.nvim_win_get_buf(win)
+      local ft = vim.api.nvim_get_option_value("filetype", { buf = buf })
+      local bt = vim.api.nvim_get_option_value("buftype", { buf = buf })
+      if not (vim.tbl_contains(ft_ignore, ft) or vim.tbl_contains(bt_ignore, bt)) then
+        vim.api.nvim_set_option_value("statuscolumn", stc, { win = win })
       end
     end
   end
 
-  -- vim.wo.statuscolumn = "%!v:lua.require('statuscol').statuscol()"
-  if opts.ft_ignore then
-    a.nvim_create_autocmd("FileType", { group = id, pattern = opts.ft_ignore, command = "setlocal stc=" })
-    a.nvim_create_autocmd("BufWinEnter", {
+-- Autocommands for handling ignored filetypes and buftypes
+  local function disable_statuscol()
+    local ft = vim.api.nvim_get_option_value("filetype", { scope = "local" })
+    local bt = vim.api.nvim_get_option_value("buftype", { scope = "local" })
+    if vim.tbl_contains(bt_ignore, bt) or vim.tbl_contains(ft_ignore, ft) then
+      vim.api.nvim_set_option_value("statuscolumn", "", { scope = "local" })
+      vim.api.nvim_set_option_value("foldcolumn", "0", { scope = "local" })
+    end
+  end
+
+  if ft_ignore or bt_ignore then
+    vim.api.nvim_create_autocmd({ "FileType", "BufWinEnter" }, {
       group = id,
-      callback = function()
-        if contains(opts.ft_ignore, a.nvim_get_option_value("ft", { scope = "local" })) then
-          a.nvim_set_option_value("stc", "", { scope = "local" })
-          a.nvim_set_option_value("foldcolumn", "0", { scope = "local" })
-        end
-      end,
+      callback = disable_statuscol,
     })
   end
+
   vim.api.nvim_create_autocmd("WinClosed", {
+    group = id,
     callback = function(args)
       local win_id = tonumber(args.file)
       if win_id then
@@ -165,6 +177,7 @@ function M.setup(opts)
       end
     end,
   })
+
   -- if opts.wrap then
   --   vim.api.nvim_create_autocmd("FileType", { group = id, pattern = opts.wrap, command = "setlocal stc=%s%l" })
   --   vim.api.nvim_set_option_value("foldcolumn", "0", { scope = "local" })
