@@ -6,7 +6,7 @@ local M = {}
 
 --- @type table<number, { entries: winbar.Entry[], length: number }>
 local entries_cache = {}
---- @type table<number, table<number, { entries_length: number, text: string }>>
+--- @type table<number, table<number, { entries_length: number, text: string, prev_win_width: number }>>
 local result_cache = {}
 
 --- @param orig table
@@ -43,45 +43,6 @@ function M.truncate_path(entries, entries_len, max_w)
   return result
 end
 
---- Computes entries for a window and buffer.
---- @param winnr number
---- @param bufnr number
---- @return winbar.Entry[]|nil
---- @return boolean -- is update
-function M.compute(winnr, bufnr, prev_length)
-  prev_length = prev_length or 0
-  if not vim.api.nvim_buf_is_valid(bufnr) then
-    return {}, false
-  end
-
-  if not entries_cache[bufnr] then
-    local bufname = vim.api.nvim_buf_get_name(bufnr)
-    entries_cache[bufnr] = {
-      entries = Components.dirname_entry(bufname),
-      length = 0,
-    }
-    local filename = Components.filename_entry(bufname)
-    if filename then
-      table.insert(entries_cache[bufnr].entries, filename)
-    end
-    entries_cache[bufnr].length = M.compute_entries_length(entries_cache[bufnr].entries)
-  end
-
-  local win_width = vim.api.nvim_win_get_width(winnr)
-  if entries_cache[bufnr].length > win_width then
-    local entries = M.truncate_path(entries_cache[bufnr].entries, entries_cache[bufnr].length, win_width)
-    if #entries ~= prev_length - 1 then
-      if #entries > 0 then
-        table.insert(entries, 1, Entry.new(M.depth_limit_indicator or "..."))
-      end
-      return entries, true
-    end
-
-    return nil, false
-  end
-  return entries_cache[bufnr].entries, false
-end
-
 --- Checks if winbar should be skipped for a buffer.
 --- @param bufnr number
 --- @return boolean
@@ -106,32 +67,84 @@ function M.get_winbar(entries)
   return (M.head or "") .. table.concat(parts, M.separator or " > ")
 end
 
-local function update_winbar(winnr, bufnr, prev_len)
+--- Computes entries for a window and buffer.
+--- @param winnr number
+--- @param bufnr number
+--- @param prev_length number?
+--- @param prev_w number?
+--- @return winbar.Entry[]|nil
+--- @return number -- prev_win_width
+--- @return boolean -- is update
+function M.compute(winnr, bufnr, prev_length, prev_w)
+  if not vim.api.nvim_buf_is_valid(bufnr) then
+    return {}, 0, false
+  end
+
+  if not entries_cache[bufnr] then
+    local bufname = vim.api.nvim_buf_get_name(bufnr)
+    entries_cache[bufnr] = { entries = Components.dirname_entry(bufname), length = 0 }
+    local filename = Components.filename_entry(bufname)
+    if filename then
+      table.insert(entries_cache[bufnr].entries, filename)
+    end
+    entries_cache[bufnr].length = M.compute_entries_length(entries_cache[bufnr].entries)
+  end
+
+  local win_w = vim.api.nvim_win_get_width(winnr)
+  prev_w = prev_w or win_w
+  prev_length = prev_length or 0
+
+  if entries_cache[bufnr].length > win_w or win_w ~= prev_w then
+    local entries = M.truncate_path(entries_cache[bufnr].entries, entries_cache[bufnr].length, win_w)
+    prev_w = win_w
+    if #entries == #entries_cache[bufnr].entries then
+      if prev_length ~= entries then
+        return entries, prev_w, true
+      end
+      return entries, prev_w, false
+    end
+    if #entries ~= prev_length - 1 then
+      if #entries > 0 then
+        table.insert(entries, 1, Entry.new(M.depth_limit_indicator or "..."))
+      end
+      return entries, prev_w, true
+    end
+
+    return nil, prev_w, false
+  end
+  return entries_cache[bufnr].entries, prev_w, false
+end
+
+local function update_winbar(winnr, bufnr, prev_len, prev_win_width)
   result_cache[bufnr] = result_cache[bufnr] or {}
 
-  local entries, is_update = M.compute(winnr, bufnr, prev_len)
+  local entries, win_width, is_update = M.compute(winnr, bufnr, prev_len, prev_win_width)
+
+  -- print(result_cache[bufnr][winnr] and result_cache[bufnr][winnr].text, is_update, prev_len)
   if not result_cache[bufnr][winnr] or is_update then
     local text = M.get_winbar(entries)
-    result_cache[bufnr][winnr] = { entries_length = #entries, text = text }
+    result_cache[bufnr][winnr] = { entries_length = #entries, text = text, prev_win_width = win_width }
     vim.wo[winnr].winbar = text
   end
 end
 
---- Updates winbar on window resize.
 --- @param winnr number
 function M.resize_update(winnr)
   local bufnr = vim.api.nvim_win_get_buf(winnr)
-  if M.should_skip_winbar(bufnr) then return end
-  update_winbar(winnr, bufnr, result_cache[bufnr] and result_cache[bufnr][winnr] and result_cache[bufnr][winnr].entries_length)
+  if M.should_skip_winbar(bufnr) then
+    return
+  end
+  local cache = result_cache[bufnr] and result_cache[bufnr][winnr] or {}
+  update_winbar(winnr, bufnr, cache.entries_length, cache.prev_win_width)
 end
 
---- Updates the winbar for the current window.
 --- @param args table
 function M.update(args)
   local bufnr = args.buf or vim.api.nvim_get_current_buf()
-  if M.should_skip_winbar(bufnr) then return end
+  if M.should_skip_winbar(bufnr) then
+    return
+  end
   local winnr = vim.api.nvim_get_current_win()
-  -- Only set once if not cached
   if not (result_cache[bufnr] and result_cache[bufnr][winnr]) then
     update_winbar(winnr, bufnr)
   end
@@ -158,6 +171,7 @@ function M.setup(opts)
     group = vim.api.nvim_create_augroup("wb-resize", { clear = true }),
     callback = function(args)
       if not M.should_skip_winbar(args.buf) then
+        print("resize", args.buf)
         for _, winnr in ipairs(vim.api.nvim_list_wins()) do
           M.resize_update(winnr)
         end
