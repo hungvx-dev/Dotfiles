@@ -1,8 +1,0 @@
-add ~/Dev/Dotfiles/Music/
-update-cache 
-up
-clear
-update-c
-load ~/Dev/Dotfiles/Music/
-colorscheme tokyo
-set softvol=true
