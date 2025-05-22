@@ -5,13 +5,14 @@ vim.wo.linebreak = vim.wo.wrap
 vim.wo.number = true              -- Show the line number for each line
 vim.wo.relativenumber = true      -- Show the relative line number for each line
 vim.wo.numberwidth = 3            -- Number of columns to use for the line number
-vim.opt.fillchars = {
+vim.opt.fillchars:append({
   eob = " ",
   fold = " ",
+  lastline = " ",
   -- foldopen = "",
   -- foldclose = "╰",
   -- foldsep = "│",
-}
+})
 vim.wo.conceallevel = 2           -- Controls whether concealable text is hidden
 -- vim.wo.scroll = 10
 vim.wo.smoothscroll = true

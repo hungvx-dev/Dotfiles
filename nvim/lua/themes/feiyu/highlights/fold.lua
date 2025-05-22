@@ -16,8 +16,8 @@ return {
   },
 
   FoldVirtual = {
-    -- fg = colors.blue5,
-    fg = colors.blue6,
+    fg = colors.blue5,
+    -- fg = colors.blue6,
   },
 
   FoldText = {

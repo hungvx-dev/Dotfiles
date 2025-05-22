@@ -19,10 +19,10 @@ setKeyMap("v", "p", '"_dP')
 setKeyMap("n", "<leader><CR>", ":nohlsearch<Bar>:echo<CR>")
 
 -- ReSizing panes
-setKeyMap("n", "<leader>=", ":vertical resize +2<CR>")
-setKeyMap("n", "<leader>-", ":vertical resize -2<CR>")
-setKeyMap("n", "<leader>+", ":resize +2<CR>")
-setKeyMap("n", "<leader>_", ":resize -2<CR>")
+setKeyMap("n", "<leader>=", ":vertical resize +4<CR>")
+setKeyMap("n", "<leader>-", ":vertical resize -4<CR>")
+setKeyMap("n", "<leader>+", ":resize +4<CR>")
+setKeyMap("n", "<leader>_", ":resize -4<CR>")
 
 -- buffers
 -- setKeyMap("n", "[b", ":bprevious<cr>")
@@ -31,6 +31,11 @@ setKeyMap("n", "<leader>_", ":resize -2<CR>")
 setKeyMap("n", "<C-q>", ":q<cr>")
 setKeyMap("n", "<C-s>", ":silent! w<cr>")
 setKeyMap("i", "<C-s>", "<ESC>:silent! w<cr>")
+
+
+setKeyMap({ "n", "v" }, "<C-d>", "10j")
+setKeyMap({ "n", "v" }, "<C-u>", "10k")
+
 
 -- setKeyMap({ "n", "v" }, ";", "<Plug>(clever-f-repeat-forward)", { remap = true })
 -- setKeyMap({ "n", "v" }, ",", "<Plug>(clever-f-repeat-back)", { remap = true })

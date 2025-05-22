@@ -1,4 +1,4 @@
----@diagnostic disable: undefined-field
+---@diagnostic disable: undefined-field, duplicate-set-field
 local Entry = require("entry")
 
 --- @class winbar.Components
@@ -6,7 +6,7 @@ local M = {}
 
 --- Creates an Entry for the filename.
 --- @param bufname string The buffer name (full path).
---- @return Entry|nil The Entry for the filename, or nil if empty.
+--- @return winbar.Entry|nil The Entry for the filename, or nil if empty.
 function M.filename_entry(bufname)
   if not bufname or bufname == "" then
     return nil
@@ -23,7 +23,7 @@ end
 
 --- Creates Entries for each directory in the path.
 --- @param bufname string The buffer name (full path).
---- @return Entry[] List of Entries for directories.
+--- @return winbar.Entry[] List of Entries for directories.
 function M.dirname_entry(bufname)
   if not bufname or bufname == "" then
     return {}
