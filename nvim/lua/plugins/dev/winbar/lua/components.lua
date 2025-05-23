@@ -17,7 +17,7 @@ function M.filename_entry(bufname)
     return nil
   end
 
-  local icon, hl = M.get_icon(filename)
+  local icon, hl = M.get_icon("file", filename)
   return Entry.new(filename, icon, hl)
 end
 
@@ -36,17 +36,21 @@ function M.dirname_entry(bufname)
 
   local entries = {}
   for dir in dirname:gmatch("[^/\\]+") do
-    table.insert(entries, Entry.new(dir))
+    local icon, hl = M.get_icon("directory", dir)
+    table.insert(entries, Entry.new(dir, icon, hl))
   end
   return entries
 end
 
+
+--- @param type string
+--- @param name string
 --- @return string|nil
 --- @return string|nil
-function M.get_icon(filename)
+function M.get_icon(type, name)
   local ok, MiniIcons = pcall(require, "mini.icons")
   if ok then
-    return MiniIcons.get("file", filename)
+    return MiniIcons.get(type, name)
   end
   return nil, nil
 end

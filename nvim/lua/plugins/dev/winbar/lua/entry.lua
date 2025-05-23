@@ -1,8 +1,10 @@
+---@diagnostic disable: duplicate-set-field, duplicate-doc-field
 --- @class winbar.Entry
 --- @field text string The main text content of the Entry.
 --- @field icon string|nil The optional icon to display before text.
 --- @field hl string|nil The optional highlight group name for Neovim.
 --- @field length number The total length of text and icon (plus 1 for space if icon exists).
+--- @field formatted string
 local Entry = {}
 Entry.__index = Entry
 
@@ -28,6 +30,7 @@ function Entry.new(text, icon, hl)
     hl = hl,
     length = text:len() + (icon and (icon:len() + 1) or 0),
   }, Entry)
+  self.formatted = self:format_text()
   return self
 end
 
