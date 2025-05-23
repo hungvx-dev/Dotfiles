@@ -16,6 +16,7 @@ return {
         "html",
         "json",
         "lua",
+        "luau",
         "nix",
         "postgresql",
         "rust",
@@ -78,6 +79,7 @@ return {
         "dockerfile-language-server",
         "docker-compose-language-service",
         "postgrestools",
+        "luau-lsp",
 
         -- For Formatter
         "stylua", -- For lua
@@ -96,6 +98,7 @@ return {
         "cspell",
         "oxlint",
         "biome",
+        "selene",
         -- "stylelint",
 
         -- For Code action
