@@ -100,7 +100,7 @@ return {
       BoldLeft  = "▎",
       BoldRight = "▐",
       Full      = "█",
-      WinBar    = "▌",
+      WinBar    = "▍",
     },
     Direction       = {
       MD = {

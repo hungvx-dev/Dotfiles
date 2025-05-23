@@ -1,3 +1,4 @@
+---@diagnostic disable: param-type-mismatch
 local function bufremove(buf)
   buf = buf ~= 0 and buf or vim.api.nvim_get_current_buf()
 

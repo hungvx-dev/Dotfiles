@@ -146,6 +146,18 @@ return {
           ["<C-v>"] = "vsplit_with_window_picker",
         },
       },
+      event_handlers = {
+        {
+          event = "after_render",
+          handler = function(_)
+            if vim.bo.filetype == "neo-tree" then
+              if #vim.api.nvim_list_wins() >= 3 then
+                vim.cmd("wincmd =")
+              end
+            end
+          end,
+        },
+      },
     },
   },
   {
