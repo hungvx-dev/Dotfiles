@@ -37,7 +37,7 @@ local volar_init_options = {
 return {
   cmd = { "vue-language-server", "--stdio" },
   -- filetypes = { "vue" },
-  filetypes = hybridMode and { "vue" } or { "typescript", "javascript", "javascriptreact", "typescriptreact", "vue" },
+  filetypes = hybridMode and { "vue" } or { "typescript", "javascript", "javascriptreact", "typescriptreact", "vue", "html" },
   root_markers = { "tsconfig.json", "jsconfig.json", "package.json", "vite.config.ts", "vite.config.js" },
   init_options = volar_init_options,
   settings = {

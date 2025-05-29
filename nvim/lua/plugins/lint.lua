@@ -6,45 +6,58 @@ return {
     opts = {
       events = { "BufWritePost", "BufReadPost", "TextChanged", "TextChangedI" },
       linters_by_ft = {
-        css = { "eslint_d" },
-        less = { "eslint_d" },
-        scss = { "eslint_d" },
-        graphql = { "eslint_d" },
-        html = { "eslint_d" },
-        javascript = { "oxlint", "eslint_d" },
-        javascriptreact = { "oxlint", "eslint_d" },
-        json = { "oxlint", "eslint_d" },
-        jsonc = { "oxlint", "eslint_d" },
-        typescript = { "oxlint", "eslint_d" },
-        typescriptreact = { "oxlint", "eslint_d" },
-        vue = { "oxlint", "eslint_d" },
+        -- css = { "eslint_d" },
+        -- less = { "eslint_d" },
+        -- scss = { "eslint_d" },
+        -- graphql = { "eslint_d" },
+        -- html = { "eslint_d" },
+        -- javascript = { "oxlint", "eslint_d" },
+        -- javascriptreact = { "oxlint", "eslint_d" },
+        -- json = { "oxlint", "eslint_d" },
+        -- jsonc = { "oxlint", "eslint_d" },
+        -- typescript = { "oxlint", "eslint_d" },
+        -- typescriptreact = { "oxlint", "eslint_d" },
+        -- vue = { "oxlint", "eslint_d" },
         yaml = { "yamllint" },
         docker = { "hadolint" },
         luau = { "selene" },
         -- ["*"] = { "cspell" },
       },
       linters = {
-        eslint_d = {
-          args = {
-            "--no-warn-ignored", -- Ignore warnings, support Eslint 9
-            "--format",
-            "json",
-            "--stdin",
-            "--stdin-filename",
-            function()
-              return vim.api.nvim_buf_get_name(0)
-            end,
-          },
-          condition = function()
-            local config_files = { ".eslintrc", ".eslintrc.json", ".eslintrc.js", ".eslintrc.yaml", ".eslintrc.yml", "eslint.config.mts", "eslint.config.mjs" }
-            for _, config_file in ipairs(config_files) do
-              if vim.fn.filereadable(vim.fn.findfile(config_file, vim.fn.getcwd() .. ";")) == 1 then
-                return true
-              end
-            end
-            return false
-          end,
-        },
+        -- eslint_d = {
+        --   args = {
+        --     "--no-warn-ignored", -- Ignore warnings, support Eslint 9
+        --     "--format",
+        --     "json",
+        --     "--stdin",
+        --     "--stdin-filename",
+        --     function()
+        --       return vim.api.nvim_buf_get_name(0)
+        --     end,
+        --   },
+        --   condition = function()
+        --     local config_files = {
+        --       ".eslintrc",
+        --       ".eslintrc.js",
+        --       ".eslintrc.cjs",
+        --       ".eslintrc.yaml",
+        --       ".eslintrc.yml",
+        --       ".eslintrc.json",
+        --       "eslint.config.js",
+        --       "eslint.config.mjs",
+        --       "eslint.config.cjs",
+        --       "eslint.config.ts",
+        --       "eslint.config.mts",
+        --       "eslint.config.cts",
+        --     }
+        --     for _, config_file in ipairs(config_files) do
+        --       if vim.fn.filereadable(vim.fn.findfile(config_file, vim.fn.getcwd() .. ";")) == 1 then
+        --         return true
+        --       end
+        --     end
+        --     return false
+        --   end,
+        -- },
         -- biomejs = {
         --   condition = function()
         --     local config_files = { "biome.json", "biome.jsonc" }

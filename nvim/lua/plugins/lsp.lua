@@ -25,7 +25,8 @@ return {
         -- "typescript",
         "vue",
         "yaml",
-        -- "biome",
+        "biome",
+        "eslint"
       },
       ---@type vim.diagnostic.Opts
       diagnostic = {
@@ -80,6 +81,7 @@ return {
         "docker-compose-language-service",
         "postgrestools",
         "luau-lsp",
+        "eslint-lsp", -- For js
 
         -- For Formatter
         "stylua", -- For lua

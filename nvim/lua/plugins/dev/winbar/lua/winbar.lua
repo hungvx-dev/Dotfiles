@@ -165,7 +165,6 @@ function M.setup(opts)
     group = vim.api.nvim_create_augroup("wb-resize", { clear = true }),
     callback = function(args)
       if not M.should_skip_winbar(args.buf) then
-        -- print("resize", args.buf)
         for _, winnr in ipairs(vim.api.nvim_list_wins()) do
           M.resize_update(winnr)
         end

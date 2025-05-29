@@ -216,15 +216,18 @@ function H.create_autocommands()
   end
   local track_lsp = vim.schedule_wrap(function(args)
     if vim.api.nvim_buf_is_valid(args.buf) then
-      H.compute_attached_lsp(vim.bo.filetype, args.buf)
+      local is_redraw = H.compute_attached_lsp(vim.bo.filetype, args.buf)
+      if is_redraw then
+        vim.cmd("redrawstatus")
+      end
     end
-    vim.cmd("redrawstatus")
   end)
+  au({ "LspAttach", "LspDetach" }, "*", track_lsp)
+
   local clean_cache = function(args)
     Cache[args.buf] = nil
     Cache[vim.bo.filetype] = nil
   end
-  au({ "LspAttach", "LspDetach" }, "*", track_lsp)
   au("BufDelete", "*", clean_cache)
 end
 
@@ -367,17 +370,20 @@ function H.compute_attached_lsp(filetype, buf)
   if not Cache[filetype] then
     Cache[filetype] = {}
   end
-  if Cache[filetype].lsp_attached == nil then
-    local clients = vim.lsp.get_clients({ bufnr = buf })
-    if clients == nil or not next(clients) then
-      return nil
-    end
-
-    local attached = vim.tbl_map(function(client)
-      return client.name or ""
-    end, clients)
-    Cache[filetype].lsp_attached = string.format("[%s]", table.concat(attached, ", "))
+  -- if Cache[filetype].lsp_attached == nil then
+  local clients = vim.lsp.get_clients({ bufnr = buf })
+  if clients == nil or not next(clients) then
+    return nil
   end
+
+  local attached = vim.tbl_map(function(client)
+    -- print(client.name)
+    return client.name or ""
+  end, clients)
+  Cache[filetype].lsp_attached = string.format("[%s]", table.concat(attached, ", "))
+  --   return true
+  -- end
+  -- return false
 end
 
 function H.get_buf_lsp_clients(buf_id)

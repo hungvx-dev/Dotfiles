@@ -15,8 +15,8 @@ return {
   filetypes = {
     -- html
     "html",
-    "markdown",
-    "mdx",
+    -- "markdown",
+    -- "mdx",
     -- css
     "css",
     "less",

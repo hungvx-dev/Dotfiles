@@ -9,6 +9,7 @@ return {
     "typescript",
     "typescriptreact",
     "typescript.tsx",
+    "html",
     "vue",
   },
   single_file_support = true,
