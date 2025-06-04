@@ -62,7 +62,9 @@ M.treesitter = {
     ["@variable.parameter"] = { fg = colors.yellow },
     -- ["@lsp.type.property"] = "@lsp.type.property",
     ["@lsp.type.enumMember"] = "@variable.member",
+    ["@lsp.type.variable"] = {},
     ["@lsp.typemod.variable.defaultLibrary"] = "@variable.builtin",
+    -- ["@lsp.typemod.variable.readonly.typescript"] = "Constant",
     ["@lsp.typemod.type.defaultLibrary"] = "@type.builtin",
   },
 
@@ -161,7 +163,6 @@ M.lsp = {
   LspKindValue = "@string",
   LspKindVariable = "@variable",
 }
-NavicIconsModule = "LspKindModule"
 
 return M
 

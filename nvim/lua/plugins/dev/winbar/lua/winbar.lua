@@ -102,7 +102,7 @@ function M.compute(winnr, bufnr, prev_text_length, prev_w)
   prev_text_length = prev_text_length ~= nil and prev_text_length or entries_text_length
 
   if entries_text_length > win_w or win_w ~= prev_w then
-    entries, entries_text_length = M.truncate_path(entries, entries_text_length, win_w)
+    entries, entries_text_length = M.truncate_path(entries, entries_text_length, win_w + 8)
     if prev_text_length ~= entries_text_length then
       return entries, win_w, entries_text_length
     end

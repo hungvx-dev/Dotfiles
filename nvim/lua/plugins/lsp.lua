@@ -21,9 +21,9 @@ return {
         "postgresql",
         "rust",
         "tailwindcss",
-        -- "vtsls",
+        "vtsls",
         -- "typescript",
-        "vue",
+        -- "vue",
         "yaml",
         "biome",
         "eslint"

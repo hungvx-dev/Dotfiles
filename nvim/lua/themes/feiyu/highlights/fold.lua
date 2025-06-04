@@ -3,7 +3,7 @@ local colors = require("themes.feiyu.colors")
 return {
   FoldColumn = {
     -- fg = colors.dark5
-    fg = "#545c7e",
+    fg = colors.dark3,
   },
   Folded = {
     bg = colors.none,
@@ -16,8 +16,8 @@ return {
   },
 
   FoldVirtual = {
-    fg = colors.blue5,
-    -- fg = colors.blue6,
+    -- fg = colors.blue5,
+    fg = colors.dark3,
   },
 
   FoldText = {

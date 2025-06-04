@@ -5,6 +5,7 @@ return {
     bg = colors.bg,
     fg = "#d7005f",
   },
+  -- BlinkCmpLabelDescription = "Comment",
   BlinkCmpGhostText = {
     fg = "#414868",
   },

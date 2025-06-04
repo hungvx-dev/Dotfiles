@@ -41,20 +41,21 @@ return {
         --   ["alt-h"] = { actions.toggle_hidden },
         -- },
       },
-      -- lsp = {
-      --   symbols = {
-      --     symbol_hl = function(s)
-      --       return "TroubleIcon" .. s
-      --     end,
-      --     symbol_fmt = function(s)
-      --       return s:lower() .. "\t"
-      --     end,
-      --     child_prefix = false,
-      --   },
-      --   code_actions = {
-      --     previewer = vim.fn.executable("delta") == 1 and "codeaction_native" or nil,
-      --   },
-      -- },
+      lsp = {
+        cwd_only = true,
+        -- symbols = {
+        --   symbol_hl = function(s)
+        --     return "TroubleIcon" .. s
+        --   end,
+        --   symbol_fmt = function(s)
+        --     return s:lower() .. "\t"
+        --   end,
+        --   child_prefix = false,
+        -- },
+        -- code_actions = {
+        --   previewer = vim.fn.executable("delta") == 1 and "codeaction_native" or nil,
+        -- },
+      },
       keymap = {
         builtin = {
           ["<C-f>"] = "preview-page-down",

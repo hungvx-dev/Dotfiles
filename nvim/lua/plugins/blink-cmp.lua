@@ -2,7 +2,7 @@ local source_mapping = {
   LSP = HVIM.icons.Cmp.Lsp,
   Path = HVIM.icons.Cmp.Path,
   Snippets = HVIM.icons.Cmp.Snippet,
-  cmdline = HVIM.icons.Cmp.CmpLine,
+  Cmdline = HVIM.icons.Cmp.CmpLine,
   Buffer = HVIM.icons.Cmp.Buffer,
   Color = HVIM.icons.Cmp.Color,
 }
@@ -15,33 +15,32 @@ return {
     version = "*",
     -- build = "cargo build --release",
     dependencies = {
-      {
-        "L3MON4D3/LuaSnip",
-        version = "v2.*",
-        build = "make install_jsregexp",
-        dependencies = {
-          {
-            "rafamadriz/friendly-snippets",
-            config = function()
-              require("luasnip.loaders.from_vscode").lazy_load()
-              require("luasnip.loaders.from_vscode").lazy_load({ paths = { vim.fn.stdpath("config") .. "/snippets" } })
-            end,
-          },
-        },
-        opts = {
-          history = true,
-          delete_check_events = "TextChanged",
-        },
-      },
+      "rafamadriz/friendly-snippets",
       {
         "xzbdmw/colorful-menu.nvim",
-        opts = {},
+        opts = {
+          vtsls = {
+            extra_info_hl = "@comment",
+          },
+          ["rust-analyzer"] = {
+            extra_info_hl = "@comment",
+            align_type_to_right = true,
+            preserve_type_when_truncate = true,
+          },
+        },
       },
     },
     opts = {
-      snippets = { preset = "luasnip" },
+      snippets = { preset = "default" },
       sources = {
         default = { "lsp", "path", "snippets", "buffer" },
+        providers = {
+          lsp = { name = source_mapping.LSP },
+          path = { name = source_mapping.Path },
+          snippets = { name = source_mapping.Snippets },
+          buffer = { name = source_mapping.Buffer },
+          cmdline = { name = source_mapping.Cmdline },
+        },
       },
       keymap = {
         preset = "none",
@@ -78,45 +77,14 @@ return {
           border = "rounded",
           max_height = 15,
           draw = {
-            columns = { { "source_name" }, { "label", gap = 1 }, { "kind__icons" } },
+            columns = { { "source_name" }, { "label" }, { "kind_icon", "kind", gap = 1 } },
             components = {
-              source_name = {
-                ellipsis = false,
-                text = function(ctx)
-                  if ctx.kind == "Color" then
-                    return HVIM.icons.Cmp.Color
-                  end
-                  return source_mapping[ctx.source_name]
-                end,
-                highlight = function(ctx)
-                  return ctx.kind_hl
-                end,
-              },
               label = {
-                width = { fill = true, max = 60 },
                 text = function(ctx)
-                  local highlights_info = require("colorful-menu").blink_highlights(ctx)
-                  return highlights_info and highlights_info.label or ctx.label
+                  return require("colorful-menu").blink_components_text(ctx)
                 end,
                 highlight = function(ctx)
-                  local highlights = {}
-                  local highlights_info = require("colorful-menu").blink_highlights(ctx)
-                  if highlights_info ~= nil then
-                    highlights = highlights_info.highlights
-                  end
-                  for _, idx in ipairs(ctx.label_matched_indices) do
-                    table.insert(highlights, { idx, idx + 1, group = "BlinkCmpLabelMatch" })
-                  end
-                  return highlights
-                end,
-              },
-              kind__icons = {
-                ellipsis = false,
-                text = function(ctx)
-                  return HVIM.icons.Kind[ctx.kind] .. ctx.kind
-                end,
-                highlight = function(ctx)
-                  return ctx.kind_hl
+                  return require("colorful-menu").blink_components_highlight(ctx)
                 end,
               },
             },
@@ -146,7 +114,7 @@ return {
       appearance = {
         use_nvim_cmp_as_default = false,
         -- nerd_font_variant = "normal",
-        -- kind_icons = HVIM.icons.Kind,
+        kind_icons = HVIM.icons.Kind,
       },
       fuzzy = { implementation = "rust" },
       signature = {

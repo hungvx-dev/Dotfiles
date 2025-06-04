@@ -6,7 +6,7 @@ local keymap = vim.keymap
 function M.capabilities()
   local has_lsp_file, lsp_file = pcall(require, "lsp-file-operations")
   local has_blink, blink = pcall(require, "blink.cmp")
-  return vim.tbl_deep_extend("force", {}, vim.lsp.protocol.make_client_capabilities(), has_lsp_file and lsp_file.default_capabilities() or {}, has_blink and blink.get_lsp_capabilities() or {})
+  return vim.tbl_deep_extend("force", {}, has_blink and blink.get_lsp_capabilities(vim.lsp.protocol.make_client_capabilities()) or {}, has_lsp_file and lsp_file.default_capabilities() or {})
 end
 
 function M.setup(opts)
@@ -26,6 +26,9 @@ function M.setup(opts)
         -- end
 
         -- vim.keymap.set("n", "gd", vim.lsp.buf.definition, opt)
+        -- vim.keymap.set("n", "gd", function()
+        --   vim.lsp.buf.definition({ reuse_win = true })
+        -- end, opt)
         -- vim.keymap.set("n", "K", function()
         --   vim.lsp.buf.hover({ border = "rounded" })
         -- end, opt)
@@ -34,6 +37,9 @@ function M.setup(opts)
         keymap.set("n", "gD", vim.lsp.buf.declaration, opt)
 
         keymap.set("n", "gd", "<cmd>FzfLua lsp_definitions     jump1=true ignore_current_line=true<cr>", opt)
+        -- vim.keymap.set("n", "gd", function()
+        --   require("fzf-lua").lsp_definitions({ jump1 = true, reuse_win = true  })
+        -- end, { desc = "Goto Definition" })
         keymap.set("n", "gi", "<cmd>FzfLua lsp_implementations jump1=true ignore_current_line=true<cr>", opt)
         keymap.set("n", "gr", "<cmd>FzfLua lsp_references      jump1=true ignore_current_line=true<cr>", opt)
         keymap.set("n", "gt", "<cmd>FzfLua lsp_typedefs        jump1=true ignore_current_line=true<cr>", opt)

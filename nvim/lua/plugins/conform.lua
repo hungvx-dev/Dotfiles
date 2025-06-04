@@ -17,8 +17,8 @@ return {
     opts = function()
       return {
         default_format_opts = {
-          timeout_ms = 1000,
-          async      = false,
+          timeout_ms = 2000,
+          async      = true,
           quiet      = false,
           lsp_format = "fallback",
         },
