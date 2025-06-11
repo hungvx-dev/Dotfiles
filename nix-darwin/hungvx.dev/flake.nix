@@ -58,8 +58,8 @@
           pkgs.discord
           pkgs.google-chrome
           pkgs.zoom-us
-          pkgs.obsidian
-          pkgs.telegram-desktop
+          # pkgs.obsidian
+          # pkgs.telegram-desktop
 
           # Dev
           pkgs.docker
@@ -114,7 +114,7 @@
           packages = with pkgs; [
             jetbrains-mono
             nerd-fonts.iosevka
-            # nerd-fonts.jetbrains-mono
+            nerd-fonts.jetbrains-mono
           ];
         };
 
