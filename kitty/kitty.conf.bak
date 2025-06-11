@@ -12,12 +12,12 @@ include ./kitty-themes/themes/tokyonight-night.conf
 #  ╚═╝      ╚═════╝ ╚═╝  ╚═══╝   ╚═╝   ╚══════╝  #
 #                                                #
 ##################################################
-font_family       postscript_name=JetBrainsMono-ExtraLight features="+zero"
-
-bold_font         postscript_name=JetBrainsMono-SemiBold features="+zero"
-italic_font       postscript_name=JetBrainsMono-ExtraLightItalic features="+zero"
-bold_italic_font  postscript_name=JetBrainsMono-SemiBoldItalic features="+zero"
-font_size         16.0
+#font_family      family='JetBrains Mono' postscript_name=JetBrainsMono-ExtraLight
+#bold_font        JetBrainsMono-SemiBold
+#italic_font      JetBrainsMono-ExtraLightItalic
+#bold_italic_font JetBrainsMono-SemiBoldItalic
+#font_size        16.0
+#font_features    JetBrainsMono-ExtraLight +zero
 
 modify_font cell_height 18px
 # modify_font cell_width 100%
