@@ -20,13 +20,9 @@
       configuration = { pkgs, ... }: {
         # List packages installed in system profile. To search by name, run:
         # $ nix-env -qaP | grep wget
-        nix = {
-          settings.experimental-features = "nix-command flakes";
-        };
-        nixpkgs = {
-          config = { allowUnfree = true; };
-          hostPlatform = "aarch64-darwin";
-        };
+        nix.settings.experimental-features = "nix-command flakes";
+        nixpkgs.config.allowUnfree = true;
+        nixpkgs.hostPlatform = "aarch64-darwin";
 
         environment.systemPackages = [
           pkgs.neovim
@@ -39,9 +35,6 @@
           pkgs.ripgrep
           pkgs.fd
           pkgs.bat
-          # pkgs.ueberzugpp
-          # pkgs.chafa
-          # pkgs.viu
 
           pkgs.zoxide
           pkgs.eza
@@ -56,6 +49,7 @@
           pkgs.lazygit
 
           pkgs.stow
+
           pkgs.cmus
           pkgs.cava
 
@@ -66,7 +60,11 @@
           pkgs.zoom-us
 
           # Dev
-          pkgs.nodejs_22 # For cspell
+          pkgs.docker
+          pkgs.colima
+          pkgs.lazydocker
+          pkgs.rainfrog
+          pkgs.nodejs
         ];
 
         users.users.feiyu = {
@@ -80,16 +78,22 @@
           global = {
             autoUpdate = true;
           };
+          brews = [
+            # "git-graph"
+          ];
           casks = [
             "openkey"
             "figma"
             "pearcleaner"
             "brave-browser"
+            # "zen-browser"
             "karabiner-elements"
             "vlc"
-            "xmind"
             "blackhole-2ch"
-            # "transmission"
+            # "clop"
+            # "notion"
+            # "stremio"
+            # "xmind"
           ];
           onActivation = {
             cleanup = "zap";
@@ -115,6 +119,7 @@
         };
 
         system = {
+	  primaryUser = username;
           configurationRevision = self.rev or self.dirtyRev or null;
           stateVersion = 5;
           defaults = {
@@ -166,7 +171,7 @@
               enable = true;
               enableRosetta = true;
               user = username;
-              autoMigrate = true;
+              # autoMigrate = true;
             };
           }
         ];
