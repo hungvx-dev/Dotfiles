@@ -15,6 +15,7 @@ function M.setup()
     ["alpha"] = Extension.empty,
     ["help"] = Extension.empty,
     ["man"] = Extension.empty,
+    ["TelescopePrompt"] = Extension.empty,
   }
   H.set_statusline()
   H.create_autocommands()

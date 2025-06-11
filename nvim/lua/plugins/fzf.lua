@@ -75,7 +75,6 @@ return {
       { "<leader>fs", "<cmd>FzfLua live_grep<cr>", desc = "Find in Files (Grep)" },
       { "<leader>fi", "<cmd>FzfLua grep_curbuf<cr>", desc = "Buffer" },
 
-      -- Search
       { "<leader>fd", "<cmd>FzfLua diagnostics_document<cr>", desc = "Diagnostics" },
       { "<leader>fk", "<cmd>FzfLua keymaps<cr>", desc = "Key Maps" },
       { "<leader>fh", "<cmd>FzfLua help_tags<cr>", desc = "Help Tags" },
@@ -86,6 +85,15 @@ return {
       -- Git
       { "<leader>fgs", "<cmd>FzfLua git_status<cr>", desc = "Git status" },
       { "<leader>fgb", "<cmd>FzfLua git_branches<cr>", desc = "Git branches" },
+    },
+  },
+  {
+    "folke/todo-comments.nvim",
+    optional = true,
+    -- stylua: ignore
+    keys = {
+      { "<leader>ft", function() require("todo-comments.fzf").todo() end, desc = "Todo" },
+      { "<leader>fT", function () require("todo-comments.fzf").todo({ keywords = { "TODO", "FIX", "FIXME" } }) end, desc = "Todo/Fix/Fixme" },
     },
   },
 }

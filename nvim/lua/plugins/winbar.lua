@@ -8,7 +8,7 @@ return {
       separator = HVIM.icons.UI.WinBar,
       head = HVIM.icons.UI.Line.WinBar,
       depth_limit_indicator = HVIM.icons.UI.Ellipsis,
-      ignore_filetypes = { "neo-tree", "alpha", "fzf", "help", "man", "mason", "lazy" },
+      ignore_filetypes = { "neo-tree", "alpha", "fzf", "help", "man", "mason", "lazy", "TelescopePrompt" },
     },
   },
   {

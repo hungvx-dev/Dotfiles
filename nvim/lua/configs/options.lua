@@ -1,6 +1,8 @@
 vim.g.loaded_netrw = 1
 vim.g.loaded_netrwPlugin = 1
 
+vim.o.winborder = "rounded"
+
 -- #================ 2. Moving around, searching and patterns =================#
 vim.opt.ignorecase = true         -- Ignore case when using a search pattern
 vim.opt.whichwrap:append("hl")
