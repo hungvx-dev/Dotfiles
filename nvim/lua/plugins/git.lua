@@ -3,7 +3,7 @@ return {
     "lewis6991/gitsigns.nvim",
     enabled = HVIM.plugins.git,
     version = "*",
-    event = { "BufReadPost" },
+    event = { "BufReadPost", "BufNewFile", "BufWritePre" },
     opts = {
       signs = {
         add = { text = HVIM.icons.UI.Line.BoldMid },
@@ -72,7 +72,7 @@ return {
   {
     "akinsho/git-conflict.nvim",
     enabled = HVIM.plugins.git,
-    event = { "BufReadPost" },
+    event = { "BufReadPost", "BufNewFile", "BufWritePre" },
     version = "*",
     config = true,
   },

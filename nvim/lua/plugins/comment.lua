@@ -1,7 +1,7 @@
 return {
   {
     "echasnovski/mini.comment",
-    event = { "BufReadPost", "BufNewFile" },
+    event = { "BufReadPost", "BufNewFile", "BufWritePre" },
     opts = {
       options = {
         custom_commentstring = function()
@@ -16,10 +16,6 @@ return {
   },
   {
     "folke/todo-comments.nvim",
-    cmd = {
-      -- "TodoTrouble",
-      "TodoFzflua",
-    },
     event = { "BufReadPost", "BufNewFile", "BufWritePre" },
     keys = {
       {
@@ -38,8 +34,6 @@ return {
       },
       -- { "<leader>xt", "<cmd>TodoTrouble<cr>", desc = "Todo (Trouble)" },
       -- { "<leader>xT", "<cmd>TodoTrouble keywords=TODO,FIX,FIXME<cr>", desc = "Todo/Fix/Fixme (Trouble)" },
-      { "<leader>ft", "<cmd>TodoFzflua<cr>", desc = "Todo" },
-      { "<leader>fT", "<cmd>TodoFzflua keywords=TODO,FIX,FIXME<cr>", desc = "Todo/Fix/Fixme" },
     },
     opts = {
       signs = true,

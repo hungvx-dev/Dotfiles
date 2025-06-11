@@ -2,7 +2,7 @@ return {
   {
     "catgoose/nvim-colorizer.lua",
     enabled = true,
-    event = "VeryLazy",
+    event = { "BufReadPost", "BufNewFile", "BufWritePre" },
     opts = {
       filetypes = {
         "*",
@@ -35,7 +35,7 @@ return {
         --   update_names = true,
         -- },
         mode = "virtualtext",
-        virtualtext = "",
+        virtualtext = HVIM.icons.Cmp.Color,
         virtualtext_inline = "before",
         virtualtext_mode = "foreground",
       },

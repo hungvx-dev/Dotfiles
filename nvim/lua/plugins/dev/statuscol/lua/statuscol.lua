@@ -139,16 +139,16 @@ function M.setup(opts)
   vim.api.nvim_set_option_value("statuscolumn", stc, { scope = "global" })
 
   -- Apply statuscolumn to existing windows, excluding ignored filetypes and buftypes
-  for _, tab in ipairs(vim.api.nvim_list_tabpages()) do
-    for _, win in ipairs(vim.api.nvim_tabpage_list_wins(tab)) do
-      local buf = vim.api.nvim_win_get_buf(win)
-      local ft = vim.api.nvim_get_option_value("filetype", { buf = buf })
-      local bt = vim.api.nvim_get_option_value("buftype", { buf = buf })
-      if not (vim.tbl_contains(ft_ignore, ft) or vim.tbl_contains(bt_ignore, bt)) then
-        vim.api.nvim_set_option_value("statuscolumn", stc, { win = win })
-      end
-    end
-  end
+  -- for _, tab in ipairs(vim.api.nvim_list_tabpages()) do
+  --   for _, win in ipairs(vim.api.nvim_tabpage_list_wins(tab)) do
+  --     local buf = vim.api.nvim_win_get_buf(win)
+  --     local ft = vim.api.nvim_get_option_value("filetype", { buf = buf })
+  --     local bt = vim.api.nvim_get_option_value("buftype", { buf = buf })
+  --     if not (vim.tbl_contains(ft_ignore, ft) or vim.tbl_contains(bt_ignore, bt)) then
+  --       vim.api.nvim_set_option_value("statuscolumn", stc, { win = win })
+  --     end
+  --   end
+  -- end
 
 -- Autocommands for handling ignored filetypes and buftypes
   local function disable_statuscol()

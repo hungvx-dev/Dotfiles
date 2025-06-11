@@ -51,14 +51,14 @@ return {
     Uninstall = "✗",
   },
   Cmp         = {
-    Path       = " ",
-    Snippet    = " ",
-    Lsp        = " ",
-    NvimLua    = " ",
-    Buffer     = " ",
-    Spellcheck = " ",
-    CmpLine    = " ",
-    Color      = " "
+    Path       = "",
+    Snippet    = "",
+    Lsp        = "",
+    NvimLua    = "",
+    Buffer     = "",
+    Spellcheck = "",
+    CmpLine    = "",
+    Color      = ""
   },
   UI          = {
     Apple           = "󰀵",
@@ -71,7 +71,7 @@ return {
     OldFile         = "󰛔 ",
     FoldText        = "▍󰁂 󰇘 ",
     Ellipsis        = " 󰇘 ",
-    Search          = "  ",
+    Search          = " ",
     SelectionCaret  = " ",
     WindowMaximized = " ",
     Explorer        = " ",
