@@ -1,4 +1,4 @@
-Include ~/.orbstack/ssh/config
+Include ~/.colima/ssh_config
 
 Host github.com
   HostName github.com
