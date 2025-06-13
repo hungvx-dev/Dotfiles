@@ -27,7 +27,6 @@ return {
     },
     opts = function()
       local actions = require("telescope.actions")
-      local telescopeConfig = require("telescope.config")
       -- local vimgrep_arguments = { unpack(telescopeConfig.values.vimgrep_arguments) }
       --
       -- table.insert(vimgrep_arguments, "--hidden")
@@ -41,24 +40,13 @@ return {
           path_display = { "truncate" },
           initial_mode = "insert",
           border = false,
-          -- vimgrep_arguments = vimgrep_arguments,
-          -- get_selection_window = function()
-          --   local wins = vim.api.nvim_list_wins()
-          --   table.insert(wins, 1, vim.api.nvim_get_current_win())
-          --   for _, win in ipairs(wins) do
-          --     local buf = vim.api.nvim_win_get_buf(win)
-          --     if vim.bo[buf].buftype == "" then
-          --       return win
-          --     end
-          --   end
-          --   return 0
-          -- end,
           sorting_strategy = "ascending",
           layout_strategy = "vertical",
           layout_config = {
             vertical = {
               preview_cutoff = 5,
               prompt_position = "top",
+              mirror = true,
             },
           },
           mappings = {
@@ -80,9 +68,7 @@ return {
               ["<C-q>"] = actions.close,
             },
             n = {
-              ["q"] = function(...)
-                return actions.close(...)
-              end,
+              ["q"] = actions.close,
               ["<C-n>"] = actions.cycle_history_next,
               ["<C-p>"] = actions.cycle_history_prev,
               ["<C-v>"] = actions.select_vertical,
@@ -100,25 +86,6 @@ return {
             case_mode = "smart_case",
           },
         },
-        -- pickers = {
-        --   find_files = {
-        --     find_command = find_command,
-        --     hidden = true,
-        --   },
-        --   buffers = {
-        --     mappings = {
-        --       i = {
-        --         ["<C-d>"] = actions.delete_buffer,
-        --       },
-        --       n = {
-        --         ["dd"] = actions.delete_buffer,
-        --       },
-        --     },
-        --   },
-        --   colorscheme = {
-        --     enable_preview = true,
-        --   },
-        -- },
       }
     end,
     keys = {

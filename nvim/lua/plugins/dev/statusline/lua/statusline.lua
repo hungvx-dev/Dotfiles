@@ -182,7 +182,7 @@ function M.section_location()
 end
 
 function M.section_searchcount(args)
-  if vim.v.hlsearch == 0 or M.is_truncated(args.trunc_width) then
+  if vim.v.hlsearch == 0 or vim.opt.cmdheight then
     return ""
   end
   local ok, s_count = pcall(vim.fn.searchcount, (args or {}).options or { recompute = true })
@@ -256,7 +256,7 @@ function H.default_content_active(args)
   local lsp = M.section_lsp({ trunc_width = 75, icon = " 󰰎 ", filetype = args.filetype })
   local filetype = M.section_filetype(args)
   local location = M.section_location()
-  local search = M.section_searchcount({ trunc_width = 7 })
+  local search = M.section_searchcount()
   local size = M.section_size({ icon = HVIM.icons.UI.Sd, buf = args.buf })
   local maximized = M.section_maximized()
 

@@ -12,7 +12,7 @@ return {
 
   border_highlight = "#00ffff",
 
-  green = "#ccff33",
+  green = "#bbff11",
   green1 = "#33FFCF",
   blue = "#3B93F7",
   blue0 = "#0969D7",
@@ -21,7 +21,7 @@ return {
   blue5 = "#9be3ff",
   blue6 = "#8cfffe",
 
-  yellow = "#FFEB0A",
+  yellow = "#FFFF00",
   cyan = "#00FFFF",
   magenta = "#FF0F80",
   orange = "#fb8500",

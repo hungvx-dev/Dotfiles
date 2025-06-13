@@ -7,6 +7,7 @@ return {
   blink_cmp = require("themes.feiyu.highlights.blink_cmp"),
   neotree = require("themes.feiyu.highlights.neotree"),
   fzf = require("themes.feiyu.highlights.fzf"),
+  telescope = require("themes.feiyu.highlights.telescope"),
   git = require("themes.feiyu.highlights.git"),
   rainbow = require("themes.feiyu.highlights.rainbow"),
   fold = require("themes.feiyu.highlights.fold"),

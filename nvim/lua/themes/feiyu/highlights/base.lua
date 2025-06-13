@@ -97,6 +97,6 @@ return {
   },
 
   Directory = {
-    fg = "#74a2ff",
+    fg = colors.blue,
   },
 }

@@ -19,7 +19,7 @@ vim.wo.smoothscroll = true
 vim.opt.scrolloff = 4             -- Number of screen lines to show around the cursor
 vim.opt.sidescrolloff = 8
 vim.wo.list = true
-vim.opt.listchars = { extends = "→", nbsp = " ", eol = "↴", trail = "·", tab = "  ", space = " " }
+vim.opt.listchars = { extends = "⟶", nbsp = " ", eol = "⏎", trail = "·" }
 
 -- #================== 5. Syntax, highlighting and spelling ===================#
 -- vim.opt.syntax = "on"

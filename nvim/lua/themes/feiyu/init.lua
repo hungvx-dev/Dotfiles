@@ -66,6 +66,10 @@ M.setup = function(plugins, highlight)
     M.set_hl(highlights.fzf)
   end
 
+  if plugins.telescope then
+    M.set_link_hl(highlights.telescope)
+  end
+
   if plugins.git then
     M.set_mix_hl(highlights.git)
   end
