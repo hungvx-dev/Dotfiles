@@ -120,10 +120,19 @@ In neovim Run `:Mason` command and install LSPs
 ### Update packages
 
 1.  Update flake: `nix flake update`
-2.  Darwin rebuild: `darwin-rebuild switch --flake .`
-3.  Clean nix store: `nix store gc`
-4.  Delete old generations(optional): `nix-collect-garbage -d`
-4.  Reset dock: `defaults write com.apple.dock ResetLaunchPad -bool true; killall Dock`
+2.  Darwin rebuild: `sudo darwin-rebuild switch --flake .`
+
+### Clean packages
+
+- Clean nix store: `nix store gc`
+- Delete old generations(optional): `sudo nix-collect-garbage -d`
+- Reset dock: `defaults write com.apple.dock ResetLaunchPad -bool true; killall Dock`
+
+### Checkout packages
+
+- List generations: `sudo darwin-rebuild --list-generations`
+- Rollback: `sudo darwin-rebuild switch --rollback`
+- Checkout generation: `sudo darwin-rebuild switch --generation <generation-number>`
 
 ### Nodejs
 
