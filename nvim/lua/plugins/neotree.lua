@@ -11,6 +11,8 @@ return {
       "s1n7ax/nvim-window-picker",
     },
     init = function()
+      vim.g.loaded_netrw = 1
+      vim.g.loaded_netrwPlugin = 1
       vim.api.nvim_create_autocmd("BufEnter", {
         group = vim.api.nvim_create_augroup("Neotree_start_directory", { clear = true }),
         desc = "Start Neo-tree with directory",
@@ -36,9 +38,11 @@ return {
     },
     opts = {
       filesystem = {
-        follow_current_file = { enabled = true },
+        follow_current_file = {
+          enabled = true,
+          leave_dirs_open = true,
+        },
         use_libuv_file_watcher = true,
-        leave_dirs_open = true,
       },
       popup_border_style = "rounded",
       nesting_rules = {
@@ -184,11 +188,11 @@ return {
       },
       highlights = {
         statusline = {
-          focused = { fg = "#ededed", bg = "NONE" }, -- "#e35e4f"
+          focused = { fg = "#ffffff", bg = "NONE" }, -- "#e35e4f"
           unfocused = { fg = "#2ac3de", bg = "NONE" }, -- #2ac3de
         },
         winbar = {
-          focused = { fg = "#ededed", bg = "NONE" },
+          focused = { fg = "#ffffff", bg = "NONE" },
           unfocused = { fg = "#2ac3de", bg = "NONE" },
         },
       },

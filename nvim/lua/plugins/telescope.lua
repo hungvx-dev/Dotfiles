@@ -23,6 +23,11 @@ return {
       {
         "nvim-telescope/telescope-fzf-native.nvim",
         build = "make",
+        config = function()
+          vim.schedule(function()
+            require("telescope").load_extension("fzf")
+          end)
+        end,
       },
     },
     opts = function()
@@ -40,8 +45,10 @@ return {
           path_display = { "truncate" },
           initial_mode = "insert",
           border = false,
+          scroll_strategy = "limit",
           sorting_strategy = "ascending",
           layout_strategy = "vertical",
+          file_ignore_patterns = { "node_modules" },
           layout_config = {
             vertical = {
               preview_cutoff = 5,
@@ -105,11 +112,6 @@ return {
       { "<leader>fH", "<cmd>Telescope highlights<cr>", desc = "Search Highlight Groups" },
       { "<leader>f:", "<cmd>Telescope command_history<cr>", desc = "Command History" },
     },
-    config = function(_, opts)
-      local telescope = require("telescope")
-      telescope.setup(opts)
-      telescope.load_extension("fzf")
-    end,
   },
 
   {

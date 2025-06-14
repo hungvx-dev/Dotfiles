@@ -28,8 +28,7 @@ return {
   violet = "#EE81B1",
   purple = "#DE85FF",
   red = "#fc5f66",
-  red1 = "#d90429",
-  red2 = "#a4133c",
+  red1 = "#ff0000",
   teal = "#02c39a",
   dark3 = "#545c7e",
   dark4 = "#d4d6e7",
@@ -45,11 +44,11 @@ return {
   git = {
     add = "#00E4F5",
     change = "#fb8500",
-    delete = "#B80000",
+    delete = "#ff0000",
     ignore = "#545c7e",
   },
 
-  error = "#F2181B",
+  error = "#ff0000",
   hint = "#02c39a",
   info = "#73d2de",
   warning = "#FFDA1F",

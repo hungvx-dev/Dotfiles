@@ -100,4 +100,5 @@ return {
     },
     additional_vim_regex_highlighting = false,
   },
+  opts_extend = { "ensure_installed" },
 }
