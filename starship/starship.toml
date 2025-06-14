@@ -34,7 +34,7 @@ $cmd_duration
 
 palette = "catppuccin-mocha"
 [palettes.catppuccin-mocha]
-red = "#B80000"
+red = "#ff0000"
 yellow = "#FFFF00"
 green = "#bbff11"
 magenta = "#FF0F80"
@@ -97,7 +97,7 @@ disabled = false
 disabled = false
 added_style = "fg:cyan"
 deleted_style = "fg:red"
-format = '([+$added]($added_style) )([-$deleted]($deleted_style) )'
+format = '([󰜄 $added]($added_style) )([󰛲 $deleted]($deleted_style) )'
 [git_status]
 disabled = false
 conflicted = '='
