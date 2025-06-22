@@ -17,9 +17,9 @@ return {
     dashboard.section.header.opts.position = "center"
 
     dashboard.section.buttons.val = {
-      dashboard.button("o", table.concat({ "░ ", HVIM.icons.UI.OldFile, "Old files" }), "<cmd>FzfLua oldfiles<cr>"),
-      dashboard.button("p", table.concat({ "░ ", HVIM.icons.UI.Search, "Find file" }), "<cmd>FzfLua files<cr>"),
-      dashboard.button("s", table.concat({ "░ ", HVIM.icons.UI.FindText, "Find text" }), "<cmd>FzfLua live_grep<cr>"),
+      dashboard.button("o", table.concat({ "░ ", HVIM.icons.UI.OldFile, "Old files" }), "<cmd>Telescope oldfiles<cr>"),
+      dashboard.button("p", table.concat({ "░ ", HVIM.icons.UI.Search, "Find file" }), "<cmd>Telescope find_files<cr>"),
+      dashboard.button("s", table.concat({ "░ ", HVIM.icons.UI.FindText, "Find text" }), "<cmd>Telescope live_grep<cr>"),
       dashboard.button("l", table.concat({ "░ ", HVIM.icons.UI.Lazy, "Lazy" }), "<cmd>Lazy <cr>"),
       dashboard.button("q", table.concat({ "░ ", HVIM.icons.UI.Quit, "Quit" }), "<cmd>qa <cr>"),
     }

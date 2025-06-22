@@ -1,17 +1,3 @@
-local function find_command()
-  if 1 == vim.fn.executable("rg") then
-    return { "rg", "--files", "--color", "never", "-g", "!.git" }
-  elseif 1 == vim.fn.executable("fd") then
-    return { "fd", "--type", "f", "--color", "never", "-E", ".git" }
-  elseif 1 == vim.fn.executable("fdfind") then
-    return { "fdfind", "--type", "f", "--color", "never", "-E", ".git" }
-  elseif 1 == vim.fn.executable("find") and vim.fn.has("win32") == 0 then
-    return { "find", ".", "-type", "f" }
-  elseif 1 == vim.fn.executable("where") then
-    return { "where", "/r", ".", "*" }
-  end
-end
-
 return {
   {
     enabled = not HVIM.plugins.fzf,
@@ -23,11 +9,6 @@ return {
       {
         "nvim-telescope/telescope-fzf-native.nvim",
         build = "make",
-        config = function()
-          vim.schedule(function()
-            require("telescope").load_extension("fzf")
-          end)
-        end,
       },
     },
     opts = function()
@@ -45,7 +26,7 @@ return {
           path_display = { "truncate" },
           initial_mode = "insert",
           border = false,
-          scroll_strategy = "limit",
+          scroll_strategy = 'limit',
           sorting_strategy = "ascending",
           layout_strategy = "vertical",
           file_ignore_patterns = { "node_modules" },
@@ -100,18 +81,21 @@ return {
       { "<leader>fb", "<cmd>Telescope buffers<cr>", desc = "Buffers" },
       { "<leader>fp", "<cmd>Telescope find_files<cr>", desc = "Find Files (root dir)" },
       { "<leader>fo", "<cmd>Telescope oldfiles<cr>", desc = "Recent" },
-
       -- Search
       { "<leader>fs", "<cmd>Telescope live_grep<cr>", desc = "Find in Files (Grep)" },
       { "<leader>fi", "<cmd>Telescope current_buffer_fuzzy_find<cr>", desc = "Buffer" },
       { "<leader>fj", "<cmd>Telescope grep_string<cr>", desc = "Word (root dir)" },
-
       { "<leader>fd", "<cmd>Telescope diagnostics<cr>", desc = "Diagnostics" },
       { "<leader>fk", "<cmd>Telescope keymaps<cr>", desc = "Key Maps" },
       { "<leader>fh", "<cmd>Telescope help_tags<cr>", desc = "Help Tags" },
       { "<leader>fH", "<cmd>Telescope highlights<cr>", desc = "Search Highlight Groups" },
       { "<leader>f:", "<cmd>Telescope command_history<cr>", desc = "Command History" },
     },
+    config = function(_, opts)
+      local telescope = require("telescope")
+      telescope.setup(opts)
+      telescope.load_extension("fzf")
+    end,
   },
 
   {

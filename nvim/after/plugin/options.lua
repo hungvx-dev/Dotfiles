@@ -58,7 +58,7 @@ vim.opt.shiftwidth = 2            -- *Number of spaces used for each step of (au
 vim.opt.expandtab = true          -- *Expand <Tab> to spaces in Insert mode
 vim.opt.smartindent = true        -- -Do clever autoindenting
 -- vim.opt.autoindent = true         -- *Automatically set the indent of a new line
--- vim.bo.softtabstop = 2         -- -If non-zero, number of spaces to insert for a <Tab>
+vim.bo.softtabstop = 2         -- -If non-zero, number of spaces to insert for a <Tab>
 
 -- #============================== 14. Folding ================================#
 vim.wo.foldenable = true          -- *Unset to display all folds open
