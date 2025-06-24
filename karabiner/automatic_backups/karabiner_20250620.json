@@ -1,5 +1,4 @@
 {
-    "global": { "enable_notification_window": false },
     "profiles": [
         {
             "complex_modifications": {
