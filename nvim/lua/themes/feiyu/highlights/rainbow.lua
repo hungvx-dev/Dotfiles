@@ -84,12 +84,12 @@ return {
     },
   },
   fold = {
-    FoldLevel_1 = "RainbowRed",
-    FoldLevel_2 = "RainbowYellow",
+    FoldLevel_1 = "RainbowOrange",
+    FoldLevel_2 = "RainbowViolet",
     FoldLevel_3 = "RainbowBlue",
-    FoldLevel_4 = "RainbowOrange",
-    FoldLevel_5 = "RainbowGreen",
-    FoldLevel_6 = "RainbowViolet",
-    FoldLevel_7 = "RainbowCyan",
+    FoldLevel_4 = "RainbowRed",
+    FoldLevel_5 = "RainbowCyan",
+    FoldLevel_6 = "RainbowYellow",
+    FoldLevel_7 = "RainbowGreen",
   },
 }

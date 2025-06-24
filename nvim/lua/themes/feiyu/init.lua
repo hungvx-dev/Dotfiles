@@ -75,7 +75,7 @@ M.setup = function(plugins, highlight)
   end
 
   if highlight.fold then
-    M.set_hl(highlights.rainbow.fold)
+    M.set_mix_hl(highlights.rainbow.fold)
   else
     M.set_hl(highlights.fold)
   end
