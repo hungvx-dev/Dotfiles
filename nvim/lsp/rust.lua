@@ -61,5 +61,5 @@ return {
       },
     },
   },
-  on_attach = function(_) end,
+  -- on_attach = function(_) end,
 }
