@@ -1,12 +1,12 @@
-local hybridMode = false
+local hybridMode = true
 local volar_init_options = {
   hostInfo = "neovim",
   vue = {
     hybridMode = hybridMode,
   },
-  typescript = {
-    tsdk = vim.fn.expand("$MASON/packages/vue-language-server/node_modules/typescript/lib"),
-  },
+  -- typescript = {
+  --   tsdk = vim.fn.expand("$MASON/packages/vue-language-server/node_modules/typescript/lib"),
+  -- },
   preferences = {
     disableSuggestions = false,
   },
@@ -40,6 +40,30 @@ return {
   filetypes = hybridMode and { "vue" } or { "typescript", "javascript", "javascriptreact", "typescriptreact", "vue", "html" },
   root_markers = { "tsconfig.json", "jsconfig.json", "package.json", "vite.config.ts", "vite.config.js" },
   init_options = volar_init_options,
+  on_init = function(client)
+    client.handlers["tsserver/request"] = function(_, result, context)
+      local clients = vim.lsp.get_clients({ bufnr = context.bufnr, name = "vtsls" })
+      if #clients == 0 then
+        vim.notify("Could not found `vtsls` lsp client, vue_lsp would not work without it.", vim.log.levels.ERROR)
+        return
+      end
+      local ts_client = clients[1]
+
+      local param = unpack(result)
+      local id, command, payload = unpack(param)
+      ts_client:exec_cmd({
+        command = "typescript.tsserverRequest",
+        arguments = {
+          command,
+          payload,
+        },
+      }, { bufnr = context.bufnr }, function(_, r)
+        local response_data = { { id, r.body } }
+        ---@diagnostic disable-next-line: param-type-mismatch
+        client:notify("tsserver/response", response_data)
+      end)
+    end
+  end,
   settings = {
     volar = {
       codeLens = {

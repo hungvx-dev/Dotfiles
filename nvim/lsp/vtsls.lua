@@ -1,3 +1,16 @@
+-- local vue_language_server_path = vim.fn.expand("$MASON/packages") .. "/vue-language-server" .. "/node_modules/@vue/language-server"
+-- local vue_plugin = {
+--   name = "@vue/typescript-plugin",
+--   location = vue_language_server_path,
+--   languages = { "vue" },
+--   configNamespace = "typescript",
+-- }
+
+-- init_options = {
+--   plugins = {
+--     vue_plugin,
+--   },
+-- },
 ---@type vim.lsp.Config
 return {
   cmd = { "vtsls", "--stdio" },
@@ -22,9 +35,9 @@ return {
           {
             name = "@vue/typescript-plugin",
             location = vim.fn.expand("$MASON/packages/vue-language-server/node_modules/@vue/language-server"),
+            enableForWorkspaceTypeScriptVersions = true,
             languages = { "vue" },
             configNamespace = "typescript",
-            enableForWorkspaceTypeScriptVersions = true,
           },
         },
       },
@@ -65,5 +78,5 @@ return {
       },
     },
   },
-  -- on_attach = function(_) end,
+  on_attach = function(_) end,
 }
