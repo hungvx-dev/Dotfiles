@@ -132,7 +132,7 @@ In neovim Run `:Mason` command and install LSPs
 
 - List generations: `sudo darwin-rebuild --list-generations`
 - Rollback: `sudo darwin-rebuild switch --rollback`
-- Checkout generation: `sudo darwin-rebuild switch --generation <generation-number>`
+- Checkout generation: `sudo darwin-rebuild switch --switch-generation <generation-number>`
 
 ### Nodejs
 
