@@ -67,6 +67,9 @@
           pkgs.lazydocker
           pkgs.rainfrog
           pkgs.nodejs
+
+          # Ai
+          pkgs.ollama
         ];
 
         users.users."hungvx.dev" = {
