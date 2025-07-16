@@ -23,6 +23,9 @@ local styles = {
 
 M.treesitter = {
   keywords = {
+    PreProc = {
+      fg = colors.fg,
+    },
     Special = {
       fg = colors.red,
     },
@@ -50,6 +53,7 @@ M.treesitter = {
       fg = colors.blue,
       italic = config.functions.italic,
     },
+    ["@attribute"] = 'Function',
     -- ["@constructor"] = { fg = colors. },
     -- ["@lsp.typemod.macro.defaultLibrary"] = "@function.builtin",
     -- ["@lsp.typemod.method.defaultLibrary"] = "@function.builtin",
@@ -69,7 +73,7 @@ M.treesitter = {
   },
 
   strings = {
-    String = { fg = colors.green },
+    String = { fg = colors.orange1 },
   },
 
   constants = {
