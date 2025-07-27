@@ -25,7 +25,7 @@ return {
           selection_caret = HVIM.icons.UI.SelectionCaret,
           path_display = { "truncate" },
           initial_mode = "insert",
-          border = false,
+          border = true,
           scroll_strategy = 'limit',
           sorting_strategy = "ascending",
           layout_strategy = "vertical",

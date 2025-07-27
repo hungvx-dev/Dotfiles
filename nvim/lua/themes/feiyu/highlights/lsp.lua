@@ -73,11 +73,11 @@ M.treesitter = {
   },
 
   strings = {
-    String = { fg = colors.orange1 },
+    String = { fg = colors.orange },
   },
 
   constants = {
-    Constant = { fg = colors.orange },
+    Constant = { fg = colors.orange1 },
   },
 
   modules = {
