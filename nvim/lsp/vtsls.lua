@@ -1,16 +1,13 @@
--- local vue_language_server_path = vim.fn.expand("$MASON/packages") .. "/vue-language-server" .. "/node_modules/@vue/language-server"
--- local vue_plugin = {
---   name = "@vue/typescript-plugin",
---   location = vue_language_server_path,
---   languages = { "vue" },
---   configNamespace = "typescript",
--- }
+local vue_language_server_path = vim.fn.stdpath("data") .. "/mason/packages/vue-language-server/node_modules/@vue/language-server"
 
--- init_options = {
---   plugins = {
---     vue_plugin,
---   },
--- },
+local vue_plugin = {
+  name = "@vue/typescript-plugin",
+  location = vue_language_server_path,
+  languages = { "vue" },
+  configNamespace = "typescript",
+  enableForWorkspaceTypeScriptVersions = true,
+}
+
 ---@type vim.lsp.Config
 return {
   cmd = { "vtsls", "--stdio" },
@@ -32,13 +29,7 @@ return {
       autoUseWorkspaceTsdk = true,
       tsserver = {
         globalPlugins = {
-          {
-            name = "@vue/typescript-plugin",
-            location = vim.fn.expand("$MASON/packages/vue-language-server/node_modules/@vue/language-server"),
-            enableForWorkspaceTypeScriptVersions = true,
-            languages = { "vue" },
-            configNamespace = "typescript",
-          },
+          vue_plugin,
         },
       },
       enableMoveToFileCodeAction = true,
@@ -49,10 +40,12 @@ return {
       },
     },
     typescript = {
-      -- tsdk = vim.fn.expand("$MASON/packages/vue-language-server/node_modules/typescript/lib"),
       updateImportsOnFileMove = { enabled = "always" },
       suggest = {
         completeFunctionCalls = true,
+      },
+      tsserver = {
+        maxTsServerMemory = 8192,
       },
       inlayHints = {
         enumMemberValues = { enabled = true },
@@ -78,5 +71,5 @@ return {
       },
     },
   },
-  on_attach = function(_) end,
+  -- on_attach = function(_) end,
 }

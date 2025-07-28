@@ -1,45 +1,12 @@
-local hybridMode = true
-local volar_init_options = {
-  hostInfo = "neovim",
-  vue = {
-    hybridMode = hybridMode,
-  },
-  -- typescript = {
-  --   tsdk = vim.fn.expand("$MASON/packages/vue-language-server/node_modules/typescript/lib"),
-  -- },
-  preferences = {
-    disableSuggestions = false,
-  },
-  languageFeatures = {
-    implementation = true,
-    references = true,
-    definition = true,
-    typeDefinition = true,
-    callHierarchy = true,
-    hover = true,
-    rename = true,
-    renameFileRefactoring = true,
-    signatureHelp = true,
-    codeAction = true,
-    workspaceSymbol = true,
-    diagnostics = true,
-    semanticTokens = true,
-    completion = {
-      defaultTagNameCase = "both",
-      defaultAttrNameCase = "kebabCase",
-      getDocumentNameCasesRequest = false,
-      getDocumentSelectionRequest = false,
-    },
-  },
-}
-
 ---@type vim.lsp.Config
 return {
   cmd = { "vue-language-server", "--stdio" },
-  -- filetypes = { "vue" },
-  filetypes = hybridMode and { "vue" } or { "typescript", "javascript", "javascriptreact", "typescriptreact", "vue", "html" },
-  root_markers = { "tsconfig.json", "jsconfig.json", "package.json", "vite.config.ts", "vite.config.js" },
-  init_options = volar_init_options,
+  filetypes = { "vue" },
+  init_options = {
+    vue = {
+      hybridMode = true,
+    },
+  },
   on_init = function(client)
     client.handlers["tsserver/request"] = function(_, result, context)
       local clients = vim.lsp.get_clients({ bufnr = context.bufnr, name = "vtsls" })
@@ -52,6 +19,7 @@ return {
       local param = unpack(result)
       local id, command, payload = unpack(param)
       ts_client:exec_cmd({
+        title = "something",
         command = "typescript.tsserverRequest",
         arguments = {
           command,
@@ -93,5 +61,4 @@ return {
       },
     },
   },
-  -- on_attach = function(_) end,
 }

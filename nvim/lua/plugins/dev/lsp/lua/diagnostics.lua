@@ -1,4 +1,4 @@
-local keymap = vim.keymap
+local map = vim.keymap.set
 local M = {}
 
 M.diagnostics_virtual_lines = false
@@ -40,7 +40,14 @@ function M.jump_with_diagnostics(jumpCount)
 end
 
 function M.open_float()
-  vim.diagnostic.open_float(nil, { focusable = false, source = "if_many" })
+  vim.diagnostic.open_float(nil, {
+    focusable = false,
+    close_events = { "BufLeave", "CursorMoved", "InsertEnter", "FocusLost" },
+    border = "rounded",
+    source = "always",
+    prefix = " ",
+    scope = "cursor",
+  })
 end
 
 ---@param diagnostic vim.diagnostic.Opts
@@ -48,15 +55,15 @@ function M.config_diagnostic(diagnostic)
   vim.diagnostic.config(diagnostic)
 
   -- keymap.set("n", "!", toggle_diagnostics)
-  keymap.set("n", "[d", function()
+  map("n", "[d", function()
     M.jump_with_diagnostics(-1)
   end)
-  keymap.set("n", "]d", function()
+  map("n", "]d", function()
     M.jump_with_diagnostics(1)
   end)
-  keymap.set("n", "!", vim.diagnostic.open_float)
-  -- keymap.set("n", "!", M.open_float)
-  keymap.set("n", "<space>q", vim.diagnostic.setloclist)
+  -- map("n", "!", vim.diagnostic.open_float)
+  map("n", "!", M.open_float)
+  map("n", "<space>q", vim.diagnostic.setloclist)
 end
 
 return M
