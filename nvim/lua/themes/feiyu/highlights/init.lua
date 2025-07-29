@@ -3,7 +3,7 @@ return {
   diagnostic = require("themes.feiyu.highlights.diagnostic"),
   mini_icon = require("themes.feiyu.highlights.mini-icon"),
   alpha = require("themes.feiyu.highlights.alpha"),
-  lsp = require("themes.feiyu.highlights.lsp"),
+  syntax = require("themes.feiyu.highlights.syntax"),
   blink_cmp = require("themes.feiyu.highlights.blink_cmp"),
   neotree = require("themes.feiyu.highlights.neotree"),
   fzf = require("themes.feiyu.highlights.fzf"),

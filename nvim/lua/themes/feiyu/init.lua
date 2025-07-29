@@ -34,7 +34,6 @@ end
 --- @param highlight table<string, boolean>
 M.setup = function(plugins, highlight)
   M.set_mix_hl(highlights.base)
-  M.set_mix_hl(highlights.diagnostic)
 
   if plugins.mini_icon then
     M.set_hl(highlights.mini_icon)
@@ -44,19 +43,11 @@ M.setup = function(plugins, highlight)
     M.set_hl(highlights.alpha)
   end
 
-  if plugins.treesitter then
-    for _, tree_hl in pairs(highlights.lsp.treesitter) do
-      M.set_mix_hl(tree_hl)
-    end
-  end
-
-  if plugins.lsp then
-    M.set_mix_hl(highlights.lsp.lsp)
-
-    if plugins.blink_cmp then
-      M.set_mix_hl(highlights.blink_cmp)
-    end
-  end
+  M.set_hl(highlights.syntax.base)
+  M.set_mix_hl(highlights.syntax.special)
+  M.set_link_hl(highlights.syntax.lsp)
+  M.set_mix_hl(highlights.diagnostic)
+  M.set_mix_hl(highlights.blink_cmp)
 
   if plugins.neotree then
     M.set_hl(highlights.neotree)
@@ -87,7 +78,6 @@ M.setup = function(plugins, highlight)
   if plugins.navic then
     M.set_link_hl(highlights.navic)
   end
-
 
   M.set_hl(highlights.rainbow.indent)
   if plugins.blink_nvim and highlight.indent then
