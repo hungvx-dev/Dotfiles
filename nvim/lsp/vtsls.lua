@@ -11,7 +11,7 @@ local vue_plugin = {
 ---@type vim.lsp.Config
 return {
   cmd = { "vtsls", "--stdio" },
-  root_markers = { "tsconfig.json", "jsconfig.json", "package.json" },
+  root_markers = { "tsconfig.json", "package.json" },
   filetypes = {
     "javascript",
     "javascriptreact",
@@ -26,16 +26,16 @@ return {
   settings = {
     complete_function_calls = true,
     vtsls = {
-      autoUseWorkspaceTsdk = true,
-      tsserver = {
-        globalPlugins = {
-          vue_plugin,
-        },
-      },
       enableMoveToFileCodeAction = true,
+      autoUseWorkspaceTsdk = true,
       experimental = {
         completion = {
           enableServerSideFuzzyMatch = true,
+        },
+      },
+      tsserver = {
+        globalPlugins = {
+          vue_plugin,
         },
       },
     },

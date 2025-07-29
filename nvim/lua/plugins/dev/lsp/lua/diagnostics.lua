@@ -63,7 +63,6 @@ function M.config_diagnostic(diagnostic)
   end)
   -- map("n", "!", vim.diagnostic.open_float)
   map("n", "!", M.open_float)
-  map("n", "<space>q", vim.diagnostic.setloclist)
 end
 
 return M

@@ -15,6 +15,14 @@ return {
       },
     },
     opts = function()
+      function front_end(bufnr)
+        if require("conform").get_formatter_info("biome", bufnr).available then
+          return { "biome" }
+        else
+          return { "eslint_d", "prettierd" }
+        end
+      end
+      -- stylua: ignore
       return {
         default_format_opts = {
           timeout_ms = 2000,
@@ -37,12 +45,12 @@ return {
           ["markdown.mdx"] = { "biome", "prettierd", stop_after_first = true },
           yaml             = { "biome", "prettierd", stop_after_first = true },
 
-          graphql          = { "biome", "eslint_d", "prettierd", stop_after_first = true },
-          javascript       = { "biome", "eslint_d", "prettierd", stop_after_first = true },
-          typescript       = { "biome", "eslint_d", "prettierd", stop_after_first = true },
-          javascriptreact  = { "biome", "eslint_d", "prettierd", stop_after_first = true },
-          typescriptreact  = { "biome", "eslint_d", "prettierd", stop_after_first = true },
-          vue              = { "biome", "eslint_d", "prettierd", stop_after_first = true },
+          graphql          = front_end,
+          javascript       = front_end,
+          typescript       = front_end,
+          javascriptreact  = front_end,
+          typescriptreact  = front_end,
+          vue              = front_end,
           html             = { "biome", "prettierd", stop_after_first = true },
           css              = { "biome", "prettierd", stop_after_first = true },
           scss             = { "biome", "prettierd", stop_after_first = true },
