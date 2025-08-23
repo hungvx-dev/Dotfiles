@@ -2,14 +2,15 @@ set -x LC_ALL en_US.UTF-8
 set -x LANG en_US.UTF-8
 
 if status is-interactive
+    fish_vi_key_bindings
     # Commands to run in interactive sessions can go here
     set fish_cursor_default block blink
     set fish_cursor_insert line blink
     set fish_cursor_replace_one underscore blink
     set fish_cursor_replace underscore blink
-    set fish_cursor_external line blink
+    # set fish_cursor_external line blink
     set fish_cursor_visual block blink
-    set -g fish_vi_force_cursor 1
+    # set -g fish_vi_force_cursor 1
 end
 
 set fish_path $HOME/.config/fish
