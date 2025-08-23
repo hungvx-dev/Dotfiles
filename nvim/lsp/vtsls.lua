@@ -11,7 +11,7 @@ local vue_plugin = {
 ---@type vim.lsp.Config
 return {
   cmd = { "vtsls", "--stdio" },
-  root_markers = { "tsconfig.json", "package.json" },
+  root_markers = { "package.json" },
   filetypes = {
     "javascript",
     "javascriptreact",

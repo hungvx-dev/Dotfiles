@@ -1,3 +1,11 @@
+local signs = {
+  add = { text = HVIM.icons.UI.Line.BoldMid },
+  change = { text = HVIM.icons.UI.Line.BoldMid },
+  delete = { text = HVIM.icons.UI.Line.BoldMid },
+  topdelete = { text = HVIM.icons.UI.Line.BoldMid },
+  changedelete = { text = HVIM.icons.UI.Line.BoldMid },
+  untracked = { text = HVIM.icons.UI.Line.BoldMid },
+}
 return {
   {
     "lewis6991/gitsigns.nvim",
@@ -5,21 +13,8 @@ return {
     version = "*",
     event = { "BufReadPost", "BufNewFile", "BufWritePre" },
     opts = {
-      signs = {
-        add = { text = HVIM.icons.UI.Line.BoldMid },
-        change = { text = HVIM.icons.UI.Line.BoldMid },
-        delete = { text = HVIM.icons.UI.Line.BoldMid },
-        topdelete = { text = HVIM.icons.UI.Line.BoldMid },
-        changedelete = { text = HVIM.icons.UI.Line.BoldMid },
-        untracked = { text = HVIM.icons.UI.Line.BoldMid },
-      },
-      signs_staged = {
-        add = { text = HVIM.icons.UI.Line.BoldMid },
-        change = { text = HVIM.icons.UI.Line.BoldMid },
-        delete = { text = HVIM.icons.UI.Line.BoldMid },
-        topdelete = { text = HVIM.icons.UI.Line.BoldMid },
-        changedelete = { text = HVIM.icons.UI.Line.BoldMid },
-      },
+      signs = signs,
+      signs_staged = signs,
       signcolumn = true,
       current_line_blame = true,
       current_line_blame_opts = {
@@ -62,6 +57,7 @@ return {
         end)
 
         map({ "n", "v" }, "<leader>ghs", ":Gitsigns stage_hunk<CR>", "Stage Hunk")
+        map("n", "<leader>ghp", ":Gitsigns preview_hunk_inline<CR>", "Preview Hunk")
         map("n", "<leader>ghd", gs.diffthis, "Diff This")
         map("n", "<leader>gb", function()
           gs.blame_line({ full = false })

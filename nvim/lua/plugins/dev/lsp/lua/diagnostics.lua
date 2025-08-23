@@ -39,17 +39,6 @@ function M.jump_with_diagnostics(jumpCount)
   vim.defer_fn(M.enable_diagnostics, 1)
 end
 
-function M.open_float()
-  vim.diagnostic.open_float(nil, {
-    focusable = false,
-    close_events = { "BufLeave", "CursorMoved", "InsertEnter", "FocusLost" },
-    border = "rounded",
-    source = "always",
-    prefix = " ",
-    scope = "cursor",
-  })
-end
-
 ---@param diagnostic vim.diagnostic.Opts
 function M.config_diagnostic(diagnostic)
   vim.diagnostic.config(diagnostic)
@@ -61,8 +50,7 @@ function M.config_diagnostic(diagnostic)
   map("n", "]d", function()
     M.jump_with_diagnostics(1)
   end)
-  -- map("n", "!", vim.diagnostic.open_float)
-  map("n", "!", M.open_float)
+  map("n", "!", vim.diagnostic.open_float)
 end
 
 return M
