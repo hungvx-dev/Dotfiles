@@ -4,7 +4,7 @@ set color_cmdline_fg=default
 set color_error=160
 set color_info=136
 
-set color_separator=default
+set color_separator=0
 
 set color_titleline_fg=202
 set color_statusline_fg=202
@@ -21,7 +21,7 @@ set color_win_fg=default
 
 set color_win_sel_fg=51
 set color_win_cur_sel_fg=51
-set color_win_inactive_sel_fg=46
+set color_win_inactive_sel_fg=51
 set color_win_sel_bg=default
 set color_win_cur_sel_bg=default
 set color_win_inactive_sel_bg=default

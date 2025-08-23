@@ -1,0 +1,6 @@
+h
+colorscheme tokyo
+add ./Music
+set softvol=true
+add ./Music/01 Thiên Địa Tình Duyên.mp3
+add ./Music/01 Bán Hồ Sa.mp3
