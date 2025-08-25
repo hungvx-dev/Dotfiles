@@ -13,4 +13,13 @@ return {
     fg = colors.green,
     underline = true,
   },
+
+  TreesitterContextLineNumberBottom = {
+    sp = colors.cyan,
+    underline = true,
+  },
+  TreesitterContextBottom = {
+    sp = colors.cyan,
+    underline = true,
+  },
 }

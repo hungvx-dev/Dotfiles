@@ -1,17 +1,8 @@
 return {
   base = require("themes.feiyu.highlights.base"),
-  diagnostic = require("themes.feiyu.highlights.diagnostic"),
-  mini_icon = require("themes.feiyu.highlights.mini-icon"),
-  alpha = require("themes.feiyu.highlights.alpha"),
   syntax = require("themes.feiyu.highlights.syntax"),
-  blink_cmp = require("themes.feiyu.highlights.blink_cmp"),
-  neotree = require("themes.feiyu.highlights.neotree"),
-  fzf = require("themes.feiyu.highlights.fzf"),
-  telescope = require("themes.feiyu.highlights.telescope"),
-  git = require("themes.feiyu.highlights.git"),
   rainbow = require("themes.feiyu.highlights.rainbow"),
+  plugins = require("themes.feiyu.highlights.plugins"),
   fold = require("themes.feiyu.highlights.fold"),
   mix = require("themes.feiyu.highlights.mix"),
-  statusline = require("themes.feiyu.highlights.statusline"),
-  navic = require("themes.feiyu.highlights.navic"),
 }

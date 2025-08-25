@@ -25,9 +25,7 @@ return {
   FloatBorder = base.cursor,
   FloatTitle = base.cursor,
 
-  NonText = {
-    fg = colors.dark3,
-  },
+  NonText = { fg = colors.dark3 },
   Conceal = "NonText",
   Visual = {
     bg = colors.bg_search,
@@ -61,17 +59,10 @@ return {
     fg = colors.cyan,
   },
 
-  LineNrAbove = {
-    fg = colors.dark5,
-  },
-  LineNrBelow = {
-    fg = colors.dark5,
-  },
+  LineNrAbove = { fg = colors.dark5 },
+  LineNrBelow = { fg = colors.dark5 },
 
-  WinSeparator = {
-    -- bold = true,
-    fg = colors.black,
-  },
+  WinSeparator = { fg = colors.black },
 
   StatusLine = base.transparent,
   StatusLineNC = base.transparent,
@@ -96,7 +87,5 @@ return {
     fg = colors.cyan,
   },
 
-  Directory = {
-    fg = colors.blue,
-  },
+  Directory = { fg = colors.blue },
 }

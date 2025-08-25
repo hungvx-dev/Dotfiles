@@ -1,4 +1,5 @@
 local highlights = require("themes.feiyu.highlights.init")
+
 local M = {}
 local hl = vim.api.nvim_set_hl
 
@@ -36,33 +37,34 @@ M.setup = function(plugins, highlight)
   M.set_mix_hl(highlights.base)
 
   if plugins.mini_icon then
-    M.set_hl(highlights.mini_icon)
+    M.set_hl(highlights.plugins.mini_icon)
   end
 
   if plugins.alpha then
-    M.set_hl(highlights.alpha)
+    M.set_hl(highlights.plugins.alpha)
   end
 
   M.set_hl(highlights.syntax.base)
   M.set_mix_hl(highlights.syntax.special)
   M.set_link_hl(highlights.syntax.lsp)
-  M.set_mix_hl(highlights.diagnostic)
-  M.set_mix_hl(highlights.blink_cmp)
+
+  M.set_mix_hl(highlights.plugins.diagnostic)
+  M.set_mix_hl(highlights.plugins.blink_cmp)
 
   if plugins.neotree then
-    M.set_hl(highlights.neotree)
+    M.set_hl(highlights.plugins.neotree)
   end
 
   if plugins.fzf then
-    M.set_hl(highlights.fzf)
+    M.set_hl(highlights.plugins.fzf)
   end
 
   if plugins.telescope then
-    M.set_link_hl(highlights.telescope)
+    M.set_link_hl(highlights.plugins.telescope)
   end
 
   if plugins.git then
-    M.set_mix_hl(highlights.git)
+    M.set_mix_hl(highlights.plugins.git)
   end
 
   if highlight.fold then
@@ -72,12 +74,12 @@ M.setup = function(plugins, highlight)
   end
 
   if plugins.statusline then
-    M.set_mix_hl(highlights.statusline)
+    M.set_mix_hl(highlights.plugins.statusline)
   end
 
-  if plugins.navic then
-    M.set_link_hl(highlights.navic)
-  end
+  -- if plugins.navic then
+    -- M.set_link_hl(highlights.navic)
+  -- end
 
   M.set_hl(highlights.rainbow.indent)
   if plugins.blink_nvim and highlight.indent then
@@ -91,10 +93,6 @@ M.setup = function(plugins, highlight)
   end
 
   M.set_hl(highlights.mix)
-
-  -- if opts.rainbow then
-  --   -- M.set_mix_hl(highlights.git)
-  -- end
 end
 
 return M
