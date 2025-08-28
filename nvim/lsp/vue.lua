@@ -1,64 +1,66 @@
 ---@type vim.lsp.Config
 return {
   cmd = { "vue-language-server", "--stdio" },
+  root_markers = { "tsconfig.json", "package.json", "jsconfig.json" },
   filetypes = { "vue" },
-  init_options = {
-    vue = {
-      hybridMode = true,
-    },
-  },
   on_init = function(client)
-    client.handlers["tsserver/request"] = function(_, result, context)
-      local clients = vim.lsp.get_clients({ bufnr = context.bufnr, name = "vtsls" })
-      if #clients == 0 then
-        vim.notify("Could not found `vtsls` lsp client, vue_lsp would not work without it.", vim.log.levels.ERROR)
+    local retries = 0
+
+    ---@param _ lsp.ResponseError
+    ---@param result any
+    ---@param context lsp.HandlerContext
+    local function typescriptHandler(_, result, context)
+      local ts_client = vim.lsp.get_clients({ bufnr = context.bufnr, name = "ts_ls" })[1] or vim.lsp.get_clients({ bufnr = context.bufnr, name = "vtsls" })[1] or vim.lsp.get_clients({ bufnr = context.bufnr, name = "typescript-tools" })[1]
+
+      if not ts_client then
+        -- there can sometimes be a short delay until `ts_ls`/`vtsls` are attached so we retry for a few times until it is ready
+        if retries <= 10 then
+          retries = retries + 1
+          vim.defer_fn(function()
+            typescriptHandler(_, result, context)
+          end, 100)
+        else
+          vim.notify("Could not find `ts_ls`, `vtsls`, or `typescript-tools` lsp client required by `vue_ls`.", vim.log.levels.ERROR)
+        end
         return
       end
-      local ts_client = clients[1]
 
       local param = unpack(result)
       local id, command, payload = unpack(param)
       ts_client:exec_cmd({
-        title = "something",
+        title = "vue_request_forward", -- You can give title anything as it's used to represent a command in the UI, `:h Client:exec_cmd`
         command = "typescript.tsserverRequest",
         arguments = {
           command,
           payload,
         },
       }, { bufnr = context.bufnr }, function(_, r)
-        local response_data = { { id, r.body } }
+        local response_data = { { id, r and r.body } }
         ---@diagnostic disable-next-line: param-type-mismatch
         client:notify("tsserver/response", response_data)
       end)
     end
+
+    client.handlers["tsserver/request"] = typescriptHandler
   end,
   settings = {
-    volar = {
-      codeLens = {
-        references = true,
-        pugTools = true,
-        scriptSetupTools = true,
-      },
-    },
     typescript = {
+      updateImportsOnFileMove = { enabled = "always" },
+      suggest = { completeFunctionCalls = true },
+      tsserver = {
+        maxTsServerMemory = 8192,
+      },
       inlayHints = {
-        enumMemberValues = {
-          enabled = true,
-        },
-        functionLikeReturnTypes = {
-          enabled = true,
-        },
-        propertyDeclarationTypes = {
-          enabled = true,
-        },
-        parameterTypes = {
-          enabled = true,
-          suppressWhenArgumentMatchesName = true,
-        },
-        variableTypes = {
-          enabled = true,
-        },
+        parameterNames = { enabled = "all", suppressWhenArgumentMatchesName = false },
+        parameterTypes = { enabled = true },
+        variableTypes = { enabled = true, suppressWhenTypeMatchesName = false },
+        propertyDeclarationTypes = { enabled = true },
+        functionLikeReturnTypes = { enabled = true },
+        enumMemberValues = { enabled = true },
       },
     },
   },
+  on_attach = function(client)
+    client.server_capabilities.semanticTokensProvider.full = true
+  end,
 }

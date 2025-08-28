@@ -66,7 +66,6 @@ return {
   },
   {
     "mason-org/mason.nvim",
-    -- version = "1.*",
     cmd = { "Mason", "MasonInstall", "MasonUninstall", "MasonUninstallAll", "MasonLog" },
     build = ":MasonUpdate",
     event = "VeryLazy",
@@ -179,6 +178,6 @@ return {
     "razak17/tailwind-fold.nvim",
     opts = {},
     dependencies = { "nvim-treesitter/nvim-treesitter" },
-    ft = { "html", "vue", "typescriptreact" },
+    ft = { "html", "vue", "typescriptreact", },
   },
 }

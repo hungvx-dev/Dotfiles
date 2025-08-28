@@ -1,4 +1,4 @@
-local vue_language_server_path = vim.fn.stdpath("data") .. "/mason/packages/vue-language-server/node_modules/@vue/language-server"
+local vue_language_server_path = vim.fn.expand("$MASON/packages") .. "/vue-language-server" .. "/node_modules/@vue/language-server"
 
 local vue_plugin = {
   name = "@vue/typescript-plugin",
@@ -8,18 +8,31 @@ local vue_plugin = {
   enableForWorkspaceTypeScriptVersions = true,
 }
 
+local shared_config = {
+  updateImportsOnFileMove = { enabled = "always" },
+  suggest = { completeFunctionCalls = true },
+  tsserver = {
+    maxTsServerMemory = 8192,
+  },
+  inlayHints = {
+    parameterNames = { enabled = "all", suppressWhenArgumentMatchesName = false },
+    parameterTypes = { enabled = true },
+    variableTypes = { enabled = true, suppressWhenTypeMatchesName = false },
+    propertyDeclarationTypes = { enabled = true },
+    functionLikeReturnTypes = { enabled = true },
+    enumMemberValues = { enabled = true },
+  },
+}
+
 ---@type vim.lsp.Config
 return {
   cmd = { "vtsls", "--stdio" },
-  root_markers = { "package.json" },
+  root_markers = { "tsconfig.json", "package.json", "jsconfig.json" },
   filetypes = {
     "javascript",
-    "javascriptreact",
-    "javascript.jsx",
     "typescript",
+    "javascriptreact",
     "typescriptreact",
-    "typescript.tsx",
-    "html",
     "vue",
   },
   single_file_support = true,
@@ -39,37 +52,12 @@ return {
         },
       },
     },
-    typescript = {
-      updateImportsOnFileMove = { enabled = "always" },
-      suggest = {
-        completeFunctionCalls = true,
-      },
-      tsserver = {
-        maxTsServerMemory = 8192,
-      },
-      inlayHints = {
-        enumMemberValues = { enabled = true },
-        functionLikeReturnTypes = { enabled = true },
-        parameterNames = { enabled = "literals" },
-        parameterTypes = { enabled = true },
-        propertyDeclarationTypes = { enabled = true },
-        variableTypes = { enabled = false },
-      },
-    },
-    javascript = {
-      updateImportsOnFileMove = { enabled = "always" },
-      suggest = {
-        completeFunctionCalls = true,
-      },
-      inlayHints = {
-        enumMemberValues = { enabled = true },
-        functionLikeReturnTypes = { enabled = true },
-        parameterNames = { enabled = "literals" },
-        parameterTypes = { enabled = true },
-        propertyDeclarationTypes = { enabled = true },
-        variableTypes = { enabled = false },
-      },
-    },
+    typescript = shared_config,
+    javascript = shared_config,
   },
-  -- on_attach = function(_) end,
+  on_attach = function(client, bufrn)
+    if vim.bo[bufrn].filetype == "vue" then
+      client.server_capabilities.semanticTokensProvider.full = false
+    end
+  end,
 }
