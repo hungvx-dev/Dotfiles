@@ -32,16 +32,16 @@ right_format = """$memory_usage \
 $cmd_duration
 """
 
-palette = "catppuccin-mocha"
-[palettes.catppuccin-mocha]
-red = "#ff0000"
-yellow = "#FFFF00"
-green = "#bbff11"
-magenta = "#FF0F80"
-orange = "#fb8855"
-mauve = "#CBA6F7"
+palette = "feiyu"
+[palettes.feiyu]
+red = "#ff0c36"
+yellow = "#FFEA00"
+green = "#76FF03"
+pink = "#FF0F80"
+orange = "#FF6D00"
+purple = "#d150ff"
 cyan = "#00FFFF"
-blue = "#3B93F7"
+blue = "#0089fc"
 [line_break]
 disabled = true
 [cmd_duration]
@@ -49,7 +49,7 @@ format = '[⏱ $duration]($style)'
 style = "italic white"
 [os]
 format = "[$symbol]($style) "
-style = "mauve"
+style = "purple"
 disabled = false
 [os.symbols]
 Macos = "󰀵"
@@ -64,7 +64,7 @@ disabled = false
 show_always = true
 style_user = "cyan bold italic"
 style_root = "red bold italic"
-format = "[󰨑 ](fg:mauve)[󱢘 $user]($style) " # 󰯊 󱃲 󰨑 #
+format = "[󰨑 ](fg:purple)[󱢘 $user]($style) " # 󰯊 󱃲 󰨑 #
 [directory]
 home_symbol = "~"
 truncate_to_repo = false
@@ -123,7 +123,7 @@ utc_time_offset = "local"
 style = "italic dimmed white"
 [memory_usage]
 disabled = false
-threshold = 50
+threshold = 100
 format = '$symbol[$ram( | $swap)]($style)'
 symbol = "󰍛 "
 [fill]
@@ -133,7 +133,7 @@ disabled = false
 success_symbol = "[󰁔](fg:green)"
 error_symbol = "[󰅖](fg:red)"
 vicmd_symbol = "[󰺕](fg:cyan)"
-vimcmd_visual_symbol = "[❮](fg:magenta)"
+vimcmd_visual_symbol = "[❮](fg:pink)"
 format = "$symbol "
 [sudo]
 disabled = false
