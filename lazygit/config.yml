@@ -1,21 +1,22 @@
+---
 gui:
-  timeFormat: "02 Jan 06 15:04 MST" # https://pkg.go.dev/time#Time.Format
+  timeFormat: "02 Jan 06 15:04 MST"
   theme:
     activeBorderColor:
       - "#00ffff"
       - bold
     inactiveBorderColor:
-      - "#3d59a1"
+      - "#4E5BA6"
     optionsTextColor:
-      - "#3B93F7"
+      - "#0089fc"
     selectedLineBgColor:
-      - "#3d59a1" # Surface0
+      - "#1d293d"
     selectedRangeBgColor:
-      - "#3d59a1" # Surface0
+      - "#1d293d"
     cherryPickedCommitBgColor:
-      - "#94e2d5" # Teal
+      - "#94e2d5"
     cherryPickedCommitFgColor:
-      - "#89b4fa" # Blue
+      - "#00a6f4"
     unstagedChangesColor:
       - "#B80000"
   nerdFontsVersion: "3"
@@ -32,7 +33,7 @@ git:
     signOff: false
     verbose: false
   branchLogCmd: "git log --graph --stat --oneline --color=always --decorate --pretty=format:'%Cblue %h %C(bold red)- <%an> -%C(green) (%ar)%C(auto)%d%n%C(yellow) %s'"
-  diffContextSize: 3 # how many lines of context are shown around a change in diffs
+  diffContextSize: 3
   allBranchesLogCmds:
     - git log --graph --all --stat --oneline --color=always --decorate --pretty=format:'%Cblue %h %C(bold red)- <%an> -%C(green) (%ar)%C(auto)%d%n%C(yellow) %s'
 os:
