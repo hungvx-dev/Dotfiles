@@ -1,10 +1,30 @@
 # My dotfiles
 
-**_This is my dotfiles. Take anything you want, but at your own risk._**
-**_It mainly targets MacOS systems._**
-**_This repository contains my configuration for applications:_**
+✨ **_This is my dotfiles. Take anything you want, but at your own risk. It mainly targets MacOS systems._** ✨
 
-## Tools
+# Table contents
+
+- [Tools](#tools)
+- [CLI Replacements](#cli-replacements)
+- [Setup](#setup)
+
+  - [Installing](#installing)
+  - [Add configuration](#add-configuration)
+
+    - [Configuration shell (fish)](#configuration-shell)
+    - [Configuration git + ssh](#configuration-git-+-ssh)
+    - [Configuration neovim](#configuration-neovim)
+
+  - [System Maintenance](#system-maintenance)
+    - [Update packages](#update-packages)
+    - [Clean packages](#clean-packages)
+    - [Checkout packages](#checkout-packages)
+    - [Nodejs](#nodejs)
+    - [Cmus](#cmus)
+
+- [Show case](#show-case)
+
+# Tools
 
 - **Package Manager**: [Nix](./nix-darwin)
 - **Terminal**: [Kitty](./kitty) / [Ghostty](./ghostty)
@@ -31,7 +51,7 @@
 - **Wallpapers**: [Wallpapers](./wallpapers)
 - **Music**: [Music](./Music)
 
-## CLI: improved
+# ⚡ CLI Replacements
 
 - [bat > cat ](https://github.com/sharkdp/bat)
 - [fd > find](https://github.com/sharkdp/fd)
@@ -45,27 +65,35 @@
 - [dust > du](https://github.com/bootandy/dust)
 - [prettyping > ping](https://github.com/denilsonsa/prettyping)
 
+# ⚙️ Setup
+
 ## Installing
 
-1. To download the package manager
+> ⚠️ All tools and applications in this setup are installed and managed via [Nix](https://nixos.org).
+> Make sure you have Nix installed before proceeding.
+
+1. **Install Nix**
+   To download the Nix package manager
 
 ```sh
 sh <(curl -L https://nixos.org/nix/install)
 ```
 
-2. To download my configuration
+2. **Clone my repo**
+   To download my configuration
 
 ```sh
 nix-shell -p git --run "git clone git@github.com:hungvx-dev/Dotfiles.git ~/Dev/Dotfiles"
 ```
 
-3. To install it
+3. **Apply configuration**
+   To install tools and applications
 
 ```sh
 nix run nix-darwin --extra-experimental-features "nix-command flakes" -- switch --flake ~/Dev/Dotfile/nix-darwin/feiyu
 ```
 
-### Add configuration
+## Add configuration
 
 ```sh
 cd ~/Dev/Dotfiles
@@ -117,6 +145,8 @@ neovim
 
 In neovim Run `:Mason` command and install LSPs
 
+## 🔄 System Maintenance
+
 ### Update packages
 
 1.  Update flake: `nix flake update`
@@ -146,24 +176,24 @@ In neovim Run `:Mason` command and install LSPs
 - Remove Missing Files `:clear`
 - Changing the volume in cmus `:set softvol=true`
 
-## Show cases
+# Show cases
 
-### Terminal (Kitty + fish + starship)
+## Terminal (Kitty + fish + starship)
 
 ![Terminal 1](./images/terminal.png "Title")
 ![Terminal 2](./images/terminal-1.png "Title")
 
-### Search (fzf + ripgrep + fd + bat)
+## Search (fzf + ripgrep + fd + bat)
 
-### Multiplexer window
+## Multiplexer window
 
 ![Tmux 1](./images/multiplex-window.png "Title")
 
-### Btop
+## Btop
 
 ![Btop](./images/btop.png "Title")
 
-### Neovim
+## Neovim
 
 ![Neovim](./images/neovim.png "Title")
 ![Neovim](./images/nvim-info.png "Title")
@@ -171,16 +201,18 @@ In neovim Run `:Mason` command and install LSPs
 ![Neovim](./images/nvim-autocomplete.png "Title")
 ![Neovim](./images/nvim-autocomplete-1.png "Title")
 
-### Lazygit
+## Lazygit
 
 ![Lazygit](./images/lazygit.png "Title")
 ![Lazygit](./images/lazygit-1.png "Title")
 ![Lazygit](./images/git-log.png "Title")
 
-### Music
+## Music
 
 ![Music](./images/cmus.png "Title")
 ![Music](./images/cmus-cava.png "Title")
+
+# References
 
 ## Blogs
 
