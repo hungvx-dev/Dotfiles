@@ -31,7 +31,8 @@
           pkgs.tmux
           pkgs.starship
 
-          pkgs.fzf
+          # pkgs.fzf
+          pkgs.skim
           pkgs.ripgrep
           pkgs.fd
           pkgs.bat
@@ -40,7 +41,8 @@
           pkgs.eza
           pkgs.dust
           pkgs.duf
-          pkgs.tldr
+          pkgs.tealdeer
+          pkgs.navi
           pkgs.yazi
           pkgs.btop
 
