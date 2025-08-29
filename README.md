@@ -1,7 +1,7 @@
 # My dotfiles
 
 **_This is my dotfiles. Take anything you want, but at your own risk._**
-**_It mainly targets MacOS systems_**
+**_It mainly targets MacOS systems._**
 **_This repository contains my configuration for applications:_**
 
 ## Tools
@@ -17,7 +17,7 @@
 - **Git**:
   - [Lazygit](./lazygit)
   - [delta](https://github.com/dandavison/delta) - a syntax-highlighting pager for git, diff, and grep output
-- File Manager:
+- **File Manager**:
   - [Yazi](./yazi/)
 - **Version Manager**:
   - [fnm](https://github.com/Schniz/fnm) - 🚀 fast and simple Node.js version manager, built in Rust
@@ -40,7 +40,7 @@
 - [eza > ls](https://github.com/eza-community/eza)
 - [delta > diff](https://github.com/dandavison/delta)
 - [btop > top](https://github.com/aristocratos/btop)
-- [tldr > man](https://github.com/tldr-pages/tldr)
+- [tealdeer > man](https://github.com/tealdeer-rs/tealdeer?tab=readme-ov-file)
 - [duf > df](https://github.com/muesli/duf)
 - [dust > du](https://github.com/bootandy/dust)
 - [prettyping > ping](https://github.com/denilsonsa/prettyping)
@@ -65,14 +65,14 @@ nix-shell -p git --run "git clone git@github.com:hungvx-dev/Dotfiles.git ~/Dev/D
 nix run nix-darwin --extra-experimental-features "nix-command flakes" -- switch --flake ~/Dev/Dotfile/nix-darwin/feiyu
 ```
 
-### Add configuation
+### Add configuration
 
 ```sh
 cd ~/Dev/Dotfiles
 stow .
 ```
 
-### Configuation fish
+### Configuration fish
 
 - Set default shell
 
@@ -82,7 +82,7 @@ chsh -s $(which fish)
 
 ```
 
-- Install fisher
+- Install fisher (Optional)
 
 ```sh
 curl -sL https://raw.githubusercontent.com/jorgebucaran/fisher/main/functions/fisher.fish | source && fisher install jorgebucaran/fisher
@@ -90,7 +90,7 @@ curl -sL https://raw.githubusercontent.com/jorgebucaran/fisher/main/functions/fi
 fisher install kidonng/zoxide.fish
 ```
 
-### Configuation git + ssh
+### Configuration git + ssh
 
 - Git
 
@@ -108,7 +108,7 @@ ln -s $(pwd)/ssh/config ~/.ssh/config
 
 - [Setup ssh](./ssh/guide.md)
 
-### Configuation neovim
+### Configuration neovim
 
 ```sh
 nix-shell -p nodejs_22 cargo
