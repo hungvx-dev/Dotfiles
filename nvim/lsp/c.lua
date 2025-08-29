@@ -27,4 +27,5 @@ return {
     },
     offsetEncoding = { "utf-8", "utf-16" },
   },
+  on_attach = function() end,
 }

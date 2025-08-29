@@ -4,4 +4,5 @@ return {
   single_file_support = true,
   filetypes = { "dockerfile" },
   root_markers = { "Dockerfile" },
+  on_attach = function() end,
 }

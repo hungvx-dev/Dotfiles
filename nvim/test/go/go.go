@@ -1,7 +1,3 @@
-// @comment: Chú thích chung cho tệp
-// @comment.todo: Thêm xử lý lỗi chi tiết hơn
-// @comment.warning: Kiểm tra concurrency trước khi deploy
-
 package main // @keyword.package, @module
 
 import ( // @keyword.import, @punctuation.bracket

@@ -4,4 +4,5 @@ return {
   single_file_support = true,
   filetypes = { "html", "typescriptreact", "vue", "javascriptreact", "css", "sass", "scss", "typescript.tsx", "javascript.jsx" },
   init_options = { provideFormatter = true },
+  on_attach = function() end,
 }

@@ -14,4 +14,5 @@ return {
       validate = { enable = true },
     },
   },
+  on_attach = function() end,
 }

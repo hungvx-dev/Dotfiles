@@ -2,6 +2,8 @@
 #include <string>
 #include <vector>
 
+using namespace std;
+
 #define MAX_VALUE 100
 
 namespace my_namespace {
@@ -22,7 +24,7 @@ public:
 private:
   double ratio = 0.5;
 };
-}
+} // namespace my_namespace
 
 enum Color { RED = 1, GREEN = 2, BLUE = 3 };
 
@@ -32,7 +34,7 @@ int main() {
   int x = 10;
   float y = 3.14;
   char c = 'A';
-  std::string greeting = "Hello, C++!";
+  string greeting = "Hello, C++!";
 
   if (x > 0) {
     std::cout << "x is positive" << std::endl;
