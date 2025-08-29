@@ -25,10 +25,10 @@ return {
   FloatBorder = base.cursor,
   FloatTitle = base.cursor,
 
-  NonText = { fg = colors.dark3 },
+  NonText = { fg = colors.slate },
   Conceal = "NonText",
   Visual = {
-    bg = colors.bg_search,
+    bg = colors.slate_1,
   },
 
   IncSearch = {
@@ -37,7 +37,7 @@ return {
   },
   Search = {
     fg = colors.fg,
-    bg = colors.bg_search,
+    bg = colors.dark_1,
   },
 
   CurSearch = "IncSearch",
@@ -59,8 +59,8 @@ return {
     fg = colors.cyan,
   },
 
-  LineNrAbove = { fg = colors.dark5 },
-  LineNrBelow = { fg = colors.dark5 },
+  LineNrAbove = { fg = colors.dark },
+  LineNrBelow = { fg = colors.dark },
 
   WinSeparator = { fg = colors.black },
 
@@ -70,7 +70,7 @@ return {
   -- WinBar = "Normal",
   WinBar = {
     bg = colors.bg,
-    fg = colors.dark4,
+    fg = colors.gray_1,
     -- sp = colors.black,
     -- underline = true,
   },
@@ -79,7 +79,7 @@ return {
   MatchParen = {
     bold = true,
     fg = colors.none,
-    bg = colors.bg_search,
+    bg = colors.cyan_1,
   },
 
   TabLineSel = {

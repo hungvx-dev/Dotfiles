@@ -1,7 +1,7 @@
 local colors = require("themes.feiyu.colors")
 return {
   CleverFDefaultLabel = {
-    fg = "#ff7788",
+    fg = colors.red_1,
     underline = true,
   },
   EyelinerPrimary = {

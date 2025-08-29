@@ -1,57 +1,21 @@
 local colors = require("themes.feiyu.colors")
 local M = {}
 M.base = {
-  Comment = {
-    fg = colors.comment,
-    italic = true,
-  },
-  Constant = {
-    fg = colors.orange1,
-  },
-  String = {
-    fg = colors.orange,
-  },
-  Character = {
-    fg = colors.green,
-  },
-  Identifier = {
-    fg = colors.purple,
-  },
-  Function = {
-    fg = colors.blue,
-    italic = true,
-  },
-  Statement = {
-    fg = colors.purple,
-    -- bold = true,
-  },
-  Operator = {
-    fg = colors.blue5,
-  },
-  Keyword = {
-    fg = colors.purple,
-    italic = true,
-  },
-  KeywordSpecial = {
-    fg = colors.magenta,
-    italic = true,
-  },
-  PreProc = {
-    fg = colors.cyan,
-  },
-  Type = {
-    fg = colors.blue1,
-  },
-  Special = {
-    fg = colors.red,
-  },
-  Delimiter = {
-    fg = colors.red,
-  },
-  Title = {
-    fg = colors.blue,
-    bold = true,
-  },
+  Comment = { fg = colors.stone, italic = true },
+  Constant = { fg = colors.orange },
+  String = { fg = colors.orange },
+  Character = { fg = colors.green },
+  Identifier = { fg = colors.purple },
+  Function = { fg = colors.blue, italic = true },
+  Statement = { fg = colors.purple },
+  Operator = { fg = colors.sky_1 },
+  Keyword = { fg = colors.purple, italic = true },
+  KeywordSpecial = { fg = colors.pink, italic = true },
+  PreProc = { fg = colors.cyan },
+  Type = { fg = colors.cyan },
+  Special = { fg = colors.red_1 },
+  Delimiter = { fg = colors.red_1 },
+  Title = { fg = colors.blue, bold = true },
 
   -- INFO: Default
 
@@ -82,22 +46,25 @@ M.special = {
   ["@keyword.coroutine"] = "KeywordSpecial",
   ["@keyword.operator"] = "KeywordSpecial",
   ["@keyword.return"] = "KeywordSpecial",
-  ["@type.builtin"] = { fg = colors.violet, bold = true },
   ["@type.qualifier"] = "@keyword",
 
-  ["@property"] = { fg = colors.green1 },
-  ["@tag.attribute"] = "@property",
+  ["@property"] = { fg = colors.teal_1 },
+  ["@tag.attribute"] = { fg = colors.teal },
   ["@variable"] = { fg = colors.fg },
   ["@variable.member"] = "@property",
   ["@variable.parameter"] = { fg = colors.yellow },
   ["@variable.parameter.builtin"] = "@variable.parameter",
 
-  ["@comment.hint"] = { fg = colors.hint },
-  ["@comment.info"] = { fg = colors.info },
-  ["@comment.note"] = { fg = colors.hint },
+  ["@comment.hint"] = { fg = colors.teal },
+  ["@comment.info"] = { fg = colors.sky },
+  ["@comment.note"] = { fg = colors.teal_1 },
   ["@comment.hack"] = { fg = colors.yellow },
-  ["@comment.todo"] = { fg = colors.todo },
+  ["@comment.todo"] = { fg = colors.blue },
   ["@comment.test"] = { fg = colors.purple },
+
+  ["@type.builtin"] = { fg = colors.red_1, bold = true },
+  ["@variable.builtin"] = { fg = colors.cyan_1, italic = true },
+  ["@function.builtin"] = { fg = colors.blue_1, italic = true },
 
   ["@markup.link"] = { fg = colors.teal, underline = true },
   -- ["@markup.link.label"] = "SpecialChar",
@@ -107,24 +74,26 @@ M.special = {
   ["@markup.heading.2.markdown"] = { bold = true, fg = colors.yellow },
   ["@markup.heading.3.markdown"] = { bold = true, fg = colors.green },
   ["@markup.heading.4.markdown"] = { bold = true, fg = colors.teal },
-  ["@markup.heading.5.markdown"] = { bold = true, fg = colors.magenta },
+  ["@markup.heading.5.markdown"] = { bold = true, fg = colors.rose },
   ["@markup.heading.6.markdown"] = { bold = true, fg = colors.purple },
   ["@markup.heading.7.markdown"] = { bold = true, fg = colors.orange },
-  ["@markup.heading.8.markdown"] = { bold = true, fg = colors.red },
+  ["@markup.heading.8.markdown"] = { bold = true, fg = colors.red_1 },
   ["@markup.raw"] = "String",
   ["@markup.raw.markdown_inline"] = { bg = "#414868", fg = colors.blue },
+
   ["@lsp.type.variable"] = {},
-  LspInlayHint = {
-    bg = colors.none,
-    fg = colors.dark3,
-  },
+  LspInlayHint = { bg = colors.none, fg = colors.slate },
 }
 
 M.lsp = {
   ["@lsp.type.enumMember"] = "@variable.member",
+  -- ["@lsp.typemod.variable.readonly"] = "Constant",
   ["@lsp.typemod.variable.defaultLibrary"] = "@variable.builtin",
-  -- ["@lsp.typemod.variable.readonly.typescript"] = "Constant",
   ["@lsp.typemod.type.defaultLibrary"] = "@type.builtin",
+  ["@lsp.typemod.class.defaultLibrary"] = "@type.builtin",
+  ["@lsp.typemod.method.defaultLibrary"] = "@function.builtin",
+  ["@lsp.typemod.function.defaultLibrary"] = "@function.builtin",
+  -- ["@lsp.typemod.namespace.defaultLibrary"] = "@variable.builtin",
 
   LspKindArray = "@punctuation.bracket",
   LspKindBoolean = "@boolean",

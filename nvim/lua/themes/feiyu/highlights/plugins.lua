@@ -16,7 +16,7 @@ M.git = {
     -- bg = colors.blue0,
     bold = true,
     -- underline = true,
-    fg = colors.dark3,
+    fg = colors.slate,
   },
   GitSignsDelete = { fg = colors.git.delete },
 
@@ -38,32 +38,20 @@ M.git = {
 }
 
 M.neotree = {
-  NeoTreeDimText = { fg = colors.blue5 },
+  NeoTreeDimText = { fg = colors.dark_2 },
   NeoTreeFileName = { fg = colors.fg },
   NeoTreeGitModified = { fg = colors.orange },
-  NeoTreeGitStaged = { fg = colors.green1 },
-  NeoTreeGitUntracked = { fg = "#bb9af7" },
-  NeoTreeNormal = {
-    bg = colors.bg,
-    fg = colors.fg,
-  },
-  NeoTreeNormalNC = {
-    bg = colors.bg,
-    fg = colors.fg,
-  },
+  NeoTreeGitStaged = { fg = colors.teal },
+  NeoTreeGitUntracked = { fg = colors.purple_1 },
+  NeoTreeNormal = { bg = colors.bg, fg = colors.fg },
+  NeoTreeNormalNC = { bg = colors.bg, fg = colors.fg },
   NeoTreeTabActive = {
     bold = true,
     bg = colors.bg,
     fg = colors.blue,
   },
-  NeoTreeTabInactive = {
-    bg = colors.bg,
-    fg = colors.dark3,
-  },
-  NeoTreeTabSeparatorActive = {
-    bg = colors.bg,
-    fg = colors.blue,
-  },
+  NeoTreeTabInactive = { bg = colors.bg, fg = colors.slate },
+  NeoTreeTabSeparatorActive = { bg = colors.bg, fg = colors.blue },
   NeoTreeTabSeparatorInactive = {
     bg = colors.bg,
     fg = colors.black,
@@ -84,7 +72,7 @@ M.neotree = {
 M.blink_cmp = {
   BlinkCmpLabelMatch = {
     bg = colors.bg,
-    fg = "#d7005f",
+    fg = colors.pink_1,
   },
   -- BlinkCmpLabelDescription = "Comment",
   BlinkCmpGhostText = {
@@ -95,7 +83,7 @@ M.blink_cmp = {
   BlinkCmpSignatureHelpBorder = "FloatBorder",
   BlinkCmpLabelDeprecated = {
     bg = colors.none,
-    fg = colors.fg_gutter,
+    fg = colors.slate_1,
     strikethrough = true,
   },
 
@@ -156,25 +144,15 @@ M.blink_cmp = {
 }
 
 M.alpha = {
-  AlphaButtons = {
-    fg = colors.cyan,
-  },
-  AlphaFooter = {
-    fg = colors.blue1,
-  },
-  AlphaHeader = {
-    fg = colors.blue,
-  },
-  AlphaHeaderLabel = {
-    fg = colors.orange,
-  },
-  AlphaShortcut = {
-    fg = colors.orange,
-  },
+  AlphaButtons = { fg = colors.sky },
+  AlphaFooter = { fg = colors.cyan_1 },
+  AlphaHeader = { fg = colors.blue },
+  AlphaHeaderLabel = { fg = colors.orange },
+  AlphaShortcut = { fg = colors.orange },
 }
 
 M.mini_icon = {
-  MiniIconsAzure = { fg = colors.blue2 },
+  MiniIconsAzure = { fg = colors.cyan_1 },
   MiniIconsBlue = { fg = colors.blue },
   MiniIconsCyan = { fg = colors.cyan },
   MiniIconsGreen = { fg = colors.green },
@@ -186,28 +164,28 @@ M.mini_icon = {
 }
 
 M.diagnostic = {
-  DiagnosticError = { fg = colors.error },
-  DiagnosticHint = { fg = colors.hint },
-  DiagnosticInfo = { fg = colors.info },
+  DiagnosticError = { fg = colors.red },
+  DiagnosticHint = { fg = colors.teal },
+  DiagnosticInfo = { fg = colors.sky },
   DiagnosticInformation = "DiagnosticInfo",
   DiagnosticUnderlineError = {
-    sp = colors.error,
+    sp = colors.red,
     undercurl = true,
   },
   DiagnosticUnderlineHint = {
-    sp = colors.hint,
+    sp = colors.teal,
     undercurl = true,
   },
   DiagnosticUnderlineInfo = {
-    sp = colors.info,
+    sp = colors.sky,
     undercurl = true,
   },
   DiagnosticUnderlineWarn = {
-    sp = colors.warning,
+    sp = colors.yellow_1,
     undercurl = true,
   },
-  DiagnosticUnnecessary = { fg = "#8990b3" },
-  DiagnosticWarn = { fg = colors.warning },
+  DiagnosticUnnecessary = { fg = colors.gray_2 },
+  DiagnosticWarn = { fg = colors.yellow_1 },
   DiagnosticWarning = "DiagnosticWarn",
   -- DiagnosticVirtualTextError = {
   --   bg = "#2d202a",
@@ -230,7 +208,7 @@ M.diagnostic = {
 M.fzf = {
   FzfLuaBorder = {
     bg = colors.bg,
-    fg = colors.border_highlight,
+    fg = colors.cyan,
   },
   FzfLuaPreviewTitle = {
     bg = colors.bg,
@@ -277,7 +255,7 @@ M.statusline = {
     fg = colors.black,
   },
   StModeVisual = {
-    bg = colors.magenta,
+    bg = colors.pink,
     fg = colors.fg,
   },
   StModeReplace = {
@@ -294,49 +272,49 @@ M.statusline = {
   },
   StModeNormalSeparator = {
     fg = colors.cyan,
-    bg = colors.fg_gutter,
+    bg = colors.dark_2,
   },
   StModeInsertSeparator = {
     fg = colors.green,
-    bg = colors.fg_gutter,
+    bg = colors.dark_2,
   },
   StModeVisualSeparator = {
-    fg = colors.magenta,
-    bg = colors.fg_gutter,
+    fg = colors.pink,
+    bg = colors.dark_2,
   },
   StModeReplaceSeparator = {
     fg = colors.red,
-    bg = colors.fg_gutter,
+    bg = colors.dark_2,
   },
   StModeCommandSeparator = {
     fg = colors.yellow,
-    bg = colors.fg_gutter,
+    bg = colors.dark_2,
   },
   StModeTerminalSeparator = {
-    fg = colors.green1,
-    bg = colors.fg_gutter,
+    fg = colors.teal,
+    bg = colors.dark_2,
   },
   StModeDefaultSeparator = {
     fg = colors.blue,
-    bg = colors.fg_gutter,
+    bg = colors.dark_2,
   },
   StGitIcon = {
-    bg = colors.fg_gutter,
+    bg = colors.dark_2,
     fg = colors.orange,
   },
   StBranchName = {
-    bg = colors.fg_gutter,
+    bg = colors.dark_2,
     fg = colors.orange,
   },
   StBranchNameSeparator = {
-    fg = colors.fg_gutter,
+    fg = colors.dark_2,
   },
   StSectionY = {
-    bg = colors.fg_gutter,
+    bg = colors.dark_2,
     fg = colors.orange,
   },
   StSectionYSeparator = {
-    fg = colors.fg_gutter,
+    fg = colors.dark_2,
   },
   -- StSectionY = {
   --   bg = colors.fg_gutter,

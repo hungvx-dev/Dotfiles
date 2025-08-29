@@ -2,27 +2,13 @@ local colors = require("themes.feiyu.colors")
 
 return {
   indent = {
-    RainbowRed = {
-      fg = colors.red,
-    },
-    RainbowYellow = {
-      fg = colors.yellow,
-    },
-    RainbowBlue = {
-      fg = colors.blue,
-    },
-    RainbowOrange = {
-      fg = colors.orange,
-    },
-    RainbowGreen = {
-      fg = colors.green,
-    },
-    RainbowViolet = {
-      fg = colors.purple,
-    },
-    RainbowCyan = {
-      fg = colors.cyan,
-    },
+    RainbowRed = { fg = colors.red_1 },
+    RainbowYellow = { fg = colors.yellow },
+    RainbowBlue = { fg = colors.blue },
+    RainbowOrange = { fg = colors.orange },
+    RainbowGreen = { fg = colors.green },
+    RainbowViolet = { fg = colors.purple },
+    RainbowCyan = { fg = colors.cyan },
   },
   pairs = {
     RainbowDelimiterRed = "RainbowRed",
@@ -53,34 +39,13 @@ return {
       BlinkPairsCyan = "RainbowCyan",
     },
     underline = {
-      BlinkIndentRedUnderline = {
-        sp = colors.red,
-        underline = true,
-      },
-      BlinkIndentYellowUnderline = {
-        sp = colors.yellow,
-        underline = true,
-      },
-      BlinkIndentBlueUnderline = {
-        sp = colors.blue,
-        underline = true,
-      },
-      BlinkIndentOrangeUnderline = {
-        sp = colors.orange,
-        underline = true,
-      },
-      BlinkIndentGreenUnderline = {
-        sp = colors.green,
-        underline = true,
-      },
-      BlinkIndentVioletUnderline = {
-        sp = colors.purple,
-        underline = true,
-      },
-      BlinkIndentCyanUnderline = {
-        sp = colors.cyan,
-        underline = true,
-      },
+      BlinkIndentRedUnderline = { sp = colors.red, underline = true },
+      BlinkIndentYellowUnderline = { sp = colors.yellow, underline = true },
+      BlinkIndentBlueUnderline = { sp = colors.blue, underline = true },
+      BlinkIndentOrangeUnderline = { sp = colors.orange, underline = true },
+      BlinkIndentGreenUnderline = { sp = colors.green, underline = true },
+      BlinkIndentVioletUnderline = { sp = colors.purple, underline = true },
+      BlinkIndentCyanUnderline = { sp = colors.cyan, underline = true },
     },
   },
   fold = {
