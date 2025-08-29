@@ -5,23 +5,19 @@
 # Table contents
 
 - [Tools](#tools)
-- [CLI Replacements](#cli-replacements)
-- [Setup](#setup)
-
+- [CLI Replacements](#-cli-replacements)
+- [Setup](#%EF%B8%8F-setup)
   - [Installing](#installing)
   - [Add configuration](#add-configuration)
-
     - [Configuration shell (fish)](#configuration-shell)
-    - [Configuration git + ssh](#configuration-git-+-ssh)
+    - [Configuration git + ssh](#configuration-git--ssh)
     - [Configuration neovim](#configuration-neovim)
-
-  - [System Maintenance](#system-maintenance)
+  - [System Maintenance](#-system-maintenance)
     - [Update packages](#update-packages)
     - [Clean packages](#clean-packages)
     - [Checkout packages](#checkout-packages)
     - [Nodejs](#nodejs)
     - [Cmus](#cmus)
-
 - [Show case](#show-case)
 
 # Tools
@@ -100,7 +96,7 @@ cd ~/Dev/Dotfiles
 stow .
 ```
 
-### Configuration fish
+### Configuration shell (fish)
 
 - Set default shell
 
@@ -144,6 +140,33 @@ neovim
 ```
 
 In neovim Run `:Mason` command and install LSPs
+
+# 📖 Usage Guide
+
+Here are some notes on how I use my daily tools:
+
+## ⚡ CLI Tools
+
+### _bat_ → Pretty `cat` with syntax highlighting
+
+### _fd_ → Fast `find` replacement
+
+### _rg (ripgrep)_ → Super fast `grep` replacement
+
+`rg [OPTIONS] PATTERN [PATH...]`
+
+- Recursively search current directory for a pattern (`regex`):
+
+  `rg _pattern_`
+
+- Recursively search for a pattern in a file or directory:
+
+  `rg pattern <path/to/file_or_directory>`
+
+- Options
+
+  - Include hidden files and entries listed in `.gitignore`:
+    `[-.|--hidden] --no-ignore`
 
 ## 🔄 System Maintenance
 
