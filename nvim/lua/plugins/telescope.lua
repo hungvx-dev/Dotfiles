@@ -98,13 +98,13 @@ return {
     end,
   },
 
-  {
-    "folke/todo-comments.nvim",
-    optional = true,
-    -- stylua: ignore
-    keys = {
-      { "<leader>ft", "<cmd>TodoTelescope<cr>", desc = "Todo" },
-      { "<leader>fT", "<cmd>TodoTelescope keywords=TODO,FIX,FIXME<cr>", desc = "Todo/Fix/Fixme" },
-    },
-  },
+  -- {
+  --   "folke/todo-comments.nvim",
+  --   -- enabled = not HVIM.plugins.fzf,
+  --   -- stylua: ignore
+  --   keys = {
+  --     { "<leader>ft", "<cmd>TodoTelescope<cr>", desc = "Todo" },
+  --     { "<leader>fT", "<cmd>TodoTelescope keywords=TODO,FIX,FIXME<cr>", desc = "Todo/Fix/Fixme" },
+  --   },
+  -- },
 }

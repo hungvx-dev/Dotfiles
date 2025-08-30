@@ -17,13 +17,13 @@ return {
       highlights = {
         enabled = true,
         groups = {
-          "BlinkPairsOrange",
-          "BlinkPairsViolet",
-          "BlinkPairsBlue",
           "BlinkPairsRed",
-          "BlinkPairsCyan",
           "BlinkPairsYellow",
+          "BlinkPairsBlue",
+          "BlinkPairsOrange",
           "BlinkPairsGreen",
+          "BlinkPairsCyan",
+          "BlinkPairsViolet",
         },
         matchparen = {
           enabled = true,

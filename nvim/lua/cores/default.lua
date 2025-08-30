@@ -47,9 +47,9 @@ HVIM = {
     bufferline = true,
     treesitter = true,
     lsp = true,
-    telescope = true,
+    telescope = false,
     git = true,
-    fzf = false,
+    fzf = true,
     none_ls = false,
   },
   ui = {

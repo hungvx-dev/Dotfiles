@@ -4,18 +4,20 @@ return {
     enabled = HVIM.plugins.fzf,
     cmd = "FzfLua",
     opts = {
-      -- fzf_colors = false,
-      fzf_colors = {
-        true,
-        ["fg"] = "#ffffff",
-        ["fg+"] = "#5fd7ff:underline:bold",
-        ["bg"] = "-1",
-        ["bg+"] = "-1",
-        ["hl"] = "#d7005f",
-        ["hl+"] = "#d7005f:underline:bold",
-        ["info"] = "#ffffff",
-        ["gutter"] = "-1",
-      },
+      "skim",
+      fzf_bin = "sk",
+      fzf_colors = false,
+      -- fzf_colors = {
+      --   true,
+      --   ["fg"] = "#ffffff",
+      --   ["fg+"] = "#5fd7ff:underline:bold",
+      --   ["bg"] = "-1",
+      --   ["bg+"] = "-1",
+      --   ["hl"] = "#d7005f",
+      --   ["hl+"] = "#d7005f:underline:bold",
+      --   ["info"] = "#ffffff",
+      --   ["gutter"] = "-1",
+      -- },
       -- fzf_opts = {
       --   ["--no-reverse"] = "",
       -- },
@@ -89,7 +91,7 @@ return {
   },
   {
     "folke/todo-comments.nvim",
-    optional = true,
+    enabled = HVIM.plugins.fzf,
     -- stylua: ignore
     keys = {
       { "<leader>ft", function() require("todo-comments.fzf").todo() end, desc = "Todo" },
