@@ -7,7 +7,7 @@ return {
     RainbowBlue = { fg = colors.blue },
     RainbowOrange = { fg = colors.orange },
     RainbowGreen = { fg = colors.green },
-    RainbowViolet = { fg = colors.purple },
+    RainbowViolet = { fg = colors.pink },
     RainbowCyan = { fg = colors.cyan },
   },
   pairs = {

@@ -61,20 +61,19 @@ export default function FullTypeScriptComponent(props: User) {
     } catch (error: unknown) {
       console.error("Caught error:", error);
     } finally {
-      console.log("Effect cleanup"); // @function.builtin
+      console.log("Effect cleanup");
     }
-  }, [count]); // @punctuation.bracket
+  }, [count]);
 
   const handleSearch = useCallback(
     debounce((term: string) => {
       setSearchTerm(term); // @function.call
     }, 300),
-    [], // @punctuation.bracket
+    [],
   );
 
-  // @keyword.if, @keyword.conditional: Câu lệnh if
   if (count > maxCount) {
-    console.log("Count exceeded"); // @function.builtin
+    console.log("Count exceeded");
   } else if (count === maxCount) {
     console.warn("Count at max");
   } else {

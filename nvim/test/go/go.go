@@ -107,22 +107,18 @@ func main() {
 		"Bob":   30,
 	} // @punctuation.bracket
 
-	// @keyword.range, @keyword.repeat: Vòng lặp range
-	for name, age := range users { // @variable
-		fmt.Printf("%s: %d\n", name, age) // @function.call, @string
+	for name, age := range users {
+		fmt.Printf("%s: %d\n", name, age)
 	}
 
-	// @keyword.goto, @label: Sử dụng goto
 	if count < 0 {
 		goto ErrorLabel // @keyword.goto
 	}
 
-	// @keyword.return: Trả về giá trị
 	return
 
-ErrorLabel: // @label
-	fmt.Println("Error occurred") // @function.call, @string
+ErrorLabel:
+	fmt.Println("Error occurred")
 }
 
-// @error: Dòng lỗi cú pháp
-var errorVar int = "string" // @type.builtin, @string
+var errorVar int = "string"

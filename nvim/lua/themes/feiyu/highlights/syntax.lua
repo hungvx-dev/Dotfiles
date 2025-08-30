@@ -3,21 +3,22 @@ local M = {}
 M.base = {
   Comment = { fg = colors.stone, italic = true },
   Constant = { fg = colors.orange },
-  String = { fg = colors.orange },
+  String = { fg = colors.amber },
   Character = { fg = colors.green },
   Identifier = { fg = colors.purple },
   Function = { fg = colors.blue, italic = true },
   Statement = { fg = colors.purple },
-  Operator = { fg = colors.sky_1 },
-  Keyword = { fg = colors.purple, italic = true },
+  Operator = { fg = colors.sky },
+  Keyword = { fg = colors.purple_1, italic = true },
   KeywordSpecial = { fg = colors.pink, italic = true },
+  KeywordSpecial2 = { fg = colors.purple, italic = true },
   PreProc = { fg = colors.cyan },
   Type = { fg = colors.cyan },
   Special = { fg = colors.red_1 },
   Delimiter = { fg = colors.red_1 },
   Title = { fg = colors.blue, bold = true },
 
-  -- INFO: Default
+  -- INFO: Default.
 
   -- Number = "Constant",
   -- Boolean = "Constant",
@@ -46,14 +47,20 @@ M.special = {
   ["@keyword.coroutine"] = "KeywordSpecial",
   ["@keyword.operator"] = "KeywordSpecial",
   ["@keyword.return"] = "KeywordSpecial",
+  ["@keyword.type"] = "KeywordSpecial2",
+  ["@keyword.function"] = "KeywordSpecial2",
+  -- ["@keyword.conditional"] = "KeywordSpecial",
   ["@type.qualifier"] = "@keyword",
 
   ["@property"] = { fg = colors.teal_1 },
-  ["@tag.attribute"] = { fg = colors.teal },
   ["@variable"] = { fg = colors.fg },
   ["@variable.member"] = "@property",
   ["@variable.parameter"] = { fg = colors.yellow },
   ["@variable.parameter.builtin"] = "@variable.parameter",
+
+  ["@tag.attribute"] = { fg = colors.teal },
+  ["@tag.tsx"] = "@type.tsx",
+  ["@lsp.type.component"] = "@type.tsx",
 
   ["@comment.hint"] = { fg = colors.teal },
   ["@comment.info"] = { fg = colors.sky },
@@ -63,8 +70,22 @@ M.special = {
   ["@comment.test"] = { fg = colors.purple },
 
   ["@type.builtin"] = { fg = colors.red_1, bold = true },
-  ["@variable.builtin"] = { fg = colors.cyan_1, italic = true },
+  -- ["@variable.builtin"] = ,
   ["@function.builtin"] = { fg = colors.blue_1, italic = true },
+
+  ["@lsp.type.enumMember"] = "@variable.member",
+  -- ["@lsp.typemod.variable.readonly"] = "Constant",
+  -- ["@lsp.typemod.variable.defaultLibrary"] = { fg = colors.cyan_1, italic = true },
+  ["@lsp.typemod.type.defaultLibrary"] = {},
+  ["@lsp.typemod.class.defaultLibrary"] = "@type.builtin",
+  ["@lsp.typemod.method.defaultLibrary"] = "@function.builtin",
+  ["@lsp.typemod.function.defaultLibrary"] = "@function.builtin",
+
+  ["@constructor"] = "@lsp.type.class",
+  --
+  -- ["@lsp.typemod.namespace.defaultLibrary"] = "@variable.builtin",
+  ["@lsp.type.variable"] = {},
+  LspInlayHint = { bg = colors.none, fg = colors.slate },
 
   ["@markup.link"] = { fg = colors.teal, underline = true },
   -- ["@markup.link.label"] = "SpecialChar",
@@ -80,21 +101,9 @@ M.special = {
   ["@markup.heading.8.markdown"] = { bold = true, fg = colors.red_1 },
   ["@markup.raw"] = "String",
   ["@markup.raw.markdown_inline"] = { bg = "#414868", fg = colors.blue },
-
-  ["@lsp.type.variable"] = {},
-  LspInlayHint = { bg = colors.none, fg = colors.slate },
 }
 
 M.lsp = {
-  ["@lsp.type.enumMember"] = "@variable.member",
-  -- ["@lsp.typemod.variable.readonly"] = "Constant",
-  ["@lsp.typemod.variable.defaultLibrary"] = "@variable.builtin",
-  ["@lsp.typemod.type.defaultLibrary"] = "@type.builtin",
-  ["@lsp.typemod.class.defaultLibrary"] = "@type.builtin",
-  ["@lsp.typemod.method.defaultLibrary"] = "@function.builtin",
-  ["@lsp.typemod.function.defaultLibrary"] = "@function.builtin",
-  -- ["@lsp.typemod.namespace.defaultLibrary"] = "@variable.builtin",
-
   LspKindArray = "@punctuation.bracket",
   LspKindBoolean = "@boolean",
   LspKindClass = "@type",
@@ -130,5 +139,3 @@ M.lsp = {
   LspKindValue = "@string",
   LspKindVariable = "@variable",
 }
-
-return M
