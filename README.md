@@ -9,7 +9,7 @@
 - [Setup](#%EF%B8%8F-setup)
   - [Installing](#installing)
   - [Add configuration](#add-configuration)
-    - [Configuration shell (fish)](#configuration-shell)
+    - [Configuration shell (fish)](#configuration-shell-fish)
     - [Configuration git + ssh](#configuration-git--ssh)
     - [Configuration neovim](#configuration-neovim)
   - [System Maintenance](#-system-maintenance)
@@ -157,7 +157,7 @@ Here are some notes on how I use my daily tools:
 
 - Recursively search current directory for a pattern (`regex`):
 
-  `rg _pattern_`
+  `rg pattern`
 
 - Recursively search for a pattern in a file or directory:
 
