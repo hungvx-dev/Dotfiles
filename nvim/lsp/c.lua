@@ -27,5 +27,7 @@ return {
     },
     offsetEncoding = { "utf-8", "utf-16" },
   },
-  on_attach = function() end,
+  on_attach = function(client, bufnr)
+    vim.lsp.config["*"].on_attach(client, bufnr)
+  end,
 }

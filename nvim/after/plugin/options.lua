@@ -67,6 +67,7 @@ vim.wo.foldlevel = 99             -- Folds with a level higher than this number 
 vim.opt.foldlevelstart = 99       -- Value for 'foldlevel' when starting to edit a file
 vim.o.foldmethod = "expr"        -- Folding type: "manual", "indent", "expr", "marker", "syntax" or "diff"
 vim.o.foldexpr = "v:lua.vim.treesitter.foldexpr()"
+-- vim.o.foldexpr = 'v:lua.vim.lsp.foldexpr()'
 vim.o.foldtext = "v:lua.Custom_foldtext()"
 
 -- #======================== 19. Command line editing =========================#

@@ -21,7 +21,8 @@ return {
       },
     },
   },
-  on_attach = function(client)
+  on_attach = function(client, bufnr)
+    vim.lsp.config["*"].on_attach(client, bufnr)
     if vim.bo.filetype == "scss" then
       client.server_capabilities.definitionProvider = false
       client.server_capabilities.referencesProvider = false

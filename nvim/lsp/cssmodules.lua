@@ -9,4 +9,7 @@ return {
     "vue",
   },
   root_markers = { "package.json" },
+  on_attach = function(client, bufnr)
+    vim.lsp.config["*"].on_attach(client, bufnr)
+  end,
 }

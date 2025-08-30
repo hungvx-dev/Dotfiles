@@ -55,9 +55,12 @@ return {
     typescript = shared_config,
     javascript = shared_config,
   },
-  on_attach = function(client, bufrn)
-    if vim.bo[bufrn].filetype == "vue" then
+  on_attach = function(client, bufnr)
+    vim.lsp.config["*"].on_attach(client, bufnr)
+    if vim.bo[bufnr].filetype == "vue" then
       client.server_capabilities.semanticTokensProvider.full = false
+    else
+      client.server_capabilities.semanticTokensProvider.full = true
     end
   end,
 }

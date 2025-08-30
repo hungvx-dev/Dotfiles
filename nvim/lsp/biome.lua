@@ -16,7 +16,8 @@ return {
     "vue",
   },
   workspace_required = true,
-  on_attach = function(client, _)
+  on_attach = function(client, bufnr)
+    vim.lsp.config["*"].on_attach(client, bufnr)
     if client.name == "vtsls" then
       client.server_capabilities.documentFormattingProvider = false
       client.server_capabilities.documentFormattingProvider = false

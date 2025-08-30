@@ -4,5 +4,7 @@ return {
   single_file_support = true,
   filetypes = { "html", "typescriptreact", "vue", "javascriptreact", "css", "sass", "scss", "typescript.tsx", "javascript.jsx" },
   init_options = { provideFormatter = true },
-  on_attach = function() end,
+  on_attach = function(client, bufnr)
+    vim.lsp.config["*"].on_attach(client, bufnr)
+  end,
 }

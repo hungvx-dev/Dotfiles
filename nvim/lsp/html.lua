@@ -9,4 +9,7 @@ return {
     embeddedLanguages = { css = true, javascript = true },
     configurationSection = { "html", "css", "javascript" },
   },
+  on_attach = function(client, bufnr)
+    vim.lsp.config["*"].on_attach(client, bufnr)
+  end,
 }

@@ -5,8 +5,9 @@ return {
   root_markers = {
     "go.mod",
     "go.sum",
-    "go.work"
+    "go.work",
   },
+  single_file_support = true,
   settings = {
     gopls = {
       gofumpt = true,
@@ -42,7 +43,8 @@ return {
       semanticTokens = true,
     },
   },
-  on_attach = function(client)
+  on_attach = function(client, bufnr)
+    vim.lsp.config["*"].on_attach(client, bufnr)
     if not client.server_capabilities.semanticTokensProvider then
       local semantic = client.config.capabilities.textDocument.semanticTokens
       if semantic ~= nil then
