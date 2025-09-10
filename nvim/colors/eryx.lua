@@ -3,5 +3,5 @@ if vim.g.colors_name then
 end
 local feiyu = require("themes.eryx")
 
-vim.g.colors_name = "eryx"
+vim.g.colors_name = HVIM.colorscheme
 feiyu.setup(HVIM.plugins, HVIM.highlight)

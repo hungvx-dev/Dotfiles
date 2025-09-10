@@ -1,8 +1,8 @@
 return {
-  base = require("themes.feiyu.highlights.base"),
-  syntax = require("themes.feiyu.highlights.syntax"),
-  rainbow = require("themes.feiyu.highlights.rainbow"),
-  plugins = require("themes.feiyu.highlights.plugins"),
-  fold = require("themes.feiyu.highlights.fold"),
-  mix = require("themes.feiyu.highlights.mix"),
+  base = require("themes.eryx.highlights.base"),
+  syntax = require("themes.eryx.highlights.syntax"),
+  rainbow = require("themes.eryx.highlights.rainbow"),
+  plugins = require("themes.eryx.highlights.plugins"),
+  fold = require("themes.eryx.highlights.fold"),
+  mix = require("themes.eryx.highlights.mix"),
 }

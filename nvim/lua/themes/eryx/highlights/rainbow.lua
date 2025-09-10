@@ -1,4 +1,4 @@
-local colors = require("themes.feiyu.colors")
+local colors = require("themes.eryx.colors")
 
 return {
   indent = {

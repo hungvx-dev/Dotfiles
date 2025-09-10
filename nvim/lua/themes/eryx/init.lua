@@ -1,4 +1,4 @@
-local highlights = require("themes.feiyu.highlights.init")
+local highlights = require("themes.eryx.highlights.init")
 
 local M = {}
 local hl = vim.api.nvim_set_hl

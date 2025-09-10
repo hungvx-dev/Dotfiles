@@ -1,5 +1,5 @@
-local base = require("themes.feiyu.base")
-local colors = require("themes.feiyu.colors")
+local base = require("themes.eryx.base")
+local colors = require("themes.eryx.colors")
 
 return {
   Normal = base.default,

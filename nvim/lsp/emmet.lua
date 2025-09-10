@@ -2,7 +2,19 @@
 return {
   cmd = { "emmet-language-server", "--stdio" },
   single_file_support = true,
-  filetypes = { "html", "typescriptreact", "vue", "javascriptreact", "css", "sass", "scss", "typescript.tsx", "javascript.jsx" },
+  filetypes = {
+    "html",
+    "typescriptreact",
+    "javascriptreact",
+    "css",
+    "sass",
+    "scss",
+    "typescript.tsx",
+    "javascript.jsx",
+    "vue",
+    "svg",
+    "xml"
+  },
   init_options = { provideFormatter = true },
   on_attach = function(client, bufnr)
     vim.lsp.config["*"].on_attach(client, bufnr)

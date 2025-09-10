@@ -1,6 +1,6 @@
 local icons = require("icons")
 HVIM = {
-  colorscheme = "feiyu",
+  colorscheme = "eryx",
   leader = " ",
   use_icons = true,
   icons = icons,
