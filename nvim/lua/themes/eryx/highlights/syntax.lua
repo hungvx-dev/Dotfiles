@@ -1,5 +1,6 @@
 local colors = require("themes.feiyu.colors")
 local M = {}
+
 M.base = {
   Comment = { fg = colors.stone, italic = true },
   Constant = { fg = colors.orange },
@@ -139,3 +140,5 @@ M.lsp = {
   LspKindValue = "@string",
   LspKindVariable = "@variable",
 }
+
+return M
