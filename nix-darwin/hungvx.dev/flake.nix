@@ -24,54 +24,54 @@
         nixpkgs.config.allowUnfree = true;
         nixpkgs.hostPlatform = "aarch64-darwin";
 
-        environment.systemPackages = [
-          pkgs.neovim
-          pkgs.kitty
-          # pkgs.ghostty
-          pkgs.tmux
-          pkgs.starship
+        environment.systemPackages = with pkgs; [
+          neovim
+          kitty
+          ghostty
+          tmux
+          starship
 
-          # pkgs.fzf
-          pkgs.skim
-          pkgs.ripgrep
-          pkgs.fd
-          pkgs.bat
+          # fzf
+          skim
+          ripgrep
+          fd
+          bat
 
-          pkgs.zoxide
-          pkgs.eza
-          pkgs.dust
-          pkgs.duf
-          pkgs.tealdeer
-          pkgs.navi
-          pkgs.yazi
-          pkgs.btop
+          zoxide
+          eza
+          dust
+          duf
+          tealdeer
+          navi
+          yazi
+          btop
 
-          pkgs.git
-          pkgs.delta
-          pkgs.lazygit
+          git
+          delta
+          lazygit
 
-          pkgs.stow
+          stow
 
-          pkgs.cmus
-          pkgs.cava
+          cmus
+          cava
 
-          pkgs.monitorcontrol
-          pkgs.raycast
-          pkgs.discord
-          pkgs.google-chrome
-          pkgs.zoom-us
-          # pkgs.obsidian
-          # pkgs.telegram-desktop
+          monitorcontrol
+          # raycast
+          discord
+          google-chrome
+          zoom-us
+          # obsidian
+          # telegram-desktop
 
-          # Dev
-          pkgs.docker
-          pkgs.colima
-          pkgs.lazydocker
-          pkgs.rainfrog
-          pkgs.nodejs
 
-          # Ai
-          pkgs.ollama
+          docker
+          colima
+          lazydocker
+          rainfrog
+          nodejs
+
+
+          ollama
         ];
 
         users.users."hungvx.dev" = {
@@ -82,9 +82,6 @@
 
         homebrew = {
           enable = true;
-          global = {
-            autoUpdate = true;
-          };
           brews = [
             # "git-graph"
           ];
@@ -93,41 +90,35 @@
             "figma"
             "pearcleaner"
             "brave-browser"
-            # "zen-browser"
             "karabiner-elements"
             "vlc"
             "blackhole-2ch"
+            "raycast"
+            # "zen-browser"
             # "clop"
             # "notion"
             # "stremio"
             # "xmind"
           ];
+          greedyCasks = true;
           onActivation = {
             cleanup = "zap";
+            # cleanup = "uninstall";
             autoUpdate = true;
             upgrade = true;
           };
         };
 
-        programs = {
-          fish = {
-            enable = true;
-          };
-        };
+        programs.fish.enable = true;
 
-        fonts = {
-          packages = with pkgs; [
-            jetbrains-mono
-            nerd-fonts.iosevka
-            nerd-fonts.jetbrains-mono
-          ];
-        };
+        fonts.packages = with pkgs; [
+          jetbrains-mono
+          nerd-fonts.iosevka
+          nerd-fonts.jetbrains-mono
+        ];
 
-        services = {
-          yabai = { enable = true; };
-          skhd = { enable = true; };
-          # karabiner-elements = { enable = true; };
-        };
+        services.yabai.enable = true;
+        services.skhd.enable = true;
 
         system = {
           primaryUser = username;
