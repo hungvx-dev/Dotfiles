@@ -50,7 +50,7 @@ end
 --- @param bufnr number
 --- @return boolean
 function M.should_skip_winbar(bufnr)
-  return not vim.api.nvim_buf_is_valid(bufnr) or vim.bo[bufnr].buftype ~= "" or M.ignore_filetypes[vim.bo[bufnr].filetype]
+  return M.bt_ignore[vim.bo[bufnr].buftype] or M.ft_ignore[vim.bo[bufnr].filetype] or not vim.api.nvim_buf_is_valid(bufnr)
 end
 
 function M.get_winbar(entries)
@@ -144,6 +144,14 @@ function M.update(args)
   end
 end
 
+local function array_to_set(arr)
+  local set = {}
+  for _, v in ipairs(arr) do
+    set[v] = true
+  end
+  return set
+end
+
 function M.setup(opts)
   opts = opts or {}
   M.separator = table.concat({ "%#NonText#", opts.separator or " > ", "%*" })
@@ -152,9 +160,8 @@ function M.setup(opts)
   M.separator_length = opts.separator_length or 3
   M.head_length = opts.head_length or 2
   M.truncate_length = opts.truncate_length or 3
-  M.ignore_filetypes = vim.tbl_map(function()
-    return true
-  end, opts.ignore_filetypes or {})
+  M.ft_ignore = array_to_set(opts.ft_ignore)
+  M.bt_ignore = array_to_set(opts.bt_ignore)
 
   vim.api.nvim_create_autocmd({ "WinEnter", "BufWinEnter" }, {
     group = vim.api.nvim_create_augroup("wb-enter", { clear = true }),

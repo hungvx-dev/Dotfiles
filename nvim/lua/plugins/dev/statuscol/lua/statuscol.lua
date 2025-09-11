@@ -157,40 +157,34 @@ function M.setup(opts)
     end,
   })
 
-  if ft_ignore then
-    a.nvim_create_autocmd("FileType", { group = id, pattern = ft_ignore, command = "setlocal stc=" })
-    a.nvim_create_autocmd("BufWinEnter", {
-      group = id,
-      callback = function()
-        if contains(ft_ignore, a.nvim_get_option_value("ft", { scope = "local" })) then
-          a.nvim_set_option_value("stc", "", { scope = "local" })
-          a.nvim_set_option_value("foldcolumn", "0", { scope = "local" })
-        end
-      end,
-    })
-  end
-
-  if bt_ignore then
-    a.nvim_create_autocmd("OptionSet", {
-      group = id,
-      pattern = "buftype",
-      callback = function()
-        if contains(bt_ignore, vim.v.option_new) then
-          a.nvim_set_option_value("stc", "", { scope = "local" })
-          a.nvim_set_option_value("foldcolumn", "0", { scope = "local" })
-        end
-      end,
-    })
-    a.nvim_create_autocmd("BufWinEnter", {
-      group = id,
-      callback = function()
-        if contains(bt_ignore, a.nvim_get_option_value("bt", { scope = "local" })) then
-          a.nvim_set_option_value("stc", "", { scope = "local" })
-          a.nvim_set_option_value("foldcolumn", "0", { scope = "local" })
-        end
-      end,
-    })
-  end
+  a.nvim_create_autocmd("FileType", { group = id, pattern = ft_ignore, command = "setlocal stc=" })
+  a.nvim_create_autocmd("BufWinEnter", {
+    group = id,
+    callback = function()
+      local win = a.nvim_get_current_win()
+      local bt = a.nvim_get_option_value("bt", { scope = "local" })
+      local ft = a.nvim_get_option_value("ft", { scope = "local" })
+      local h = a.nvim_win_get_height(win)
+      local w = a.nvim_win_get_width(win)
+      if h <= 1 or w <= 10 or a.nvim_win_get_config(win).relative ~= "" then
+        return
+      end
+      if contains(ft_ignore, ft) or contains(bt_ignore, bt) then
+        a.nvim_set_option_value("stc", "", { scope = "local" })
+        a.nvim_set_option_value("foldcolumn", "0", { scope = "local" })
+      end
+    end,
+  })
+  a.nvim_create_autocmd("OptionSet", {
+    group = id,
+    pattern = "buftype",
+    callback = function()
+      if contains(bt_ignore, vim.v.option_new) then
+        a.nvim_set_option_value("stc", "", { scope = "local" })
+        a.nvim_set_option_value("foldcolumn", "0", { scope = "local" })
+      end
+    end,
+  })
 
   -- if opts.wrap then
   --   vim.api.nvim_create_autocmd("FileType", { group = id, pattern = opts.wrap, command = "setlocal stc=%s%l" })
