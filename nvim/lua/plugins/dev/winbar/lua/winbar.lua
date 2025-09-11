@@ -21,8 +21,8 @@ end
 --- @param entries winbar.Entry[]
 --- @return number
 function M.compute_entries_text_length(entries)
-  if #entries == 0 then return M.head_length or 2 end
-  local total = (#entries - 1) * (M.separator_length or 3) + (M.head_length or 2)
+  if #entries == 0 then return M.head_length end
+  local total = (#entries - 1) * M.separator_length + M.head_length
   for _, entry in ipairs(entries) do total = total + entry.length end
   return total
 end
