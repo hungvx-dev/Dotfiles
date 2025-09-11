@@ -27,7 +27,7 @@
         environment.systemPackages = with pkgs; [
           neovim
           kitty
-          ghostty
+          # ghostty
           tmux
           starship
 
@@ -62,23 +62,22 @@
           zoom-us
           # obsidian
           # telegram-desktop
-
-
           docker
           colima
           lazydocker
           rainfrog
           nodejs
 
-
           ollama
         ];
 
+        programs.fish.enable = true;
         users.users."hungvx.dev" = {
           name = username;
           home = "/Users/hungvx.dev";
           shell = pkgs.fish;
         };
+
 
         homebrew = {
           enable = true;
@@ -100,7 +99,7 @@
             # "stremio"
             # "xmind"
           ];
-          greedyCasks = true;
+          # greedyCasks = true;
           onActivation = {
             cleanup = "zap";
             # cleanup = "uninstall";
@@ -108,8 +107,6 @@
             upgrade = true;
           };
         };
-
-        programs.fish.enable = true;
 
         fonts.packages = with pkgs; [
           jetbrains-mono
