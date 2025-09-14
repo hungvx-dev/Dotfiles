@@ -147,11 +147,39 @@ Here are some notes on how I use my daily tools:
 
 ## ⚡ CLI Tools
 
-### _bat_ → Pretty `cat` with syntax highlighting
+### _bat_ → Pretty _cat_ with syntax highlighting
 
-### _fd_ → Fast `find` replacement
+- Pretty print the contents of one or more files to `stdout`
 
-### _rg (ripgrep)_ → Super fast `grep` replacement
+  `bat path/to/file1 path/to/file2 ...`
+
+### _fd_ → Fast _find_ replacement
+
+- Recursively find files matching a specific pattern in the current directory:
+
+  `fd "string|regex"`
+
+- Find files that begin with a specific string:
+
+  `fd "^string"`
+
+- Find files with a specific extension:
+
+  `fd [-e|--extension] txt`
+
+- Find files in a specific directory:
+
+  `fd "string|regex" path/to/directory`
+
+- Include ignored and hidden files in the search:
+
+  `fd [-H|--hidden] [-I|--no-ignore] "string|regex"`
+
+- Execute a command on each search result returned:
+
+  `fd "string|regex" [-x|--exec] command`
+
+### _rg (ripgrep)_ → Super fast _grep_ replacement
 
 `rg [OPTIONS] PATTERN [PATH...]`
 
@@ -164,9 +192,14 @@ Here are some notes on how I use my daily tools:
   `rg pattern <path/to/file_or_directory>`
 
 - Options
-
   - Include hidden files and entries listed in `.gitignore`:
     `[-.|--hidden] --no-ignore`
+
+### _sk_ - Fuzzy finder written in Rust. Similar to _fzf_
+
+- Start `skim` on all files in the specified directory:
+
+  `fd "string|regex" path/to/directory | sk`
 
 ## 🔄 System Maintenance
 
