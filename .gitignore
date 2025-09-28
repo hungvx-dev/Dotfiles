@@ -55,3 +55,4 @@ zsh/.venv
 # End of https://www.toptal.com/developers/gitignore/api/zsh
 
 raycast/extensions/node_modules
+zoxide/db.zo
