@@ -1,5 +1,5 @@
 {
-  description = "FeiYu nix-darwin system flake";
+  description = "Eryx Ryan nix-darwin system flake";
 
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixpkgs-unstable";
@@ -12,13 +12,14 @@
 
   outputs = { self, nix-darwin, nix-homebrew, ... }:
     let
+      host = "FeiYu";
       username = "hungvx.dev";
       home = "/Users/${username}";
     in
     {
-      darwinConfigurations."FeiYu" = nix-darwin.lib.darwinSystem {
+      darwinConfigurations.${host} = nix-darwin.lib.darwinSystem {
         modules = [
-          (import ./darwin)
+          (import ./darwin) # include macos-system packages homebrew users fonts
           nix-homebrew.darwinModules.nix-homebrew
           {
             nix-homebrew = {
@@ -32,7 +33,7 @@
         specialArgs = { inherit username home self; };
       };
 
-      darwinPackages = self.darwinConfigurations."FeiYu".pkgs;
+      darwinPackages = self.darwinConfigurations.${host}.pkgs;
     };
 }
 
