@@ -220,6 +220,10 @@ Here are some notes on how I use my daily tools:
 - Rollback: `sudo darwin-rebuild switch --rollback`
 - Checkout generation: `sudo darwin-rebuild switch --switch-generation <generation-number>`
 
+### Yabai
+
+- Configure scripting addtion: `echo "$(whoami) ALL=(root) NOPASSWD: sha256:$(shasum -a 256 $(which yabai) | cut -d " " -f 1) $(which yabai) --load-sa" | sudo tee /private/etc/sudoers.d/yabai`
+
 ### Nodejs
 
 - Enable pnpm: `corepack enable pnpm`
@@ -287,3 +291,6 @@ Here are some notes on how I use my daily tools:
 ## Bugs
 
 - [eslint_d: Failed to load config](https://github.com/mantoni/eslint_d.js/issues/235#issuecomment-1441222659)
+## Stats
+
+![Alt](https://repobeats.axiom.co/api/embed/2cca1f5df8fc02943c2a6a52854ac73bd6703de1.svg "Repobeats analytics image")
