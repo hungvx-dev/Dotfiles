@@ -293,4 +293,4 @@ Here are some notes on how I use my daily tools:
 - [eslint_d: Failed to load config](https://github.com/mantoni/eslint_d.js/issues/235#issuecomment-1441222659)
 ## Stats
 
-![Alt](https://repobeats.axiom.co/api/embed/2cca1f5df8fc02943c2a6a52854ac73bd6703de1.svg "Repobeats analytics image")
+![Alt](https://repobeats.axiom.co/api/embed/2553f75046483de12d2084a332fa9743fdfd386b.svg "Repobeats analytics image")
