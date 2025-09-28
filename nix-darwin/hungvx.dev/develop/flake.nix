@@ -14,7 +14,7 @@
       devShells.${system} = {
         fe = pkgs.mkShell {
           buildInputs = [
-            pkgs.nodejs
+            pkgs.volta
             pkgs.bun
           ];
           shellHook = ''

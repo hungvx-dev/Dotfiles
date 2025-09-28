@@ -18,17 +18,9 @@ set -g EDITOR nvim
 set fish_path $HOME/.config/fish
 . $fish_path/alias/init.fish
 . $fish_path/sk.fish
+. $fish_path/env.fish
 # . $fish_path/kitty.sh
 # . $fish_path/fzf.fish
 
-set -gx _ZO_DATA_DIR "$HOME/Dev/Dotfiles/zoxide"
-set -gx _ZO_ECHO 1
-set -gx _ZO_RESOLVE_SYMLINKS 1
 zoxide init fish --cmd j | source
-
 starship init fish | source
-
-set -x LG_CONFIG_FILE "$HOME/.config/lazygit/config.yml"
-set -x STARSHIP_CONFIG "$HOME/.config/starship/starship.toml"
-set -x RIPGREP_CONFIG_PATH "$HOME/.config/ripgrep/.ripgreprc"
-set -x TEALDEER_CONFIG_DIR $HOME/.config/tealdeer
