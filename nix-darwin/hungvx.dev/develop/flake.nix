@@ -2,7 +2,7 @@
   description = "Dev for frontend and backend";
 
   inputs = {
-    nixpkgs.url = "github:NixOS/nixpkgs/nixos-24.05";
+    nixpkgs.url = "github:NixOS/nixpkgs/nixpkgs-unstable";
   };
 
   outputs = { self, nixpkgs }:
@@ -18,6 +18,11 @@
             pkgs.bun
           ];
           shellHook = ''
+            export SHELL=$(which fish)
+               if [ -z "$IN_NIX_SHELL_FISH" ]; then
+                 export IN_NIX_SHELL_FISH=1
+                 exec $SHELL
+               fi
             echo "🚀 Frontend environment loaded (Node + Bun)"
           '';
         };
@@ -28,6 +33,11 @@
             pkgs.go
           ];
           shellHook = ''
+            export SHELL=$(which fish)
+               if [ -z "$IN_NIX_SHELL_FISH" ]; then
+                 export IN_NIX_SHELL_FISH=1
+                 exec $SHELL
+               fi
             echo "🔧 Backend environment loaded (Rust + Go)"
           '';
         };
