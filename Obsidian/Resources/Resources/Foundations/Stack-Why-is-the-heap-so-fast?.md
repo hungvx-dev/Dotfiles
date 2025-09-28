@@ -1,0 +1,7 @@
+- Stack:
+  - Khi chương trình nạp vào stack. Nó sẽ chia ra các sub region được gọi là Stack Frame. Stack Frame cũng có thể hiểu là vùng để lưu trữ dữ liệu của một function. Tức là khi function mới được gọi thì 1 stack frame mới được tạo ra, khi kết thúc hàm thì stack frame sẽ bị xóa.
+  - Stack Frame:
+    -
+- CPU có 2 phần quan trọng để làm việc với memory là:
+  - Cache hits: memory ở trong cpu, nó sẽ copy một phần dữ liệu từ memory về cache, lượng dữ liệu mà nó copy sẽ dựa vào size của chính nó. CPU sẽ đọc dữ liệu từ memory trong chính nó(hay gọi là cache hits). Vì tốc độ của memory dù lớn nhưng và nhỏ hơn rất nhiều so với CPU, nên nếu đọc dữ liệu trực tiếp từ memory sẽ bị nghẽn cổ chai, do giới hạn tốc độ từ memory.
+  - Register: cái này để lưu Stack pointer.
