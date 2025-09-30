@@ -5,6 +5,7 @@ Host github.com
   User git
   UseKeychain yes
   AddKeysToAgent yes
+  IdentitiesOnly yes
   IdentityFile ~/.ssh/hungvx.dev
 
 Host gitlab.com
@@ -12,17 +13,12 @@ Host gitlab.com
   User git
   UseKeychain yes
   AddKeysToAgent yes
-  IdentityFile ~/.ssh/hungvx.dev
-
-Host bitbucket.org
-  HostName bitbucket.org
-  User git
   IdentitiesOnly yes
   IdentityFile ~/.ssh/hungvx.dev
 
 Host gitlab.com-hf
   HostName gitlab.com
-  PreferredAuthentications publickey
+  User git
   UseKeychain yes
   AddKeysToAgent yes
   IdentitiesOnly yes
@@ -31,6 +27,7 @@ Host gitlab.com-hf
 Host digital-ubuntu
   HostName 157.230.41.226
   User root
+  UseKeychain yes
   AddKeysToAgent yes
   IdentitiesOnly yes
   IdentityFile ~/.ssh/digitalocean.learndevops.ubuntu
