@@ -5,209 +5,6 @@
             "complex_modifications": {
                 "rules": [
                     {
-                        "description": "Yabai",
-                        "manipulators": [
-                            {
-                                "from": {
-                                    "key_code": "h",
-                                    "modifiers": {
-                                        "mandatory": ["left_option", "left_shift"],
-                                        "optional": ["any"]
-                                    }
-                                },
-                                "to": [{ "shell_command": "/opt/homebrew/bin/yabai -m window --swap west" }],
-                                "type": "basic"
-                            },
-                            {
-                                "from": {
-                                    "key_code": "j",
-                                    "modifiers": {
-                                        "mandatory": ["left_option", "left_shift"],
-                                        "optional": ["any"]
-                                    }
-                                },
-                                "to": [{ "shell_command": "/opt/homebrew/bin/yabai -m window --swap south" }],
-                                "type": "basic"
-                            },
-                            {
-                                "from": {
-                                    "key_code": "k",
-                                    "modifiers": {
-                                        "mandatory": ["left_option", "left_shift"],
-                                        "optional": ["any"]
-                                    }
-                                },
-                                "to": [{ "shell_command": "/opt/homebrew/bin/yabai -m window --swap north" }],
-                                "type": "basic"
-                            },
-                            {
-                                "from": {
-                                    "key_code": "l",
-                                    "modifiers": {
-                                        "mandatory": ["left_option", "left_shift"],
-                                        "optional": ["any"]
-                                    }
-                                },
-                                "to": [{ "shell_command": "/opt/homebrew/bin/yabai -m window --swap east" }],
-                                "type": "basic"
-                            },
-                            {
-                                "from": {
-                                    "key_code": "h",
-                                    "modifiers": {
-                                        "mandatory": ["left_option", "left_command"],
-                                        "optional": ["any"]
-                                    }
-                                },
-                                "to": [{ "shell_command": "/opt/homebrew/bin/yabai -m window --resize left:-20:0; /opt/homebrew/bin/yabai -m window --resize right:-20:0" }],
-                                "type": "basic"
-                            },
-                            {
-                                "from": {
-                                    "key_code": "j",
-                                    "modifiers": {
-                                        "mandatory": ["left_option", "left_command"],
-                                        "optional": ["any"]
-                                    }
-                                },
-                                "to": [{ "shell_command": "/opt/homebrew/bin/yabai -m window --resize bottom:0:20; /opt/homebrew/bin/yabai -m window --resize top:0:20" }],
-                                "type": "basic"
-                            },
-                            {
-                                "from": {
-                                    "key_code": "k",
-                                    "modifiers": {
-                                        "mandatory": ["left_option", "left_command"],
-                                        "optional": ["any"]
-                                    }
-                                },
-                                "to": [{ "shell_command": "/opt/homebrew/bin/yabai -m window --resize top:0:-20; /opt/homebrew/bin/yabai -m window --resize bottom:0:-20" }],
-                                "type": "basic"
-                            },
-                            {
-                                "from": {
-                                    "key_code": "l",
-                                    "modifiers": {
-                                        "mandatory": ["left_option", "left_command"],
-                                        "optional": ["any"]
-                                    }
-                                },
-                                "to": [{ "shell_command": "/opt/homebrew/bin/yabai -m window --resize right:20:0; /opt/homebrew/bin/yabai -m window --resize left:20:0" }],
-                                "type": "basic"
-                            },
-                            {
-                                "from": {
-                                    "key_code": "x",
-                                    "modifiers": {
-                                        "mandatory": ["left_option", "left_shift"],
-                                        "optional": ["any"]
-                                    }
-                                },
-                                "to": [{ "shell_command": "/opt/homebrew/bin/yabai -m window --mirror x-axis" }],
-                                "type": "basic"
-                            },
-                            {
-                                "from": {
-                                    "key_code": "y",
-                                    "modifiers": {
-                                        "mandatory": ["left_option", "left_shift"],
-                                        "optional": ["any"]
-                                    }
-                                },
-                                "to": [{ "shell_command": "/opt/homebrew/bin/yabai -m window --mirror y-axis" }],
-                                "type": "basic"
-                            },
-                            {
-                                "from": {
-                                    "key_code": "f",
-                                    "modifiers": {
-                                        "mandatory": ["left_option", "left_shift"],
-                                        "optional": ["any"]
-                                    }
-                                },
-                                "to": [{ "shell_command": "/opt/homebrew/bin/yabai -m window --toggle float --grid 4:4:1:1:2:2" }],
-                                "type": "basic"
-                            },
-                            {
-                                "from": {
-                                    "key_code": "r",
-                                    "modifiers": {
-                                        "mandatory": ["left_option", "left_shift"],
-                                        "optional": ["any"]
-                                    }
-                                },
-                                "to": [{ "shell_command": "/opt/homebrew/bin/yabai -m space --rotate 90" }],
-                                "type": "basic"
-                            },
-                            {
-                                "from": {
-                                    "key_code": "e",
-                                    "modifiers": {
-                                        "mandatory": ["left_option", "left_shift"],
-                                        "optional": ["any"]
-                                    }
-                                },
-                                "to": [{ "shell_command": "/opt/homebrew/bin/yabai -m space --balance" }],
-                                "type": "basic"
-                            },
-                            {
-                                "from": {
-                                    "key_code": "h",
-                                    "modifiers": {
-                                        "mandatory": ["left_option"],
-                                        "optional": []
-                                    }
-                                },
-                                "to": [{ "shell_command": "/opt/homebrew/bin/yabai -m window --focus west || /opt/homebrew/bin/yabai -m display --focus west" }],
-                                "type": "basic"
-                            },
-                            {
-                                "from": {
-                                    "key_code": "j",
-                                    "modifiers": {
-                                        "mandatory": ["left_option"],
-                                        "optional": []
-                                    }
-                                },
-                                "to": [{ "shell_command": "/opt/homebrew/bin/yabai -m window --focus south || /opt/homebrew/bin/yabai -m display --focus south" }],
-                                "type": "basic"
-                            },
-                            {
-                                "from": {
-                                    "key_code": "k",
-                                    "modifiers": {
-                                        "mandatory": ["left_option"],
-                                        "optional": []
-                                    }
-                                },
-                                "to": [{ "shell_command": "/opt/homebrew/bin/yabai -m window --focus north || /opt/homebrew/bin/yabai -m display --focus north" }],
-                                "type": "basic"
-                            },
-                            {
-                                "from": {
-                                    "key_code": "l",
-                                    "modifiers": {
-                                        "mandatory": ["left_option"],
-                                        "optional": []
-                                    }
-                                },
-                                "to": [{ "shell_command": "/opt/homebrew/bin/yabai -m window --focus east || /opt/homebrew/bin/yabai -m display --focus east" }],
-                                "type": "basic"
-                            },
-                            {
-                                "from": {
-                                    "key_code": "f",
-                                    "modifiers": {
-                                        "mandatory": ["left_option"],
-                                        "optional": []
-                                    }
-                                },
-                                "to": [{ "shell_command": "/opt/homebrew/bin/yabai -m window --toggle zoom-fullscreen" }],
-                                "type": "basic"
-                            }
-                        ]
-                    },
-                    {
                         "available_since": "13.6.0",
                         "description": "Mouse Keys Mode v4 (rev 3)",
                         "manipulators": [
@@ -1340,16 +1137,16 @@
                     "to": [{ "key_code": "escape" }]
                 },
                 {
-                    "from": { "key_code": "left_command" },
-                    "to": [{ "key_code": "left_control" }]
-                },
-                {
                     "from": { "key_code": "left_control" },
                     "to": [{ "key_code": "left_option" }]
                 },
                 {
                     "from": { "key_code": "left_option" },
                     "to": [{ "key_code": "left_command" }]
+                },
+                {
+                    "from": { "key_code": "left_command" },
+                    "to": [{ "key_code": "left_control" }]
                 }
             ],
             "virtual_hid_keyboard": {
