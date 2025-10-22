@@ -56,7 +56,6 @@ return {
     javascript = shared_config,
   },
   on_attach = function(client, bufnr)
-    vim.lsp.config["*"].on_attach(client, bufnr)
     if vim.bo[bufnr].filetype == "vue" then
       client.server_capabilities.semanticTokensProvider.full = false
     else

@@ -6,7 +6,7 @@
 
   environment.systemPackages = with pkgs; [
     # git
-    git delta lazygit stow
+    git git-graph delta lazygit stow
 
     # shell utils
     neovim kitty tmux starship

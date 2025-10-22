@@ -15,7 +15,7 @@ return {
       },
     },
     opts = function()
-      function front_end(bufnr)
+      local function front_end(bufnr)
         if require("conform").get_formatter_info("biome", bufnr).available then
           return { "biome" }
         else

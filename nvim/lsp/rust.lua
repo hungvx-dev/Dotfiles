@@ -61,7 +61,4 @@ return {
       },
     },
   },
-  on_attach = function(client, bufnr)
-    vim.lsp.config["*"].on_attach(client, bufnr)
-  end,
 }

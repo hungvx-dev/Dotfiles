@@ -44,7 +44,6 @@ return {
     },
   },
   on_attach = function(client, bufnr)
-    vim.lsp.config["*"].on_attach(client, bufnr)
     if not client.server_capabilities.semanticTokensProvider then
       local semantic = client.config.capabilities.textDocument.semanticTokens
       if semantic ~= nil then

@@ -16,7 +16,4 @@ return {
     "xml"
   },
   init_options = { provideFormatter = true },
-  on_attach = function(client, bufnr)
-    vim.lsp.config["*"].on_attach(client, bufnr)
-  end,
 }

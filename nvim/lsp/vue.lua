@@ -61,7 +61,6 @@ return {
     },
   },
   on_attach = function(client, bufnr)
-    vim.lsp.config["*"].on_attach(client, bufnr)
     client.server_capabilities.semanticTokensProvider.full = true
   end,
 }
