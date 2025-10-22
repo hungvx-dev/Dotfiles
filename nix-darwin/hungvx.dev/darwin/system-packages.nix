@@ -2,11 +2,13 @@
 {
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
   nixpkgs.config.allowUnfree = true;
+  # nixpkgs.config.allowBroken = true;
   nixpkgs.hostPlatform = "aarch64-darwin";
 
   environment.systemPackages = with pkgs; [
     # git
-    git git-graph delta lazygit stow
+    git delta lazygit stow
+    # git-graph
 
     # shell utils
     neovim kitty tmux starship
@@ -16,7 +18,7 @@
     skim ripgrep fd bat
 
     # media
-    cmus cava
+    cmus
 
     # desktop apps
     monitorcontrol discord google-chrome zoom-us
