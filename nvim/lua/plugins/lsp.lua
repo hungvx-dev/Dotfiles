@@ -27,6 +27,7 @@ return {
         "yaml",
         "biome",
         "eslint",
+        "typos-lsp",
       },
       ---@type vim.diagnostic.Opts
       diagnostic = {
@@ -106,6 +107,7 @@ return {
         "yamllint",
 
         -- For Linter
+        "typos-lsp",
         "eslint_d", -- For js
         "hadolint", -- For docker
         "cspell",
