@@ -79,9 +79,19 @@ function M.keymaps(client, buf)
   end
 end
 
+--- @return lsp.ClientCapabilities
+local function capabilities()
+  local has_lsp_file, lsp_file = pcall(require, "lsp-file-operations")
+  return vim.tbl_deep_extend("force", vim.lsp.protocol.make_client_capabilities(), has_lsp_file and lsp_file.default_capabilities() or {})
+end
+
 function M.setup(opts)
   M.opts = opts
   diagnostics.config_diagnostic(opts.diagnostic)
+
+  vim.lsp.config("*", {
+    capabilities = capabilities(),
+  })
 
   vim.api.nvim_create_autocmd("LspAttach", {
     group = vim.api.nvim_create_augroup("UserLspConfig", {}),

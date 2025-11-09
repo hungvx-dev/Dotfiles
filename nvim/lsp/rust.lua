@@ -11,6 +11,7 @@ return {
         buildScripts = {
           enable = true,
         },
+        target = "aarch64-apple-darwin",
       },
       diagnostics = {
         enable = true,
@@ -21,7 +22,7 @@ return {
           enable = true,
         },
       },
-      checkOnSave = true,
+      checkOnSave = false,
       check = {
         command = "clippy",
         features = "all",
