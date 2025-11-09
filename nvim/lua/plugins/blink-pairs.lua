@@ -27,6 +27,7 @@ return {
         },
         matchparen = {
           enabled = true,
+          cmdline = false,
           group = "MatchParen",
         },
       },
