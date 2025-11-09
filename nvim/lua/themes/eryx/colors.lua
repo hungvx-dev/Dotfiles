@@ -23,7 +23,7 @@ return {
   red = "#ff0c36", -- #F44336
   red_1 = "#fc5f66",
   cyan = "#00ffff",
-  cyan_1 = "#00AADA",
+  cyan_1 = "#00AAD0",
   green = "#76FF03",
   yellow = "#FFEA00",
   yellow_1 = "#F79009",

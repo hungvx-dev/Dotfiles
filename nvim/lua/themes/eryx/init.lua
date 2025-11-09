@@ -47,6 +47,7 @@ M.setup = function(plugins, highlight)
   M.set_hl(highlights.syntax.base)
   M.set_mix_hl(highlights.syntax.special)
   M.set_link_hl(highlights.syntax.lsp)
+  M.set_link_hl(highlights.plugins.illuminate)
 
   M.set_mix_hl(highlights.plugins.diagnostic)
   M.set_mix_hl(highlights.plugins.blink_cmp)
@@ -76,10 +77,6 @@ M.setup = function(plugins, highlight)
   if plugins.statusline then
     M.set_mix_hl(highlights.plugins.statusline)
   end
-
-  -- if plugins.navic then
-    -- M.set_link_hl(highlights.navic)
-  -- end
 
   M.set_hl(highlights.rainbow.indent)
   if plugins.blink_nvim and highlight.indent then

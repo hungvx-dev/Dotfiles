@@ -2,7 +2,7 @@ local colors = require("themes.eryx.colors")
 local M = {}
 
 M.base = {
-  Comment = { fg = colors.stone, italic = true },
+  Comment = { fg = colors.gray, italic = true },
   Constant = { fg = colors.orange },
   String = { fg = colors.amber },
   Character = { fg = colors.green },
@@ -75,9 +75,11 @@ M.special = {
   ["@function.builtin"] = { fg = colors.blue_1, italic = true },
 
   ["@lsp.type.enumMember"] = "@variable.member",
+  -- ["@lsp.mod.readonly"] = "Constant",
+  -- ["@lsp.mod.defaultLibrary"] = "@type.builtin",
   -- ["@lsp.typemod.variable.readonly"] = "Constant",
   -- ["@lsp.typemod.variable.defaultLibrary"] = { fg = colors.cyan_1, italic = true },
-  ["@lsp.typemod.type.defaultLibrary"] = {},
+  -- ["@lsp.typemod.type.defaultLibrary"] = {},
   ["@lsp.typemod.class.defaultLibrary"] = "@type.builtin",
   ["@lsp.typemod.method.defaultLibrary"] = "@function.builtin",
   ["@lsp.typemod.function.defaultLibrary"] = "@function.builtin",
@@ -87,6 +89,7 @@ M.special = {
   -- ["@lsp.typemod.namespace.defaultLibrary"] = "@variable.builtin",
   ["@lsp.type.variable"] = {},
   LspInlayHint = { bg = colors.none, fg = colors.slate },
+  LspReferenceText = { bg = colors.slate_1 },
 
   ["@markup.link"] = { fg = colors.teal, underline = true },
   -- ["@markup.link.label"] = "SpecialChar",

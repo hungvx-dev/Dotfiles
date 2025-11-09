@@ -14,9 +14,9 @@ M.git = {
   GitSignsChange = { fg = colors.git.change },
   GitSignsCurrentLineBlame = {
     -- bg = colors.blue0,
-    bold = true,
+    -- bold = true,
     -- underline = true,
-    fg = colors.slate,
+    fg = colors.gray,
   },
   GitSignsDelete = { fg = colors.git.delete },
 
@@ -218,11 +218,10 @@ M.fzf = {
     bg = colors.bg,
     fg = colors.orange,
   },
-  FzfLuaNormal = {
-    bg = colors.bg,
-    fg = colors.fg,
-  },
-  -- FzfLuaLiveSym = "FzfLuaFzfPointer",
+  -- FzfLuaNormal = {
+  --   bg = colors.bg,
+  --   fg = colors.fg,
+  -- },
   -- FzfLuaLiveSym = "FzfLuaFzfPointer",
   -- FzfLuaCursor = "IncSearch",
   -- FzfLuaDirPart = {
@@ -332,6 +331,12 @@ M.telescope = {
   TelescopeBorder = "FloatBorder",
   TelescopeSelection = "CursorLine",
   TelescopePreviewLine = "CursorLine",
+}
+
+M.illuminate = {
+  IlluminatedWordText = "LspReferenceText",
+  IlluminatedWordRead = "LspReferenceRead",
+  IlluminatedWordWrite = "LspReferenceWrite",
 }
 
 return M

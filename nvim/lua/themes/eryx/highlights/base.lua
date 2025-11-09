@@ -28,7 +28,7 @@ return {
   NonText = { fg = colors.slate },
   Conceal = "NonText",
   Visual = {
-    bg = colors.slate_1,
+    bg = colors.dark_2,
   },
 
   IncSearch = {
