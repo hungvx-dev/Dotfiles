@@ -6,9 +6,24 @@ return {
     opts = {
       "skim",
       fzf_bin = "sk",
-      fzf_colors = false,
-      -- fzf_colors = {
-      --   true,
+      fzf_colors = { -- sk
+        ["fg"] = "#ffffff",
+        ["bg"] = "-1",
+        ["current"] = "#00ffff",
+        ["current_bg"] = "-1",
+        ["current_match"] = "#d7005f",
+        ["current_match_bg"] = "-1",
+        ["matched"] = "#d7005f",
+        ["matched_bg"] = "-1",
+        ["info"] = "#ffffff",
+        ["gutter"] = "-1",
+      },
+      -- fzf_opts = {
+      --   ["--ansi"] = true,
+      --   ["--height"] = "100%",
+      --   ["--layout"] = "reverse",
+      -- },
+      -- fzf_colors = { -- fzf
       --   ["fg"] = "#ffffff",
       --   ["fg+"] = "#5fd7ff:underline:bold",
       --   ["bg"] = "-1",
@@ -27,8 +42,11 @@ return {
         formatter = "path.dirname_first",
       },
       winopts = {
+        height = 0.9,
+        width = 0.9,
         preview = {
-          layout = "vertical",
+          -- layout = "vertical",
+          layout = "flex",
         },
       },
       files = {
@@ -57,6 +75,12 @@ return {
         -- code_actions = {
         --   previewer = vim.fn.executable("delta") == 1 and "codeaction_native" or nil,
         -- },
+      },
+      oldfiles = {
+        cwd_only = true,
+      },
+      buffers = {
+        cwd_only = true,
       },
       keymap = {
         builtin = {
@@ -87,6 +111,9 @@ return {
       -- Git
       { "<leader>fgs", "<cmd>FzfLua git_status<cr>", desc = "Git status" },
       { "<leader>fgb", "<cmd>FzfLua git_branches<cr>", desc = "Git branches" },
+
+      -- Git
+      { "<leader>fl", "<cmd>FzfLua lsp_document_symbols<cr>", desc = "Lsp document symbols" },
     },
   },
   {

@@ -1,5 +1,92 @@
 return {
   {
+    "mason-org/mason.nvim",
+    cmd = { "Mason", "MasonInstall", "MasonUninstall", "MasonUninstallAll", "MasonLog" },
+    build = ":MasonUpdate",
+    event = "VeryLazy",
+    opts = {
+      opts_extend = { "ensure_installed" },
+      ensure_installed = {
+        -- LSP
+        "vtsls",
+        "vue-language-server",
+        "json-lsp",
+        "html-lsp",
+        "emmet-language-server",
+        "css-lsp",
+        "cssmodules-language-server",
+        "tailwindcss-language-server",
+        "lua-language-server",
+        "typescript-language-server",
+        "yaml-language-server",
+        "clangd",
+        "gopls",
+        "rust-analyzer",
+        "nil",
+        "dockerfile-language-server",
+        "docker-compose-language-service",
+        "postgres-language-server",
+        "luau-lsp",
+        "eslint-lsp", -- For js
+
+        -- For Formatter
+        "stylua", -- For lua
+        "shfmt", -- For sh
+        "prettierd", -- For js
+        "clang-format", -- For c/c++
+        "nixpkgs-fmt", -- For nix
+        -- "google-java-format", -- For java
+        "goimports", -- For go
+        "gofumpt", -- For go
+        "yamllint",
+
+        -- For Linter
+        "typos-lsp",
+        "eslint_d", -- For js
+        "hadolint", -- For docker
+        "oxlint",
+        "biome",
+        "selene",
+        -- "stylelint",
+
+        -- For Code action
+        "gomodifytags", -- For go
+        "impl", -- For go
+      },
+      ui = {
+        border = "rounded",
+        icons = {
+          package_installed = HVIM.icons.Mason.Installed,
+          package_pending = HVIM.icons.Mason.Pending,
+          package_uninstalled = HVIM.icons.Mason.Uninstall,
+        },
+      },
+    },
+    config = function(_, opts)
+      require("mason").setup(opts)
+      local registry = require("mason-registry")
+      registry:on("package:install:success", function()
+        vim.defer_fn(function()
+          require("lazy.core.handler.event").trigger({
+            event = "FileType",
+            buf = vim.api.nvim_get_current_buf(),
+          })
+        end, 100)
+      end)
+
+      registry.refresh(function()
+        for _, name in ipairs(opts.ensure_installed) do
+          local ok, pkg = pcall(registry.get_package, name)
+          if ok then
+            if not pkg:is_installed() then
+              pkg:install()
+            end
+          end
+        end
+      end)
+    end,
+  },
+  {
     "lsp",
     dev = true,
     event = { "BufReadPre", "BufNewFile" },
@@ -66,97 +153,19 @@ return {
     },
   },
   {
-    "mason-org/mason.nvim",
-    cmd = { "Mason", "MasonInstall", "MasonUninstall", "MasonUninstallAll", "MasonLog" },
-    build = ":MasonUpdate",
-    event = "VeryLazy",
-    opts = {
-      opts_extend = { "ensure_installed" },
-      ensure_installed = {
-        -- LSP
-        "vtsls",
-        "vue-language-server",
-        "json-lsp",
-        "html-lsp",
-        "emmet-language-server",
-        "css-lsp",
-        "cssmodules-language-server",
-        "tailwindcss-language-server",
-        "lua-language-server",
-        "typescript-language-server",
-        "yaml-language-server",
-        "clangd",
-        "gopls",
-        "rust-analyzer",
-        "nil",
-        "dockerfile-language-server",
-        "docker-compose-language-service",
-        "postgrestools",
-        "luau-lsp",
-        "eslint-lsp", -- For js
-
-        -- For Formatter
-        "stylua", -- For lua
-        "shfmt", -- For sh
-        "prettierd", -- For js
-        "clang-format", -- For c/c++
-        "nixpkgs-fmt", -- For nix
-        -- "google-java-format", -- For java
-        "goimports", -- For go
-        "gofumpt", -- For go
-        "yamllint",
-
-        -- For Linter
-        "typos-lsp",
-        "eslint_d", -- For js
-        "hadolint", -- For docker
-        "cspell",
-        "oxlint",
-        "biome",
-        "selene",
-        -- "stylelint",
-
-        -- For Code action
-        "gomodifytags", -- For go
-        "impl", -- For go
-      },
-      ui = {
-        border = "rounded",
-        icons = {
-          package_installed = HVIM.icons.Mason.Installed,
-          package_pending = HVIM.icons.Mason.Pending,
-          package_uninstalled = HVIM.icons.Mason.Uninstall,
-        },
-      },
-    },
-    config = function(_, opts)
-      require("mason").setup(opts)
-      local mr = require("mason-registry")
-      mr:on("package:install:success", function()
-        vim.defer_fn(function()
-          -- trigger FileType event to possibly load this newly installed LSP server
-          require("lazy.core.handler.event").trigger({
-            event = "FileType",
-            buf = vim.api.nvim_get_current_buf(),
-          })
-        end, 100)
-      end)
-
-      mr.refresh(function()
-        for _, tool in ipairs(opts.ensure_installed) do
-          local p = mr.get_package(tool)
-          if not p:is_installed() then
-            p:install()
-          end
-        end
-      end)
-    end,
-  },
-  {
     "antosha417/nvim-lsp-file-operations",
     -- enabled = HVIM.plugins.lsp,
-    dependencies = { "nvim-lua/plenary.nvim" },
-    opts = {},
+    dependencies = { "nvim-lua/plenary.nvim", "nvim-neo-tree/neo-tree.nvim" },
+    opts = {
+      operations = {
+        willRenameFiles = true,
+        didRenameFiles = true,
+        willCreateFiles = true,
+        didCreateFiles = true,
+        willDeleteFiles = true,
+        didDeleteFiles = true,
+      },
+    },
   },
   {
     "j-hui/fidget.nvim",
@@ -177,9 +186,37 @@ return {
     },
   },
   {
+    "RRethy/vim-illuminate",
+    event = { "BufReadPost", "BufNewFile" },
+    enabled = true,
+    config = function()
+      require("illuminate").configure({
+        delay = 100,
+        filetypes_denylist = {
+          "dirbuf",
+          "dirvish",
+          "fugitive",
+          "neo-tree",
+          "alpha",
+          "lazy",
+          "help",
+          "fzf",
+          "TelescopePrompt",
+          "TelescopeResult",
+        },
+        large_file_cutoff = 2000,
+        large_file_overrides = {
+          providers = { "lsp" },
+        },
+        -- modes_denylist = {},
+        min_count_to_highlight = 2,
+      })
+    end,
+  },
+  {
     "razak17/tailwind-fold.nvim",
-    opts = {},
-    dependencies = { "nvim-treesitter/nvim-treesitter" },
     ft = { "html", "vue", "typescriptreact" },
+    dependencies = { "nvim-treesitter/nvim-treesitter" },
+    opts = {},
   },
 }

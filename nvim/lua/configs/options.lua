@@ -17,3 +17,13 @@ vim.opt.timeoutlen = 500          --	Time in milliseconds to wait for a mapped s
 
 -- #=========================== 18. The swap file =============================#
 vim.opt.swapfile = false
+
+-- #============================== 14. Folding ================================#
+vim.wo.foldenable = true          -- *Unset to display all folds open
+vim.wo.foldcolumn = "1"           -- Width of the column used to indicate folds
+vim.wo.foldlevel = 99             -- Folds with a level higher than this number will be closed
+vim.opt.foldlevelstart = 99       -- Value for 'foldlevel' when starting to edit a file
+vim.o.foldmethod = "expr"         -- Folding type: "manual", "indent", "expr", "marker", "syntax" or "diff"
+vim.o.foldtext = "v:lua.Custom_foldtext()"
+vim.o.foldexpr = "v:lua.vim.treesitter.foldexpr()"
+-- vim.o.foldexpr = 'v:lua.vim.lsp.foldexpr()'

@@ -7,6 +7,7 @@ return {
       filetypes = {
         -- "*",
         css = { rgb_fn = true, hsl_fn = true },
+        "fzf",
         "html",
         -- "css",
         -- "javascript",
