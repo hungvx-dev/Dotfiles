@@ -24,7 +24,8 @@
     monitorcontrol discord google-chrome zoom-us
 
     # dev tools
-    docker colima lazydocker rainfrog ollama
+    docker colima lazydocker rainfrog
+    # ollama
   ];
 
   programs.fish.enable = true;
