@@ -67,6 +67,7 @@ return {
     Quit            = "󰍃 ",
     FindFile        = "󰮗 ",
     FindText        = "󱎸 ",
+    ModifiedFile    = "●",
     Lazy            = "󰒲 ",
     OldFile         = "󰛔 ",
     FoldText        = "▍󰁂 󰇘 ",

@@ -10,14 +10,14 @@ M.base = {
   Function = { fg = colors.blue, italic = true },
   Statement = { fg = colors.purple },
   Operator = { fg = colors.sky },
-  Keyword = { fg = colors.purple_1 },
-  KeywordSpecial = { fg = colors.pink },
-  KeywordSpecial2 = { fg = colors.purple },
+  Keyword = { fg = colors.purple_1, italic = true },
+  KeywordSpecial = { fg = colors.pink, italic = true },
+  KeywordSpecial2 = { fg = colors.purple, italic = true },
   PreProc = { fg = colors.cyan },
   Type = { fg = colors.cyan },
   Special = { fg = colors.red_1 },
   Delimiter = { fg = colors.red_1 },
-  Title = { fg = colors.blue },
+  Title = { fg = colors.blue, bold = true },
 
   -- INFO: Default.
 
@@ -56,8 +56,8 @@ M.special = {
   ["@property"] = { fg = colors.teal_1 },
   ["@variable"] = { fg = colors.fg },
   ["@variable.member"] = "@property",
-  -- ["@variable.parameter"] = { fg = colors.yellow },
-  -- ["@variable.parameter.builtin"] = "@variable.parameter",
+  ["@variable.parameter"] = { fg = colors.yellow },
+  ["@variable.parameter.builtin"] = "@variable.parameter",
 
   ["@tag.attribute"] = { fg = colors.teal },
   ["@tag.tsx"] = "@type.tsx",
@@ -70,9 +70,9 @@ M.special = {
   ["@comment.todo"] = { fg = colors.blue },
   ["@comment.test"] = { fg = colors.purple },
 
-  ["@type.builtin"] = "Type",
+  ["@type.builtin"] = { fg = colors.red_1, bold = true },
   -- ["@variable.builtin"] = ,
-  ["@function.builtin"] = { fg = colors.blue_1 },
+  ["@function.builtin"] = { fg = colors.blue_1, italic = true },
 
   ["@lsp.type.enumMember"] = "@variable.member",
   -- ["@lsp.mod.readonly"] = "Constant",
@@ -138,7 +138,7 @@ M.lsp = {
   LspKindString = "@string",
   LspKindStruct = "@lsp.type.struct",
   LspKindText = "@markup",
-  -- LspKindTypeParameter = "@lsp.type.typeParameter",
+  LspKindTypeParameter = "@lsp.type.typeParameter",
   LspKindUnit = "@lsp.type.struct",
   LspKindValue = "@string",
   LspKindVariable = "@variable",
