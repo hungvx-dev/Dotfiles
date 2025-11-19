@@ -150,33 +150,26 @@ Here are some notes on how I use my daily tools:
 ### _bat_ → Pretty _cat_ with syntax highlighting
 
 - Pretty print the contents of one or more files to `stdout`
-
   `bat path/to/file1 path/to/file2 ...`
 
 ### _fd_ → Fast _find_ replacement
 
 - Recursively find files matching a specific pattern in the current directory:
-
   `fd "string|regex"`
 
 - Find files that begin with a specific string:
-
   `fd "^string"`
 
 - Find files with a specific extension:
-
   `fd [-e|--extension] txt`
 
 - Find files in a specific directory:
-
   `fd "string|regex" path/to/directory`
 
 - Include ignored and hidden files in the search:
-
   `fd [-H|--hidden] [-I|--no-ignore] "string|regex"`
 
 - Execute a command on each search result returned:
-
   `fd "string|regex" [-x|--exec] command`
 
 ### _rg (ripgrep)_ → Super fast _grep_ replacement
@@ -184,11 +177,9 @@ Here are some notes on how I use my daily tools:
 `rg [OPTIONS] PATTERN [PATH...]`
 
 - Recursively search current directory for a pattern (`regex`):
-
   `rg pattern`
 
 - Recursively search for a pattern in a file or directory:
-
   `rg pattern <path/to/file_or_directory>`
 
 - Options
@@ -200,6 +191,14 @@ Here are some notes on how I use my daily tools:
 - Start `skim` on all files in the specified directory:
 
   `fd "string|regex" path/to/directory | sk`
+
+### _Ollama_
+
+- Start the daemon required to run other commands: `ollama serve`
+- Run a model and chat with it: `ollama run <model>`
+- List downloaded models: `ollama ls`
+- Pull a specific model: `ollama pull <model>`
+- Delete a model: `ollama rm <model>`
 
 ## 🔄 System Maintenance
 
@@ -222,7 +221,7 @@ Here are some notes on how I use my daily tools:
 
 ### Yabai
 
-- Configure scripting addtion: `echo "$(whoami) ALL=(root) NOPASSWD: sha256:$(shasum -a 256 $(which yabai) | cut -d " " -f 1) $(which yabai) --load-sa" | sudo tee /private/etc/sudoers.d/yabai`
+- Configure scripting addition: `echo "$(whoami) ALL=(root) NOPASSWD: sha256:$(shasum -a 256 $(which yabai) | cut -d " " -f 1) $(which yabai) --load-sa" | sudo tee /private/etc/sudoers.d/yabai`
 
 ### Nodejs
 
@@ -291,6 +290,7 @@ Here are some notes on how I use my daily tools:
 ## Bugs
 
 - [eslint_d: Failed to load config](https://github.com/mantoni/eslint_d.js/issues/235#issuecomment-1441222659)
+
 ## Stats
 
 ![Alt](https://repobeats.axiom.co/api/embed/2553f75046483de12d2084a332fa9743fdfd386b.svg "Repobeats analytics image")
