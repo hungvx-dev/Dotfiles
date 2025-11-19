@@ -17,17 +17,18 @@ local error = ffi.new("Error")
 local M = {}
 local fold_cache = {}
 local wp_cache = {}
+local highlight = false
 
-M.fold = {
-  open = " ",
-  open1 = " ",
-  close = "󰅂 ",
-  close1 = " ",
-  eob = "  ",
-  end_fold = "╰ ",
-  sep = "│ ",
-  branch = " ",
-  virtual = " ",
+local flog_fold = {
+  " ", -- 1: start
+  " ", -- 2: start_branch
+  "󰅂 ", -- 3: close_folded
+  " ", -- 4: close
+  "╰ ", -- 5: end
+  "│ ", -- 6: sep
+  " ", -- 7: end_branch
+  " ", -- 8: virtual
+  "  ", -- 9: eob
 }
 
 function M.is_level_one(lv, other_lv)
@@ -40,7 +41,6 @@ function M.update_fold_cache(win_id)
     wp_cache[win_id].tick = 0
   end
   local tick = C.display_tick
-  -- local tick = vim.b[wp_cache[win_id].buf].changedtick
   if wp_cache[win_id].tick < tick then
     fold_cache[win_id] = {}
     wp_cache[win_id].tick = tick
@@ -55,7 +55,6 @@ function M.get_window_handle(win_id)
   if not wp then
     return nil
   end
-  -- local buf = a.nvim_win_get_buf(win_id)
   wp_cache[win_id] = { wp = wp, tick = 0 }
   return wp
 end
@@ -68,8 +67,6 @@ end
 
 function M.folds()
   local win_id = vim.g.statusline_winid
-
-  -- local win_id = a.nvim_get_current_win()
   local wp = M.get_window_handle(win_id)
   if not wp then
     return ""
@@ -85,45 +82,51 @@ function M.folds()
   local lv = foldinfo.level
 
   if lv == 0 then
-    return "  "
+    return flog_fold[9]
   end
   if vim.v.virtnum ~= 0 then
-    if HVIM.highlight.fold then
-      return "%#FoldLevel_" .. lv .. "#" .. M.fold.virtual .. "%*"
+    if highlight then
+      return table.concat({
+        "%#FoldLevel_",
+        lv,
+        "#",
+        flog_fold[8],
+        "%*",
+      })
     end
-    return "%#FoldVirtual#" .. M.fold.virtual .. "%*"
+    return table.concat({ "%#FoldVirtual#", flog_fold[8], "%*" })
   end
 
   local before_foldinfo = M.get_fold_info(win_id, lnum - 1)
   local before_lv = before_foldinfo.level
 
   if foldinfo.lines > 0 then
-    local fold = M.is_level_one(lv, before_lv) and M.fold.close or M.fold.close1
-    if HVIM.highlight.fold then
-      return "%#FoldLevel_" .. lv .. "#" .. fold .. "%*"
+    local fold = M.is_level_one(lv, before_lv) and flog_fold[3] or flog_fold[4]
+    if highlight then
+      return table.concat({ "%#FoldLevel_", lv, "#", fold, "%*" })
     end
-    return "%#FoldClose#" .. fold .. "%*"
+    return table.concat({ "%#FoldClose#", fold, "%*" })
   end
 
-  local fold
+  local fold = nil
   if foldinfo.start == lnum then
-    fold = M.is_level_one(lv, before_lv) and M.fold.open or M.fold.open1
+    fold = M.is_level_one(lv, before_lv) and flog_fold[1] or flog_fold[2]
   else
     local after_foldinfo = M.get_fold_info(win_id, lnum + 1)
     local after_lv = after_foldinfo.level
     if lv > after_lv then
-      fold = after_lv == 0 and M.fold.end_fold or M.fold.branch
+      fold = after_lv == 0 and flog_fold[5] or flog_fold[7]
     elseif after_foldinfo.start > foldinfo.start and lv == after_lv then
-      fold = M.is_level_one(lv, 0) and M.fold.end_fold or M.fold.branch
+      fold = M.is_level_one(lv, 0) and flog_fold[5] or flog_fold[7]
     else
-      fold = M.fold.sep
+      fold = flog_fold[6]
     end
   end
 
-  if HVIM.highlight.fold then
-    return "%#FoldLevel_" .. lv .. "#" .. fold .. "%*"
+  if highlight then
+    return table.concat({ "%#FoldLevel_", lv, "#", fold, "%*" })
   end
-  return "%#FoldColumn#" .. fold .. "%*"
+  return table.concat({ "%#FoldColumn#", fold, "%*" })
 end
 
 function M.statuscol()
@@ -131,9 +134,7 @@ function M.statuscol()
 end
 
 function M.setup(opts)
-  opts = opts or {}
-  local ft_ignore = opts.ft_ignore or {}
-  local bt_ignore = opts.bt_ignore or {}
+  highlight = opts.highlight
   local id = vim.api.nvim_create_augroup("StatusCol", {})
 
   local stc = "%!v:lua.require('statuscol').statuscol()"
@@ -141,7 +142,7 @@ function M.setup(opts)
   for _, tab in ipairs(a.nvim_list_tabpages()) do
     for _, win in ipairs(a.nvim_tabpage_list_wins(tab)) do
       local buf = a.nvim_win_get_buf(win)
-      if not contains(ft_ignore or {}, a.nvim_get_option_value("ft", { buf = buf })) and not contains(bt_ignore or {}, a.nvim_get_option_value("bt", { buf = buf })) then
+      if not contains(opts.ft_ignore, a.nvim_get_option_value("ft", { buf = buf })) and not contains(opts.bt_ignore or {}, a.nvim_get_option_value("bt", { buf = buf })) then
         a.nvim_set_option_value("stc", stc, { win = win })
       end
     end
@@ -157,7 +158,7 @@ function M.setup(opts)
     end,
   })
 
-  a.nvim_create_autocmd("FileType", { group = id, pattern = ft_ignore, command = "setlocal stc=" })
+  a.nvim_create_autocmd("FileType", { group = id, pattern = opts.ft_ignore, command = "setlocal stc=" })
   a.nvim_create_autocmd("BufWinEnter", {
     group = id,
     callback = function()
@@ -169,7 +170,7 @@ function M.setup(opts)
       if h <= 1 or w <= 10 or a.nvim_win_get_config(win).relative ~= "" then
         return
       end
-      if contains(ft_ignore, ft) or contains(bt_ignore, bt) then
+      if contains(opts.ft_ignore, ft) or contains(opts.bt_ignore, bt) then
         a.nvim_set_option_value("stc", "", { scope = "local" })
         a.nvim_set_option_value("foldcolumn", "0", { scope = "local" })
       end
@@ -179,7 +180,7 @@ function M.setup(opts)
     group = id,
     pattern = "buftype",
     callback = function()
-      if contains(bt_ignore, vim.v.option_new) then
+      if contains(opts.bt_ignore, vim.v.option_new) then
         a.nvim_set_option_value("stc", "", { scope = "local" })
         a.nvim_set_option_value("foldcolumn", "0", { scope = "local" })
       end
