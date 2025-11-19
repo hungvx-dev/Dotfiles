@@ -76,7 +76,7 @@ return {
           end,
         },
         modified = {
-          symbol = HVIM.icons.Git.LineModified,
+          symbol = HVIM.icons.UI.ModifiedFile,
         },
         diagnostics = {
           symbols = {
