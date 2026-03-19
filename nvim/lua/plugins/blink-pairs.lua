@@ -1,8 +1,9 @@
 return {
   "saghen/blink.pairs",
   enabled = HVIM.plugins.blink_pairs,
-  version = "*", -- (recommended) only required with prebuilt binaries
+  version = "*",
   dependencies = "saghen/blink.download",
+  -- build = "cargo build --release",
   event = { "BufReadPost", "BufNewFile", "BufWritePre" },
   --- @module 'blink.pairs'
   ---@diagnostic disable-next-line: undefined-doc-name

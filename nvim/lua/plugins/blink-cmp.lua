@@ -15,6 +15,7 @@ return {
     -- build = "cargo build --release",
     dependencies = {
       "rafamadriz/friendly-snippets",
+      "saghen/blink.lib",
       {
         "xzbdmw/colorful-menu.nvim",
         opts = {},

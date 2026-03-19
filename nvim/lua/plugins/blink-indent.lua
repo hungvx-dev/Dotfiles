@@ -1,6 +1,7 @@
 return {
   "saghen/blink.indent",
   enabled = HVIM.plugins.blink_indent,
+  version = "*",
   event = { "BufReadPost", "BufNewFile", "BufWritePre" },
   --- @module 'blink.indent'
   --- @type blink.indent.Config
@@ -36,7 +37,7 @@ return {
         "BlinkIndentViolet",
       },
       underline = {
-        enabled = true,
+        enabled = false,
         highlights = {
           "BlinkIndentRedUnderline",
           "BlinkIndentYellowUnderline",
