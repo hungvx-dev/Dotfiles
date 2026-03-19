@@ -9,6 +9,7 @@ return {
       ensure_installed = {
         -- LSP
         "vtsls",
+        "tsgo",
         "vue-language-server",
         "json-lsp",
         "html-lsp",
@@ -27,7 +28,9 @@ return {
         "docker-compose-language-service",
         "postgres-language-server",
         "luau-lsp",
+        "prisma-language-server",
         "eslint-lsp", -- For js
+        "oxc_language_server",
 
         -- For Formatter
         "stylua", -- For lua
@@ -98,6 +101,7 @@ return {
         "cssmodules",
         "docker-compose",
         "docker",
+        "prisma",
         "emmet",
         "go",
         "html",
@@ -109,12 +113,14 @@ return {
         "rust",
         "tailwindcss",
         "vtsls",
+        -- "tsgo",
         -- "typescript",
         "vue",
         "yaml",
         "biome",
         "eslint",
-        "typos-lsp",
+        -- "typos-lsp",
+        "oxc"
       },
       ---@type vim.diagnostic.Opts
       diagnostic = {
@@ -188,7 +194,7 @@ return {
   {
     "RRethy/vim-illuminate",
     event = { "BufReadPost", "BufNewFile" },
-    enabled = true,
+    enabled = false,
     config = function()
       require("illuminate").configure({
         delay = 100,

@@ -9,9 +9,6 @@ local vue_plugin = {
 }
 
 local shared_config = {
-  preferences = {
-    useTypeImports = true,
-  },
   updateImportsOnFileMove = { enabled = "always" },
   suggest = { completeFunctionCalls = true },
   tsserver = {
@@ -26,43 +23,31 @@ local shared_config = {
     enumMemberValues = { enabled = true },
   },
 }
-
 ---@type vim.lsp.Config
 return {
-  cmd = { "vtsls", "--stdio" },
-  root_markers = { "tsconfig.json", "package.json", "jsconfig.json" },
+  cmd = function(dispatchers, config)
+    local cmd = "tsgo"
+    local local_cmd = (config or {}).root_dir and config.root_dir .. "/node_modules/.bin/tsgo"
+    if local_cmd and vim.fn.executable(local_cmd) == 1 then
+      cmd = local_cmd
+    end
+    return vim.lsp.rpc.start({ cmd, "--lsp", "--stdio" }, dispatchers)
+  end,
   filetypes = {
     "javascript",
-    "typescript",
     "javascriptreact",
+    "javascript.jsx",
+    "typescript",
     "typescriptreact",
-    "vue",
+    "typescript.tsx",
   },
-  single_file_support = true,
-  settings = {
-    complete_function_calls = true,
-    vtsls = {
-      enableMoveToFileCodeAction = true,
-      autoUseWorkspaceTsdk = true,
-      experimental = {
-        completion = {
-          enableServerSideFuzzyMatch = true,
-        },
-      },
-      tsserver = {
-        globalPlugins = {
-          vue_plugin,
-        },
-      },
-    },
-    typescript = shared_config,
-    javascript = shared_config,
-  },
-  on_attach = function(client, bufnr)
-    if vim.bo[bufnr].filetype == "vue" then
-      client.server_capabilities.semanticTokensProvider.full = false
-    else
-      client.server_capabilities.semanticTokensProvider.full = true
+  root_dir = function(bufnr, on_dir)
+    local root_markers = { "package-lock.json", "yarn.lock", "pnpm-lock.yaml", "bun.lockb", "bun.lock" }
+    root_markers = vim.fn.has("nvim-0.11.3") == 1 and { root_markers, { ".git" } } or vim.list_extend(root_markers, { ".git" })
+    if vim.fs.root(bufnr, { "deno.json", "deno.jsonc", "deno.lock" }) then
+      return
     end
+    local project_root = vim.fs.root(bufnr, root_markers) or vim.fn.getcwd()
+    on_dir(project_root)
   end,
 }
