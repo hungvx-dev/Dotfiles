@@ -2,22 +2,23 @@ return {
   {
     "ibhagwan/fzf-lua",
     enabled = HVIM.plugins.fzf,
+    -- version = "*",
     cmd = "FzfLua",
     opts = {
       "skim",
       fzf_bin = "sk",
-      fzf_colors = { -- sk
-        ["fg"] = "#ffffff",
-        ["bg"] = "-1",
-        ["current"] = "#00ffff",
-        ["current_bg"] = "-1",
-        ["current_match"] = "#d7005f",
-        ["current_match_bg"] = "-1",
-        ["matched"] = "#d7005f",
-        ["matched_bg"] = "-1",
-        ["info"] = "#ffffff",
-        ["gutter"] = "-1",
-      },
+      -- fzf_colors = { -- sk
+      --   ["fg"] = "#ffffff",
+      --   ["bg"] = "-1",
+      --   ["current"] = "#00ffff:u",
+      --   ["current_bg"] = "-1",
+      --   ["current_match"] = "#d7005f:u",
+      --   ["current_match_bg"] = "-1",
+      --   ["matched"] = "#d7005f",
+      --   ["matched_bg"] = "-1",
+      --   ["info"] = "#ffffff",
+      --   ["gutter"] = "-1",
+      -- },
       -- fzf_opts = {
       --   ["--ansi"] = true,
       --   ["--height"] = "100%",
@@ -45,8 +46,8 @@ return {
         height = 0.9,
         width = 0.9,
         preview = {
-          -- layout = "vertical",
-          layout = "flex",
+          layout = "vertical",
+          -- layout = "flex",
         },
       },
       files = {

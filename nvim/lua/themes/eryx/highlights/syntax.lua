@@ -58,6 +58,7 @@ M.special = {
   ["@variable.member"] = "@property",
   -- ["@variable.parameter"] = { fg = colors.yellow },
   -- ["@variable.parameter.builtin"] = "@variable.parameter",
+  ["@lsp.type.parameter"] = {},
 
   ["@tag.attribute"] = { fg = colors.teal },
   ["@tag.tsx"] = "@type.tsx",

@@ -218,6 +218,10 @@ M.fzf = {
     bg = colors.bg,
     fg = colors.orange,
   },
+  -- FzfLuaFzfCursorLine = {
+  --   sp = colors.cyan,
+  --   underline = true,
+  -- }
   -- FzfLuaNormal = {
   --   bg = colors.bg,
   --   fg = colors.fg,

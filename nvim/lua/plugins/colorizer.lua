@@ -21,23 +21,50 @@ return {
         "yml",
         "vue",
       },
-      -- buftypes = {}, -- Buftype options.  Accepts table like `user_default_options`
-      -- Boolean | List of usercommands to enable.  See User commands section.
-      -- user_commands = true, -- Enable all or some usercommands
       lazy_load = true, -- Lazily schedule buffer highlighting setup function
-      user_default_options = {
-        names = false,
-        RRGGBB = true,
-        -- rgb_fn = true,
-        -- hsl_fn = true,
-        tailwind = "lsp",
-        -- tailwind_opts = {
-        --   update_names = true,
-        -- },
-        mode = "virtualtext",
-        virtualtext = HVIM.icons.Cmp.Color,
-        virtualtext_inline = "before",
-        virtualtext_mode = "foreground",
+      options = {
+        parsers = {
+          css = false,
+          css_fn = false,
+          names = {
+            enable = false,
+            lowercase = true,
+            uppercase = false,
+            camelcase = false,
+            strip_digits = false,
+            custom = false, -- table|function|false
+          },
+          hex = {
+            default = false, -- default value for format keys (see above)
+            rgb = false, -- #RGB
+            rgba = false, -- #RGBA
+            rrggbb = true, -- #RRGGBB
+            rrggbbaa = false, -- #RRGGBBAA
+            aarrggbb = false, -- 0xAARRGGBB
+          },
+          rgb = { enable = false },
+          hsl = { enable = false },
+          oklch = { enable = true },
+          tailwind = {
+            enable = true, -- parse Tailwind color names
+            lsp = false, -- use Tailwind LSP documentColor
+            update_names = false,
+          },
+          sass = {
+            enable = false,
+            parsers = { css = true },
+            variable_pattern = "^%$([%w_-]+)",
+          },
+          xterm = { enable = false },
+        },
+        display = {
+          mode = "virtualtext",
+          virtualtext = {
+            char = HVIM.icons.Cmp.Color,
+            position = "before", -- "eol"|"before"|"after"
+            hl_mode = "foreground",
+          },
+        },
       },
     },
   },
