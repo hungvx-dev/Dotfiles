@@ -4,26 +4,35 @@ return {
     event = { "BufReadPost", "BufNewFile" },
     dependencies = { "mason.nvim" },
     opts = {
-      events = { "BufWritePost", "BufReadPost", "TextChanged", "TextChangedI" },
+      events = { "BufWritePost", "BufReadPost", "InsertLeave", "TextYankPost" },
       linters_by_ft = {
         -- css = { "eslint_d" },
         -- less = { "eslint_d" },
         -- scss = { "eslint_d" },
         -- graphql = { "eslint_d" },
         -- html = { "eslint_d" },
-        -- javascript = { "oxlint", "eslint_d" },
-        -- javascriptreact = { "oxlint", "eslint_d" },
         -- json = { "oxlint", "eslint_d" },
         -- jsonc = { "oxlint", "eslint_d" },
-        -- typescript = { "oxlint", "eslint_d" },
-        -- typescriptreact = { "oxlint", "eslint_d" },
-        -- vue = { "oxlint", "eslint_d" },
+        -- javascript = { "oxlint" },
+        -- javascriptreact = { "oxlint" },
+        -- typescript = { "oxlint" },
+        -- typescriptreact = { "oxlint" },
+        -- vue = { "oxlint" },
+
         yaml = { "yamllint" },
         docker = { "hadolint" },
         luau = { "selene" },
         -- ["*"] = { "cspell" },
       },
       linters = {
+        oxlint = {
+          args = {
+            "--format",
+            "github",
+            "--type-aware",
+            "--type-check",
+          },
+        },
         -- eslint_d = {
         --   args = {
         --     "--no-warn-ignored", -- Ignore warnings, support Eslint 9
@@ -75,7 +84,6 @@ return {
     config = function(_, opts)
       local lint = require("lint")
       local M = {}
-
       for name, linter in pairs(opts.linters) do
         if type(linter) == "table" and type(lint.linters[name]) == "table" then
           lint.linters[name] = vim.tbl_deep_extend("force", lint.linters[name], linter)
@@ -88,7 +96,6 @@ return {
         end
       end
       lint.linters_by_ft = opts.linters_by_ft
-
       function M.debounce(ms, fn)
         local timer = vim.uv.new_timer()
         return function(...)
@@ -99,34 +106,24 @@ return {
           end)
         end
       end
-
       function M.lint()
         local names = lint._resolve_linter_by_ft(vim.bo.filetype)
-
         names = vim.list_extend({}, names)
-
         if #names == 0 then
           vim.list_extend(names, lint.linters_by_ft["_"] or {})
         end
-
         vim.list_extend(names, lint.linters_by_ft["*"] or {})
-
         local ctx = { filename = vim.api.nvim_buf_get_name(0) }
         ctx.dirname = vim.fn.fnamemodify(ctx.filename, ":h")
         names = vim.tbl_filter(function(name)
           local linter = lint.linters[name]
           return linter and not (type(linter) == "table" and linter.condition and not linter.condition(ctx))
         end, names)
-
         if #names > 0 then
           lint.try_lint(names)
         end
       end
-
-      vim.api.nvim_create_autocmd(opts.events, {
-        group = vim.api.nvim_create_augroup("nvim-lint", { clear = true }),
-        callback = M.debounce(200, M.lint),
-      })
+      vim.api.nvim_create_autocmd(opts.events, { group = vim.api.nvim_create_augroup("nvim-lint", { clear = true }), callback = M.debounce(200, M.lint) })
     end,
   },
 }
