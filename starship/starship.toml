@@ -166,7 +166,7 @@ impure_msg = '[⌽](bold dimmed red)'
 pure_msg = '[⌾](bold dimmed green)'
 unknown_msg = '[◌](bold dimmed ellow)'
 style = 'bold italic dimmed blue'
-format = '[$symbol nix⎪$state⎪]($style) [$name](italic dimmed white) '
+format = '[$symbol]($style) [(\($name $state\))](dimmed white) '
 [lua]
 disabled = false
 symbol = "󰢱 "
