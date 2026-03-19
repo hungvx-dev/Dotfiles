@@ -6,7 +6,7 @@ abbr nv nvim
 abbr l 'ls -Flha'
 abbr ls 'eza --color=always --icons=always -h -l -g -a --git --time-style=+%Y-%m-%d\ %H:%M'
 abbr ll 'eza --color=always --icons=always -h -l -a --no-filesize --no-user --no-permissions --no-time --git-ignore'
-abbr tree 'eza -T -L=2 --git-ignore'
+abbr tree 'eza -T -L=3 --git-ignore'
 # abbr ll 'ls -Flha'
 # abbr ls 'ls -lag'
 
