@@ -13,8 +13,6 @@ if status is-interactive
     # set -g fish_vi_force_cursor 1
 end
 
-set -g EDITOR nvim
-
 set fish_path $HOME/.config/fish
 . $fish_path/alias/init.fish
 . $fish_path/sk.fish
@@ -24,3 +22,7 @@ set fish_path $HOME/.config/fish
 
 zoxide init fish --cmd j | source
 starship init fish | source
+
+if command -v mise >/dev/null
+  mise activate fish | source
+end
