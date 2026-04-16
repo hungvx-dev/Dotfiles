@@ -97,14 +97,15 @@ return {
       { "<leader>fb", "<cmd>FzfLua buffers sort_mru=true sort_lastused=true<cr>", desc = "Buffers" },
       { "<leader>fp", "<cmd>FzfLua files<cr>", desc = "Find Files (root dir)" },
       { "<leader>fo", "<cmd>FzfLua oldfiles<cr>", desc = "Recent" }, -- git
+      { "<leader>fh", "<cmd>FzfLua history<cr>", desc = "History" },
 
       -- Search
       { "<leader>fs", "<cmd>FzfLua live_grep<cr>", desc = "Find in Files (Grep)" },
+      { "<leader>fS", "<cmd>FzfLua live_grep resume=true<cr>", desc = "Find in Files (Grep)" },
       { "<leader>fi", "<cmd>FzfLua grep_curbuf<cr>", desc = "Buffer" },
 
       { "<leader>fd", "<cmd>FzfLua diagnostics_document<cr>", desc = "Diagnostics" },
       { "<leader>fk", "<cmd>FzfLua keymaps<cr>", desc = "Key Maps" },
-      { "<leader>fh", "<cmd>FzfLua help_tags<cr>", desc = "Help Tags" },
       { "<leader>fH", "<cmd>FzfLua highlights<cr>", desc = "Search Highlight Groups" },
       { "<leader>fm", "<cmd>FzfLua marks<cr>", desc = "Jump to Mark" },
       { "<leader>f:", "<cmd>FzfLua command_history<cr>", desc = "Command History" },

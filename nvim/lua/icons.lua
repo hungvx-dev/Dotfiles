@@ -175,6 +175,7 @@ return {
     LineRemoved   = "󰛲",
     LineIgnore    = "󰅘",
     LineRename    = "󰏭",
+
     FileIgnored   = "◌",
     FileDeleted   = "󰍵",
     FileRenamed   = "󰏬",
@@ -182,6 +183,7 @@ return {
     FileUnstaged  = "󰑕",
     FileUntracked = "󰐖",
     FileConflict  = "󰘭",
+
     Diff          = "󰕜",
   },
 }

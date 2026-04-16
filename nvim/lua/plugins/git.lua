@@ -46,7 +46,7 @@ return {
           else
             gs.nav_hunk("next")
           end
-        end)
+        end, "Git next hunk")
 
         map("n", "[h", function()
           if vim.wo.diff then
@@ -54,14 +54,14 @@ return {
           else
             gs.nav_hunk("prev")
           end
-        end)
+        end, "Git prev hunk")
 
-        map({ "n", "v" }, "<leader>ghs", ":Gitsigns stage_hunk<CR>", "Stage Hunk")
-        map("n", "<leader>ghp", ":Gitsigns preview_hunk_inline<CR>", "Preview Hunk")
-        map("n", "<leader>ghd", gs.diffthis, "Diff This")
+        map({ "n", "v" }, "<leader>ghs", ":Gitsigns stage_hunk<CR>", "Git Stage Hunk")
+        map("n", "<leader>ghp", ":Gitsigns preview_hunk_inline<CR>", "Git Preview Hunk")
+        map("n", "<leader>ghd", gs.diffthis, "Git Diff This")
         map("n", "<leader>gb", function()
           gs.blame_line({ full = false })
-        end)
+        end, "Git show blame")
       end,
     },
   },

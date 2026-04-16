@@ -60,12 +60,12 @@ return {
           json             = js_formatter,
           jsonc            = js_formatter,
           html             = js_formatter,
-          css             = js_formatter,
-          -- css              = { "biome", "prettierd", stop_after_first = true },
-          -- scss             = { "biome", "prettierd", stop_after_first = true },
-          -- less             = { "biome", "prettierd", stop_after_first = true },
-          -- json             = { "biome", "prettierd", stop_after_first = true },
-          -- jsonc            = { "biome"n, "prettierd", stop_after_first = true },
+          css              = { 'oxfmt', "prettierd", stop_after_first = true } ,
+          sass             = { 'oxfmt', "prettierd", stop_after_first = true } ,
+          toml             = { 'oxfmt', "prettierd", stop_after_first = true },
+          handlebars       = { 'oxfmt', "prettierd", stop_after_first = true },
+          markdown         = { 'oxfmt', "prettierd", stop_after_first = true },
+          yaml             = js_formatter,
         },
         formatters = {
           biome = {

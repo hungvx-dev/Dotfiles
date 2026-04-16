@@ -11,7 +11,9 @@ M.git = {
   DiffDelete = { bg = colors.diff.delete },
   DiffText = { bg = colors.diff.text },
   GitSignsAdd = { fg = colors.git.add },
+  GitSignsStagedAdd = { fg = colors.teal },
   GitSignsChange = { fg = colors.git.change },
+  GitSignsUntracked = { fg = colors.red_2 },
   GitSignsCurrentLineBlame = {
     -- bg = colors.blue0,
     -- bold = true,
@@ -40,9 +42,9 @@ M.git = {
 M.neotree = {
   NeoTreeDimText = { fg = colors.dark_2 },
   NeoTreeFileName = { fg = colors.fg },
-  NeoTreeGitModified = { fg = colors.orange },
+  -- NeoTreeGitModified = { fg = colors.git.change },
   NeoTreeGitStaged = { fg = colors.teal },
-  NeoTreeGitUntracked = { fg = colors.purple_1 },
+  NeoTreeGitUntracked = { italic = true, fg = colors.red_2 },
   NeoTreeNormal = { bg = colors.bg, fg = colors.fg },
   NeoTreeNormalNC = { bg = colors.bg, fg = colors.fg },
   NeoTreeTabActive = {
@@ -61,6 +63,8 @@ M.neotree = {
     sp = colors.cyan,
     underline = true,
   },
+  -- NeoTreeGitIgnored = {},
+  -- NeoTreeIgnored = {},
   -- NeoTreeWinSeparator = {
   --   fg = colors.cyan,
   -- },

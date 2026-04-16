@@ -22,6 +22,7 @@ return {
   sky_1 = "#8ec5ff", -- #bedbff
   red = "#ff0c36", -- #F44336
   red_1 = "#fc5f66",
+  red_2 = "#F44336",
   cyan = "#00ffff",
   cyan_1 = "#00AAD0",
   green = "#76FF03",

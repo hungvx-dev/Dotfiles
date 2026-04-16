@@ -30,7 +30,7 @@ return {
         "luau-lsp",
         "prisma-language-server",
         "eslint-lsp", -- For js
-        "oxc_language_server",
+        -- "oxc_language_server",
 
         -- For Formatter
         "stylua", -- For lua
@@ -48,6 +48,7 @@ return {
         "eslint_d", -- For js
         "hadolint", -- For docker
         "oxlint",
+        "oxfmt",
         "biome",
         "selene",
         -- "stylelint",
@@ -119,8 +120,10 @@ return {
         "yaml",
         "biome",
         "eslint",
+        "oxlint",
+        -- "oxfmt",
         -- "typos-lsp",
-        "oxc"
+        -- "oxc"
       },
       ---@type vim.diagnostic.Opts
       diagnostic = {
@@ -221,6 +224,7 @@ return {
   },
   {
     "razak17/tailwind-fold.nvim",
+    enabled = false,
     ft = { "html", "vue", "typescriptreact" },
     dependencies = { "nvim-treesitter/nvim-treesitter" },
     opts = {},
