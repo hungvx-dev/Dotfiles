@@ -1,33 +1,35 @@
-vim.api.nvim_create_autocmd("FileType", {
-  pattern = { "qf", "help", "netrw", "terminal", "scratch", "diffthis" },
-  callback = function()
-    vim.bo.buftype = "nofile"
-    vim.bo.bufhidden = "wipe"
-  end,
+local autocmd = vim.api.nvim_create_autocmd
+
+local function augroup(name) return vim.api.nvim_create_augroup('hungvx_' .. name, { clear = true }) end
+
+-- Highlight on yank
+autocmd('TextYankPost', {
+  group = augroup('highlight_yank'),
+  callback = function() vim.hl.on_yank({ timeout = 300 }) end,
+  desc = 'Highlight when yanking',
 })
 
-vim.api.nvim_create_user_command('HLLinksTo', function(opts)
-  local target = opts.args
-  local found = {}
-  for _, group in ipairs(vim.fn.getcompletion('', 'highlight')) do
-    local info = vim.api.nvim_get_hl(0, { name = group, link = true })
-    if info.link == target then
-      table.insert(found, group)
-    end
-  end
+autocmd('FileType', {
+  pattern = { 'lua', 'javascript', 'typescript', 'cpp', 'rust', 'go', 'luau', 'vue' },
+  group = augroup('new_line_comment'),
+  callback = function() vim.opt_local.formatoptions:remove({ 'o' }) end,
+  desc = 'Disable New Line Comment',
+})
 
-  if #found == 0 then
-    print("No highlight groups link to '" .. target .. "'.")
-  else
-    print("Highlight groups linking to '" .. target .. "':")
-    for _, name in ipairs(found) do
-      print("  " .. name)
-    end
-  end
-end, {
-  nargs = 1,
-  complete = function(_, _, _)
-    return vim.fn.getcompletion('', 'highlight')
+autocmd('VimResized', {
+  group = augroup('resize_splits'),
+  callback = function()
+    local current_tab = vim.fn.tabpagenr()
+    vim.cmd('tabdo wincmd = | tabnext ' .. current_tab)
   end,
-  desc = 'List all highlight groups that link to the given group',
+  desc = 'Equalize Splits',
+})
+
+autocmd('FileType', {
+  pattern = { 'qf', 'help', 'netrw', 'terminal', 'scratch', 'diffthis' },
+  callback = function()
+    vim.bo.buftype = 'nofile'
+    vim.bo.bufhidden = 'wipe'
+    vim.bo.swapfile = false
+  end,
 })

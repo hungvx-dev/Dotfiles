@@ -1,10 +1,4 @@
 return {
-  "saghen/blink.indent",
-  enabled = HVIM.plugins.blink_indent,
-  version = "*",
-  event = { "BufReadPost", "BufNewFile", "BufWritePre" },
-  --- @module 'blink.indent'
-  --- @type blink.indent.Config
   opts = {
     blocked = {
       buftypes = { "terminal", "nofile", "prompt", "help", "quickfix" },
