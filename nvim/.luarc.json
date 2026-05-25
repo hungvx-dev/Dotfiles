@@ -1,3 +1,4 @@
 {
-  "diagnostics.disable": ["different-requires"]
+  "diagnostics.disable": ["different-requires",
+        "duplicate-set-field"]
 }

@@ -22,30 +22,18 @@ vim.api.nvim_create_autocmd('VimEnter', {
       local mason = require('plugins.mason')
       local statuscol = require('plugins.statuscol')
       local textobjects = require('plugins.treesitter-textobjects')
+      vim.cmd('packadd statuscol')
 
       if type(neotree.init) == 'function' then neotree.init() end
 
       require('neo-tree').setup(neotree.opts)
       require('window-picker').setup(window_picker.opts)
-      require('mason').setup(mason)
-      vim.cmd('packadd statuscol')
+      require('mason').setup(mason.opts)
       require('statuscol').setup(statuscol.opts)
       require('tree-sitter-manager').setup(treesitter.opts)
       require('nvim-treesitter-textobjects').setup(textobjects.opts)
 
       local registry = require('mason-registry')
-      registry:on('package:install:success', function()
-        vim.defer_fn(
-          function()
-            require('lazy.core.handler.event').trigger({
-              event = 'FileType',
-              buf = vim.api.nvim_get_current_buf(),
-            })
-          end,
-          100
-        )
-      end)
-
       registry.refresh(function()
         for _, name in ipairs(mason.ensure_installed) do
           local ok, pkg = pcall(registry.get_package, name)
@@ -124,8 +112,10 @@ vim.api.nvim_create_autocmd({ 'BufReadPost', 'BufNewFile' }, {
     local dressing = require('plugins.dressing')
     local eyeliner = require('plugins.eyeliner')
     local statusline = require('plugins.statusline')
-    local autotag = require('plugins.autotag')
     local conform = require('plugins.conform')
+    local lsp = require('plugins.lsp')
+
+    vim.cmd('packadd lsp')
     vim.cmd('packadd statusline')
 
     vim.o.showtabline = 2
@@ -133,8 +123,9 @@ vim.api.nvim_create_autocmd({ 'BufReadPost', 'BufNewFile' }, {
     require('dressing').setup(dressing.opts)
     require('nvim-surround').setup()
     require('statusline').setup(statusline.opts)
-    require('nvim-ts-autotag').setup(autotag.opts)
-      require('eyeliner').setup()
+    require('eyeliner').setup(eyeliner.opts)
+
+    require('lsp').setup(lsp.opts)
     require('conform').setup(conform.opts)
 
     vim.keymap.set('n', '<leader>bd', bufferline.keys.bufremove, { desc = 'Delete Buffer' })
@@ -144,6 +135,15 @@ vim.api.nvim_create_autocmd({ 'BufReadPost', 'BufNewFile' }, {
       'gf',
       function() require('conform').format({ async = true, lsp_format = 'fallback' }) end
     )
+  end,
+})
+
+vim.api.nvim_create_autocmd({ 'BufReadPre', 'BufNewFile' }, {
+  once = true,
+  pattern = { '*.html', '*.tsx', '*.vue' },
+  callback = function()
+    local autotag = require('plugins.autotag')
+    require('nvim-ts-autotag').setup(autotag.opts)
   end,
 })
 
@@ -169,14 +169,6 @@ vim.api.nvim_create_autocmd({ 'BufReadPost', 'BufNewFile', 'BufWritePre' }, {
   end,
 })
 
-
-vim.api.nvim_create_autocmd({ 'BufReadPre', 'BufNewFile' }, {
-  once = true,
-  pattern = { '*.html', '*.tsx', '*.vue' },
-  callback = function()
-  end,
-})
-
 vim.api.nvim_create_autocmd({ 'InsertEnter', 'CmdlineChanged', 'CmdlineEnter' }, {
   once = true,
   callback = function()
@@ -192,11 +184,6 @@ vim.api.nvim_create_autocmd('LspAttach', {
   once = true,
   callback = function()
     local fidget = require('plugins.fidget')
-    local lsp = require('plugins.lsp')
-
-    vim.cmd('packadd lsp')
-
-    require('lsp').setup(lsp.opts)
     require('fidget').setup(fidget.opts)
 
     if lsp_file_ops_loaded then return end
