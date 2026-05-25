@@ -5,7 +5,8 @@ return {
   settings = {
     prisma = {
       prismaFmtBinPath = '',
+      schemaFolder = 'prisma',
     },
   },
-  root_markers = { '.git', 'package.json' },
+  root_markers = { '.git', 'package.json', 'prisma.config.ts' },
 }

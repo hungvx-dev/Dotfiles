@@ -1,4 +1,7 @@
 return {
+  filetype = {
+    'tsx',
+  },
   opts = {
     ensure_installed = {
       'lua',
@@ -7,6 +10,7 @@ return {
       'html',
       'css',
       'tsx',
+      'jsx',
       'bash',
       'json',
       'vue',
@@ -30,6 +34,7 @@ return {
       -- rust
       'rust',
       -- "ron",
+      "prisma"
     },
     auto_install = true,
     highlight = true,

@@ -29,7 +29,6 @@ function M.setup()
     ['lazy'] = Extension.lazy.active,
     ['mason'] = Extension.mason.active,
     ['neo-tree'] = Extension.neotree.active,
-    ['alpha'] = Extension.empty,
     ['help'] = Extension.empty,
     ['man'] = Extension.empty,
     ['TelescopePrompt'] = Extension.empty,
@@ -185,7 +184,6 @@ end
 
 function M.section_location()
   local buf = vim.api.nvim_get_current_buf()
-  local win_id = vim.api.nvim_get_current_win()
 
   Cache.buf[buf] = Cache.buf[buf] or {}
 
@@ -198,8 +196,7 @@ function M.section_location()
     Cache.buf[buf].line_width = lw_cache
   end
 
-  local sbar = H.get_sbar(buf, win_id)
-  return string.format('%%P│%%2c:%%%dl▕%s▏', lw_cache.width, sbar)
+  return string.format('%%2c:%%%dl▕', lw_cache.width)
 end
 
 function M.section_searchcount(args)

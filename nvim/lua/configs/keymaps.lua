@@ -2,32 +2,34 @@ local setKeyMap = vim.keymap.set
 local slient = { silent = true }
 
 -- Better indent
-setKeyMap("v", "<", "<gv")
-setKeyMap("v", ">", ">gv")
+setKeyMap('v', '<', '<gv', { desc = 'Unindent and keep selection' })
+setKeyMap('v', '>', '>gv', { desc = 'Indent and keep selection' })
+setKeyMap('v', '<C-j>', ":m '>+1<CR>gv=gv", { desc = 'moves lines down in visual selection' })
+setKeyMap('v', '<C-k>', ":m '<-2<CR>gv=gv", { desc = 'moves lines up in visual selection' })
 
-setKeyMap("n", "H", "^")
-setKeyMap("n", "L", "$")
-setKeyMap("v", "H", "^")
-setKeyMap("v", "L", "$")
+setKeyMap('n', 'H', '^')
+setKeyMap('n', 'L', '$')
+setKeyMap('v', 'H', '^')
+setKeyMap('v', 'L', '$')
 
 -- setKeyMap("n", "j", "v:count == 0 ? 'gj' : 'j'", { expr = true, silent = true })
 -- setKeyMap("n", "k", "v:count == 0 ? 'gk' : 'k'", { expr = true, silent = true })
 
 -- Paste over currently selected text without yanking it
-setKeyMap("v", "p", '"_dP')
+setKeyMap('v', 'p', '"_dP')
 
 -- Cancel search highlighting with ESC
-setKeyMap("n", "<leader><CR>", ":nohlsearch<Bar>:echo<CR>")
+setKeyMap('n', '<leader><CR>', ':nohlsearch<Bar>:echo<CR>')
 
 -- ReSizing panes
-setKeyMap("n", "<leader>=", ":vertical resize +4<CR>", slient)
-setKeyMap("n", "<leader>-", ":vertical resize -4<CR>", slient)
-setKeyMap("n", "<leader>+", ":resize +4<CR>", slient)
-setKeyMap("n", "<leader>_", ":resize -4<CR>", slient)
+setKeyMap('n', '<leader>=', ':vertical resize +4<CR>', slient)
+setKeyMap('n', '<leader>-', ':vertical resize -4<CR>', slient)
+setKeyMap('n', '<leader>+', ':resize +4<CR>', slient)
+setKeyMap('n', '<leader>_', ':resize -4<CR>', slient)
 
-setKeyMap("n", "<C-q>", ":q<cr>", slient)
-setKeyMap("n", "<C-s>", ":w<cr>", slient)
-setKeyMap("i", "<C-s>", "<ESC>:w<cr>", slient)
+setKeyMap('n', '<C-q>', ':q<cr>', slient)
+setKeyMap('n', '<C-s>', ':w<cr>', slient)
+setKeyMap('i', '<C-s>', '<ESC>:w<cr>', slient)
 
-setKeyMap({ "n", "v" }, "<C-d>", "10j")
-setKeyMap({ "n", "v" }, "<C-u>", "10k")
+-- setKeyMap({ 'n', 'v' }, '<C-d>', '10j')
+-- setKeyMap({ 'n', 'v' }, '<C-u>', '10k')
