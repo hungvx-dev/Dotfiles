@@ -1,5 +1,5 @@
 {
-  description = "Dev for frontend and backend";
+  description = "Dev environments (project + tools)";
 
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixpkgs-unstable";
@@ -7,24 +7,43 @@
 
   outputs = { self, nixpkgs }:
     let
-      system = "aarch64-darwin"; # máy M1/M2
-      pkgs = import nixpkgs { inherit system; };
+      system = "aarch64-darwin";
+
+      pkgs = import nixpkgs {
+        inherit system;
+        config.allowUnfree = true;
+      };
+
+      mkShell = packages: pkgs.mkShell {
+        inherit packages;
+
+        shellHook = ''
+          # ensure fish shell (only once)
+          if [ -z "$IN_NIX_SHELL_FISH" ]; then
+            export IN_NIX_SHELL_FISH=1
+            exec fish
+          fi
+        '';
+      };
+
     in
     {
       devShells.${system} = {
-        dev = pkgs.mkShell {
-          buildInputs = [
-            pkgs.mise
-            pkgs.rustup
-          ];
-          shellHook = ''
-            export SHELL=$(which fish)
-               if [ -z "$IN_NIX_SHELL_FISH" ]; then
-                 export IN_NIX_SHELL_FISH=1
-                 exec $SHELL
-               fi
-          '';
-        };
+        # =========================
+        # 🧩 Project environment
+        # =========================
+        dev = mkShell (with pkgs; [
+          mise
+          rustup
+        ]);
+
+        # =========================
+        # 🛠️ Tools environment
+        # =========================
+        tools = mkShell (with pkgs; [
+          # CLI tools
+          tree-sitter
+        ]);
       };
     };
 }

@@ -19,15 +19,11 @@
 
     # media
     cmus
-
-    # desktop apps
-    monitorcontrol discord google-chrome zoom-us
-
-    # dev tools
-    docker colima lazydocker rainfrog
-    # ollama
+    # tools
+    lazydocker rainfrog
+    # dev
+    docker colima lima
   ];
 
   programs.fish.enable = true;
 }
-
