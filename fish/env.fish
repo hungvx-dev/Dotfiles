@@ -1,4 +1,4 @@
-set -gx EDITOR "nvim -f"
+set -gx EDITOR nvim
 # set -Ux EDITOR "nvim -f"
 
 # zoxide

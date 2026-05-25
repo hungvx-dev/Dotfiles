@@ -5,3 +5,4 @@ SETUVAR --export _ZO_DATA_DIR:/Users/hungvx\x2edev/Dev/Dotfiles/zoxide
 SETUVAR --export _ZO_ECHO:1
 SETUVAR --export _ZO_RESOLVE_SYMLINKS:1
 SETUVAR __fish_initialized:4300
+SETUVAR fish_user_paths:/Users/hungvx\x2edev/\x2ebun/bin

@@ -2,3 +2,4 @@
 # abbr be 'nix develop ~/Dev/Dotfiles/nix-darwin/hungvx.dev/develop#be'
 
 abbr dev 'nix develop ~/Dev/Dotfiles/nix-darwin/hungvx.dev/develop#dev'
+abbr tools 'nix develop ~/Dev/Dotfiles/nix-darwin/hungvx.dev/develop#tools'

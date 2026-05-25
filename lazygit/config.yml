@@ -1,4 +1,3 @@
----
 gui:
   timeFormat: "02 Jan 06 15:04 MST"
   theme:
@@ -25,10 +24,10 @@ git:
   log:
     showGraph: always
     showWholeGraph: true
-  paging:
-    colorArg: always
-    pager: delta --dark --paging=never
-    # useConfig: true
+  pagers:
+    - colorArg: always
+      pager: delta --dark --paging=never
+      # useConfig: true
   commit:
     signOff: false
     verbose: false
