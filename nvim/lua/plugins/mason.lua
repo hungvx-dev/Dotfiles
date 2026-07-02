@@ -22,6 +22,7 @@ local ensure_installed = {
   'luau-lsp',
   'prisma-language-server',
   'eslint-lsp', -- For js
+  'sqls',
   -- "oxc_language_server",
 
   -- For Formatter

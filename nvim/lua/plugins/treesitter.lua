@@ -34,7 +34,7 @@ return {
       -- rust
       'rust',
       -- "ron",
-      "prisma"
+      'prisma',
     },
     auto_install = true,
     highlight = true,

@@ -33,9 +33,10 @@ vim.pack.add({
   { src = 'https://github.com/xzbdmw/colorful-menu.nvim' },
   { src = 'https://github.com/saghen/blink.lib' },
   { src = 'https://github.com/saghen/blink.download' },
-  { src = 'https://github.com/saghen/blink.cmp', version = vim.version.range('*') },
-  { src = 'https://github.com/saghen/blink.indent', version = vim.version.range('*') },
+  { src = 'https://github.com/saghen/blink.cmp' },
+  { src = 'https://github.com/saghen/blink.indent' },
   { src = 'https://github.com/saghen/blink.pairs', version = vim.version.range('*') },
+  { src = 'https://github.com/nanotee/sqls.nvim' },
 })
 
 require('plugins')

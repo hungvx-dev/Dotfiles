@@ -1,12 +1,12 @@
 ---@type vim.lsp.Config
 return {
-  cmd = { "cssmodules-language-server", "--stdio" },
+  cmd = { 'cssmodules-language-server' },
   filetypes = {
-    -- "javascript",
-    "javascriptreact",
-    -- "typescript",
-    "typescriptreact",
-    "vue",
+    'javascript',
+    'javascriptreact',
+    'typescript',
+    'typescriptreact',
+    'vue',
   },
-  root_markers = { "package.json" },
+  root_markers = { 'package.json' },
 }

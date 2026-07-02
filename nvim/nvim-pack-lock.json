@@ -2,8 +2,7 @@
   "plugins": {
     "blink.cmp": {
       "rev": "78336bc89ee5365633bcf754d93df01678b5c08f",
-      "src": "https://github.com/saghen/blink.cmp",
-      "version": ">=0.0.0"
+      "src": "https://github.com/saghen/blink.cmp"
     },
     "blink.download": {
       "rev": "a459c8fbf51359902971874b5ebe05f6602db8b4",
@@ -11,8 +10,7 @@
     },
     "blink.indent": {
       "rev": "9c80820ca77218a8d28e70075d6f44a1609911fe",
-      "src": "https://github.com/saghen/blink.indent",
-      "version": ">=0.0.0"
+      "src": "https://github.com/saghen/blink.indent"
     },
     "blink.lib": {
       "rev": "a459c8fbf51359902971874b5ebe05f6602db8b4",
@@ -116,6 +114,10 @@
     "plenary.nvim": {
       "rev": "74b06c6c75e4eeb3108ec01852001636d85a932b",
       "src": "https://github.com/nvim-lua/plenary.nvim"
+    },
+    "sqls.nvim": {
+      "rev": "45e2ea8a684a9a194e8adbde77a02e7ac77f6d4e",
+      "src": "https://github.com/nanotee/sqls.nvim"
     },
     "todo-comments.nvim": {
       "rev": "31e3c38ce9b29781e4422fc0322eb0a21f4e8668",

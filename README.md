@@ -72,27 +72,27 @@
    To download the Nix package manager
 
 ```sh
-sh <(curl -L https://nixos.org/nix/install)
+sh <(curl --proto '=https' --tlsv1.2 -L https://nixos.org/nix/install)
 ```
 
 2. **Clone my repo**
    To download my configuration
 
 ```sh
-nix-shell -p git --run "git clone git@github.com:hungvx-dev/Dotfiles.git ~/Dev/Dotfiles"
+nix-shell -p git --run "git clone git@github.com:hungvx-dev/Dotfiles.git ~/dev/dotfiles"
 ```
 
 3. **Apply configuration**
    To install tools and applications
 
 ```sh
-nix run nix-darwin --extra-experimental-features "nix-command flakes" -- switch --flake ~/Dev/Dotfile/nix-darwin/feiyu
+nix run nix-darwin --extra-experimental-features "nix-command flakes" -- switch --flake ~/dev/dotfiles/nix-darwin/eryx#dev
 ```
 
 ## Add configuration
 
 ```sh
-cd ~/Dev/Dotfiles
+cd ~/dev/dotfiles
 stow .
 ```
 
@@ -119,7 +119,7 @@ fisher install kidonng/zoxide.fish
 - Git
 
 ```sh
-cd ~/Dev/Dotfiles
+cd ~/dev/dotfiles
 ln -s $(pwd)/git/me/ ~/.config/git
 ln -s $(pwd)/git/me/.gitconfig ~/.config/git/config
 ```
@@ -135,7 +135,7 @@ ln -s $(pwd)/ssh/config ~/.ssh/config
 ### Configuration neovim
 
 ```sh
-nix-shell -p nodejs_22 cargo
+# nix-shell -p nodejs_22 cargo
 neovim
 ```
 

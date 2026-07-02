@@ -1,15 +1,17 @@
 local function js_formatter(bufnr)
   -- print(require("conform").get_formatter_info("prettierd", bufnr).available, 'pre')
   -- print(require("conform").get_formatter_info("oxfmt", bufnr).available, 'ox')
-  if require('conform').get_formatter_info('biome', bufnr).available then
-    return { 'biome' }
-  elseif require('conform').get_formatter_info('oxfmt', bufnr).available then
-    return { 'oxlint', 'oxfmt' }
-  elseif require('conform').get_formatter_info('prettierd', bufnr).available then
-    return { 'prettierd', 'eslint_d' }
-  else
-    return {}
-  end
+  -- if require('conform').get_formatter_info('biome', bufnr).available then
+  --   return { 'biome' }
+  -- elseif require('conform').get_formatter_info('oxfmt', bufnr).available then
+  --   return { 'oxlint', 'oxfmt' }
+  -- elseif require('conform').get_formatter_info('prettierd', bufnr).available then
+  --   return { 'prettierd', 'eslint_d' }
+  -- else
+  --   return {}
+  -- end
+
+  return { 'oxlint', 'oxfmt' }
 end
 
 return {
@@ -51,40 +53,40 @@ return {
       markdown = { 'oxfmt', 'prettierd', stop_after_first = true },
       yaml = js_formatter,
     },
-    formatters = {
-      biome = {
-        require_cwd = true,
-        condition = function()
-          local config_files = { 'biome.json', 'biome.jsonc' }
-          for _, config_file in ipairs(config_files) do
-            local path = vim.fn.findfile(config_file, vim.fn.getcwd() .. ';')
-            if path ~= '' and vim.fn.filereadable(path) == 1 then return true end
-          end
-          return false
-        end,
-      },
-      eslint_d = {
-        condition = function()
-          local config_files = {
-            '.eslintrc',
-            '.eslintrc.js',
-            '.eslintrc.cjs',
-            '.eslintrc.yaml',
-            '.eslintrc.yml',
-            '.eslintrc.json',
-            'eslint.config.js',
-            'eslint.config.mjs',
-            'eslint.config.cjs',
-            'eslint.config.ts',
-            'eslint.config.mts',
-            'eslint.config.cts',
-          }
-          for _, config_file in ipairs(config_files) do
-            if vim.fn.filereadable(vim.fn.findfile(config_file, vim.fn.getcwd() .. ';')) == 1 then return true end
-          end
-          return false
-        end,
-      },
-    },
+    -- formatters = {
+    --   biome = {
+    --     require_cwd = true,
+    --     condition = function()
+    --       local config_files = { 'biome.json', 'biome.jsonc' }
+    --       for _, config_file in ipairs(config_files) do
+    --         local path = vim.fn.findfile(config_file, vim.fn.getcwd() .. ';')
+    --         if path ~= '' and vim.fn.filereadable(path) == 1 then return true end
+    --       end
+    --       return false
+    --     end,
+    --   },
+    --   eslint_d = {
+    --     condition = function()
+    --       local config_files = {
+    --         '.eslintrc',
+    --         '.eslintrc.js',
+    --         '.eslintrc.cjs',
+    --         '.eslintrc.yaml',
+    --         '.eslintrc.yml',
+    --         '.eslintrc.json',
+    --         'eslint.config.js',
+    --         'eslint.config.mjs',
+    --         'eslint.config.cjs',
+    --         'eslint.config.ts',
+    --         'eslint.config.mts',
+    --         'eslint.config.cts',
+    --       }
+    --       for _, config_file in ipairs(config_files) do
+    --         if vim.fn.filereadable(vim.fn.findfile(config_file, vim.fn.getcwd() .. ';')) == 1 then return true end
+    --       end
+    --       return false
+    --     end,
+    --   },
+    -- },
   },
 }

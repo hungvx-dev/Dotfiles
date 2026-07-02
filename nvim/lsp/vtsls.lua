@@ -1,10 +1,12 @@
-local vue_language_server_path = vim.fn.expand("$MASON/packages") .. "/vue-language-server" .. "/node_modules/@vue/language-server"
+local vue_language_server_path = vim.fn.expand('$MASON/packages')
+  .. '/vue-language-server'
+  .. '/node_modules/@vue/language-server'
 
 local vue_plugin = {
-  name = "@vue/typescript-plugin",
+  name = '@vue/typescript-plugin',
   location = vue_language_server_path,
-  languages = { "vue" },
-  configNamespace = "typescript",
+  languages = { 'vue' },
+  configNamespace = 'typescript',
   enableForWorkspaceTypeScriptVersions = true,
 }
 
@@ -12,13 +14,13 @@ local shared_config = {
   preferences = {
     useTypeImports = true,
   },
-  updateImportsOnFileMove = { enabled = "always" },
+  updateImportsOnFileMove = { enabled = 'always' },
   suggest = { completeFunctionCalls = true },
   tsserver = {
     maxTsServerMemory = 8192,
   },
   inlayHints = {
-    parameterNames = { enabled = "all", suppressWhenArgumentMatchesName = false },
+    parameterNames = { enabled = 'all', suppressWhenArgumentMatchesName = false },
     parameterTypes = { enabled = true },
     variableTypes = { enabled = true, suppressWhenTypeMatchesName = false },
     propertyDeclarationTypes = { enabled = true },
@@ -29,14 +31,23 @@ local shared_config = {
 
 ---@type vim.lsp.Config
 return {
-  cmd = { "vtsls", "--stdio" },
-  root_markers = { "tsconfig.json", "package.json", "jsconfig.json" },
+  cmd = { 'vtsls', '--stdio' },
+  root_markers = {
+    'package-lock.json',
+    'yarn.lock',
+    'pnpm-lock.yaml',
+    'bun.lockb',
+    'bun.lock',
+  },
+  init_options = {
+    hostInfo = 'neovim',
+  },
   filetypes = {
-    "javascript",
-    "typescript",
-    "javascriptreact",
-    "typescriptreact",
-    "vue",
+    'javascript',
+    'typescript',
+    'javascriptreact',
+    'typescriptreact',
+    'vue',
   },
   single_file_support = true,
   settings = {
@@ -59,7 +70,7 @@ return {
     javascript = shared_config,
   },
   on_attach = function(client, bufnr)
-    if vim.bo[bufnr].filetype == "vue" then
+    if vim.bo[bufnr].filetype == 'vue' then
       client.server_capabilities.semanticTokensProvider.full = false
     else
       client.server_capabilities.semanticTokensProvider.full = true
