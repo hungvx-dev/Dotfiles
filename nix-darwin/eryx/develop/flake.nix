@@ -34,7 +34,7 @@
         # =========================
         dev = mkShell (with pkgs; [
           mise
-          rustup
+          # rustup
         ]);
 
         # =========================

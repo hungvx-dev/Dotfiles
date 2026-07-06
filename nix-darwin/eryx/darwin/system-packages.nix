@@ -12,13 +12,16 @@
 
     # shell utils
     neovim kitty tmux starship
-    zoxide eza dust duf tealdeer navi yazi btop
+    # ghostty
+    zoxide eza btop htop
+    # navi yazi dust duf tealdeer
 
     # search
     skim ripgrep fd bat
 
     # media
-    cmus
+    # cmus cava
+
     # tools
     lazydocker rainfrog
     # dev
