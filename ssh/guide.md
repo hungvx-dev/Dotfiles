@@ -11,7 +11,7 @@ ssh-keygen -t ed25519 -f ~/.ssh/id_ed25519 -C "example@gmail.com"
 
 ```bash
 # Need to check ssh-agent `echo "$SSH_AUTH_SOCK"` before Start the ssh-agent in the background.
-eval (ssh-agent -s)
+eval (ssh-agent -c)
 ```
 
 ## ssh-add – adds private key identities to the OpenSSH authentication agent
