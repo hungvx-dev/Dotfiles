@@ -13,6 +13,9 @@ vim.api.nvim_create_autocmd('VimEnter', {
     require('tree-sitter-manager').setup(treesitter.opts)
     require('nvim-treesitter-textobjects').setup(textobjects.opts)
 
+    local eyeliner = require('plugins.eyeliner')
+    require('eyeliner').setup(eyeliner.opts)
+
     vim.schedule(function()
       local neotree = require('plugins.neotree')
       local window_picker = require('plugins.window-picker')
@@ -111,9 +114,6 @@ vim.api.nvim_create_autocmd({ 'BufReadPost', 'BufNewFile' }, {
     vim.schedule(function()
       local dressing = require('plugins.dressing')
       require('dressing').setup(dressing.opts)
-
-      local eyeliner = require('plugins.eyeliner')
-      require('eyeliner').setup(eyeliner.opts)
 
       local bufferline = require('plugins.bufferline')
       vim.o.showtabline = 2
