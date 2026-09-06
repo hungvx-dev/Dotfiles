@@ -11,7 +11,6 @@ return {
   filetypes = { 'html' },
   root_markers = { 'package.json', '.git' },
   single_file_support = true,
-  ---@type lspconfig.settings.html
   settings = {},
   init_options = {
     provideFormatter = true,

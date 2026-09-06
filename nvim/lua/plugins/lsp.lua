@@ -11,7 +11,7 @@ return {
       'go',
       'html',
       'json',
-      'lua',
+      'lua_ls',
       'sqls',
       -- "luau",
       'nix',

@@ -28,6 +28,7 @@ local colors = {
   yellow = '#FFEA00',
   orange = '#FF6D00',
   orange_1 = '#F79009',
+  orange_2 = '#E36209',
   amber = '#f59e0b',
   teal = '#00F58F',
   teal_1 = '#4FF1AF',
@@ -178,6 +179,7 @@ vim.api.nvim_set_hl(0, '@constructor', { link = '@lsp.type.class' })
 vim.api.nvim_set_hl(0, '@property', { fg = colors.teal })
 vim.api.nvim_set_hl(0, '@variable', { fg = colors.fg })
 vim.api.nvim_set_hl(0, '@variable.member', { link = '@property' })
+vim.api.nvim_set_hl(0, '@variable.parameter', { fg = colors.orange_2 })
 vim.api.nvim_set_hl(0, '@function.builtin', { fg = colors.blue })
 
 vim.api.nvim_set_hl(0, '@tag.attribute', { fg = colors.teal_1 })
@@ -216,6 +218,8 @@ vim.api.nvim_set_hl(0, '@lsp.typemod.method.defaultLibrary', { link = '@function
 vim.api.nvim_set_hl(0, '@lsp.typemod.function.defaultLibrary', { link = '@function.builtin' })
 vim.api.nvim_set_hl(0, '@lsp.type.variable', {})
 vim.api.nvim_set_hl(0, '@lsp.type.component', { link = '@type.tsx' })
+vim.api.nvim_set_hl(0, '@lsp.type.parameter', {})
+vim.api.nvim_set_hl(0, '@lsp.type.property', {})
 --------------------------------------------------
 -- LSP KIND
 --------------------------------------------------

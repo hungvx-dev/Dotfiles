@@ -16,13 +16,13 @@ vim.api.nvim_create_autocmd('VimEnter', {
     local eyeliner = require('plugins.eyeliner')
     require('eyeliner').setup(eyeliner.opts)
 
-    vim.schedule(function()
-      local neotree = require('plugins.neotree')
-      local window_picker = require('plugins.window-picker')
-      if type(neotree.init) == 'function' then neotree.init() end
-      require('neo-tree').setup(neotree.opts)
-      require('window-picker').setup(window_picker.opts)
+    local neotree = require('plugins.neotree')
+    local window_picker = require('plugins.window-picker')
+    if type(neotree.init) == 'function' then neotree.init() end
+    require('neo-tree').setup(neotree.opts)
+    require('window-picker').setup(window_picker.opts)
 
+    vim.schedule(function()
       local mason = require('plugins.mason')
       require('mason').setup(mason.opts)
       local registry = require('mason-registry')
