@@ -1,4 +1,5 @@
 {
   "diagnostics.disable": ["different-requires",
-        "duplicate-set-field"]
+        "duplicate-set-field",
+        "param-type-mismatch"]
 }

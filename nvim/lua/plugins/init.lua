@@ -43,6 +43,10 @@ vim.api.nvim_create_autocmd('VimEnter', {
       local statuscol = require('plugins.statuscol')
       vim.cmd('packadd statuscol')
       require('statuscol').setup(statuscol.opts)
+
+      local winbar = require('plugins.winbar')
+      vim.cmd('packadd winbar')
+      require('winbar').setup(winbar.opts)
     end)
 
     local fzf = require('plugins.fzf')
