@@ -18,7 +18,6 @@
         inherit packages;
 
         shellHook = ''
-          # ensure fish shell (only once)
           if [ -z "$IN_NIX_SHELL_FISH" ]; then
             export IN_NIX_SHELL_FISH=1
             exec fish
@@ -29,19 +28,11 @@
     in
     {
       devShells.${system} = {
-        # =========================
-        # 🧩 Project environment
-        # =========================
         dev = mkShell (with pkgs; [
           mise
-          # rustup
         ]);
 
-        # =========================
-        # 🛠️ Tools environment
-        # =========================
         tools = mkShell (with pkgs; [
-          # CLI tools
           tree-sitter
         ]);
       };
