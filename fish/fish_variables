@@ -1,7 +1,7 @@
 # This file contains fish universal variable definitions.
 # VERSION: 3.0
 SETUVAR --export EDITOR:nvim\x20\x2df
-SETUVAR --export _ZO_DATA_DIR:/Users/hungvx\x2edev/Dev/Dotfiles/zoxide
+SETUVAR --export _ZO_DATA_DIR:/Users/eryx/Dev/Dotfiles/zoxide
 SETUVAR --export _ZO_ECHO:1
 SETUVAR --export _ZO_RESOLVE_SYMLINKS:1
 SETUVAR __fish_initialized:4300
