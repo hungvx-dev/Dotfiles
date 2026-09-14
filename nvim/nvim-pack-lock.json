@@ -116,7 +116,7 @@
       "src": "https://github.com/nvim-lua/plenary.nvim"
     },
     "sqls.nvim": {
-      "rev": "45e2ea8a684a9a194e8adbde77a02e7ac77f6d4e",
+      "rev": "332caa9ab86af1a00259feb01051ea825e8fc461",
       "src": "https://github.com/nanotee/sqls.nvim"
     },
     "todo-comments.nvim": {

@@ -2,3 +2,7 @@
 bun = "latest"
 node = "latest"
 pnpm = "latest"
+go = "latest"
+
+[settings]
+experimental = true
