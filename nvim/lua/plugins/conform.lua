@@ -1,6 +1,4 @@
 local function js_formatter(bufnr)
-  -- print(require("conform").get_formatter_info("prettierd", bufnr).available, 'pre')
-  -- print(require("conform").get_formatter_info("oxfmt", bufnr).available, 'ox')
   -- if require('conform').get_formatter_info('biome', bufnr).available then
   --   return { 'biome' }
   -- elseif require('conform').get_formatter_info('oxfmt', bufnr).available then

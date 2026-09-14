@@ -18,7 +18,8 @@ local ensure_installed = {
   'nil',
   'dockerfile-language-server',
   'docker-compose-language-service',
-  'postgres-language-server',
+  -- 'postgres-language-server',
+  'gh-actions-language-server',
   'luau-lsp',
   'prisma-language-server',
   'eslint-lsp', -- For js

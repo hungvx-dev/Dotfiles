@@ -12,6 +12,7 @@
 
 ---@type vim.lsp.Config
 return {
+  -- cmd = { 'sqls', '-config', '~/dev/postgresql/config.yml' },
   cmd = { 'sqls' },
   filetypes = { 'sql', 'mysql' },
   root_markers = { 'config.yml' },
@@ -24,12 +25,10 @@ return {
         -- },
         {
           driver = 'postgresql',
-          dataSourceName = 'host=localhost port=5432 user=saas_mise password=saas_mise dbname=mise sslmode=disable',
+          dataSourceName = 'host=localhost port=5432 user=postgres password=secretpassword dbname=testdb sslmode=disable',
         },
       },
     },
   },
-  on_attach = function(client, bufnr)
-    require('sqls').on_attach(client, bufnr) -- require sqls.nvim
-  end,
+  on_attach = function(client, bufnr) require('sqls').on_attach(client, bufnr) end,
 }

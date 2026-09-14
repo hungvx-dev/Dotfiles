@@ -19,7 +19,6 @@ return {
       'rust',
       'tailwindcss',
       "vtsls",
-      -- 'tsgo',
       -- "typescript",
       'vue',
       'yaml',

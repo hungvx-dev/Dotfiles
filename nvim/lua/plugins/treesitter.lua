@@ -16,9 +16,9 @@ return {
       'vue',
       'yaml',
       'sql',
-      -- "markdown",
-      -- "markdown_inline",
-      'hurl',
+      "markdown",
+      "markdown_inline",
+      -- 'hurl',
       'gitignore',
       'dockerfile',
 
@@ -31,9 +31,7 @@ return {
       'gowork',
       'gosum',
 
-      -- rust
       'rust',
-      -- "ron",
       'prisma',
     },
     auto_install = true,
