@@ -15,7 +15,7 @@
       "yaak"
       # "discord"
       # "zoom"
-      # "monitorcontrol"
+      "monitorcontrol"
       # "betterdisplay"
       # "obsidian"
       # "claude-code"
