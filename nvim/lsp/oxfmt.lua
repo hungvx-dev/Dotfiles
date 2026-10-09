@@ -10,7 +10,7 @@ local function root_markers_with_field(root_files, new_names, field, fname, matc
     or function(line)
       to_find = vim.iter(to_find):filter(function(s) return not line:find(s) end):totable()
       if #to_find == 0 then
-        to_find = vim.deepcopy(files)
+        to_find = vim.deepcopy(fields)
         return true
       end
       return false
@@ -61,8 +61,8 @@ return {
     'less',
     'graphql',
     'markdown',
+    'svelte',
   },
-  workspace_required = true,
   root_dir = function(bufnr, on_dir)
     local fname = vim.api.nvim_buf_get_name(bufnr)
 

@@ -2,11 +2,10 @@
 return {
   cmd = { 'cssmodules-language-server' },
   filetypes = {
-    'javascript',
+    -- 'javascript',
     'javascriptreact',
-    'typescript',
+    -- 'typescript',
     'typescriptreact',
-    'vue',
   },
   root_markers = { 'package.json' },
 }

@@ -1,30 +1,24 @@
 local ensure_installed = {
   -- LSP
-  'vtsls',
-  'tsgo',
-  'vue-language-server',
-  'json-lsp',
-  'html-lsp',
-  'emmet-language-server',
+  'clangd',
   'css-lsp',
   'cssmodules-language-server',
-  'tailwindcss-language-server',
-  'lua-language-server',
-  'typescript-language-server',
-  'yaml-language-server',
-  'clangd',
-  'gopls',
-  'rust-analyzer',
-  'nil',
-  'dockerfile-language-server',
   'docker-compose-language-service',
-  -- 'postgres-language-server',
+  'docker-language-server',
+  'emmet-language-server',
+  'emmylua_ls',
   'gh-actions-language-server',
-  'luau-lsp',
+  'gopls',
+  'html-lsp',
+  'json-lsp',
+  'nil',
   'prisma-language-server',
-  'eslint-lsp', -- For js
+  'rust-glancer',
   'sqls',
-  -- "oxc_language_server",
+  'tailwindcss-language-server',
+  'tsc',
+  'vue-language-server',
+  'yaml-language-server',
 
   -- For Formatter
   'stylua', -- For lua
@@ -35,16 +29,15 @@ local ensure_installed = {
   -- "google-java-format", -- For java
   'goimports', -- For go
   'gofumpt', -- For go
-  'yamllint',
+  'oxfmt',
 
   -- For Linter
-  'typos-lsp',
-  'eslint_d', -- For js
-  'hadolint', -- For docker
   'oxlint',
-  'oxfmt',
-  'biome',
-  'selene',
+  -- 'typos-lsp',
+  -- 'eslint_d', -- For js
+  'hadolint', -- For docker
+  -- 'biome',
+  -- 'selene',
   -- "stylelint",
 
   -- For Code action

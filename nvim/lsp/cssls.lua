@@ -9,21 +9,12 @@ return {
     return vim.lsp.rpc.start({ cmd, '--stdio' }, dispatchers)
   end,
   filetypes = { 'css', 'scss', 'less' },
+  init_options = { provideFormatter = true }, -- needed to enable formatting capabilities
   root_markers = { 'package.json', '.git' },
-  init_options = { provideFormatter = true },
   settings = {
     css = { validate = true },
     scss = { validate = true },
     less = { validate = true },
-  },
-  capabilities = {
-    textDocument = {
-      completion = {
-        completionItem = {
-          snippetSupport = true,
-        },
-      },
-    },
   },
   on_attach = function(client)
     if vim.bo.filetype == 'scss' then

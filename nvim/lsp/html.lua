@@ -1,3 +1,13 @@
+--- ```lua
+--- --Enable (broadcasting) snippet capability for completion
+--- local capabilities = vim.lsp.protocol.make_client_capabilities()
+--- capabilities.textDocument.completion.completionItem.snippetSupport = true
+---
+--- vim.lsp.config('html', {
+---   capabilities = capabilities,
+--- })
+--- ```
+
 ---@type vim.lsp.Config
 return {
   cmd = function(dispatchers, config)
@@ -10,11 +20,11 @@ return {
   end,
   filetypes = { 'html' },
   root_markers = { 'package.json', '.git' },
-  single_file_support = true,
   settings = {},
   init_options = {
     provideFormatter = true,
     embeddedLanguages = { css = true, javascript = true },
     configurationSection = { 'html', 'css', 'javascript' },
   },
+  single_file_support = true,
 }

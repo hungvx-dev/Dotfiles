@@ -1,9 +1,45 @@
+local function root_markers_with_field(root_files, new_names, field, fname, match_mode)
+  local path = vim.fn.fnamemodify(fname, ':h')
+  local found = vim.fs.find(new_names, { path = path, upward = true, type = 'file' })
+  local fields = type(field) == 'string' and { field } or field
+  local to_find = vim.deepcopy(fields)
+  local matcher = (match_mode or 'any') == 'any'
+      and function(line)
+        return vim.iter(fields):any(function(s) return line:find(s) end)
+      end
+    or function(line)
+      to_find = vim.iter(to_find):filter(function(s) return not line:find(s) end):totable()
+      if #to_find == 0 then
+        to_find = vim.deepcopy(fields)
+        return true
+      end
+      return false
+    end
+  for _, f in ipairs(found or {}) do
+    -- Match the given `field`.
+    local file = assert(io.open(f, 'r'))
+    for line in file:lines() do
+      if matcher(line) then
+        root_files[#root_files + 1] = vim.fs.basename(f)
+        break
+      end
+    end
+    file:close()
+  end
+
+  return root_files
+end
+
 local function oxlint_conf_mentions_typescript(root_dir)
   local fn = vim.fs.joinpath(root_dir, '.oxlintrc.json')
   for line in io.lines(fn) do
     if line:find('typescript') then return true end
   end
   return false
+end
+
+local function insert_package_json(root_files, field, fname)
+  return root_markers_with_field(root_files, { 'package.json', 'package.json5' }, field, fname)
 end
 
 ---@type vim.lsp.Config
@@ -22,9 +58,21 @@ return {
     'typescript',
     'typescriptreact',
     'vue',
+    'svelte',
+    'astro',
   },
-  root_markers = { '.oxlintrc.json', 'oxlint.config.ts' },
-  workspace_required = true,
+  root_dir = function(bufnr, on_dir)
+    local fname = vim.api.nvim_buf_get_name(bufnr)
+
+    local root_markers = insert_package_json(
+      { '.oxlintrc.json', '.oxlintrc.jsonc', 'oxlint.config.ts' },
+      { 'oxlint', 'vite%-plus' },
+      fname
+    )
+    -- find vite plus config with lint field
+    root_markers = root_markers_with_field(root_markers, { 'vite.config.ts' }, { 'vite%-plus', 'lint:' }, fname, 'all')
+    on_dir(vim.fs.dirname(vim.fs.find(root_markers, { path = fname, upward = true })[1]))
+  end,
   on_attach = function(client, bufnr)
     vim.api.nvim_buf_create_user_command(
       bufnr,
@@ -46,7 +94,7 @@ return {
     -- configPath = nil,
     -- tsConfigPath = nil,
     -- unusedDisableDirectives = 'allow',
-    -- typeAware = true,
+    -- typeAware = false,
     -- disableNestedConfig = false,
     -- fixKind = 'safe_fix',
   },
