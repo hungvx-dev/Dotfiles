@@ -3,6 +3,7 @@ bun = "latest"
 node = "latest"
 pnpm = "latest"
 go = "latest"
+rust = "latest"
 
 [settings]
 experimental = true
