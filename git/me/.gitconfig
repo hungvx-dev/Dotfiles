@@ -25,8 +25,8 @@
   tool = nvim
   conflictstyle = diff3
 
-[web]
-  browser = google-chrome
+; [web]
+;   browser = google-chrome
 
 [interactive]
   diffFilter = delta --color-only --features=interactive

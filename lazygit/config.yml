@@ -10,8 +10,6 @@ gui:
       - "#0089fc"
     selectedLineBgColor:
       - "#1d293d"
-    selectedRangeBgColor:
-      - "#1d293d"
     cherryPickedCommitBgColor:
       - "#94e2d5"
     cherryPickedCommitFgColor:
@@ -30,7 +28,6 @@ git:
       # useConfig: true
   commit:
     signOff: false
-    verbose: false
   branchLogCmd: "git log --graph --stat --oneline --color=always --decorate --pretty=format:'%Cblue %h %C(bold red)- <%an> -%C(green) (%ar)%C(auto)%d%n%C(yellow) %s'"
   diffContextSize: 3
   allBranchesLogCmds:
