@@ -2,8 +2,10 @@
 {
   homebrew = {
     enable = true;
-    taps = [];
-    # brews = [ "git-graph" "opencode" ];
+    taps = [ "cloaky233/tap" ];
+    brews = [
+      "siltop"
+    ];
     casks = [
       "openkey"
       "figma"
