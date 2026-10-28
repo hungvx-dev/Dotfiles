@@ -156,7 +156,7 @@ local function update_winbar(winnr, bufnr, prev_text_length, prev_w)
   if not cached or cached.entries_text_length ~= entries_text_length then
     local text = M.get_winbar(entries)
     result_cache[bufnr][winnr] = { entries_text_length = entries_text_length, text = text, prev_w = win_w }
-    vim.wo[winnr].winbar = text
+    vim.api.nvim_set_option_value('winbar', text, { scope = 'local', win = winnr })
   end
 end
 

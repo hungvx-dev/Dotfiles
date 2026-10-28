@@ -1,3 +1,4 @@
+---@diagnostic disable: unresolved-require
 local source_mapping = {
   LSP = HVIM.icons.Cmp.Lsp,
   Path = HVIM.icons.Cmp.Path,

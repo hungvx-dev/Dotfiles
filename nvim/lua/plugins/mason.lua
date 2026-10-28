@@ -5,6 +5,7 @@ local ensure_installed = {
   'cssmodules-language-server',
   'docker-compose-language-service',
   'docker-language-server',
+  'dockerfile-language-server',
   'emmet-language-server',
   'emmylua_ls',
   'gh-actions-language-server',
@@ -17,6 +18,7 @@ local ensure_installed = {
   'sqls',
   'tailwindcss-language-server',
   'tsc',
+  'vtsls',
   'vue-language-server',
   'yaml-language-server',
 

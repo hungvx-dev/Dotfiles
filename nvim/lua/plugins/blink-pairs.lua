@@ -16,10 +16,13 @@ return {
         'BlinkPairsCyan',
         'BlinkPairsViolet',
       },
+      -- separate = { '<' },
       matchparen = {
         enabled = true,
         cmdline = false,
+        include_surrounding = false,
         group = 'MatchParen',
+        priority = 250,
       },
     },
     debug = false,

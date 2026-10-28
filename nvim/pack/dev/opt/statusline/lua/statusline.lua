@@ -25,6 +25,7 @@ function M.setup()
   vim.o.laststatus = vim.g.st_laststatus or 3
 
   M.extensions = {
+    [''] = Extension.empty,
     ['fzf'] = Extension.fzf.active,
     ['lazy'] = Extension.lazy.active,
     ['mason'] = Extension.mason.active,

@@ -1,6 +1,6 @@
 local api = vim.api
 local lsp = vim.lsp
-local util = vim.lsp.util
+local util = lsp.util
 local validate = vim.validate
 local M = {}
 

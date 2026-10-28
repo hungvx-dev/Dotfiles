@@ -1,73 +1,46 @@
+---@diagnostic disable: unnecessary-if, unresolved-require, deprecated
 local diagnostics = require('lsp.diagnostics')
 local lsp_buf = require('lsp.lsp-buf')
+local fzf = require('fzf-lua')
+
+local function lsp_references()
+  lsp_buf.references({
+    reuse_win = true,
+    on_list = function(items) fzf.lsp_references({ items = items }) end,
+  })
+end
+
+local function lsp_definition()
+  lsp_buf.definition({
+    reuse_win = true,
+    on_list = fzf.lsp_definitions,
+  })
+end
+
+local function lsp_implementations()
+  lsp_buf.implementation({
+    reuse_win = true,
+    on_list = fzf.lsp_implementations,
+  })
+end
+
+local function lsp_typedefs()
+  lsp_buf.type_definition({
+    reuse_win = true,
+    on_list = fzf.lsp_typedefs,
+  })
+end
 
 local M = {}
 local map = vim.keymap.set
 
---- @param client vim.lsp.Client
---- @param buf integer
 function M.keymaps(client, buf)
   local opts = { buffer = buf, noremap = true }
 
-  map('n', 'grr', function()
-    lsp_buf.references({
-      reuse_win = true,
-      on_list = function(items)
-        if HVIM.plugins.fzf then
-          local fzf = require('fzf-lua')
-          fzf.lsp_references({ items = items })
-        elseif HVIM.plugins.telescope then
-          local builtin = require('telescope.builtin')
-          builtin.lsp_references()
-        end
-      end,
-    })
-  end, opts)
-
-  map('n', 'gd', function()
-    lsp_buf.definition({
-      reuse_win = true,
-      on_list = function()
-        if HVIM.plugins.fzf then
-          local fzf = require('fzf-lua')
-          fzf.lsp_definitions()
-        elseif HVIM.plugins.telescope then
-          local builtin = require('telescope.builtin')
-          builtin.lsp_definitions()
-        end
-      end,
-    })
-  end, opts)
-
-  map('n', 'gi', function()
-    lsp_buf.implementation({
-      reuse_win = true,
-      on_list = function()
-        if HVIM.plugins.fzf then
-          local fzf = require('fzf-lua')
-          fzf.lsp_implementations()
-        elseif HVIM.plugins.telescope then
-          local builtin = require('telescope.builtin')
-          builtin.lsp_implementations()
-        end
-      end,
-    })
-  end, opts)
-
-  map('n', 'gt', function()
-    lsp_buf.type_definition({
-      reuse_win = true,
-      on_list = function()
-        if HVIM.plugins.fzf then
-          local fzf = require('fzf-lua')
-          fzf.lsp_typedefs()
-        elseif HVIM.plugins.telescope then
-          local builtin = require('telescope.builtin')
-          builtin.type_definition()
-        end
-      end,
-    })
-  end, opts)
+  map('n', 'grr', lsp_references, opts)
+  map('n', 'gd', lsp_definition, opts)
+  map('n', 'gi', lsp_implementations, opts)
+  map('n', 'gt', lsp_typedefs, opts)
   map({ 'n', 'v' }, 'ga', vim.lsp.buf.code_action, opts)
   map('n', 'gD', vim.lsp.buf.declaration, opts)
 
@@ -82,22 +55,18 @@ function M.keymaps(client, buf)
   end
 end
 
---- @return lsp.ClientCapabilities
-local function capabilities()
-  local has_lsp_file, lsp_file = pcall(require, 'lsp-file-operations')
-  return vim.tbl_deep_extend(
-    'force',
-    vim.lsp.protocol.make_client_capabilities(),
-    has_lsp_file and lsp_file.default_capabilities() or {}
-  )
-end
-
 function M.setup(opts)
   M.opts = opts
   diagnostics.config_diagnostic(opts.diagnostic)
 
+  local lsp_file = require('lsp-file-operations')
+
   vim.lsp.config('*', {
-    capabilities = capabilities(),
+    capabilities = vim.tbl_deep_extend(
+      'force',
+      vim.lsp.protocol.make_client_capabilities(),
+      lsp_file.default_capabilities()
+    ),
   })
 
   vim.api.nvim_create_autocmd('LspAttach', {

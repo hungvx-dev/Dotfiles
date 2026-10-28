@@ -16,6 +16,9 @@ end
 return {
   settings = {
     ['js/ts'] = {
+      preferences = {
+        preferTypeOnlyAutoImports = 'explicit',
+      },
       inlayHints = {
         parameterNames = {
           enabled = 'literals',

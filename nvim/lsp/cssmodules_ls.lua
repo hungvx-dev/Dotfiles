@@ -3,9 +3,9 @@ return {
   cmd = { 'cssmodules-language-server' },
   filetypes = {
     -- 'javascript',
-    'javascriptreact',
+    -- 'javascriptreact',
     -- 'typescript',
-    'typescriptreact',
+    -- 'typescriptreact',
   },
   root_markers = { 'package.json' },
 }

@@ -24,7 +24,7 @@ vim.wo.smoothscroll = true
 vim.opt.scrolloff = 2             -- Number of screen lines to show around the cursor
 vim.opt.sidescrolloff = 8
 vim.wo.list = true
-vim.opt.listchars = { extends = "⟶", nbsp = " ", eol = "⏎", trail = "·" }
+vim.opt.listchars:append({ extends = '⟶', nbsp = ' ', eol = '⏎', trail = '·', tab = '  ' })
 
 -- #================== 5. Syntax, highlighting and spelling ===================#
 vim.opt.termguicolors = true      -- Use GUI colors for the terminal
