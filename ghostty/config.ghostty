@@ -1,0 +1,32 @@
+theme = tokyo
+background = #000000
+background-opacity = 0.6
+background-blur = macos-glass-regular
+#background-opacity-cells = true
+
+# minimum-contrast = 1.1
+window-padding-balance = true
+
+font-size = 17
+font-family = "JetBrains Mono"
+#font-family = "JetBrainsMono Nerd Font Mono"
+#font-family = "Iosevka Nerd Font"
+#font-family = "Iosevka Nerd Font Mono"
+font-style = "Light"
+font-style-bold = "SemiBold"
+font-style-italic = "Light Italic"
+font-style-bold-italic = "SemiBold Italic"
+
+adjust-underline-position = 2
+adjust-cell-height = 20
+adjust-cursor-height = 20
+
+custom-shader = shaders/cursor_tail_blur.glsl
+custom-shader-animation = always
+
+macos-titlebar-style = hidden
+macos-window-shadow = false
+copy-on-select = clipboard
+
+shell-integration = fish
+shell-integration-features = no-cursor

@@ -12,7 +12,7 @@
 
     # shell utils
     neovim kitty tmux starship
-    # ghostty
+    ghostty-bin
     zoxide eza btop htop
     # navi yazi dust duf tealdeer
 
