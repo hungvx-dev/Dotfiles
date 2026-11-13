@@ -2,6 +2,8 @@ return {
   init = function()
     vim.g.loaded_netrw = 1
     vim.g.loaded_netrwPlugin = 1
+    vim.g.netrw_keepdir = 0
+    -- vim.g.netrw_localcopydircmd = "cp -r"
     vim.api.nvim_create_autocmd("BufEnter", {
       group = vim.api.nvim_create_augroup("Neotree_start_directory", { clear = true }),
       desc = "Start Neo-tree with directory",
@@ -38,8 +40,8 @@ return {
     default_component_configs = {
       indent = {
         with_expanders = nil,
-        expander_collapsed = HVIM.icons.UI.Direction.MD.Right,
-        expander_expanded = HVIM.icons.UI.Direction.MD.Down,
+        expander_collapsed = HVIM.icons.UI.Direction.COD.Right,
+        expander_expanded = HVIM.icons.UI.Direction.COD.Down,
       },
       icon = {
         folder_closed = HVIM.icons.UI.Folder.Close,

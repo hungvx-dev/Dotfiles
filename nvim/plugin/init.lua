@@ -13,6 +13,7 @@ vim.pack.add({
   { src = 'https://github.com/jinh0/eyeliner.nvim' },
   { src = 'https://github.com/ibhagwan/fzf-lua' },
   { src = 'https://github.com/lewis6991/gitsigns.nvim', version = vim.version.range('*') },
+  { src = 'https://github.com/rachartier/tiny-cmdline.nvim' },
 
   -- Coding
   { src = 'https://github.com/mason-org/mason.nvim' },

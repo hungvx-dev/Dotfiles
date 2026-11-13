@@ -115,6 +115,10 @@
       "rev": "332caa9ab86af1a00259feb01051ea825e8fc461",
       "src": "https://github.com/nanotee/sqls.nvim"
     },
+    "tiny-cmdline.nvim": {
+      "rev": "ac9c6557c66da6308eb523643df8778f3cbe652f",
+      "src": "https://github.com/rachartier/tiny-cmdline.nvim"
+    },
     "todo-comments.nvim": {
       "rev": "31e3c38ce9b29781e4422fc0322eb0a21f4e8668",
       "src": "https://github.com/folke/todo-comments.nvim"
