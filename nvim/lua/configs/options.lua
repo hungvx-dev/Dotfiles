@@ -1,7 +1,6 @@
 -- #================ 2. Moving around, searching and patterns =================#
 vim.opt.ignorecase = true         -- Ignore case when using a search pattern
 vim.opt.smartcase = true
-vim.opt.whichwrap:append("hl")
 
 -- #=========================== 4. Displaying text =============================#
 vim.wo.wrap = true                -- Long lines wrap
@@ -14,24 +13,24 @@ vim.opt.fillchars:append({
   eob = " ",
   fold = " ",
   lastline = " ",
+  diff = "╱"
   -- foldopen = "",
   -- foldclose = "╰",
   -- foldsep = "│",
 })
-vim.wo.conceallevel = 2           -- Controls whether concealable text is hidden
+-- vim.wo.conceallevel = 2           -- Controls whether concealable text is hidden
 -- vim.wo.scroll = 10
-vim.wo.smoothscroll = true
-vim.opt.scrolloff = 2             -- Number of screen lines to show around the cursor
+vim.opt.scrolloff = 3             -- Number of screen lines to show around the cursor
 vim.opt.sidescrolloff = 8
 vim.wo.list = true
 vim.opt.listchars:append({ extends = '⟶', nbsp = ' ', eol = '⏎', trail = '·', tab = '  ' })
 
 -- #================== 5. Syntax, highlighting and spelling ===================#
 vim.opt.termguicolors = true      -- Use GUI colors for the terminal
-vim.opt.cmdheight = 1             -- Number of lines used for the command-line
-vim.opt.spell = false
-vim.opt.spelllang = { "en_us" }
-vim.opt.spelloptions = { "camel" }
+vim.opt.cmdheight = 0             -- Number of lines used for the command-line
+-- vim.opt.spell = false
+-- vim.opt.spelllang = { "en_us" }
+-- vim.opt.spelloptions = { "camel" }
 vim.wo.cursorline = true          -- Highlight the screen line of the cursor
 vim.wo.cursorlineopt = "number"   -- Specifies which area 'cursorline' highlights
 
@@ -47,8 +46,7 @@ vim.o.winborder = "rounded"
 --
 -- #========================= 10. Messages and info ===========================#
 vim.opt.showmode = false
--- vim.opt.shortmess:append('I')
-vim.opt.shortmess:remove('l')
+-- vim.opt.shortmess:remove('l')
 -- vim.opt.shortmess:append({ W = true, I = true, c = true, C = true })
 -- vim.opt.shortmess:append("I")
 -- vim.opt.shortmess:append("s")
@@ -61,6 +59,10 @@ vim.opt.clipboard:append("unnamedplus") -- Synchronizes the system clipboard wit
 -- vim.opt.pumblend = 0             -- Transparent of Popup
 vim.opt.pumheight = 15            -- Maximum height of the popup menu
 vim.opt.undofile = true           -- Automatically save and restore undo history
+vim.opt.writebackup = false       -- Don't create backup before writing
+vim.opt.swapfile = false          -- Don't create swap files
+vim.opt.undofile = true           -- Persistent undo
+vim.opt.undodir = vim.fn.expand("~/.cache/nvim/undodir") -- Undo directory
 
 -- #========================= 13. Tabs and indenting ==========================#
 vim.opt.tabstop = 2               -- *Number of spaces a <Tab> in the text stands for
@@ -74,7 +76,6 @@ vim.bo.softtabstop = 2            -- -If non-zero, number of spaces to insert fo
 vim.wo.foldenable = true          -- *Unset to display all folds open
 vim.wo.foldcolumn = "1"           -- Width of the column used to indicate folds
 vim.wo.foldlevel = 99             -- Folds with a level higher than this number will be closed
-vim.opt.foldlevelstart = 99       -- Value for 'foldlevel' when starting to edit a file
 vim.o.foldtext = "v:lua.Custom_foldtext()"
 vim.o.foldmethod = "expr"         -- Folding type: "manual", "indent", "expr", "marker", "syntax" or "diff"
 vim.o.foldexpr = "v:lua.vim.treesitter.foldexpr()"
@@ -82,6 +83,7 @@ vim.o.foldexpr = "v:lua.vim.treesitter.foldexpr()"
 -- #============================== 16. Mapping ================================#
 vim.opt.updatetime = 300          -- Default: 1000 Update neovim screen
 vim.opt.timeoutlen = 500          --	Time in milliseconds to wait for a mapped sequence to complete.
+vim.opt.ttimeoutlen = 0 -- Key code timeout
 
 -- #======================== 19. Command line editing =========================#
 vim.opt.wildmode = "longest:full,full"
@@ -89,11 +91,16 @@ vim.opt.wildmode = "longest:full,full"
 -- #============================== 24. various ================================#
 vim.wo.signcolumn = "yes:1"       -- Always show sign column
 -- vim.wo.signcolumn = "no"       -- Always show sign column
-vim.opt.virtualedit = "block"     -- When to use virtual editing: "block", "insert", "all"
 -- vim.bo.buftype = "nofile"         -- Empty, "nofile", "nowrite", "quickfix", etc.: type of buffer
 -- vim.bo.bufhidden = "wipe"       -- What happens with a buffer when it's no longer in a window
+
+
+vim.opt.completeopt = "menuone,noinsert,noselect" -- Completion options
 
 vim.opt.guicursor:append(
   "a:blinkwait700-blinkoff400-blinkon250-Cursor/lCursor,sm:block-blinkwait175-blinkoff150-blinkon175"
 )
 vim.opt.inccommand = "split"
+
+-- vim.opt.wildignore:append({ "*.o", "*.obj", "*.pyc", "*.class", "*.jar" })
+-- vim.opt.iskeyword:append("-") -- Treat dash as part of word

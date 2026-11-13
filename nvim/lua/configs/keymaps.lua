@@ -7,10 +7,10 @@ setKeyMap('v', '>', '>gv', { desc = 'Indent and keep selection' })
 setKeyMap('v', '<C-j>', ":m '>+1<cr>gv=gv", { desc = 'moves lines down in visual selection' })
 setKeyMap('v', '<C-k>', ":m '<-2<cr>gv=gv", { desc = 'moves lines up in visual selection' })
 
-setKeyMap('n', 'H', '^')
-setKeyMap('n', 'L', '$')
-setKeyMap('v', 'H', '^')
-setKeyMap('v', 'L', '$')
+-- setKeyMap('n', 'H', '^')
+-- setKeyMap('n', 'L', '$')
+-- setKeyMap('v', 'H', '^')
+-- setKeyMap('v', 'L', '$')
 
 -- setKeyMap("n", "j", "v:count == 0 ? 'gj' : 'j'", { expr = true, silent = true })
 -- setKeyMap("n", "k", "v:count == 0 ? 'gk' : 'k'", { expr = true, silent = true })
@@ -19,7 +19,7 @@ setKeyMap('v', 'L', '$')
 setKeyMap('v', 'p', '"_dP')
 
 -- Cancel search highlighting with ESC
-setKeyMap('n', '<leader><cr>', ':nohlsearch<Bar>:echo<cr>')
+  setKeyMap('n', '<leader><cr>', ':nohlsearch<Bar>:echo<cr>')
 
 -- ReSizing panes
 setKeyMap('n', '<leader>=', ':vertical resize +4<cr>', slient)
