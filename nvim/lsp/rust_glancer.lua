@@ -13,6 +13,11 @@
 return {
   cmd = { 'rust-glancer', 'lsp' },
   filetypes = { 'rust' },
+  init_options = {
+    diagnostics = {
+      onStartup = true,
+    },
+  },
   -- rust-glancer rejects a Cargo workspace root that lies outside the LSP
   -- workspace folder it was given (see `is_workspace_root_allowed` in its
   -- source). The nearest-`Cargo.toml` default would land on a member crate's

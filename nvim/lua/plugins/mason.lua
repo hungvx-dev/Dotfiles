@@ -15,6 +15,7 @@ local ensure_installed = {
   'nil',
   'prisma-language-server',
   'rust-glancer',
+  'rust-analyzer',
   'sqls',
   'tailwindcss-language-server',
   'tsc',
