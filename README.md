@@ -65,55 +65,117 @@
 
 ## Installing
 
-> ⚠️ All tools and applications in this setup are installed and managed via [Nix](https://nixos.org).
-> Make sure you have Nix installed before proceeding.
+> ⚠️ This configuration is designed for macOS and uses [Nix](https://nixos.org) and [nix-darwin](https://github.com/nix-darwin/nix-darwin) to manage system packages, tools, and applications.
 
-1. **Install Nix**
-   To download the Nix package manager
+### 1. Install Xcode Command Line Tools
+
+Install Apple's Command Line Tools, which provide Git and other essential development utilities.
+
+```sh
+xcode-select --install
+```
+
+Verify the installation:
+
+```sh
+git --version
+```
+
+### 2. Install Nix
+
+Install Nix using the official installer:
 
 ```sh
 sh <(curl --proto '=https' --tlsv1.2 -L https://nixos.org/nix/install)
 ```
 
-2. **Clone my repo**
-   To download my configuration
+Restart your terminal after installation and verify:
 
 ```sh
-nix-shell -p git --run "git clone git@github.com:hungvx-dev/Dotfiles.git ~/dev/dotfiles"
+nix --version
 ```
 
-3. **Apply configuration**
-   To install tools and applications
+### 3. Clone dotfiles
+
+Download the configuration repository:
 
 ```sh
-nix run nix-darwin --extra-experimental-features "nix-command flakes" -- switch --flake ~/dev/dotfiles/nix-darwin/eryx#dev
+git clone git@github.com:hungvx-dev/Dotfiles.git ~/dev/dotfiles
 ```
 
-## Add configuration
+> **Note:** The SSH URL requires a configured GitHub SSH key. Alternatively, use HTTPS:
+
+```sh
+git clone https://github.com/hungvx-dev/Dotfiles.git ~/dev/dotfiles
+```
+
+### 4. Bootstrap nix-darwin
+
+Install and activate the nix-darwin configuration:
+
+```sh
+sudo nix --extra-experimental-features "nix-command flakes" run \
+  github:nix-darwin/nix-darwin#darwin-rebuild -- \
+  switch --flake ~/dev/dotfiles/nix-darwin/eryx#dev
+```
+
+This command bootstraps nix-darwin and activates the `dev` system configuration.
+
+After the first successful activation, rebuild using:
+
+```sh
+sudo darwin-rebuild switch --flake ~/dev/dotfiles/nix-darwin/eryx#dev
+```
+
+### 5. Link dotfiles
+
+Use GNU Stow to create symlinks for your configuration files:
 
 ```sh
 cd ~/dev/dotfiles
-stow .
+
+# Preview changes
+stow -nvt "$HOME" .
+
+# Apply configuration
+stow -vt "$HOME" .
 ```
 
-### Configuration shell (fish)
+> **Note:** This assumes the repository root is organized as a Stow package. Review the preview before applying to avoid conflicts with existing files.
 
-- Set default shell
+## Shell configuration (Fish)
+
+### Set Fish as the default shell
+
+After nix-darwin has installed Fish, register it in `/etc/shells` and set it as the default shell:
 
 ```sh
-echo $(which fish) | sudo tee -a /etc/shells
-chsh -s $(which fish)
+fish_path="$(command -v fish)"
 
+grep -qxF "$fish_path" /etc/shells || \
+  echo "$fish_path" | sudo tee -a /etc/shells
+
+chsh -s "$fish_path"
 ```
 
-- Install fisher (Optional)
+Restart your terminal or log out and log back in to use Fish.
 
-```sh
-curl -sL https://raw.githubusercontent.com/jorgebucaran/fisher/main/functions/fisher.fish | source && fisher install jorgebucaran/fisher
+### Install Fisher (Optional)
 
+[Fisher](https://github.com/jorgebucaran/fisher) is a plugin manager for Fish.
+
+Run the following commands inside Fish:
+
+```fish
+curl -sL https://raw.githubusercontent.com/jorgebucaran/fisher/main/functions/fisher.fish | source
+fisher install jorgebucaran/fisher
+```
+
+Install the optional Zoxide integration:
+
+```fish
 fisher install kidonng/zoxide.fish
 ```
-
 ### Configuration git + ssh
 
 - Git
@@ -132,18 +194,80 @@ ln -s $(pwd)/ssh/config ~/.ssh/config
 
 - [Setup ssh](./ssh/guide.md)
 
-### Configuration neovim
+## Editor Setup
 
-```sh
-# nix-shell -p nodejs_22 cargo
-neovim
+### 1. Enter development environments
+
+Enter both development shells:
+
+```fish
+dev
+tools
 ```
 
-In neovim Run `:Mason` command and install LSPs
+- `dev` provides Mise and the development runtimes.
+- `tools` provides Tree-sitter CLI and other system utilities.
 
-# 📖 Usage Guide
+### 2. Install development tools with Mise
 
-Here are some notes on how I use my daily tools:
+Mise manages the runtimes and toolchains required by the Neovim environment.
+
+Tool versions are defined in `mise/config.toml`:
+
+```toml
+[tools]
+bun = "latest"
+node = "latest"
+pnpm = "latest"
+go = "latest"
+rust = "latest"
+uv = "latest"
+
+[settings]
+experimental = true
+```
+
+Install all configured tools:
+
+```sh
+mise install
+```
+
+Verify installed tools:
+
+```sh
+mise ls
+```
+
+### 3. Install Neovim LSP servers
+
+Start Neovim:
+
+```sh
+nvim
+```
+
+Open Mason:
+
+```vim
+:Mason
+```
+
+Install the required LSP servers, formatters, and other development tools.
+
+### 4. Install Tree-sitter parsers
+
+This configuration uses [tree-sitter-manager.nvim](https://github.com/romus204/tree-sitter-manager.nvim) to manage Tree-sitter parsers.
+
+Open the parser manager:
+
+```vim
+:TSManager
+```
+
+Install the required parsers through the interface.
+
+> **Note:** Keep both development environments available when running Neovim. Mise provides the required runtimes, while the Nix `tools` shell provides Tree-sitter CLI.
 
 ## ⚡ CLI Tools
 

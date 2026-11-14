@@ -4,6 +4,7 @@ node = "latest"
 pnpm = "latest"
 go = "latest"
 rust = "latest"
+uv = "latest"
 
 [settings]
 experimental = true
