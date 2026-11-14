@@ -2,7 +2,7 @@
 
 ✨ **_This is my dotfiles. Take anything you want, but at your own risk. It mainly targets MacOS systems._** ✨
 
-# Table contents
+## Table contents
 
 - [Tools](#tools)
 - [CLI Replacements](#-cli-replacements)
@@ -20,7 +20,7 @@
     - [Cmus](#cmus)
 - [Show case](#show-case)
 
-# Tools
+## Tools
 
 - **Package Manager**: [Nix](./nix-darwin)
 - **Terminal**: [Kitty](./kitty) / [Ghostty](./ghostty)
@@ -47,7 +47,7 @@
 - **Wallpapers**: [Wallpapers](./wallpapers)
 - **Music**: [Music](./Music)
 
-# ⚡ CLI Replacements
+## ⚡ CLI Replacements
 
 - [bat > cat ](https://github.com/sharkdp/bat)
 - [fd > find](https://github.com/sharkdp/fd)
@@ -176,6 +176,7 @@ Install the optional Zoxide integration:
 ```fish
 fisher install kidonng/zoxide.fish
 ```
+
 ### Configuration git + ssh
 
 - Git
@@ -269,60 +270,311 @@ Install the required parsers through the interface.
 
 > **Note:** Keep both development environments available when running Neovim. Mise provides the required runtimes, while the Nix `tools` shell provides Tree-sitter CLI.
 
-## ⚡ CLI Tools
+## Tools usage
 
-### _bat_ → Pretty _cat_ with syntax highlighting
+### CLI utilities
 
-- Pretty print the contents of one or more files to `stdout`
-  `bat path/to/file1 path/to/file2 ...`
+#### Skim (`sk`)
 
-### _fd_ → Fast _find_ replacement
+[Skim](https://github.com/skim-rs/skim) is a command-line fuzzy finder. It filters a list of items interactively.
 
-- Recursively find files matching a specific pattern in the current directory:
-  `fd "string|regex"`
+**Basic usage:**
 
-- Find files that begin with a specific string:
-  `fd "^string"`
+```sh
+# Open an interactive fuzzy finder
+sk
 
-- Find files with a specific extension:
-  `fd [-e|--extension] txt`
+# Find files and select one
+fd --type f | sk
 
-- Find files in a specific directory:
-  `fd "string|regex" path/to/directory`
+# Find directories and select one
+fd --type d | sk
 
-- Include ignored and hidden files in the search:
-  `fd [-H|--hidden] [-I|--no-ignore] "string|regex"`
+# Search command history
+history | sk
+```
 
-- Execute a command on each search result returned:
-  `fd "string|regex" [-x|--exec] command`
+**Search files with a preview:**
 
-### _rg (ripgrep)_ → Super fast _grep_ replacement
+```sh
+fd --type f | sk --preview 'bat --color=always {}'
+```
 
-`rg [OPTIONS] PATTERN [PATH...]`
+**Search text with ripgrep:**
 
-- Recursively search current directory for a pattern (`regex`):
-  `rg pattern`
+```sh
+rg --line-number --color=always "pattern" | sk --ansi
+```
 
-- Recursively search for a pattern in a file or directory:
-  `rg pattern <path/to/file_or_directory>`
+Useful options:
 
-- Options
-  - Include hidden files and entries listed in `.gitignore`:
-    `[-.|--hidden] --no-ignore`
+- `-m`: Enable multi-selection.
+- `--ansi`: Preserve ANSI colors in the input.
+- `--preview`: Display a preview for the currently selected item.
 
-### _sk_ - Fuzzy finder written in Rust. Similar to _fzf_
+Press `Tab` to select multiple items when multi-selection is enabled.
 
-- Start `skim` on all files in the specified directory:
+#### fd
 
-  `fd "string|regex" path/to/directory | sk`
+[fd](https://github.com/sharkdp/fd) is a fast and user-friendly alternative to `find`. It searches for files and directories recursively.
 
-### _Ollama_
+**Basic usage:**
 
-- Start the daemon required to run other commands: `ollama serve`
-- Run a model and chat with it: `ollama run <model>`
-- List downloaded models: `ollama ls`
-- Pull a specific model: `ollama pull <model>`
-- Delete a model: `ollama rm <model>`
+```sh
+# Find files and directories matching a name
+fd package
+
+# Find files only
+fd --type f package
+
+# Find directories only
+fd --type d node_modules
+
+# Find files by extension
+fd --extension ts
+
+# Find files in a specific directory
+fd package ./src
+```
+
+**Include hidden files:**
+
+```sh
+fd --hidden package
+```
+
+**Include ignored files:**
+
+```sh
+fd --hidden --no-ignore package
+```
+
+**Exclude directories:**
+
+```sh
+fd --type f --exclude node_modules --exclude .git
+```
+
+By default, `fd` respects `.gitignore` and ignores hidden files and directories.
+
+#### ripgrep (`rg`)
+
+[ripgrep](https://github.com/BurntSushi/ripgrep) is a fast recursive search tool. It searches file contents using regular expressions and respects `.gitignore` by default.
+
+**Basic usage:**
+
+```sh
+# Search for a string in the current directory
+rg "pattern"
+
+# Search case-insensitively
+rg -i "pattern"
+
+# Search in a specific directory
+rg "pattern" ./src
+
+# Search only in TypeScript files
+rg "pattern" -g "*.ts"
+
+# Search for a whole word
+rg -w "User"
+```
+
+**Include hidden and ignored files:**
+
+```sh
+# Include hidden files
+rg --hidden "pattern"
+
+# Include hidden and ignored files
+rg --hidden --no-ignore "pattern"
+```
+
+**Useful options:**
+
+- `-n`: Show line numbers.
+- `-i`: Case-insensitive search.
+- `-w`: Match whole words.
+- `-l`: Print only filenames containing matches.
+- `-g`: Include or exclude files using glob patterns.
+- `-C 3`: Show three lines of context around each match.
+
+#### bat
+
+[bat](https://github.com/sharkdp/bat) is a `cat` alternative with syntax highlighting, line numbers, and Git integration.
+
+**Basic usage:**
+
+```sh
+# Display a file
+bat README.md
+
+# Display multiple files
+bat package.json tsconfig.json
+
+# Display with line numbers
+bat --number src/index.ts
+
+# Display a specific line range
+bat --line-range 10:30 src/index.ts
+
+# Display without paging
+bat --paging=never README.md
+```
+
+**Search and inspect files:**
+
+```sh
+# Preview a file with syntax highlighting
+bat src/index.ts
+
+# Show non-printable characters
+bat --show-all README.md
+```
+
+Use `bat` instead of `cat` when you want syntax highlighting and a more readable file preview.
+
+---
+
+### Container & virtualization
+
+#### Colima
+
+[Colima](https://colima.run/) provides container runtimes on macOS using Linux virtual machines. It supports Docker, Containerd, and Kubernetes.
+
+This setup uses Colima with the Docker runtime.
+
+**Start Colima:**
+
+```sh
+colima start
+```
+
+This creates and starts the default VM with the Docker runtime.
+
+**Check status:**
+
+```sh
+colima status
+
+# List all profiles
+colima list
+```
+
+**Use Docker:**
+
+```sh
+# Verify Docker connectivity
+docker info
+
+# List running containers
+docker ps
+
+# Run a container
+docker run hello-world
+
+# Start Docker Compose services
+docker compose up -d
+
+# Follow container logs
+docker compose logs -f
+
+# Stop Docker Compose services
+docker compose down
+```
+
+Colima automatically creates and activates a Docker context.
+
+**Manage Docker context:**
+
+```sh
+# List available contexts
+docker context ls
+
+# Switch to Colima
+docker context use colima
+
+# Switch to another context
+docker context use default
+```
+
+**Stop and restart Colima:**
+
+```sh
+# Stop the default VM
+colima stop
+
+# Restart the default VM
+colima restart
+```
+
+**Customize VM resources:**
+
+```sh
+colima start --cpus 4 --memory 8 --disk 100
+```
+
+The resource values above are examples: 4 CPUs, 8 GiB memory, and 100 GiB disk.
+
+**Delete a Colima profile:**
+
+```sh
+colima delete
+```
+
+To delete the VM and all associated container data, including images and volumes:
+
+```sh
+colima delete --data
+```
+
+> ⚠️ `colima delete --data` is destructive. Make sure you no longer need the associated container data before running it.
+
+#### Lima
+
+[Lima](https://lima-vm.io/) provides Linux virtual machines on macOS. It allows you to run Linux workloads in isolated VMs without requiring a full Linux installation.
+
+Colima uses Lima as its default VM backend. Use Colima commands to manage the VM used by Colima. Use `limactl` to manage independent Lima instances.
+
+**List Lima instances:**
+
+```sh
+limactl list
+```
+
+**Create and start an independent VM:**
+
+```sh
+limactl start --name=dev template:docker
+```
+
+**Open a shell inside the VM:**
+
+```sh
+limactl shell dev
+```
+
+**Stop an instance:**
+
+```sh
+limactl stop dev
+```
+
+**Delete an instance:**
+
+```sh
+limactl delete dev
+```
+
+**Inspect Lima commands:**
+
+```sh
+limactl --help
+limactl start --help
+limactl list --help
+```
+
+> **Note:** Do not use `limactl delete` to manage Colima's VM. Use `colima stop` and `colima delete` instead.
 
 ## 🔄 System Maintenance
 
