@@ -2,7 +2,10 @@
 {
   homebrew = {
     enable = true;
-    taps = [ "cloaky233/tap" ];
+    taps = [{
+      name = "cloaky233/tap";
+      trusted = true;
+    }];
     brews = [
       "siltop"
     ];
