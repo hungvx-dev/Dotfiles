@@ -6,19 +6,25 @@
 
 - [Tools](#tools)
 - [CLI Replacements](#-cli-replacements)
-- [Setup](#%EF%B8%8F-setup)
+- [Setup](#setup)
   - [Installing](#installing)
-  - [Add configuration](#add-configuration)
-    - [Configuration shell (fish)](#configuration-shell-fish)
+  - [Configuration shell (fish)](#shell-configuration-fish)
     - [Configuration git + ssh](#configuration-git--ssh)
-    - [Configuration neovim](#configuration-neovim)
-  - [System Maintenance](#-system-maintenance)
-    - [Update packages](#update-packages)
-    - [Clean packages](#clean-packages)
-    - [Checkout packages](#checkout-packages)
-    - [Nodejs](#nodejs)
-    - [Cmus](#cmus)
-- [Show case](#show-case)
+  - [Configuration neovim](#editor-setup)
+  - [Tools Usage](#tools-usage)
+    - [CLI Utilities](#cli-utilities)
+      - [Skim](#skim)
+      - [fd](#fd)
+      - [ripgrep](#ripgrep)
+      - [bat](#bat)
+      - [yabai](#yabai)
+      - [cmus](#cmus)
+    - [Container & Virtualization](#container--virtualization)
+      - [Colima](#colima)
+      - [Lima](#lima)
+  - [System Maintenance](##-system-maintenance)
+    - [Nix Usage](###nix-usage)
+- [Show cases](#show-cases)
 
 ## Tools
 
@@ -61,7 +67,7 @@
 - [dust > du](https://github.com/bootandy/dust)
 - [prettyping > ping](https://github.com/denilsonsa/prettyping)
 
-# ⚙️ Setup
+# Setup
 
 ## Installing
 
@@ -270,6 +276,113 @@ Install the required parsers through the interface.
 
 > **Note:** Keep both development environments available when running Neovim. Mise provides the required runtimes, while the Nix `tools` shell provides Tree-sitter CLI.
 
+## 🔄 System Maintenance
+
+### Nix usage
+
+Navigate to the `nix-darwin/eryx` directory first:
+
+```bash
+cd ~/dev/dotfiles/nix-darwin/eryx
+```
+
+#### Development environments
+
+Enter a development shell using the Fish aliases:
+
+```fish
+dev    # Enter develop#dev
+tools  # Enter develop#tools
+```
+
+Development environments are defined in `develop/flake.nix`.
+
+To create persistent profiles and keep development packages available after garbage collection:
+
+```bash
+mkdir -p .nix-profiles
+
+nix develop --profile .nix-profiles/dev ./develop#dev
+nix develop --profile .nix-profiles/tools ./develop#tools
+```
+
+Keep `.nix-profiles/` out of Git. These profiles act as local GC roots and do not need to be committed.
+
+#### Update and rebuild
+
+- Update flake inputs (`flake.lock`):
+
+  ```bash
+  nix flake update
+  ```
+
+- Rebuild and activate the system configuration:
+
+  ```bash
+  sudo darwin-rebuild switch --flake .
+  ```
+
+- Update and rebuild in one command:
+
+  ```bash
+  nix flake update && sudo darwin-rebuild switch --flake .
+  ```
+
+#### Optimise Nix store
+
+Deduplicate identical files in the Nix store to reclaim disk space:
+
+```bash
+nix store optimise
+```
+
+#### Garbage collection
+
+- Garbage collect unused store paths:
+
+  ```bash
+  nix store gc
+  ```
+
+- Delete old generations and garbage collect (optional):
+
+  ```bash
+  sudo nix-collect-garbage -d
+  ```
+
+The second command removes old generations before collecting unreferenced store paths.
+
+Garbage collection is not required after rebuilding or when entering a development shell. Keep `.nix-profiles/` intact to preserve the development environments.
+
+#### System generations
+
+- List generations:
+
+  ```bash
+  sudo darwin-rebuild --list-generations
+  ```
+
+- Roll back to the previous generation:
+
+  ```bash
+  sudo darwin-rebuild switch --rollback
+  ```
+
+- Switch to a specific generation:
+
+  ```bash
+  sudo darwin-rebuild switch --switch-generation <generation-number>
+  ```
+
+#### macOS Dock
+
+- Reset Launchpad:
+
+  ```bash
+  defaults write com.apple.dock ResetLaunchPad -bool true
+  killall Dock
+  ```
+
 ## Tools usage
 
 ### CLI utilities
@@ -436,6 +549,17 @@ Use `bat` instead of `cat` when you want syntax highlighting and a more readable
 
 ---
 
+#### Yabai
+
+- Configure scripting addition: `echo "$(whoami) ALL=(root) NOPASSWD: sha256:$(shasum -a 256 $(which yabai) | cut -d " " -f 1) $(which yabai) --load-sa" | sudo tee /private/etc/sudoers.d/yabai`
+
+#### Cmus
+
+- Add a Music Folder `:add /path/to/your/music`
+- Rescan the Library `:update-cache`
+- Remove Missing Files `:clear`
+- Changing the volume in cmus `:set softvol=true`
+
 ### Container & virtualization
 
 #### Colima
@@ -575,129 +699,6 @@ limactl list --help
 ```
 
 > **Note:** Do not use `limactl delete` to manage Colima's VM. Use `colima stop` and `colima delete` instead.
-
-## 🔄 System Maintenance
-
-### Nix usage
-
-Navigate to the `nix-darwin/eryx` directory first:
-
-```bash
-cd ~/dev/dotfiles/nix-darwin/eryx
-```
-
-#### Development environments
-
-Enter a development shell using the Fish aliases:
-
-```fish
-dev    # Enter develop#dev
-tools  # Enter develop#tools
-```
-
-Development environments are defined in `develop/flake.nix`.
-
-To create persistent profiles and keep development packages available after garbage collection:
-
-```bash
-mkdir -p .nix-profiles
-
-nix develop --profile .nix-profiles/dev ./develop#dev
-nix develop --profile .nix-profiles/tools ./develop#tools
-```
-
-Keep `.nix-profiles/` out of Git. These profiles act as local GC roots and do not need to be committed.
-
-#### Update and rebuild
-
-- Update flake inputs (`flake.lock`):
-
-  ```bash
-  nix flake update
-  ```
-
-- Rebuild and activate the system configuration:
-
-  ```bash
-  sudo darwin-rebuild switch --flake .
-  ```
-
-- Update and rebuild in one command:
-
-  ```bash
-  nix flake update && sudo darwin-rebuild switch --flake .
-  ```
-
-#### Optimise Nix store
-
-Deduplicate identical files in the Nix store to reclaim disk space:
-
-```bash
-nix store optimise
-```
-
-#### Garbage collection
-
-- Garbage collect unused store paths:
-
-  ```bash
-  nix store gc
-  ```
-
-- Delete old generations and garbage collect (optional):
-
-  ```bash
-  sudo nix-collect-garbage -d
-  ```
-
-The second command removes old generations before collecting unreferenced store paths.
-
-Garbage collection is not required after rebuilding or when entering a development shell. Keep `.nix-profiles/` intact to preserve the development environments.
-
-#### System generations
-
-- List generations:
-
-  ```bash
-  sudo darwin-rebuild --list-generations
-  ```
-
-- Roll back to the previous generation:
-
-  ```bash
-  sudo darwin-rebuild switch --rollback
-  ```
-
-- Switch to a specific generation:
-
-  ```bash
-  sudo darwin-rebuild switch --switch-generation <generation-number>
-  ```
-
-#### macOS Dock
-
-- Reset Launchpad:
-
-  ```bash
-  defaults write com.apple.dock ResetLaunchPad -bool true
-  killall Dock
-  ```
-
-### Yabai
-
-- Configure scripting addition: `echo "$(whoami) ALL=(root) NOPASSWD: sha256:$(shasum -a 256 $(which yabai) | cut -d " " -f 1) $(which yabai) --load-sa" | sudo tee /private/etc/sudoers.d/yabai`
-
-### Nodejs
-
-- Enable pnpm: `corepack enable pnpm`
-- Disable yarn: `corepack disable yarn`
-
-### Cmus
-
-- Add a Music Folder `:add /path/to/your/music`
-- Rescan the Library `:update-cache`
-- Remove Missing Files `:clear`
-- Changing the volume in cmus `:set softvol=true`
 
 # Show cases
 
