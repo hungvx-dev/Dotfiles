@@ -202,22 +202,110 @@ Here are some notes on how I use my daily tools:
 
 ## 🔄 System Maintenance
 
-### Update packages
+### Nix usage
 
-1.  Update flake: `nix flake update`
-2.  Darwin rebuild: `sudo darwin-rebuild switch --flake .`
+Navigate to the `nix-darwin/eryx` directory first:
 
-### Clean packages
+```bash
+cd ~/dev/dotfiles/nix-darwin/eryx
+```
 
-- Clean nix store: `nix store gc`
-- Delete old generations(optional): `sudo nix-collect-garbage -d`
-- Reset dock: `defaults write com.apple.dock ResetLaunchPad -bool true; killall Dock`
+#### Development environments
 
-### Checkout packages
+Enter a development shell using the Fish aliases:
 
-- List generations: `sudo darwin-rebuild --list-generations`
-- Rollback: `sudo darwin-rebuild switch --rollback`
-- Checkout generation: `sudo darwin-rebuild switch --switch-generation <generation-number>`
+```fish
+dev    # Enter develop#dev
+tools  # Enter develop#tools
+```
+
+Development environments are defined in `develop/flake.nix`.
+
+To create persistent profiles and keep development packages available after garbage collection:
+
+```bash
+mkdir -p .nix-profiles
+
+nix develop --profile .nix-profiles/dev ./develop#dev
+nix develop --profile .nix-profiles/tools ./develop#tools
+```
+
+Keep `.nix-profiles/` out of Git. These profiles act as local GC roots and do not need to be committed.
+
+#### Update and rebuild
+
+- Update flake inputs (`flake.lock`):
+
+  ```bash
+  nix flake update
+  ```
+
+- Rebuild and activate the system configuration:
+
+  ```bash
+  sudo darwin-rebuild switch --flake .
+  ```
+
+- Update and rebuild in one command:
+
+  ```bash
+  nix flake update && sudo darwin-rebuild switch --flake .
+  ```
+
+#### Optimise Nix store
+
+Deduplicate identical files in the Nix store to reclaim disk space:
+
+```bash
+nix store optimise
+```
+
+#### Garbage collection
+
+- Garbage collect unused store paths:
+
+  ```bash
+  nix store gc
+  ```
+
+- Delete old generations and garbage collect (optional):
+
+  ```bash
+  sudo nix-collect-garbage -d
+  ```
+
+The second command removes old generations before collecting unreferenced store paths.
+
+Garbage collection is not required after rebuilding or when entering a development shell. Keep `.nix-profiles/` intact to preserve the development environments.
+
+#### System generations
+
+- List generations:
+
+  ```bash
+  sudo darwin-rebuild --list-generations
+  ```
+
+- Roll back to the previous generation:
+
+  ```bash
+  sudo darwin-rebuild switch --rollback
+  ```
+
+- Switch to a specific generation:
+
+  ```bash
+  sudo darwin-rebuild switch --switch-generation <generation-number>
+  ```
+
+#### macOS Dock
+
+- Reset Launchpad:
+
+  ```bash
+  defaults write com.apple.dock ResetLaunchPad -bool true
+  killall Dock
+  ```
 
 ### Yabai
 
