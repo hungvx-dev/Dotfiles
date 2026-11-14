@@ -40,8 +40,8 @@ return {
     default_component_configs = {
       indent = {
         with_expanders = nil,
-        expander_collapsed = HVIM.icons.UI.Direction.COD.Right,
-        expander_expanded = HVIM.icons.UI.Direction.COD.Down,
+        expander_collapsed = HVIM.icons.UI.Direction.Oct.Right,
+        expander_expanded = HVIM.icons.UI.Direction.Oct.Down,
       },
       icon = {
         folder_closed = HVIM.icons.UI.Folder.Close,

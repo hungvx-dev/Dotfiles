@@ -7,11 +7,8 @@ background-blur = macos-glass-regular
 # minimum-contrast = 1.1
 window-padding-balance = true
 
-font-size = 17
+font-size = 16
 font-family = "JetBrains Mono"
-#font-family = "JetBrainsMono Nerd Font Mono"
-#font-family = "Iosevka Nerd Font"
-#font-family = "Iosevka Nerd Font Mono"
 font-style = "Light"
 font-style-bold = "SemiBold"
 font-style-italic = "Light Italic"

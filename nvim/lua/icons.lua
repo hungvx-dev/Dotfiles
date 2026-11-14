@@ -3,22 +3,23 @@ return {
     Array         = " ",
     Boolean       = " ",
     Class         = " ",
-    Color         = " ", -- 
+    Color         = " ",
     Constant      = " ",
     Copilot       = " ",
     Event         = " ",
     Field         = " ",
     File          = " ",
     Folder        = " ",
-    Function      = "󰊕 ", --
+    Function      = "󰊕 ",
+    Method        = " ",
     Key           = " ",
+    Value         = "󰎠 ",
     Keyword       = " ",
-    Method        = "󰊕 ", -- 
-    Module        = " ", -- 󰕳
-    Namespace     = " ",
-    Null          = "󰟢 ", --
+    Module        = " ",
+    Namespace     = "󰦮 ",
+    Null          = "󰟢 ",
     Number        = " ",
-    Object        = " ",
+    Object        = "󰅩 ",
     Operator      = " ",
     Package       = " ",
     Property      = " ",
@@ -27,11 +28,10 @@ return {
     String        = " ",
     Struct        = " ",
     TypeParameter = " ",
-    Unit          = " ", -- rule
-    Value         = " ", --
+    Unit          = " ",
     Variable      = " ",
-    Text          = " ", --
-    Constructor   = " ", --
+    Text          = " ",
+    Constructor   = " ",
     Interface     = " ",
     Enum          = " ",
     EnumMember    = " ",
@@ -110,17 +110,17 @@ return {
         Down  = "󰅀",
         Up    = "󰅃",
       },
-      Oct = {
-        Left  = "",
-        Right = "",
-        Down  = "",
-        Up    = "",
-      },
       COD = {
         Left  = "",
         Right = "",
         Down  = "",
         Up    = "",
+      },
+      Oct = {
+        Left  = "",
+        Right = "",
+        Down  = "",
+        Up    = "",
       },
       FA = {
         Chevron = {
@@ -133,7 +133,7 @@ return {
           Left  = "",
           Right = "",
           Down  = "",
-          Up    = "",
+          Up    = "",
         },
       },
     },
@@ -166,9 +166,9 @@ return {
   Git         = {
     Branch        = " ",
     Commit        = " ", -- 
-    Compare       = " ", -- 
-    Merge         = " ", -- 
-    Pull          = " ", -- 
+    Compare       = " ", -- 
+    Merge         = " ", -- 
+    Pull          = " ", -- 
 
     LineAdded     = "󰜄",
     LineModified  = "󰧭",
