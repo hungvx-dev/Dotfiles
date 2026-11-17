@@ -6,18 +6,15 @@ command_timeout = 500
 palette = "eryx"
 
 format = """
-$container\
 $directory\
 $git_branch$git_commit$git_state$git_metrics$git_status\
 $package\
-$c$golang$nodejs$python$ruby$rust$lua$java\
-$docker_context\
+$c$golang$rust$nodejs$bun$lua$java$swift\
 $fill\
+$docker_context\
 $aws$gcloud$kubernetes\
-$time
+$time$cmd_duration
 $username$nix_shell$character"""
-
-right_format = """$memory_usage$cmd_duration"""
 
 
 [palettes.eryx]
@@ -30,137 +27,89 @@ purple = "#d150ff"
 cyan = "#00FFFF"
 blue = "#0089fc"
 
-[line_break]
-disabled = true
-[cmd_duration]
-format = '[⏱ $duration]($style)'
-style = "italic white"
-[os]
-format = "[$symbol]($style) "
-style = "purple"
-disabled = false
-[os.symbols]
-Macos = "󰀵"
-[hostname]
-disabled = false
-ssh_only = false
-ssh_symbol = " "
-style = "bold bg:none fg:cyan"
-format = '[$ssh_symbol$hostname@]($style)'
-[username]
-disabled = false
-show_always = true
-style_user = "cyan bold italic"
-style_root = "red bold italic"
-format = "(fg:purple)[󰀄 $user]($style) " # 󰯊 󱃲 󰨑 #
 [directory]
-home_symbol = "~"
-truncate_to_repo = false
 truncation_length = 5
 truncation_symbol = '…/'
+truncate_to_repo = false
 read_only = " 󰌾"
-style = "italic fg:blue"
-read_only_style = "fg:red"
-format = '[󰝰 ](cyan)[$path]($style)[$readonly]($read_only_style) '
+style = "italic blue"
+format = '[󰝰 ](cyan)[$path]($style)[$read_only]($read_only_style) '
 [directory.substitutions]
 "Documents" = " "
 "Downloads" = "󰉍 Downloads"
 "Music" = "󱍙 Music"
 "Pictures" = "󰉔 Pictures"
+
+[git_branch]
+style = "bold orange"
+[git_commit]
+tag_disabled = false
+[git_metrics]
+disabled = false
+added_style = "cyan"
+deleted_style = "red"
+format = '([󰜄 $added]($added_style) )([󰛲 $deleted]($deleted_style) )'
+
+[package]
+symbol = "󰏗 "
+
+[c]
+symbol = "󰙱 "
+[golang]
+symbol = "󰟓 "
+[rust]
+symbol = "󱘗 "
+[java]
+symbol = "󰬷 "
+[nodejs]
+symbol = "󰎙 "
+[bun]
+symbol = " "
+[lua]
+symbol = "󰢱 "
+[swift]
+symbol = " "
+
+[docker_context]
+symbol = "󰡨 "
+format = '[$symbol$context]($style) '
+
+[aws]
+symbol = '󰸏 '
+[kubernetes]
+symbol = "󱃾 "
+[gcloud]
+symbol = "󱇶 "
+
+[fill]
+symbol = " "
+
+[cmd_duration]
+format = '[⏱ $duration]($style)'
+style = "italic white"
+[username]
+style_user = "cyan bold italic"
+style_root = "red bold italic"
+format = "[󰀄 $user]($style) " # 󰯊 󱃲 󰨑 #
+
 [time]
 disabled = false
 time_format = "%R"
 format = "[󱫭 $time]($style)"
 utc_time_offset = "local"
 style = "italic dimmed white"
-[fill]
-symbol = " "
-[character]
-disabled = false
-success_symbol = "[󰁔](fg:green)"
-error_symbol = "[󰅖](fg:red)"
-vicmd_symbol = "[󰺕](fg:cyan)"
-vimcmd_visual_symbol = "[❮](fg:pink)"
-format = "$symbol "
-[sudo]
-disabled = false
-format = '\[[as $symbol]($style)\]'
-[memory_usage]
-disabled = false
-threshold = 80
-format = '$symbol[$ram( | $swap)]($style) '
 
 [nix_shell]
-unknown_msg = '[◌](bold dimmed yellow)'
+disabled = false
+heuristic = true
+style = "bold blue"
+format = '[󱄅 ]($style)'
+pure_msg = '[pure](bold green)'
+impure_msg = ''
+unknown_msg = ''
 
-[git_branch]
-style = "bold fg:orange"
-format = '[$symbol$branch(:$remote_branch)]($style) '
-[git_commit]
-only_detached = true
-tag_disabled = false
-style = "bold fg:green"
-format = '[#$hash$tag]($style) '
-[git_state]
-disabled = false
-[git_metrics]
-disabled = false
-added_style = "fg:cyan"
-deleted_style = "fg:red"
-format = '([󰜄 $added]($added_style) )([󰛲 $deleted]($deleted_style) )'
-
-[aws]
-disabled = false
-style = 'bold blue'
-symbol = '󰸏 '
-format = '[$symbol($profile)(\($region\))(\[$duration\]) ]($style)'
-# [aws.region_aliases]
-# ap-southeast-2 = 'au'
-# us-east-1 = 'va'
-# [aws.profile_aliases]
-# CompanyGroupFrobozzOnCallAccess = 'Frobozz'
-[kubernetes]
-disabled = false
-symbol = "󱃾 "
-format = '[$symbol$context(\($namespace\))]($style) '
-[gcloud]
-symbol = "󱇶 "
-disabled = false
-format = '[$symbol$account(@$domain)(\($region\)) ]($style)'
-[docker_context]
-symbol = "󰡨 "
-format = '[$symbol$context]($style)'
-
-[lua]
-disabled = false
-symbol = "󰢱 "
-format = "[${symbol}${version}]($style)"
-version_format = "${raw}"
-style = "bold fg:blue"
-[package]
-symbol = "󰏗 "
-format = '[$symbol$version ]($style)'
-[c]
-symbol = "󰙱 "
-format = '[$symbol($version(-$name))]($style)'
-[golang]
-symbol = "󰟓 "
-format = '[$symbol($version)]($style)'
-[java]
-symbol = "󰬷 "
-format = '[$symbol($version)]($style)'
-[python]
-symbol = "󰌠 "
-format = '[${symbol}${pyenv_prefix}(${version})(\($virtualenv\))]($style)'
-[ruby]
-symbol = "󰴭 "
-format = '[$symbol($version)]($style)'
-[rust]
-symbol = "󱘗 "
-format = '[$symbol($version)]($style)'
-[nodejs]
-detect_files = ["package.json", ".node-version", ".nvmrc"]
-detect_folders = ["node_modules"]
-detect_extensions = []
-format = '[$symbol($version) ]($style)'
-version_format = "${raw}"
+[character]
+success_symbol = '[❯](green)'
+error_symbol = '[✗](red)'
+vicmd_symbol = "[󰺕](cyan)"
+vimcmd_visual_symbol = "[❮](pink)"
