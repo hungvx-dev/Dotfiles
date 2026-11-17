@@ -14,12 +14,13 @@
         config.allowUnfree = true;
       };
 
-      mkShell = packages: pkgs.mkShell {
+      mkShell = name: packages: pkgs.mkShell {
         inherit packages;
 
         shellHook = ''
           if [ -z "$IN_NIX_SHELL_FISH" ]; then
             export IN_NIX_SHELL_FISH=1
+            export NIX_DEV_SHELL_NAME="${name}"
             exec fish
           fi
         '';
@@ -28,12 +29,13 @@
     in
     {
       devShells.${system} = {
-        dev = mkShell (with pkgs; [
+        dev = mkShell "dev" (with pkgs; [
           mise
         ]);
 
-        tools = mkShell (with pkgs; [
+        tools = mkShell "tools" (with pkgs; [
           tree-sitter
+          yt-dlp
         ]);
       };
     };

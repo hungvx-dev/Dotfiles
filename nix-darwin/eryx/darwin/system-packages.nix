@@ -1,6 +1,7 @@
 { pkgs, ... }:
 {
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
+  nix.optimise.automatic = true;
   nixpkgs.config.allowUnfree = true;
   # nixpkgs.config.allowBroken = true;
   nixpkgs.hostPlatform = "aarch64-darwin";

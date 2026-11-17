@@ -1,4 +1,6 @@
-{ description = "Eryx Ryan nix-darwin system flake"; inputs = {
+{
+  description = "Eryx Ryan nix-darwin system flake";
+  inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixpkgs-unstable";
     nix-darwin = {
       url = "github:LnL7/nix-darwin";
@@ -9,7 +11,7 @@
 
   outputs = { self, nix-darwin, nix-homebrew, ... }:
     let
-      host = "dev";
+      host = "Eryx";
       username = "eryx";
       home = "/Users/${username}";
     in
@@ -26,7 +28,7 @@
             };
           }
         ];
-        specialArgs = { inherit username home self; };
+        specialArgs = { inherit host username home self; };
       };
       darwinPackages = self.darwinConfigurations.${host}.pkgs;
     };

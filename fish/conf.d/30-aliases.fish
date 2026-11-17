@@ -1,6 +1,3 @@
-abbr dev 'nix develop ~/dev/dotfiles/nix-darwin/eryx/develop#dev'
-abbr tools 'nix develop ~/dev/dotfiles/nix-darwin/eryx/develop#tools'
-
 abbr gs 'git status'
 abbr gl 'git log --graph --stat --oneline --decorate --source --pretty=format:"%Cblue %h %C(bold red)- <%an> -%C(green) (%ar)%C(auto)%d%n%C(yellow) %s"'
 abbr gla 'git log --all --graph --stat --oneline --decorate --source --pretty=format:"%Cblue %h %C(bold red)- <%an> -%C(green) (%ar)%C(auto)%d%n%C(yellow) %s"'
