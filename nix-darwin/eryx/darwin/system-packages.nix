@@ -26,7 +26,7 @@
     # tools
     lazydocker rainfrog
     # dev
-    docker colima lima
+    docker colima lima ollama
   ];
 
   programs.fish.enable = true;
