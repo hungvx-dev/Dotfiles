@@ -217,6 +217,7 @@ vim.api.nvim_set_hl(0, '@lsp.typemod.class.defaultLibrary', { link = '@type.buil
 vim.api.nvim_set_hl(0, '@lsp.typemod.method.defaultLibrary', { link = '@function.builtin' })
 vim.api.nvim_set_hl(0, '@lsp.typemod.function.defaultLibrary', { link = '@function.builtin' })
 vim.api.nvim_set_hl(0, '@lsp.type.variable', {})
+vim.api.nvim_set_hl(0, '@lsp.type.keyword', {})
 vim.api.nvim_set_hl(0, '@lsp.type.type', {})
 vim.api.nvim_set_hl(0, '@lsp.type.string', {})
 vim.api.nvim_set_hl(0, '@lsp.type.component', { link = '@type.tsx' })

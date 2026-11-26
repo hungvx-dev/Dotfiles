@@ -7,13 +7,21 @@ background-blur = macos-glass-regular
 # minimum-contrast = 1.1
 window-padding-balance = true
 
-font-size = 16
-font-family = "JetBrains Mono"
-font-style = "Light"
-font-style-bold = "SemiBold"
-font-style-italic = "Light Italic"
-font-style-bold-italic = "SemiBold Italic"
+font-size = 18
+font-family = "Maple Mono"
+# font-style = "ExtraLight"
+# font-style-bold = "SemiBold"
+#
+# adjust-underline-position = 10
+# adjust-cell-height = 24
+# adjust-cursor-height = 24
 
+# font-family = "Jetbrains Mono"
+font-style = "ExtraLight"
+font-style-bold = "SemiBold"
+font-style-italic = "ExtraLight Italic"
+font-style-bold-italic = "SemiBold Italic"
+#
 adjust-underline-position = 2
 adjust-cell-height = 20
 adjust-cursor-height = 20
